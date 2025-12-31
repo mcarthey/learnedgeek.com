@@ -1,0 +1,83 @@
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
+import { Menu, X } from 'lucide-react';
+import Logo from './Logo';
+
+const navItems = [
+  { name: 'Home', page: 'Home' },
+  { name: 'About', page: 'About' },
+  { name: 'Work', page: 'Work' },
+  { name: 'Services', page: 'Services' },
+  { name: 'Contact', page: 'Contact' },
+];
+
+export default function Navigation() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (page) => {
+    const url = createPageUrl(page);
+    return location.pathname === url || location.pathname === url + '/';
+  };
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-neutral-200">
+      <nav className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <Link to={createPageUrl('Home')} className="flex items-center">
+            <Logo className="h-8" />
+            <span className="ml-3 font-semibold text-neutral-900 tracking-tight">
+              Learned Geek
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.page}
+                to={createPageUrl(item.page)}
+                className={`text-sm font-medium transition-colors duration-200 ${
+                  isActive(item.page)
+                    ? 'text-neutral-900'
+                    : 'text-neutral-500 hover:text-neutral-900'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden p-2 text-neutral-600 hover:text-neutral-900"
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {mobileOpen && (
+          <div className="md:hidden border-t border-neutral-100 py-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.page}
+                to={createPageUrl(item.page)}
+                onClick={() => setMobileOpen(false)}
+                className={`block py-3 text-sm font-medium transition-colors ${
+                  isActive(item.page)
+                    ? 'text-neutral-900'
+                    : 'text-neutral-500 hover:text-neutral-900'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        )}
+      </nav>
+    </header>
+  );
+}

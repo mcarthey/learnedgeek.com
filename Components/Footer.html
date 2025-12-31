@@ -1,0 +1,68 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
+import Logo from './Logo';
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="bg-neutral-950 text-neutral-400">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {/* Brand */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="h-8 w-8 border border-neutral-700 flex items-center justify-center">
+                <span className="font-mono text-xs text-neutral-500">[LG]</span>
+              </div>
+              <span className="font-semibold text-white tracking-tight">
+                Learned Geek
+              </span>
+            </div>
+            <p className="text-sm text-neutral-500 leading-relaxed max-w-xs">
+              Learning by building. Solving problems across disciplines.
+            </p>
+          </div>
+
+          {/* Navigation */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+              Navigation
+            </h4>
+            <nav className="flex flex-col gap-2">
+              {['Home', 'About', 'Work', 'Services', 'Contact'].map((page) => (
+                <Link
+                  key={page}
+                  to={createPageUrl(page)}
+                  className="text-sm text-neutral-400 hover:text-white transition-colors"
+                >
+                  {page}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Contact */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+              Get in Touch
+            </h4>
+            <a
+              href="mailto:hello@learnedgeek.com"
+              className="text-sm text-neutral-400 hover:text-white transition-colors block"
+            >
+              hello@learnedgeek.com
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-16 pt-8 border-t border-neutral-800">
+          <p className="text-xs text-neutral-600">
+            © {currentYear} Learned Geek. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}

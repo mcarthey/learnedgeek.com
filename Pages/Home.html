@@ -1,0 +1,150 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
+import { ArrowRight, Code2, Layers, BookOpen } from 'lucide-react';
+
+export default function Home() {
+  return (
+    <div className="bg-white">
+      {/* Hero Section */}
+      <section className="relative min-h-[80vh] flex items-center">
+        {/* Subtle Grid Background */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div 
+            className="h-full w-full"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, #000 1px, transparent 1px),
+                linear-gradient(to bottom, #000 1px, transparent 1px)
+              `,
+              backgroundSize: '60px 60px'
+            }}
+          />
+        </div>
+
+        <div className="relative max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
+              Learning by building.
+              <br />
+              <span className="text-neutral-400">
+                Solving problems across disciplines.
+              </span>
+            </h1>
+            
+            <p className="mt-8 text-lg text-neutral-600 leading-relaxed max-w-xl">
+              Curiosity drives everything. Systems thinking connects it. 
+              Continuous learning makes it possible. This is the Learned Geek philosophy.
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link
+                to={createPageUrl('Work')}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors"
+              >
+                View Work
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                to={createPageUrl('About')}
+                className="inline-flex items-center gap-2 px-6 py-3 border border-neutral-300 text-neutral-900 text-sm font-medium hover:border-neutral-900 transition-colors"
+              >
+                Learn More
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="h-px bg-neutral-200" />
+      </div>
+
+      {/* Philosophy Section */}
+      <section className="py-24 lg:py-32">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            <div>
+              <span className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">
+                Philosophy
+              </span>
+              <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-neutral-900 leading-tight">
+                Where curiosity meets craftsmanship
+              </h2>
+            </div>
+            
+            <div className="space-y-6 text-neutral-600 leading-relaxed">
+              <p>
+                The best solutions come from understanding systems deeply — not just how they work, 
+                but why they work. Every problem is an opportunity to learn something new and 
+                build something better.
+              </p>
+              <p>
+                This isn't about chasing trends or adopting every new tool. It's about 
+                developing a foundation of knowledge that compounds over time, applied 
+                thoughtfully to real challenges.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pillars Section */}
+      <section className="py-24 lg:py-32 bg-neutral-50">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8">
+            {[
+              {
+                icon: Code2,
+                title: 'Build to Learn',
+                description: 'Theory informs practice, but practice reveals truth. Real understanding comes from creating, testing, and iterating.'
+              },
+              {
+                icon: Layers,
+                title: 'Systems Thinking',
+                description: 'Everything connects. The ability to see how parts form wholes — and how wholes affect parts — is essential to solving complex problems.'
+              },
+              {
+                icon: BookOpen,
+                title: 'Continuous Learning',
+                description: 'Expertise isn\'t a destination. The most valuable skill is the ability to learn new skills, to remain a student always.'
+              }
+            ].map((pillar, index) => (
+              <div key={index} className="group">
+                <div className="h-12 w-12 border border-neutral-300 flex items-center justify-center mb-6 group-hover:border-neutral-900 transition-colors">
+                  <pillar.icon className="h-5 w-5 text-neutral-600 group-hover:text-neutral-900 transition-colors" />
+                </div>
+                <h3 className="text-lg font-semibold text-neutral-900 mb-3">
+                  {pillar.title}
+                </h3>
+                <p className="text-neutral-600 leading-relaxed text-sm">
+                  {pillar.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 lg:py-32">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-semibold text-neutral-900 mb-4">
+            Have a problem worth solving?
+          </h2>
+          <p className="text-neutral-600 mb-8 max-w-md mx-auto">
+            Let's talk about how thoughtful engineering can help.
+          </p>
+          <Link
+            to={createPageUrl('Contact')}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors"
+          >
+            Get in Touch
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}

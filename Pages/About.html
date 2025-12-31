@@ -1,0 +1,160 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
+import { ArrowRight } from 'lucide-react';
+
+export default function About() {
+  return (
+    <div className="bg-white">
+      {/* Header */}
+      <section className="py-24 lg:py-32 border-b border-neutral-200">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <span className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">
+            About
+          </span>
+          <h1 className="mt-4 text-4xl md:text-5xl font-semibold text-neutral-900 leading-tight max-w-2xl">
+            What it means to be a Learned Geek
+          </h1>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="py-24 lg:py-32">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+            {/* Main Text */}
+            <div className="lg:col-span-7 space-y-8">
+              <div className="prose prose-neutral max-w-none">
+                <p className="text-xl text-neutral-600 leading-relaxed">
+                  "Learned" isn't a past tense. It's an ongoing state. Learning never 
+                  stops — it's not a phase you complete, it's a practice you maintain.
+                </p>
+              </div>
+
+              <div className="h-px bg-neutral-200 my-12" />
+
+              <div className="space-y-6 text-neutral-600 leading-relaxed">
+                <p>
+                  The word "geek" has evolved. Once dismissive, it now describes someone 
+                  who goes deep — who cares enough about something to truly understand it. 
+                  A geek is a problem-solver, not a stereotype.
+                </p>
+                
+                <p>
+                  Learned Geek represents a commitment to understanding things at their 
+                  foundation. Not surface-level familiarity, but the kind of knowledge 
+                  that comes from building, breaking, and rebuilding.
+                </p>
+
+                <p>
+                  This means working across domains: software development, systems 
+                  architecture, engineering practices, technical education. The 
+                  boundaries between these fields are less important than the 
+                  thinking that connects them.
+                </p>
+              </div>
+
+              <div className="h-px bg-neutral-200 my-12" />
+
+              <blockquote className="border-l-2 border-neutral-900 pl-6 py-2">
+                <p className="text-lg text-neutral-900 font-medium italic">
+                  "The more I learn, the more I realize how much I don't know."
+                </p>
+                <cite className="text-sm text-neutral-500 mt-2 block not-italic">
+                  — A sentiment that never gets old
+                </cite>
+              </blockquote>
+            </div>
+
+            {/* Sidebar */}
+            <div className="lg:col-span-5">
+              <div className="lg:sticky lg:top-24 space-y-12">
+                {/* Values */}
+                <div className="p-8 bg-neutral-50 border border-neutral-200">
+                  <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-widest mb-6">
+                    Core Values
+                  </h3>
+                  <ul className="space-y-4">
+                    {[
+                      {
+                        title: 'Clarity over cleverness',
+                        desc: 'The best solutions are understandable, not impressive.'
+                      },
+                      {
+                        title: 'Depth over breadth',
+                        desc: 'Know fewer things better, rather than many things poorly.'
+                      },
+                      {
+                        title: 'Practice over theory',
+                        desc: 'Understanding comes from doing, not just reading.'
+                      },
+                      {
+                        title: 'Questions over answers',
+                        desc: 'The quality of your questions determines what you learn.'
+                      }
+                    ].map((value, i) => (
+                      <li key={i} className="pb-4 border-b border-neutral-200 last:border-0 last:pb-0">
+                        <h4 className="font-medium text-neutral-900 text-sm">
+                          {value.title}
+                        </h4>
+                        <p className="text-neutral-500 text-sm mt-1">
+                          {value.desc}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Domains */}
+                <div>
+                  <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-widest mb-4">
+                    Areas of Focus
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      'Software Development',
+                      'Systems Architecture',
+                      'Engineering',
+                      'Problem Solving',
+                      'Technical Education',
+                      'Infrastructure',
+                      'Developer Experience'
+                    ].map((domain, i) => (
+                      <span 
+                        key={i}
+                        className="px-3 py-1.5 text-xs font-medium text-neutral-600 border border-neutral-300 hover:border-neutral-900 hover:text-neutral-900 transition-colors"
+                      >
+                        {domain}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 border-t border-neutral-200">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div>
+            <h3 className="text-lg font-semibold text-neutral-900">
+              See the work
+            </h3>
+            <p className="text-neutral-500 text-sm mt-1">
+              Explore projects and systems built with this philosophy.
+            </p>
+          </div>
+          <Link
+            to={createPageUrl('Work')}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors"
+          >
+            View Work
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}
