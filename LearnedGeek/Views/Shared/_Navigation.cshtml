@@ -1,0 +1,61 @@
+@{
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString() ?? "Index";
+    var navItems = new[] {
+        ("Home", "Index"),
+        ("About", "About"),
+        ("Work", "Work"),
+        ("Services", "Services"),
+        ("Contact", "Contact")
+    };
+}
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-neutral-200">
+    <nav class="max-w-6xl mx-auto px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <a asp-controller="Home" asp-action="Index" class="flex items-center">
+                <partial name="_Logo" view-data='@(new ViewDataDictionary(ViewData) { { "class", "h-8" } })' />
+                <span class="ml-3 font-semibold text-neutral-900 tracking-tight">
+                    Learned Geek
+                </span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+                @foreach (var (name, action) in navItems)
+                {
+                    var isActive = currentAction.Equals(action, StringComparison.OrdinalIgnoreCase);
+                    <a asp-controller="Home" asp-action="@action"
+                       class="text-sm font-medium transition-colors duration-200 @(isActive ? "text-neutral-900" : "text-neutral-500 hover:text-neutral-900")">
+                        @name
+                    </a>
+                }
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button"
+                    type="button"
+                    class="md:hidden p-2 text-neutral-600 hover:text-neutral-900"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu">
+                <span id="menu-icon-open" class="block">
+                    <partial name="Icons/_Menu" />
+                </span>
+                <span id="menu-icon-close" class="hidden">
+                    <partial name="Icons/_X" />
+                </span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-neutral-100 py-4">
+            @foreach (var (name, action) in navItems)
+            {
+                var isActive = currentAction.Equals(action, StringComparison.OrdinalIgnoreCase);
+                <a asp-controller="Home" asp-action="@action"
+                   class="block py-3 text-sm font-medium transition-colors @(isActive ? "text-neutral-900" : "text-neutral-500 hover:text-neutral-900")">
+                    @name
+                </a>
+            }
+        </div>
+    </nav>
+</header>

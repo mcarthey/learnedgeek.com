@@ -1,25 +1,144 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewData["Title"] = "Home";
 }
 
-<header>
-    <h1>My POC Website</h1>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/Home/Privacy">Privacy</a></li>
-        </ul>
-    </nav>
-</header>
+<div class="bg-white">
+    <!-- Hero Section -->
+    <section class="relative min-h-[80vh] flex items-center">
+        <!-- Subtle Grid Background -->
+        <div class="absolute inset-0 opacity-[0.03]">
+            <div class="h-full w-full"
+                 style="background-image: linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px); background-size: 60px 60px;">
+            </div>
+        </div>
 
-<main>
-    <section>
-        <h2>Welcome to the POC</h2>
-        <p>This is a proof of concept website converted to ASP.NET Core MVC.</p>
-        <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <div class="relative max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
+                    Learning by building.
+                    <br />
+                    <span class="text-neutral-400">
+                        Solving problems across disciplines.
+                    </span>
+                </h1>
+
+                <p class="mt-8 text-lg text-neutral-600 leading-relaxed max-w-xl">
+                    Curiosity drives everything. Systems thinking connects it.
+                    Continuous learning makes it possible. This is the Learned Geek philosophy.
+                </p>
+
+                <div class="mt-10 flex flex-wrap gap-4">
+                    <a asp-action="Work" class="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors">
+                        View Work
+                        <partial name="Icons/_ArrowRight" />
+                    </a>
+                    <a asp-action="About" class="inline-flex items-center gap-2 px-6 py-3 border border-neutral-300 text-neutral-900 text-sm font-medium hover:border-neutral-900 transition-colors">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
-</main>
 
-<footer>
-    <p>&copy; 2025 My POC Website</p>
-</footer>
+    <!-- Divider -->
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+        <div class="h-px bg-neutral-200"></div>
+    </div>
+
+    <!-- Philosophy Section -->
+    <section class="py-24 lg:py-32">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+                <div>
+                    <span class="text-xs font-semibold text-neutral-400 uppercase tracking-widest">
+                        Philosophy
+                    </span>
+                    <h2 class="mt-4 text-3xl md:text-4xl font-semibold text-neutral-900 leading-tight">
+                        Where curiosity meets craftsmanship
+                    </h2>
+                </div>
+
+                <div class="space-y-6 text-neutral-600 leading-relaxed">
+                    <p>
+                        The best solutions come from understanding systems deeply — not just how they work,
+                        but why they work. Every problem is an opportunity to learn something new and
+                        build something better.
+                    </p>
+                    <p>
+                        This isn't about chasing trends or adopting every new tool. It's about
+                        developing a foundation of knowledge that compounds over time, applied
+                        thoughtfully to real challenges.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pillars Section -->
+    <section class="py-24 lg:py-32 bg-neutral-50">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8">
+                <!-- Build to Learn -->
+                <div class="group">
+                    <div class="h-12 w-12 border border-neutral-300 flex items-center justify-center mb-6 group-hover:border-neutral-900 transition-colors">
+                        <span class="text-neutral-600 group-hover:text-neutral-900 transition-colors">
+                            <partial name="Icons/_Code2" />
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-neutral-900 mb-3">
+                        Build to Learn
+                    </h3>
+                    <p class="text-neutral-600 leading-relaxed text-sm">
+                        Theory informs practice, but practice reveals truth. Real understanding comes from creating, testing, and iterating.
+                    </p>
+                </div>
+
+                <!-- Systems Thinking -->
+                <div class="group">
+                    <div class="h-12 w-12 border border-neutral-300 flex items-center justify-center mb-6 group-hover:border-neutral-900 transition-colors">
+                        <span class="text-neutral-600 group-hover:text-neutral-900 transition-colors">
+                            <partial name="Icons/_Layers" />
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-neutral-900 mb-3">
+                        Systems Thinking
+                    </h3>
+                    <p class="text-neutral-600 leading-relaxed text-sm">
+                        Everything connects. The ability to see how parts form wholes — and how wholes affect parts — is essential to solving complex problems.
+                    </p>
+                </div>
+
+                <!-- Continuous Learning -->
+                <div class="group">
+                    <div class="h-12 w-12 border border-neutral-300 flex items-center justify-center mb-6 group-hover:border-neutral-900 transition-colors">
+                        <span class="text-neutral-600 group-hover:text-neutral-900 transition-colors">
+                            <partial name="Icons/_BookOpen" />
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-neutral-900 mb-3">
+                        Continuous Learning
+                    </h3>
+                    <p class="text-neutral-600 leading-relaxed text-sm">
+                        Expertise isn't a destination. The most valuable skill is the ability to learn new skills, to remain a student always.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 lg:py-32">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 mb-4">
+                Have a problem worth solving?
+            </h2>
+            <p class="text-neutral-600 mb-8 max-w-md mx-auto">
+                Let's talk about how thoughtful engineering can help.
+            </p>
+            <a asp-action="Contact" class="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors">
+                Get in Touch
+                <partial name="Icons/_ArrowRight" />
+            </a>
+        </div>
+    </section>
+</div>

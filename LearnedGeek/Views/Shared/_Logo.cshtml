@@ -1,0 +1,12 @@
+@{
+    var cssClass = ViewData["class"]?.ToString() ?? "h-8";
+}
+<img
+    src="~/img/learned-geek-logo.png"
+    alt="Learned Geek"
+    class="@cssClass w-auto object-contain"
+    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+/>
+<div class="hidden items-center justify-center h-8 w-8 border border-neutral-300">
+    <span class="font-mono text-xs text-neutral-500">[LG]</span>
+</div>

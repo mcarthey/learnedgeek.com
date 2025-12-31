@@ -1,0 +1,59 @@
+@{
+    var currentYear = DateTime.UtcNow.Year;
+    var navItems = new[] { "Home", "About", "Work", "Services", "Contact" };
+}
+
+<footer class="bg-neutral-950 text-neutral-400">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <!-- Brand -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="h-8 w-8 border border-neutral-700 flex items-center justify-center">
+                        <span class="font-mono text-xs text-neutral-500">[LG]</span>
+                    </div>
+                    <span class="font-semibold text-white tracking-tight">
+                        Learned Geek
+                    </span>
+                </div>
+                <p class="text-sm text-neutral-500 leading-relaxed max-w-xs">
+                    Learning by building. Solving problems across disciplines.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="space-y-4">
+                <h4 class="text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+                    Navigation
+                </h4>
+                <nav class="flex flex-col gap-2">
+                    @foreach (var navItem in navItems)
+                    {
+                        var action = navItem == "Home" ? "Index" : navItem;
+                        <a asp-controller="Home" asp-action="@action"
+                           class="text-sm text-neutral-400 hover:text-white transition-colors">
+                            @navItem
+                        </a>
+                    }
+                </nav>
+            </div>
+
+            <!-- Contact -->
+            <div class="space-y-4">
+                <h4 class="text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+                    Get in Touch
+                </h4>
+                <a href="mailto:hello@learnedgeek.com"
+                   class="text-sm text-neutral-400 hover:text-white transition-colors block">
+                    hello@learnedgeek.com
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-16 pt-8 border-t border-neutral-800">
+            <p class="text-xs text-neutral-600">
+                &copy; @currentYear Learned Geek. All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>

@@ -1,4 +1,4 @@
-namespace workspace.Models;
+namespace LearnedGeek.Models;
 
 public class ErrorViewModel
 {
