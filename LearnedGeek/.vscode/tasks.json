@@ -1,10 +1,74 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "Run MVC App",
-			"type": "shell",
-			"command": "dotnet run"
-		}
-	]
+    "version": "2.0.0",
+    "inputs": [
+        {
+            "id": "deployPassword",
+            "type": "promptString",
+            "description": "Enter SmarterASP deployment password",
+            "password": true
+        }
+    ],
+    "tasks": [
+        {
+            "label": "Publish to SmarterASP",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "publish",
+                "${workspaceFolder}/LearnedGeek/LearnedGeek.csproj",
+                "-c",
+                "Release",
+                "/p:PublishProfile=mcarthey-001-site3 - Web Deploy",
+                "/p:Password=${input:deployPassword}"
+            ],
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "group": "build"
+        },
+        {
+            "label": "Build",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/LearnedGeek.sln"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Run",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/LearnedGeek/LearnedGeek.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Test",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "test",
+                "${workspaceFolder}/LearnedGeek.sln",
+                "--filter",
+                "TestCategory!=E2E"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "test"
+        }
+    ]
 }

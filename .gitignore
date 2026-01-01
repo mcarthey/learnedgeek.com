@@ -1,0 +1,11 @@
+# Visual Studio
+.vs/
+
+# Publish settings (contains sensitive deployment info)
+*.PublishSettings
+
+# dotnet tools config
+.config/
+
+# Claude Code settings
+.claude/
