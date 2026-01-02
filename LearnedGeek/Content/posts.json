@@ -109,6 +109,16 @@
       "date": "2025-08-29",
       "featured": false,
       "image": "/img/posts/john-deere-fuel-pump.svg"
+    },
+    {
+      "slug": "how-black-ember-began",
+      "title": "How Black Ember Began (Or: From Video Game Avatar to Literary Fiction)",
+      "description": "Every novel has an origin story. Mine started with a superhero game avatar, transformed when my dog died, and became literary dark fantasy.",
+      "category": "Writing",
+      "tags": ["writing", "origin-story", "genesis", "creative-process", "tribute"],
+      "date": "2025-05-15",
+      "featured": false,
+      "image": "/img/posts/how-black-ember-began.svg"
     }
   ]
 }
