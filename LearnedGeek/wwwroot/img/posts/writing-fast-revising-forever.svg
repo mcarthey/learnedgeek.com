@@ -57,7 +57,7 @@
     </g>
     <!-- Label -->
     <text x="0" y="180" text-anchor="middle" fill="#fbbf24" font-family="system-ui" font-size="16" font-weight="bold">DISCOVER</text>
-    <text x="0" y="200" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="12">Fast & Messy</text>
+    <text x="0" y="200" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="12">Fast &amp; Messy</text>
   </g>
 
   <!-- Arrow 1 -->
@@ -92,7 +92,7 @@
     </g>
     <!-- Label -->
     <text x="0" y="180" text-anchor="middle" fill="#3b82f6" font-family="system-ui" font-size="16" font-weight="bold">STRUCTURE</text>
-    <text x="0" y="200" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="12">Slow & Analytical</text>
+    <text x="0" y="200" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="12">Slow &amp; Analytical</text>
   </g>
 
   <!-- Arrow 2 -->
@@ -125,7 +125,7 @@
     </g>
     <!-- Label -->
     <text x="0" y="180" text-anchor="middle" fill="#22c55e" font-family="system-ui" font-size="16" font-weight="bold">RESTORE</text>
-    <text x="0" y="200" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="12">Careful & Selective</text>
+    <text x="0" y="200" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="12">Careful &amp; Selective</text>
   </g>
 
   <!-- Stats callout -->
