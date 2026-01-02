@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#292524"/>
+    </linearGradient>
+    <linearGradient id="peat" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#44403c"/>
+      <stop offset="50%" style="stop-color:#292524"/>
+      <stop offset="100%" style="stop-color:#1c1917"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a5f;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#0c1929;stop-opacity:0.8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Bog surface -->
+  <ellipse cx="600" cy="400" rx="550" ry="200" fill="url(#peat)"/>
+
+  <!-- Dark water patches -->
+  <ellipse cx="400" cy="380" rx="120" ry="40" fill="url(#water)"/>
+  <ellipse cx="750" cy="420" rx="100" ry="35" fill="url(#water)"/>
+  <ellipse cx="550" cy="450" rx="80" ry="25" fill="url(#water)"/>
+
+  <!-- Things hidden in the bog - barely visible shapes -->
+  <g opacity="0.15">
+    <!-- Preserved hand reaching up -->
+    <path d="M380 360 Q385 340 390 350 Q395 335 400 345 Q405 330 410 340 Q415 325 420 340 L425 380" fill="none" stroke="#78716c" stroke-width="3"/>
+    <!-- Ancient artifact outline -->
+    <circle cx="720" cy="400" r="25" fill="none" stroke="#78716c" stroke-width="2"/>
+    <path d="M710 390 L730 410 M730 390 L710 410" stroke="#78716c" stroke-width="2"/>
+  </g>
+
+  <!-- Mist layers -->
+  <g opacity="0.3">
+    <ellipse cx="600" cy="300" rx="500" ry="80" fill="#78716c"/>
+    <ellipse cx="600" cy="250" rx="400" ry="50" fill="#a8a29e"/>
+  </g>
+
+  <!-- Text being crossed out (over-explanation) -->
+  <g transform="translate(150, 120)">
+    <rect x="0" y="0" width="400" height="150" rx="4" fill="#1c1917" stroke="#44403c" stroke-width="1"/>
+    <g font-family="Georgia, serif" font-size="13" fill="#78716c">
+      <text x="20" y="30">The Black Ember was an ancient</text>
+      <text x="20" y="50">force of judgment that fed on</text>
+      <text x="20" y="70">condemnation. When Seamus felt</text>
+      <text x="20" y="90">heat in his chest, it meant the</text>
+      <text x="20" y="110">demon was influencing him to</text>
+      <text x="20" y="130">judge harshly...</text>
+    </g>
+    <!-- Strike through -->
+    <line x1="10" y1="75" x2="390" y2="75" stroke="#dc2626" stroke-width="2" opacity="0.7"/>
+    <text x="410" y="80" fill="#dc2626" font-family="system-ui" font-size="24" font-weight="bold">✕</text>
+  </g>
+
+  <!-- Clean, visceral text (the better version) -->
+  <g transform="translate(650, 120)">
+    <rect x="0" y="0" width="400" height="100" rx="4" fill="#1c1917" stroke="#44403c" stroke-width="1"/>
+    <g font-family="Georgia, serif" font-size="16" fill="#d6d3d1" font-style="italic">
+      <text x="20" y="35">Heat in his hands.</text>
+      <text x="20" y="60">Cold in his chest.</text>
+      <text x="20" y="85">Both pulling. Neither feeling like choice.</text>
+    </g>
+    <text x="410" y="55" fill="#22c55e" font-family="system-ui" font-size="24" font-weight="bold">✓</text>
+  </g>
+
+  <!-- Arrow showing transformation -->
+  <g transform="translate(570, 170)">
+    <path d="M0 0 L60 0" stroke="#6b7280" stroke-width="2"/>
+    <polygon points="60,-6 75,0 60,6" fill="#6b7280"/>
+  </g>
+
+  <!-- "Trust the Reader" text emerging from bog -->
+  <text x="600" y="480" text-anchor="middle" fill="#a8a29e" font-family="Georgia, serif" font-size="28" font-weight="bold" letter-spacing="4" opacity="0.6">
+    TRUST THE READER
+  </text>
+
+  <!-- Bottom text -->
+  <text x="600" y="580" text-anchor="middle" fill="#78716c" font-family="system-ui, sans-serif" font-size="16">
+    The bog is patient. It doesn't explain itself. It just... is.
+  </text>
+</svg>

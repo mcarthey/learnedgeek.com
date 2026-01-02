@@ -21,6 +21,16 @@
       "image": "/img/posts/giscus-comments.svg"
     },
     {
+      "slug": "for-pisko",
+      "title": "For Pisko",
+      "description": "Completing a novel, submitting to Novel90, and honoring the patient hound who inspired a character that watches across 500 years.",
+      "category": "Writing",
+      "tags": ["writing", "completion", "nanowrimo", "novel90", "tribute"],
+      "date": "2025-12-31",
+      "featured": true,
+      "image": "/img/posts/for-pisko.svg"
+    },
+    {
       "slug": "raspberry-pi-password-reset-wsl",
       "title": "Resetting a Raspberry Pi Password via WSL",
       "description": "When Windows won't mount ext4 and you've forgotten your Pi's password, WSL and disk images come to the rescue.",
@@ -31,6 +41,16 @@
       "image": "/img/posts/raspberry-pi-password-reset.svg"
     },
     {
+      "slug": "writing-fast-revising-forever",
+      "title": "Writing Fast, Revising Forever",
+      "description": "What NaNoWriMo taught me about process: write fast to discover, revise slow to refine, and be ruthless about your patterns.",
+      "category": "Writing",
+      "tags": ["writing", "nanowrimo", "revision", "process", "craft"],
+      "date": "2025-11-28",
+      "featured": false,
+      "image": "/img/posts/writing-fast-revising-forever.svg"
+    },
+    {
       "slug": "vscode-tasks-json-dotnet",
       "title": "VS Code tasks.json for .NET Projects",
       "description": "A reusable task configuration for building, running, testing, and deploying ASP.NET projects with Tailwind CSS.",
@@ -39,6 +59,46 @@
       "date": "2025-11-20",
       "featured": false,
       "image": "/img/posts/vscode-tasks-json.svg"
+    },
+    {
+      "slug": "celtic-gods-are-messy",
+      "title": "Celtic Gods Are Messy (And That's the Point)",
+      "description": "What 400+ Celtic deities taught me about moral complexity: forces that are neither good nor evil, but necessary and dangerous at once.",
+      "category": "Writing",
+      "tags": ["writing", "mythology", "celtic", "character-development", "moral-complexity"],
+      "date": "2025-10-16",
+      "featured": false,
+      "image": "/img/posts/celtic-gods-are-messy.svg"
+    },
+    {
+      "slug": "the-stones-that-remember",
+      "title": "The Stones That Remember",
+      "description": "A worldbuilding breakthrough: what if Irish stone circles weren't just settings, but a neural network across the land?",
+      "category": "Writing",
+      "tags": ["writing", "worldbuilding", "mythology", "setting-as-character"],
+      "date": "2025-10-14",
+      "featured": false,
+      "image": "/img/posts/the-stones-that-remember.svg"
+    },
+    {
+      "slug": "show-dont-tell-even-when-it-hurts",
+      "title": "Show, Don't Tell (Even When It Hurts)",
+      "description": "The brutal revision where I cut every explanation of my supernatural forces—and learned to trust my readers.",
+      "category": "Writing",
+      "tags": ["writing", "revision", "craft", "show-dont-tell"],
+      "date": "2025-09-28",
+      "featured": false,
+      "image": "/img/posts/show-dont-tell.svg"
+    },
+    {
+      "slug": "finding-the-voice",
+      "title": "Finding the Voice",
+      "description": "How I stopped writing chatty demons and learned to ground the supernatural in universal human experience.",
+      "category": "Writing",
+      "tags": ["writing", "novel", "craft", "voice", "supernatural-fiction"],
+      "date": "2025-09-22",
+      "featured": false,
+      "image": "/img/posts/finding-the-voice.svg"
     },
     {
       "slug": "john-deere-fuel-pump",

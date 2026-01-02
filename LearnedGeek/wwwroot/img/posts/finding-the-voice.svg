@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="heat" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#dc2626"/>
+      <stop offset="50%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="cold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9"/>
+      <stop offset="50%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <filter id="glow-heat" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-cold" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Grid -->
+  <g stroke="#2a3f5f" stroke-width="0.5" opacity="0.2">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+
+  <!-- Human silhouette in center -->
+  <g transform="translate(600, 315)">
+    <!-- Body outline -->
+    <ellipse cx="0" cy="-80" rx="35" ry="45" fill="none" stroke="#4b5563" stroke-width="2"/>
+    <path d="M-40 -35 Q-50 50 -35 120 L35 120 Q50 50 40 -35" fill="none" stroke="#4b5563" stroke-width="2"/>
+  </g>
+
+  <!-- Heat side (left chest) -->
+  <g transform="translate(350, 250)" filter="url(#glow-heat)">
+    <circle cx="0" cy="0" r="80" fill="url(#heat)" opacity="0.6"/>
+    <circle cx="0" cy="0" r="50" fill="#f97316" opacity="0.8"/>
+    <!-- Ember shape -->
+    <path d="M0 -30 Q15 -15 10 0 Q20 10 10 25 Q5 35 0 30 Q-5 35 -10 25 Q-20 10 -10 0 Q-15 -15 0 -30" fill="#fbbf24"/>
+  </g>
+
+  <!-- Cold side (right chest) -->
+  <g transform="translate(850, 250)" filter="url(#glow-cold)">
+    <circle cx="0" cy="0" r="80" fill="url(#cold)" opacity="0.6"/>
+    <circle cx="0" cy="0" r="50" fill="#6366f1" opacity="0.8"/>
+    <!-- Linen/cloth shape -->
+    <path d="M-20 -25 Q0 -30 20 -25 Q25 0 20 25 Q0 30 -20 25 Q-25 0 -20 -25" fill="#a5b4fc" opacity="0.9"/>
+    <path d="M-15 -15 Q0 -18 15 -15" fill="none" stroke="#e0e7ff" stroke-width="2"/>
+    <path d="M-15 0 Q0 -3 15 0" fill="none" stroke="#e0e7ff" stroke-width="2"/>
+    <path d="M-15 15 Q0 12 15 15" fill="none" stroke="#e0e7ff" stroke-width="2"/>
+  </g>
+
+  <!-- Merging waves in center -->
+  <g transform="translate(600, 315)" opacity="0.4">
+    <path d="M-150 0 Q-100 -30 -50 0 Q0 30 50 0 Q100 -30 150 0" fill="none" stroke="#f97316" stroke-width="2"/>
+    <path d="M-150 20 Q-100 -10 -50 20 Q0 50 50 20 Q100 -10 150 20" fill="none" stroke="#6366f1" stroke-width="2"/>
+  </g>
+
+  <!-- Text elements showing the contrast -->
+  <g font-family="Georgia, serif" font-size="16" opacity="0.7">
+    <text x="350" y="380" text-anchor="middle" fill="#fbbf24" font-style="italic">"deserved what was coming"</text>
+    <text x="850" y="380" text-anchor="middle" fill="#a5b4fc" font-style="italic">"show him mercy"</text>
+  </g>
+
+  <!-- Title area -->
+  <text x="600" y="550" text-anchor="middle" fill="#9ca3af" font-family="system-ui, sans-serif" font-size="18">
+    Finding the Voice • Heat and Cold • Neither Separate
+  </text>
+</svg>
