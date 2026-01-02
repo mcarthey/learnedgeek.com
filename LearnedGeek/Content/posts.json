@@ -1,0 +1,14 @@
+{
+  "posts": [
+    {
+      "slug": "ssl-automation-with-letsencrypt-and-cloudflare",
+      "title": "SSL Automation with Let's Encrypt and Cloudflare",
+      "description": "Setting up free, automated SSL certificates for multiple domains using a Raspberry Pi, Certbot, and Cloudflare DNS.",
+      "category": "Computers",
+      "tags": ["ssl", "letsencrypt", "cloudflare", "raspberry-pi", "certbot"],
+      "date": "2026-01-01",
+      "featured": true,
+      "image": "/img/posts/ssl-automation.svg"
+    }
+  ]
+}

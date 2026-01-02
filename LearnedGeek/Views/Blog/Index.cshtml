@@ -1,0 +1,97 @@
+@using LearnedGeek.Models
+@model IEnumerable<BlogPost>
+@{
+    ViewData["Title"] = "Blog";
+    var selectedCategory = ViewBag.SelectedCategory as Category?;
+    var categories = Enum.GetValues<Category>();
+}
+
+<div class="bg-white">
+    <!-- Header -->
+    <section class="py-24 lg:py-32 border-b border-neutral-200">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <span class="text-xs font-semibold text-neutral-400 uppercase tracking-widest">
+                Blog
+            </span>
+            <h1 class="mt-4 text-4xl md:text-5xl font-semibold text-neutral-900 leading-tight max-w-2xl">
+                Learned Geek Blog
+            </h1>
+            <p class="mt-6 text-lg text-neutral-600 max-w-xl">
+                Technical notes, project documentation, and lessons learned
+                across software, woodworking, welding, and more.
+            </p>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="py-8 border-b border-neutral-200">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-wrap gap-2">
+                <a asp-action="Index"
+                   class="px-4 py-2 text-sm font-medium transition-colors @(selectedCategory == null ? "bg-neutral-900 text-white" : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200")">
+                    All
+                </a>
+                @foreach (var category in categories)
+                {
+                    <a asp-action="Index"
+                       asp-route-category="@category.ToString()"
+                       class="px-4 py-2 text-sm font-medium transition-colors @(selectedCategory == category ? "bg-neutral-900 text-white" : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200")">
+                        @category.ToDisplayName()
+                    </a>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Posts Grid -->
+    <section class="py-24 lg:py-32">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            @if (Model.Any())
+            {
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    @foreach (var post in Model)
+                    {
+                        <partial name="_PostCard" model="post" />
+                    }
+                </div>
+            }
+            else
+            {
+                <!-- Empty State -->
+                <div class="text-center py-24">
+                    <div class="inline-flex items-center justify-center h-16 w-16 border border-neutral-200 mb-6">
+                        <span class="text-neutral-400">
+                            <partial name="Icons/_FolderOpen" />
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-neutral-900 mb-2">
+                        @if (selectedCategory != null)
+                        {
+                            <text>No posts in @selectedCategory.Value.ToDisplayName()</text>
+                        }
+                        else
+                        {
+                            <text>Posts coming soon</text>
+                        }
+                    </h3>
+                    <p class="text-neutral-500 max-w-md mx-auto mb-8">
+                        @if (selectedCategory != null)
+                        {
+                            <text>Check back later for posts in this category, or browse all posts.</text>
+                        }
+                        else
+                        {
+                            <text>This blog will document projects, experiments, and lessons learned.</text>
+                        }
+                    </p>
+                    @if (selectedCategory != null)
+                    {
+                        <a asp-action="Index" class="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors">
+                            View All Posts
+                        </a>
+                    }
+                </div>
+            }
+        </div>
+    </section>
+</div>

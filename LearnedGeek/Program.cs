@@ -10,6 +10,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddTransient<IEmailService, EmailService>();
 
+// Blog service
+builder.Services.AddSingleton<IBlogService, BlogService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

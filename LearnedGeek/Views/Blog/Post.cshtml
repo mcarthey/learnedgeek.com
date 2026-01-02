@@ -1,0 +1,103 @@
+@using LearnedGeek.Models
+@model BlogPost
+@{
+    ViewData["Title"] = Model.Title;
+    var relatedPosts = ViewBag.RelatedPosts as IEnumerable<BlogPost> ?? Enumerable.Empty<BlogPost>();
+}
+
+<div class="bg-white">
+    <!-- Article Header -->
+    <section class="py-24 lg:py-32 border-b border-neutral-200">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+            <a asp-action="Index" class="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-neutral-900 transition-colors mb-8">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Back to Blog
+            </a>
+            <div class="flex items-center gap-3 mb-6">
+                <span class="px-2 py-1 text-xs font-medium @Model.Category.ToColorClass()">
+                    @Model.Category.ToDisplayName()
+                </span>
+                <time datetime="@Model.Date.ToString("yyyy-MM-dd")" class="text-sm text-neutral-400">
+                    @Model.Date.ToString("MMMM d, yyyy")
+                </time>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-semibold text-neutral-900 leading-tight">
+                @Model.Title
+            </h1>
+            <p class="mt-6 text-lg text-neutral-600">
+                @Model.Description
+            </p>
+            @if (Model.Tags.Length > 0)
+            {
+                <div class="mt-6 flex flex-wrap gap-2">
+                    @foreach (var tag in Model.Tags)
+                    {
+                        <span class="px-3 py-1 text-sm font-medium text-neutral-500 bg-neutral-100">
+                            @tag
+                        </span>
+                    }
+                </div>
+            }
+        </div>
+    </section>
+
+    @if (!string.IsNullOrEmpty(Model.Image))
+    {
+        <section class="border-b border-neutral-200">
+            <div class="max-w-6xl mx-auto">
+                <img src="@Model.Image"
+                     alt="@Model.Title"
+                     class="w-full h-auto" />
+            </div>
+        </section>
+    }
+
+    <!-- Article Content -->
+    <article class="py-16 lg:py-24">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+            <div class="prose prose-neutral prose-lg max-w-none
+                        prose-headings:font-semibold prose-headings:text-neutral-900
+                        prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6
+                        prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
+                        prose-p:text-neutral-600 prose-p:leading-relaxed
+                        prose-a:text-neutral-900 prose-a:underline hover:prose-a:no-underline
+                        prose-strong:text-neutral-900
+                        prose-ul:text-neutral-600 prose-ol:text-neutral-600
+                        prose-li:marker:text-neutral-400">
+                @Html.Raw(Model.HtmlContent)
+            </div>
+        </div>
+    </article>
+
+    <!-- Related Posts -->
+    @if (relatedPosts.Any())
+    {
+        <section class="py-24 lg:py-32 bg-neutral-50 border-t border-neutral-200">
+            <div class="max-w-6xl mx-auto px-6 lg:px-8">
+                <h2 class="text-xs font-semibold text-neutral-400 uppercase tracking-widest mb-8">
+                    More in @Model.Category.ToDisplayName()
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    @foreach (var post in relatedPosts)
+                    {
+                        <partial name="_PostCard" model="post" />
+                    }
+                </div>
+            </div>
+        </section>
+    }
+
+    <!-- Back to Blog CTA -->
+    <section class="py-16 border-t border-neutral-200">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 text-center">
+            <a asp-action="Index" class="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Back to Blog
+            </a>
+        </div>
+    </section>
+</div>

@@ -8,4 +8,13 @@
         <UseAppHost>true</UseAppHost>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Markdig" Version="0.44.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Update="Content\**\*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+	  <Content Include="Content\**\*.md" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+	</ItemGroup>
+
 </Project>

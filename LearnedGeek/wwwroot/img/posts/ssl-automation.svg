@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a5f"/>
+      <stop offset="50%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e1e2e"/>
+    </linearGradient>
+    <linearGradient id="lock" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#22c55e;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Grid pattern -->
+  <g stroke="#334155" stroke-width="0.5" opacity="0.3">
+    <line x1="0" y1="0" x2="0" y2="630"/>
+    <line x1="100" y1="0" x2="100" y2="630"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="500" y1="0" x2="500" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="700" y1="0" x2="700" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+    <line x1="1100" y1="0" x2="1100" y2="630"/>
+    <line x1="1200" y1="0" x2="1200" y2="630"/>
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    <line x1="0" y1="600" x2="1200" y2="600"/>
+  </g>
+
+  <!-- Glow effect -->
+  <circle cx="600" cy="280" r="200" fill="url(#glow)"/>
+
+  <!-- Lock icon -->
+  <g transform="translate(520, 180)">
+    <!-- Lock body -->
+    <rect x="20" y="80" width="120" height="100" rx="10" fill="url(#lock)"/>
+    <!-- Lock shackle -->
+    <path d="M40 80 L40 50 Q40 20 80 20 Q120 20 120 50 L120 80"
+          fill="none" stroke="url(#lock)" stroke-width="16" stroke-linecap="round"/>
+    <!-- Keyhole -->
+    <circle cx="80" cy="120" r="12" fill="#0f172a"/>
+    <rect x="74" y="120" width="12" height="30" fill="#0f172a"/>
+  </g>
+
+  <!-- Certificate icons floating around -->
+  <g opacity="0.6">
+    <!-- Cert 1 -->
+    <g transform="translate(200, 150)">
+      <rect width="60" height="80" rx="4" fill="#334155"/>
+      <rect x="8" y="8" width="30" height="6" rx="2" fill="#22c55e"/>
+      <rect x="8" y="20" width="44" height="4" rx="1" fill="#475569"/>
+      <rect x="8" y="30" width="44" height="4" rx="1" fill="#475569"/>
+      <rect x="8" y="40" width="30" height="4" rx="1" fill="#475569"/>
+      <circle cx="42" cy="62" r="10" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <path d="M38 62 L41 65 L47 59" fill="none" stroke="#22c55e" stroke-width="2"/>
+    </g>
+
+    <!-- Cert 2 -->
+    <g transform="translate(900, 400)">
+      <rect width="60" height="80" rx="4" fill="#334155"/>
+      <rect x="8" y="8" width="30" height="6" rx="2" fill="#22c55e"/>
+      <rect x="8" y="20" width="44" height="4" rx="1" fill="#475569"/>
+      <rect x="8" y="30" width="44" height="4" rx="1" fill="#475569"/>
+      <rect x="8" y="40" width="30" height="4" rx="1" fill="#475569"/>
+      <circle cx="42" cy="62" r="10" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <path d="M38 62 L41 65 L47 59" fill="none" stroke="#22c55e" stroke-width="2"/>
+    </g>
+  </g>
+
+  <!-- Connection lines -->
+  <g stroke="#22c55e" stroke-width="1" opacity="0.4">
+    <line x1="260" y1="190" x2="520" y2="250" stroke-dasharray="5,5"/>
+    <line x1="680" y1="300" x2="900" y2="440" stroke-dasharray="5,5"/>
+  </g>
+
+  <!-- Raspberry Pi hint -->
+  <g transform="translate(100, 400)" opacity="0.5">
+    <rect width="80" height="50" rx="4" fill="#334155"/>
+    <rect x="5" y="5" width="70" height="40" rx="2" fill="#1e293b"/>
+    <circle cx="12" cy="12" r="3" fill="#dc2626"/>
+    <circle cx="22" cy="12" r="3" fill="#22c55e"/>
+    <rect x="60" y="20" width="15" height="8" fill="#475569"/>
+    <rect x="60" y="32" width="15" height="8" fill="#475569"/>
+  </g>
+
+  <!-- Cloudflare hint -->
+  <g transform="translate(1000, 120)" opacity="0.5">
+    <circle cx="40" cy="40" r="35" fill="none" stroke="#f97316" stroke-width="3"/>
+    <path d="M25 45 Q40 30 55 45 Q70 60 55 55 L25 55 Q15 55 25 45" fill="#f97316" opacity="0.5"/>
+  </g>
+
+  <!-- Text labels -->
+  <text x="600" y="480" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="18">
+    Automated SSL with Let's Encrypt + Cloudflare + Raspberry Pi
+  </text>
+</svg>

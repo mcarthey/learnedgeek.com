@@ -7,8 +7,9 @@
     "watch:css": "npx tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/site.css --watch"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.0",
+    "@tailwindcss/typography": "^0.5.19",
     "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.0"
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0"
   }
 }

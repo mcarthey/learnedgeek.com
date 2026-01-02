@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "slug": "test-post-computers",
+      "title": "Test Post About Computers",
+      "description": "A test post in the Computers category.",
+      "category": "Computers",
+      "tags": ["test", "computers"],
+      "date": "2026-01-01",
+      "featured": true,
+      "image": null
+    },
+    {
+      "slug": "test-post-woodworking",
+      "title": "Test Post About Woodworking",
+      "description": "A test post in the Woodworking category.",
+      "category": "Woodworking",
+      "tags": ["test", "wood"],
+      "date": "2025-12-15",
+      "featured": false,
+      "image": null
+    }
+  ]
+}

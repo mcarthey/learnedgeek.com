@@ -1,0 +1,99 @@
+{
+    "version": "2.0.0",
+    "inputs": [
+        {
+            "id": "deployPassword",
+            "type": "promptString",
+            "description": "Enter SmarterASP deployment password",
+            "password": true
+        }
+    ],
+    "tasks": [
+        {
+            "label": "Build CSS",
+            "type": "shell",
+            "command": "npm",
+            "args": ["run", "build:css"],
+            "options": {
+                "cwd": "${workspaceFolder}/LearnedGeek"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Publish to SmarterASP",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "publish",
+                "${workspaceFolder}/LearnedGeek/LearnedGeek.csproj",
+                "-c",
+                "Release",
+                "-p:PublishProfile=SmarterASP",
+                "-p:Password=${input:deployPassword}"
+            ],
+            "dependsOn": ["Build CSS"],
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "group": "build"
+        },
+        {
+            "label": "Build",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/LearnedGeek.sln"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Run",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/LearnedGeek/LearnedGeek.csproj"
+            ],
+            "dependsOn": ["Build CSS"],
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Test",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "test",
+                "${workspaceFolder}/LearnedGeek.sln"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "test"
+        },
+        {
+            "label": "Watch CSS",
+            "type": "shell",
+            "command": "npm",
+            "args": ["run", "watch:css"],
+            "options": {
+                "cwd": "${workspaceFolder}/LearnedGeek"
+            },
+            "isBackground": true,
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        }
+    ]
+}
