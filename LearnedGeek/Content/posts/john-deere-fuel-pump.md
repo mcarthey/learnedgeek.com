@@ -31,9 +31,24 @@ With the right switch in place, the wiring logic becomes straightforward.
 
 ## Adding a Relay
 
-Even with the correct switch, a relay is still necessary. The oil pressure switch isn't designed to handle the current draw of an electric fuel pump directly. The relay allows the low-current switch signal to control the higher-current pump circuit.
+Even with the correct switch, a relay is necessary for two equally important reasons:
 
-Standard automotive relay pinout for reference:
+**1. Automatic Safety Shutoff**
+
+This is the core safety feature. If the engine dies for any reason - stalls, runs out of fuel, mechanical failure - the fuel pump needs to stop immediately. The relay makes this automatic:
+
+- Engine running → oil pressure builds → PS-64 switch closes → relay energizes → pump runs
+- Engine stops → oil pressure drops → PS-64 switch opens → relay de-energizes → pump stops
+
+No manual intervention required. The pump can't keep running and flooding fuel into a dead engine.
+
+**2. Current Isolation**
+
+The oil pressure switch, even a 20A-rated one like the PS-64, shouldn't carry the full current draw of an electric fuel pump directly. The relay allows the switch to control only the low-current coil circuit (milliamps), while the relay's internal contacts handle the higher pump current. This extends the life of both components.
+
+Think of a relay as an electrically-operated light switch - a small signal flips the switch that controls a larger load.
+
+**Standard automotive relay pinout for reference:**
 - **85/86**: Coil (not polarity sensitive)
 - **30**: Common
 - **87**: Normally open
@@ -42,7 +57,7 @@ Standard automotive relay pinout for reference:
 The wiring:
 1. Oil pressure switch controls the relay coil (low current)
 2. Relay switches power to the fuel pump (higher current)
-3. Result: engine running → oil pressure → relay energized → pump runs
+3. Result: automatic safety shutoff + protected switch contacts
 
 ## Debugging with a Multimeter
 
