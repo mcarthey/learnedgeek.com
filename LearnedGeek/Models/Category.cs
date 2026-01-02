@@ -4,7 +4,7 @@ public enum Category
 {
     Computers,
     Woodworking,
-    Welding,
+    Writing,
     Automotive,
     HomeImprovement,
     General
@@ -16,7 +16,7 @@ public static class CategoryExtensions
     {
         Category.Computers => "Computers",
         Category.Woodworking => "Woodworking",
-        Category.Welding => "Welding",
+        Category.Writing => "Writing",
         Category.Automotive => "Automotive",
         Category.HomeImprovement => "Home Improvement",
         Category.General => "General",
@@ -27,7 +27,7 @@ public static class CategoryExtensions
     {
         Category.Computers => "bg-blue-100 text-blue-800",
         Category.Woodworking => "bg-amber-100 text-amber-800",
-        Category.Welding => "bg-orange-100 text-orange-800",
+        Category.Writing => "bg-orange-100 text-orange-800",
         Category.Automotive => "bg-red-100 text-red-800",
         Category.HomeImprovement => "bg-green-100 text-green-800",
         Category.General => "bg-neutral-100 text-neutral-800",

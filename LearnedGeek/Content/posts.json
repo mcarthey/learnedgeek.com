@@ -9,6 +9,16 @@
       "date": "2026-01-01",
       "featured": true,
       "image": "/img/posts/ssl-automation.svg"
+    },
+    {
+      "slug": "john-deere-fuel-pump",
+      "title": "Electric Fuel Pump Conversion: John Deere 318",
+      "description": "Replacing a failing vacuum fuel pump with an electric pump, and the relay wiring needed to make it work safely with the oil pressure switch.",
+      "category": "Automotive",
+      "tags": ["john-deere", "onan", "electrical", "fuel-pump", "relay"],
+      "date": "2025-07-15",
+      "featured": false,
+      "image": "/img/posts/john-deere-fuel-pump.svg"
     }
   ]
 }

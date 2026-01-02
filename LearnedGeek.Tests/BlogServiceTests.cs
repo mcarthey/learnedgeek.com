@@ -55,7 +55,7 @@ public class BlogServiceTests
     public async Task GetPostsByCategoryAsync_ReturnsEmptyForNoMatches()
     {
         // Act
-        var posts = (await _blogService.GetPostsByCategoryAsync(Category.Welding)).ToList();
+        var posts = (await _blogService.GetPostsByCategoryAsync(Category.Writing)).ToList();
 
         // Assert
         Assert.Empty(posts);
