@@ -3,7 +3,36 @@
 @{
     ViewData["Title"] = "Blog";
     var selectedCategory = ViewBag.SelectedCategory as Category?;
+    var selectedYear = ViewBag.SelectedYear as int?;
+    var selectedMonth = ViewBag.SelectedMonth as int?;
     var categories = Enum.GetValues<Category>();
+
+    // Use all posts for sidebar (so it always shows complete archive)
+    var allPosts = ViewBag.AllPosts as IEnumerable<BlogPost> ?? Model;
+
+    // Compute archives from all posts
+    var archives = allPosts
+        .GroupBy(p => new { p.Date.Year, p.Date.Month })
+        .OrderByDescending(g => g.Key.Year)
+        .ThenByDescending(g => g.Key.Month)
+        .Select(g => new {
+            Year = g.Key.Year,
+            Month = g.Key.Month,
+            MonthName = new DateTime(g.Key.Year, g.Key.Month, 1).ToString("MMMM"),
+            Count = g.Count()
+        })
+        .ToList();
+
+    // Group archives by year for the tree view
+    var archivesByYear = archives
+        .GroupBy(a => a.Year)
+        .OrderByDescending(g => g.Key)
+        .ToList();
+
+    // Category counts from all posts
+    var categoryCounts = allPosts
+        .GroupBy(p => p.Category)
+        .ToDictionary(g => g.Key, g => g.Count());
 }
 
 <div class="bg-white">
@@ -43,55 +72,144 @@
         </div>
     </section>
 
-    <!-- Posts Grid -->
-    <section class="py-24 lg:py-32">
+    <!-- Main Content with Sidebar -->
+    <section class="py-16 lg:py-24">
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
-            @if (Model.Any())
+            @if (selectedYear.HasValue)
             {
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    @foreach (var post in Model)
-                    {
-                        <partial name="_PostCard" model="post" />
-                    }
-                </div>
-            }
-            else
-            {
-                <!-- Empty State -->
-                <div class="text-center py-24">
-                    <div class="inline-flex items-center justify-center h-16 w-16 border border-neutral-200 mb-6">
-                        <span class="text-neutral-400">
-                            <partial name="Icons/_FolderOpen" />
+                <div class="mb-8 p-4 bg-neutral-50 border border-neutral-200 flex items-center justify-between">
+                    <span class="text-sm text-neutral-600">
+                        Showing posts from
+                        <span class="font-medium text-neutral-900">
+                            @if (selectedMonth.HasValue)
+                            {
+                                @(new DateTime(selectedYear.Value, selectedMonth.Value, 1).ToString("MMMM yyyy"))
+                            }
+                            else
+                            {
+                                @selectedYear.Value
+                            }
                         </span>
-                    </div>
-                    <h3 class="text-lg font-semibold text-neutral-900 mb-2">
-                        @if (selectedCategory != null)
-                        {
-                            <text>No posts in @selectedCategory.Value.ToDisplayName()</text>
-                        }
-                        else
-                        {
-                            <text>Posts coming soon</text>
-                        }
-                    </h3>
-                    <p class="text-neutral-500 max-w-md mx-auto mb-8">
-                        @if (selectedCategory != null)
-                        {
-                            <text>Check back later for posts in this category, or browse all posts.</text>
-                        }
-                        else
-                        {
-                            <text>This blog will document projects, experiments, and lessons learned.</text>
-                        }
-                    </p>
-                    @if (selectedCategory != null)
-                    {
-                        <a asp-action="Index" class="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors">
-                            View All Posts
-                        </a>
-                    }
+                    </span>
+                    <a asp-action="Index" class="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
+                        Clear filter &times;
+                    </a>
                 </div>
             }
+
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-16">
+                <!-- Posts Grid (Main Content) -->
+                <div class="lg:flex-1 min-w-0">
+                    @if (Model.Any())
+                    {
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            @foreach (var post in Model)
+                            {
+                                <partial name="_PostCard" model="post" />
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <!-- Empty State -->
+                        <div class="text-center py-24">
+                            <div class="inline-flex items-center justify-center h-16 w-16 border border-neutral-200 mb-6">
+                                <span class="text-neutral-400">
+                                    <partial name="Icons/_FolderOpen" />
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-neutral-900 mb-2">
+                                @if (selectedCategory != null)
+                                {
+                                    <text>No posts in @selectedCategory.Value.ToDisplayName()</text>
+                                }
+                                else
+                                {
+                                    <text>Posts coming soon</text>
+                                }
+                            </h3>
+                            <p class="text-neutral-500 max-w-md mx-auto mb-8">
+                                @if (selectedCategory != null)
+                                {
+                                    <text>Check back later for posts in this category, or browse all posts.</text>
+                                }
+                                else
+                                {
+                                    <text>This blog will document projects, experiments, and lessons learned.</text>
+                                }
+                            </p>
+                            @if (selectedCategory != null)
+                            {
+                                <a asp-action="Index" class="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors">
+                                    View All Posts
+                                </a>
+                            }
+                        </div>
+                    }
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="lg:w-64 flex-shrink-0">
+                    <div class="lg:sticky lg:top-24 space-y-8">
+                        <!-- Archives -->
+                        @if (archivesByYear.Any())
+                        {
+                            <div>
+                                <h3 class="text-xs font-semibold text-neutral-400 uppercase tracking-widest mb-4">
+                                    Archives
+                                </h3>
+                                <div class="space-y-2">
+                                    @foreach (var yearGroup in archivesByYear)
+                                    {
+                                        <details class="group" open="@(yearGroup.Key == DateTime.Now.Year)">
+                                            <summary class="flex items-center justify-between cursor-pointer py-2 text-sm font-medium text-neutral-700 hover:text-neutral-900">
+                                                <span>@yearGroup.Key</span>
+                                                <span class="text-neutral-400 text-xs">@yearGroup.Sum(m => m.Count) posts</span>
+                                            </summary>
+                                            <ul class="ml-4 mt-1 space-y-1 border-l border-neutral-200 pl-4">
+                                                @foreach (var month in yearGroup.OrderByDescending(m => m.Month))
+                                                {
+                                                    <li>
+                                                        <a asp-action="Index"
+                                                           asp-route-year="@month.Year"
+                                                           asp-route-month="@month.Month"
+                                                           class="flex items-center justify-between py-1 text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
+                                                            <span>@month.MonthName</span>
+                                                            <span class="text-xs text-neutral-400">@month.Count</span>
+                                                        </a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </details>
+                                    }
+                                </div>
+                            </div>
+                        }
+
+                        <!-- Categories with Counts -->
+                        <div>
+                            <h3 class="text-xs font-semibold text-neutral-400 uppercase tracking-widest mb-4">
+                                Categories
+                            </h3>
+                            <ul class="space-y-2">
+                                @foreach (var category in categories)
+                                {
+                                    var count = categoryCounts.GetValueOrDefault(category, 0);
+                                    var isActive = selectedCategory == category;
+                                    <li>
+                                        <a asp-action="Index"
+                                           asp-route-category="@category.ToString()"
+                                           class="flex items-center justify-between py-1 text-sm transition-colors @(isActive ? "text-neutral-900 font-medium" : "text-neutral-500 hover:text-neutral-900")">
+                                            <span>@category.ToDisplayName()</span>
+                                            <span class="text-xs @(isActive ? "text-neutral-600" : "text-neutral-400")">@count</span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
         </div>
     </section>
 </div>

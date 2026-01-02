@@ -13,20 +13,37 @@ public class BlogController : Controller
         _blogService = blogService;
     }
 
-    public async Task<IActionResult> Index(string? category)
+    public async Task<IActionResult> Index(string? category, int? year, int? month)
     {
-        IEnumerable<BlogPost> posts;
+        var allPosts = await _blogService.GetAllPostsAsync();
+        IEnumerable<BlogPost> posts = allPosts;
 
+        // Filter by category if specified
         if (!string.IsNullOrEmpty(category) && Enum.TryParse<Category>(category, true, out var cat))
         {
-            posts = await _blogService.GetPostsByCategoryAsync(cat);
+            posts = posts.Where(p => p.Category == cat);
             ViewBag.SelectedCategory = cat;
         }
         else
         {
-            posts = await _blogService.GetAllPostsAsync();
             ViewBag.SelectedCategory = null;
         }
+
+        // Filter by year/month if specified
+        if (year.HasValue)
+        {
+            posts = posts.Where(p => p.Date.Year == year.Value);
+            ViewBag.SelectedYear = year.Value;
+
+            if (month.HasValue)
+            {
+                posts = posts.Where(p => p.Date.Month == month.Value);
+                ViewBag.SelectedMonth = month.Value;
+            }
+        }
+
+        // Pass all posts for sidebar archive computation
+        ViewBag.AllPosts = allPosts;
 
         return View(posts);
     }
