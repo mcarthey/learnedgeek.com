@@ -178,4 +178,4 @@ The `userconf.txt` approach takes 5 minutes. The WSL approach takes 30+ minutes 
 - **Back up your Pi** - periodic SD card images save headaches
 - **Write down passwords** - or use a password manager
 
-The password I'd forgotten? `raspberry`. The default.
+The new password I set? `raspberry`. Sometimes the default is the default for a reason.
