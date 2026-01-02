@@ -31,6 +31,11 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Writing()
+    {
+        return View();
+    }
+
     public IActionResult Services()
     {
         return View();
