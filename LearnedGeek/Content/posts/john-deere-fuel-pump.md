@@ -22,7 +22,7 @@ This is the opposite behavior from what I needed for the fuel pump. Wiring the p
 
 ## The Solution: Replace the Switch
 
-The key to the whole project was replacing the original oil pressure switch with a [Standard Motor Products PS-57](https://a.co/d/6rsF4KG). This switch has two critical differences:
+The key to the whole project was replacing the original oil pressure switch with a [Standard Motor Products PS-64](https://a.co/d/6rsF4KG). This switch has two critical differences:
 
 1. **Normally open instead of normally closed** - the switch closes (completes the circuit) when oil pressure is present, which is the behavior I actually needed
 2. **Additional terminal** - provides a dedicated connection point for the fuel pump circuit, separate from the warning light
@@ -72,8 +72,8 @@ Starting went from 20+ cranks to reliable first-crank starts.
 
 ## Parts Used
 
-- **Fuel Pump Kit**: [Electric Fuel Pump Kit (Amazon)](https://a.co/d/gAnklkM)
-- **Oil Pressure Switch**: [Standard Motor Products PS-57 (Amazon)](https://a.co/d/6rsF4KG) - This was the key component. Normally open, with additional terminal.
+- **Fuel Pump Kit**: [JDMSPEED Universal Electric Fuel Pump Kit 12V 3-6 PSI](https://a.co/d/gAnklkM) - Includes pump, fuel filters, 6.56 ft of 5/16" fuel line, and hose clamps
+- **Oil Pressure Switch**: [Standard Motor Products PS-64](https://a.co/d/6rsF4KG) - This was the key component. Normally open (closes with oil pressure), 20A rating, with light terminal
 - **Relay**: Standard 12V automotive relay (30A)
 
 ## Reference Details
@@ -84,7 +84,7 @@ For future me (and anyone else working on similar equipment):
 - **Engine**: Onan
 - **Original fuel delivery**: Vacuum-operated mechanical pump
 - **Original oil pressure switch**: Normally closed (warning light style)
-- **Replacement oil pressure switch**: Standard Motor Products PS-57 (normally open)
+- **Replacement oil pressure switch**: Standard Motor Products PS-64 (normally open, 20A)
 - **Fuel pump**: 12V electric, relay-controlled
 
 The electrical work took longer than the mechanical installation. That's usually how it goes when you're learning the system as you work on it.
