@@ -8,8 +8,15 @@
         ("Experiments", "Exploratory projects, proofs of concept, and learning exercises.")
     };
 
-    // Placeholder for future projects
-    var projects = Array.Empty<(string title, string description, string? image, string? link, string[] tags)>();
+    var projects = new (string title, string description, string? image, string? link, string[] tags)[] {
+        (
+            "Ellis Hope Foundation",
+            "Full-stack nonprofit management system featuring a public website, role-based admin portal, and board member dashboards. Includes a 10-state application workflow with voting system, sponsor-client relationships, media management with Unsplash integration, PDF generation, and comprehensive email notifications. Built for a Wisconsin foundation focused on fitness, education, and community support.",
+            "/img/work/ellis-hope-foundation.svg",
+            "https://ellishopefoundation.org",
+            new[] { "ASP.NET Core", "Entity Framework", "Role-Based Auth", "QuestPDF", "Playwright" }
+        )
+    };
 }
 
 <div class="bg-white">
