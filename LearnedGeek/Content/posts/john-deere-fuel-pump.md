@@ -12,7 +12,7 @@ Simple in theory.
 
 ## Oil Pressure Switch Reality
 
-The oil pressure switch on this system doesn't work the way I assumed.
+The original oil pressure switch on this system doesn't work the way I assumed.
 
 My assumption: switch closes when oil pressure is present, completing the circuit.
 
@@ -20,9 +20,18 @@ The reality: it's a **warning light circuit**. The switch is normally closed to 
 
 This is the opposite behavior from what I needed for the fuel pump. Wiring the pump directly to this switch would mean the pump runs when the engine is *off* and stops when it's *on*.
 
+## The Solution: Replace the Switch
+
+The key to the whole project was replacing the original oil pressure switch with a [Standard Motor Products PS-57](https://a.co/d/6rsF4KG). This switch has two critical differences:
+
+1. **Normally open instead of normally closed** - the switch closes (completes the circuit) when oil pressure is present, which is the behavior I actually needed
+2. **Additional terminal** - provides a dedicated connection point for the fuel pump circuit, separate from the warning light
+
+With the right switch in place, the wiring logic becomes straightforward.
+
 ## Adding a Relay
 
-The solution required a relay to invert the logic. The relay allows a small control signal to switch a larger load, and more importantly, lets you use normally-open or normally-closed contacts to get the behavior you need.
+Even with the correct switch, a relay is still necessary. The oil pressure switch isn't designed to handle the current draw of an electric fuel pump directly. The relay allows the low-current switch signal to control the higher-current pump circuit.
 
 Standard automotive relay pinout for reference:
 - **85/86**: Coil (not polarity sensitive)
@@ -30,10 +39,10 @@ Standard automotive relay pinout for reference:
 - **87**: Normally open
 - **87a**: Normally closed (if present)
 
-The wiring needed to:
-1. Use the oil pressure switch state to control the relay coil
-2. Have the relay control power to the fuel pump
-3. Result in: engine running → pump running, engine stopped → pump stopped
+The wiring:
+1. Oil pressure switch controls the relay coil (low current)
+2. Relay switches power to the fuel pump (higher current)
+3. Result: engine running → oil pressure → relay energized → pump runs
 
 ## Debugging with a Multimeter
 
@@ -54,12 +63,18 @@ The lesson: AI assistance is useful for brainstorming, but electrical systems re
 ## The Result
 
 The electric fuel pump now:
-- Starts with the engine (via the relay logic)
+- Starts with the engine (via relay and oil pressure switch)
 - Stops when the engine stops
 - Primes briefly when the key is turned to "on" (before cranking)
 - Doesn't flood the carburetor or create a fire risk
 
 Starting went from 20+ cranks to reliable first-crank starts.
+
+## Parts Used
+
+- **Fuel Pump Kit**: [Electric Fuel Pump Kit (Amazon)](https://a.co/d/gAnklkM)
+- **Oil Pressure Switch**: [Standard Motor Products PS-57 (Amazon)](https://a.co/d/6rsF4KG) - This was the key component. Normally open, with additional terminal.
+- **Relay**: Standard 12V automotive relay (30A)
 
 ## Reference Details
 
@@ -68,8 +83,8 @@ For future me (and anyone else working on similar equipment):
 - **Tractor**: John Deere 318
 - **Engine**: Onan
 - **Original fuel delivery**: Vacuum-operated mechanical pump
-- **Replacement**: 12V electric fuel pump
-- **Control method**: Relay controlled by oil pressure switch circuit
-- **Oil pressure switch type**: Normally closed to ground (warning light style)
+- **Original oil pressure switch**: Normally closed (warning light style)
+- **Replacement oil pressure switch**: Standard Motor Products PS-57 (normally open)
+- **Fuel pump**: 12V electric, relay-controlled
 
 The electrical work took longer than the mechanical installation. That's usually how it goes when you're learning the system as you work on it.
