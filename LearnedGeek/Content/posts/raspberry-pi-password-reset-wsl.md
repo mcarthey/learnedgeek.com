@@ -1,60 +1,109 @@
-I forgot the password to my Raspberry Pi. The Pi runs headless (no monitor or keyboard attached), so I couldn't just boot into recovery mode. The typical solution - mounting the SD card on another Linux machine and editing files directly - didn't work because Windows 11 refused to mount the ext4 partition.
+I forgot the password to my Raspberry Pi. The Pi runs headless (no monitor or keyboard attached), so I couldn't just boot into recovery mode and type at a prompt. After trying several approaches, I found there's an easy way and a hard way to solve this.
 
-The workaround: create an image of the SD card, mount it in WSL, edit the password hash, and write the image back.
+## The Easy Way: userconf.txt
 
-## The Problem
+Raspberry Pi OS supports a `userconf.txt` file on the boot partition that resets (or creates) a user with a specified password. This is the method to try first.
 
-The Raspberry Pi OS stores user passwords in `/etc/shadow`, just like any Linux system. To reset a password without booting the Pi, you need to:
+### Step 1: Generate a Password Hash
 
-1. Access the SD card's filesystem
-2. Edit `/etc/shadow` to set a new password hash
-3. Boot the Pi with the modified card
+You need an encrypted hash, not the plain password. In WSL or any Linux terminal:
 
-Simple on a Linux machine. Not simple on Windows.
+```bash
+openssl passwd -6
+```
 
-## Why Windows Can't Mount It
+Enter your desired password when prompted. It outputs something like:
 
-SD cards for Raspberry Pi typically have two partitions:
+```
+$6$randomsalt$longhashstring...
+```
 
-- **boot** - FAT32, readable by Windows
-- **rootfs** - ext4, Linux filesystem
+Copy the entire line.
 
-Windows doesn't natively support ext4. There are third-party tools like Ext2Fsd, but on Windows 11 they often fail with driver signing issues or BSOD risks.
+### Step 2: Create userconf.txt
 
-When I inserted the SD card, Windows saw the boot partition but threw "You need to format the disk" errors for the rootfs partition. Clicking through those dialogs would have destroyed the filesystem.
+Insert the SD card into your Windows PC. Open the boot partition (the FAT32 one that Windows can read) and create a file named exactly `userconf.txt`.
 
-## The WSL Approach
+Contents (single line, no quotes):
 
-Windows Subsystem for Linux (WSL) runs a real Linux kernel that can mount ext4 filesystems. The trick is getting WSL to see the SD card.
+```
+username:$6$randomsalt$longhashstring...
+```
 
-WSL2 doesn't automatically pass through USB devices or SD card readers. But it can mount disk image files.
+Replace `username` with your actual username (e.g., `pi` or whatever you set up).
+
+### Step 3: Enable SSH (if needed)
+
+While you're on the boot partition, create an empty file named `ssh` (no extension). This enables SSH on boot.
+
+### Step 4: Boot and Log In
+
+Put the SD card back in the Pi and power on. On first boot, Raspberry Pi OS:
+
+- Reads `userconf.txt`
+- Resets that user's password
+- Deletes the file automatically
+
+SSH in with your new credentials:
+
+```bash
+ssh username@raspberrypi.local
+```
+
+This method works because the boot partition is FAT32 - Windows can read and write to it without special tools.
+
+## The Failed Attempts
+
+Before discovering `userconf.txt`, I tried other approaches that didn't work for my headless setup:
+
+### cmdline.txt with init=/bin/sh
+
+The idea: add `init=/bin/sh` to the end of `/boot/cmdline.txt`. The Pi boots to a root shell where you can run:
+
+```bash
+mount -o remount,rw /
+passwd pi
+sync
+```
+
+Then remove the `init=/bin/sh` flag and reboot normally.
+
+**Why it failed**: This drops to a root shell on the *console* - meaning you need a monitor and keyboard attached. For a headless Pi, this doesn't help.
+
+### Direct SD Card Mount on Windows
+
+Windows doesn't natively support ext4 (Linux filesystem). The SD card has two partitions:
+
+- **boot** - FAT32, Windows can read it
+- **rootfs** - ext4, Windows shows "You need to format this disk"
+
+Third-party tools like Ext2Fsd exist but often fail on Windows 11 with driver signing issues.
+
+## The Hard Way: WSL and Disk Images
+
+When `userconf.txt` isn't an option (perhaps you need to recover files, not just reset a password), you can mount the entire SD card as a disk image in WSL.
 
 ### Step 1: Create a Disk Image
 
-First, create a raw image of the entire SD card using a tool that can access the physical device. I used [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/):
+Use [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/):
 
 1. Insert the SD card
 2. Open Win32 Disk Imager as Administrator
-3. Select the SD card device (be careful - select the right one)
-4. Choose an output file path (e.g., `C:\temp\pi-backup.img`)
-5. Click "Read" to create the image
+3. Select the SD card device (verify it's the right one)
+4. Choose an output path (e.g., `C:\temp\pi-backup.img`)
+5. Click "Read"
 
-This creates a bit-for-bit copy of the SD card, including all partitions.
+This creates a bit-for-bit copy including all partitions.
 
-### Step 2: Mount the Image in WSL
+### Step 2: Find the Partition Offset
 
-Open your WSL distribution (Ubuntu, Debian, etc.) and mount the image:
+In WSL:
 
 ```bash
-# Create a mount point
-sudo mkdir -p /mnt/piroot
-
-# Find the offset of the rootfs partition
-# The boot partition is first, rootfs is second
 fdisk -l /mnt/c/temp/pi-backup.img
 ```
 
-The `fdisk` output shows something like:
+Output shows partition layout:
 
 ```
 Device                    Boot   Start      End  Sectors  Size Id Type
@@ -62,57 +111,46 @@ Device                    Boot   Start      End  Sectors  Size Id Type
 /mnt/c/temp/pi-backup.img2      532480 62333951 61801472 29.5G 83 Linux
 ```
 
-The rootfs partition starts at sector 532480. With 512-byte sectors, the offset is:
+The rootfs (Linux) partition starts at sector 532480. Calculate the byte offset:
 
 ```
 532480 * 512 = 272629760
 ```
 
-Now mount with that offset:
+### Step 3: Mount with Offset
 
 ```bash
+sudo mkdir -p /mnt/piroot
 sudo mount -o loop,offset=272629760 /mnt/c/temp/pi-backup.img /mnt/piroot
 ```
 
-You should now see the Pi's filesystem at `/mnt/piroot`.
+Now `/mnt/piroot` contains the Pi's filesystem.
 
-### Step 3: Generate a New Password Hash
+### Step 4: Edit the Shadow File
 
-Linux password hashes in `/etc/shadow` use a specific format. Generate one for your new password:
+Generate a new password hash:
 
 ```bash
 openssl passwd -6 -salt $(openssl rand -base64 8) "yournewpassword"
 ```
 
-The `-6` flag specifies SHA-512 hashing (the modern standard). This outputs something like:
-
-```
-$6$randomsalt$longhashstring...
-```
-
-Copy this entire string.
-
-### Step 4: Edit the Shadow File
-
-Open the shadow file:
+Edit the shadow file:
 
 ```bash
 sudo nano /mnt/piroot/etc/shadow
 ```
 
-Find the line for your user (typically `pi` or whatever username you created):
+Find your user's line and replace the hash (between the first two colons after the username):
 
 ```
-pi:$6$oldhashherexxxxxxx:19000:0:99999:7:::
+pi:$6$oldhash...:19000:0:99999:7:::
 ```
 
-Replace the hash (the part between the first and second colons after the username) with your new hash:
+becomes:
 
 ```
-pi:$6$randomsalt$longhashstring...:19000:0:99999:7:::
+pi:$6$newhash...:19000:0:99999:7:::
 ```
-
-Save and exit.
 
 ### Step 5: Unmount and Write Back
 
@@ -120,51 +158,24 @@ Save and exit.
 sudo umount /mnt/piroot
 ```
 
-Back in Windows, use Win32 Disk Imager again:
+Back in Windows, use Win32 Disk Imager to write the modified image back to the SD card.
 
-1. Select the SD card device
-2. Select the modified image file
-3. Click "Write" to write the image back to the card
+## Which Method to Use
 
-### Step 6: Boot and Test
+| Scenario | Method |
+|----------|--------|
+| Just need to reset password | `userconf.txt` |
+| Need to recover/edit files on ext4 partition | WSL + disk image |
+| Have monitor/keyboard available | `cmdline.txt` with `init=/bin/sh` |
 
-Insert the SD card into the Pi, boot it up, and SSH in with your new password.
-
-## Alternative: Clear the Password
-
-Instead of setting a new password, you can clear it entirely and set one on first login:
-
-In `/etc/shadow`, replace the hash with an empty field:
-
-```
-pi::19000:0:99999:7:::
-```
-
-The double colon means no password. You'll be able to log in without a password (dangerous - do this only temporarily) or you'll be prompted to set one.
-
-A safer option is to use a single `*` which locks the account but allows passwordless `sudo` if configured:
-
-```
-pi:*:19000:0:99999:7:::
-```
-
-## Why Not Just Reflash?
-
-You could reflash the SD card with a fresh Raspberry Pi OS image. But then you lose:
-
-- All installed packages and configurations
-- Cron jobs and custom scripts
-- Service configurations (in my case, Certbot and its certificates)
-- Any data stored on the Pi
-
-The image-and-edit approach preserves everything.
+The `userconf.txt` approach takes 5 minutes. The WSL approach takes 30+ minutes (mostly waiting for image read/write) but gives you full filesystem access.
 
 ## Lessons Learned
 
-- **Win32 Disk Imager** is still the most reliable tool for SD card imaging on Windows
-- **WSL2 can mount disk images** even though it can't directly access USB devices
-- **Sector offsets matter** - `fdisk -l` tells you where partitions start
-- **Keep a backup** - I now keep a periodic image of my Pi's SD card
+- **userconf.txt is the intended recovery method** - Raspberry Pi OS supports it specifically for this scenario
+- **The boot partition is always accessible** - FAT32 works on any OS
+- **WSL can mount disk images** - useful when you need full filesystem access
+- **Back up your Pi** - periodic SD card images save headaches
 - **Write down passwords** - or use a password manager
 
-The whole process took about 30 minutes, most of which was waiting for the image to read and write. Faster than reinstalling and reconfiguring everything.
+The password I'd forgotten? `raspberry`. The default.
