@@ -96,7 +96,7 @@ Starting went from 20+ cranks to reliable first-crank starts.
 For future me (and anyone else working on similar equipment):
 
 - **Tractor**: John Deere 318
-- **Engine**: Onan
+- **Engine**: Onan P218G
 - **Original fuel delivery**: Vacuum-operated mechanical pump
 - **Original oil pressure switch**: Normally closed (warning light style)
 - **Replacement oil pressure switch**: Standard Motor Products PS-64 (normally open, 20A)

@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="50%" style="stop-color:#16213e"/>
+      <stop offset="100%" style="stop-color:#0f3460"/>
+    </linearGradient>
+    <linearGradient id="github" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#333"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Grid pattern -->
+  <g stroke="#2a3f5f" stroke-width="0.5" opacity="0.3">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- GitHub logo (simplified) -->
+  <g transform="translate(200, 180)">
+    <circle cx="80" cy="80" r="70" fill="url(#github)" stroke="#444" stroke-width="3"/>
+    <!-- Octocat silhouette -->
+    <path d="M80 25 C50 25 25 50 25 80 C25 103 40 123 62 130 C65 131 66 129 66 127 L66 117 C48 121 45 108 45 108 C42 101 38 99 38 99 C32 95 39 95 39 95 C46 96 50 102 50 102 C56 112 66 109 67 107 C68 103 70 100 72 98 C55 96 37 90 37 68 C37 61 39 55 44 50 C43 48 40 41 45 32 C45 32 51 30 66 40 C71 39 77 38 83 38 C89 38 95 39 100 40 C115 30 121 32 121 32 C126 41 123 48 122 50 C127 55 129 61 129 68 C129 90 111 96 94 98 C97 101 100 106 100 114 L100 127 C100 129 101 131 104 130 C126 123 141 103 141 80 C141 50 116 25 80 25" fill="#f5f5f5"/>
+  </g>
+
+  <!-- Arrow -->
+  <g transform="translate(360, 240)">
+    <line x1="0" y1="20" x2="80" y2="20" stroke="#4ade80" stroke-width="4"/>
+    <polygon points="80,10 100,20 80,30" fill="#4ade80"/>
+  </g>
+
+  <!-- Comment bubbles -->
+  <g transform="translate(480, 140)">
+    <!-- Main comment box -->
+    <rect x="0" y="0" width="500" height="320" rx="12" fill="#1f2937" stroke="#374151" stroke-width="2"/>
+
+    <!-- Header bar -->
+    <rect x="0" y="0" width="500" height="50" rx="12" fill="#374151"/>
+    <rect x="0" y="40" width="500" height="10" fill="#374151"/>
+
+    <!-- Giscus text -->
+    <text x="20" y="32" fill="#9ca3af" font-family="system-ui" font-size="14" font-weight="600">Giscus Comments</text>
+
+    <!-- Comment 1 -->
+    <g transform="translate(20, 70)">
+      <circle cx="20" cy="20" r="16" fill="#3b82f6"/>
+      <text x="20" y="25" text-anchor="middle" fill="white" font-family="system-ui" font-size="14" font-weight="bold">A</text>
+      <rect x="45" y="0" width="420" height="60" rx="8" fill="#111827"/>
+      <text x="55" y="20" fill="#60a5fa" font-family="system-ui" font-size="13" font-weight="600">alice-dev</text>
+      <text x="55" y="42" fill="#9ca3af" font-family="system-ui" font-size="12">Great tutorial! This helped me set up SSL on my own Pi.</text>
+    </g>
+
+    <!-- Comment 2 -->
+    <g transform="translate(20, 150)">
+      <circle cx="20" cy="20" r="16" fill="#22c55e"/>
+      <text x="20" y="25" text-anchor="middle" fill="white" font-family="system-ui" font-size="14" font-weight="bold">B</text>
+      <rect x="45" y="0" width="420" height="60" rx="8" fill="#111827"/>
+      <text x="55" y="20" fill="#4ade80" font-family="system-ui" font-size="13" font-weight="600">bob-codes</text>
+      <text x="55" y="42" fill="#9ca3af" font-family="system-ui" font-size="12">What's the renewal frequency for the certificates?</text>
+    </g>
+
+    <!-- Input box -->
+    <g transform="translate(20, 240)">
+      <rect x="0" y="0" width="460" height="50" rx="8" fill="#111827" stroke="#374151" stroke-width="1"/>
+      <text x="15" y="30" fill="#6b7280" font-family="system-ui" font-size="13">Write a comment...</text>
+    </g>
+  </g>
+
+  <!-- Discussions icon -->
+  <g transform="translate(1020, 180)" opacity="0.6">
+    <rect width="120" height="90" rx="8" fill="#374151"/>
+    <circle cx="30" cy="30" r="12" fill="#6b7280"/>
+    <rect x="50" y="22" width="55" height="8" rx="2" fill="#6b7280"/>
+    <rect x="50" y="36" width="40" height="6" rx="2" fill="#4b5563"/>
+    <circle cx="30" cy="60" r="12" fill="#6b7280"/>
+    <rect x="50" y="52" width="55" height="8" rx="2" fill="#6b7280"/>
+    <rect x="50" y="66" width="35" height="6" rx="2" fill="#4b5563"/>
+  </g>
+
+  <!-- Connection line -->
+  <path d="M980 320 Q1020 320 1040 280" stroke="#4ade80" stroke-width="2" stroke-dasharray="6,4" fill="none" opacity="0.5"/>
+
+  <!-- Text -->
+  <text x="600" y="550" text-anchor="middle" fill="#9ca3af" font-family="system-ui, sans-serif" font-size="18">
+    GitHub Discussions-Powered Comments
+  </text>
+</svg>

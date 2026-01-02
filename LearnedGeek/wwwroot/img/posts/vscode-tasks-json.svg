@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1e1e"/>
+      <stop offset="50%" style="stop-color:#252526"/>
+      <stop offset="100%" style="stop-color:#1e1e1e"/>
+    </linearGradient>
+    <linearGradient id="vscode-blue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0098ff"/>
+      <stop offset="100%" style="stop-color:#007acc"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- VS Code window frame -->
+  <g transform="translate(100, 80)">
+    <!-- Main window -->
+    <rect x="0" y="0" width="1000" height="470" rx="8" fill="#1e1e1e" stroke="#3c3c3c" stroke-width="2"/>
+
+    <!-- Title bar -->
+    <rect x="0" y="0" width="1000" height="35" rx="8" fill="#3c3c3c"/>
+    <rect x="0" y="25" width="1000" height="10" fill="#3c3c3c"/>
+    <!-- Window controls -->
+    <circle cx="20" cy="17" r="6" fill="#ff5f56"/>
+    <circle cx="40" cy="17" r="6" fill="#ffbd2e"/>
+    <circle cx="60" cy="17" r="6" fill="#27ca40"/>
+    <!-- Title -->
+    <text x="500" y="22" text-anchor="middle" fill="#cccccc" font-family="system-ui" font-size="12">tasks.json - ProjectName - Visual Studio Code</text>
+
+    <!-- Sidebar -->
+    <rect x="0" y="35" width="200" height="435" fill="#252526"/>
+
+    <!-- Activity bar -->
+    <rect x="0" y="35" width="48" height="435" fill="#333333"/>
+    <!-- Activity icons -->
+    <g fill="#858585">
+      <rect x="14" y="50" width="20" height="20" rx="2"/>
+      <rect x="14" y="85" width="20" height="20" rx="2"/>
+      <rect x="14" y="120" width="20" height="20" rx="2"/>
+      <rect x="14" y="155" width="20" height="20" rx="2" fill="#007acc"/>
+    </g>
+
+    <!-- File tree -->
+    <g transform="translate(55, 50)" font-family="system-ui" font-size="12">
+      <text fill="#cccccc" font-weight="600">EXPLORER</text>
+      <text y="25" fill="#858585">▼ .vscode</text>
+      <text y="45" x="15" fill="#007acc">tasks.json</text>
+      <text y="65" fill="#858585">▶ Controllers</text>
+      <text y="85" fill="#858585">▶ Models</text>
+      <text y="105" fill="#858585">▶ Views</text>
+    </g>
+
+    <!-- Editor area -->
+    <rect x="200" y="35" width="800" height="435" fill="#1e1e1e"/>
+
+    <!-- Tab bar -->
+    <rect x="200" y="35" width="800" height="35" fill="#252526"/>
+    <!-- Active tab -->
+    <rect x="200" y="35" width="120" height="35" fill="#1e1e1e"/>
+    <text x="215" y="57" fill="#ffffff" font-family="system-ui" font-size="12">tasks.json</text>
+
+    <!-- JSON content -->
+    <g transform="translate(220, 85)" font-family="monospace" font-size="13">
+      <!-- Line numbers -->
+      <g fill="#858585">
+        <text x="0" y="0">1</text>
+        <text x="0" y="22">2</text>
+        <text x="0" y="44">3</text>
+        <text x="0" y="66">4</text>
+        <text x="0" y="88">5</text>
+        <text x="0" y="110">6</text>
+        <text x="0" y="132">7</text>
+        <text x="0" y="154">8</text>
+        <text x="0" y="176">9</text>
+        <text x="0" y="198">10</text>
+        <text x="0" y="220">11</text>
+        <text x="0" y="242">12</text>
+        <text x="0" y="264">13</text>
+        <text x="0" y="286">14</text>
+        <text x="0" y="308">15</text>
+        <text x="0" y="330">16</text>
+      </g>
+
+      <!-- JSON code -->
+      <g transform="translate(35, 0)">
+        <text y="0" fill="#ffd700">{</text>
+        <text y="22"><tspan fill="#9cdcfe">"version"</tspan><tspan fill="#cccccc">: </tspan><tspan fill="#ce9178">"2.0.0"</tspan><tspan fill="#cccccc">,</tspan></text>
+        <text y="44"><tspan fill="#9cdcfe">"tasks"</tspan><tspan fill="#cccccc">: [</tspan></text>
+        <text y="66" fill="#cccccc">    {</text>
+        <text y="88"><tspan fill="#cccccc">      </tspan><tspan fill="#9cdcfe">"label"</tspan><tspan fill="#cccccc">: </tspan><tspan fill="#ce9178">"Build"</tspan><tspan fill="#cccccc">,</tspan></text>
+        <text y="110"><tspan fill="#cccccc">      </tspan><tspan fill="#9cdcfe">"command"</tspan><tspan fill="#cccccc">: </tspan><tspan fill="#ce9178">"dotnet"</tspan><tspan fill="#cccccc">,</tspan></text>
+        <text y="132"><tspan fill="#cccccc">      </tspan><tspan fill="#9cdcfe">"args"</tspan><tspan fill="#cccccc">: [</tspan><tspan fill="#ce9178">"build"</tspan><tspan fill="#cccccc">]</tspan></text>
+        <text y="154" fill="#cccccc">    },</text>
+        <text y="176" fill="#cccccc">    {</text>
+        <text y="198"><tspan fill="#cccccc">      </tspan><tspan fill="#9cdcfe">"label"</tspan><tspan fill="#cccccc">: </tspan><tspan fill="#ce9178">"Run"</tspan><tspan fill="#cccccc">,</tspan></text>
+        <text y="220"><tspan fill="#cccccc">      </tspan><tspan fill="#9cdcfe">"dependsOn"</tspan><tspan fill="#cccccc">: [</tspan><tspan fill="#ce9178">"Build CSS"</tspan><tspan fill="#cccccc">]</tspan></text>
+        <text y="242" fill="#cccccc">    },</text>
+        <text y="264" fill="#cccccc">    {</text>
+        <text y="286"><tspan fill="#cccccc">      </tspan><tspan fill="#9cdcfe">"label"</tspan><tspan fill="#cccccc">: </tspan><tspan fill="#ce9178">"Publish"</tspan><tspan fill="#cccccc">,</tspan></text>
+        <text y="308"><tspan fill="#cccccc">      </tspan><tspan fill="#9cdcfe">"dependsOn"</tspan><tspan fill="#cccccc">: [</tspan><tspan fill="#ce9178">"Build CSS"</tspan><tspan fill="#cccccc">]</tspan></text>
+        <text y="330" fill="#cccccc">    }</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Task icons on right side -->
+  <g transform="translate(950, 180)">
+    <!-- Build task -->
+    <g transform="translate(0, 0)">
+      <rect width="140" height="45" rx="6" fill="#264f78" stroke="#3794ff" stroke-width="2"/>
+      <text x="70" y="28" text-anchor="middle" fill="#ffffff" font-family="system-ui" font-size="13" font-weight="500">Build</text>
+    </g>
+    <!-- Run task -->
+    <g transform="translate(0, 60)">
+      <rect width="140" height="45" rx="6" fill="#264f78" stroke="#3794ff" stroke-width="2"/>
+      <text x="70" y="28" text-anchor="middle" fill="#ffffff" font-family="system-ui" font-size="13" font-weight="500">Run</text>
+    </g>
+    <!-- Test task -->
+    <g transform="translate(0, 120)">
+      <rect width="140" height="45" rx="6" fill="#264f78" stroke="#3794ff" stroke-width="2"/>
+      <text x="70" y="28" text-anchor="middle" fill="#ffffff" font-family="system-ui" font-size="13" font-weight="500">Test</text>
+    </g>
+    <!-- Publish task -->
+    <g transform="translate(0, 180)">
+      <rect width="140" height="45" rx="6" fill="#386b26" stroke="#4ec94e" stroke-width="2"/>
+      <text x="70" y="28" text-anchor="middle" fill="#ffffff" font-family="system-ui" font-size="13" font-weight="500">Publish</text>
+    </g>
+  </g>
+
+  <!-- Arrow connecting to tasks -->
+  <g>
+    <path d="M920 350 L950 350" stroke="#3794ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+  </g>
+
+  <!-- Keyboard shortcut hint -->
+  <g transform="translate(950, 420)">
+    <rect width="140" height="35" rx="4" fill="#333333" stroke="#555555" stroke-width="1"/>
+    <text x="70" y="22" text-anchor="middle" fill="#cccccc" font-family="monospace" font-size="11">Ctrl+Shift+B</text>
+  </g>
+
+  <!-- Text -->
+  <text x="600" y="590" text-anchor="middle" fill="#858585" font-family="system-ui, sans-serif" font-size="18">
+    VS Code Tasks for .NET Projects
+  </text>
+</svg>

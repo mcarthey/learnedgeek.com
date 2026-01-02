@@ -11,6 +11,36 @@
       "image": "/img/posts/ssl-automation.svg"
     },
     {
+      "slug": "adding-comments-with-giscus",
+      "title": "Adding Comments to a Blog with Giscus",
+      "description": "Using GitHub Discussions as a comment backend for a blog - no database, no spam, no cost.",
+      "category": "Computers",
+      "tags": ["giscus", "github", "comments", "blog"],
+      "date": "2026-01-02",
+      "featured": false,
+      "image": "/img/posts/giscus-comments.svg"
+    },
+    {
+      "slug": "raspberry-pi-password-reset-wsl",
+      "title": "Resetting a Raspberry Pi Password via WSL",
+      "description": "When Windows won't mount ext4 and you've forgotten your Pi's password, WSL and disk images come to the rescue.",
+      "category": "Computers",
+      "tags": ["raspberry-pi", "wsl", "linux", "password-recovery"],
+      "date": "2025-12-15",
+      "featured": false,
+      "image": "/img/posts/raspberry-pi-password-reset.svg"
+    },
+    {
+      "slug": "vscode-tasks-json-dotnet",
+      "title": "VS Code tasks.json for .NET Projects",
+      "description": "A reusable task configuration for building, running, testing, and deploying ASP.NET projects with Tailwind CSS.",
+      "category": "Computers",
+      "tags": ["vscode", "dotnet", "tasks", "deployment", "tailwind"],
+      "date": "2025-11-20",
+      "featured": false,
+      "image": "/img/posts/vscode-tasks-json.svg"
+    },
+    {
       "slug": "john-deere-fuel-pump",
       "title": "Electric Fuel Pump Conversion: John Deere 318",
       "description": "Replacing a failing vacuum fuel pump with an electric pump, and the relay wiring needed to make it work safely with the oil pressure switch.",
