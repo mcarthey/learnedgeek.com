@@ -176,7 +176,7 @@
             if (link && text) {
                 const user = link.dataset.user;
                 const domain = link.dataset.domain;
-                const email = user + '@' + domain;
+                const email = user + '@@' + domain;
                 link.href = 'mailto:' + email;
                 text.textContent = email;
             }
