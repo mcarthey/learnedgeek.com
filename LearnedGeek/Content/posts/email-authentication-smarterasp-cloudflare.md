@@ -182,6 +182,35 @@ All three checks passed. The email landed in my inbox, not spam. And if anyone t
 - Verify the sending server IP matches what's authorized.
 - Check that `include:_spf.site4now.net` is in your SPF record.
 
+**"SSL connection to mail.mydomain.com fails"**
+- SmarterASP provides two server addresses:
+  - `mail.yourdomain.com` — Works **without** SSL (ports 25, 8889)
+  - `mail####.site4now.net` — Works **with** SSL (ports 465, 587, 993, 995)
+- The SSL certificate is issued to `mail####.site4now.net`, not your CNAME
+- For any SSL/TLS connection, use the `site4now.net` address
+
+## Email Client Settings (iPhone, Outlook, etc.)
+
+If you want to check email on your phone or desktop client, use these settings:
+
+**Incoming Mail (IMAP):**
+| Setting | Value |
+|---------|-------|
+| Server | `mail####.site4now.net` (your specific server) |
+| Port | `993` |
+| Security | SSL/TLS |
+| Username | `you@yourdomain.com` |
+
+**Outgoing Mail (SMTP):**
+| Setting | Value |
+|---------|-------|
+| Server | `mail####.site4now.net` (your specific server) |
+| Port | `587` (or 465) |
+| Security | SSL/TLS |
+| Username | `you@yourdomain.com` |
+
+**Important:** Don't use `mail.yourdomain.com` for client setup if you want SSL encryption (you do). Use the direct `site4now.net` server address from your SmarterASP Email Manager.
+
 ## The Trust Chain
 
 Here's how it all works together when Gmail receives your email:
