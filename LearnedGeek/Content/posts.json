@@ -21,6 +21,16 @@
       "image": "/img/posts/giscus-comments.svg"
     },
     {
+      "slug": "email-authentication-smarterasp-cloudflare",
+      "title": "Email Authentication: SmarterASP + Cloudflare DNS",
+      "description": "A programmer's guide to SPF, DKIM, and DMARC - why email authentication exists and how to configure it when your DNS lives in Cloudflare.",
+      "category": "Computers",
+      "tags": ["email", "dns", "cloudflare", "smarterasp", "spf", "dkim", "dmarc"],
+      "date": "2026-01-02",
+      "featured": true,
+      "image": "/img/posts/email-authentication-smarterasp-cloudflare.svg"
+    },
+    {
       "slug": "for-pisko",
       "title": "For Pisko",
       "description": "Completing a novel, submitting to Novel90, and honoring the patient hound who inspired a character that watches across 500 years.",
