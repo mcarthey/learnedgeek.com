@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "running-ai-on-your-own-computer",
+      "title": "Running AI On Your Own Computer: A Beginner's Guide to Ollama",
+      "description": "You can run real AI models locally - no internet, no fees, complete privacy. Here's how to get started with Ollama and why you'd want to.",
+      "category": "Computers",
+      "tags": ["ai", "ollama", "llm", "local-ai", "privacy", "tutorial"],
+      "date": "2026-01-04",
+      "featured": true,
+      "image": "/img/posts/running-ai-on-your-own-computer.svg"
+    },
+    {
       "slug": "what-1290-conversations-taught-me",
       "title": "What 1,290 ChatGPT Conversations Taught Me About My Own Thinking",
       "description": "I exported two years of AI chats and used embeddings, clustering, and topic segmentation to find patterns. Here's what I learned - explained so anyone can understand.",
