@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Contact";
     var showSuccess = TempData["ContactSuccess"] != null;
+    var recaptchaSiteKey = ViewBag.RecaptchaSiteKey as string;
 }
 
 <div class="bg-white">
@@ -45,8 +46,16 @@
                     }
                     else
                     {
-                        <form asp-action="Contact" method="post" class="space-y-6">
+                        <form asp-action="Contact" method="post" class="space-y-6" id="contactForm">
                             @Html.AntiForgeryToken()
+
+                            @* Honeypot field - hidden from real users, bots will fill it *@
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                <input type="text" name="Website" tabindex="-1" autocomplete="off" asp-for="Website">
+                            </div>
+
+                            @* Hidden field for reCAPTCHA token *@
+                            <input type="hidden" asp-for="RecaptchaToken" id="recaptchaToken">
 
                             @if (!ViewData.ModelState.IsValid)
                             {
@@ -103,10 +112,21 @@
                             </div>
 
                             <button type="submit"
-                                    class="inline-flex items-center gap-2 px-8 py-3 bg-neutral-900 text-white font-medium hover:bg-neutral-800 transition-colors">
-                                Send Message
+                                    id="submitBtn"
+                                    class="inline-flex items-center gap-2 px-8 py-3 bg-neutral-900 text-white font-medium hover:bg-neutral-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-loading hidden">Sending...</span>
                                 <partial name="Icons/_ArrowRight" />
                             </button>
+
+                            @if (!string.IsNullOrEmpty(recaptchaSiteKey))
+                            {
+                                <p class="mt-4 text-xs text-neutral-400 leading-relaxed">
+                                    This site is protected by reCAPTCHA and the Google
+                                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="underline hover:text-neutral-600">Privacy Policy</a> and
+                                    <a href="https://policies.google.com/terms" target="_blank" rel="noopener" class="underline hover:text-neutral-600">Terms of Service</a> apply.
+                                </p>
+                            }
                         </form>
                     }
                 </div>
@@ -168,6 +188,62 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    @if (!string.IsNullOrEmpty(recaptchaSiteKey))
+    {
+        <script src="https://www.google.com/recaptcha/api.js?render=@recaptchaSiteKey"></script>
+        <script>
+            document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const form = this;
+                const submitBtn = document.getElementById('submitBtn');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const btnLoading = submitBtn.querySelector('.btn-loading');
+
+                // Show loading state
+                btnText.classList.add('hidden');
+                btnLoading.classList.remove('hidden');
+                submitBtn.disabled = true;
+
+                // Execute reCAPTCHA
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('@recaptchaSiteKey', { action: 'contact_form' }).then(function(token) {
+                        // Set the token in the hidden field
+                        document.getElementById('recaptchaToken').value = token;
+                        // Submit the form
+                        form.submit();
+                    }).catch(function(error) {
+                        console.error('reCAPTCHA error:', error);
+                        // Reset button state
+                        btnText.classList.remove('hidden');
+                        btnLoading.classList.add('hidden');
+                        submitBtn.disabled = false;
+                        alert('Security verification failed. Please try again.');
+                    });
+                });
+            });
+        </script>
+    }
+    else
+    {
+        <script>
+            // Development mode without reCAPTCHA - just show loading state
+            document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+                const submitBtn = document.getElementById('submitBtn');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const btnLoading = submitBtn.querySelector('.btn-loading');
+
+                btnText.classList.add('hidden');
+                btnLoading.classList.remove('hidden');
+                submitBtn.disabled = true;
+
+                // Set a dummy token for development
+                document.getElementById('recaptchaToken').value = 'development-mode-token';
+            });
+        </script>
+    }
+
     <script>
         // Build email address from data attributes to prevent scraping
         document.addEventListener('DOMContentLoaded', function() {

@@ -1,5 +1,6 @@
 using LearnedGeek.Models;
 using LearnedGeek.Services;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,10 @@ builder.Services.AddControllersWithViews();
 // Configure email settings
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddTransient<IEmailService, EmailService>();
+
+// Configure reCAPTCHA settings
+builder.Services.Configure<RecaptchaSettings>(builder.Configuration.GetSection("Recaptcha"));
+builder.Services.AddHttpClient<IRecaptchaService, RecaptchaService>();
 
 // Blog service
 builder.Services.AddSingleton<IBlogService, BlogService>();

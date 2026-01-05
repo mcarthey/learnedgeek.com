@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using LearnedGeek.Models;
 using LearnedGeek.Services;
 
@@ -8,11 +9,19 @@ namespace LearnedGeek.Controllers;
 public class HomeController : Controller
 {
     private readonly IEmailService _emailService;
+    private readonly IRecaptchaService _recaptchaService;
+    private readonly RecaptchaSettings _recaptchaSettings;
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(IEmailService emailService, ILogger<HomeController> logger)
+    public HomeController(
+        IEmailService emailService,
+        IRecaptchaService recaptchaService,
+        IOptions<RecaptchaSettings> recaptchaSettings,
+        ILogger<HomeController> logger)
     {
         _emailService = emailService;
+        _recaptchaService = recaptchaService;
+        _recaptchaSettings = recaptchaSettings.Value;
         _logger = logger;
     }
 
@@ -44,6 +53,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Contact()
     {
+        ViewBag.RecaptchaSiteKey = _recaptchaSettings.SiteKey;
         return View(new ContactFormModel());
     }
 
@@ -51,6 +61,27 @@ public class HomeController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Contact(ContactFormModel model)
     {
+        ViewBag.RecaptchaSiteKey = _recaptchaSettings.SiteKey;
+
+        // Check honeypot field - bots often fill all fields
+        if (!string.IsNullOrWhiteSpace(model.Website))
+        {
+            _logger.LogWarning("Contact form honeypot triggered - likely bot submission");
+            // Return success to not tip off the bot, but don't process
+            TempData["ContactSuccess"] = true;
+            return RedirectToAction(nameof(Contact));
+        }
+
+        // Validate reCAPTCHA
+        var recaptchaResult = await _recaptchaService.ValidateAsync(model.RecaptchaToken);
+        if (!recaptchaResult.Success)
+        {
+            _logger.LogWarning("reCAPTCHA validation failed: {Error}", recaptchaResult.ErrorMessage);
+            ModelState.AddModelError(string.Empty,
+                recaptchaResult.ErrorMessage ?? "Security verification failed. Please try again.");
+            return View(model);
+        }
+
         if (!ModelState.IsValid)
         {
             return View(model);
