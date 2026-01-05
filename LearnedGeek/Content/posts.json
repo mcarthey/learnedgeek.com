@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "ai-coding-showdown",
+      "title": "When Your AI Coding Assistant Gaslights You: A Performance Analysis Showdown",
+      "description": "I asked two AIs to help debug performance issues. One maintained context and found the root cause. The other kept saying 'likely your code does this' while looking at the actual code.",
+      "category": "Computers",
+      "tags": ["ai", "chatgpt", "claude", "performance", "dotnet", "entity-framework"],
+      "date": "2026-01-02",
+      "featured": true,
+      "image": "/img/posts/ai-coding-showdown.svg"
+    },
+    {
       "slug": "ssl-automation-with-letsencrypt-and-cloudflare",
       "title": "SSL Automation with Let's Encrypt and Cloudflare",
       "description": "Setting up free, automated SSL certificates for multiple domains using a Raspberry Pi, Certbot, and Cloudflare DNS.",
