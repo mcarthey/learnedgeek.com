@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "recaptcha-v3-aspnet-core",
+      "title": "Invisible Spam Protection: reCAPTCHA v3 in ASP.NET Core",
+      "description": "Adding invisible bot protection to a contact form with Google reCAPTCHA v3 and a honeypot field - no puzzles, no friction, no spam.",
+      "category": "Computers",
+      "tags": ["recaptcha", "aspnet-core", "security", "spam", "csharp"],
+      "date": "2026-01-05",
+      "featured": true,
+      "image": "/img/posts/recaptcha-v3-aspnet-core.svg"
+    },
+    {
       "slug": "ai-coding-showdown",
       "title": "When Your AI Coding Assistant Gaslights You: A Performance Analysis Showdown",
       "description": "I asked two AIs to help debug performance issues. One maintained context and found the root cause. The other kept saying 'likely your code does this' while looking at the actual code.",
