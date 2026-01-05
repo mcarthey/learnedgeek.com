@@ -22,7 +22,7 @@
   <!-- Background -->
   <rect width="1200" height="630" fill="url(#bg)"/>
 
-  <!-- Grid representing the "meaning map" -->
+  <!-- Grid representing the meaning map -->
   <g stroke="#2a2548" stroke-width="1" opacity="0.4">
     <line x1="100" y1="100" x2="100" y2="530"/>
     <line x1="300" y1="100" x2="300" y2="530"/>
@@ -39,7 +39,7 @@
 
   <!-- Cluster 1: Code/Tech (blue) - top left area -->
   <ellipse cx="280" cy="220" rx="150" ry="100" fill="url(#cluster1)" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5,5"/>
-  <text x="280" y="130" text-anchor="middle" fill="#60a5fa" font-family="system-ui" font-size="14" font-weight="600">Code & Debugging</text>
+  <text x="280" y="130" text-anchor="middle" fill="#60a5fa" font-family="Arial, sans-serif" font-size="14" font-weight="600">Code and Debugging</text>
 
   <!-- Dots in cluster 1 -->
   <circle cx="220" cy="200" r="8" fill="#3b82f6"/>
@@ -52,13 +52,13 @@
   <circle cx="330" cy="240" r="6" fill="#60a5fa"/>
 
   <!-- Labels for cluster 1 dots -->
-  <text x="220" y="175" text-anchor="middle" fill="#93c5fd" font-family="system-ui" font-size="9">Python</text>
-  <text x="310" y="235" text-anchor="middle" fill="#93c5fd" font-family="system-ui" font-size="9">TypeScript</text>
-  <text x="340" y="170" text-anchor="middle" fill="#93c5fd" font-family="system-ui" font-size="9">React</text>
+  <text x="220" y="175" text-anchor="middle" fill="#93c5fd" font-family="Arial, sans-serif" font-size="9">Python</text>
+  <text x="310" y="235" text-anchor="middle" fill="#93c5fd" font-family="Arial, sans-serif" font-size="9">TypeScript</text>
+  <text x="340" y="170" text-anchor="middle" fill="#93c5fd" font-family="Arial, sans-serif" font-size="9">React</text>
 
   <!-- Cluster 2: Cooking/Life (green) - bottom right area -->
   <ellipse cx="900" cy="400" rx="140" ry="90" fill="url(#cluster2)" stroke="#22c55e" stroke-width="2" stroke-dasharray="5,5"/>
-  <text x="900" y="320" text-anchor="middle" fill="#4ade80" font-family="system-ui" font-size="14" font-weight="600">Cooking & Recipes</text>
+  <text x="900" y="320" text-anchor="middle" fill="#4ade80" font-family="Arial, sans-serif" font-size="14" font-weight="600">Cooking and Recipes</text>
 
   <!-- Dots in cluster 2 -->
   <circle cx="860" cy="380" r="7" fill="#22c55e"/>
@@ -69,12 +69,12 @@
   <circle cx="840" cy="420" r="5" fill="#86efac"/>
 
   <!-- Labels for cluster 2 dots -->
-  <text x="860" y="360" text-anchor="middle" fill="#86efac" font-family="system-ui" font-size="9">dinner</text>
-  <text x="940" y="350" text-anchor="middle" fill="#86efac" font-family="system-ui" font-size="9">recipe</text>
+  <text x="860" y="360" text-anchor="middle" fill="#86efac" font-family="Arial, sans-serif" font-size="9">dinner</text>
+  <text x="940" y="350" text-anchor="middle" fill="#86efac" font-family="Arial, sans-serif" font-size="9">recipe</text>
 
   <!-- Cluster 3: Writing/Creative (orange) - middle area -->
   <ellipse cx="600" cy="380" rx="130" ry="85" fill="url(#cluster3)" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,5"/>
-  <text x="600" y="300" text-anchor="middle" fill="#fbbf24" font-family="system-ui" font-size="14" font-weight="600">Writing & Creative</text>
+  <text x="600" y="300" text-anchor="middle" fill="#fbbf24" font-family="Arial, sans-serif" font-size="14" font-weight="600">Writing and Creative</text>
 
   <!-- Dots in cluster 3 -->
   <circle cx="560" cy="360" r="6" fill="#f59e0b"/>
@@ -85,13 +85,13 @@
   <circle cx="660" cy="410" r="6" fill="#fbbf24"/>
 
   <!-- Labels for cluster 3 dots -->
-  <text x="620" y="370" text-anchor="middle" fill="#fcd34d" font-family="system-ui" font-size="9">novel</text>
-  <text x="560" y="340" text-anchor="middle" fill="#fcd34d" font-family="system-ui" font-size="9">plot</text>
+  <text x="620" y="370" text-anchor="middle" fill="#fcd34d" font-family="Arial, sans-serif" font-size="9">novel</text>
+  <text x="560" y="340" text-anchor="middle" fill="#fcd34d" font-family="Arial, sans-serif" font-size="9">plot</text>
 
-  <!-- Wandering conversation arrow showing segmentation -->
+  <!-- Wandering conversation showing segmentation -->
   <g transform="translate(750, 180)">
     <rect x="0" y="0" width="280" height="120" rx="8" fill="#1f1f3a" stroke="#4b5563" stroke-width="1"/>
-    <text x="140" y="25" text-anchor="middle" fill="#9ca3af" font-family="system-ui" font-size="12" font-weight="600">One Conversation, 4 Topics</text>
+    <text x="140" y="25" text-anchor="middle" fill="#9ca3af" font-family="Arial, sans-serif" font-size="12" font-weight="600">One Conversation, 4 Topics</text>
 
     <!-- Segmented bar -->
     <rect x="20" y="45" width="60" height="25" rx="4" fill="#3b82f6"/>
@@ -99,37 +99,38 @@
     <rect x="140" y="45" width="55" height="25" rx="4" fill="#f59e0b"/>
     <rect x="200" y="45" width="60" height="25" rx="4" fill="#22c55e"/>
 
-    <text x="50" y="62" text-anchor="middle" fill="white" font-family="system-ui" font-size="8">Code</text>
-    <text x="110" y="62" text-anchor="middle" fill="white" font-family="system-ui" font-size="8">API</text>
-    <text x="167" y="62" text-anchor="middle" fill="white" font-family="system-ui" font-size="8">Writing</text>
-    <text x="230" y="62" text-anchor="middle" fill="white" font-family="system-ui" font-size="8">Recipe</text>
+    <text x="50" y="62" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8">Code</text>
+    <text x="110" y="62" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8">API</text>
+    <text x="167" y="62" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8">Writing</text>
+    <text x="230" y="62" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8">Recipe</text>
 
-    <!-- Arrows showing segments going to clusters -->
-    <text x="140" y="95" text-anchor="middle" fill="#6b7280" font-family="system-ui" font-size="10">↓ Split into segments ↓</text>
+    <!-- Arrow showing split -->
+    <polygon points="140,80 130,90 135,90 135,105 145,105 145,90 150,90" fill="#6b7280"/>
+    <text x="140" y="118" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="9">Split into segments</text>
   </g>
 
-  <!-- Stats -->
+  <!-- Stats with arrow shapes instead of Unicode -->
   <g transform="translate(100, 480)">
-    <text x="0" y="0" fill="#6b7280" font-family="system-ui" font-size="13">1,290 conversations</text>
-    <text x="170" y="0" fill="#4b5563" font-family="system-ui" font-size="13">→</text>
-    <text x="200" y="0" fill="#9ca3af" font-family="system-ui" font-size="13" font-weight="600">6,000 segments</text>
-    <text x="350" y="0" fill="#4b5563" font-family="system-ui" font-size="13">→</text>
-    <text x="380" y="0" fill="#a78bfa" font-family="system-ui" font-size="13" font-weight="600">meaningful clusters</text>
+    <text x="0" y="0" fill="#6b7280" font-family="Arial, sans-serif" font-size="13">1,290 conversations</text>
+    <polygon points="175,0 185,-5 185,5" fill="#4b5563"/>
+    <text x="200" y="0" fill="#9ca3af" font-family="Arial, sans-serif" font-size="13" font-weight="600">6,000 segments</text>
+    <polygon points="345,0 355,-5 355,5" fill="#4b5563"/>
+    <text x="370" y="0" fill="#a78bfa" font-family="Arial, sans-serif" font-size="13" font-weight="600">meaningful clusters</text>
   </g>
 
   <!-- Title -->
-  <text x="600" y="60" text-anchor="middle" fill="#e2e8f0" font-family="system-ui" font-size="22" font-weight="bold">
+  <text x="600" y="60" text-anchor="middle" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="22" font-weight="bold">
     The Meaning Map: GPS Coordinates for Your Conversations
   </text>
 
   <!-- Bottom tagline -->
-  <text x="600" y="590" text-anchor="middle" fill="#64748b" font-family="system-ui" font-size="14">
-    Similar topics cluster together • Topic shifts become segment boundaries • Patterns emerge from chaos
+  <text x="600" y="590" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="14">
+    Similar topics cluster together | Topic shifts become segment boundaries | Patterns emerge from chaos
   </text>
 
   <!-- Legend -->
   <g transform="translate(100, 520)">
     <circle cx="10" cy="0" r="6" fill="#3b82f6"/>
-    <text x="25" y="4" fill="#9ca3af" font-family="system-ui" font-size="11">= conversation segment (plotted by meaning)</text>
+    <text x="25" y="4" fill="#9ca3af" font-family="Arial, sans-serif" font-size="11">= conversation segment (plotted by meaning)</text>
   </g>
 </svg>
