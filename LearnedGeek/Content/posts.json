@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "what-1290-conversations-taught-me",
+      "title": "What 1,290 ChatGPT Conversations Taught Me About My Own Thinking",
+      "description": "I exported two years of AI chats and used embeddings, clustering, and topic segmentation to find patterns. Here's what I learned - explained so anyone can understand.",
+      "category": "Computers",
+      "tags": ["ai", "machine-learning", "embeddings", "chatgpt", "data-analysis"],
+      "date": "2026-01-04",
+      "featured": true,
+      "image": "/img/posts/what-1290-conversations-taught-me.svg"
+    },
+    {
       "slug": "recaptcha-v3-aspnet-core",
       "title": "Invisible Spam Protection: reCAPTCHA v3 in ASP.NET Core",
       "description": "Adding invisible bot protection to a contact form with Google reCAPTCHA v3 and a honeypot field - no puzzles, no friction, no spam.",
