@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "discord-tldrkseid-ai-summarization-bot",
+      "title": "TLDRkseid: Building a Discord Bot That Summarizes Chaos",
+      "description": "I built a Discord bot to summarize hundreds of messages using OpenAI - then discovered that all Discord bots run as a single instance serving every server. Here's the journey.",
+      "category": "Computers",
+      "tags": ["discord", "bot", "openai", "csharp", "dotnet", "ai", "side-project"],
+      "date": "2026-01-06",
+      "featured": true,
+      "image": "/img/posts/discord-tldrkseid.svg"
+    },
+    {
       "slug": "running-ai-on-your-own-computer",
       "title": "Running AI On Your Own Computer: A Beginner's Guide to Ollama",
       "description": "You can run real AI models locally - no internet, no fees, complete privacy. Here's how to get started with Ollama and why you'd want to.",
