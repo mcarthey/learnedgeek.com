@@ -1,0 +1,228 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="code-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1f2937"/>
+      <stop offset="100%" style="stop-color:#111827"/>
+    </linearGradient>
+    <linearGradient id="gauge-track" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#374151"/>
+      <stop offset="100%" style="stop-color:#4b5563"/>
+    </linearGradient>
+    <linearGradient id="gauge-fill" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="40%" style="stop-color:#f59e0b"/>
+      <stop offset="70%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="pr-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1f2937"/>
+      <stop offset="100%" style="stop-color:#111827"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid -->
+  <g stroke="#334155" stroke-width="0.5" opacity="0.3">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="473" x2="1200" y2="473"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+
+  <!-- Left: Code file with coverage highlighting -->
+  <g transform="translate(150, 200)">
+    <!-- Code window -->
+    <rect x="0" y="0" width="240" height="260" rx="8" fill="url(#code-bg)" stroke="#374151" stroke-width="2"/>
+    <!-- Window title bar -->
+    <rect x="0" y="0" width="240" height="28" rx="8" fill="#374151"/>
+    <rect x="0" y="20" width="240" height="8" fill="#374151"/>
+    <!-- Window controls -->
+    <circle cx="16" cy="14" r="5" fill="#ef4444"/>
+    <circle cx="34" cy="14" r="5" fill="#f59e0b"/>
+    <circle cx="52" cy="14" r="5" fill="#22c55e"/>
+    <!-- Filename -->
+    <text x="120" y="18" text-anchor="middle" fill="#9ca3af" font-family="monospace" font-size="10">Calculator.cs</text>
+
+    <!-- Code lines with coverage -->
+    <!-- Covered lines (green gutter) -->
+    <rect x="8" y="40" width="4" height="12" fill="#22c55e" rx="1"/>
+    <text x="20" y="50" fill="#9ca3af" font-family="monospace" font-size="10">1</text>
+    <text x="40" y="50" fill="#c084fc" font-family="monospace" font-size="10">public</text>
+    <text x="80" y="50" fill="#60a5fa" font-family="monospace" font-size="10">int</text>
+    <text x="100" y="50" fill="#fbbf24" font-family="monospace" font-size="10">Add(a, b)</text>
+
+    <rect x="8" y="56" width="4" height="12" fill="#22c55e" rx="1"/>
+    <text x="20" y="66" fill="#9ca3af" font-family="monospace" font-size="10">2</text>
+    <text x="40" y="66" fill="#9ca3af" font-family="monospace" font-size="10">{</text>
+
+    <rect x="8" y="72" width="4" height="12" fill="#22c55e" rx="1"/>
+    <text x="20" y="82" fill="#9ca3af" font-family="monospace" font-size="10">3</text>
+    <text x="50" y="82" fill="#c084fc" font-family="monospace" font-size="10">return</text>
+    <text x="95" y="82" fill="#e2e8f0" font-family="monospace" font-size="10">a + b;</text>
+
+    <rect x="8" y="88" width="4" height="12" fill="#22c55e" rx="1"/>
+    <text x="20" y="98" fill="#9ca3af" font-family="monospace" font-size="10">4</text>
+    <text x="40" y="98" fill="#9ca3af" font-family="monospace" font-size="10">}</text>
+
+    <!-- Uncovered lines (red gutter) -->
+    <rect x="8" y="112" width="4" height="12" fill="#ef4444" rx="1"/>
+    <text x="20" y="122" fill="#9ca3af" font-family="monospace" font-size="10">5</text>
+    <text x="40" y="122" fill="#c084fc" font-family="monospace" font-size="10">public</text>
+    <text x="80" y="122" fill="#60a5fa" font-family="monospace" font-size="10">int</text>
+    <text x="100" y="122" fill="#fbbf24" font-family="monospace" font-size="10">Divide(a,b)</text>
+
+    <rect x="8" y="128" width="4" height="12" fill="#ef4444" rx="1"/>
+    <text x="20" y="138" fill="#9ca3af" font-family="monospace" font-size="10">6</text>
+    <text x="40" y="138" fill="#9ca3af" font-family="monospace" font-size="10">{</text>
+
+    <rect x="8" y="144" width="4" height="12" fill="#ef4444" rx="1"/>
+    <text x="20" y="154" fill="#9ca3af" font-family="monospace" font-size="10">7</text>
+    <text x="50" y="154" fill="#c084fc" font-family="monospace" font-size="10">if</text>
+    <text x="65" y="154" fill="#e2e8f0" font-family="monospace" font-size="10">(b == 0)</text>
+
+    <rect x="8" y="160" width="4" height="12" fill="#ef4444" rx="1"/>
+    <text x="20" y="170" fill="#9ca3af" font-family="monospace" font-size="10">8</text>
+    <text x="60" y="170" fill="#c084fc" font-family="monospace" font-size="10">throw</text>
+    <text x="95" y="170" fill="#f87171" font-family="monospace" font-size="10">new Ex...</text>
+
+    <rect x="8" y="176" width="4" height="12" fill="#ef4444" rx="1"/>
+    <text x="20" y="186" fill="#9ca3af" font-family="monospace" font-size="10">9</text>
+    <text x="50" y="186" fill="#c084fc" font-family="monospace" font-size="10">return</text>
+    <text x="95" y="186" fill="#e2e8f0" font-family="monospace" font-size="10">a / b;</text>
+
+    <rect x="8" y="192" width="4" height="12" fill="#ef4444" rx="1"/>
+    <text x="20" y="202" fill="#9ca3af" font-family="monospace" font-size="10">10</text>
+    <text x="40" y="202" fill="#9ca3af" font-family="monospace" font-size="10">}</text>
+
+    <!-- Legend -->
+    <g transform="translate(50, 230)">
+      <rect x="0" y="0" width="12" height="12" fill="#22c55e" rx="2"/>
+      <text x="18" y="10" fill="#6b7280" font-family="system-ui" font-size="9">Tested</text>
+      <rect x="70" y="0" width="12" height="12" fill="#ef4444" rx="2"/>
+      <text x="88" y="10" fill="#6b7280" font-family="system-ui" font-size="9">Untested</text>
+    </g>
+  </g>
+
+  <!-- Center: Coverage Gauge -->
+  <g transform="translate(600, 280)">
+    <!-- Circular gauge background -->
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#374151" stroke-width="20"/>
+
+    <!-- Coverage arc (showing ~67% coverage) -->
+    <circle cx="0" cy="0" r="100" fill="none" stroke="url(#gauge-fill)" stroke-width="20"
+            stroke-dasharray="280 440" stroke-linecap="round"
+            transform="rotate(-90)"/>
+
+    <!-- Inner circle -->
+    <circle cx="0" cy="0" r="75" fill="#1f2937"/>
+
+    <!-- Percentage text -->
+    <text x="0" y="-10" text-anchor="middle" fill="#e2e8f0" font-family="system-ui" font-size="42" font-weight="bold">67%</text>
+    <text x="0" y="15" text-anchor="middle" fill="#9ca3af" font-family="system-ui" font-size="14">Coverage</text>
+
+    <!-- Trend arrow (up) -->
+    <g transform="translate(0, 40)">
+      <polygon points="0,-12 8,0 -8,0" fill="#22c55e"/>
+      <text x="15" y="4" fill="#22c55e" font-family="system-ui" font-size="12" font-weight="bold">+5%</text>
+    </g>
+  </g>
+
+  <!-- Right: PR Comment Mock -->
+  <g transform="translate(870, 160)">
+    <!-- PR comment box -->
+    <rect x="0" y="0" width="260" height="280" rx="8" fill="url(#pr-grad)" stroke="#374151" stroke-width="2"/>
+
+    <!-- Header -->
+    <rect x="0" y="0" width="260" height="40" rx="8" fill="#374151"/>
+    <rect x="0" y="32" width="260" height="8" fill="#374151"/>
+
+    <!-- Codecov bot avatar -->
+    <circle cx="25" cy="20" r="12" fill="#f472b6"/>
+    <text x="25" y="24" text-anchor="middle" fill="white" font-family="system-ui" font-size="10" font-weight="bold">C</text>
+
+    <text x="45" y="18" fill="#e2e8f0" font-family="system-ui" font-size="11" font-weight="bold">codecov[bot]</text>
+    <text x="45" y="30" fill="#6b7280" font-family="system-ui" font-size="9">commented just now</text>
+
+    <!-- Coverage report content -->
+    <text x="15" y="60" fill="#9ca3af" font-family="system-ui" font-size="10" font-weight="bold">Coverage Report</text>
+
+    <!-- Project coverage bar -->
+    <text x="15" y="85" fill="#6b7280" font-family="system-ui" font-size="9">Project</text>
+    <rect x="70" y="76" width="120" height="12" rx="3" fill="#374151"/>
+    <rect x="70" y="76" width="80" height="12" rx="3" fill="#22c55e"/>
+    <text x="200" y="86" fill="#22c55e" font-family="system-ui" font-size="10" font-weight="bold">67%</text>
+
+    <!-- Patch coverage bar -->
+    <text x="15" y="108" fill="#6b7280" font-family="system-ui" font-size="9">Patch</text>
+    <rect x="70" y="99" width="120" height="12" rx="3" fill="#374151"/>
+    <rect x="70" y="99" width="108" height="12" rx="3" fill="#22c55e"/>
+    <text x="200" y="109" fill="#22c55e" font-family="system-ui" font-size="10" font-weight="bold">90%</text>
+
+    <!-- Divider -->
+    <line x1="15" y1="125" x2="245" y2="125" stroke="#374151" stroke-width="1"/>
+
+    <!-- Files changed -->
+    <text x="15" y="145" fill="#9ca3af" font-family="system-ui" font-size="10" font-weight="bold">Files Changed</text>
+
+    <!-- File 1 - improved -->
+    <rect x="15" y="155" width="230" height="24" rx="4" fill="#1a2e1a"/>
+    <text x="25" y="170" fill="#22c55e" font-family="monospace" font-size="9">Calculator.cs</text>
+    <text x="200" y="170" fill="#22c55e" font-family="system-ui" font-size="9" font-weight="bold">+15%</text>
+
+    <!-- File 2 - declined -->
+    <rect x="15" y="183" width="230" height="24" rx="4" fill="#2e1a1a"/>
+    <text x="25" y="198" fill="#f87171" font-family="monospace" font-size="9">UserService.cs</text>
+    <text x="200" y="198" fill="#f87171" font-family="system-ui" font-size="9" font-weight="bold">-3%</text>
+
+    <!-- File 3 - new -->
+    <rect x="15" y="211" width="230" height="24" rx="4" fill="#1a1a2e"/>
+    <text x="25" y="226" fill="#60a5fa" font-family="monospace" font-size="9">Validator.cs</text>
+    <text x="195" y="226" fill="#60a5fa" font-family="system-ui" font-size="9" font-weight="bold">new</text>
+
+    <!-- Status check -->
+    <g transform="translate(15, 250)">
+      <circle cx="8" cy="0" r="8" fill="#166534"/>
+      <path d="M4 0 L7 3 L12 -3" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="22" y="4" fill="#22c55e" font-family="system-ui" font-size="10">All checks passed</text>
+    </g>
+  </g>
+
+  <!-- Flow arrows -->
+  <!-- Code to Gauge -->
+  <g transform="translate(400, 300)">
+    <line x1="0" y1="0" x2="80" y2="0" stroke="#8b5cf6" stroke-width="3"/>
+    <polygon points="80,-6 95,0 80,6" fill="#8b5cf6"/>
+    <text x="40" y="-12" text-anchor="middle" fill="#6b7280" font-family="system-ui" font-size="10">Tests Run</text>
+  </g>
+
+  <!-- Gauge to PR -->
+  <g transform="translate(720, 300)">
+    <line x1="0" y1="0" x2="80" y2="0" stroke="#8b5cf6" stroke-width="3"/>
+    <polygon points="80,-6 95,0 80,6" fill="#8b5cf6"/>
+    <text x="40" y="-12" text-anchor="middle" fill="#6b7280" font-family="system-ui" font-size="10">Upload</text>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="55" text-anchor="middle" fill="#e2e8f0" font-family="system-ui" font-size="24" font-weight="bold">
+    Code Coverage: See What Your Tests Actually Test
+  </text>
+
+  <!-- Subtitle -->
+  <text x="600" y="85" text-anchor="middle" fill="#6b7280" font-family="system-ui" font-size="14">
+    Codecov tracks coverage on every PR
+  </text>
+
+  <!-- Bottom tagline -->
+  <text x="600" y="580" text-anchor="middle" fill="#64748b" font-family="system-ui" font-size="14">
+    Line Coverage • Branch Coverage • PR Comments • Trend Tracking
+  </text>
+</svg>

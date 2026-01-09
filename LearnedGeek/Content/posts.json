@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "codecov-setup-guide",
+      "title": "Code Coverage Without the Crying: A Practical Guide to Codecov",
+      "description": "Your test suite exists. It passes. But how much of your code does it actually test? Here's how to set up Codecov and stop living in denial.",
+      "category": "Computers",
+      "tags": ["codecov", "testing", "dotnet", "github-actions", "ci-cd", "code-coverage"],
+      "date": "2026-01-07",
+      "featured": true,
+      "image": "/img/posts/codecov-setup-guide.svg"
+    },
+    {
       "slug": "discord-tldrkseid-ai-summarization-bot",
       "title": "TLDRkseid: Building a Discord Bot That Summarizes Chaos",
       "description": "I built a Discord bot to summarize hundreds of messages using OpenAI - then discovered that all Discord bots run as a single instance serving every server. Here's the journey.",

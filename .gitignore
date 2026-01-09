@@ -453,3 +453,6 @@ $RECYCLE.BIN/
 
 # Claude Code settings
 .claude/
+
+# Blog post drafts
+LearnedGeek/Content/posts/ideas/
