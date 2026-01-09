@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="card-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#f8fafc"/>
+    </linearGradient>
+    <linearGradient id="code-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1f2937"/>
+      <stop offset="100%" style="stop-color:#111827"/>
+    </linearGradient>
+    <linearGradient id="google-blue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4285f4"/>
+      <stop offset="100%" style="stop-color:#1a73e8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid -->
+  <g stroke="#334155" stroke-width="0.5" opacity="0.2">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="473" x2="1200" y2="473"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+
+  <!-- Left side: Search Result Card -->
+  <g transform="translate(80, 120)" filter="url(#shadow)">
+    <!-- Card background -->
+    <rect x="0" y="0" width="420" height="200" rx="8" fill="url(#card-bg)"/>
+
+    <!-- Search bar at top -->
+    <rect x="20" y="20" width="380" height="36" rx="18" fill="#f1f3f4" stroke="#dfe1e5" stroke-width="1"/>
+    <circle cx="48" cy="38" r="10" fill="none" stroke="#9aa0a6" stroke-width="2"/>
+    <line x1="55" y1="45" x2="62" y2="52" stroke="#9aa0a6" stroke-width="2" stroke-linecap="round"/>
+    <text x="75" y="43" fill="#5f6368" font-family="Arial, sans-serif" font-size="13">how to optimize seo</text>
+
+    <!-- Search result -->
+    <g transform="translate(20, 75)">
+      <!-- URL breadcrumb -->
+      <text fill="#202124" font-family="Arial, sans-serif" font-size="12">
+        <tspan fill="#1a0dab">learnedgeek.com</tspan>
+        <tspan fill="#5f6368"> › Blog › Post</tspan>
+      </text>
+
+      <!-- Title (blue link) -->
+      <text y="24" fill="#1a0dab" font-family="Arial, sans-serif" font-size="18" font-weight="400">
+        SEO Demystified: How to Stop Being...
+      </text>
+
+      <!-- Description -->
+      <text y="48" fill="#4d5156" font-family="Arial, sans-serif" font-size="13">
+        <tspan x="0">What actually matters for SEO, explained</tspan>
+        <tspan x="0" dy="16">for developers who'd rather write code...</tspan>
+      </text>
+
+      <!-- Rich result indicator -->
+      <g transform="translate(0, 90)">
+        <rect x="0" y="0" width="60" height="20" rx="3" fill="#e8f0fe"/>
+        <text x="30" y="14" text-anchor="middle" fill="#1967d2" font-family="Arial, sans-serif" font-size="10" font-weight="500">Article</text>
+        <text x="70" y="14" fill="#70757a" font-family="Arial, sans-serif" font-size="11">Jan 12, 2026</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Center: Meta tags code window -->
+  <g transform="translate(540, 80)">
+    <!-- Code window -->
+    <rect x="0" y="0" width="320" height="280" rx="8" fill="url(#code-bg)" stroke="#374151" stroke-width="2" filter="url(#shadow)"/>
+    <!-- Window title bar -->
+    <rect x="0" y="0" width="320" height="28" rx="8" fill="#374151"/>
+    <rect x="0" y="20" width="320" height="8" fill="#374151"/>
+    <!-- Window controls -->
+    <circle cx="16" cy="14" r="5" fill="#ef4444"/>
+    <circle cx="34" cy="14" r="5" fill="#f59e0b"/>
+    <circle cx="52" cy="14" r="5" fill="#22c55e"/>
+    <!-- Filename -->
+    <text x="160" y="18" text-anchor="middle" fill="#9ca3af" font-family="monospace" font-size="10">&lt;head&gt; meta tags</text>
+
+    <!-- Code content -->
+    <g transform="translate(15, 45)" font-family="monospace" font-size="10">
+      <!-- Title tag -->
+      <text y="0" fill="#9ca3af">&lt;</text>
+      <text y="0" x="6" fill="#f472b6">title</text>
+      <text y="0" x="32" fill="#9ca3af">&gt;</text>
+      <text y="12" x="10" fill="#a5f3fc">SEO Demystified...</text>
+      <text y="24" fill="#9ca3af">&lt;/</text>
+      <text y="24" x="12" fill="#f472b6">title</text>
+      <text y="24" x="38" fill="#9ca3af">&gt;</text>
+
+      <!-- Meta description -->
+      <text y="44" fill="#9ca3af">&lt;</text>
+      <text y="44" x="6" fill="#f472b6">meta</text>
+      <text y="44" x="32" fill="#fbbf24">name</text>
+      <text y="44" x="56" fill="#9ca3af">=</text>
+      <text y="44" x="62" fill="#a5f3fc">"description"</text>
+      <text y="56" x="10" fill="#fbbf24">content</text>
+      <text y="56" x="52" fill="#9ca3af">=</text>
+      <text y="56" x="58" fill="#a5f3fc">"What actually..."</text>
+      <text y="68" fill="#9ca3af">/&gt;</text>
+
+      <!-- OG tags -->
+      <text y="88" fill="#9ca3af">&lt;</text>
+      <text y="88" x="6" fill="#f472b6">meta</text>
+      <text y="88" x="32" fill="#fbbf24">property</text>
+      <text y="88" x="74" fill="#9ca3af">=</text>
+      <text y="88" x="80" fill="#a5f3fc">"og:title"</text>
+      <text y="100" x="10" fill="#fbbf24">content</text>
+      <text y="100" x="52" fill="#9ca3af">=</text>
+      <text y="100" x="58" fill="#a5f3fc">"..."</text>
+      <text y="100" x="78" fill="#9ca3af">/&gt;</text>
+
+      <text y="120" fill="#9ca3af">&lt;</text>
+      <text y="120" x="6" fill="#f472b6">meta</text>
+      <text y="120" x="32" fill="#fbbf24">property</text>
+      <text y="120" x="74" fill="#9ca3af">=</text>
+      <text y="120" x="80" fill="#a5f3fc">"og:image"</text>
+      <text y="132" x="10" fill="#fbbf24">content</text>
+      <text y="132" x="52" fill="#9ca3af">=</text>
+      <text y="132" x="58" fill="#a5f3fc">"..."</text>
+      <text y="132" x="78" fill="#9ca3af">/&gt;</text>
+
+      <!-- JSON-LD hint -->
+      <text y="156" fill="#9ca3af">&lt;</text>
+      <text y="156" x="6" fill="#f472b6">script</text>
+      <text y="156" x="42" fill="#fbbf24">type</text>
+      <text y="156" x="66" fill="#9ca3af">=</text>
+      <text y="156" x="72" fill="#a5f3fc">"application/</text>
+      <text y="168" x="20" fill="#a5f3fc">ld+json"</text>
+      <text y="168" x="72" fill="#9ca3af">&gt;</text>
+      <text y="180" x="10" fill="#9ca3af">{...}</text>
+      <text y="192" fill="#9ca3af">&lt;/</text>
+      <text y="192" x="12" fill="#f472b6">script</text>
+      <text y="192" x="48" fill="#9ca3af">&gt;</text>
+    </g>
+  </g>
+
+  <!-- Right side: Icons/concepts -->
+  <g transform="translate(920, 140)">
+    <!-- Sitemap icon -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="180" height="70" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="15" y="25" fill="#94a3b8" font-family="monospace" font-size="11">sitemap.xml</text>
+      <!-- Mini sitemap tree -->
+      <circle cx="30" cy="50" r="6" fill="#22c55e"/>
+      <line x1="36" y1="50" x2="55" y2="40" stroke="#22c55e" stroke-width="2"/>
+      <line x1="36" y1="50" x2="55" y2="50" stroke="#22c55e" stroke-width="2"/>
+      <line x1="36" y1="50" x2="55" y2="60" stroke="#22c55e" stroke-width="2"/>
+      <circle cx="60" cy="40" r="4" fill="#4ade80"/>
+      <circle cx="60" cy="50" r="4" fill="#4ade80"/>
+      <circle cx="60" cy="60" r="4" fill="#4ade80"/>
+      <text x="80" y="53" fill="#6b7280" font-family="Arial" font-size="9">URL index</text>
+    </g>
+
+    <!-- robots.txt icon -->
+    <g transform="translate(0, 90)">
+      <rect x="0" y="0" width="180" height="70" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="15" y="25" fill="#94a3b8" font-family="monospace" font-size="11">robots.txt</text>
+      <!-- Robot face -->
+      <rect x="25" y="38" width="24" height="20" rx="3" fill="#60a5fa"/>
+      <rect x="28" y="43" width="6" height="6" rx="1" fill="#1e293b"/>
+      <rect x="40" y="43" width="6" height="6" rx="1" fill="#1e293b"/>
+      <rect x="32" y="52" width="10" height="3" rx="1" fill="#1e293b"/>
+      <text x="65" y="53" fill="#6b7280" font-family="Arial" font-size="9">Crawler rules</text>
+    </g>
+
+    <!-- Structured data icon -->
+    <g transform="translate(0, 180)">
+      <rect x="0" y="0" width="180" height="70" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="15" y="25" fill="#94a3b8" font-family="monospace" font-size="11">JSON-LD</text>
+      <!-- JSON brackets with schema -->
+      <text x="20" y="50" fill="#fbbf24" font-family="monospace" font-size="14">{</text>
+      <text x="32" y="50" fill="#a5f3fc" font-family="monospace" font-size="10">"@type":</text>
+      <text x="80" y="50" fill="#f472b6" font-family="monospace" font-size="10">"Article"</text>
+      <text x="130" y="50" fill="#fbbf24" font-family="monospace" font-size="14">}</text>
+      <text x="60" y="65" fill="#6b7280" font-family="Arial" font-size="9">Rich results</text>
+    </g>
+  </g>
+
+  <!-- Connecting arrows -->
+  <g stroke="#4ade80" stroke-width="2" fill="none" opacity="0.6">
+    <!-- Code to search result -->
+    <path d="M 540 220 Q 480 220 480 180 Q 480 140 500 140" marker-end="url(#arrowhead)"/>
+    <!-- Code to sitemap -->
+    <path d="M 860 180 Q 890 180 890 175 Q 890 170 920 170"/>
+  </g>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4ade80"/>
+    </marker>
+  </defs>
+
+  <!-- Bottom labels -->
+  <g transform="translate(0, 500)">
+    <text x="290" y="40" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="14" font-weight="500">Search Result</text>
+    <text x="290" y="58" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="11">What users see</text>
+
+    <text x="700" y="40" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="14" font-weight="500">Meta Tags</text>
+    <text x="700" y="58" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="11">What you control</text>
+
+    <text x="1010" y="40" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="14" font-weight="500">Discovery</text>
+    <text x="1010" y="58" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="11">How crawlers find you</text>
+  </g>
+
+  <!-- Title text -->
+  <text x="600" y="45" text-anchor="middle" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="11" font-weight="600" letter-spacing="3" opacity="0.7">SEO DEMYSTIFIED</text>
+</svg>

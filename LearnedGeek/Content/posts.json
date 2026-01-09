@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "seo-demystified",
+      "title": "SEO Demystified: How to Stop Being Invisible to Google",
+      "description": "You built a beautiful site but Google can't find it. Here's what actually matters for SEO—meta tags, structured data, sitemaps—explained for developers who'd rather write code than read marketing blogs.",
+      "category": "Computers",
+      "tags": ["seo", "meta-tags", "open-graph", "json-ld", "sitemap", "aspnet-core"],
+      "date": "2026-01-12",
+      "featured": true,
+      "image": "/img/posts/seo-demystified.svg"
+    },
+    {
       "slug": "how-this-blog-works",
       "title": "How This Blog Works: From Markdown to Web Pages",
       "description": "No database, no CMS, no admin panel. Just Markdown files, a JSON registry, and a thin C# service. Here's exactly how this blog turns plain text into the page you're reading.",
