@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "how-this-blog-works",
+      "title": "How This Blog Works: From Markdown to Web Pages",
+      "description": "No database, no CMS, no admin panel. Just Markdown files, a JSON registry, and a thin C# service. Here's exactly how this blog turns plain text into the page you're reading.",
+      "category": "Computers",
+      "tags": ["blog", "markdown", "aspnet-core", "architecture", "markdig", "csharp"],
+      "date": "2026-01-11",
+      "featured": true,
+      "image": "/img/posts/how-this-blog-works.svg"
+    },
+    {
       "slug": "dotnet-localization-language-switcher",
       "title": "Building a Language Switcher That Actually Remembers: .NET Localization Part 2",
       "description": "Your translations work, but users have to dig through browser settings to change languages. Let's build a dropdown that remembers their choice with cookies.",
