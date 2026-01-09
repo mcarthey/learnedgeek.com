@@ -154,7 +154,7 @@ No admin panel. No login. Just files and Git.
 This approach isn't for everyone. If you need:
 
 - Multiple authors with different permissions - use a CMS
-- Comments stored locally - use a database (I use [Giscus](https://giscus.app/) for GitHub-based comments)
+- Comments stored locally - use a database (I use [Giscus](https://learnedgeek.com/Blog/Post/adding-comments-with-giscus) for GitHub-based comments)
 - Full-text search - you'll need to build that (or use client-side search)
 - Thousands of posts - the flat file approach might slow down
 

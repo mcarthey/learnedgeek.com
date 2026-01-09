@@ -5,10 +5,16 @@
     var selectedCategory = ViewBag.SelectedCategory as Category?;
     var selectedYear = ViewBag.SelectedYear as int?;
     var selectedMonth = ViewBag.SelectedMonth as int?;
+    var selectedTag = ViewBag.SelectedTag as string;
     var categories = Enum.GetValues<Category>();
 
     // Use all posts for sidebar (so it always shows complete archive)
     var allPosts = ViewBag.AllPosts as IEnumerable<BlogPost> ?? Model;
+
+    // Tag counts for sidebar tag cloud
+    var tagCounts = ViewBag.TagCounts as Dictionary<string, int> ?? new Dictionary<string, int>();
+    var maxTagCount = tagCounts.Any() ? tagCounts.Values.Max() : 1;
+    var minTagCount = tagCounts.Any() ? tagCounts.Values.Min() : 1;
 
     // Compute archives from all posts
     var archives = allPosts
@@ -72,6 +78,27 @@
         </div>
     </section>
 
+    <!-- Search Bar -->
+    <section class="py-6 border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="relative max-w-xl">
+                <input type="text"
+                       id="blog-search"
+                       placeholder="Search posts by title, description, or tags..."
+                       class="w-full px-4 py-3 pr-10 text-sm border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none focus:border-neutral-400 dark:focus:border-neutral-500 transition-colors" />
+                <button id="search-clear"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 dark:text-neutral-500 hover:text-neutral-600 dark:hover:text-neutral-300 hidden transition-colors"
+                        type="button"
+                        aria-label="Clear search">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <p id="search-results-count" class="mt-2 text-sm text-neutral-500 dark:text-neutral-400 hidden"></p>
+        </div>
+    </section>
+
     <!-- Main Content with Sidebar -->
     <section class="py-16 lg:py-24">
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
@@ -96,17 +123,47 @@
                     </a>
                 </div>
             }
+            @if (!string.IsNullOrEmpty(selectedTag))
+            {
+                <div class="mb-8 p-4 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-between transition-colors">
+                    <span class="text-sm text-neutral-600 dark:text-neutral-300">
+                        Showing posts tagged
+                        <span class="font-medium text-neutral-900 dark:text-white">"@selectedTag"</span>
+                    </span>
+                    <a asp-action="Index" class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                        Clear filter &times;
+                    </a>
+                </div>
+            }
 
             <div class="flex flex-col lg:flex-row gap-12 lg:gap-16">
                 <!-- Posts Grid (Main Content) -->
                 <div class="lg:flex-1 min-w-0">
                     @if (Model.Any())
                     {
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="posts-grid">
                             @foreach (var post in Model)
                             {
-                                <partial name="_PostCard" model="post" />
+                                <div class="post-card"
+                                     data-title="@post.Title.ToLowerInvariant()"
+                                     data-description="@post.Description.ToLowerInvariant()"
+                                     data-tags="@string.Join(" ", post.Tags).ToLowerInvariant()">
+                                    <partial name="_PostCard" model="post" />
+                                </div>
                             }
+                        </div>
+
+                        <!-- No search results message -->
+                        <div id="no-search-results" class="hidden text-center py-24">
+                            <div class="inline-flex items-center justify-center h-16 w-16 border border-neutral-200 dark:border-neutral-700 mb-6">
+                                <svg class="h-6 w-6 text-neutral-400 dark:text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-neutral-900 dark:text-white mb-2">No posts found</h3>
+                            <p class="text-neutral-500 dark:text-neutral-400 max-w-md mx-auto">
+                                Try adjusting your search terms or <a href="#" id="clear-search-link" class="underline hover:no-underline">clear the search</a>.
+                            </p>
                         </div>
                     }
                     else
@@ -207,6 +264,37 @@
                                 }
                             </ul>
                         </div>
+
+                        <!-- Tags Cloud -->
+                        @if (tagCounts.Any())
+                        {
+                            var topTags = tagCounts.OrderByDescending(t => t.Value).Take(15).ToList();
+                            var topMaxCount = topTags.Any() ? topTags.Max(t => t.Value) : 1;
+                            var topMinCount = topTags.Any() ? topTags.Min(t => t.Value) : 1;
+
+                            <div>
+                                <h3 class="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
+                                    Popular Tags
+                                </h3>
+                                <div class="flex flex-wrap gap-2">
+                                    @foreach (var tag in topTags)
+                                    {
+                                        var range = topMaxCount - topMinCount;
+                                        var normalized = range > 0 ? (double)(tag.Value - topMinCount) / range : 0.5;
+                                        var fontSize = 0.75 + (normalized * 0.5);
+                                        var isActive = selectedTag?.Equals(tag.Key, StringComparison.OrdinalIgnoreCase) == true;
+
+                                        <a asp-action="Index"
+                                           asp-route-tag="@tag.Key"
+                                           class="transition-colors @(isActive ? "text-neutral-900 dark:text-white font-medium" : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white")"
+                                           style="font-size: @(fontSize.ToString("F2", System.Globalization.CultureInfo.InvariantCulture))rem"
+                                           title="@tag.Value post@(tag.Value != 1 ? "s" : "")">
+                                            @tag.Key
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                        }
                     </div>
                 </aside>
             </div>

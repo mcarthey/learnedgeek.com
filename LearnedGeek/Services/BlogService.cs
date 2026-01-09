@@ -88,6 +88,25 @@ public class BlogService : IBlogService
             .OrderByDescending(p => p.Date);
     }
 
+    public async Task<Dictionary<string, int>> GetTagCountsAsync()
+    {
+        var posts = await LoadPostsMetadataAsync();
+        return posts
+            .Where(p => p.Date.Date <= DateTime.Today)
+            .SelectMany(p => p.Tags)
+            .GroupBy(t => t.ToLowerInvariant())
+            .ToDictionary(g => g.First(), g => g.Count());
+    }
+
+    public async Task<IEnumerable<BlogPost>> GetPostsByTagAsync(string tag)
+    {
+        var posts = await LoadPostsMetadataAsync();
+        return posts
+            .Where(p => p.Date.Date <= DateTime.Today &&
+                        p.Tags.Any(t => t.Equals(tag, StringComparison.OrdinalIgnoreCase)))
+            .OrderByDescending(p => p.Date);
+    }
+
     private class PostsContainer
     {
         public List<BlogPost> Posts { get; set; } = [];
