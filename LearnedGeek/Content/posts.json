@@ -1,6 +1,26 @@
 {
   "posts": [
     {
+      "slug": "dotnet-localization-language-switcher",
+      "title": "Building a Language Switcher That Actually Remembers: .NET Localization Part 2",
+      "description": "Your translations work, but users have to dig through browser settings to change languages. Let's build a dropdown that remembers their choice with cookies.",
+      "category": "Computers",
+      "tags": ["dotnet", "localization", "aspnet-core", "cookies", "i18n", "csharp"],
+      "date": "2026-01-09",
+      "featured": true,
+      "image": "/img/posts/dotnet-localization-language-switcher.svg"
+    },
+    {
+      "slug": "dotnet-localization-resource-files",
+      "title": "The Case of the Missing Translations: Why Your .NET App Ignores Your Resource Files",
+      "description": "You set up localization, created the .resx files, it compiled... and then nothing happened. Here's why .NET silently ignores your translations and how to fix it.",
+      "category": "Computers",
+      "tags": ["dotnet", "localization", "aspnet-core", "resx", "i18n", "debugging"],
+      "date": "2026-01-08",
+      "featured": true,
+      "image": "/img/posts/dotnet-localization-resource-files.svg"
+    },
+    {
       "slug": "codecov-setup-guide",
       "title": "Code Coverage Without the Crying: A Practical Guide to Codecov",
       "description": "Your test suite exists. It passes. But how much of your code does it actually test? Here's how to set up Codecov and stop living in denial.",

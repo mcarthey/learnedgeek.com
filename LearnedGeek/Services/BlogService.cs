@@ -47,14 +47,16 @@ public class BlogService : IBlogService
     public async Task<IEnumerable<BlogPost>> GetAllPostsAsync()
     {
         var posts = await LoadPostsMetadataAsync();
-        return posts.OrderByDescending(p => p.Date);
+        return posts
+            .Where(p => p.Date.Date <= DateTime.Today)
+            .OrderByDescending(p => p.Date);
     }
 
     public async Task<IEnumerable<BlogPost>> GetPostsByCategoryAsync(Category category)
     {
         var posts = await LoadPostsMetadataAsync();
         return posts
-            .Where(p => p.Category == category)
+            .Where(p => p.Category == category && p.Date.Date <= DateTime.Today)
             .OrderByDescending(p => p.Date);
     }
 
@@ -82,7 +84,7 @@ public class BlogService : IBlogService
     {
         var posts = await LoadPostsMetadataAsync();
         return posts
-            .Where(p => p.Featured)
+            .Where(p => p.Featured && p.Date.Date <= DateTime.Today)
             .OrderByDescending(p => p.Date);
     }
 
