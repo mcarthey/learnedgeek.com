@@ -12,12 +12,12 @@
     };
 }
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-neutral-200">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800 transition-colors">
     <nav class="max-w-6xl mx-auto px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
             <a asp-controller="Home" asp-action="Index" class="flex items-center">
                 <partial name="_Logo" view-data='@(new ViewDataDictionary(ViewData) { { "class", "h-8" } })' />
-                <span class="ml-3 font-semibold text-neutral-900 tracking-tight">
+                <span class="ml-3 font-semibold text-neutral-900 dark:text-white tracking-tight">
                     Learned Geek
                 </span>
             </a>
@@ -29,35 +29,88 @@
                     var isActive = currentController.Equals(controller, StringComparison.OrdinalIgnoreCase)
                                    && currentAction.Equals(action, StringComparison.OrdinalIgnoreCase);
                     <a asp-controller="@controller" asp-action="@action"
-                       class="text-sm font-medium transition-colors duration-200 @(isActive ? "text-neutral-900" : "text-neutral-500 hover:text-neutral-900")">
+                       class="text-sm font-medium transition-colors duration-200 @(isActive ? "text-neutral-900 dark:text-white" : "text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white")">
                         @name
                     </a>
                 }
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle"
+                        type="button"
+                        class="p-2 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors"
+                        aria-label="Toggle dark mode">
+                    <!-- Sun icon (shown in dark mode) -->
+                    <span id="theme-icon-sun" class="hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <path d="M12 2v2"></path>
+                            <path d="M12 20v2"></path>
+                            <path d="m4.93 4.93 1.41 1.41"></path>
+                            <path d="m17.66 17.66 1.41 1.41"></path>
+                            <path d="M2 12h2"></path>
+                            <path d="M20 12h2"></path>
+                            <path d="m6.34 17.66-1.41 1.41"></path>
+                            <path d="m19.07 4.93-1.41 1.41"></path>
+                        </svg>
+                    </span>
+                    <!-- Moon icon (shown in light mode) -->
+                    <span id="theme-icon-moon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                        </svg>
+                    </span>
+                </button>
             </div>
 
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button"
-                    type="button"
-                    class="md:hidden p-2 text-neutral-600 hover:text-neutral-900"
-                    aria-expanded="false"
-                    aria-controls="mobile-menu">
-                <span id="menu-icon-open" class="block">
-                    <partial name="Icons/_Menu" />
-                </span>
-                <span id="menu-icon-close" class="hidden">
-                    <partial name="Icons/_X" />
-                </span>
-            </button>
+            <!-- Mobile Theme Toggle & Menu Button -->
+            <div class="flex items-center gap-2 md:hidden">
+                <button id="theme-toggle-mobile"
+                        type="button"
+                        class="p-2 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors"
+                        aria-label="Toggle dark mode">
+                    <!-- Sun icon (shown in dark mode) -->
+                    <span id="theme-icon-sun-mobile" class="hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <path d="M12 2v2"></path>
+                            <path d="M12 20v2"></path>
+                            <path d="m4.93 4.93 1.41 1.41"></path>
+                            <path d="m17.66 17.66 1.41 1.41"></path>
+                            <path d="M2 12h2"></path>
+                            <path d="M20 12h2"></path>
+                            <path d="m6.34 17.66-1.41 1.41"></path>
+                            <path d="m19.07 4.93-1.41 1.41"></path>
+                        </svg>
+                    </span>
+                    <!-- Moon icon (shown in light mode) -->
+                    <span id="theme-icon-moon-mobile">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                        </svg>
+                    </span>
+                </button>
+                <button id="mobile-menu-button"
+                        type="button"
+                        class="p-2 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors"
+                        aria-expanded="false"
+                        aria-controls="mobile-menu">
+                    <span id="menu-icon-open" class="block">
+                        <partial name="Icons/_Menu" />
+                    </span>
+                    <span id="menu-icon-close" class="hidden">
+                        <partial name="Icons/_X" />
+                    </span>
+                </button>
+            </div>
         </div>
 
         <!-- Mobile Navigation -->
-        <div id="mobile-menu" class="hidden md:hidden border-t border-neutral-100 py-4">
+        <div id="mobile-menu" class="hidden md:hidden border-t border-neutral-100 dark:border-neutral-800 py-4">
             @foreach (var (name, controller, action) in navItems)
             {
                 var isActive = currentController.Equals(controller, StringComparison.OrdinalIgnoreCase)
                                && currentAction.Equals(action, StringComparison.OrdinalIgnoreCase);
                 <a asp-controller="@controller" asp-action="@action"
-                   class="block py-3 text-sm font-medium transition-colors @(isActive ? "text-neutral-900" : "text-neutral-500 hover:text-neutral-900")">
+                   class="block py-3 text-sm font-medium transition-colors @(isActive ? "text-neutral-900 dark:text-white" : "text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white")">
                     @name
                 </a>
             }

@@ -17,28 +17,39 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Dark mode selection */
+  .dark ::selection {
+    background-color: #fff;
+    color: #000;
+  }
 }
 
 @layer components {
   .btn-primary {
     @apply inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors;
+    @apply dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200;
   }
 
   .btn-secondary {
     @apply inline-flex items-center gap-2 px-6 py-3 border border-neutral-300 text-neutral-900 text-sm font-medium hover:border-neutral-900 transition-colors;
+    @apply dark:border-neutral-600 dark:text-neutral-100 dark:hover:border-neutral-400;
   }
 
   .section-label {
     @apply text-xs font-semibold text-neutral-400 uppercase tracking-widest;
+    @apply dark:text-neutral-500;
   }
 
   .input-field {
     @apply w-full px-4 py-3 border border-neutral-300 focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900 focus:outline-none transition-colors;
+    @apply dark:bg-neutral-800 dark:border-neutral-600 dark:text-neutral-100 dark:focus:border-neutral-400 dark:focus:ring-neutral-400;
   }
 
   /* Blog prose code block styling */
   .prose pre {
     @apply bg-neutral-900 text-neutral-100 rounded-lg p-4 overflow-x-auto;
+    @apply dark:bg-neutral-800;
   }
 
   .prose pre code {
@@ -49,6 +60,7 @@
 
   .prose code {
     @apply text-sm bg-neutral-100 text-neutral-800 px-1.5 py-0.5 rounded font-mono;
+    @apply dark:bg-neutral-700 dark:text-neutral-200;
   }
 
   .prose code::before,

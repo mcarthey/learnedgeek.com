@@ -7,8 +7,17 @@
     <meta name="description" content="Learning by building. Solving problems across disciplines." />
     <link rel="icon" type="image/png" href="~/img/learned-geek-logo.png" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script>
+        // Prevent flash of wrong theme on page load
+        (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
 </head>
-<body class="min-h-screen flex flex-col bg-white">
+<body class="min-h-screen flex flex-col bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 transition-colors">
     <partial name="_Navigation" />
 
     <main class="flex-1 pt-16">

@@ -29,17 +29,17 @@
     };
 }
 
-<div class="bg-white">
+<div class="bg-white dark:bg-neutral-900 transition-colors">
     <!-- Header -->
-    <section class="py-24 lg:py-32 border-b border-neutral-200">
+    <section class="py-24 lg:py-32 border-b border-neutral-200 dark:border-neutral-700">
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
-            <span class="text-xs font-semibold text-neutral-400 uppercase tracking-widest">
+            <span class="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest">
                 Services
             </span>
-            <h1 class="mt-4 text-4xl md:text-5xl font-semibold text-neutral-900 leading-tight max-w-2xl">
+            <h1 class="mt-4 text-4xl md:text-5xl font-semibold text-neutral-900 dark:text-white leading-tight max-w-2xl">
                 How I can help
             </h1>
-            <p class="mt-6 text-lg text-neutral-600 max-w-xl">
+            <p class="mt-6 text-lg text-neutral-600 dark:text-neutral-300 max-w-xl">
                 Straightforward technical help for organizations and teams who
                 need thoughtful engineering and honest expertise.
             </p>
@@ -52,26 +52,26 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 @foreach (var service in services)
                 {
-                    <div class="group p-8 lg:p-10 border border-neutral-200 hover:border-neutral-400 transition-colors">
-                        <div class="h-12 w-12 border border-neutral-300 flex items-center justify-center mb-6 group-hover:border-neutral-900 transition-colors">
-                            <span class="text-neutral-600 group-hover:text-neutral-900 transition-colors">
+                    <div class="group p-8 lg:p-10 border border-neutral-200 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors">
+                        <div class="h-12 w-12 border border-neutral-300 dark:border-neutral-600 flex items-center justify-center mb-6 group-hover:border-neutral-900 dark:group-hover:border-neutral-400 transition-colors">
+                            <span class="text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">
                                 <partial name="Icons/_@service.icon" />
                             </span>
                         </div>
 
-                        <h3 class="text-xl font-semibold text-neutral-900 mb-3">
+                        <h3 class="text-xl font-semibold text-neutral-900 dark:text-white mb-3">
                             @service.title
                         </h3>
 
-                        <p class="text-neutral-600 leading-relaxed mb-6">
+                        <p class="text-neutral-600 dark:text-neutral-300 leading-relaxed mb-6">
                             @service.description
                         </p>
 
                         <ul class="space-y-2">
                             @foreach (var point in service.points)
                             {
-                                <li class="flex items-center gap-3 text-sm text-neutral-500">
-                                    <span class="h-1 w-1 bg-neutral-400 rounded-full flex-shrink-0"></span>
+                                <li class="flex items-center gap-3 text-sm text-neutral-500 dark:text-neutral-400">
+                                    <span class="h-1 w-1 bg-neutral-400 dark:bg-neutral-500 rounded-full flex-shrink-0"></span>
                                     @point
                                 </li>
                             }
@@ -83,15 +83,15 @@
     </section>
 
     <!-- Approach -->
-    <section class="py-24 lg:py-32 bg-neutral-50 border-t border-neutral-200">
+    <section class="py-24 lg:py-32 bg-neutral-50 dark:bg-neutral-800 border-t border-neutral-200 dark:border-neutral-700 transition-colors">
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
                 <div>
-                    <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 leading-tight">
+                    <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-white leading-tight">
                         A straightforward approach
                     </h2>
                 </div>
-                <div class="space-y-6 text-neutral-600 leading-relaxed">
+                <div class="space-y-6 text-neutral-600 dark:text-neutral-300 leading-relaxed">
                     <p>
                         No unnecessary complexity. No buzzwords. Just honest assessment
                         of what's needed, clear communication about what's possible, and
@@ -114,16 +114,16 @@
     </section>
 
     <!-- CTA -->
-    <section class="py-24 lg:py-32 border-t border-neutral-200">
+    <section class="py-24 lg:py-32 border-t border-neutral-200 dark:border-neutral-700">
         <div class="max-w-6xl mx-auto px-6 lg:px-8 text-center">
-            <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 mb-4">
+            <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-white mb-4">
                 Let's talk about your project
             </h2>
-            <p class="text-neutral-600 mb-8 max-w-md mx-auto">
+            <p class="text-neutral-600 dark:text-neutral-300 mb-8 max-w-md mx-auto">
                 Whether it's a specific problem or a broader technical challenge,
                 I'm happy to discuss how I can help.
             </p>
-            <a asp-action="Contact" class="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors">
+            <a asp-action="Contact" class="btn-primary">
                 Get in Touch
                 <partial name="Icons/_ArrowRight" />
             </a>
