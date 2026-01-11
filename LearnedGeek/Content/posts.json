@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "when-your-discord-bot-stops-hearing",
+      "title": "When Your Discord Bot Stops Hearing: A Debugging Odyssey",
+      "description": "How I spent days debugging a silent Discord bot, only to discover the application itself was corrupted—and Discord gave zero indication anything was wrong.",
+      "category": "Computers",
+      "tags": ["discord", "discord-net", "debugging", "csharp", "dotnet"],
+      "date": "2026-01-13",
+      "featured": true,
+      "image": "/img/posts/when-your-discord-bot-stops-hearing.svg"
+    },
+    {
       "slug": "seo-demystified",
       "title": "SEO Demystified: How to Stop Being Invisible to Google",
       "description": "You built a beautiful site but Google can't find it. Here's what actually matters for SEO—meta tags, structured data, sitemaps—explained for developers who'd rather write code than read marketing blogs.",
