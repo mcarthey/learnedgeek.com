@@ -1,12 +1,22 @@
 {
   "posts": [
     {
+      "slug": "rss-feeds-and-social-automation",
+      "title": "RSS Feeds and Social Media Automation: Publishing Once, Sharing Everywhere",
+      "description": "You wrote a blog post. Now you need to share it on LinkedIn, Twitter, maybe a newsletter. Here's how to automate the boring part.",
+      "category": "Computers",
+      "tags": ["rss", "automation", "linkedin", "social-media", "zapier", "aspnet-core"],
+      "date": "2026-01-23",
+      "featured": true,
+      "image": "/img/posts/rss-feeds-and-social-automation.svg"
+    },
+    {
       "slug": "gdpr-cookie-consent-essential-only",
       "title": "GDPR Cookie Consent: The Essential-Only Shortcut",
       "description": "Most cookie banners are obnoxious because they're trying to get consent for tracking. If you're not tracking anyone, the whole thing gets simpler.",
       "category": "Computers",
       "tags": ["gdpr", "cookies", "privacy", "aspnet-core", "compliance", "web-development"],
-      "date": "2026-01-20",
+      "date": "2026-01-22",
       "featured": true,
       "image": "/img/posts/gdpr-cookie-consent-essential-only.svg"
     },
