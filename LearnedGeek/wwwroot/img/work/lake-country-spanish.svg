@@ -84,7 +84,7 @@
     <g transform="translate(20, 260)">
       <rect width="145" height="100" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
       <text x="15" y="25" fill="#1e3a5f" font-family="system-ui" font-size="11" font-weight="600">Trial Class</text>
-      <text x="15" y="50" fill="#e07a5f" font-family="Georgia, serif" font-size="22" font-weight="bold">$30</text>
+      <text x="15" y="50" fill="#6b7280" font-family="system-ui" font-size="10">Single session</text>
       <text x="15" y="70" fill="#6b7280" font-family="system-ui" font-size="9">Perfect to start</text>
       <rect x="15" y="78" width="60" height="16" rx="3" fill="url(#coral)"/>
       <text x="25" y="89" fill="#ffffff" font-family="system-ui" font-size="8">Book</text>
@@ -92,8 +92,7 @@
     <g transform="translate(175, 260)">
       <rect width="145" height="100" rx="6" fill="#1e3a5f" stroke="#1e3a5f" stroke-width="1"/>
       <text x="15" y="25" fill="#ffffff" font-family="system-ui" font-size="11" font-weight="600">Weekly</text>
-      <text x="15" y="50" fill="#d4a574" font-family="Georgia, serif" font-size="22" font-weight="bold">$25</text>
-      <text x="60" y="50" fill="#94a3b8" font-family="system-ui" font-size="10">/class</text>
+      <text x="15" y="50" fill="#d4a574" font-family="system-ui" font-size="10">1x per week</text>
       <text x="15" y="70" fill="#94a3b8" font-family="system-ui" font-size="9">Most popular</text>
       <rect x="15" y="78" width="60" height="16" rx="3" fill="url(#gold)"/>
       <text x="25" y="89" fill="#1e3a5f" font-family="system-ui" font-size="8">Book</text>
@@ -101,8 +100,7 @@
     <g transform="translate(330, 260)">
       <rect width="145" height="100" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
       <text x="15" y="25" fill="#1e3a5f" font-family="system-ui" font-size="11" font-weight="600">Twice Weekly</text>
-      <text x="15" y="50" fill="#e07a5f" font-family="Georgia, serif" font-size="22" font-weight="bold">$22</text>
-      <text x="60" y="50" fill="#6b7280" font-family="system-ui" font-size="10">/class</text>
+      <text x="15" y="50" fill="#6b7280" font-family="system-ui" font-size="10">2x per week</text>
       <text x="15" y="70" fill="#6b7280" font-family="system-ui" font-size="9">Better value</text>
       <rect x="15" y="78" width="60" height="16" rx="3" fill="url(#coral)"/>
       <text x="25" y="89" fill="#ffffff" font-family="system-ui" font-size="8">Book</text>
@@ -110,8 +108,7 @@
     <g transform="translate(485, 260)">
       <rect width="145" height="100" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
       <text x="15" y="25" fill="#1e3a5f" font-family="system-ui" font-size="11" font-weight="600">Intensive</text>
-      <text x="15" y="50" fill="#e07a5f" font-family="Georgia, serif" font-size="22" font-weight="bold">$20</text>
-      <text x="55" y="50" fill="#6b7280" font-family="system-ui" font-size="10">/class</text>
+      <text x="15" y="50" fill="#6b7280" font-family="system-ui" font-size="10">3x per week</text>
       <text x="15" y="70" fill="#6b7280" font-family="system-ui" font-size="9">Best value</text>
       <rect x="15" y="78" width="60" height="16" rx="3" fill="url(#coral)"/>
       <text x="25" y="89" fill="#ffffff" font-family="system-ui" font-size="8">Book</text>
