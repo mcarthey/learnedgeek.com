@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#f87171"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.03">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#fff" stroke-width="1"/>
+    </pattern>
+    <rect width="800" height="450" fill="url(#grid)"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="45" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" font-weight="bold">
+    Cookie Consent Simplified
+  </text>
+  <text x="400" y="70" font-family="Arial, sans-serif" font-size="13" fill="#888" text-anchor="middle">
+    Essential cookies only = simpler compliance
+  </text>
+
+  <!-- LEFT SIDE: Complex cookie banner (tracking) -->
+  <g transform="translate(60, 100)">
+    <text x="130" y="0" font-family="Arial, sans-serif" font-size="12" fill="#ef4444" text-anchor="middle" font-weight="bold">
+      WITH TRACKING
+    </text>
+
+    <!-- Browser window -->
+    <rect x="0" y="15" width="260" height="200" rx="8" fill="#2a2a4a" stroke="#3a3a5a" stroke-width="2"/>
+    <circle cx="18" cy="30" r="5" fill="#ff6b6b"/>
+    <circle cx="38" cy="30" r="5" fill="#feca57"/>
+    <circle cx="58" cy="30" r="5" fill="#48dbfb"/>
+
+    <!-- Content area (faded) -->
+    <rect x="15" y="50" width="230" height="80" rx="4" fill="#1a1a2e" opacity="0.5"/>
+    <rect x="25" y="60" width="150" height="8" rx="2" fill="#4a4a6a" opacity="0.4"/>
+    <rect x="25" y="75" width="200" height="8" rx="2" fill="#4a4a6a" opacity="0.4"/>
+    <rect x="25" y="90" width="120" height="8" rx="2" fill="#4a4a6a" opacity="0.4"/>
+    <rect x="25" y="105" width="180" height="8" rx="2" fill="#4a4a6a" opacity="0.4"/>
+
+    <!-- Cookie banner (obnoxious) -->
+    <rect x="10" y="135" width="240" height="75" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="130" y="155" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">
+      We use cookies for analytics, ads,
+    </text>
+    <text x="130" y="167" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">
+      tracking, social media, and more...
+    </text>
+
+    <!-- Buttons -->
+    <rect x="20" y="178" width="100" height="24" rx="4" fill="url(#greenGrad)"/>
+    <text x="70" y="194" font-family="Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">
+      Accept All
+    </text>
+    <rect x="130" y="178" width="50" height="24" rx="4" fill="none" stroke="#475569" stroke-width="1"/>
+    <text x="155" y="194" font-family="Arial, sans-serif" font-size="8" fill="#64748b" text-anchor="middle">
+      Reject
+    </text>
+    <rect x="188" y="178" width="55" height="24" rx="4" fill="none" stroke="#475569" stroke-width="1"/>
+    <text x="215" y="194" font-family="Arial, sans-serif" font-size="8" fill="#64748b" text-anchor="middle">
+      Manage
+    </text>
+
+    <!-- Cookie icons floating -->
+    <g opacity="0.6">
+      <circle cx="240" cy="70" r="12" fill="#f59e0b"/>
+      <circle cx="238" cy="67" r="2" fill="#92400e"/>
+      <circle cx="243" cy="73" r="2" fill="#92400e"/>
+      <circle cx="236" cy="74" r="1.5" fill="#92400e"/>
+    </g>
+    <g opacity="0.4">
+      <circle cx="30" cy="120" r="10" fill="#f59e0b"/>
+      <circle cx="28" cy="118" r="1.5" fill="#92400e"/>
+      <circle cx="33" cy="122" r="1.5" fill="#92400e"/>
+    </g>
+
+    <!-- X marks for problems -->
+    <g transform="translate(270, 60)">
+      <circle cx="0" cy="0" r="10" fill="#ef4444" opacity="0.2"/>
+      <text x="0" y="4" font-family="Arial, sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">✗</text>
+      <text x="20" y="4" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Dark patterns</text>
+    </g>
+    <g transform="translate(270, 85)">
+      <circle cx="0" cy="0" r="10" fill="#ef4444" opacity="0.2"/>
+      <text x="0" y="4" font-family="Arial, sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">✗</text>
+      <text x="20" y="4" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Legal risk</text>
+    </g>
+    <g transform="translate(270, 110)">
+      <circle cx="0" cy="0" r="10" fill="#ef4444" opacity="0.2"/>
+      <text x="0" y="4" font-family="Arial, sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">✗</text>
+      <text x="20" y="4" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Complex UX</text>
+    </g>
+  </g>
+
+  <!-- RIGHT SIDE: Simple cookie banner (essential only) -->
+  <g transform="translate(460, 100)">
+    <text x="130" y="0" font-family="Arial, sans-serif" font-size="12" fill="#10b981" text-anchor="middle" font-weight="bold">
+      ESSENTIAL ONLY
+    </text>
+
+    <!-- Browser window -->
+    <rect x="0" y="15" width="260" height="200" rx="8" fill="#2a2a4a" stroke="url(#greenGrad)" stroke-width="2"/>
+    <circle cx="18" cy="30" r="5" fill="#ff6b6b"/>
+    <circle cx="38" cy="30" r="5" fill="#feca57"/>
+    <circle cx="58" cy="30" r="5" fill="#48dbfb"/>
+
+    <!-- Content area (visible) -->
+    <rect x="15" y="50" width="230" height="80" rx="4" fill="#1a1a2e"/>
+    <rect x="25" y="60" width="150" height="8" rx="2" fill="#4a4a6a"/>
+    <rect x="25" y="75" width="200" height="8" rx="2" fill="#4a4a6a"/>
+    <rect x="25" y="90" width="120" height="8" rx="2" fill="#4a4a6a"/>
+    <rect x="25" y="105" width="180" height="8" rx="2" fill="#4a4a6a"/>
+
+    <!-- Cookie banner (simple) -->
+    <rect x="10" y="145" width="240" height="55" rx="6" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+    <text x="130" y="167" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0" text-anchor="middle">
+      We use essential cookies for login.
+    </text>
+    <text x="130" y="180" font-family="Arial, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">
+      No tracking. Learn more
+    </text>
+
+    <!-- Single button -->
+    <rect x="195" y="155" width="45" height="22" rx="4" fill="url(#greenGrad)"/>
+    <text x="217" y="170" font-family="Arial, sans-serif" font-size="9" fill="#fff" text-anchor="middle" font-weight="bold">
+      Got it
+    </text>
+
+    <!-- Single cookie icon -->
+    <g opacity="0.3">
+      <circle cx="30" cy="170" r="12" fill="#10b981"/>
+      <text x="30" y="175" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">🔒</text>
+    </g>
+
+    <!-- Check marks for benefits -->
+    <g transform="translate(270, 60)">
+      <circle cx="0" cy="0" r="10" fill="#10b981" opacity="0.2"/>
+      <text x="0" y="4" font-family="Arial, sans-serif" font-size="12" fill="#10b981" text-anchor="middle">✓</text>
+      <text x="20" y="4" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">No consent needed</text>
+    </g>
+    <g transform="translate(270, 85)">
+      <circle cx="0" cy="0" r="10" fill="#10b981" opacity="0.2"/>
+      <text x="0" y="4" font-family="Arial, sans-serif" font-size="12" fill="#10b981" text-anchor="middle">✓</text>
+      <text x="20" y="4" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">GDPR compliant</text>
+    </g>
+    <g transform="translate(270, 110)">
+      <circle cx="0" cy="0" r="10" fill="#10b981" opacity="0.2"/>
+      <text x="0" y="4" font-family="Arial, sans-serif" font-size="12" fill="#10b981" text-anchor="middle">✓</text>
+      <text x="20" y="4" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Simple UX</text>
+    </g>
+  </g>
+
+  <!-- Bottom: Cookie category table -->
+  <g transform="translate(150, 340)">
+    <rect x="0" y="0" width="500" height="90" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+
+    <!-- Headers -->
+    <text x="80" y="25" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle" font-weight="bold">TYPE</text>
+    <text x="220" y="25" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle" font-weight="bold">EXAMPLES</text>
+    <text x="400" y="25" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle" font-weight="bold">CONSENT?</text>
+
+    <line x1="20" y1="35" x2="480" y2="35" stroke="#334155" stroke-width="1"/>
+
+    <!-- Row 1: Essential -->
+    <text x="80" y="55" font-family="Arial, sans-serif" font-size="10" fill="#10b981" text-anchor="middle">Essential</text>
+    <text x="220" y="55" font-family="Arial, sans-serif" font-size="9" fill="#e2e8f0" text-anchor="middle">Auth, cart, CSRF</text>
+    <text x="400" y="55" font-family="Arial, sans-serif" font-size="10" fill="#10b981" text-anchor="middle" font-weight="bold">No</text>
+
+    <!-- Row 2: Tracking -->
+    <text x="80" y="75" font-family="Arial, sans-serif" font-size="10" fill="#ef4444" text-anchor="middle">Analytics/Ads</text>
+    <text x="220" y="75" font-family="Arial, sans-serif" font-size="9" fill="#e2e8f0" text-anchor="middle">GA, Facebook Pixel</text>
+    <text x="400" y="75" font-family="Arial, sans-serif" font-size="10" fill="#ef4444" text-anchor="middle" font-weight="bold">Yes</text>
+  </g>
+</svg>

@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "gdpr-cookie-consent-essential-only",
+      "title": "GDPR Cookie Consent: The Essential-Only Shortcut",
+      "description": "Most cookie banners are obnoxious because they're trying to get consent for tracking. If you're not tracking anyone, the whole thing gets simpler.",
+      "category": "Computers",
+      "tags": ["gdpr", "cookies", "privacy", "aspnet-core", "compliance", "web-development"],
+      "date": "2026-01-20",
+      "featured": true,
+      "image": "/img/posts/gdpr-cookie-consent-essential-only.svg"
+    },
+    {
       "slug": "testing-stripe-webhooks-with-cli",
       "title": "Testing Stripe Webhooks Without Tears: A Practical Guide to the Stripe CLI",
       "description": "Setting up payment processing is stressful enough without wondering if your webhooks actually work. Here's how to test them locally before real money is on the line.",
