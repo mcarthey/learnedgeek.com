@@ -6,11 +6,21 @@
       "description": "Setting up payment processing is stressful enough without wondering if your webhooks actually work. Here's how to test them locally before real money is on the line.",
       "category": "Computers",
       "tags": ["stripe", "webhooks", "aspnet-core", "dotnet", "testing", "payments", "cli"],
-      "date": "2026-01-16",
+      "date": "2026-01-19",
       "featured": true,
       "image": "/img/posts/testing-stripe-webhooks-with-cli.svg"
     },
     {
+      "slug": "google-search-console-setup",
+      "title": "Google Search Console: The Step I Forgot (And Why My Site Was Invisible)",
+      "description": "You implemented all the SEO best practices. Meta tags, structured data, sitemaps—the works. Then you searched for your site and found... nothing. Here's the step nobody mentions.",
+      "category": "Computers",
+      "tags": ["seo", "google", "search-console", "indexing", "webmaster-tools"],
+      "date": "2026-01-16",
+      "featured": true,
+      "image": "/img/posts/google-search-console-setup.svg"
+    },
+        {
       "slug": "adding-domains-to-certbot-cloudflare",
       "title": "Adding New Domains to Your Certbot + Cloudflare Setup",
       "description": "You set up SSL automation once and it worked great. Then you added a new domain and hit every gotcha you'd forgotten about. Here's the checklist.",
