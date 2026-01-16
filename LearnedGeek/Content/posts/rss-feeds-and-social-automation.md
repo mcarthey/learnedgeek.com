@@ -408,3 +408,5 @@ Was building custom LinkedIn integration worth it versus using Zapier? Probably 
 ---
 
 *The code for this integration lives in the LearnedGeek repository. The admin panel is hidden (no links, blocked by robots.txt) but fully functional.*
+
+*Meta note: This post was shared to LinkedIn approximately 47 times during testing. If you saw it appear and disappear repeatedly in your feed... now you know why.*
