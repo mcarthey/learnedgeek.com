@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using LearnedGeek.Models;
 using LearnedGeek.Services;
+using SkiaSharp;
+using Svg.Skia;
 
 namespace LearnedGeek.Controllers;
 
@@ -12,18 +14,21 @@ public class AdminController : Controller
     private readonly ILinkedInService _linkedInService;
     private readonly IBlogService _blogService;
     private readonly ILogger<AdminController> _logger;
+    private readonly IWebHostEnvironment _webHostEnvironment;
     private const string AdminCookieName = "lg_admin_auth";
 
     public AdminController(
         IOptions<AdminSettings> adminSettings,
         ILinkedInService linkedInService,
         IBlogService blogService,
-        ILogger<AdminController> logger)
+        ILogger<AdminController> logger,
+        IWebHostEnvironment webHostEnvironment)
     {
         _adminSettings = adminSettings.Value;
         _linkedInService = linkedInService;
         _blogService = blogService;
         _logger = logger;
+        _webHostEnvironment = webHostEnvironment;
     }
 
     private bool IsAuthorized()
@@ -233,7 +238,20 @@ public class AdminController : Controller
             ? $"{post.Title}\n\n{post.Description}"
             : commentary;
 
-        var result = await _linkedInService.SharePostAsync(text, articleUrl);
+        // Try to get the post's hero image
+        var imageData = await GetPostImageAsync(slug);
+
+        LinkedInPostResult result;
+        if (imageData != null)
+        {
+            _logger.LogInformation("Sharing post {Slug} with image to LinkedIn", slug);
+            result = await _linkedInService.SharePostWithImageAsync(text, articleUrl, imageData, "image/png");
+        }
+        else
+        {
+            _logger.LogInformation("Sharing post {Slug} without image to LinkedIn (no image found)", slug);
+            result = await _linkedInService.SharePostAsync(text, articleUrl);
+        }
 
         if (result.Success)
         {
@@ -244,5 +262,76 @@ public class AdminController : Controller
             success = result.Success,
             message = result.Success ? "Posted to LinkedIn!" : result.ErrorMessage
         });
+    }
+
+    private async Task<byte[]?> GetPostImageAsync(string slug)
+    {
+        var imagesPath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "posts");
+
+        // Check for PNG first
+        var pngPath = Path.Combine(imagesPath, $"{slug}.png");
+        if (System.IO.File.Exists(pngPath))
+        {
+            return await System.IO.File.ReadAllBytesAsync(pngPath);
+        }
+
+        // Check for JPG
+        var jpgPath = Path.Combine(imagesPath, $"{slug}.jpg");
+        if (System.IO.File.Exists(jpgPath))
+        {
+            // Convert to PNG for consistent handling
+            return await System.IO.File.ReadAllBytesAsync(jpgPath);
+        }
+
+        // Check for SVG and convert to PNG
+        var svgPath = Path.Combine(imagesPath, $"{slug}.svg");
+        if (System.IO.File.Exists(svgPath))
+        {
+            return ConvertSvgToPng(svgPath);
+        }
+
+        return null;
+    }
+
+    private byte[]? ConvertSvgToPng(string svgPath)
+    {
+        try
+        {
+            using var svg = new SKSvg();
+            svg.Load(svgPath);
+
+            if (svg.Picture == null)
+            {
+                _logger.LogWarning("Failed to load SVG from {Path}", svgPath);
+                return null;
+            }
+
+            var bounds = svg.Picture.CullRect;
+            var width = (int)bounds.Width;
+            var height = (int)bounds.Height;
+
+            // Ensure reasonable dimensions (LinkedIn recommends 1200x627 for shares)
+            if (width <= 0 || height <= 0)
+            {
+                width = 800;
+                height = 450;
+            }
+
+            using var bitmap = new SKBitmap(width, height);
+            using var canvas = new SKCanvas(bitmap);
+
+            canvas.Clear(SKColors.White);
+            canvas.DrawPicture(svg.Picture);
+
+            using var image = SKImage.FromBitmap(bitmap);
+            using var data = image.Encode(SKEncodedImageFormat.Png, 90);
+
+            return data.ToArray();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Failed to convert SVG to PNG: {Path}", svgPath);
+            return null;
+        }
     }
 }
