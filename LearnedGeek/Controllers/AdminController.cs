@@ -228,7 +228,7 @@ public class AdminController : Controller
             return Json(new { success = false, message = "Post not found." });
         }
 
-        var articleUrl = $"https://learnedgeek.com/blog/{slug}";
+        var articleUrl = $"https://learnedgeek.com/Blog/Post/{slug}";
         var text = string.IsNullOrWhiteSpace(commentary)
             ? $"{post.Title}\n\n{post.Description}"
             : commentary;
