@@ -1,9 +1,3 @@
-# SEO Demystified: How to Stop Being Invisible to Google
-
-*Because writing great content means nothing if search engines can't find it.*
-
----
-
 ## The Problem Nobody Talks About
 
 You built a website. It's beautiful. The code is clean, the content is helpful, and you're genuinely proud of it. You launch, share it with friends, and wait for the traffic to roll in.

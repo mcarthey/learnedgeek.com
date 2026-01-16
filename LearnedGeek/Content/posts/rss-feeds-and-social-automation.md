@@ -1,11 +1,3 @@
-# RSS Feeds and Social Media Automation: Publishing Once, Sharing Everywhere
-
-*You wrote a blog post. Now you need to share it on LinkedIn, Twitter, maybe a newsletter. Here's how to automate the boring part.*
-
-**Tags:** rss, automation, linkedin, social-media, zapier, aspnet-core
-
----
-
 I just set up RSS feeds for this blog. The goal: write a post once, have it automatically shared to LinkedIn and wherever else makes sense.
 
 This post documents the setup while it's fresh—including the custom LinkedIn integration I ended up building because I'm stubborn.

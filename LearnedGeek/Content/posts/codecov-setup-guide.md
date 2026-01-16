@@ -1,9 +1,3 @@
-# Code Coverage Without the Crying: A Practical Guide to Codecov
-
-*Because "it works on my machine" isn't a testing strategy.*
-
----
-
 ## The Uncomfortable Truth About Your Test Suite
 
 Here's a confession: I used to write tests like I floss—sporadically, with guilt, and usually right before something important (a dentist appointment, a production deployment). The tests existed. They passed. I felt virtuous.

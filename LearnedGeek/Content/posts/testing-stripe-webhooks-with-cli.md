@@ -1,11 +1,3 @@
-# Testing Stripe Webhooks Without Tears: A Practical Guide to the Stripe CLI
-
-*Setting up payment processing is stressful enough without wondering if your webhooks actually work. Here's how to test them properly before real money is on the line.*
-
-**Tags:** stripe, webhooks, aspnet-core, dotnet, testing, payments, cli
-
----
-
 I've been building a scheduling application for a Spanish tutoring business. It accepts payments through Stripe—package purchases, single class payments, tips. The code looked fine. The webhook endpoint was registered. The signing secret was configured.
 
 But I had no idea if any of it actually worked.

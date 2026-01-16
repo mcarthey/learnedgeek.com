@@ -1,11 +1,3 @@
-# Adding New Domains to Your Certbot + Cloudflare Setup
-
-*A quick troubleshooting guide for the "oh crap, I forgot" moments when expanding your SSL automation*
-
-**Tags:** ssl, letsencrypt, certbot, cloudflare, raspberry-pi
-
----
-
 In my [previous post](/posts/ssl-automation-with-letsencrypt-and-cloudflare), I set up automated SSL certificate generation using Certbot, Cloudflare DNS, and a Raspberry Pi. The system works great—until you add a new domain and forget the extra steps.
 
 Here's what bit me when adding a new site.

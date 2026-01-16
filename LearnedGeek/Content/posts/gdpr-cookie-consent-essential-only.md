@@ -1,11 +1,3 @@
-# GDPR Cookie Consent: The Essential-Only Shortcut
-
-*Most cookie banners are obnoxious because they're trying to get consent for tracking. If you're not tracking anyone, the whole thing gets simpler.*
-
-**Tags:** gdpr, cookies, privacy, aspnet-core, compliance, web-development
-
----
-
 I just added a cookie consent banner to [Lake Country Spanish](https://lakecountryspanish.com). It took about an hour. No third-party libraries, no consent management platforms, no dark patterns trying to trick users into accepting tracking.
 
 Why was it so simple? Because the site only uses essential cookies.

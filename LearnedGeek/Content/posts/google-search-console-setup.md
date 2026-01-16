@@ -1,11 +1,3 @@
-# Google Search Console: The Step I Forgot (And Why My Site Was Invisible)
-
-*You implemented all the SEO best practices. Meta tags, structured data, sitemaps—the works. Then you searched for your site and found... nothing. Here's the step nobody mentions.*
-
-**Tags:** seo, google, search-console, indexing, webmaster-tools
-
----
-
 Two days ago I wrote a whole post about [SEO best practices](/Blog/Post/seo-demystified). Meta tags, Open Graph, JSON-LD structured data, sitemaps, robots.txt—I covered it all. The technical foundation was solid. I was proud of it.
 
 Then I Googled "Learned Geek."

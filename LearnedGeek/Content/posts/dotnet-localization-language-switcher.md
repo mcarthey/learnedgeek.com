@@ -1,9 +1,3 @@
-# Building a Language Switcher That Actually Remembers: .NET Localization Part 2
-
-*Because "just change your browser settings" is not a user experience.*
-
----
-
 ## The Problem With Browser-Based Language Detection
 
 So you've got localization working. Your resource files are loading, your translations are appearing, and everything looks great—as long as your users have their browser language set correctly.

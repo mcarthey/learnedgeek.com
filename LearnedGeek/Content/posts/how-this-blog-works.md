@@ -1,5 +1,3 @@
-# How This Blog Works: From Markdown to Web Page
-
 You're reading a blog post right now. But how did it get here? There's no WordPress, no database, no admin panel. Just some plain text files and a bit of C# magic. Let me show you how it works.
 
 ## The Goal: Keep It Simple

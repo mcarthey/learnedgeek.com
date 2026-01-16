@@ -1,9 +1,3 @@
-# The Case of the Missing Translations: Why Your .NET App Ignores Your Resource Files
-
-*You set up localization. You created the files. It compiled. And then... nothing happened.*
-
----
-
 ## The Setup That Should Have Worked
 
 Picture this: You're building a .NET Core web app that needs to work in multiple languages. You've done your homework. You created those `.resx` files—the special XML files that hold your translated strings. You've got `Messages.en.resx` for English, `Messages.es.resx` for Spanish. You hit Build, and Visual Studio happily compiles everything.

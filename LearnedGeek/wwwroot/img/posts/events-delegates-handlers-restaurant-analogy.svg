@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#fb923c"/>
+    </linearGradient>
+    <linearGradient id="bellGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.03">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#fff" stroke-width="1"/>
+    </pattern>
+    <rect width="800" height="450" fill="url(#grid)"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" font-weight="bold">
+    Events, Delegates, and Handlers
+  </text>
+  <text x="400" y="65" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">
+    The Restaurant Analogy
+  </text>
+
+  <!-- Kitchen (Publisher) -->
+  <g transform="translate(80, 140)">
+    <!-- Kitchen box -->
+    <rect x="0" y="0" width="180" height="200" rx="10" fill="#2a2a4a" stroke="#4a4a6a" stroke-width="2"/>
+    <text x="90" y="30" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">KITCHEN</text>
+
+    <!-- Stove representation -->
+    <rect x="20" y="50" width="60" height="40" rx="4" fill="#3a3a5a"/>
+    <circle cx="35" cy="70" r="8" fill="#ef4444" opacity="0.8"/>
+    <circle cx="65" cy="70" r="8" fill="#ef4444" opacity="0.6"/>
+
+    <!-- Chef hat icon -->
+    <g transform="translate(100, 50)">
+      <ellipse cx="30" cy="35" rx="25" ry="10" fill="#fff"/>
+      <rect x="10" y="10" width="40" height="25" rx="5" fill="#fff"/>
+    </g>
+
+    <!-- Code snippet -->
+    <rect x="15" y="110" width="150" height="75" rx="4" fill="#1e293b"/>
+    <text x="25" y="130" font-family="monospace" font-size="9" fill="#f97316">event</text>
+    <text x="58" y="130" font-family="monospace" font-size="9" fill="#94a3b8">FoodOrder</text>
+    <text x="25" y="145" font-family="monospace" font-size="9" fill="#94a3b8">OnFoodReady;</text>
+    <text x="25" y="165" font-family="monospace" font-size="9" fill="#6ee7b7">// Ring the bell!</text>
+    <text x="25" y="180" font-family="monospace" font-size="9" fill="#94a3b8">OnFoodReady?.</text>
+  </g>
+  <text x="170" y="360" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Publisher</text>
+
+  <!-- The Bell (Event) - Center -->
+  <g transform="translate(330, 160)">
+    <!-- Bell glow -->
+    <ellipse cx="70" cy="90" rx="50" ry="15" fill="#fbbf24" opacity="0.2"/>
+
+    <!-- Bell shape -->
+    <path d="M70,20 Q70,10 60,10 Q30,10 30,60 L30,80 Q30,90 40,90 L100,90 Q110,90 110,80 L110,60 Q110,10 80,10 Q70,10 70,20"
+          fill="url(#bellGrad)" stroke="#d97706" stroke-width="2"/>
+
+    <!-- Bell clapper -->
+    <circle cx="70" cy="85" r="8" fill="#92400e"/>
+
+    <!-- Bell top -->
+    <rect x="60" y="5" width="20" height="10" rx="3" fill="#d97706"/>
+
+    <!-- Sound waves -->
+    <g stroke="#fbbf24" stroke-width="2" fill="none" opacity="0.7">
+      <path d="M125,50 Q140,50 140,70"/>
+      <path d="M135,40 Q155,50 155,80"/>
+      <path d="M15,50 Q0,50 0,70"/>
+      <path d="M5,40 Q-15,50 -15,80"/>
+    </g>
+
+    <!-- Label -->
+    <text x="70" y="120" font-family="Arial, sans-serif" font-size="12" fill="#fbbf24" text-anchor="middle" font-weight="bold">EVENT</text>
+    <text x="70" y="135" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle">OnFoodReady</text>
+  </g>
+
+  <!-- Customer (Subscriber) -->
+  <g transform="translate(540, 140)">
+    <!-- Customer box -->
+    <rect x="0" y="0" width="180" height="200" rx="10" fill="#2a2a4a" stroke="#4a4a6a" stroke-width="2"/>
+    <text x="90" y="30" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">CUSTOMER</text>
+
+    <!-- Table icon -->
+    <rect x="40" y="60" width="100" height="8" rx="2" fill="#5a6a8a"/>
+    <rect x="50" y="68" width="8" height="30" fill="#5a6a8a"/>
+    <rect x="122" y="68" width="8" height="30" fill="#5a6a8a"/>
+
+    <!-- Code snippet -->
+    <rect x="15" y="110" width="150" height="75" rx="4" fill="#1e293b"/>
+    <text x="25" y="130" font-family="monospace" font-size="9" fill="#94a3b8">kitchen.OnFoodReady</text>
+    <text x="25" y="145" font-family="monospace" font-size="9" fill="#f97316">+=</text>
+    <text x="40" y="145" font-family="monospace" font-size="9" fill="#94a3b8">ReactToFood;</text>
+    <text x="25" y="165" font-family="monospace" font-size="9" fill="#6ee7b7">// Subscribe!</text>
+    <text x="25" y="180" font-family="monospace" font-size="9" fill="#94a3b8">"Notify me"</text>
+  </g>
+  <text x="630" y="360" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Subscriber</text>
+
+  <!-- Arrow from Kitchen to Bell -->
+  <g transform="translate(260, 230)">
+    <path d="M0,0 L60,0" stroke="url(#orangeGrad)" stroke-width="3" fill="none"/>
+    <polygon points="65,-5 65,5 75,0" fill="#f97316"/>
+  </g>
+
+  <!-- Arrow from Bell to Customer -->
+  <g transform="translate(465, 230)">
+    <path d="M0,0 L60,0" stroke="url(#orangeGrad)" stroke-width="3" fill="none"/>
+    <polygon points="65,-5 65,5 75,0" fill="#f97316"/>
+  </g>
+
+  <!-- Delegate label (menu) -->
+  <g transform="translate(320, 380)">
+    <rect x="0" y="0" width="160" height="50" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="80" y="18" font-family="Arial, sans-serif" font-size="10" fill="#f97316" text-anchor="middle" font-weight="bold">DELEGATE</text>
+    <text x="80" y="32" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">The menu format</text>
+    <text x="80" y="45" font-family="monospace" font-size="8" fill="#6ee7b7" text-anchor="middle">void FoodOrder(string, int)</text>
+  </g>
+
+  <!-- Key insight box -->
+  <g transform="translate(550, 380)">
+    <rect x="0" y="0" width="220" height="50" rx="6" fill="#2a2a4a" stroke="#f97316" stroke-width="1"/>
+    <text x="110" y="20" font-family="Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">You don't go to the kitchen.</text>
+    <text x="110" y="38" font-family="Arial, sans-serif" font-size="10" fill="#f97316" text-anchor="middle" font-weight="bold">The kitchen comes to you.</text>
+  </g>
+</svg>

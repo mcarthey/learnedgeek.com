@@ -1,11 +1,3 @@
-# When Your Discord Bot Stops Hearing: A Debugging Odyssey
-
-*How I spent days debugging a silent Discord bot, only to discover the application itself was corrupted*
-
-**Tags:** discord, discord-net, debugging, csharp, dotnet
-
----
-
 ## The Setup
 
 I had a perfectly working Discord bot. Slash commands fired off beautifully. Users ran `/tldr` and got their channel summaries. The `/cost` command showed API usage. Everything was humming along on Railway.
