@@ -278,15 +278,114 @@ The suggested post format I settled on:
 
 It's nothing fancy, but it gives me control over the messaging before each post goes out.
 
+## The Image Upload Solution
+
+After using the article link approach for a while, I noticed the preview cards were unreliable. Sometimes they'd show up immediately, sometimes hours later, sometimes never. That's why you see so many LinkedIn posts with images attached directly—it's more reliable than hoping the scraper does its job.
+
+LinkedIn's image upload is a three-step dance:
+
+### Step 1: Register the Upload
+
+First, you request an upload URL from LinkedIn:
+
+```csharp
+var registerPayload = $$"""
+{
+    "registerUploadRequest": {
+        "recipes": ["urn:li:digitalmediaRecipe:feedshare-image"],
+        "owner": "urn:li:person:{{memberId}}",
+        "serviceRelationships": [
+            {
+                "relationshipType": "OWNER",
+                "identifier": "urn:li:userGeneratedContent"
+            }
+        ]
+    }
+}
+""";
+
+var response = await _httpClient.PostAsync(
+    "https://api.linkedin.com/v2/assets?action=registerUpload",
+    new StringContent(registerPayload, Encoding.UTF8, "application/json"));
+```
+
+The response contains an `uploadUrl` and an `asset` URN you'll need later.
+
+### Step 2: Upload the Image Binary
+
+PUT the raw image bytes to the upload URL:
+
+```csharp
+using var uploadRequest = new HttpRequestMessage(HttpMethod.Put, uploadUrl);
+uploadRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+uploadRequest.Content = new ByteArrayContent(imageData);
+uploadRequest.Content.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+
+await _httpClient.SendAsync(uploadRequest);
+```
+
+### Step 3: Post with the Image
+
+Now create the post using `shareMediaCategory: "IMAGE"` instead of `"ARTICLE"`:
+
+```csharp
+var postPayload = $$"""
+{
+    "author": "urn:li:person:{{memberId}}",
+    "lifecycleState": "PUBLISHED",
+    "specificContent": {
+        "com.linkedin.ugc.ShareContent": {
+            "shareCommentary": {
+                "text": {{JsonSerializer.Serialize(text + "\n\n" + articleUrl)}}
+            },
+            "shareMediaCategory": "IMAGE",
+            "media": [
+                {
+                    "status": "READY",
+                    "media": {{JsonSerializer.Serialize(asset)}}
+                }
+            ]
+        }
+    },
+    "visibility": {
+        "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+    }
+}
+""";
+```
+
+Note: The article URL goes in the text body now, since we're not using the `ARTICLE` media type.
+
+### SVG to PNG Conversion
+
+My blog post images are all SVGs, but LinkedIn doesn't accept SVG uploads. I added on-the-fly conversion using SkiaSharp:
+
+```csharp
+using var svg = new SKSvg();
+svg.Load(svgPath);
+
+using var bitmap = new SKBitmap((int)svg.Picture.CullRect.Width, (int)svg.Picture.CullRect.Height);
+using var canvas = new SKCanvas(bitmap);
+canvas.Clear(SKColors.White);
+canvas.DrawPicture(svg.Picture);
+
+using var image = SKImage.FromBitmap(bitmap);
+using var data = image.Encode(SKEncodedImageFormat.Png, 90);
+return data.ToArray();
+```
+
+Now every post shares with its hero image attached—much more visually appealing in the feed.
+
 ## Results
 
 **LinkedIn via Zapier:** Never actually tried it. By the time I had feeds working, I was already down the API rabbit hole.
 
 **LinkedIn API direct:** Works great. The initial setup took a few hours (mostly fighting with LinkedIn's documentation), but now I can share posts with custom commentary in seconds.
 
+**LinkedIn with images:** Even better. Posts with images get more engagement, and I don't have to wait for LinkedIn's scraper to maybe generate a preview card.
+
 **Unexpected issues:**
 - LinkedIn access tokens expire after 60 days. I'll need to implement refresh token handling eventually, or just re-authorize periodically.
-- The article preview card depends on LinkedIn's scraper. Sometimes it takes a few minutes to populate.
 - LinkedIn's developer documentation is... not great. The API works, the docs are just confusing.
 
 ## The Feed Validation Checklist
