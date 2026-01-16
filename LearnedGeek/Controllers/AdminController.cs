@@ -238,8 +238,8 @@ public class AdminController : Controller
             ? $"{post.Title}\n\n{post.Description}"
             : commentary;
 
-        // Try to get the post's hero image
-        var imageData = await GetPostImageAsync(slug);
+        // Try to get the post's hero image using the image path from posts.json
+        var imageData = await GetPostImageAsync(post.Image);
 
         LinkedInPostResult result;
         if (imageData != null)
@@ -264,33 +264,32 @@ public class AdminController : Controller
         });
     }
 
-    private async Task<byte[]?> GetPostImageAsync(string slug)
+    private async Task<byte[]?> GetPostImageAsync(string? imagePath)
     {
-        var imagesPath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "posts");
-
-        // Check for PNG first
-        var pngPath = Path.Combine(imagesPath, $"{slug}.png");
-        if (System.IO.File.Exists(pngPath))
+        if (string.IsNullOrEmpty(imagePath))
         {
-            return await System.IO.File.ReadAllBytesAsync(pngPath);
+            return null;
         }
 
-        // Check for JPG
-        var jpgPath = Path.Combine(imagesPath, $"{slug}.jpg");
-        if (System.IO.File.Exists(jpgPath))
+        // imagePath is like "/img/posts/filename.svg" - convert to physical path
+        var relativePath = imagePath.TrimStart('/').Replace('/', Path.DirectorySeparatorChar);
+        var fullPath = Path.Combine(_webHostEnvironment.WebRootPath, relativePath);
+
+        if (!System.IO.File.Exists(fullPath))
         {
-            // Convert to PNG for consistent handling
-            return await System.IO.File.ReadAllBytesAsync(jpgPath);
+            _logger.LogWarning("Image not found: {Path}", fullPath);
+            return null;
         }
 
-        // Check for SVG and convert to PNG
-        var svgPath = Path.Combine(imagesPath, $"{slug}.svg");
-        if (System.IO.File.Exists(svgPath))
-        {
-            return ConvertSvgToPng(svgPath);
-        }
+        var extension = Path.GetExtension(fullPath).ToLowerInvariant();
 
-        return null;
+        return extension switch
+        {
+            ".svg" => ConvertSvgToPng(fullPath),
+            ".png" => await System.IO.File.ReadAllBytesAsync(fullPath),
+            ".jpg" or ".jpeg" => await System.IO.File.ReadAllBytesAsync(fullPath),
+            _ => null
+        };
     }
 
     private byte[]? ConvertSvgToPng(string svgPath)
