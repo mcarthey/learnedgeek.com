@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Admin - Learned Geek</title>
+    <link rel="icon" type="image/png" href="~/img/learned-geek-logo.png" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script>
+        // Match main site theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 min-h-screen">
+    <header class="bg-white dark:bg-neutral-950 border-b border-neutral-200 dark:border-neutral-800">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="~/img/learned-geek-logo.png" alt="Learned Geek" class="h-8 w-8 dark:invert" />
+                <span class="font-semibold text-neutral-900 dark:text-white">Admin</span>
+            </div>
+            @if (User.Identity?.IsAuthenticated != true && Context.Request.Cookies.ContainsKey("lg_admin_auth"))
+            {
+                <form asp-action="Logout" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                        Logout
+                    </button>
+                </form>
+            }
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-8">
+        @if (TempData["Error"] != null)
+        {
+            <div class="bg-red-100 dark:bg-red-900/50 border border-red-300 dark:border-red-700 text-red-800 dark:text-red-200 px-4 py-3 rounded mb-6">
+                @TempData["Error"]
+            </div>
+        }
+        @if (TempData["Success"] != null)
+        {
+            <div class="bg-green-100 dark:bg-green-900/50 border border-green-300 dark:border-green-700 text-green-800 dark:text-green-200 px-4 py-3 rounded mb-6 whitespace-pre-wrap font-mono text-sm">
+                @TempData["Success"]
+            </div>
+        }
+        @RenderBody()
+    </main>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -18,6 +18,23 @@ builder.Services.AddHttpClient<IRecaptchaService, RecaptchaService>();
 // Blog service
 builder.Services.AddSingleton<IBlogService, BlogService>();
 
+// LinkedIn integration
+builder.Services.Configure<LinkedInSettings>(builder.Configuration.GetSection("LinkedIn"));
+builder.Services.AddHttpClient<ILinkedInService, LinkedInService>();
+
+// Admin settings
+builder.Services.Configure<AdminSettings>(builder.Configuration.GetSection("Admin"));
+
+// Session for OAuth state
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,6 +48,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseSession();
 app.UseAuthorization();
 
 app.MapStaticAssets();

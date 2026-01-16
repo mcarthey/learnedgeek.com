@@ -1,0 +1,218 @@
+@model List<LearnedGeek.Models.BlogPost>
+@{
+    ViewData["Title"] = "Admin Dashboard";
+    var linkedInConfigured = (bool)ViewBag.LinkedInConfigured;
+    var linkedInConnected = (bool)ViewBag.LinkedInConnected;
+
+    string GenerateSuggestedPost(LearnedGeek.Models.BlogPost post)
+    {
+        var hashtags = string.Join(" ", post.Tags.Take(4).Select(t => "#" + t.Replace(" ", "").Replace("-", "").Replace(".", "")));
+        return $"📝 New blog post: {post.Title}\n\n{post.Description}\n\n{hashtags}";
+    }
+}
+
+@Html.AntiForgeryToken()
+
+<div class="space-y-8">
+    <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-semibold text-neutral-900 dark:text-white">Dashboard</h1>
+        <form asp-action="Logout" method="post" class="inline">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                Logout
+            </button>
+        </form>
+    </div>
+
+    <!-- LinkedIn Status -->
+    <div class="bg-white dark:bg-neutral-800 rounded-lg p-6 border border-neutral-200 dark:border-neutral-700">
+        <h2 class="text-lg font-semibold text-neutral-900 dark:text-white mb-4">LinkedIn Integration</h2>
+
+        @if (!linkedInConfigured)
+        {
+            <p class="text-neutral-500 dark:text-neutral-400 text-sm">
+                LinkedIn Client ID and Secret not configured in appsettings.json.
+            </p>
+        }
+        else if (!linkedInConnected)
+        {
+            <div class="flex items-center gap-4">
+                <span class="text-yellow-600 dark:text-yellow-400 text-sm">Not connected</span>
+                <a asp-action="LinkedInConnect"
+                   class="bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-sm font-medium py-2 px-4 rounded hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors">
+                    Connect LinkedIn
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                <span class="text-green-600 dark:text-green-400 text-sm">Connected and ready to post</span>
+            </div>
+        }
+    </div>
+
+    <!-- Posts List -->
+    <div class="bg-white dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+        <div class="p-6 border-b border-neutral-200 dark:border-neutral-700">
+            <h2 class="text-lg font-semibold text-neutral-900 dark:text-white">Blog Posts</h2>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">Click a post to expand and share to LinkedIn</p>
+        </div>
+
+        <div class="divide-y divide-neutral-200 dark:divide-neutral-700">
+            @foreach (var post in Model)
+            {
+                var suggestedPost = GenerateSuggestedPost(post);
+                <div class="p-4" id="post-@post.Slug">
+                    <!-- Header row - clickable to expand -->
+                    <div class="flex justify-between items-start gap-4 cursor-pointer" onclick="togglePost('@post.Slug')">
+                        <div class="flex-1">
+                            <h3 class="text-neutral-900 dark:text-white font-medium">@post.Title</h3>
+                            <p class="text-sm text-neutral-500 mt-1">
+                                @post.Date.ToString("MMM d, yyyy") · @post.Category
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div id="status-@post.Slug" class="text-sm hidden whitespace-nowrap"></div>
+                            @if (linkedInConnected)
+                            {
+                                <svg id="chevron-@post.Slug" class="w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            }
+                        </div>
+                    </div>
+
+                    @if (linkedInConnected)
+                    {
+                        <!-- Expandable share section -->
+                        <div id="expand-@post.Slug" class="hidden mt-4 space-y-4">
+                            <!-- Textarea for post content -->
+                            <div>
+                                <label class="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+                                    Post Content
+                                </label>
+                                <textarea id="commentary-@post.Slug"
+                                          rows="5"
+                                          class="w-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-600 rounded px-3 py-2 text-sm text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none focus:border-neutral-500 dark:focus:border-neutral-400 resize-none"
+                                          oninput="updatePreview('@post.Slug')">@suggestedPost</textarea>
+                                <p class="text-xs text-neutral-400 mt-1">
+                                    Supports: line breaks, emojis, #hashtags
+                                </p>
+                            </div>
+
+                            <!-- Preview -->
+                            <div>
+                                <label class="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+                                    Preview
+                                </label>
+                                <div class="bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-700 rounded p-4">
+                                    <div id="preview-@post.Slug" class="text-sm text-neutral-700 dark:text-neutral-300 whitespace-pre-wrap">@suggestedPost</div>
+                                    <div class="mt-3 p-3 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-600 rounded">
+                                        <p class="text-xs text-neutral-500 dark:text-neutral-400">learnedgeek.com</p>
+                                        <p class="text-sm font-medium text-neutral-900 dark:text-white">@post.Title</p>
+                                        <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1 line-clamp-2">@post.Description</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Action buttons -->
+                            <div class="flex gap-2">
+                                <button onclick="resetPost('@post.Slug', '@System.Web.HttpUtility.JavaScriptStringEncode(suggestedPost)')"
+                                        class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors">
+                                    Reset to suggested
+                                </button>
+                                <div class="flex-1"></div>
+                                <button onclick="shareToLinkedIn('@post.Slug')"
+                                        class="bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-sm font-medium py-2 px-4 rounded hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                                        id="btn-@post.Slug">
+                                    Share to LinkedIn
+                                </button>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <span class="text-neutral-500 text-sm mt-2 block">Connect LinkedIn to share</span>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function togglePost(slug) {
+            const expand = document.getElementById('expand-' + slug);
+            const chevron = document.getElementById('chevron-' + slug);
+
+            if (expand.classList.contains('hidden')) {
+                expand.classList.remove('hidden');
+                chevron.style.transform = 'rotate(180deg)';
+            } else {
+                expand.classList.add('hidden');
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function updatePreview(slug) {
+            const textarea = document.getElementById('commentary-' + slug);
+            const preview = document.getElementById('preview-' + slug);
+            preview.textContent = textarea.value;
+        }
+
+        function resetPost(slug, suggested) {
+            const textarea = document.getElementById('commentary-' + slug);
+            textarea.value = suggested;
+            updatePreview(slug);
+        }
+
+        async function shareToLinkedIn(slug) {
+            const btn = document.getElementById('btn-' + slug);
+            const status = document.getElementById('status-' + slug);
+            const commentary = document.getElementById('commentary-' + slug).value;
+
+            btn.disabled = true;
+            btn.textContent = 'Sharing...';
+            status.classList.add('hidden');
+
+            try {
+                const formData = new FormData();
+                formData.append('slug', slug);
+                formData.append('commentary', commentary);
+
+                const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+
+                const response = await fetch('/admin/share', {
+                    method: 'POST',
+                    headers: {
+                        'RequestVerificationToken': token || ''
+                    },
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                status.classList.remove('hidden');
+                if (result.success) {
+                    status.className = 'text-sm text-green-600 dark:text-green-400';
+                    status.textContent = '✓ Posted!';
+                    btn.textContent = 'Shared!';
+                } else {
+                    status.className = 'text-sm text-red-600 dark:text-red-400';
+                    status.textContent = '✗ ' + result.message;
+                    btn.textContent = 'Share to LinkedIn';
+                    btn.disabled = false;
+                }
+            } catch (err) {
+                status.classList.remove('hidden');
+                status.className = 'text-sm text-red-600 dark:text-red-400';
+                status.textContent = '✗ ' + err.message;
+                btn.textContent = 'Share to LinkedIn';
+                btn.disabled = false;
+            }
+        }
+    </script>
+}
