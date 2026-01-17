@@ -109,4 +109,29 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult StatusCode(int? code)
+    {
+        var statusCode = code ?? 500;
+        Response.StatusCode = statusCode;
+
+        ViewBag.StatusCode = statusCode;
+        ViewBag.StatusMessage = statusCode switch
+        {
+            404 => "Page Not Found",
+            403 => "Forbidden",
+            500 => "Server Error",
+            _ => "Error"
+        };
+        ViewBag.StatusDescription = statusCode switch
+        {
+            404 => "The page you're looking for doesn't exist or has been moved.",
+            403 => "You don't have permission to access this resource.",
+            500 => "Something went wrong on our end. Please try again later.",
+            _ => "An unexpected error occurred."
+        };
+
+        return View();
+    }
 }

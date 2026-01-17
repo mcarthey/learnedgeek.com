@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = ViewBag.StatusMessage;
+    var statusCode = (int)ViewBag.StatusCode;
+}
+
+<div class="bg-white dark:bg-neutral-900 transition-colors min-h-[80vh] flex items-center">
+    <div class="max-w-2xl mx-auto px-6 lg:px-8 text-center py-24">
+        <!-- Status Code -->
+        <div class="text-8xl md:text-9xl font-semibold text-neutral-200 dark:text-neutral-800 select-none">
+            @statusCode
+        </div>
+
+        <!-- Message -->
+        <h1 class="mt-4 text-3xl md:text-4xl font-semibold text-neutral-900 dark:text-white">
+            @ViewBag.StatusMessage
+        </h1>
+
+        <p class="mt-4 text-lg text-neutral-500 dark:text-neutral-400">
+            @ViewBag.StatusDescription
+        </p>
+
+        <!-- Actions -->
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/" class="btn-primary">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                Back to Home
+            </a>
+            <a href="/blog" class="btn-secondary">
+                Read the Blog
+            </a>
+        </div>
+
+        @if (statusCode == 404)
+        {
+            <!-- Helpful suggestions for 404 -->
+            <div class="mt-16 pt-8 border-t border-neutral-200 dark:border-neutral-700">
+                <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-4">
+                    Looking for something specific?
+                </p>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <a href="/about" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">About</a>
+                    <span class="text-neutral-300 dark:text-neutral-600">|</span>
+                    <a href="/services" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">Services</a>
+                    <span class="text-neutral-300 dark:text-neutral-600">|</span>
+                    <a href="/blog" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">Blog</a>
+                    <span class="text-neutral-300 dark:text-neutral-600">|</span>
+                    <a href="/contact" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">Contact</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
