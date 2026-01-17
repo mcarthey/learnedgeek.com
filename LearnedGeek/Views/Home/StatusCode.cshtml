@@ -10,14 +10,83 @@
             @statusCode
         </div>
 
-        <!-- Message -->
-        <h1 class="mt-4 text-3xl md:text-4xl font-semibold text-neutral-900 dark:text-white">
-            @ViewBag.StatusMessage
-        </h1>
+        @if (statusCode == 404)
+        {
+            <!-- 404 - The Teaching Moment -->
+            <h1 class="mt-4 text-3xl md:text-4xl font-semibold text-neutral-900 dark:text-white">
+                Well, this is awkward.
+            </h1>
 
-        <p class="mt-4 text-lg text-neutral-500 dark:text-neutral-400">
-            @ViewBag.StatusDescription
-        </p>
+            <p class="mt-4 text-lg text-neutral-500 dark:text-neutral-400">
+                You've found a page that doesn't exist. In HTTP terms, that's a <code class="bg-neutral-100 dark:bg-neutral-800 px-2 py-1 rounded text-sm">404 Not Found</code>.
+            </p>
+
+            <div class="mt-8 p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg text-left">
+                <p class="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+                    Fun fact for fellow geeks:
+                </p>
+                <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                    The 404 status code was defined in the original HTTP/1.0 spec (RFC 1945) back in 1996.
+                    Legend has it the "404" came from room 404 at CERN where the web's database was stored.
+                    Probably not true, but it's a great story.
+                </p>
+            </div>
+        }
+        else if (statusCode == 403)
+        {
+            <!-- 403 - Forbidden -->
+            <h1 class="mt-4 text-3xl md:text-4xl font-semibold text-neutral-900 dark:text-white">
+                You shall not pass!
+            </h1>
+
+            <p class="mt-4 text-lg text-neutral-500 dark:text-neutral-400">
+                This area is off-limits. The server understood your request but refuses to authorize it.
+            </p>
+
+            <div class="mt-8 p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg text-left">
+                <p class="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+                    The difference between 401 and 403:
+                </p>
+                <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                    <code class="bg-neutral-100 dark:bg-neutral-700 px-1 rounded">401</code> means "who are you?" (authentication needed).
+                    <code class="bg-neutral-100 dark:bg-neutral-700 px-1 rounded">403</code> means "I know who you are, but no" (authorization denied).
+                </p>
+            </div>
+        }
+        else if (statusCode == 500)
+        {
+            <!-- 500 - Server Error -->
+            <h1 class="mt-4 text-3xl md:text-4xl font-semibold text-neutral-900 dark:text-white">
+                Oops. That's on us.
+            </h1>
+
+            <p class="mt-4 text-lg text-neutral-500 dark:text-neutral-400">
+                Something broke on our end. We've probably already gotten an alert about it.
+            </p>
+
+            <div class="mt-8 p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg text-left">
+                <p class="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+                    What 500 really means:
+                </p>
+                <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                    The server encountered an unexpected condition. It's the "I don't know what went wrong"
+                    of HTTP codes. Could be a null reference, a database timeout, or a developer who forgot
+                    to handle an edge case. We're looking into it.
+                </p>
+            </div>
+        }
+        else
+        {
+            <!-- Generic error -->
+            <h1 class="mt-4 text-3xl md:text-4xl font-semibold text-neutral-900 dark:text-white">
+                Something went sideways.
+            </h1>
+
+            <p class="mt-4 text-lg text-neutral-500 dark:text-neutral-400">
+                HTTP status <code class="bg-neutral-100 dark:bg-neutral-800 px-2 py-1 rounded text-sm">@statusCode</code> &mdash;
+                @ViewBag.StatusDescription
+            </p>
+        }
 
         <!-- Actions -->
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
@@ -28,27 +97,24 @@
                 Back to Home
             </a>
             <a href="/blog" class="btn-secondary">
-                Read the Blog
+                Learn Something Instead
             </a>
         </div>
 
-        @if (statusCode == 404)
-        {
-            <!-- Helpful suggestions for 404 -->
-            <div class="mt-16 pt-8 border-t border-neutral-200 dark:border-neutral-700">
-                <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-4">
-                    Looking for something specific?
-                </p>
-                <div class="flex flex-wrap justify-center gap-3">
-                    <a href="/about" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">About</a>
-                    <span class="text-neutral-300 dark:text-neutral-600">|</span>
-                    <a href="/services" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">Services</a>
-                    <span class="text-neutral-300 dark:text-neutral-600">|</span>
-                    <a href="/blog" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">Blog</a>
-                    <span class="text-neutral-300 dark:text-neutral-600">|</span>
-                    <a href="/contact" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">Contact</a>
-                </div>
+        <!-- Navigation help -->
+        <div class="mt-16 pt-8 border-t border-neutral-200 dark:border-neutral-700">
+            <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-4">
+                Maybe you were looking for one of these?
+            </p>
+            <div class="flex flex-wrap justify-center gap-3">
+                <a href="/about" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">About</a>
+                <span class="text-neutral-300 dark:text-neutral-600">|</span>
+                <a href="/services" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">Services</a>
+                <span class="text-neutral-300 dark:text-neutral-600">|</span>
+                <a href="/blog" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">Blog</a>
+                <span class="text-neutral-300 dark:text-neutral-600">|</span>
+                <a href="/contact" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">Contact</a>
             </div>
-        }
+        </div>
     </div>
 </div>
