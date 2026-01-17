@@ -5,118 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>CrewTrack Project Status - BYCO Inc.</title>
+    <link rel="stylesheet" href="/css/site.css">
     <style>
-        :root {
-            --primary: #1976d2;
-            --primary-dark: #1565c0;
-            --success: #4caf50;
-            --warning: #ff9800;
-            --gray: #9e9e9e;
-            --gray-light: #f5f5f5;
-            --text: #333;
-            --text-secondary: #666;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: var(--gray-light);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header */
-        .header {
-            background: var(--primary);
-            color: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .header h1 {
-            font-size: 1.75rem;
-            font-weight: 600;
-        }
-
-        .header .subtitle {
-            opacity: 0.9;
-            font-size: 0.95rem;
-        }
-
-        .last-updated {
-            background: rgba(255,255,255,0.2);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-        /* Cards */
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .card h2 {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-
-        /* Progress Ring */
-        .progress-section {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            flex-wrap: wrap;
-        }
-
+        /* Progress ring styles */
         .progress-ring-container {
             position: relative;
             width: 140px;
             height: 140px;
         }
-
         .progress-ring {
             transform: rotate(-90deg);
         }
-
         .progress-ring-bg {
             fill: none;
-            stroke: #e0e0e0;
+            stroke: #e5e5e5;
             stroke-width: 12;
         }
-
+        .dark .progress-ring-bg {
+            stroke: #404040;
+        }
         .progress-ring-fill {
             fill: none;
-            stroke: var(--primary);
+            stroke: #171717;
             stroke-width: 12;
             stroke-linecap: round;
             transition: stroke-dashoffset 0.5s ease;
         }
-
+        .dark .progress-ring-fill {
+            stroke: #f5f5f5;
+        }
         .progress-text {
             position: absolute;
             top: 50%;
@@ -125,62 +42,11 @@
             text-align: center;
         }
 
-        .progress-percent {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .progress-label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .progress-details {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .progress-details h3 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-        }
-
-        .progress-details p {
-            color: var(--text-secondary);
-            margin-bottom: 4px;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .status-badge.in-progress {
-            background: #e3f2fd;
-            color: var(--primary);
-        }
-
-        .status-badge.complete {
-            background: #e8f5e9;
-            color: var(--success);
-        }
-
-        .status-badge.upcoming {
-            background: #fff3e0;
-            color: var(--warning);
-        }
-
-        /* Timeline */
+        /* Timeline styles */
         .timeline {
             position: relative;
             padding-left: 30px;
         }
-
         .timeline::before {
             content: '';
             position: absolute;
@@ -188,18 +54,18 @@
             top: 8px;
             bottom: 8px;
             width: 2px;
-            background: #e0e0e0;
+            background: #e5e5e5;
         }
-
+        .dark .timeline::before {
+            background: #404040;
+        }
         .timeline-item {
             position: relative;
             padding-bottom: 20px;
         }
-
         .timeline-item:last-child {
             padding-bottom: 0;
         }
-
         .timeline-marker {
             position: absolute;
             left: -30px;
@@ -209,297 +75,275 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 10px;
             color: white;
         }
-
         .timeline-marker.complete {
-            background: var(--success);
+            background: #22c55e;
         }
-
         .timeline-marker.in-progress {
-            background: var(--primary);
+            background: #171717;
             animation: pulse 2s infinite;
         }
-
+        .dark .timeline-marker.in-progress {
+            background: #f5f5f5;
+        }
         .timeline-marker.upcoming {
             background: white;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #e5e5e5;
         }
-
+        .dark .timeline-marker.upcoming {
+            background: #262626;
+            border-color: #404040;
+        }
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(25, 118, 210, 0.4); }
-            50% { box-shadow: 0 0 0 8px rgba(25, 118, 210, 0); }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(23, 23, 23, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(23, 23, 23, 0); }
+        }
+        .dark .timeline-marker.in-progress {
+            animation-name: pulse-dark;
+        }
+        @keyframes pulse-dark {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245, 245, 245, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(245, 245, 245, 0); }
         }
 
-        .timeline-content h4 {
-            font-size: 1rem;
-            margin-bottom: 4px;
-        }
-
-        .timeline-content p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .timeline-date {
-            font-size: 0.8rem;
-            color: var(--gray);
-        }
-
-        /* Payments */
-        .payment-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-        }
-
-        .payment-item {
-            background: var(--gray-light);
-            padding: 16px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .payment-item.paid {
-            background: #e8f5e9;
-        }
-
-        .payment-amount {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text);
-        }
-
-        .payment-item.paid .payment-amount {
-            color: var(--success);
-        }
-
-        .payment-label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
-
-        .payment-status {
-            font-size: 0.75rem;
-            margin-top: 8px;
-            font-weight: 600;
-        }
-
-        /* Activity */
-        .activity-list {
-            list-style: none;
-        }
-
-        .activity-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
-        .activity-list li:last-child {
-            border-bottom: none;
-        }
-
+        /* Activity icon */
         .activity-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--gray-light);
+            width: 36px;
+            height: 36px;
+            background: #f5f5f5;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            font-size: 14px;
+        }
+        .dark .activity-icon {
+            background: #404040;
         }
 
-        .activity-text {
-            flex: 1;
+        /* Status badge */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .status-badge.in-progress {
+            background: #f5f5f5;
+            color: #171717;
+        }
+        .dark .status-badge.in-progress {
+            background: #404040;
+            color: #f5f5f5;
         }
 
-        .activity-date {
-            font-size: 0.8rem;
-            color: var(--gray);
+        /* Loading state */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+        .loading::after {
+            content: '';
+            width: 32px;
+            height: 32px;
+            border: 3px solid #e5e5e5;
+            border-top-color: #171717;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        .dark .loading::after {
+            border-color: #404040;
+            border-top-color: #f5f5f5;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
-        /* Footer */
-        .footer {
+        /* Error state */
+        .error {
             text-align: center;
-            padding: 24px;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
+            padding: 2rem;
+            color: #dc2626;
         }
-
-        .footer a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            .header {
-                text-align: center;
-                justify-content: center;
-            }
-
-            .progress-section {
-                justify-content: center;
-                text-align: center;
-            }
+        .dark .error {
+            color: #f87171;
         }
     </style>
+    <script>
+        // Theme handling - match main site behavior
+        (function() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
 </head>
-<body>
-    <div class="container">
+<body class="min-h-screen bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 transition-colors">
+    <div class="max-w-3xl mx-auto px-4 py-8">
         <!-- Header -->
-        <div class="header">
-            <div>
-                <h1>CrewTrack</h1>
-                <p class="subtitle">Field Crew Management System for BYCO Inc.</p>
-            </div>
-            <div class="last-updated">Updated: Jan 17, 2026</div>
-        </div>
+        <header id="header" class="mb-8">
+            <div class="loading">Loading...</div>
+        </header>
 
-        <!-- Overall Progress -->
-        <div class="card">
-            <h2>Project Progress</h2>
-            <div class="progress-section">
-                <div class="progress-ring-container">
-                    <svg class="progress-ring" width="140" height="140">
-                        <circle class="progress-ring-bg" cx="70" cy="70" r="58"/>
-                        <circle class="progress-ring-fill" cx="70" cy="70" r="58"
-                                stroke-dasharray="364.4"
-                                stroke-dashoffset="255" />
-                        <!-- 364.4 = 2 * PI * 58, offset = 364.4 * (1 - percent/100) -->
-                        <!-- 30% complete = 364.4 * 0.7 = 255 -->
-                    </svg>
-                    <div class="progress-text">
-                        <div class="progress-percent">30%</div>
-                        <div class="progress-label">Complete</div>
-                    </div>
-                </div>
-                <div class="progress-details">
-                    <h3>Phase 1: Core MVP</h3>
-                    <p>Week 1 of 14</p>
-                    <p style="margin-top: 8px;">
-                        <span class="status-badge in-progress">In Progress</span>
-                    </p>
-                    <p style="margin-top: 12px; font-size: 0.9rem;">
-                        Target completion: <strong>April 2026</strong>
-                    </p>
-                </div>
-            </div>
-        </div>
+        <!-- Progress Section -->
+        <section id="progress" class="mb-8 p-6 border border-neutral-200 dark:border-neutral-700 rounded-lg">
+            <div class="loading"></div>
+        </section>
 
-        <!-- Timeline -->
-        <div class="card">
-            <h2>Project Milestones</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker complete">✓</div>
-                    <div class="timeline-content">
-                        <h4>Discovery & Requirements</h4>
-                        <p>Initial meetings, requirements gathering, wireframes</p>
-                        <span class="timeline-date">December 2025</span>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker complete">✓</div>
-                    <div class="timeline-content">
-                        <h4>Architecture & POC</h4>
-                        <p>Technology selection, web POC demo, contract signed</p>
-                        <span class="timeline-date">January 2026</span>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker complete">✓</div>
-                    <div class="timeline-content">
-                        <h4>Mobile UI Prototype</h4>
-                        <p>Android app prototype with native feel validation</p>
-                        <span class="timeline-date">January 17, 2026</span>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker in-progress"></div>
-                    <div class="timeline-content">
-                        <h4>Phase 1: Core MVP</h4>
-                        <p>Web admin, mobile app, sync engine, authentication</p>
-                        <span class="timeline-date">January - April 2026</span>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker upcoming"></div>
-                    <div class="timeline-content">
-                        <h4>Phase 2: Enhanced Features</h4>
-                        <p>Materials tracking, compliance checklists, reports</p>
-                        <span class="timeline-date">April - May 2026</span>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker upcoming"></div>
-                    <div class="timeline-content">
-                        <h4>Phase 3: Launch</h4>
-                        <p>QuickBooks integration, training, go-live</p>
-                        <span class="timeline-date">June 2026</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- Timeline Section -->
+        <section id="milestones" class="mb-8 p-6 border border-neutral-200 dark:border-neutral-700 rounded-lg">
+            <div class="loading"></div>
+        </section>
 
-        <!-- Recent Activity -->
-        <div class="card">
-            <h2>Recent Activity</h2>
-            <ul class="activity-list">
-                <li>
-                    <div class="activity-icon">📱</div>
-                    <div class="activity-text">
-                        <strong>Mobile app prototype complete</strong>
-                        <p>Running on Android emulator and physical device</p>
-                    </div>
-                    <span class="activity-date">Jan 17</span>
-                </li>
-                <li>
-                    <div class="activity-icon">✅</div>
-                    <div class="activity-text">
-                        <strong>Task status component built</strong>
-                        <p>Tap-to-cycle task completion with visual feedback</p>
-                    </div>
-                    <span class="activity-date">Jan 16</span>
-                </li>
-                <li>
-                    <div class="activity-icon">🎨</div>
-                    <div class="activity-text">
-                        <strong>Custom app branding</strong>
-                        <p>CrewTrack icon and splash screen (goodbye .NET purple!)</p>
-                    </div>
-                    <span class="activity-date">Jan 16</span>
-                </li>
-                <li>
-                    <div class="activity-icon">📋</div>
-                    <div class="activity-text">
-                        <strong>Developer training materials created</strong>
-                        <p>6 hands-on Blazor component tutorials</p>
-                    </div>
-                    <span class="activity-date">Jan 16</span>
-                </li>
-                <li>
-                    <div class="activity-icon">📐</div>
-                    <div class="activity-text">
-                        <strong>Architecture finalized</strong>
-                        <p>Unified Blazor approach - shared code between web and mobile</p>
-                    </div>
-                    <span class="activity-date">Jan 15</span>
-                </li>
-            </ul>
-        </div>
+        <!-- Recent Activity Section -->
+        <section id="activities" class="mb-8 p-6 border border-neutral-200 dark:border-neutral-700 rounded-lg">
+            <div class="loading"></div>
+        </section>
 
         <!-- Footer -->
-        <div class="footer">
-            <p>Built by <a href="https://learnedgeek.com">LearnedGeek</a></p>
-            <p style="margin-top: 4px; opacity: 0.7;">Questions? Contact Mark at mark@learnedgeek.com</p>
-        </div>
+        <footer class="text-center py-6 text-sm text-neutral-500 dark:text-neutral-400">
+            <p>Built by <a href="https://learnedgeek.com" class="underline hover:text-neutral-900 dark:hover:text-white">LearnedGeek</a></p>
+            <p class="mt-1">Questions? Contact Mark at mark@learnedgeek.com</p>
+        </footer>
     </div>
+
+    <script>
+        const iconMap = {
+            device: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" stroke-width="2"/><line x1="12" y1="18" x2="12" y2="18" stroke-width="3" stroke-linecap="round"/></svg>',
+            check: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            design: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path d="M12 2a10 10 0 0 1 0 20" fill="currentColor" opacity="0.3"/></svg>',
+            document: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-width="2"/><polyline points="14,2 14,8 20,8" stroke-width="2"/></svg>',
+            architecture: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" stroke-width="2"/><rect x="14" y="3" width="7" height="7" stroke-width="2"/><rect x="14" y="14" width="7" height="7" stroke-width="2"/><rect x="3" y="14" width="7" height="7" stroke-width="2"/></svg>'
+        };
+
+        async function loadData() {
+            try {
+                const response = await fetch('/byco.json?' + Date.now());
+                if (!response.ok) throw new Error('Failed to load data');
+                const data = await response.json();
+                renderPage(data);
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.querySelectorAll('.loading').forEach(el => {
+                    el.innerHTML = '<div class="error">Failed to load project data. Please refresh the page.</div>';
+                });
+            }
+        }
+
+        function renderPage(data) {
+            renderHeader(data.project);
+            renderProgress(data.progress);
+            renderMilestones(data.milestones);
+            renderActivities(data.activities);
+        }
+
+        function renderHeader(project) {
+            document.getElementById('header').innerHTML = `
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h1 class="text-3xl font-semibold tracking-tight">${project.name}</h1>
+                        <p class="text-neutral-500 dark:text-neutral-400 mt-1">${project.subtitle}</p>
+                    </div>
+                    <div class="text-sm text-neutral-500 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-800 px-4 py-2 rounded-full">
+                        Updated: ${project.lastUpdated}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderProgress(progress) {
+            const circumference = 2 * Math.PI * 58;
+            const offset = circumference * (1 - progress.percent / 100);
+
+            document.getElementById('progress').innerHTML = `
+                <h2 class="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-4">Project Progress</h2>
+                <div class="flex flex-col sm:flex-row items-center gap-8">
+                    <div class="progress-ring-container">
+                        <svg class="progress-ring" width="140" height="140">
+                            <circle class="progress-ring-bg" cx="70" cy="70" r="58"/>
+                            <circle class="progress-ring-fill" cx="70" cy="70" r="58"
+                                    stroke-dasharray="${circumference}"
+                                    stroke-dashoffset="${offset}" />
+                        </svg>
+                        <div class="progress-text">
+                            <div class="text-3xl font-semibold">${progress.percent}%</div>
+                            <div class="text-xs text-neutral-500 dark:text-neutral-400">Complete</div>
+                        </div>
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <h3 class="text-xl font-semibold">${progress.phase}</h3>
+                        <p class="text-neutral-500 dark:text-neutral-400">${progress.week}</p>
+                        <p class="mt-3">
+                            <span class="status-badge in-progress">In Progress</span>
+                        </p>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-300">
+                            Target completion: <strong>${progress.targetCompletion}</strong>
+                        </p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderMilestones(milestones) {
+            const items = milestones.map(m => {
+                let markerClass = m.status;
+                let markerContent = '';
+                if (m.status === 'complete') {
+                    markerContent = '<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                }
+
+                return `
+                    <div class="timeline-item">
+                        <div class="timeline-marker ${markerClass}">${markerContent}</div>
+                        <div>
+                            <h4 class="font-medium">${m.title}</h4>
+                            <p class="text-sm text-neutral-500 dark:text-neutral-400">${m.description}</p>
+                            <span class="text-xs text-neutral-400 dark:text-neutral-500">${m.date}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('milestones').innerHTML = `
+                <h2 class="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-4">Project Milestones</h2>
+                <div class="timeline">
+                    ${items}
+                </div>
+            `;
+        }
+
+        function renderActivities(activities) {
+            const items = activities.map(a => `
+                <li class="flex gap-3 py-3 border-b border-neutral-100 dark:border-neutral-800 last:border-0">
+                    <div class="activity-icon">
+                        ${iconMap[a.icon] || iconMap.check}
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-medium">${a.title}</p>
+                        <p class="text-sm text-neutral-500 dark:text-neutral-400">${a.description}</p>
+                    </div>
+                    <span class="text-xs text-neutral-400 dark:text-neutral-500 whitespace-nowrap">${a.date}</span>
+                </li>
+            `).join('');
+
+            document.getElementById('activities').innerHTML = `
+                <h2 class="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-4">Recent Activity</h2>
+                <ul>
+                    ${items}
+                </ul>
+            `;
+        }
+
+        // Load data when page loads
+        loadData();
+    </script>
 </body>
 </html>
