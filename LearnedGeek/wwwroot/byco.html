@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>CrewTrack Project Status - BYCO Inc.</title>
+    <style>
+        :root {
+            --primary: #1976d2;
+            --primary-dark: #1565c0;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --gray: #9e9e9e;
+            --gray-light: #f5f5f5;
+            --text: #333;
+            --text-secondary: #666;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--gray-light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .header h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+
+        .header .subtitle {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .last-updated {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        /* Progress Ring */
+        .progress-section {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .progress-ring-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+        }
+
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring-bg {
+            fill: none;
+            stroke: #e0e0e0;
+            stroke-width: 12;
+        }
+
+        .progress-ring-fill {
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 12;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .progress-percent {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .progress-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .progress-details {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .progress-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .progress-details p {
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-badge.in-progress {
+            background: #e3f2fd;
+            color: var(--primary);
+        }
+
+        .status-badge.complete {
+            background: #e8f5e9;
+            color: var(--success);
+        }
+
+        .status-badge.upcoming {
+            background: #fff3e0;
+            color: var(--warning);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: #e0e0e0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -30px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+        }
+
+        .timeline-marker.complete {
+            background: var(--success);
+        }
+
+        .timeline-marker.in-progress {
+            background: var(--primary);
+            animation: pulse 2s infinite;
+        }
+
+        .timeline-marker.upcoming {
+            background: white;
+            border: 2px solid #e0e0e0;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(25, 118, 210, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(25, 118, 210, 0); }
+        }
+
+        .timeline-content h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Payments */
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .payment-item {
+            background: var(--gray-light);
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .payment-item.paid {
+            background: #e8f5e9;
+        }
+
+        .payment-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .payment-item.paid .payment-amount {
+            color: var(--success);
+        }
+
+        .payment-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .payment-status {
+            font-size: 0.75rem;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        /* Activity */
+        .activity-list {
+            list-style: none;
+        }
+
+        .activity-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .activity-list li:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--gray-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .activity-text {
+            flex: 1;
+        }
+
+        .activity-date {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header {
+                text-align: center;
+                justify-content: center;
+            }
+
+            .progress-section {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div>
+                <h1>CrewTrack</h1>
+                <p class="subtitle">Field Crew Management System for BYCO Inc.</p>
+            </div>
+            <div class="last-updated">Updated: Jan 17, 2026</div>
+        </div>
+
+        <!-- Overall Progress -->
+        <div class="card">
+            <h2>Project Progress</h2>
+            <div class="progress-section">
+                <div class="progress-ring-container">
+                    <svg class="progress-ring" width="140" height="140">
+                        <circle class="progress-ring-bg" cx="70" cy="70" r="58"/>
+                        <circle class="progress-ring-fill" cx="70" cy="70" r="58"
+                                stroke-dasharray="364.4"
+                                stroke-dashoffset="255" />
+                        <!-- 364.4 = 2 * PI * 58, offset = 364.4 * (1 - percent/100) -->
+                        <!-- 30% complete = 364.4 * 0.7 = 255 -->
+                    </svg>
+                    <div class="progress-text">
+                        <div class="progress-percent">30%</div>
+                        <div class="progress-label">Complete</div>
+                    </div>
+                </div>
+                <div class="progress-details">
+                    <h3>Phase 1: Core MVP</h3>
+                    <p>Week 1 of 14</p>
+                    <p style="margin-top: 8px;">
+                        <span class="status-badge in-progress">In Progress</span>
+                    </p>
+                    <p style="margin-top: 12px; font-size: 0.9rem;">
+                        Target completion: <strong>April 2026</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="card">
+            <h2>Project Milestones</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker complete">✓</div>
+                    <div class="timeline-content">
+                        <h4>Discovery & Requirements</h4>
+                        <p>Initial meetings, requirements gathering, wireframes</p>
+                        <span class="timeline-date">December 2025</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker complete">✓</div>
+                    <div class="timeline-content">
+                        <h4>Architecture & POC</h4>
+                        <p>Technology selection, web POC demo, contract signed</p>
+                        <span class="timeline-date">January 2026</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker complete">✓</div>
+                    <div class="timeline-content">
+                        <h4>Mobile UI Prototype</h4>
+                        <p>Android app prototype with native feel validation</p>
+                        <span class="timeline-date">January 17, 2026</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker in-progress"></div>
+                    <div class="timeline-content">
+                        <h4>Phase 1: Core MVP</h4>
+                        <p>Web admin, mobile app, sync engine, authentication</p>
+                        <span class="timeline-date">January - April 2026</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker upcoming"></div>
+                    <div class="timeline-content">
+                        <h4>Phase 2: Enhanced Features</h4>
+                        <p>Materials tracking, compliance checklists, reports</p>
+                        <span class="timeline-date">April - May 2026</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker upcoming"></div>
+                    <div class="timeline-content">
+                        <h4>Phase 3: Launch</h4>
+                        <p>QuickBooks integration, training, go-live</p>
+                        <span class="timeline-date">June 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="card">
+            <h2>Recent Activity</h2>
+            <ul class="activity-list">
+                <li>
+                    <div class="activity-icon">📱</div>
+                    <div class="activity-text">
+                        <strong>Mobile app prototype complete</strong>
+                        <p>Running on Android emulator and physical device</p>
+                    </div>
+                    <span class="activity-date">Jan 17</span>
+                </li>
+                <li>
+                    <div class="activity-icon">✅</div>
+                    <div class="activity-text">
+                        <strong>Task status component built</strong>
+                        <p>Tap-to-cycle task completion with visual feedback</p>
+                    </div>
+                    <span class="activity-date">Jan 16</span>
+                </li>
+                <li>
+                    <div class="activity-icon">🎨</div>
+                    <div class="activity-text">
+                        <strong>Custom app branding</strong>
+                        <p>CrewTrack icon and splash screen (goodbye .NET purple!)</p>
+                    </div>
+                    <span class="activity-date">Jan 16</span>
+                </li>
+                <li>
+                    <div class="activity-icon">📋</div>
+                    <div class="activity-text">
+                        <strong>Developer training materials created</strong>
+                        <p>6 hands-on Blazor component tutorials</p>
+                    </div>
+                    <span class="activity-date">Jan 16</span>
+                </li>
+                <li>
+                    <div class="activity-icon">📐</div>
+                    <div class="activity-text">
+                        <strong>Architecture finalized</strong>
+                        <p>Unified Blazor approach - shared code between web and mobile</p>
+                    </div>
+                    <span class="activity-date">Jan 15</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Built by <a href="https://learnedgeek.com">LearnedGeek</a></p>
+            <p style="margin-top: 4px; opacity: 0.7;">Questions? Contact Mark at mark@learnedgeek.com</p>
+        </div>
+    </div>
+</body>
+</html>
