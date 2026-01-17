@@ -52,6 +52,7 @@ app.UseSession();
 app.UseAuthorization();
 
 app.MapStaticAssets();
+app.UseStaticFiles(); // Fallback for files not in build manifest (e.g., FTP'd files)
 
 app.MapControllerRoute(
     name: "default",
