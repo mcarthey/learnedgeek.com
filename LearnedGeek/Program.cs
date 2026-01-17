@@ -52,7 +52,23 @@ app.UseSession();
 app.UseAuthorization();
 
 app.MapStaticAssets();
-app.UseStaticFiles(); // Fallback for files not in build manifest (e.g., FTP'd files)
+
+// Fallback for FTP'd files - restricted to specific patterns
+app.UseStaticFiles(new StaticFileOptions
+{
+    OnPrepareResponse = ctx =>
+    {
+        var path = ctx.File.Name;
+        // Only allow byco.json through the fallback
+        if (!path.Equals("byco.json", StringComparison.OrdinalIgnoreCase))
+        {
+            // If it wasn't served by MapStaticAssets and isn't byco.json, block it
+            ctx.Context.Response.StatusCode = 404;
+            ctx.Context.Response.ContentLength = 0;
+            ctx.Context.Response.Body = Stream.Null;
+        }
+    }
+});
 
 app.MapControllerRoute(
     name: "default",
