@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "tailwind-vs-bootstrap-paradigm-shift",
+      "title": "Tailwind vs Bootstrap: The Paradigm Shift That Finally Made Sense",
+      "description": "You've been using Bootstrap for years. Then someone mentions Tailwind and suddenly you're supposed to write class names that look like inline styles from 2003. Here's why it's actually better.",
+      "category": "Computers",
+      "tags": ["tailwind", "bootstrap", "css", "web-development", "frontend"],
+      "date": "2026-02-05",
+      "featured": true,
+      "image": "/img/posts/tailwind-vs-bootstrap-paradigm-shift.svg"
+    },
+    {
       "slug": "events-delegates-handlers-restaurant-analogy",
       "title": "Events, Delegates, and Handlers: The Restaurant Analogy That Finally Made It Click",
       "description": "Stop thinking about function pointers. Start thinking about bells and notifications. A restaurant analogy that makes C# events actually make sense.",
