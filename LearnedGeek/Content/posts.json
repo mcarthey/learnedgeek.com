@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "seo-oops-recovery-guide",
+      "title": "SEO Oops Recovery: When You Accidentally Expose Everything",
+      "description": "Your admin dashboard is in Google. Your API key is in git history. That angry TODO comment is now public. Here's the emergency recovery guide.",
+      "category": "Computers",
+      "tags": ["seo", "git", "security", "robots-txt", "recovery", "troubleshooting"],
+      "date": "2026-02-10",
+      "featured": true,
+      "image": "/img/posts/seo-oops-recovery-guide.svg"
+    },
+    {
       "slug": "tailwind-vs-bootstrap-paradigm-shift",
       "title": "Tailwind vs Bootstrap: The Paradigm Shift That Finally Made Sense",
       "description": "You've been using Bootstrap for years. Then someone mentions Tailwind and suddenly you're supposed to write class names that look like inline styles from 2003. Here's why it's actually better.",
