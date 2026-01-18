@@ -21,6 +21,16 @@
       "image": "/img/posts/seo-oops-recovery-guide.svg"
     },
     {
+      "slug": "tailwind-dynamic-classes-layer-gotchas",
+      "title": "Tailwind's Hidden Gotchas: Dynamic Classes and @layer",
+      "description": "Your dynamic class names aren't working. The CSS exists in your code but not in your output. Here's why Tailwind's JIT compiler is ignoring you and how to fix it.",
+      "category": "Computers",
+      "tags": ["tailwind", "css", "jit", "blazor", "react", "troubleshooting"],
+      "date": "2026-02-09",
+      "featured": true,
+      "image": "/img/posts/tailwind-dynamic-classes-layer-gotchas.svg"
+    },
+    {
       "slug": "tailwind-vs-bootstrap-paradigm-shift",
       "title": "Tailwind vs Bootstrap: The Paradigm Shift That Finally Made Sense",
       "description": "You've been using Bootstrap for years. Then someone mentions Tailwind and suddenly you're supposed to write class names that look like inline styles from 2003. Here's why it's actually better.",

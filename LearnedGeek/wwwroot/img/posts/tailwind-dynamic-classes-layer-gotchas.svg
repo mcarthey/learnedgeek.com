@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="codeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+
+  <!-- Decorative grid lines -->
+  <g stroke="#334155" stroke-width="0.5" opacity="0.3">
+    <line x1="0" y1="75" x2="800" y2="75"/>
+    <line x1="0" y1="150" x2="800" y2="150"/>
+    <line x1="0" y1="225" x2="800" y2="225"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="375" x2="800" y2="375"/>
+    <line x1="200" y1="0" x2="200" y2="450"/>
+    <line x1="400" y1="0" x2="400" y2="450"/>
+    <line x1="600" y1="0" x2="600" y2="450"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="45" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="700">Tailwind's Hidden Gotchas</text>
+  <text x="400" y="70" text-anchor="middle" fill="#94a3b8" font-family="Inter, system-ui, sans-serif" font-size="14">When Dynamic Classes Disappear</text>
+
+  <!-- LEFT: The Problem -->
+  <g transform="translate(40, 100)">
+    <!-- Code block showing broken code -->
+    <rect x="0" y="0" width="320" height="160" rx="8" fill="url(#codeGrad)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="320" height="28" rx="8" fill="#334155"/>
+    <rect x="0" y="20" width="320" height="8" fill="#334155"/>
+
+    <!-- Traffic lights -->
+    <circle cx="16" cy="14" r="5" fill="#ef4444"/>
+    <circle cx="32" cy="14" r="5" fill="#f59e0b"/>
+    <circle cx="48" cy="14" r="5" fill="#22c55e"/>
+    <text x="160" y="18" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="10">Component.razor</text>
+
+    <!-- Code content -->
+    <text x="15" y="50" fill="#94a3b8" font-family="monospace" font-size="10">// This looks right...</text>
+    <text x="15" y="68" fill="#c084fc" font-family="monospace" font-size="10">var</text>
+    <text x="40" y="68" fill="#f8fafc" font-family="monospace" font-size="10">color = isOk ?</text>
+    <text x="15" y="86" fill="#a5f3fc" font-family="monospace" font-size="10">  "bg-green-500"</text>
+    <text x="130" y="86" fill="#f8fafc" font-family="monospace" font-size="10">:</text>
+    <text x="15" y="104" fill="#fca5a5" font-family="monospace" font-size="10">  "bg-red-500"</text>
+    <text x="100" y="104" fill="#f8fafc" font-family="monospace" font-size="10">;</text>
+
+    <text x="15" y="130" fill="#64748b" font-family="monospace" font-size="10">&lt;div class="@color"&gt;</text>
+    <text x="15" y="148" fill="#64748b" font-family="monospace" font-size="10">  Status</text>
+    <text x="15" y="166" fill="#64748b" font-family="monospace" font-size="10">&lt;/div&gt;</text>
+
+    <!-- Big red X -->
+    <g transform="translate(270, 100)">
+      <circle cx="20" cy="20" r="20" fill="#ef4444" filter="url(#glow)"/>
+      <path d="M12 12 L28 28 M28 12 L12 28" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <text x="160" y="190" text-anchor="middle" fill="#ef4444" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">No CSS generated!</text>
+  </g>
+
+  <!-- Arrow -->
+  <g transform="translate(375, 180)">
+    <path d="M0 15 L35 15 L35 5 L55 20 L35 35 L35 25 L0 25 Z" fill="#38bdf8"/>
+  </g>
+
+  <!-- RIGHT: The Solution -->
+  <g transform="translate(440, 100)">
+    <!-- Code block showing fix -->
+    <rect x="0" y="0" width="320" height="160" rx="8" fill="url(#codeGrad)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="320" height="28" rx="8" fill="#334155"/>
+    <rect x="0" y="20" width="320" height="8" fill="#334155"/>
+
+    <!-- Traffic lights -->
+    <circle cx="16" cy="14" r="5" fill="#ef4444"/>
+    <circle cx="32" cy="14" r="5" fill="#f59e0b"/>
+    <circle cx="48" cy="14" r="5" fill="#22c55e"/>
+    <text x="160" y="18" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="10">site.css</text>
+
+    <!-- Code content -->
+    <text x="15" y="50" fill="#94a3b8" font-family="monospace" font-size="10">/* Safelist or define manually */</text>
+    <text x="15" y="68" fill="#f472b6" font-family="monospace" font-size="10">@layer</text>
+    <text x="60" y="68" fill="#38bdf8" font-family="monospace" font-size="10">utilities</text>
+    <text x="125" y="68" fill="#f8fafc" font-family="monospace" font-size="10">{</text>
+
+    <text x="25" y="90" fill="#a5f3fc" font-family="monospace" font-size="10">.bg-success</text>
+    <text x="110" y="90" fill="#f8fafc" font-family="monospace" font-size="10">{</text>
+    <text x="35" y="108" fill="#c084fc" font-family="monospace" font-size="10">background:</text>
+    <text x="120" y="108" fill="#a5f3fc" font-family="monospace" font-size="10">#22c55e</text>
+    <text x="175" y="108" fill="#f8fafc" font-family="monospace" font-size="10">;</text>
+    <text x="25" y="126" fill="#f8fafc" font-family="monospace" font-size="10">}</text>
+
+    <text x="25" y="148" fill="#fca5a5" font-family="monospace" font-size="10">.bg-danger</text>
+    <text x="100" y="148" fill="#f8fafc" font-family="monospace" font-size="10">{ ... }</text>
+    <text x="15" y="166" fill="#f8fafc" font-family="monospace" font-size="10">}</text>
+
+    <!-- Big green check -->
+    <g transform="translate(270, 100)">
+      <circle cx="20" cy="20" r="20" fill="#22c55e" filter="url(#glow)"/>
+      <path d="M12 20 L18 26 L28 14" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <text x="160" y="190" text-anchor="middle" fill="#22c55e" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">Classes always available!</text>
+  </g>
+
+  <!-- Bottom: Layer Diagram -->
+  <g transform="translate(100, 320)">
+    <text x="300" y="0" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">@layer Priority (lowest → highest)</text>
+
+    <!-- Layer boxes -->
+    <rect x="0" y="20" width="180" height="50" rx="6" fill="#1e3a5f" stroke="#3b82f6" stroke-width="2"/>
+    <text x="90" y="40" text-anchor="middle" fill="#93c5fd" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">@layer base</text>
+    <text x="90" y="56" text-anchor="middle" fill="#64748b" font-family="Inter, system-ui, sans-serif" font-size="9">Resets, defaults</text>
+
+    <rect x="210" y="20" width="180" height="50" rx="6" fill="#3f3f1f" stroke="#eab308" stroke-width="2"/>
+    <text x="300" y="40" text-anchor="middle" fill="#fde047" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">@layer components</text>
+    <text x="300" y="56" text-anchor="middle" fill="#64748b" font-family="Inter, system-ui, sans-serif" font-size="9">.btn, .card, .badge</text>
+
+    <rect x="420" y="20" width="180" height="50" rx="6" fill="#1f3f2f" stroke="#22c55e" stroke-width="2"/>
+    <text x="510" y="40" text-anchor="middle" fill="#86efac" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">@layer utilities</text>
+    <text x="510" y="56" text-anchor="middle" fill="#64748b" font-family="Inter, system-ui, sans-serif" font-size="9">.bg-*, .text-*, .p-*</text>
+
+    <!-- Arrows between layers -->
+    <path d="M185 45 L205 45" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M395 45 L415 45" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+    <!-- Priority labels -->
+    <text x="90" y="85" text-anchor="middle" fill="#475569" font-family="Inter, system-ui, sans-serif" font-size="10">1st</text>
+    <text x="300" y="85" text-anchor="middle" fill="#475569" font-family="Inter, system-ui, sans-serif" font-size="10">2nd</text>
+    <text x="510" y="85" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">WINS</text>
+  </g>
+
+  <!-- Arrowhead marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- Bottom tagline -->
+  <text x="400" y="435" text-anchor="middle" fill="#64748b" font-family="Inter, system-ui, sans-serif" font-size="11" font-style="italic">"JIT compilation: Great for bundle size, tricky for dynamic classes"</text>
+</svg>
