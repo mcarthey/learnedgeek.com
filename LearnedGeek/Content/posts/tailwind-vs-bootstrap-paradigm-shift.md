@@ -284,6 +284,70 @@ function Button({ children }) {
 
 The verbosity is a non-issue in practice.
 
+### The Dynamic Class Gotcha
+
+Here's something that will bite you if you're coming from Bootstrap: **Tailwind only generates CSS for classes it can find in your source files.**
+
+This is how Tailwind keeps your CSS bundle small. It scans your files, finds class names, and only includes those in the output. Brilliant for performance. Terrible if you're generating class names dynamically.
+
+**This works:**
+```html
+<div class="bg-green-500">Always green</div>
+```
+
+**This breaks:**
+```csharp
+// Blazor component
+private string GetStatusColor()
+{
+    return isComplete ? "bg-green-500" : "bg-orange-500";
+}
+```
+```html
+<div class="@GetStatusColor()">Status indicator</div>
+```
+
+Tailwind scans your `.razor` file but can't execute your C# code. It sees `@GetStatusColor()`, shrugs, and moves on. No `bg-green-500` or `bg-orange-500` in your CSS output. Your status indicator renders with... nothing.
+
+The same problem hits React, Vue, and any framework where you build class names programmatically:
+
+```jsx
+// React - also broken
+const color = isError ? 'bg-red-500' : 'bg-blue-500';
+return <div className={color}>...</div>;
+```
+
+**The fix: Safelist your dynamic classes.**
+
+In `tailwind.config.js`:
+```javascript
+module.exports = {
+  content: ["./**/*.razor", "./**/*.jsx"],
+  safelist: [
+    'bg-green-500',
+    'bg-orange-500',
+    'bg-red-500',
+    'bg-blue-500',
+  ],
+  // ...
+}
+```
+
+The safelist tells Tailwind "generate these classes even if you don't see them in the source." Problem solved.
+
+Bootstrap never had this issue because all its classes were pre-generated. With Tailwind's JIT approach, you trade that convenience for much smaller bundles. Fair trade, but you need to know the rules.
+
+**Pro tip:** Keep your safelist minimal. If you're safelisting dozens of classes, you're probably fighting the framework. Consider restructuring your code so the full class strings appear in the source:
+
+```csharp
+// Better: Tailwind can see these strings
+private string GetStatusColor() => isComplete
+    ? "bg-green-500"   // Tailwind finds this
+    : "bg-orange-500"; // And this
+```
+
+Some build setups are smart enough to find strings in your code. Others aren't. When in doubt, safelist.
+
 ## When Bootstrap Still Wins
 
 I'm not here to tell you Tailwind is always better. Bootstrap wins when:
