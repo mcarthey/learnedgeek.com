@@ -68,7 +68,20 @@
                     <!-- Header row - clickable to expand -->
                     <div class="flex justify-between items-start gap-4 cursor-pointer" onclick="togglePost('@post.Slug')">
                         <div class="flex-1">
-                            <h3 class="text-neutral-900 dark:text-white font-medium">@post.Title</h3>
+                            <div class="flex items-center gap-2">
+                                <a href="/Blog/Post/@post.Slug"
+                                   target="_blank"
+                                   onclick="event.stopPropagation()"
+                                   class="text-neutral-900 dark:text-white font-medium hover:text-blue-600 dark:hover:text-blue-400 hover:underline">
+                                    @post.Title
+                                </a>
+                                @if (post.Date.Date > DateTime.Today)
+                                {
+                                    <span class="text-xs bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded-full font-medium">
+                                        Scheduled
+                                    </span>
+                                }
+                            </div>
                             <p class="text-sm text-neutral-500 mt-1">
                                 @post.Date.ToString("MMM d, yyyy") · @post.Category
                             </p>

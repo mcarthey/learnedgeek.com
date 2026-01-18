@@ -76,11 +76,11 @@ public class AdminController : Controller
             return RedirectToAction(nameof(Login));
         }
 
-        var posts = await _blogService.GetAllPostsAsync();
+        var posts = await _blogService.GetAllPostsIncludingFutureAsync();
         ViewBag.LinkedInConfigured = _linkedInService.IsConfigured;
         ViewBag.LinkedInConnected = _linkedInService.HasValidToken;
 
-        return View(posts.OrderByDescending(p => p.Date).ToList());
+        return View(posts.ToList());
     }
 
     [HttpGet("login")]

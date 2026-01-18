@@ -52,6 +52,12 @@ public class BlogService : IBlogService
             .OrderByDescending(p => p.Date);
     }
 
+    public async Task<IEnumerable<BlogPost>> GetAllPostsIncludingFutureAsync()
+    {
+        var posts = await LoadPostsMetadataAsync();
+        return posts.OrderByDescending(p => p.Date);
+    }
+
     public async Task<IEnumerable<BlogPost>> GetPostsByCategoryAsync(Category category)
     {
         var posts = await LoadPostsMetadataAsync();
