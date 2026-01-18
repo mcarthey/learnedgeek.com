@@ -317,7 +317,9 @@ const color = isError ? 'bg-red-500' : 'bg-blue-500';
 return <div className={color}>...</div>;
 ```
 
-**The fix: Safelist your dynamic classes.**
+**The fix depends on your Tailwind setup.**
+
+**Option 1: Safelist (Tailwind v3 with Node CLI)**
 
 In `tailwind.config.js`:
 ```javascript
@@ -335,9 +337,27 @@ module.exports = {
 
 The safelist tells Tailwind "generate these classes even if you don't see them in the source." Problem solved.
 
+**Option 2: Manual CSS (Tailwind v4 or standalone CLI)**
+
+Here's the gotcha that cost me hours: **Tailwind v4 and the standalone CLI don't support safelist in config files.** The standalone executable is a self-contained binary that doesn't read `tailwind.config.js` the same way.
+
+If safelist isn't working, define your dynamic classes directly in your CSS source:
+
+```css
+/* In your source CSS file */
+@layer utilities {
+  /* Classes for dynamic application in code */
+  .bg-success { background-color: #4caf50; }
+  .bg-warning { background-color: #ff9800; }
+  .bg-danger { background-color: #f44336; }
+}
+```
+
+This is actually more explicit and self-documenting. The comment explains *why* these classes exist separately.
+
 Bootstrap never had this issue because all its classes were pre-generated. With Tailwind's JIT approach, you trade that convenience for much smaller bundles. Fair trade, but you need to know the rules.
 
-**Pro tip:** Keep your safelist minimal. If you're safelisting dozens of classes, you're probably fighting the framework. Consider restructuring your code so the full class strings appear in the source:
+**Pro tip:** Keep dynamic classes minimal. If you're defining dozens of manual classes, you're probably fighting the framework. Consider restructuring your code so the full class strings appear in the source:
 
 ```csharp
 // Better: Tailwind can see these strings
@@ -346,7 +366,7 @@ private string GetStatusColor() => isComplete
     : "bg-orange-500"; // And this
 ```
 
-Some build setups are smart enough to find strings in your code. Others aren't. When in doubt, safelist.
+Some build setups are smart enough to find strings in your code. Others aren't. When the strings are in return statements or ternaries, the JIT scanner often catches them.
 
 ## When Bootstrap Still Wins
 
