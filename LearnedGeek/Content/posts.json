@@ -1,24 +1,34 @@
 {
   "posts": [
     {
-      "slug": "custom-error-pages-teaching-moments",
-      "title": "Custom Error Pages: Turning 404s Into Teaching Moments",
-      "description": "Your visitors hit a 404. Do they see a cold 'Page Not Found' or a delightful learning opportunity? Here's how to make error pages that keep people engaged.",
-      "category": "Computers",
-      "tags": ["aspnet-core", "error-pages", "ux", "http", "csharp", "user-experience"],
-      "date": "2026-02-14",
-      "featured": true,
-      "image": "/img/posts/custom-error-pages-teaching-moments.svg"
-    },
-    {
       "slug": "seo-oops-recovery-guide",
       "title": "SEO Oops Recovery: When You Accidentally Expose Everything",
       "description": "Your admin dashboard is in Google. Your API key is in git history. That angry TODO comment is now public. Here's the emergency recovery guide.",
       "category": "Computers",
       "tags": ["seo", "git", "security", "robots-txt", "recovery", "troubleshooting"],
-      "date": "2026-02-10",
+      "date": "2026-02-25",
       "featured": true,
       "image": "/img/posts/seo-oops-recovery-guide.svg"
+    },
+    {
+      "slug": "custom-error-pages-teaching-moments",
+      "title": "Custom Error Pages: Turning 404s Into Teaching Moments",
+      "description": "Your visitors hit a 404. Do they see a cold 'Page Not Found' or a delightful learning opportunity? Here's how to make error pages that keep people engaged.",
+      "category": "Computers",
+      "tags": ["aspnet-core", "error-pages", "ux", "http", "csharp", "user-experience"],
+      "date": "2026-02-20",
+      "featured": true,
+      "image": "/img/posts/custom-error-pages-teaching-moments.svg"
+    },
+    {
+      "slug": "tailwind-v4-source-directive-gotcha",
+      "title": "Tailwind v4's Silent Breaking Change: The @source Directive",
+      "description": "You upgraded to Tailwind v4. Your build runs. Your CSS generates. Half your styles are missing. Welcome to the @source directive gotcha.",
+      "category": "Computers",
+      "tags": ["tailwind", "css", "v4", "migration", "troubleshooting", "blazor"],
+      "date": "2026-02-15",
+      "featured": true,
+      "image": "/img/posts/tailwind-v4-source-directive-gotcha.svg"
     },
     {
       "slug": "tailwind-dynamic-classes-layer-gotchas",
@@ -26,7 +36,7 @@
       "description": "Your dynamic class names aren't working. The CSS exists in your code but not in your output. Here's why Tailwind's JIT compiler is ignoring you and how to fix it.",
       "category": "Computers",
       "tags": ["tailwind", "css", "jit", "blazor", "react", "troubleshooting"],
-      "date": "2026-02-09",
+      "date": "2026-02-10",
       "featured": true,
       "image": "/img/posts/tailwind-dynamic-classes-layer-gotchas.svg"
     },
