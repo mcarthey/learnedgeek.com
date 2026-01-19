@@ -1,6 +1,26 @@
 {
   "posts": [
     {
+      "slug": "a-modest-proposal-for-ai-safety",
+      "title": "A Modest Proposal for AI Safety",
+      "description": "In which the author documents humanity's imminent obsolescence at the hands of our mechanical overlords. (Or does he?)",
+      "category": "Computers",
+      "tags": ["ai", "satire", "humor", "opinion", "future", "productivity"],
+      "date": "2026-03-10",
+      "featured": true,
+      "image": "/img/posts/a-modest-proposal-for-ai-safety.svg"
+    },
+    {
+      "slug": "ai-wont-replace-developers-but",
+      "title": "AI Won't Replace Developers, But...",
+      "description": "LinkedIn hot takes say AI replaces coders. After a year building production apps with AI assistance, here's what actually happens - and why expertise still matters.",
+      "category": "Computers",
+      "tags": ["ai", "development", "architecture", "collaboration", "productivity", "opinion"],
+      "date": "2026-03-05",
+      "featured": true,
+      "image": "/img/posts/ai-wont-replace-developers-but.svg"
+    },
+    {
       "slug": "recaptcha-v3-mobile-users-scoring",
       "title": "reCAPTCHA v3's Mobile Problem: Why Your Real Users Score Like Bots",
       "description": "My wife scored 0.1 on reCAPTCHA. From our couch. On her phone. Here's what Google doesn't tell you about score thresholds and mobile users.",
