@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "blazor-wasm-debugging-chrome-devtools",
+      "title": "Blazor WASM Debugging: What's That /_framework/debug Endpoint?",
+      "description": "You started a Blazor WebAssembly app and noticed a mysterious debug URL. Then Chrome wanted special flags. Then you saw 'Inspectable pages.' Here's what's actually happening.",
+      "category": "Computers",
+      "tags": ["blazor", "webassembly", "debugging", "chrome", "dotnet", "devtools"],
+      "date": "2026-03-15",
+      "featured": true,
+      "image": "/img/posts/blazor-wasm-debugging-chrome-devtools.svg"
+    },
+    {
       "slug": "recaptcha-v3-mobile-users-scoring",
       "title": "reCAPTCHA v3's Mobile Problem: Why Your Real Users Score Like Bots",
       "description": "My wife scored 0.1 on reCAPTCHA. From our couch. On her phone. Here's what Google doesn't tell you about score thresholds and mobile users.",
