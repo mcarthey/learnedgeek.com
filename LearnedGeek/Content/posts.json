@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "recaptcha-v3-mobile-users-scoring",
+      "title": "reCAPTCHA v3's Mobile Problem: Why Your Real Users Score Like Bots",
+      "description": "My wife scored 0.1 on reCAPTCHA. From our couch. On her phone. Here's what Google doesn't tell you about score thresholds and mobile users.",
+      "category": "Computers",
+      "tags": ["recaptcha", "security", "aspnet-core", "mobile", "troubleshooting"],
+      "date": "2026-03-01",
+      "featured": true,
+      "image": "/img/posts/recaptcha-v3-mobile-users-scoring.svg"
+    },
+    {
       "slug": "seo-oops-recovery-guide",
       "title": "SEO Oops Recovery: When You Accidentally Expose Everything",
       "description": "Your admin dashboard is in Google. Your API key is in git history. That angry TODO comment is now public. Here's the emergency recovery guide.",

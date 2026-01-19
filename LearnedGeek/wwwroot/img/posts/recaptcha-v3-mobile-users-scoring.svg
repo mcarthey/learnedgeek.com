@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fafafa"/>
+      <stop offset="100%" style="stop-color:#f5f5f5"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" fill="#1e293b" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700">reCAPTCHA v3: What Google Doesn't Tell You</text>
+
+  <!-- Score Scale Comparison -->
+  <g transform="translate(50, 70)">
+    <!-- Google's Version -->
+    <text x="175" y="0" text-anchor="middle" fill="#64748b" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">GOOGLE'S DOCUMENTATION</text>
+
+    <rect x="0" y="15" width="350" height="120" rx="8" fill="white" filter="url(#shadow)"/>
+
+    <!-- Scale bar -->
+    <rect x="20" y="35" width="310" height="30" rx="4" fill="#e5e7eb"/>
+
+    <!-- Score segments -->
+    <rect x="20" y="35" width="93" height="30" rx="4" fill="#ef4444"/>
+    <rect x="113" y="35" width="62" height="30" fill="#f59e0b"/>
+    <rect x="175" y="35" width="62" height="30" fill="#84cc16"/>
+    <rect x="237" y="35" width="93" height="30" rx="4" fill="#22c55e"/>
+
+    <!-- Labels -->
+    <text x="66" y="55" text-anchor="middle" fill="white" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">BOT</text>
+    <text x="144" y="55" text-anchor="middle" fill="white" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">SUS</text>
+    <text x="206" y="55" text-anchor="middle" fill="white" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">OK</text>
+    <text x="283" y="55" text-anchor="middle" fill="white" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">HUMAN</text>
+
+    <!-- Score numbers -->
+    <text x="20" y="82" fill="#64748b" font-family="monospace" font-size="10">0.0</text>
+    <text x="110" y="82" fill="#64748b" font-family="monospace" font-size="10">0.3</text>
+    <text x="172" y="82" fill="#64748b" font-family="monospace" font-size="10">0.5</text>
+    <text x="234" y="82" fill="#64748b" font-family="monospace" font-size="10">0.7</text>
+    <text x="310" y="82" fill="#64748b" font-family="monospace" font-size="10">1.0</text>
+
+    <!-- Threshold marker -->
+    <line x1="175" y1="30" x2="175" y2="70" stroke="#1e293b" stroke-width="2" stroke-dasharray="4"/>
+    <text x="175" y="105" text-anchor="middle" fill="#1e293b" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">Recommended: 0.5</text>
+    <text x="175" y="120" text-anchor="middle" fill="#64748b" font-family="Inter, system-ui, sans-serif" font-size="9">"Start here and adjust"</text>
+  </g>
+
+  <!-- Reality Version -->
+  <g transform="translate(430, 70)">
+    <text x="175" y="0" text-anchor="middle" fill="#64748b" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">REALITY</text>
+
+    <rect x="0" y="15" width="350" height="120" rx="8" fill="white" filter="url(#shadow)"/>
+
+    <!-- Scale bar -->
+    <rect x="20" y="35" width="310" height="30" rx="4" fill="#e5e7eb"/>
+
+    <!-- Score segments - reality -->
+    <rect x="20" y="35" width="15" height="30" rx="4" fill="#ef4444"/>
+    <rect x="35" y="35" width="202" height="30" fill="#22c55e"/>
+    <rect x="237" y="35" width="93" height="30" rx="4" fill="#22c55e"/>
+
+    <!-- Labels -->
+    <text x="27" y="55" text-anchor="middle" fill="white" font-family="Inter, system-ui, sans-serif" font-size="8" font-weight="600">BOT</text>
+    <text x="136" y="55" text-anchor="middle" fill="white" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">MOBILE + VPN USERS</text>
+    <text x="283" y="55" text-anchor="middle" fill="white" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">DESKTOP</text>
+
+    <!-- Score numbers -->
+    <text x="20" y="82" fill="#64748b" font-family="monospace" font-size="10">0.0</text>
+    <text x="172" y="82" fill="#64748b" font-family="monospace" font-size="10">0.5</text>
+    <text x="310" y="82" fill="#64748b" font-family="monospace" font-size="10">1.0</text>
+
+    <!-- New threshold marker -->
+    <line x1="35" y1="30" x2="35" y2="70" stroke="#22c55e" stroke-width="2"/>
+    <text x="35" y="105" text-anchor="middle" fill="#22c55e" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">Better: 0.05</text>
+    <text x="35" y="120" text-anchor="middle" fill="#64748b" font-family="Inter, system-ui, sans-serif" font-size="9">Only blocks 0.0</text>
+  </g>
+
+  <!-- Mobile User Illustration -->
+  <g transform="translate(80, 220)">
+    <rect x="0" y="0" width="280" height="180" rx="8" fill="white" filter="url(#shadow)"/>
+
+    <text x="140" y="25" text-anchor="middle" fill="#1e293b" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">Why Mobile Users Score Low</text>
+
+    <!-- Phone icon -->
+    <rect x="20" y="45" width="50" height="90" rx="8" fill="#e5e7eb" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="28" y="55" width="34" height="60" rx="2" fill="#f8fafc"/>
+    <circle cx="45" cy="125" r="6" fill="#94a3b8"/>
+
+    <!-- Signals with X marks -->
+    <g transform="translate(90, 50)">
+      <circle cx="0" cy="10" r="8" fill="#fee2e2"/>
+      <text x="0" y="14" text-anchor="middle" fill="#ef4444" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700">✕</text>
+      <text x="15" y="14" fill="#64748b" font-family="Inter, system-ui, sans-serif" font-size="11">No mouse movements</text>
+    </g>
+
+    <g transform="translate(90, 75)">
+      <circle cx="0" cy="10" r="8" fill="#fee2e2"/>
+      <text x="0" y="14" text-anchor="middle" fill="#ef4444" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700">✕</text>
+      <text x="15" y="14" fill="#64748b" font-family="Inter, system-ui, sans-serif" font-size="11">Less browsing history</text>
+    </g>
+
+    <g transform="translate(90, 100)">
+      <circle cx="0" cy="10" r="8" fill="#fee2e2"/>
+      <text x="0" y="14" text-anchor="middle" fill="#ef4444" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700">✕</text>
+      <text x="15" y="14" fill="#64748b" font-family="Inter, system-ui, sans-serif" font-size="11">Shared carrier IPs (NAT)</text>
+    </g>
+
+    <g transform="translate(90, 125)">
+      <circle cx="0" cy="10" r="8" fill="#fee2e2"/>
+      <text x="0" y="14" text-anchor="middle" fill="#ef4444" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700">✕</text>
+      <text x="15" y="14" fill="#64748b" font-family="Inter, system-ui, sans-serif" font-size="11">VPN / privacy tools</text>
+    </g>
+
+    <text x="140" y="165" text-anchor="middle" fill="#ef4444" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600">Result: Score 0.1 (blocked at 0.5!)</text>
+  </g>
+
+  <!-- Defense in Depth -->
+  <g transform="translate(400, 220)">
+    <rect x="0" y="0" width="350" height="180" rx="8" fill="white" filter="url(#shadow)"/>
+
+    <text x="175" y="25" text-anchor="middle" fill="#1e293b" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">Defense in Depth (The Real Solution)</text>
+
+    <!-- Layer 1: Honeypot -->
+    <rect x="20" y="45" width="310" height="35" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+    <text x="35" y="67" fill="#1e40af" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600">Layer 1: Honeypot Field</text>
+    <text x="280" y="67" text-anchor="end" fill="#3b82f6" font-family="Inter, system-ui, sans-serif" font-size="10">Catches dumb bots</text>
+
+    <!-- Layer 2: Anti-forgery -->
+    <rect x="20" y="85" width="310" height="35" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+    <text x="35" y="107" fill="#92400e" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600">Layer 2: Anti-Forgery Token</text>
+    <text x="280" y="107" text-anchor="end" fill="#d97706" font-family="Inter, system-ui, sans-serif" font-size="10">Prevents CSRF</text>
+
+    <!-- Layer 3: reCAPTCHA -->
+    <rect x="20" y="125" width="310" height="35" rx="6" fill="#dcfce7" stroke="#22c55e" stroke-width="1"/>
+    <text x="35" y="147" fill="#166534" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600">Layer 3: reCAPTCHA @ 0.05</text>
+    <text x="280" y="147" text-anchor="end" fill="#16a34a" font-family="Inter, system-ui, sans-serif" font-size="10">Blocks score 0.0 only</text>
+
+    <text x="175" y="175" text-anchor="middle" fill="#22c55e" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600">✓ Bots blocked, mobile users allowed</text>
+  </g>
+
+  <!-- Bottom quote -->
+  <text x="400" y="430" text-anchor="middle" fill="#64748b" font-family="Inter, system-ui, sans-serif" font-size="12" font-style="italic">"Sometimes the best defense isn't the strictest one"</text>
+</svg>
