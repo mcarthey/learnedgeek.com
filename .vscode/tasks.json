@@ -10,6 +10,16 @@
     ],
     "tasks": [
         {
+            "label": "Update Browserslist",
+            "type": "shell",
+            "command": "npx",
+            "args": ["update-browserslist-db@latest"],
+            "options": {
+                "cwd": "${workspaceFolder}/LearnedGeek"
+            },
+            "problemMatcher": []
+        },
+        {
             "label": "Build CSS",
             "type": "shell",
             "command": "npm",
@@ -17,6 +27,7 @@
             "options": {
                 "cwd": "${workspaceFolder}/LearnedGeek"
             },
+            "dependsOn": ["Update Browserslist"],
             "problemMatcher": []
         },
         {

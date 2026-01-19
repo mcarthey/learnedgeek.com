@@ -68,6 +68,16 @@ Here's my current `tasks.json` for an ASP.NET MVC project with Tailwind CSS and 
             "group": "test"
         },
         {
+            "label": "Update Browserslist",
+            "type": "shell",
+            "command": "npx",
+            "args": ["update-browserslist-db@latest"],
+            "options": {
+                "cwd": "${workspaceFolder}/ProjectName"
+            },
+            "problemMatcher": []
+        },
+        {
             "label": "Build CSS",
             "type": "shell",
             "command": "npm",
@@ -75,6 +85,7 @@ Here's my current `tasks.json` for an ASP.NET MVC project with Tailwind CSS and 
             "options": {
                 "cwd": "${workspaceFolder}/ProjectName"
             },
+            "dependsOn": ["Update Browserslist"],
             "problemMatcher": []
         },
         {
@@ -150,6 +161,42 @@ The `dependsOn` property chains tasks:
 ```
 
 The "Run" task automatically runs "Build CSS" first. This ensures Tailwind CSS is compiled before the app starts.
+
+### Keeping Browserslist Updated
+
+If you use Tailwind CSS with PostCSS, you'll eventually see this warning during builds:
+
+```
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+```
+
+Rather than running this manually, add a task that runs automatically before CSS builds:
+
+```json
+{
+    "label": "Update Browserslist",
+    "type": "shell",
+    "command": "npx",
+    "args": ["update-browserslist-db@latest"],
+    "options": {
+        "cwd": "${workspaceFolder}/ProjectName"
+    },
+    "problemMatcher": []
+}
+```
+
+Then chain it to your CSS build task:
+
+```json
+{
+    "label": "Build CSS",
+    "dependsOn": ["Update Browserslist"],
+    ...
+}
+```
+
+Now every CSS build ensures the browserslist database is current. The update is fast when already current, so it doesn't add noticeable overhead.
 
 ### Problem Matchers
 
