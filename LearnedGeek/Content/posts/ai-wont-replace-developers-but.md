@@ -170,6 +170,48 @@ The truth is in the middle, as it usually is.
 
 If you understand systems architecture, AI helps you build faster. If you don't, AI helps you build broken things faster.
 
+## For Students and Interns: The Uncomfortable Truth
+
+I teach software architecture. Every semester, I hear the same worried questions from students looking at internships and first jobs:
+
+*"Will there even be junior developer jobs when I graduate?"*
+
+*"Should I just learn prompt engineering instead of programming?"*
+
+*"My friend says AI will make coding obsolete by the time I finish my degree."*
+
+Here's the uncomfortable truth: **these concerns aren't entirely wrong, but they're pointed in the wrong direction.**
+
+Yes, the entry-level landscape is shifting. Yes, companies are experimenting with AI-assisted workflows. Yes, some of those basic "write CRUD operations all day" tasks are being automated.
+
+But here's what students get wrong: they think the solution is to become better at *using* AI. To master the prompts. To learn the tricks.
+
+Last semester, a student told me he couldn't finish his final project the way he'd planned because—I swear this is true—he "ran out of ChatGPT tokens."
+
+I nearly drew blood biting my tongue.
+
+This student had outsourced his thinking so completely that when his AI crutch disappeared, he was helpless. He hadn't learned the architecture. He hadn't understood the patterns. He'd just been copy-pasting generated code until the meter ran out.
+
+**That's not using AI as a tool. That's being used by AI as a conduit.**
+
+The students who will thrive aren't the ones who can write the best prompts. They're the ones who:
+
+- Understand *why* code works, not just *that* it works
+- Can review AI-generated code and spot the bugs
+- Know enough architecture to direct AI toward good solutions
+- Can debug when AI confidently produces garbage
+- Have opinions about design that they can defend
+
+When I teach, I'm not teaching syntax. Syntax is free now—AI will write it for you. I'm teaching you how to think about systems. How to spot when something will break under load. How to recognize security vulnerabilities. How to make architectural decisions that don't paint you into a corner.
+
+**The internships you're worried about? They're going to the students who can do that.**
+
+Employers aren't looking for people who can prompt ChatGPT. They're looking for people who can *evaluate* what ChatGPT produces. Who can take AI output and shape it into something that actually works in a real system. Who can explain *why* they made certain choices.
+
+If your plan is to coast through your degree by having AI do your assignments, you're not preparing for a career. You're preparing to be the person who runs out of tokens right before the deadline and has nothing to show for it.
+
+Learn the fundamentals. Understand the architecture. *Then* use AI to move faster. That's the order that works.
+
 ## The Actual Threat
 
 Here's what I think will actually happen:
@@ -183,7 +225,7 @@ But senior roles will grow. Someone needs to:
 - Make the architectural decisions AI can't make
 - Understand the business context AI doesn't have
 
-The path from junior to senior traditionally involved years of writing that basic code. If AI writes it instead, how do juniors gain experience? This is a real problem the industry will need to solve.
+The path from junior to senior traditionally involved years of writing that basic code. If AI writes it instead, how do juniors gain experience? This is a real problem the industry will need to solve—and it's why the foundational education matters more than ever.
 
 But the idea that we'll all describe apps in English and AI will build them? That's science fiction. At least for the systems that matter.
 

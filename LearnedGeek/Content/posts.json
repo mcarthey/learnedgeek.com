@@ -11,22 +11,12 @@
       "image": "/img/posts/a-modest-proposal-for-ai-safety.svg"
     },
     {
-      "slug": "ai-wont-replace-developers-but",
-      "title": "AI Won't Replace Developers, But...",
-      "description": "LinkedIn hot takes say AI replaces coders. After a year building production apps with AI assistance, here's what actually happens - and why expertise still matters.",
-      "category": "Computers",
-      "tags": ["ai", "development", "architecture", "collaboration", "productivity", "opinion"],
-      "date": "2026-03-05",
-      "featured": true,
-      "image": "/img/posts/ai-wont-replace-developers-but.svg"
-    },
-    {
       "slug": "recaptcha-v3-mobile-users-scoring",
       "title": "reCAPTCHA v3's Mobile Problem: Why Your Real Users Score Like Bots",
       "description": "My wife scored 0.1 on reCAPTCHA. From our couch. On her phone. Here's what Google doesn't tell you about score thresholds and mobile users.",
       "category": "Computers",
       "tags": ["recaptcha", "security", "aspnet-core", "mobile", "troubleshooting"],
-      "date": "2026-03-01",
+      "date": "2026-03-05",
       "featured": true,
       "image": "/img/posts/recaptcha-v3-mobile-users-scoring.svg"
     },
@@ -36,7 +26,7 @@
       "description": "Your admin dashboard is in Google. Your API key is in git history. That angry TODO comment is now public. Here's the emergency recovery guide.",
       "category": "Computers",
       "tags": ["seo", "git", "security", "robots-txt", "recovery", "troubleshooting"],
-      "date": "2026-02-25",
+      "date": "2026-02-28",
       "featured": true,
       "image": "/img/posts/seo-oops-recovery-guide.svg"
     },
@@ -46,7 +36,7 @@
       "description": "Your visitors hit a 404. Do they see a cold 'Page Not Found' or a delightful learning opportunity? Here's how to make error pages that keep people engaged.",
       "category": "Computers",
       "tags": ["aspnet-core", "error-pages", "ux", "http", "csharp", "user-experience"],
-      "date": "2026-02-20",
+      "date": "2026-02-23",
       "featured": true,
       "image": "/img/posts/custom-error-pages-teaching-moments.svg"
     },
@@ -56,7 +46,7 @@
       "description": "You upgraded to Tailwind v4. Your build runs. Your CSS generates. Half your styles are missing. Welcome to the @source directive gotcha.",
       "category": "Computers",
       "tags": ["tailwind", "css", "v4", "migration", "troubleshooting", "blazor"],
-      "date": "2026-02-15",
+      "date": "2026-02-18",
       "featured": true,
       "image": "/img/posts/tailwind-v4-source-directive-gotcha.svg"
     },
@@ -66,7 +56,7 @@
       "description": "Your dynamic class names aren't working. The CSS exists in your code but not in your output. Here's why Tailwind's JIT compiler is ignoring you and how to fix it.",
       "category": "Computers",
       "tags": ["tailwind", "css", "jit", "blazor", "react", "troubleshooting"],
-      "date": "2026-02-10",
+      "date": "2026-02-13",
       "featured": true,
       "image": "/img/posts/tailwind-dynamic-classes-layer-gotchas.svg"
     },
@@ -76,7 +66,7 @@
       "description": "You've been using Bootstrap for years. Then someone mentions Tailwind and suddenly you're supposed to write class names that look like inline styles from 2003. Here's why it's actually better.",
       "category": "Computers",
       "tags": ["tailwind", "bootstrap", "css", "web-development", "frontend"],
-      "date": "2026-02-05",
+      "date": "2026-02-08",
       "featured": true,
       "image": "/img/posts/tailwind-vs-bootstrap-paradigm-shift.svg"
     },
@@ -86,7 +76,7 @@
       "description": "Stop thinking about function pointers. Start thinking about bells and notifications. A restaurant analogy that makes C# events actually make sense.",
       "category": "Computers",
       "tags": ["csharp", "events", "delegates", "blazor", "architecture"],
-      "date": "2026-02-01",
+      "date": "2026-02-03",
       "featured": true,
       "image": "/img/posts/events-delegates-handlers-restaurant-analogy.svg"
     },
@@ -96,7 +86,7 @@
       "description": "You wrote a blog post. Now you need to share it on LinkedIn, Twitter, maybe a newsletter. Here's how to automate the boring part.",
       "category": "Computers",
       "tags": ["rss", "automation", "linkedin", "social-media", "zapier", "aspnet-core"],
-      "date": "2026-01-28",
+      "date": "2026-01-29",
       "featured": true,
       "image": "/img/posts/rss-feeds-and-social-automation.svg"
     },
@@ -106,9 +96,19 @@
       "description": "Most cookie banners are obnoxious because they're trying to get consent for tracking. If you're not tracking anyone, the whole thing gets simpler.",
       "category": "Computers",
       "tags": ["gdpr", "cookies", "privacy", "aspnet-core", "compliance", "web-development"],
-      "date": "2026-01-24",
+      "date": "2026-01-25",
       "featured": true,
       "image": "/img/posts/gdpr-cookie-consent-essential-only.svg"
+    },
+    {
+      "slug": "ai-wont-replace-developers-but",
+      "title": "AI Won't Replace Developers, But...",
+      "description": "LinkedIn hot takes say AI replaces coders. After a year building production apps with AI assistance, here's what actually happens - and why expertise still matters.",
+      "category": "Computers",
+      "tags": ["ai", "development", "architecture", "collaboration", "productivity", "opinion", "students"],
+      "date": "2026-01-21",
+      "featured": true,
+      "image": "/img/posts/ai-wont-replace-developers-but.svg"
     },
     {
       "slug": "testing-stripe-webhooks-with-cli",
