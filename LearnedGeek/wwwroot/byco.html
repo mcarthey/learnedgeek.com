@@ -10,8 +10,12 @@
         /* Progress ring styles */
         .progress-ring-container {
             position: relative;
-            width: 140px;
-            height: 140px;
+            width: 100px;
+            height: 100px;
+        }
+        .progress-ring-container.small {
+            width: 80px;
+            height: 80px;
         }
         .progress-ring {
             transform: rotate(-90deg);
@@ -19,7 +23,7 @@
         .progress-ring-bg {
             fill: none;
             stroke: #e5e5e5;
-            stroke-width: 12;
+            stroke-width: 8;
         }
         .dark .progress-ring-bg {
             stroke: #404040;
@@ -27,12 +31,24 @@
         .progress-ring-fill {
             fill: none;
             stroke: #171717;
-            stroke-width: 12;
+            stroke-width: 8;
             stroke-linecap: round;
             transition: stroke-dashoffset 0.5s ease;
         }
+        .progress-ring-fill.complete {
+            stroke: #22c55e;
+        }
+        .progress-ring-fill.upcoming {
+            stroke: #a3a3a3;
+        }
         .dark .progress-ring-fill {
             stroke: #f5f5f5;
+        }
+        .dark .progress-ring-fill.complete {
+            stroke: #22c55e;
+        }
+        .dark .progress-ring-fill.upcoming {
+            stroke: #525252;
         }
         .progress-text {
             position: absolute;
@@ -40,6 +56,46 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
+        }
+
+        /* Phase grid */
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .phase-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background: #fafafa;
+        }
+        .dark .phase-card {
+            background: #262626;
+        }
+        .phase-card.active {
+            background: #f5f5f5;
+            border: 2px solid #171717;
+        }
+        .dark .phase-card.active {
+            background: #303030;
+            border-color: #f5f5f5;
+        }
+        .phase-name {
+            font-weight: 500;
+            margin-top: 0.75rem;
+            font-size: 0.875rem;
+        }
+        .phase-detail {
+            font-size: 0.75rem;
+            color: #737373;
+            margin-top: 0.25rem;
+        }
+        .dark .phase-detail {
+            color: #a3a3a3;
         }
 
         /* Timeline styles */
@@ -193,8 +249,8 @@
             <div class="loading">Loading...</div>
         </header>
 
-        <!-- Progress Section -->
-        <section id="progress" class="mb-8 p-6 border border-neutral-200 dark:border-neutral-700 rounded-lg">
+        <!-- Phases Section -->
+        <section id="phases" class="mb-8 p-6 border border-neutral-200 dark:border-neutral-700 rounded-lg">
             <div class="loading"></div>
         </section>
 
@@ -240,7 +296,7 @@
 
         function renderPage(data) {
             renderHeader(data.project);
-            renderProgress(data.progress);
+            renderPhases(data.phases, data.project);
             renderMilestones(data.milestones);
             renderActivities(data.activities);
         }
@@ -259,36 +315,50 @@
             `;
         }
 
-        function renderProgress(progress) {
-            const circumference = 2 * Math.PI * 58;
-            const offset = circumference * (1 - progress.percent / 100);
+        function renderPhases(phases, project) {
+            const circumference = 2 * Math.PI * 34; // radius 34 for 80px ring
 
-            document.getElementById('progress').innerHTML = `
-                <h2 class="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-4">Project Progress</h2>
-                <div class="flex flex-col sm:flex-row items-center gap-8">
-                    <div class="progress-ring-container">
-                        <svg class="progress-ring" width="140" height="140">
-                            <circle class="progress-ring-bg" cx="70" cy="70" r="58"/>
-                            <circle class="progress-ring-fill" cx="70" cy="70" r="58"
-                                    stroke-dasharray="${circumference}"
-                                    stroke-dashoffset="${offset}" />
-                        </svg>
-                        <div class="progress-text">
-                            <div class="text-3xl font-semibold">${progress.percent}%</div>
-                            <div class="text-xs text-neutral-500 dark:text-neutral-400">Complete</div>
+            const phaseCards = phases.map(phase => {
+                const offset = circumference * (1 - phase.percent / 100);
+                const isActive = phase.status === 'in-progress';
+                const strokeClass = phase.status === 'complete' ? 'complete' : (phase.status === 'upcoming' ? 'upcoming' : '');
+
+                let detail = '';
+                if (phase.week) {
+                    detail = phase.week;
+                } else if (phase.target) {
+                    detail = phase.target;
+                } else if (phase.status === 'complete') {
+                    detail = 'Complete';
+                }
+
+                return `
+                    <div class="phase-card ${isActive ? 'active' : ''}">
+                        <div class="progress-ring-container small">
+                            <svg class="progress-ring" width="80" height="80">
+                                <circle class="progress-ring-bg" cx="40" cy="40" r="34"/>
+                                <circle class="progress-ring-fill ${strokeClass}" cx="40" cy="40" r="34"
+                                        stroke-dasharray="${circumference}"
+                                        stroke-dashoffset="${offset}" />
+                            </svg>
+                            <div class="progress-text">
+                                <div class="text-lg font-semibold">${phase.percent}%</div>
+                            </div>
                         </div>
+                        <div class="phase-name">${phase.name}</div>
+                        <div class="phase-detail">${detail}</div>
                     </div>
-                    <div class="text-center sm:text-left">
-                        <h3 class="text-xl font-semibold">${progress.phase}</h3>
-                        <p class="text-neutral-500 dark:text-neutral-400">${progress.week}</p>
-                        <p class="mt-3">
-                            <span class="status-badge in-progress">In Progress</span>
-                        </p>
-                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-300">
-                            Target completion: <strong>${progress.targetCompletion}</strong>
-                        </p>
-                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('phases').innerHTML = `
+                <h2 class="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-4">Project Progress</h2>
+                <div class="phases-grid">
+                    ${phaseCards}
                 </div>
+                <p class="mt-4 text-sm text-neutral-600 dark:text-neutral-300 text-center">
+                    Target completion: <strong>${project.targetCompletion}</strong>
+                </p>
             `;
         }
 
