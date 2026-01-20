@@ -232,4 +232,4 @@ Without this chain, your email is just another unverified message from an untrus
 
 ---
 
-*I host this site and several others on [SmarterASP.NET](https://www.SmarterASP.NET/index?r=mcarthey). If you're looking for affordable ASP.NET hosting with solid email support, they've been reliable for me for years.*
+*I host this site and several others on [SmarterASP.NET](https://www.SmarterASP.NET/index?r=101589948). If you're looking for affordable ASP.NET hosting with solid email support, they've been reliable for me for years.*
