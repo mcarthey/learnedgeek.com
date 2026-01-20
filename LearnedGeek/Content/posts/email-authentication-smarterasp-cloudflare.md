@@ -229,3 +229,7 @@ Without this chain, your email is just another unverified message from an untrus
 - [Cloudflare DNS Documentation](https://developers.cloudflare.com/dns/)
 - [Google's Email Authentication Guide](https://support.google.com/a/answer/10583557)
 - [MXToolbox](https://mxtoolbox.com/) — Test your email configuration
+
+---
+
+*I host this site and several others on [SmarterASP.NET](https://www.SmarterASP.NET/index?r=mcarthey). If you're looking for affordable ASP.NET hosting with solid email support, they've been reliable for me for years.*

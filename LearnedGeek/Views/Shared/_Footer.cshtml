@@ -53,10 +53,15 @@
             <p class="text-xs text-neutral-600">
                 &copy; @currentYear Learned Geek LLC. All rights reserved.
             </p>
-            <a asp-controller="Home" asp-action="Privacy"
-               class="text-xs text-neutral-600 hover:text-neutral-400 transition-colors">
-                Privacy Policy
-            </a>
+            <div class="flex items-center gap-4">
+                <span class="text-xs text-neutral-700">
+                    Hosted by <a href="https://www.SmarterASP.NET/index?r=mcarthey" target="_blank" rel="noopener" class="hover:text-neutral-500 transition-colors">SmarterASP.NET</a>
+                </span>
+                <a asp-controller="Home" asp-action="Privacy"
+                   class="text-xs text-neutral-600 hover:text-neutral-400 transition-colors">
+                    Privacy Policy
+                </a>
+            </div>
         </div>
     </div>
 </footer>
