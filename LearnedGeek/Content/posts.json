@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "codecov-error-state-debugging",
+      "title": "When Codecov Says 'Error' But Your Upload Succeeded",
+      "description": "Your CI shows green checkmarks. The upload returned 200. But Codecov reports 0 files and 0% coverage. Here's how to debug it—and why deleting your config file might be the fix.",
+      "category": "Computers",
+      "tags": ["codecov", "ci-cd", "github-actions", "coverage", "debugging", "dotnet"],
+      "date": "2026-03-25",
+      "featured": true,
+      "image": "/img/posts/codecov-error-state-debugging.svg"
+    },
+    {
       "slug": "blazor-wasm-loading-forever-fix",
       "title": "Blazor WASM Says 'Loading...' Forever: A .NET 10 Debugging Adventure",
       "description": "Your Blazor app loads the HTML, shows the spinner, then... nothing. The console shows errors about '/0'. Here's the one-line fix for the WasmInlineBootConfig bug.",
