@@ -108,6 +108,29 @@ Make it executable:
 sudo chmod +x /etc/letsencrypt/renewal-hooks/deploy/export-pfx.sh
 ```
 
+## Configuring Cloudflare SSL Mode
+
+Once you have a valid certificate installed on your origin server, you should configure Cloudflare to use **Full (strict)** mode. This ensures end-to-end encryption with certificate validation.
+
+In the Cloudflare dashboard:
+
+1. Select your domain
+2. Go to **SSL/TLS → Overview** in the left sidebar
+3. Choose your encryption mode:
+
+| Mode | Browser → Cloudflare | Cloudflare → Origin | Certificate Validation |
+|------|---------------------|---------------------|------------------------|
+| Off | HTTP | HTTP | None |
+| Flexible | HTTPS | HTTP | None |
+| Full | HTTPS | HTTPS | None |
+| **Full (strict)** | **HTTPS** | **HTTPS** | **Yes** ✓ |
+
+Select **Full (strict)** since you now have a valid Let's Encrypt certificate on your hosting provider.
+
+**Why this matters:** Without strict mode, a man-in-the-middle could potentially intercept traffic between Cloudflare and your origin server. Full (strict) mode validates that your origin certificate is legitimate and not expired, closing that gap.
+
+**Note:** If you select Full (strict) *before* uploading a valid certificate to your host, your site will show SSL errors. Get the certificate installed first, then enable strict mode.
+
 ## Automatic Renewal
 
 Certbot installs a systemd timer that runs twice daily. Check it with:
@@ -157,3 +180,7 @@ This takes about 2 minutes and happens roughly 4 times per year.
 - **A Raspberry Pi** makes an excellent always-on automation server
 
 The total cost: $0 for SSL certificates that auto-renew indefinitely, plus a few minutes quarterly to upload to hosting.
+
+---
+
+*This post is part of a series on SSL automation. See also: [Adding Domains to Your Certbot Setup](/Blog/Post/adding-domains-to-certbot-cloudflare) on expanding to new domains, and [Upgrading to Wildcard Certificates](/Blog/Post/upgrading-certbot-to-wildcard-certificates) on covering all subdomains with one cert.*
