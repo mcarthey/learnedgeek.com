@@ -1,6 +1,28 @@
 {
   "posts": [
     {
+      "slug": "upgrading-certbot-to-wildcard-certificates",
+      "title": "Upgrading Certbot to Wildcard Certificates",
+      "description": "My SSL setup worked great until I needed subdomains for a multi-tenant SaaS. One wildcard certificate covers them all—but Certbot's upgrade path has some gotchas.",
+      "category": "Computers",
+      "tags": ["ssl", "certbot", "letsencrypt", "cloudflare", "wildcard", "raspberry-pi"],
+      "date": "2026-04-04",
+      "featured": true,
+      "image": "/img/posts/upgrading-certbot-to-wildcard-certificates.svg",
+      "linkedInHook": "My SSL automation was humming along—until I needed subdomains for a multi-tenant SaaS app. Adding each one manually meant regenerating certs every time a client onboarded.\n\nSolution: wildcard certificates. One cert covers *.domain.com.\n\nBut Certbot doesn't just upgrade in place. It creates a new cert with a -0001 suffix. And the rename command doesn't exist in older versions. Here's how to handle it cleanly."
+    },
+    {
+      "slug": "when-ai-gives-you-coaching-not-construction",
+      "title": "When AI Gives You Coaching Instead of Construction",
+      "description": "I asked ChatGPT for an algorithm. After fifteen minutes of 'you could consider...' I asked Gemini. Thirty seconds later I had an exponential decay accumulator. Here's what that taught me about AI tool selection.",
+      "category": "Computers",
+      "tags": ["ai", "chatgpt", "gemini", "algorithms", "streaming", "architecture"],
+      "date": "2026-03-30",
+      "featured": true,
+      "image": "/img/posts/when-ai-gives-you-coaching-not-construction.svg",
+      "linkedInHook": "I asked ChatGPT for an algorithm to track customer outage patterns in real-time. Fifteen minutes of 'you could consider...' and 'one approach might be...' later, I still had nothing concrete.\n\nAsked Gemini. Thirty seconds later I had an exponential decay accumulator—the same mathematical structure used in fraud detection and SLO burn-rates.\n\nThen I asked ChatGPT to explain why this keeps happening. Its self-diagnosis was surprisingly honest."
+    },
+    {
       "slug": "codecov-error-state-debugging",
       "title": "When Codecov Says 'Error' But Your Upload Succeeded",
       "description": "Your CI shows green checkmarks. The upload returned 200. But Codecov reports 0 files and 0% coverage. Here's how to debug it—and why deleting your config file might be the fix.",
@@ -8,7 +30,8 @@
       "tags": ["codecov", "ci-cd", "github-actions", "coverage", "debugging", "dotnet"],
       "date": "2026-03-25",
       "featured": true,
-      "image": "/img/posts/codecov-error-state-debugging.svg"
+      "image": "/img/posts/codecov-error-state-debugging.svg",
+      "linkedInHook": "I keep running into this pattern with developer tooling: the 'improvements' that silently break things. This week it was Codecov. I added a config file to make things better, and it silently broke everything. The fix was deleting the config entirely.\n\nIt got me thinking about how often we add complexity thinking we're being thorough, when the simpler default would have worked fine."
     },
     {
       "slug": "blazor-wasm-loading-forever-fix",
@@ -18,7 +41,8 @@
       "tags": ["blazor", "webassembly", "dotnet", "debugging", "net10", "troubleshooting"],
       "date": "2026-03-20",
       "featured": true,
-      "image": "/img/posts/blazor-wasm-loading-forever-fix.svg"
+      "image": "/img/posts/blazor-wasm-loading-forever-fix.svg",
+      "linkedInHook": "Spent way too long debugging a Blazor WASM app that just showed 'Loading...' forever. The console errors pointed at '/0' which made no sense. Turns out there's a bug in .NET 10 preview where the boot config gets inlined wrong.\n\nOne line in the csproj fixed it. Documenting this so the next person doesn't lose their afternoon."
     },
     {
       "slug": "blazor-wasm-debugging-chrome-devtools",
@@ -28,7 +52,8 @@
       "tags": ["blazor", "webassembly", "debugging", "chrome", "dotnet", "devtools"],
       "date": "2026-03-15",
       "featured": true,
-      "image": "/img/posts/blazor-wasm-debugging-chrome-devtools.svg"
+      "image": "/img/posts/blazor-wasm-debugging-chrome-devtools.svg",
+      "linkedInHook": "Started a new Blazor WASM project and got curious about a mysterious URL in the console: /_framework/debug. Chrome asked for special flags. Then I saw 'Inspectable pages' in a separate window.\n\nDown the rabbit hole I went. Turns out there's a whole debugging proxy architecture that makes breakpoints work in WebAssembly. Pretty elegant once you understand what's happening."
     },
     {
       "slug": "recaptcha-v3-mobile-users-scoring",
@@ -38,7 +63,8 @@
       "tags": ["recaptcha", "security", "aspnet-core", "mobile", "troubleshooting"],
       "date": "2026-03-10",
       "featured": true,
-      "image": "/img/posts/recaptcha-v3-mobile-users-scoring.svg"
+      "image": "/img/posts/recaptcha-v3-mobile-users-scoring.svg",
+      "linkedInHook": "My wife tried to use a contact form I built. She was on her phone, on our couch, clearly a real person. reCAPTCHA scored her 0.1—basically flagged as a bot.\n\nTurns out the 0.5 threshold everyone recommends is way too aggressive for mobile users. Google doesn't exactly advertise this. Wrote up what I learned."
     },
     {
       "slug": "seo-oops-recovery-guide",
@@ -48,7 +74,8 @@
       "tags": ["seo", "git", "security", "robots-txt", "recovery", "troubleshooting"],
       "date": "2026-03-05",
       "featured": true,
-      "image": "/img/posts/seo-oops-recovery-guide.svg"
+      "image": "/img/posts/seo-oops-recovery-guide.svg",
+      "linkedInHook": "Every developer has that moment of cold sweat when they realize something that shouldn't be public is now indexed by Google. Or worse, that angry TODO comment in a commit message.\n\nI've been there. Here's the recovery playbook I wish I'd had."
     },
     {
       "slug": "custom-error-pages-teaching-moments",
@@ -58,7 +85,8 @@
       "tags": ["aspnet-core", "error-pages", "ux", "http", "csharp", "user-experience"],
       "date": "2026-02-28",
       "featured": true,
-      "image": "/img/posts/custom-error-pages-teaching-moments.svg"
+      "image": "/img/posts/custom-error-pages-teaching-moments.svg",
+      "linkedInHook": "Error pages are guaranteed traffic. Every site has them. Every visitor eventually sees one. So why do most of them look like the server is personally offended by your existence?\n\nI decided to turn my 404s into tiny teaching moments. Here's the philosophy and implementation."
     },
     {
       "slug": "tailwind-v4-source-directive-gotcha",
@@ -68,7 +96,8 @@
       "tags": ["tailwind", "css", "v4", "migration", "troubleshooting", "blazor"],
       "date": "2026-02-23",
       "featured": true,
-      "image": "/img/posts/tailwind-v4-source-directive-gotcha.svg"
+      "image": "/img/posts/tailwind-v4-source-directive-gotcha.svg",
+      "linkedInHook": "Upgraded to Tailwind v4. Build ran. CSS generated. Half my styles were missing.\n\nNo errors. No warnings. Just... gone. Turns out v4 ignores your content array in tailwind.config.js. You need @source directives in CSS now. The migration path doesn't exactly scream this at you."
     },
     {
       "slug": "tailwind-dynamic-classes-layer-gotchas",
@@ -78,7 +107,8 @@
       "tags": ["tailwind", "css", "jit", "blazor", "react", "troubleshooting"],
       "date": "2026-02-18",
       "featured": true,
-      "image": "/img/posts/tailwind-dynamic-classes-layer-gotchas.svg"
+      "image": "/img/posts/tailwind-dynamic-classes-layer-gotchas.svg",
+      "linkedInHook": "Tailwind's JIT compiler is amazing until it silently ignores your classes. Built a progress bar component with dynamic widths like `w-[${percent}%]`. None of them worked.\n\nThe JIT compiler only scans for complete class names in your source files. String concatenation breaks it. Here's what to do instead."
     },
     {
       "slug": "tailwind-vs-bootstrap-paradigm-shift",
@@ -88,7 +118,8 @@
       "tags": ["tailwind", "bootstrap", "css", "web-development", "frontend"],
       "date": "2026-02-13",
       "featured": true,
-      "image": "/img/posts/tailwind-vs-bootstrap-paradigm-shift.svg"
+      "image": "/img/posts/tailwind-vs-bootstrap-paradigm-shift.svg",
+      "linkedInHook": "I resisted Tailwind for years. 'Why would I write class names that look like inline styles from 2003?'\n\nThen I actually tried it. The mental shift from 'CSS describes components' to 'CSS describes design primitives' finally clicked. Here's what changed my mind."
     },
     {
       "slug": "events-delegates-handlers-restaurant-analogy",
@@ -98,7 +129,8 @@
       "tags": ["csharp", "events", "delegates", "blazor", "architecture"],
       "date": "2026-02-08",
       "featured": true,
-      "image": "/img/posts/events-delegates-handlers-restaurant-analogy.svg"
+      "image": "/img/posts/events-delegates-handlers-restaurant-analogy.svg",
+      "linkedInHook": "I've been copying EventCallback patterns in Blazor for months without really understanding them. Every explanation starts with 'a delegate is a type-safe function pointer' and my brain checks out.\n\nThen I thought about it as restaurant bells and it finally clicked. The kitchen doesn't know who's listening. It just rings."
     },
     {
       "slug": "rss-feeds-and-social-automation",
@@ -108,7 +140,8 @@
       "tags": ["rss", "automation", "linkedin", "social-media", "zapier", "aspnet-core"],
       "date": "2026-02-03",
       "featured": true,
-      "image": "/img/posts/rss-feeds-and-social-automation.svg"
+      "image": "/img/posts/rss-feeds-and-social-automation.svg",
+      "linkedInHook": "I got tired of manually sharing blog posts to social media. So I went down the automation rabbit hole and ended up building a custom LinkedIn integration.\n\nWas it faster than just posting manually? Absolutely not. But I learned OAuth, built something I control, and got a blog post out of it. That's a win in my book."
     },
     {
       "slug": "gdpr-cookie-consent-essential-only",
@@ -118,7 +151,8 @@
       "tags": ["gdpr", "cookies", "privacy", "aspnet-core", "compliance", "web-development"],
       "date": "2026-01-31",
       "featured": true,
-      "image": "/img/posts/gdpr-cookie-consent-essential-only.svg"
+      "image": "/img/posts/gdpr-cookie-consent-essential-only.svg",
+      "linkedInHook": "Cookie consent banners have become this obnoxious UX pattern that everyone hates. But here's the thing: they're obnoxious because they're trying to get consent for tracking.\n\nIf you're not tracking anyone, GDPR compliance gets surprisingly simple. Stop tracking people and the compliance problem solves itself."
     },
     {
       "slug": "a-modest-proposal-for-ai-safety",
@@ -128,7 +162,8 @@
       "tags": ["ai", "satire", "humor", "opinion", "future", "productivity"],
       "date": "2026-01-26",
       "featured": true,
-      "image": "/img/posts/a-modest-proposal-for-ai-safety.svg"
+      "image": "/img/posts/a-modest-proposal-for-ai-safety.svg",
+      "linkedInHook": "With all the breathless AI discourse lately, I decided to write a modest proposal about our impending robotic overlords.\n\n(Jonathan Swift would be proud. Or horrified. Hard to tell with that guy.)"
     },
     {
       "slug": "ai-wont-replace-developers-but",
@@ -138,7 +173,8 @@
       "tags": ["ai", "development", "architecture", "collaboration", "productivity", "opinion", "students"],
       "date": "2026-01-21",
       "featured": true,
-      "image": "/img/posts/ai-wont-replace-developers-but.svg"
+      "image": "/img/posts/ai-wont-replace-developers-but.svg",
+      "linkedInHook": "After a year building production apps with AI assistance, I have thoughts on the 'AI will replace developers' discourse.\n\nShort version: AI is like having a brilliant but inexperienced junior developer who works at 3 AM. The value comes from knowing what to ask and how to evaluate the answers. Expertise matters more, not less."
     },
     {
       "slug": "testing-stripe-webhooks-with-cli",
@@ -148,7 +184,8 @@
       "tags": ["stripe", "webhooks", "aspnet-core", "dotnet", "testing", "payments", "cli"],
       "date": "2026-01-20",
       "featured": true,
-      "image": "/img/posts/testing-stripe-webhooks-with-cli.svg"
+      "image": "/img/posts/testing-stripe-webhooks-with-cli.svg",
+      "linkedInHook": "Payment integration is stressful. 'It compiles' doesn't mean 'it won't silently fail when someone hands you their credit card.'\n\nThe Stripe CLI changed my life. You can test webhooks locally without deploying, watch real payloads flow through your system, and actually know if things work before real money is on the line."
     },
     {
       "slug": "google-search-console-setup",
@@ -158,9 +195,10 @@
       "tags": ["seo", "google", "search-console", "indexing", "webmaster-tools"],
       "date": "2026-01-16",
       "featured": true,
-      "image": "/img/posts/google-search-console-setup.svg"
+      "image": "/img/posts/google-search-console-setup.svg",
+      "linkedInHook": "I wrote a whole post about SEO best practices. Meta tags, structured data, sitemaps—the works. Then I Googled my site. Nothing. It wasn't anywhere.\n\nTurns out having perfect SEO markup means nothing if you never tell Google your site exists. The assumption that burned me and how I fixed it."
     },
-        {
+    {
       "slug": "adding-domains-to-certbot-cloudflare",
       "title": "Adding New Domains to Your Certbot + Cloudflare Setup",
       "description": "You set up SSL automation once and it worked great. Then you added a new domain and hit every gotcha you'd forgotten about. Here's the checklist.",
@@ -168,7 +206,8 @@
       "tags": ["ssl", "letsencrypt", "certbot", "cloudflare", "raspberry-pi", "troubleshooting"],
       "date": "2026-01-14",
       "featured": true,
-      "image": "/img/posts/adding-domains-to-certbot.svg"
+      "image": "/img/posts/adding-domains-to-certbot.svg",
+      "linkedInHook": "Set up SSL automation months ago. Worked great. Then I added a new domain and hit every gotcha I'd forgotten about—API token permissions, first-time PFX export, file permissions for SCP.\n\nMade myself a checklist so next time it takes 5 minutes instead of an hour of debugging."
     },
     {
       "slug": "when-your-discord-bot-stops-hearing",
@@ -178,7 +217,8 @@
       "tags": ["discord", "discord-net", "debugging", "csharp", "dotnet"],
       "date": "2026-01-13",
       "featured": true,
-      "image": "/img/posts/when-your-discord-bot-stops-hearing.svg"
+      "image": "/img/posts/when-your-discord-bot-stops-hearing.svg",
+      "linkedInHook": "Spent days debugging a Discord bot that just... stopped responding to commands. The code was fine. The logs were fine. Discord said everything was fine.\n\nTurns out the application registration itself was corrupted. Discord gave zero indication anything was wrong. I had to delete and recreate it. Documenting this so the next person doesn't lose their sanity."
     },
     {
       "slug": "seo-demystified",
@@ -188,7 +228,8 @@
       "tags": ["seo", "meta-tags", "open-graph", "json-ld", "sitemap", "aspnet-core"],
       "date": "2026-01-12",
       "featured": true,
-      "image": "/img/posts/seo-demystified.svg"
+      "image": "/img/posts/seo-demystified.svg",
+      "linkedInHook": "SEO guides are either 'just use WordPress plugins' or 47-page dissertations on keyword density algorithms. Neither helped me.\n\nSo I wrote the technical SEO guide I wish I'd had—what actually matters for meta tags, structured data, and sitemaps, explained for developers who'd rather write code than read marketing blogs."
     },
     {
       "slug": "how-this-blog-works",
@@ -198,7 +239,8 @@
       "tags": ["blog", "markdown", "aspnet-core", "architecture", "markdig", "csharp"],
       "date": "2026-01-11",
       "featured": true,
-      "image": "/img/posts/how-this-blog-works.svg"
+      "image": "/img/posts/how-this-blog-works.svg",
+      "linkedInHook": "When I built this blog, I wanted writing to feel like writing. Not clicking through menus, not fighting with rich text editors. Just open a file, type words, save.\n\nNo database. No CMS. Just Markdown files and a thin C# service. Here's exactly how it works."
     },
     {
       "slug": "dotnet-localization-language-switcher",
@@ -208,7 +250,8 @@
       "tags": ["dotnet", "localization", "aspnet-core", "cookies", "i18n", "csharp"],
       "date": "2026-01-09",
       "featured": true,
-      "image": "/img/posts/dotnet-localization-language-switcher.svg"
+      "image": "/img/posts/dotnet-localization-language-switcher.svg",
+      "linkedInHook": "Got localization working in .NET. Translations load correctly. Then realized users have to dig through browser settings to change languages, which is a terrible experience.\n\nBuilt a dropdown that remembers their choice with cookies. Part 2 of making .NET localization actually work."
     },
     {
       "slug": "dotnet-localization-resource-files",
@@ -218,7 +261,8 @@
       "tags": ["dotnet", "localization", "aspnet-core", "resx", "i18n", "debugging"],
       "date": "2026-01-08",
       "featured": true,
-      "image": "/img/posts/dotnet-localization-resource-files.svg"
+      "image": "/img/posts/dotnet-localization-resource-files.svg",
+      "linkedInHook": "Set up .NET localization. Created the .resx files. It compiled. Nothing happened. The translations were just... ignored.\n\nTurns out there are several ways .NET silently ignores your resource files. Naming conventions, folder structures, middleware order—all the gotchas I found the hard way."
     },
     {
       "slug": "codecov-setup-guide",
@@ -228,7 +272,8 @@
       "tags": ["codecov", "testing", "dotnet", "github-actions", "ci-cd", "code-coverage"],
       "date": "2026-01-07",
       "featured": true,
-      "image": "/img/posts/codecov-setup-guide.svg"
+      "image": "/img/posts/codecov-setup-guide.svg",
+      "linkedInHook": "My test suite passed. I felt virtuous. Then I set up code coverage metrics and discovered I was testing about 23% of my actual code.\n\nThe other 77%? Living dangerously. Here's how to set up Codecov and stop living in denial."
     },
     {
       "slug": "discord-tldrkseid-ai-summarization-bot",
@@ -238,7 +283,8 @@
       "tags": ["discord", "bot", "openai", "csharp", "dotnet", "ai", "side-project"],
       "date": "2026-01-06",
       "featured": true,
-      "image": "/img/posts/discord-tldrkseid.svg"
+      "image": "/img/posts/discord-tldrkseid.svg",
+      "linkedInHook": "I was part of a Discord server that moved at the speed of chaos. Step away for lunch and you'd return to a novel's worth of missed context.\n\nSo I built a bot to summarize it. Then discovered something that floored me: Discord bots run as a single instance serving ALL servers. Your one process handles every server that invites it."
     },
     {
       "slug": "running-ai-on-your-own-computer",
@@ -248,7 +294,8 @@
       "tags": ["ai", "ollama", "llm", "local-ai", "privacy", "tutorial"],
       "date": "2026-01-04",
       "featured": true,
-      "image": "/img/posts/running-ai-on-your-own-computer.svg"
+      "image": "/img/posts/running-ai-on-your-own-computer.svg",
+      "linkedInHook": "Here's something that surprises most people: you can run real AI models on your own computer. Not a stripped-down demo—actual LLMs running locally. No internet, no fees, no one watching what you ask.\n\nI've been doing this for months. Here's how to get started with Ollama."
     },
     {
       "slug": "what-1290-conversations-taught-me",
@@ -258,7 +305,8 @@
       "tags": ["ai", "machine-learning", "embeddings", "chatgpt", "data-analysis"],
       "date": "2026-01-04",
       "featured": true,
-      "image": "/img/posts/what-1290-conversations-taught-me.svg"
+      "image": "/img/posts/what-1290-conversations-taught-me.svg",
+      "linkedInHook": "I've been using ChatGPT daily for two years. Then I realized I had no idea what was actually in those 1,290 conversations.\n\nSo I exported everything and analyzed it. Found I'd asked the same React questions fifteen times. My interests were more consistent than they felt. Turns out AI conversations are worth preserving—they form a detailed record of your thinking over time."
     },
     {
       "slug": "recaptcha-v3-aspnet-core",
@@ -268,7 +316,8 @@
       "tags": ["recaptcha", "aspnet-core", "security", "spam", "csharp"],
       "date": "2026-01-05",
       "featured": true,
-      "image": "/img/posts/recaptcha-v3-aspnet-core.svg"
+      "image": "/img/posts/recaptcha-v3-aspnet-core.svg",
+      "linkedInHook": "Those 'click all the traffic lights' CAPTCHAs are terrible UX. reCAPTCHA v3 runs invisibly in the background, scoring users based on behavior instead of making them prove they're human.\n\nImplemented it on a contact form with a honeypot field as backup. No puzzles, no friction, no spam so far."
     },
     {
       "slug": "ai-coding-showdown",
@@ -278,7 +327,8 @@
       "tags": ["ai", "chatgpt", "claude", "performance", "dotnet", "entity-framework"],
       "date": "2026-01-02",
       "featured": true,
-      "image": "/img/posts/ai-coding-showdown.svg"
+      "image": "/img/posts/ai-coding-showdown.svg",
+      "linkedInHook": "Had a debugging session that perfectly captured the difference between AI pattern-matching and actual reasoning.\n\nChatGPT kept saying 'likely your code does this' about code I had literally just shown it. Claude traced the exact N+1 query path in thirty seconds. Using the word 'likely' about code you've been given is a red flag."
     },
     {
       "slug": "ssl-automation-with-letsencrypt-and-cloudflare",
@@ -288,7 +338,8 @@
       "tags": ["ssl", "letsencrypt", "cloudflare", "raspberry-pi", "certbot"],
       "date": "2026-01-01",
       "featured": true,
-      "image": "/img/posts/ssl-automation.svg"
+      "image": "/img/posts/ssl-automation.svg",
+      "linkedInHook": "SSL certificates used to be this annual anxiety event. Let them expire and your site shows scary warnings.\n\nSet up automated renewal with Let's Encrypt, Certbot, and a Raspberry Pi. Certificates renew every 90 days automatically. Haven't thought about SSL expiration in months."
     },
     {
       "slug": "adding-comments-with-giscus",
@@ -298,7 +349,8 @@
       "tags": ["giscus", "github", "comments", "blog"],
       "date": "2026-01-02",
       "featured": false,
-      "image": "/img/posts/giscus-comments.svg"
+      "image": "/img/posts/giscus-comments.svg",
+      "linkedInHook": "Wanted blog comments but didn't want to manage a database or fight spam. Giscus uses GitHub Discussions as the backend—commenters authenticate with GitHub, spam is someone else's problem, and it's completely free.\n\nPerfect for a developer-focused blog."
     },
     {
       "slug": "email-authentication-smarterasp-cloudflare",
@@ -308,7 +360,8 @@
       "tags": ["email", "dns", "cloudflare", "smarterasp", "spf", "dkim", "dmarc"],
       "date": "2026-01-02",
       "featured": true,
-      "image": "/img/posts/email-authentication-smarterasp-cloudflare.svg"
+      "image": "/img/posts/email-authentication-smarterasp-cloudflare.svg",
+      "linkedInHook": "Email authentication (SPF, DKIM, DMARC) always felt like arcane magic to me. Why do these DNS records exist? What's the threat model?\n\nFinally sat down and understood it. Turns out it's actually elegant once you see how the pieces fit together. Wrote up the explanation I wish I'd found."
     },
     {
       "slug": "for-pisko",
@@ -318,7 +371,8 @@
       "tags": ["writing", "completion", "nanowrimo", "novel90", "tribute"],
       "date": "2025-12-31",
       "featured": true,
-      "image": "/img/posts/for-pisko.svg"
+      "image": "/img/posts/for-pisko.svg",
+      "linkedInHook": "Submitted my completed novel to Novel90 today.\n\nIt started as a tribute to my dog Pisko, who died before I began writing seriously. He became Taibhse—the spectral hound who watches across 500 years, hoping someone will finally get it right.\n\nThe difference between 'wanting to write' and 'being a writer' is finishing something."
     },
     {
       "slug": "raspberry-pi-password-reset-wsl",
@@ -328,7 +382,8 @@
       "tags": ["raspberry-pi", "wsl", "linux", "password-recovery"],
       "date": "2025-12-15",
       "featured": false,
-      "image": "/img/posts/raspberry-pi-password-reset.svg"
+      "image": "/img/posts/raspberry-pi-password-reset.svg",
+      "linkedInHook": "Forgot my Raspberry Pi password. Windows can't mount ext4 drives natively. Didn't want to reflash the SD card and lose everything.\n\nWSL to the rescue. Mount the drive in Linux, edit /etc/shadow, done. Quick reference for next time this inevitably happens."
     },
     {
       "slug": "writing-fast-revising-forever",
@@ -338,7 +393,8 @@
       "tags": ["writing", "nanowrimo", "revision", "process", "craft"],
       "date": "2025-11-28",
       "featured": false,
-      "image": "/img/posts/writing-fast-revising-forever.svg"
+      "image": "/img/posts/writing-fast-revising-forever.svg",
+      "linkedInHook": "Discovered something about my writing process this month: I write fast and messy (atmospheric, emotionally resonant, full of plot holes). Then I revise for structure and lose all the voice.\n\nThe solution isn't doing both at once. Write fast to discover. Revise slow to refine. Then marry the best of both."
     },
     {
       "slug": "vscode-tasks-json-dotnet",
@@ -348,7 +404,8 @@
       "tags": ["vscode", "dotnet", "tasks", "deployment", "tailwind"],
       "date": "2025-11-20",
       "featured": false,
-      "image": "/img/posts/vscode-tasks-json.svg"
+      "image": "/img/posts/vscode-tasks-json.svg",
+      "linkedInHook": "Finally organized my VS Code tasks.json for .NET projects. Build, run, test, deploy—all as keyboard shortcuts instead of typing commands.\n\nSharing the config in case anyone else wants a starting point."
     },
     {
       "slug": "celtic-gods-are-messy",
@@ -358,7 +415,8 @@
       "tags": ["writing", "mythology", "celtic", "character-development", "moral-complexity"],
       "date": "2025-10-16",
       "featured": false,
-      "image": "/img/posts/celtic-gods-are-messy.svg"
+      "image": "/img/posts/celtic-gods-are-messy.svg",
+      "linkedInHook": "Researching Celtic mythology for the novel. Found 400+ deities, most with contradictory stories across regions.\n\nBut that messiness is the point. These aren't good or evil forces—they're necessary and dangerous at once. Perfect framework for writing morally complex characters."
     },
     {
       "slug": "the-stones-that-remember",
@@ -368,7 +426,8 @@
       "tags": ["writing", "worldbuilding", "mythology", "setting-as-character"],
       "date": "2025-10-14",
       "featured": false,
-      "image": "/img/posts/the-stones-that-remember.svg"
+      "image": "/img/posts/the-stones-that-remember.svg",
+      "linkedInHook": "Had a worldbuilding breakthrough for the novel. What if Irish stone circles weren't just settings, but a neural network across the land?\n\nThe stones remember. They pass information. They've been watching for thousands of years. Suddenly the setting became a character."
     },
     {
       "slug": "show-dont-tell-even-when-it-hurts",
@@ -378,7 +437,8 @@
       "tags": ["writing", "revision", "craft", "show-dont-tell"],
       "date": "2025-09-28",
       "featured": false,
-      "image": "/img/posts/show-dont-tell.svg"
+      "image": "/img/posts/show-dont-tell.svg",
+      "linkedInHook": "Did a brutal revision pass where I cut every explanation of my supernatural forces. Every 'the fire was judgment incarnate' became just the fire doing things.\n\nIt hurt. But readers don't need explanations—they need experiences. Learning to trust them."
     },
     {
       "slug": "finding-the-voice",
@@ -388,7 +448,8 @@
       "tags": ["writing", "novel", "craft", "voice", "supernatural-fiction"],
       "date": "2025-09-22",
       "featured": false,
-      "image": "/img/posts/finding-the-voice.svg"
+      "image": "/img/posts/finding-the-voice.svg",
+      "linkedInHook": "Early drafts of my novel had chatty demons explaining everything. It read like a supernatural Wikipedia.\n\nThe fix was grounding the strange in the universal. That burning feeling when you're certain you're right? That exhaustion of judgment without mercy? Those are human experiences—even when they're literally on fire."
     },
     {
       "slug": "john-deere-fuel-pump",
@@ -398,7 +459,8 @@
       "tags": ["john-deere", "onan", "electrical", "fuel-pump", "relay"],
       "date": "2025-08-29",
       "featured": false,
-      "image": "/img/posts/john-deere-fuel-pump.svg"
+      "image": "/img/posts/john-deere-fuel-pump.svg",
+      "linkedInHook": "Fixed a failing fuel pump on the John Deere 318 by converting from vacuum to electric. The relay wiring to make it work safely with the oil pressure switch was the interesting part.\n\nDocumenting for anyone else with an old Onan engine."
     },
     {
       "slug": "how-black-ember-began",
@@ -408,7 +470,8 @@
       "tags": ["writing", "origin-story", "genesis", "creative-process", "tribute"],
       "date": "2025-05-15",
       "featured": false,
-      "image": "/img/posts/how-black-ember-began.svg"
+      "image": "/img/posts/how-black-ember-began.svg",
+      "linkedInHook": "Every novel has an origin story. Mine started with a superhero game avatar called Black Ember—an Irish vigilante, sort of Batman meets Constantine.\n\nThen my dog died. And the avatar became a novel about self-condemnation, mercy, and a spectral hound who watches across centuries.\n\nYour first concept is rarely your final story."
     }
   ]
 }
