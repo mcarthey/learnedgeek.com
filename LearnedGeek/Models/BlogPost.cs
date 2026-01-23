@@ -10,6 +10,7 @@ public class BlogPost
     public DateTime Date { get; set; }
     public bool Featured { get; set; }
     public string? Image { get; set; }
+    public string? LinkedInHook { get; set; }
     public string? Content { get; set; }
     public string? HtmlContent { get; set; }
 }

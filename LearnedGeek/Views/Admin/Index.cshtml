@@ -7,6 +7,13 @@
     string GenerateSuggestedPost(LearnedGeek.Models.BlogPost post)
     {
         var hashtags = string.Join(" ", post.Tags.Take(4).Select(t => "#" + t.Replace(" ", "").Replace("-", "").Replace(".", "")));
+
+        // Use custom LinkedIn hook if available, otherwise fall back to default format
+        if (!string.IsNullOrEmpty(post.LinkedInHook))
+        {
+            return $"{post.LinkedInHook}\n\n{hashtags}";
+        }
+
         return $"📝 New blog post: {post.Title}\n\n{post.Description}\n\n{hashtags}";
     }
 }
