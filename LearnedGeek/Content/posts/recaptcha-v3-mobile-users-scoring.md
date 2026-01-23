@@ -175,4 +175,6 @@ Sometimes the best defense isn't the strictest one - it's the one that actually 
 
 ---
 
-*This is a follow-up to [Implementing reCAPTCHA v3 in ASP.NET Core](/Blog/Post/recaptcha-v3-aspnet-core). The contact form on this site uses the approach described here.*
+*This post is part of a series on reCAPTCHA v3. See also: [Implementing reCAPTCHA v3 in ASP.NET Core](/Blog/Post/recaptcha-v3-aspnet-core) for the complete implementation with honeypot fields and server-side validation.*
+
+*The contact form on this site uses the approach described here.*

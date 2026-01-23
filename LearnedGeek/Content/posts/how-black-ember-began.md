@@ -124,3 +124,7 @@ Both things are true. Neither erases the other.
 
 Start wherever inspiration strikes. The real story will reveal itself through the writing.
 
+---
+
+*This post is part of a series about writing my novel. See also: [For Pisko](/Blog/Post/for-pisko) on completing the novel and honoring the dog who inspired it, [Celtic Gods Are Messy](/Blog/Post/celtic-gods-are-messy) on the mythology framework, and [The Stones That Remember](/Blog/Post/the-stones-that-remember) on the worldbuilding breakthrough.*
+

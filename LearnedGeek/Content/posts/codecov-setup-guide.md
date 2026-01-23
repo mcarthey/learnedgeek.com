@@ -225,4 +225,6 @@ Your future self—debugging at 2 AM—will thank you.
 
 ---
 
+*This post is part of a series on code coverage. See also: [Codecov Error State Debugging](/Blog/Post/codecov-error-state-debugging) on what to do when uploads succeed but processing fails (spoiler: delete your config file).*
+
 *Found this helpful? Have questions about coverage strategies? Drop a comment below or find me on GitHub. I promise my code coverage is now above 23%.*

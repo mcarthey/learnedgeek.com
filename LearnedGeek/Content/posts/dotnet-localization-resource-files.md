@@ -222,4 +222,6 @@ Ask me how I know.
 
 ---
 
+*This post is part of a series on .NET localization. See also: [Building a Language Switcher](/Blog/Post/dotnet-localization-language-switcher) on letting users change languages and persisting their choice with cookies.*
+
 *Next up: Now that your translations are working, how do you let users switch languages and remember their choice? That's where cookies and the culture provider come in.*

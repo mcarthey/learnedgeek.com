@@ -92,3 +92,7 @@ I used to think revision meant "making the draft better." Now I understand it me
 It's archaeology and architecture combined. Uncover what you created. Then rebuild it to showcase what matters.
 
 **Lesson learned:** Your first draft teaches you what you're writing. Your revisions teach you how to write it. Don't try to do both at once. Write fast to discover, revise slow to refine, then marry the best of both. And be ruthless about your patterns—they're either serving the story or serving your comfort.
+
+---
+
+*This post is part of a series about writing my novel. See also: [Show, Don't Tell (Even When It Hurts)](/Blog/Post/show-dont-tell-even-when-it-hurts) on trusting your readers, and [Finding the Voice](/Blog/Post/finding-the-voice) on grounding the supernatural in human experience.*

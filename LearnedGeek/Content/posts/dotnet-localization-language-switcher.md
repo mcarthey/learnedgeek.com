@@ -259,4 +259,6 @@ And the best part? You can test it by clicking a dropdown instead of digging thr
 
 ---
 
+*This post is part of a series on .NET localization. See also: [Resource Files and Why They're Not Loading](/Blog/Post/dotnet-localization-resource-files) on the addressing system, namespace alignment, and debugging when translations don't appear.*
+
 *Having trouble getting the cookie to stick? Double-check that your middleware order is correct—`UseRequestLocalization()` needs to come before `UseRouting()`. See Part 1 for the full debugging checklist.*

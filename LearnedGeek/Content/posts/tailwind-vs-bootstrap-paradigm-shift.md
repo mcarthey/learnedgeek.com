@@ -351,3 +351,7 @@ That's not a flex (pun intended). It's just evidence that Tailwind scales from b
 Give it a real try on a real project. Not a todo app. Something with actual design requirements. Then decide for yourself.
 
 The paradigm shift is worth it.
+
+---
+
+*This post is part of a series on Tailwind CSS. See also: [Dynamic Classes and @layer Gotchas](/Blog/Post/tailwind-dynamic-classes-layer-gotchas) on handling dynamic class names and cascade layers, and [The v4 @source Directive Gotcha](/Blog/Post/tailwind-v4-source-directive-gotcha) on migrating from v3's content array.*

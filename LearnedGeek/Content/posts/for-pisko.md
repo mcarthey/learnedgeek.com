@@ -78,3 +78,7 @@ Everything else is commentary.
 Thank you, Pisko, for teaching me patience. For showing me what it means to witness without judgment. For being the kind of loyal I'm still learning to embody.
 
 This one's for you. 💙
+
+---
+
+*This post is part of a series about writing my novel. See also: [How Black Ember Began](/Blog/Post/how-black-ember-began) on the origin story from video game avatar to literary fiction, and [Writing Fast, Revising Forever](/Blog/Post/writing-fast-revising-forever) on the process that got me here.*

@@ -271,4 +271,6 @@ And if your AI coding assistant uses the word "likely" when describing code you'
 
 ---
 
+*This post is part of a series on AI-assisted development. See also: [AI Won't Replace Developers, But...](/Blog/Post/ai-wont-replace-developers-but) on why expertise still matters, and [When AI Gives You Coaching Instead of Construction](/Blog/Post/when-ai-gives-you-coaching-not-construction) on knowing when to ask AI to invent vs. review.*
+
 *Have your own AI coding horror stories? Drop them in the comments below. Therapy is expensive, but sharing pain is free.*

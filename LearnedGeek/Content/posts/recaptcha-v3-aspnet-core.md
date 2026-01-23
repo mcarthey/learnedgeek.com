@@ -262,4 +262,6 @@ The spam message that triggered this implementation would likely score around 0.
 
 ---
 
+*This post is part of a series on reCAPTCHA v3. See also: [Mobile Users and reCAPTCHA v3 Scoring](/Blog/Post/recaptcha-v3-mobile-users-scoring) on why Google's recommended threshold is too aggressive and how real users actually score.*
+
 *The contact form on this site now uses this exact implementation. Feel free to test it - just don't be surprised if it correctly identifies you as human.*

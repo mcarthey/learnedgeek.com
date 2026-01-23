@@ -45,3 +45,7 @@ Readers are smart. They're doing work you don't see—making connections, formin
 And if they don't figure something out? That's okay! Some mysteries are meant to linger. Some things are better felt than understood.
 
 **Lesson learned:** Trust your reader. If you've written it well, they'll understand without you holding their hand. And if they don't understand everything immediately, that's not a failure—it's an invitation to keep reading.
+
+---
+
+*This post is part of a series about writing my novel. See also: [Finding the Voice](/Blog/Post/finding-the-voice) on grounding the supernatural in human experience, and [Writing Fast, Revising Forever](/Blog/Post/writing-fast-revising-forever) on the revision process.*

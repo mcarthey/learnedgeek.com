@@ -38,3 +38,7 @@ Readers may not know what it's like to be possessed by a demon, but they DO know
 Start there. Make the impossible feel inevitable.
 
 **Lesson learned:** The best supernatural fiction amplifies human experience rather than replacing it. Your readers' own internal struggles are your foundation—build from there.
+
+---
+
+*This post is part of a series about writing my novel. See also: [Show, Don't Tell (Even When It Hurts)](/Blog/Post/show-dont-tell-even-when-it-hurts) on trusting your readers, and [Celtic Gods Are Messy](/Blog/Post/celtic-gods-are-messy) on building moral complexity.*

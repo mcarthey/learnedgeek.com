@@ -308,4 +308,6 @@ The search engines will find you. The question is whether you've made yourself w
 
 ---
 
+*This post is part of a series on SEO for developers. See also: [SEO Oops Recovery Guide](/Blog/Post/seo-oops-recovery-guide) on what to do when you accidentally expose pages to search engines (or need to remove them).*
+
 *Got questions about implementing SEO in your stack? Found a mistake in this post? Drop a comment below. I'm always learning too.*

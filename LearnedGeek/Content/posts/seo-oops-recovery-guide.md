@@ -218,4 +218,6 @@ Future you will be grateful. Present you might even avoid the cold sweat of seei
 
 ---
 
+*This post is part of a series on SEO for developers. See also: [SEO Demystified](/Blog/Post/seo-demystified) for the fundamentals of meta tags, Open Graph, structured data, and sitemaps.*
+
 *Have your own "oops" recovery story? Share it in the comments. Misery loves company, and we've all been there.*

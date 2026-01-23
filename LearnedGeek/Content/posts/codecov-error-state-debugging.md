@@ -337,4 +337,6 @@ And always remember: just because the upload succeeded doesn't mean Codecov unde
 
 ---
 
+*This post is part of a series on code coverage. See also: [Codecov Setup Guide](/Blog/Post/codecov-setup-guide) for the initial integration with GitHub Actions, PR comments, and coverage badges.*
+
 *Total debugging time: ~4 hours. Fixes attempted: 3. Fixes that worked: 0 (until I stopped fixing). Lines of code changed: -96. Fighting with Codecov path mapping? I'd love to hear about your adventures in the comments.*

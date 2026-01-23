@@ -111,3 +111,7 @@ Total time once you know the gotchas: about 5 minutes.
 - **Checklists exist for a reason** — even for processes you've done before
 
 The automation is still worth it. These are one-time setup steps per domain, and then you're back to hands-off renewals every 90 days.
+
+---
+
+*This post is part of a series on SSL automation. See also: [SSL Automation with Let's Encrypt and Cloudflare](/Blog/Post/ssl-automation-with-letsencrypt-and-cloudflare) for the initial setup, and [Upgrading to Wildcard Certificates](/Blog/Post/upgrading-certbot-to-wildcard-certificates) on covering all subdomains with one cert.*

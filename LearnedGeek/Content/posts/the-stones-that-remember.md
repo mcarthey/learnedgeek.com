@@ -57,3 +57,7 @@ When I revised with this understanding, entire scenes shifted. Instead of Seamus
 The land became an active participant in every choice.
 
 **Lesson learned:** Sometimes your biggest breakthroughs come when you step away from the keyboard and let your subconscious work. Read philosophy. Go camping. Let the pieces connect in firelight. Then bring that understanding back to the page and let it transform everything.
+
+---
+
+*This post is part of a series about writing my novel. See also: [Celtic Gods Are Messy](/Blog/Post/celtic-gods-are-messy) on moral complexity in mythology, and [How Black Ember Began](/Blog/Post/how-black-ember-began) on the journey from video game avatar to literary fiction.*

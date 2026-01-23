@@ -269,4 +269,4 @@ Now go make that dynamic status indicator actually work.
 
 ---
 
-*This is a follow-up to [Tailwind vs Bootstrap: The Paradigm Shift](/Blog/Post/tailwind-vs-bootstrap-paradigm-shift). Start there if you're new to the Tailwind vs Bootstrap debate.*
+*This post is part of a series on Tailwind CSS. See also: [Tailwind vs Bootstrap: The Paradigm Shift](/Blog/Post/tailwind-vs-bootstrap-paradigm-shift) for the fundamental mindset change, and [The v4 @source Directive Gotcha](/Blog/Post/tailwind-v4-source-directive-gotcha) on migrating from v3's content array.*

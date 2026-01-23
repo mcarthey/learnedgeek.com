@@ -63,3 +63,7 @@ Celtic mythology understands something modern culture often forgets: transformat
 You don't defeat the Morrigan—you learn to work with her. You don't avoid Lugh's trickery—you learn to see the truth it reveals. You don't choose Brigid's healing over her forging—you accept she is both.
 
 **Lesson learned:** The best mythology reflects messy human truth, not clean moral lessons. Give yourself permission to write forces that are neither good nor evil but **necessary and dangerous** at once. Your story will be richer for it.
+
+---
+
+*This post is part of a series about writing my novel. See also: [The Stones That Remember](/Blog/Post/the-stones-that-remember) on turning setting into character, and [Finding the Voice](/Blog/Post/finding-the-voice) on grounding the supernatural in universal human experience.*

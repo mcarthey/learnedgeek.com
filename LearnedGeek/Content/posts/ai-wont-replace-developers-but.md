@@ -186,11 +186,11 @@ Yes, the entry-level landscape is shifting. Yes, companies are experimenting wit
 
 But here's what students get wrong: they think the solution is to become better at *using* AI. To master the prompts. To learn the tricks.
 
-Last semester, a student told me he couldn't finish his final project the way he'd planned because—I swear this is true—he "ran out of ChatGPT tokens."
+There's a story making the rounds in teaching circles that captures this perfectly: a student explained they couldn't finish their final project because—and I wish this were exaggeration—they "ran out of ChatGPT tokens."
 
-I nearly drew blood biting my tongue.
+Not "hit a technical roadblock." Not "couldn't figure out the algorithm." *Ran out of tokens.*
 
-This student had outsourced his thinking so completely that when his AI crutch disappeared, he was helpless. He hadn't learned the architecture. He hadn't understood the patterns. He'd just been copy-pasting generated code until the meter ran out.
+They'd outsourced their thinking so completely that when the AI crutch disappeared, they were helpless. They hadn't learned the architecture. They hadn't understood the patterns. They'd just been copy-pasting generated code until the meter ran out.
 
 **That's not using AI as a tool. That's being used by AI as a conduit.**
 
@@ -244,5 +244,7 @@ AI-assisted developers are more productive, but they still need to be developers
 Maybe try building something complex with AI first? The nuance might surprise you.
 
 ---
+
+*This post is part of a series on AI-assisted development. See also: [When Your AI Coding Assistant Gaslights You](/Blog/Post/ai-coding-showdown) on context maintenance and debugging, and [When AI Gives You Coaching Instead of Construction](/Blog/Post/when-ai-gives-you-coaching-not-construction) on knowing when to ask AI to invent vs. review.*
 
 *This post was written by a human with AI assistance. The architectural decisions, the arguments, and the opinions are mine. The draft-writing, editing suggestions, and commit messages were a collaboration. That's how it works now. Pretending otherwise is either naivety or marketing.*
