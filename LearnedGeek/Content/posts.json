@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "environment-specific-ef-core-migrations",
+      "title": "Environment-Specific EF Core Migrations with SQL Scripts",
+      "description": "EF Core migrations run the same code everywhere, but real apps need different seed data per environment. Here's a convention-based pattern that loads the right SQL script automatically.",
+      "category": "Computers",
+      "tags": ["ef-core", "dotnet", "sql-server", "migrations", "devops", "patterns"],
+      "date": "2026-04-09",
+      "featured": true,
+      "image": "/img/posts/environment-specific-ef-core-migrations.svg",
+      "linkedInHook": "EF Core migrations are great for schema changes, but they run the same code everywhere. Real apps need different seed data per environment—demo users in dev, minimal data in staging, nothing in production.\n\nThe typical fix is wrapping everything in if (Environment.IsDevelopment()) checks. That gets ugly fast.\n\nHere's a cleaner pattern: convention-based SQL scripts that load automatically based on environment. Script.dev.sql for dev, Script.prod.sql for production. The migration code stays simple."
+    },
+    {
       "slug": "upgrading-certbot-to-wildcard-certificates",
       "title": "Upgrading Certbot to Wildcard Certificates",
       "description": "My SSL setup worked great until I needed subdomains for a multi-tenant SaaS. One wildcard certificate covers them all—but Certbot's upgrade path has some gotchas.",
