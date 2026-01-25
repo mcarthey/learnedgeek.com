@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="holeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d3748"/>
+      <stop offset="100%" style="stop-color:#1a202c"/>
+    </linearGradient>
+    <linearGradient id="counterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#48bb78"/>
+      <stop offset="100%" style="stop-color:#38a169"/>
+    </linearGradient>
+    <linearGradient id="zeroGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e53e3e"/>
+      <stop offset="100%" style="stop-color:#c53030"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+
+  <!-- Timeline path -->
+  <path d="M80 200 Q150 200 180 250 Q210 300 280 300 Q350 300 380 250 Q410 200 480 200 Q550 200 580 250 Q610 300 680 300 L720 300"
+        stroke="#4a5568" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- Rabbit holes (darker circles along path) -->
+  <ellipse cx="180" cy="280" rx="45" ry="25" fill="url(#holeGrad)" opacity="0.8"/>
+  <text x="180" y="285" font-family="sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">Rabbit Hole #1</text>
+
+  <ellipse cx="380" cy="280" rx="45" ry="25" fill="url(#holeGrad)" opacity="0.8"/>
+  <text x="380" y="285" font-family="sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">Rabbit Hole #2</text>
+
+  <ellipse cx="580" cy="280" rx="45" ry="25" fill="url(#holeGrad)" opacity="0.8"/>
+  <text x="580" y="285" font-family="sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">Rabbit Hole #3</text>
+
+  <!-- Counter displays -->
+  <!-- Start: Count = 3 -->
+  <g transform="translate(80, 120)">
+    <rect x="-30" y="-25" width="60" height="50" rx="6" fill="url(#counterGrad)"/>
+    <text x="0" y="8" font-family="monospace" font-size="28" fill="white" text-anchor="middle" font-weight="bold">3</text>
+    <text x="0" y="45" font-family="sans-serif" font-size="10" fill="#68d391">Pending</text>
+  </g>
+
+  <!-- After navigate: Count = 0 -->
+  <g transform="translate(280, 120)">
+    <rect x="-30" y="-25" width="60" height="50" rx="6" fill="url(#zeroGrad)"/>
+    <text x="0" y="8" font-family="monospace" font-size="28" fill="white" text-anchor="middle" font-weight="bold">0</text>
+    <text x="0" y="45" font-family="sans-serif" font-size="10" fill="#fc8181">Reset!</text>
+  </g>
+
+  <!-- Question marks -->
+  <text x="180" y="130" font-family="sans-serif" font-size="24" fill="#f6e05e" text-anchor="middle">?</text>
+
+  <!-- After fix attempt: Still 0 -->
+  <g transform="translate(480, 120)">
+    <rect x="-30" y="-25" width="60" height="50" rx="6" fill="url(#zeroGrad)"/>
+    <text x="0" y="8" font-family="monospace" font-size="28" fill="white" text-anchor="middle" font-weight="bold">0</text>
+    <text x="0" y="45" font-family="sans-serif" font-size="10" fill="#fc8181">Still 0?!</text>
+  </g>
+
+  <!-- Final: Fixed! -->
+  <g transform="translate(700, 120)">
+    <rect x="-30" y="-25" width="60" height="50" rx="6" fill="url(#counterGrad)"/>
+    <text x="0" y="8" font-family="monospace" font-size="28" fill="white" text-anchor="middle" font-weight="bold">3</text>
+    <text x="0" y="45" font-family="sans-serif" font-size="10" fill="#68d391">Fixed!</text>
+  </g>
+
+  <!-- Time markers -->
+  <text x="80" y="340" font-family="monospace" font-size="10" fill="#718096" text-anchor="middle">0h</text>
+  <text x="280" y="340" font-family="monospace" font-size="10" fill="#718096" text-anchor="middle">2h</text>
+  <text x="480" y="340" font-family="monospace" font-size="10" fill="#718096" text-anchor="middle">5h</text>
+  <text x="700" y="340" font-family="monospace" font-size="10" fill="#718096" text-anchor="middle">7h+</text>
+
+  <!-- Title -->
+  <text x="400" y="45" font-family="sans-serif" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="bold">The Debugging Marathon</text>
+  <text x="400" y="380" font-family="sans-serif" font-size="12" fill="#a0aec0" text-anchor="middle">7+ hours • 4 rabbit holes • 1 root cause • Significant coffee</text>
+</svg>

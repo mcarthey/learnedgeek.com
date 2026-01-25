@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "maui-blazor-pending-count-debugging-marathon",
+      "title": "The Pending Count That Wouldn't Stay: A MAUI Blazor Debugging Marathon",
+      "description": "What started as 'the pending count resets to zero' turned into a 7+ hour journey through Blazor component lifecycle, INotifyPropertyChanged, MAUI deployment quirks, MinVer versioning, and multi-environment debugging.",
+      "category": "Computers",
+      "tags": ["maui", "blazor", "debugging", "state-management", "inotifypropertychanged", "mobile"],
+      "date": "2026-05-24",
+      "featured": true,
+      "image": "/img/posts/maui-blazor-pending-count-debugging-marathon.svg",
+      "linkedInHook": "Navigate away and back. The pending count is 0.\n\nThe data was still there. The count just wasn't updating.\n\n7+ hours later, I found the root cause: two services were both calling SetPendingCount() with their own count. LoggingService set it to 3, then SyncService immediately overwrote it with 0.\n\nThe fix: separate counts per service, INotifyPropertyChanged for granular updates, and Blazor components that subscribe to changes.\n\nPlus 4 bonus rabbit holes: ObjectDisposedException, Debug APKs that won't start, MinVer returning 0.0.0, and syncing to the wrong server.\n\nSometimes a 'quick test' is anything but."
+    },
+    {
       "slug": "breaking-circular-dependencies-with-solid-principles",
       "title": "Breaking Circular Dependencies with SOLID Principles",
       "description": "When two services need each other, it's tempting to reach for IServiceProvider and lazy loading. But that quick fix hides architectural wounds. Here's how extracting shared concerns breaks the cycle properly.",
