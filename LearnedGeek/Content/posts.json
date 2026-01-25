@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "cicd-version-verification",
+      "title": "CI/CD Version Verification: Trust But Verify Your Deployments",
+      "description": "MSDeploy can return success even when your app fails to start. Here's how to add version endpoints and automated verification to catch those ghost deployments before your users do.",
+      "category": "Computers",
+      "tags": ["cicd", "github-actions", "devops", "deployment", "monitoring", "dotnet"],
+      "date": "2026-05-29",
+      "featured": true,
+      "image": "/img/posts/cicd-version-verification.svg",
+      "linkedInHook": "Your deploy succeeded. But did it *actually* work?\n\nMSDeploy syncs files successfully, but that doesn't mean your app is healthy. Config might be wrong. Database might not connect. App might crash on startup.\n\nThe fix: version endpoints that return what's actually running, and a verify job that compares it to what you just deployed.\n\nBonus: include uptime in the response. If it shows 0:00:05 when you expected hours, something restarted unexpectedly.\n\nVersion endpoints are cheap insurance. A few minutes of setup saves hours of 'why isn't my code deployed?' debugging."
+    },
+    {
       "slug": "maui-blazor-pending-count-debugging-marathon",
       "title": "The Pending Count That Wouldn't Stay: A MAUI Blazor Debugging Marathon",
       "description": "What started as 'the pending count resets to zero' turned into a 7+ hour journey through Blazor component lifecycle, INotifyPropertyChanged, MAUI deployment quirks, MinVer versioning, and multi-environment debugging.",
