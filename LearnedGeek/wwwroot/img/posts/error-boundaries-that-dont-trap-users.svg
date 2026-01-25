@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="errorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1a1a2e"/>
+
+  <!-- Left: Bad - Trapped user -->
+  <g transform="translate(100, 60)">
+    <text x="100" y="0" font-family="system-ui" font-size="14" fill="#ef4444" font-weight="bold" text-anchor="middle">TRAPPED</text>
+
+    <!-- App container -->
+    <rect x="0" y="20" width="200" height="260" rx="12" fill="#16213e" stroke="#ef4444" stroke-width="2"/>
+
+    <!-- Error message covering everything -->
+    <rect x="10" y="30" width="180" height="200" rx="6" fill="url(#errorGradient)" opacity="0.9"/>
+    <text x="100" y="100" font-family="system-ui" font-size="14" fill="#fff" text-anchor="middle">Something went</text>
+    <text x="100" y="120" font-family="system-ui" font-size="14" fill="#fff" text-anchor="middle">wrong</text>
+    <text x="100" y="160" font-family="system-ui" font-size="10" fill="#fecaca" text-anchor="middle">Navigation hidden!</text>
+    <text x="100" y="180" font-family="system-ui" font-size="10" fill="#fecaca" text-anchor="middle">User is stuck!</text>
+
+    <!-- Hidden nav (crossed out) -->
+    <g opacity="0.3">
+      <rect x="10" y="240" width="180" height="30" rx="4" fill="#374151"/>
+      <line x1="10" y1="255" x2="190" y2="255" stroke="#ef4444" stroke-width="2"/>
+    </g>
+  </g>
+
+  <!-- Center: Arrow -->
+  <g transform="translate(350, 180)">
+    <line x1="0" y1="0" x2="80" y2="0" stroke="#22c55e" stroke-width="4"/>
+    <polygon points="80,0 65,-12 65,12" fill="#22c55e"/>
+    <text x="40" y="30" font-family="system-ui" font-size="11" fill="#22c55e" text-anchor="middle">LocationChanged</text>
+    <text x="40" y="45" font-family="system-ui" font-size="11" fill="#22c55e" text-anchor="middle">→ Recover()</text>
+  </g>
+
+  <!-- Right: Good - Navigation works -->
+  <g transform="translate(480, 60)">
+    <text x="100" y="0" font-family="system-ui" font-size="14" fill="#22c55e" font-weight="bold" text-anchor="middle">ESCAPE ROUTE</text>
+
+    <!-- App container -->
+    <rect x="0" y="20" width="200" height="260" rx="12" fill="#16213e" stroke="#22c55e" stroke-width="2"/>
+
+    <!-- Error message (smaller, content area only) -->
+    <rect x="10" y="30" width="180" height="160" rx="6" fill="url(#errorGradient)" opacity="0.7"/>
+    <text x="100" y="90" font-family="system-ui" font-size="14" fill="#fff" text-anchor="middle">Something went</text>
+    <text x="100" y="110" font-family="system-ui" font-size="14" fill="#fff" text-anchor="middle">wrong</text>
+    <rect x="60" y="130" width="80" height="30" rx="4" fill="#fff" opacity="0.2"/>
+    <text x="100" y="150" font-family="system-ui" font-size="10" fill="#fff" text-anchor="middle">Try Again</text>
+
+    <!-- Working nav bar -->
+    <rect x="10" y="200" width="180" height="70" rx="6" fill="#16213e" stroke="#22c55e" stroke-width="1"/>
+    <g transform="translate(25, 215)">
+      <rect x="0" y="0" width="40" height="40" rx="4" fill="#22c55e" opacity="0.2"/>
+      <text x="20" y="28" font-family="system-ui" font-size="10" fill="#22c55e" text-anchor="middle">Home</text>
+    </g>
+    <g transform="translate(80, 215)">
+      <rect x="0" y="0" width="40" height="40" rx="4" fill="#22c55e" opacity="0.2"/>
+      <text x="20" y="28" font-family="system-ui" font-size="10" fill="#22c55e" text-anchor="middle">Tasks</text>
+    </g>
+    <g transform="translate(135, 215)">
+      <rect x="0" y="0" width="40" height="40" rx="4" fill="#22c55e" opacity="0.2"/>
+      <text x="20" y="28" font-family="system-ui" font-size="10" fill="#22c55e" text-anchor="middle">More</text>
+    </g>
+    <text x="100" y="280" font-family="system-ui" font-size="9" fill="#86efac" text-anchor="middle">Navigation still works!</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="375" font-family="system-ui, sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">Error boundaries should be safety nets, not cages</text>
+</svg>

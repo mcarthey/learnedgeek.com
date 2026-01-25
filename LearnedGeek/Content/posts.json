@@ -1,6 +1,61 @@
 {
   "posts": [
     {
+      "slug": "tracer-bullet-development-prove-your-pipeline",
+      "title": "Tracer Bullet Development: How Error Logging Proved My Entire Sync Architecture",
+      "description": "Before building months of features, I built one thing: error logging. It proved the entire Mobile → API → Database → Web Admin pipeline worked—and found four bugs that would have been painful later.",
+      "category": "Computers",
+      "tags": ["architecture", "tracer-bullet", "integration", "mobile", "pragmatic-programmer", "patterns"],
+      "date": "2026-05-09",
+      "featured": true,
+      "image": "/img/posts/tracer-bullet-development-prove-your-pipeline.svg",
+      "linkedInHook": "How do you know your architecture works before building months of features?\n\nBuild a tracer bullet. One thin, end-to-end implementation that proves the whole pipeline.\n\nI chose error logging. Simple data, no business rules, but it touches every layer: Mobile → API → Database → Web Admin.\n\nIn one day, I validated 11 integration points. And found 4 bugs that would have been painful to debug in complex features.\n\nNow every new feature is 'just another endpoint' instead of 'I hope this fits together.'"
+    },
+    {
+      "slug": "testing-non-virtual-members-without-moq",
+      "title": "Testing Non-Virtual Members: When Moq Can't Help and SOLID Saves the Day",
+      "description": "Moq throws NotSupportedException on NavigationManager.Uri because it's not virtual. Here's why that connects to SOLID principles, and two patterns to test it anyway.",
+      "category": "Computers",
+      "tags": ["testing", "moq", "solid", "dotnet", "unit-testing", "patterns"],
+      "date": "2026-05-04",
+      "featured": true,
+      "image": "/img/posts/testing-non-virtual-members-without-moq.svg",
+      "linkedInHook": "Moq threw NotSupportedException: 'Non-overridable members may not be used in setup expressions.'\n\nNavigationManager.Uri isn't virtual. Microsoft chose safety over testability—you can't bypass their initialization logic.\n\nThis is SOLID in action. LSP says subclasses should be substitutable. Microsoft said 'we don't trust your substitution here.'\n\nTwo workarounds: inherit and override protected methods, or wrap it in your own interface. Both work. Choose based on what you're testing."
+    },
+    {
+      "slug": "maui-blazor-navigationmanager-not-initialized",
+      "title": "NavigationManager 'Not Initialized' - The MAUI Blazor Hybrid Gotcha",
+      "description": "Your error boundary works in Blazor WASM but crashes in MAUI Hybrid with 'WebViewNavigationManager has not been initialized.' Here's why and how to fix it.",
+      "category": "Computers",
+      "tags": ["maui", "blazor", "hybrid", "navigationmanager", "error-handling", "mobile"],
+      "date": "2026-04-29",
+      "featured": true,
+      "image": "/img/posts/maui-blazor-navigationmanager-not-initialized.svg",
+      "linkedInHook": "Built an error boundary that worked perfectly in Blazor WASM. Deployed to MAUI Hybrid on Android. Immediate crash:\n\n'WebViewNavigationManager has not been initialized.'\n\nThe issue: in MAUI, NavigationManager wraps a native WebView. During early error handling, the WebView isn't ready yet. Accessing .Uri throws.\n\nThe fix is embarrassingly simple: wrap it in try-catch. Defensive programming wins again."
+    },
+    {
+      "slug": "error-boundaries-that-dont-trap-users",
+      "title": "Error Boundaries That Don't Trap Users: A UX Lesson in Blazor",
+      "description": "Your Blazor ErrorBoundary catches the error but blocks the user's escape route. They can't navigate away. Here's how to make error boundaries recover on navigation.",
+      "category": "Computers",
+      "tags": ["blazor", "ux", "error-handling", "errorboundary", "user-experience"],
+      "date": "2026-04-24",
+      "featured": true,
+      "image": "/img/posts/error-boundaries-that-dont-trap-users.svg",
+      "linkedInHook": "Added an ErrorBoundary to my Blazor app. Caught errors, showed a nice message. Great!\n\nThen a user hit an error and tried to navigate away. Nothing happened. They were trapped.\n\nThe error boundary was a cage, not a safety net.\n\nThe fix: subscribe to NavigationManager.LocationChanged and call Recover() when the user navigates. Now errors don't break navigation.\n\nRule: errors should never block the user's escape route."
+    },
+    {
+      "slug": "crockford-base32-phone-friendly-reference-ids",
+      "title": "Phone-Friendly Reference IDs: Why Crockford Base32 is Perfect for Support",
+      "description": "GUIDs over the phone are a nightmare. 'Is that zero or the letter O?' Douglas Crockford's Base32 encoding removes ambiguous characters entirely.",
+      "category": "Computers",
+      "tags": ["ux", "encoding", "base32", "support", "human-factors"],
+      "date": "2026-04-19",
+      "featured": true,
+      "image": "/img/posts/crockford-base32-phone-friendly-reference-ids.svg",
+      "linkedInHook": "User calls support: 'My error code is seven-eff-three-ay-nine-one-bee-zero...'\n\nSupport: 'Is that a zero or the letter O?'\n\nUser: 'Um...'\n\nThis is why Douglas Crockford designed a Base32 encoding that removes confusing characters. No I, L, O, or U.\n\nNow error codes like ERR-QB20S0VJ are unambiguous. Users can even use NATO phonetic alphabet naturally.\n\nSmall design choice. Big difference in real-world support."
+    },
+    {
       "slug": "iis-app-offline-deployment-trick",
       "title": "The IIS app_offline.htm Deployment Trick",
       "description": "Tired of ERROR_FILE_IN_USE when deploying to IIS? One file stops your app, releases all locks, and shows users a maintenance page. Here's how to add it to your deployment scripts.",

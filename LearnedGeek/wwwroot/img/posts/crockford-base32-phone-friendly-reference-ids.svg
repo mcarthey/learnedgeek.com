@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="phoneGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1a1a2e"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.06" stroke="#6366f1" stroke-width="0.5">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+  </g>
+
+  <!-- Left side: Confusing characters -->
+  <g transform="translate(80, 80)">
+    <text x="0" y="0" font-family="system-ui" font-size="14" fill="#ef4444" font-weight="bold">CONFUSING</text>
+
+    <g transform="translate(0, 30)">
+      <rect x="0" y="0" width="200" height="50" rx="6" fill="#16213e" stroke="#ef4444" stroke-width="2"/>
+      <text x="100" y="32" font-family="monospace" font-size="20" fill="#fca5a5" text-anchor="middle">0 O o</text>
+    </g>
+    <text x="100" y="105" font-family="system-ui" font-size="11" fill="#6b7280" text-anchor="middle">"Is that zero or the letter O?"</text>
+
+    <g transform="translate(0, 120)">
+      <rect x="0" y="0" width="200" height="50" rx="6" fill="#16213e" stroke="#ef4444" stroke-width="2"/>
+      <text x="100" y="32" font-family="monospace" font-size="20" fill="#fca5a5" text-anchor="middle">1 l I</text>
+    </g>
+    <text x="100" y="195" font-family="system-ui" font-size="11" fill="#6b7280" text-anchor="middle">"One, lowercase L, or uppercase I?"</text>
+  </g>
+
+  <!-- Center: Arrow -->
+  <g transform="translate(330, 180)">
+    <line x1="0" y1="0" x2="80" y2="0" stroke="#22c55e" stroke-width="4"/>
+    <polygon points="80,0 65,-12 65,12" fill="#22c55e"/>
+    <text x="40" y="30" font-family="system-ui" font-size="12" fill="#22c55e" text-anchor="middle">Crockford</text>
+    <text x="40" y="45" font-family="system-ui" font-size="12" fill="#22c55e" text-anchor="middle">Base32</text>
+  </g>
+
+  <!-- Right side: Clean alphabet -->
+  <g transform="translate(450, 80)">
+    <text x="0" y="0" font-family="system-ui" font-size="14" fill="#22c55e" font-weight="bold">UNAMBIGUOUS</text>
+
+    <g transform="translate(0, 30)">
+      <rect x="0" y="0" width="280" height="80" rx="6" fill="#16213e" stroke="#22c55e" stroke-width="2"/>
+      <text x="140" y="30" font-family="monospace" font-size="12" fill="#86efac" text-anchor="middle">0123456789</text>
+      <text x="140" y="50" font-family="monospace" font-size="12" fill="#86efac" text-anchor="middle">ABCDEFGHJKMNPQRS</text>
+      <text x="140" y="70" font-family="monospace" font-size="12" fill="#86efac" text-anchor="middle">TVWXYZ</text>
+    </g>
+
+    <text x="140" y="135" font-family="system-ui" font-size="11" fill="#6b7280" text-anchor="middle">No I, L, O, or U</text>
+  </g>
+
+  <!-- Phone support example -->
+  <g transform="translate(450, 230)">
+    <rect x="0" y="0" width="280" height="90" rx="8" fill="url(#phoneGradient)" opacity="0.9"/>
+    <text x="20" y="30" font-family="system-ui" font-size="12" fill="#e0e7ff">Reference ID:</text>
+    <text x="20" y="55" font-family="monospace" font-size="22" fill="#fff" font-weight="bold">ERR-QB20S0VJ</text>
+    <text x="20" y="78" font-family="system-ui" font-size="10" fill="#c7d2fe">"Quebec-Bravo-two-zero-Sierra..."</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="375" font-family="system-ui, sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">Phone-friendly IDs that humans can read without confusion</text>
+</svg>
