@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "automatic-semantic-versioning-with-minver",
+      "title": "Automatic Semantic Versioning with MinVer: Never Manually Bump Again",
+      "description": "Version numbers in three .csproj files, remembering to create git tags, hoping you didn't fat-finger 0.9.1 as 0.91. MinVer eliminates all of it by deriving versions from git tags automatically.",
+      "category": "Computers",
+      "tags": ["versioning", "semver", "minver", "cicd", "dotnet", "github-actions", "devops"],
+      "date": "2026-05-14",
+      "featured": true,
+      "image": "/img/posts/automatic-semantic-versioning-with-minver.svg",
+      "linkedInHook": "I used to dread version bumps. Update three .csproj files, create a git tag, hope I didn't fat-finger 0.9.1 as 0.91.\n\nThen I discovered MinVer. Now I never manually set a version number.\n\nThe version IS the git tag. MinVer reads your git history and calculates the version at build time. Developers commit code. Release pipelines create tags. The cycle continues automatically.\n\nOne Directory.Build.props file. Zero manual edits. Zero version mismatches."
+    },
+    {
       "slug": "tracer-bullet-development-prove-your-pipeline",
       "title": "Tracer Bullet Development: How Error Logging Proved My Entire Sync Architecture",
       "description": "Before building months of features, I built one thing: error logging. It proved the entire Mobile → API → Database → Web Admin pipeline worked—and found four bugs that would have been painful later.",
