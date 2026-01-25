@@ -337,5 +337,6 @@ The tools exist. The patterns are proven. There's no reason to manually manage v
 
 ## Related Posts
 
+- [CI/CD Version Verification](/blog/cicd-version-verification) — How to verify those MinVer versions actually deployed
 - [Tracer Bullet Development: Prove Your Pipeline First](/blog/tracer-bullet-development-prove-your-pipeline) — How I validated this CI/CD architecture
 - [Environment-Specific EF Core Migrations](/blog/environment-specific-ef-core-migrations) — Another pattern for environment-aware builds

@@ -210,3 +210,9 @@ GitHub renders this nicely in the Actions run summary.
 ---
 
 *Version endpoints are cheap insurance. A few minutes of setup saves hours of "why isn't my code deployed?" debugging.*
+
+## Related Posts
+
+- [Automatic Semantic Versioning with MinVer](/blog/automatic-semantic-versioning-with-minver) — How to generate those version numbers automatically from git tags
+- [Tracer Bullet Development: Prove Your Pipeline](/blog/tracer-bullet-development-prove-your-pipeline) — Why proving your deployment pipeline early saves pain later
+- [The IIS app_offline.htm Deployment Trick](/blog/iis-app-offline-deployment-trick) — Graceful deployments that this verification step confirms
