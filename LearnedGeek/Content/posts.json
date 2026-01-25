@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "iis-app-offline-deployment-trick",
+      "title": "The IIS app_offline.htm Deployment Trick",
+      "description": "Tired of ERROR_FILE_IN_USE when deploying to IIS? One file stops your app, releases all locks, and shows users a maintenance page. Here's how to add it to your deployment scripts.",
+      "category": "Computers",
+      "tags": ["iis", "deployment", "msdeploy", "aspnet-core", "devops", "ci-cd"],
+      "date": "2026-04-14",
+      "featured": true,
+      "image": "/img/posts/iis-app-offline-deployment-trick.svg",
+      "linkedInHook": "Deploying to IIS and hitting ERROR_FILE_IN_USE is infuriating. The app is running, IIS has file locks, MSDeploy fails. I'd been working around this with retry loops and manual FTP deletions.\n\nTurns out there's a feature that's been in IIS all along: app_offline.htm.\n\nDrop that file in your app root and IIS immediately stops the app, releases all locks, and serves a maintenance page. Deploy your files. Delete the file. App restarts.\n\nOne file. No more lock errors."
+    },
+    {
       "slug": "environment-specific-ef-core-migrations",
       "title": "Environment-Specific EF Core Migrations with SQL Scripts",
       "description": "EF Core migrations run the same code everywhere, but real apps need different seed data per environment. Here's a convention-based pattern that loads the right SQL script automatically.",
