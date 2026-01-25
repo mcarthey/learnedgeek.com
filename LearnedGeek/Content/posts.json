@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "breaking-circular-dependencies-with-solid-principles",
+      "title": "Breaking Circular Dependencies with SOLID Principles",
+      "description": "When two services need each other, it's tempting to reach for IServiceProvider and lazy loading. But that quick fix hides architectural wounds. Here's how extracting shared concerns breaks the cycle properly.",
+      "category": "Computers",
+      "tags": ["solid", "architecture", "dependency-injection", "refactoring", "dotnet", "patterns"],
+      "date": "2026-05-19",
+      "featured": true,
+      "image": "/img/posts/breaking-circular-dependencies-with-solid-principles.svg",
+      "linkedInHook": "The build failed. Circular dependency detected.\n\nTwo services needed each other. SyncService logs operations. LoggingService syncs logs. Classic tangle.\n\nThe quick fix: IServiceProvider + lazy loading. It compiles. It runs.\n\nThe problem: hidden dependencies, testing nightmares, and the architectural wound stays open.\n\nThe real fix: extract the shared concern. Create ISyncStatusService to own the state both services need. Now they depend on the abstraction, not each other.\n\n30 minutes longer. Pays dividends forever."
+    },
+    {
       "slug": "automatic-semantic-versioning-with-minver",
       "title": "Automatic Semantic Versioning with MinVer: Never Manually Bump Again",
       "description": "Version numbers in three .csproj files, remembering to create git tags, hoping you didn't fat-finger 0.9.1 as 0.91. MinVer eliminates all of it by deriving versions from git tags automatically.",
