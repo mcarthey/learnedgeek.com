@@ -400,7 +400,10 @@
                         <p class="font-medium">${a.title}</p>
                         <p class="text-sm text-neutral-500 dark:text-neutral-400">${a.description}</p>
                     </div>
-                    <span class="text-xs text-neutral-400 dark:text-neutral-500 whitespace-nowrap">${a.date}</span>
+                    <div class="text-right whitespace-nowrap">
+                        <span class="text-xs text-neutral-400 dark:text-neutral-500">${a.date}</span>
+                        ${a.hours ? `<div class="text-xs font-medium text-neutral-600 dark:text-neutral-300">${a.hours}h</div>` : ''}
+                    </div>
                 </li>
             `).join('');
 
