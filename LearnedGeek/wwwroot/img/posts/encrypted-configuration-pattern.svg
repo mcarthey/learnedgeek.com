@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="dangerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e74c3c"/>
+      <stop offset="100%" style="stop-color:#c0392b"/>
+    </linearGradient>
+    <linearGradient id="safeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#27ae60"/>
+      <stop offset="100%" style="stop-color:#1e8449"/>
+    </linearGradient>
+    <linearGradient id="keyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f39c12"/>
+      <stop offset="100%" style="stop-color:#d68910"/>
+    </linearGradient>
+    <linearGradient id="dbGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db"/>
+      <stop offset="100%" style="stop-color:#2980b9"/>
+    </linearGradient>
+    <linearGradient id="encryptGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b59b6"/>
+      <stop offset="100%" style="stop-color:#8e44ad"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+
+  <!-- Left side: Traditional (Bad) -->
+  <text x="180" y="35" font-family="sans-serif" font-size="14" fill="#e74c3c" text-anchor="middle" font-weight="bold">Traditional Approach</text>
+
+  <!-- appsettings.json box -->
+  <rect x="60" y="50" width="240" height="80" rx="6" fill="#16213e" stroke="#e74c3c" stroke-width="2"/>
+  <text x="180" y="75" font-family="monospace" font-size="11" fill="#fca5a5" text-anchor="middle">appsettings.json</text>
+  <text x="80" y="100" font-family="monospace" font-size="9" fill="#9ca3af">"Jwt:Key": "secret123"</text>
+  <text x="80" y="115" font-family="monospace" font-size="9" fill="#9ca3af">"Api:Token": "abc..."</text>
+
+  <!-- Arrow to git -->
+  <path d="M180 135 L180 160" stroke="#e74c3c" stroke-width="2" fill="none"/>
+  <polygon points="180,165 175,158 185,158" fill="#e74c3c"/>
+
+  <!-- Git repo danger -->
+  <rect x="100" y="170" width="160" height="45" rx="6" fill="url(#dangerGrad)"/>
+  <text x="180" y="192" font-family="sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">Git Repository</text>
+  <text x="180" y="207" font-family="sans-serif" font-size="8" fill="#fecaca" text-anchor="middle">Secrets exposed!</text>
+
+  <!-- X mark -->
+  <circle cx="180" cy="250" r="18" fill="#c0392b"/>
+  <text x="180" y="256" font-family="sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="bold">&#x2717;</text>
+
+  <!-- Center divider -->
+  <line x1="360" y1="30" x2="360" y2="290" stroke="#4a5568" stroke-width="2" stroke-dasharray="8,4"/>
+
+  <!-- Right side: Encrypted (Good) -->
+  <text x="580" y="35" font-family="sans-serif" font-size="14" fill="#27ae60" text-anchor="middle" font-weight="bold">Encrypted Database Pattern</text>
+
+  <!-- Key file (gitignored) -->
+  <rect x="420" y="50" width="120" height="40" rx="6" fill="url(#keyGrad)"/>
+  <text x="480" y="72" font-family="monospace" font-size="9" fill="white" text-anchor="middle">crewtrack.key</text>
+  <text x="480" y="84" font-family="sans-serif" font-size="7" fill="#fef3c7" text-anchor="middle">.gitignored</text>
+
+  <!-- AES-256 encryption -->
+  <rect x="560" y="50" width="160" height="40" rx="6" fill="url(#encryptGrad)"/>
+  <text x="640" y="68" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">AES-256-GCM</text>
+  <text x="640" y="82" font-family="sans-serif" font-size="8" fill="#e9d5ff" text-anchor="middle">Encrypt/Decrypt</text>
+
+  <!-- Arrows -->
+  <path d="M480 95 L480 115 L560 115" stroke="#f39c12" stroke-width="2" fill="none"/>
+  <path d="M640 95 L640 115" stroke="#9b59b6" stroke-width="2" fill="none"/>
+
+  <!-- Database with encrypted values -->
+  <rect x="440" y="130" width="280" height="90" rx="8" fill="url(#dbGrad)"/>
+  <text x="580" y="152" font-family="sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">AppSettings Table</text>
+
+  <!-- Table headers -->
+  <line x1="455" y1="160" x2="705" y2="160" stroke="#bee3f8" stroke-width="1" opacity="0.3"/>
+  <text x="480" y="175" font-family="monospace" font-size="8" fill="#bee3f8">Key</text>
+  <text x="560" y="175" font-family="monospace" font-size="8" fill="#bee3f8">Value</text>
+  <text x="665" y="175" font-family="monospace" font-size="8" fill="#bee3f8">Encrypted</text>
+
+  <!-- Table data -->
+  <text x="480" y="192" font-family="monospace" font-size="8" fill="white">Jwt:Key</text>
+  <text x="560" y="192" font-family="monospace" font-size="8" fill="#9ca3af">kF3x9...</text>
+  <text x="680" y="192" font-family="monospace" font-size="8" fill="#86efac">true</text>
+
+  <text x="480" y="207" font-family="monospace" font-size="8" fill="white">Api:Url</text>
+  <text x="560" y="207" font-family="monospace" font-size="8" fill="white">https://...</text>
+  <text x="680" y="207" font-family="monospace" font-size="8" fill="#9ca3af">false</text>
+
+  <!-- Arrow to IConfiguration -->
+  <path d="M580 225 L580 250" stroke="#27ae60" stroke-width="2" fill="none"/>
+  <polygon points="580,255 575,248 585,248" fill="#27ae60"/>
+
+  <!-- IConfiguration output -->
+  <rect x="480" y="260" width="200" height="40" rx="6" fill="url(#safeGrad)"/>
+  <text x="580" y="280" font-family="monospace" font-size="10" fill="white" text-anchor="middle">IConfiguration</text>
+  <text x="580" y="293" font-family="sans-serif" font-size="8" fill="#bbf7d0" text-anchor="middle">Auto-decrypted at runtime</text>
+
+  <!-- Check mark -->
+  <circle cx="580" cy="330" r="18" fill="#1e8449"/>
+  <text x="580" y="336" font-family="sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="bold">&#x2713;</text>
+
+  <!-- Bottom tagline -->
+  <text x="400" y="375" font-family="sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Secrets encrypted at rest, key never touches the repo</text>
+</svg>

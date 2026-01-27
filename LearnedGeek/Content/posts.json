@@ -1,6 +1,39 @@
 {
   "posts": [
     {
+      "slug": "schema-aware-ef-core-migrations",
+      "title": "Schema-Aware EF Core Migrations: One Migration Set, Multiple Environments",
+      "description": "EF Core migrations don't natively support runtime schema selection. Here's how to intercept migration operations and inject the correct schema for local, dev, staging, and production.",
+      "category": "Computers",
+      "tags": ["ef-core", "dotnet", "sql-server", "migrations", "multi-tenant", "patterns"],
+      "date": "2026-06-16",
+      "featured": true,
+      "image": "/img/posts/schema-aware-ef-core-migrations.svg",
+      "linkedInHook": "\"Which environment did that migration just run against?\"\n\nI stared at Slack with that sinking feeling. EF Core migrations don't support runtime schema selection—the schema is baked in when you generate the migration.\n\nSo I built a custom SQL generator that intercepts operations mid-flight and injects the correct schema.\n\nNow: same migrations, different schemas. [local], [dev], [stg], [dbo]. No more \"wait, which one did I just hit?\" moments.\n\nPart 3 of the Enterprise Database Patterns series."
+    },
+    {
+      "slug": "encrypted-configuration-pattern",
+      "title": "Database-Backed Encrypted Configuration: Stop Committing Secrets",
+      "description": "I once committed an API key to a public repo at 3 AM. That incident taught me secrets in source control are a when problem, not an if problem. Here's the pattern that makes the mistake impossible.",
+      "category": "Computers",
+      "tags": ["security", "encryption", "dotnet", "configuration", "aes-gcm", "patterns"],
+      "date": "2026-06-10",
+      "featured": true,
+      "image": "/img/posts/encrypted-configuration-pattern.svg",
+      "linkedInHook": "I once committed an API key to a public GitHub repo. It was 3 AM. The deploy was \"almost done.\"\n\nThree hours later, my inbox was full of AWS alerts.\n\nThat incident taught me: secrets in source control are a WHEN problem, not an IF problem.\n\nSo I built database-backed configuration with AES-256-GCM encryption. The key file is gitignored. Secrets are encrypted at rest. Your code uses IConfiguration normally—it just works.\n\nPart 2 of the Enterprise Database Patterns series."
+    },
+    {
+      "slug": "modern-database-testing-with-xunit-fixtures",
+      "title": "Modern Database Testing: Why InMemory Databases Lie To You",
+      "description": "My test passed locally and caught fire in staging. That's when I learned UseInMemoryDatabase() is like a friend who tells you that outfit looks great when it definitely does not.",
+      "category": "Computers",
+      "tags": ["testing", "xunit", "ef-core", "sql-server", "respawn", "integration-testing"],
+      "date": "2026-06-04",
+      "featured": true,
+      "image": "/img/posts/modern-database-testing-with-xunit-fixtures.svg",
+      "linkedInHook": "The test passed. Ship it, right?\n\nThen I deployed to staging and watched everything catch fire. The LINQ query that worked against UseInMemoryDatabase() generated SQL that SQL Server refused to execute.\n\nInMemory databases lie to you. They're fast and convenient, like a friend who tells you that outfit looks great when it definitely does not.\n\nThe fix: real SQL Server + Respawn. ~20ms resets instead of ~1000ms. When tests pass now, I actually believe them.\n\nPart 1 of the Enterprise Database Patterns series."
+    },
+    {
       "slug": "cicd-version-verification",
       "title": "CI/CD Version Verification: Trust But Verify Your Deployments",
       "description": "MSDeploy can return success even when your app fails to start. Here's how to add version endpoints and automated verification to catch those ghost deployments before your users do.",

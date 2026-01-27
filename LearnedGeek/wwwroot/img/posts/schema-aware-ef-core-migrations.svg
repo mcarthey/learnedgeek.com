@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="localGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="devGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="stgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <linearGradient id="prodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    <linearGradient id="generatorGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.05" stroke="#8b5cf6" stroke-width="0.5">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="35" font-family="sans-serif" font-size="14" fill="#e2e8f0" text-anchor="middle" font-weight="bold">One Migration Set, Multiple Schemas</text>
+
+  <!-- Left: Single migration -->
+  <g transform="translate(50, 60)">
+    <rect x="0" y="0" width="180" height="120" rx="8" fill="#16213e" stroke="#3b82f6" stroke-width="2"/>
+    <text x="90" y="28" font-family="monospace" font-size="10" fill="#93c5fd" text-anchor="middle">Migration Operations</text>
+    <line x1="15" y1="38" x2="165" y2="38" stroke="#3b82f6" stroke-width="1" opacity="0.3"/>
+
+    <text x="20" y="58" font-family="monospace" font-size="8" fill="#9ca3af">CreateTableOperation</text>
+    <text x="30" y="72" font-family="monospace" font-size="8" fill="#6b7280">Schema = null</text>
+
+    <text x="20" y="92" font-family="monospace" font-size="8" fill="#9ca3af">AddForeignKeyOperation</text>
+    <text x="30" y="106" font-family="monospace" font-size="8" fill="#6b7280">Schema = null</text>
+  </g>
+
+  <!-- Arrow to generator -->
+  <path d="M240 120 L290 120" stroke="#3b82f6" stroke-width="2" fill="none"/>
+  <polygon points="295,120 288,115 288,125" fill="#3b82f6"/>
+
+  <!-- Center: SQL Generator -->
+  <g transform="translate(300, 70)">
+    <rect x="0" y="0" width="200" height="100" rx="8" fill="url(#generatorGrad)"/>
+    <text x="100" y="30" font-family="monospace" font-size="10" fill="white" text-anchor="middle" font-weight="bold">SchemaAware</text>
+    <text x="100" y="45" font-family="monospace" font-size="10" fill="white" text-anchor="middle" font-weight="bold">MigrationsSqlGenerator</text>
+    <line x1="20" y1="55" x2="180" y2="55" stroke="white" stroke-width="1" opacity="0.3"/>
+    <text x="100" y="75" font-family="sans-serif" font-size="9" fill="#bfdbfe" text-anchor="middle">Injects schema at runtime</text>
+    <text x="100" y="90" font-family="monospace" font-size="8" fill="#93c5fd" text-anchor="middle">operation.Schema = _schema</text>
+  </g>
+
+  <!-- Arrows to schemas -->
+  <path d="M505 95 L560 75" stroke="#8b5cf6" stroke-width="2" fill="none"/>
+  <path d="M505 120 L560 130" stroke="#22c55e" stroke-width="2" fill="none"/>
+  <path d="M505 145 L560 185" stroke="#f59e0b" stroke-width="2" fill="none"/>
+  <path d="M505 165 L560 240" stroke="#ef4444" stroke-width="2" fill="none"/>
+
+  <!-- Right: Schema boxes -->
+  <!-- Local -->
+  <g transform="translate(565, 50)">
+    <rect x="0" y="0" width="170" height="45" rx="6" fill="url(#localGrad)"/>
+    <text x="85" y="22" font-family="monospace" font-size="11" fill="white" text-anchor="middle" font-weight="bold">[local]</text>
+    <text x="85" y="37" font-family="sans-serif" font-size="8" fill="#e9d5ff" text-anchor="middle">Developer sandbox</text>
+  </g>
+
+  <!-- Dev -->
+  <g transform="translate(565, 105)">
+    <rect x="0" y="0" width="170" height="45" rx="6" fill="url(#devGrad)"/>
+    <text x="85" y="22" font-family="monospace" font-size="11" fill="white" text-anchor="middle" font-weight="bold">[dev]</text>
+    <text x="85" y="37" font-family="sans-serif" font-size="8" fill="#bbf7d0" text-anchor="middle">CI/CD testing</text>
+  </g>
+
+  <!-- Staging -->
+  <g transform="translate(565, 160)">
+    <rect x="0" y="0" width="170" height="45" rx="6" fill="url(#stgGrad)"/>
+    <text x="85" y="22" font-family="monospace" font-size="11" fill="white" text-anchor="middle" font-weight="bold">[stg]</text>
+    <text x="85" y="37" font-family="sans-serif" font-size="8" fill="#fef3c7" text-anchor="middle">UAT / Staging</text>
+  </g>
+
+  <!-- Production -->
+  <g transform="translate(565, 215)">
+    <rect x="0" y="0" width="170" height="45" rx="6" fill="url(#prodGrad)"/>
+    <text x="85" y="22" font-family="monospace" font-size="11" fill="white" text-anchor="middle" font-weight="bold">[dbo]</text>
+    <text x="85" y="37" font-family="sans-serif" font-size="8" fill="#fecaca" text-anchor="middle">Production</text>
+  </g>
+
+  <!-- Database cylinder at bottom -->
+  <g transform="translate(300, 280)">
+    <ellipse cx="100" cy="15" rx="100" ry="15" fill="#16213e" stroke="#4a5568" stroke-width="1.5"/>
+    <rect x="0" y="15" width="200" height="60" fill="#16213e" stroke="#4a5568" stroke-width="1.5"/>
+    <ellipse cx="100" cy="75" rx="100" ry="15" fill="#16213e" stroke="#4a5568" stroke-width="1.5"/>
+    <ellipse cx="100" cy="15" rx="100" ry="15" fill="none" stroke="#4a5568" stroke-width="1.5"/>
+
+    <text x="100" y="50" font-family="sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle" font-weight="bold">SQL Server Database</text>
+    <text x="100" y="68" font-family="sans-serif" font-size="9" fill="#9ca3af" text-anchor="middle">Same tables, isolated by schema</text>
+  </g>
+
+  <!-- Connecting lines from schemas to database -->
+  <path d="M650 95 Q650 150 500 270" stroke="#8b5cf6" stroke-width="1" fill="none" opacity="0.4" stroke-dasharray="4,2"/>
+  <path d="M650 150 Q620 200 500 280" stroke="#22c55e" stroke-width="1" fill="none" opacity="0.4" stroke-dasharray="4,2"/>
+  <path d="M650 205 Q580 240 500 285" stroke="#f59e0b" stroke-width="1" fill="none" opacity="0.4" stroke-dasharray="4,2"/>
+  <path d="M650 260 Q550 270 500 290" stroke="#ef4444" stroke-width="1" fill="none" opacity="0.4" stroke-dasharray="4,2"/>
+
+  <!-- Bottom tagline -->
+  <text x="400" y="385" font-family="sans-serif" font-size="12" fill="#a0aec0" text-anchor="middle">Same migrations, runtime schema injection, complete isolation</text>
+</svg>
