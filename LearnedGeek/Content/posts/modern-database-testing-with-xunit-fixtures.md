@@ -29,24 +29,118 @@ Twenty. Milliseconds.
 
 Compare that to `EnsureDeleted()` followed by `EnsureCreated()`, which takes 500-2000ms. That's the difference between a test suite that runs while you're still reaching for your coffee and one that makes you go get a refill.
 
-## The Architecture
+## The Fixture
 
-The setup uses xUnit's `IClassFixture<T>` pattern. Each test class gets its own database (so tests can run in parallel without stepping on each other), and Respawn handles the cleanup between individual tests.
+Here's the skeleton. The fixture implements `IAsyncLifetime` so xUnit calls our setup and teardown methods automatically:
 
+```csharp
+public class SqlServerFixture : IAsyncLifetime
+{
+    private readonly string _databaseName = $"Test_{Guid.NewGuid():N}";
+    private readonly string _connectionString;
+    private Respawner? _respawner;
+
+    public SqlServerFixture()
+    {
+        // Check if we're in CI (container) or local (LocalDB)
+        var ciConnection = Environment.GetEnvironmentVariable("CI_TEST_CONNECTION_STRING");
+
+        _connectionString = !string.IsNullOrEmpty(ciConnection)
+            ? new SqlConnectionStringBuilder(ciConnection) { InitialCatalog = _databaseName }.ConnectionString
+            : $"Server=(localdb)\\MSSQLLocalDB;Database={_databaseName};Trusted_Connection=True;";
+    }
+
+    public async Task InitializeAsync()
+    {
+        // Create and migrate the database
+        await using var context = CreateContext();
+        await context.Database.EnsureCreatedAsync();
+
+        // Initialize Respawn - it learns your schema once
+        await using var connection = new SqlConnection(_connectionString);
+        await connection.OpenAsync();
+
+        _respawner = await Respawner.CreateAsync(connection, new RespawnerOptions
+        {
+            TablesToIgnore = ["__EFMigrationsHistory"],
+            DbAdapter = DbAdapter.SqlServer
+        });
+    }
+
+    public ApplicationDbContext CreateContext()
+    {
+        var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+            .UseSqlServer(_connectionString)
+            .Options;
+        return new ApplicationDbContext(options);
+    }
+
+    public async Task ResetAsync()
+    {
+        // This is the fast part - ~20ms to clean all data
+        await using var connection = new SqlConnection(_connectionString);
+        await connection.OpenAsync();
+        await _respawner!.ResetAsync(connection);
+    }
+
+    public async Task DisposeAsync()
+    {
+        // Drop the test database when done
+        await using var connection = new SqlConnection(_masterConnectionString);
+        await connection.OpenAsync();
+        await connection.ExecuteAsync($"DROP DATABASE IF EXISTS [{_databaseName}]");
+    }
+}
 ```
-Test Class A → Database_abc123 (parallel)
-Test Class B → Database_def456 (parallel)
-Test Class C → Database_ghi789 (parallel)
+
+The key insight: Respawn learns your foreign key graph during `CreateAsync()`, then uses that knowledge to delete data in the right order during `ResetAsync()`. No manual DELETE statements, no constraint violations.
+
+## Using It In Tests
+
+The test class wires everything together:
+
+```csharp
+public class WorkOrderTests : IClassFixture<SqlServerFixture>, IAsyncLifetime
+{
+    private readonly SqlServerFixture _fixture;
+    private ApplicationDbContext _context = null!;
+
+    public WorkOrderTests(SqlServerFixture fixture) => _fixture = fixture;
+
+    public async Task InitializeAsync()
+    {
+        await _fixture.ResetAsync();  // Clean slate for each test
+        _context = _fixture.CreateContext();
+    }
+
+    public Task DisposeAsync()
+    {
+        _context?.Dispose();
+        return Task.CompletedTask;
+    }
+
+    [Fact]
+    public async Task CreateWorkOrder_PersistsToDatabase()
+    {
+        var workOrder = new WorkOrder { Title = "Test Order" };
+        _context.WorkOrders.Add(workOrder);
+        await _context.SaveChangesAsync();
+
+        // IMPORTANT: Use fresh context to verify the write actually happened
+        await using var verifyContext = _fixture.CreateContext();
+        var saved = await verifyContext.WorkOrders.FindAsync(workOrder.Id);
+
+        Assert.NotNull(saved);
+        Assert.Equal("Test Order", saved.Title);
+    }
+}
 ```
 
-The fixture handles three things:
-1. **Create a unique database** when the test class starts
-2. **Provide Respawn** for fast resets between tests
-3. **Drop the database** when the test class finishes
+`IClassFixture<T>` means one fixture instance shared across all tests in the class. The database gets created once, then each test resets it with Respawn before running.
 
-## The Key Insight: Fresh Contexts
+## The Fresh Context Gotcha
 
-Here's the gotcha that cost me 45 minutes of confused debugging: when you save an entity and then query for it using the same DbContext, you might get the cached in-memory version back instead of actually hitting the database.
+This cost me 45 minutes of confused debugging: when you save an entity and query it back using the same context, you might get the cached in-memory version instead of what's actually in the database.
 
 ```csharp
 // This might lie to you
@@ -60,13 +154,11 @@ var saved = await freshContext.WorkOrders.FindAsync(workOrder.Id);
 // 'saved' is definitely from the database
 ```
 
-Always verify writes with a fresh context. The extra line saves hours of "but I just saved that!" confusion.
+Always verify writes with a fresh context. That one extra line saves hours of "but I just saved that!" confusion.
 
 ## CI Integration
 
-Locally, I use SQL Server LocalDB (free, probably already on your machine if you have Visual Studio). In GitHub Actions, I spin up a SQL Server container.
-
-The fixture detects which environment it's in by checking for a `CI_TEST_CONNECTION_STRING` environment variable. If it exists, we're in CI and use the container. If not, LocalDB it is.
+Locally, I use SQL Server LocalDB—it's free and probably already on your machine if you have Visual Studio. In GitHub Actions, I spin up a container:
 
 ```yaml
 services:
@@ -75,13 +167,16 @@ services:
     env:
       ACCEPT_EULA: Y
       SA_PASSWORD: TestPassword123!
+    ports:
+      - 1433:1433
+
+env:
+  CI_TEST_CONNECTION_STRING: "Server=localhost,1433;User Id=sa;Password=TestPassword123!;TrustServerCertificate=True"
 ```
 
-The same test code runs in both environments. No conditionals, no separate test configurations.
+The fixture checks for `CI_TEST_CONNECTION_STRING` and uses the container if it exists, LocalDB if not. Same test code, both environments.
 
 ## The Tradeoffs
-
-Let's be honest about what this approach costs:
 
 | Aspect | InMemory | Real Database |
 |--------|----------|---------------|
@@ -89,15 +184,15 @@ Let's be honest about what this approach costs:
 | Speed per test | ~5ms | ~20ms |
 | Confidence | "It works on my machine" | Actually works |
 
-That extra 15ms per test and the CI container setup are worth it the first time your staging deployment doesn't catch fire because your tests actually tested reality.
+That extra 15ms per test is worth it the first time your staging deployment doesn't catch fire because your tests actually tested reality.
 
 ## Quick Wins
 
-**Seed reference data once**: If every test needs the same lookup data (roles, statuses, etc.), seed it in `InitializeAsync()` right after the Respawn reset. Don't re-seed in every test method.
+**Seed reference data after reset**: If every test needs the same lookup data (roles, statuses, etc.), add it in `InitializeAsync()` right after calling `ResetAsync()`.
 
-**Meaningful database names**: I use `ProjectName_Test_{Guid}` so when something goes wrong, I can find the database and poke around. `TestDb_1` tells you nothing.
+**Meaningful database names**: `ProjectName_Test_{Guid}` lets you find and inspect the database when debugging. `TestDb_1` tells you nothing.
 
-**Don't forget the cleanup**: The fixture's `DisposeAsync()` should drop the test database. Otherwise you'll end up with hundreds of orphaned databases and a very confused DBA.
+**Don't skip cleanup**: The fixture's `DisposeAsync()` must drop the database. Otherwise you'll accumulate hundreds of orphaned test databases.
 
 ---
 
