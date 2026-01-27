@@ -1,333 +1,149 @@
 "Which environment did that migration just run against?"
 
-I stared at my colleague's Slack message with the sinking feeling you get when you realize you might have just updated production instead of staging. We were sharing a SQL Server, using different schemas to isolate environments. It was elegant in theory. In practice, EF Core didn't get the memo.
+I stared at my colleague's Slack message with the sinking feeling you get when you realize you might have just updated production instead of staging.
 
-Here's the thing about EF Core migrations: they don't natively support runtime schema selection. The schema is baked in when you *generate* the migration, not when you *apply* it. So my beautiful architecture of `[local]`, `[dev]`, `[stg]`, and `[dbo]` for production was fighting against the framework.
+We were sharing a SQL Server, using different schemas to isolate environments: `[local]` for developer sandboxes, `[dev]` for CI, `[stg]` for staging, and `[dbo]` for production. It was elegant in theory—one database server, complete isolation, easy to compare data across environments.
 
-After a few too many "which schema did that actually hit?" moments, I built a solution. It's not pretty under the hood, but it works beautifully in practice.
+In practice, EF Core didn't get the memo.
 
-## The Multi-Environment Setup
+## The Problem: Schemas Are Baked In
 
-Enterprise databases often look like this:
+Here's the thing about EF Core migrations that nobody tells you upfront: the schema is determined when you *generate* the migration, not when you *apply* it.
 
-```
-                    SQL Server Database
-┌─────────────┬─────────────┬─────────────┬─────────────┐
-│   [local]   │    [dev]    │    [stg]    │    [dbo]    │
-│ Developer   │    CI/CD    │   Staging   │ Production  │
-│  sandbox    │   testing   │    UAT      │    live     │
-└─────────────┴─────────────┴─────────────┴─────────────┘
-```
-
-Same tables, different schemas. The appeal: one database server, complete isolation, easy to compare data across environments.
-
-The reality: EF Core really, *really* wants to put everything in `dbo`.
-
-## Why Standard Approaches Fail
-
-I tried the obvious things first.
-
-**Separate migrations per environment?** Maintenance nightmare. Every schema change means updating four sets of migrations.
-
-**Hardcode schema in migration files?** Same problem, plus you have to remember to change it before running.
-
-**Call `HasDefaultSchema()` in OnModelCreating?** That affects queries, not migrations. The migration is already generated with no schema.
+When you run `dotnet ef migrations add CreateWorkOrders`, EF Core creates a migration file with operations like:
 
 ```csharp
-// This doesn't affect existing migrations
 migrationBuilder.CreateTable(
     name: "WorkOrders",
-    // No schema specified - defaults to dbo
+    // Notice: no schema specified
     columns: table => new { ... });
 ```
 
-The schema was missing, and EF Core wasn't going to add it for me.
+No schema means `dbo`. Always. It doesn't matter what environment you're in when you run the migration—if the migration file says "no schema," you're getting `dbo`.
 
-## The Solution: Intercept and Inject
+So my beautiful multi-schema architecture was fighting against the framework from day one.
 
-The insight that unlocked everything: EF Core's SQL generation is pluggable. We can intercept migration operations *before* they become SQL and inject the correct schema.
+## Why The Obvious Solutions Don't Work
 
-Here's the architecture:
+I tried the obvious fixes first:
 
-```
-┌──────────────────────────────────────────────────────────┐
-│                    MigrateAsync()                        │
-└────────────────────────┬─────────────────────────────────┘
-                         │
-                         ▼
-┌──────────────────────────────────────────────────────────┐
-│              Migration Operations                        │
-│  CreateTableOperation { Schema = null }                  │
-│  AddForeignKeyOperation { PrincipalSchema = null }       │
-└────────────────────────┬─────────────────────────────────┘
-                         │
-                         ▼
-┌──────────────────────────────────────────────────────────┐
-│         SchemaAwareMigrationsSqlGenerator                │
-│  ┌────────────────────────────────────────────────────┐  │
-│  │ if (schema != "dbo")                               │  │
-│  │     operation.Schema = "local" | "dev" | "stg"     │  │
-│  └────────────────────────────────────────────────────┘  │
-└────────────────────────┬─────────────────────────────────┘
-                         │
-                         ▼
-┌──────────────────────────────────────────────────────────┐
-│                      Generated SQL                       │
-│  CREATE TABLE [local].WorkOrders (...)                   │
-│  ALTER TABLE [local].TaskItems ADD FOREIGN KEY ...       │
-└──────────────────────────────────────────────────────────┘
-```
+**Generate separate migrations per environment?** Maintenance nightmare. Every schema change means updating four migration files. Miss one and your environments drift.
 
-We catch the operations mid-flight and fix them.
+**Hardcode schema in the migration?** Same problem, plus you have to remember to change it before each migration run. Spoiler: you won't remember.
 
-## The Custom SQL Generator
+**Use `HasDefaultSchema()` in OnModelCreating?** This affects *queries*, not migrations. Your SELECT statements will target the right schema, but your CREATE TABLE statements already happened in `dbo`.
 
-This is the workhorse:
+I spent two days on these dead ends before finding the real solution.
 
-```csharp
-public class SchemaAwareMigrationsSqlGenerator : SqlServerMigrationsSqlGenerator
-{
-    private readonly string? _schema;
+## The Insight: SQL Generation Is Pluggable
 
-    public SchemaAwareMigrationsSqlGenerator(
-        MigrationsSqlGeneratorDependencies dependencies,
-        ICommandBatchPreparer commandBatchPreparer,
-        IOptions<DatabaseSettings> databaseSettings)
-        : base(dependencies, commandBatchPreparer)
-    {
-        _schema = databaseSettings.Value?.Schema;
-    }
+EF Core's architecture has a beautiful seam right where I needed it. When you call `MigrateAsync()`, here's what actually happens:
 
-    public override IReadOnlyList<MigrationCommand> Generate(
-        IReadOnlyList<MigrationOperation> operations,
-        IModel? model,
-        MigrationsSqlGenerationOptions options = MigrationsSqlGenerationOptions.Default)
-    {
-        // Apply schema to operations that need it
-        if (!string.IsNullOrEmpty(_schema) && _schema != "dbo")
-        {
-            ApplySchemaToOperations(operations);
-        }
+1. EF Core loads the migration classes
+2. Each migration's `Up()` method generates `MigrationOperation` objects
+3. A **SQL generator** converts those operations into actual SQL
+4. The SQL executes against your database
 
-        return base.Generate(operations, model, options);
-    }
+That SQL generator? It's a replaceable service.
 
-    private void ApplySchemaToOperations(IReadOnlyList<MigrationOperation> operations)
-    {
-        foreach (var operation in operations)
-        {
-            switch (operation)
-            {
-                case CreateTableOperation createTable:
-                    if (string.IsNullOrEmpty(createTable.Schema))
-                        createTable.Schema = _schema;
+I can intercept the operations *after* the migration defines them but *before* they become SQL, and inject the correct schema at runtime.
 
-                    // Foreign keys within table creation need schema too
-                    foreach (var fk in createTable.ForeignKeys)
-                    {
-                        if (string.IsNullOrEmpty(fk.Schema))
-                            fk.Schema = _schema;
-                        if (string.IsNullOrEmpty(fk.PrincipalSchema))
-                            fk.PrincipalSchema = _schema;
-                    }
+## How It Works
 
-                    // Primary keys, unique constraints
-                    if (createTable.PrimaryKey != null &&
-                        string.IsNullOrEmpty(createTable.PrimaryKey.Schema))
-                        createTable.PrimaryKey.Schema = _schema;
+The custom SQL generator inherits from `SqlServerMigrationsSqlGenerator` and overrides the `Generate` method. Before calling the base implementation, it loops through all the operations and sets the schema on any that don't have one.
 
-                    foreach (var uc in createTable.UniqueConstraints)
-                        if (string.IsNullOrEmpty(uc.Schema))
-                            uc.Schema = _schema;
-                    break;
+The key operations to handle:
+- `CreateTableOperation` (including its foreign keys, primary keys, and constraints)
+- `AddColumnOperation`
+- `CreateIndexOperation`
+- `AddForeignKeyOperation` (both the table schema AND the principal table schema)
 
-                case AddColumnOperation addColumn
-                    when string.IsNullOrEmpty(addColumn.Schema):
-                    addColumn.Schema = _schema;
-                    break;
-
-                case CreateIndexOperation createIndex
-                    when string.IsNullOrEmpty(createIndex.Schema):
-                    createIndex.Schema = _schema;
-                    break;
-
-                case AddForeignKeyOperation addFk
-                    when string.IsNullOrEmpty(addFk.Schema):
-                    addFk.Schema = _schema;
-                    if (string.IsNullOrEmpty(addFk.PrincipalSchema))
-                        addFk.PrincipalSchema = _schema;
-                    break;
-
-                // ... handle all the other operation types
-            }
-        }
-    }
-}
-```
-
-Notice we handle `PrincipalSchema` on foreign keys. That one bit me hard. Without it, you get:
+That last one bit me hard. Foreign keys reference other tables. If you set the schema on the table with the FK but not the referenced table, you get:
 
 ```
 Foreign key 'FK_AspNetRoleClaims_AspNetRoles_RoleId' references invalid table 'AspNetRoles'
 ```
 
-Because the FK points to `[dbo].AspNetRoles`, which doesn't exist. Ask me how I know.
+Because it's looking for `[dbo].AspNetRoles`, which doesn't exist—your roles table is in `[dev]`. Ask me how long that one took to figure out.
 
-## Wiring It Into EF Core's DI System
+## The Schema Flows Through DI
 
-EF Core needs to know about the schema. We use a custom options extension:
+The tricky part is getting the schema value into the SQL generator. EF Core's service replacement happens at DbContext configuration time, but the schema is a runtime value.
 
-```csharp
-public static DbContextOptionsBuilder<TContext> UseSchemaAwareMigrations<TContext>(
-    this DbContextOptionsBuilder<TContext> optionsBuilder,
-    string schema)
-    where TContext : DbContext
-{
-    // Replace the default SQL generator
-    optionsBuilder.ReplaceService<IMigrationsSqlGenerator, SchemaAwareMigrationsSqlGenerator>();
-
-    // Pass schema through options extension
-    var extension = optionsBuilder.Options.FindExtension<SchemaOptionsExtension>()
-        ?? new SchemaOptionsExtension(schema);
-
-    ((IDbContextOptionsBuilderInfrastructure)optionsBuilder).AddOrUpdateExtension(
-        extension.WithSchema(schema));
-
-    return optionsBuilder;
-}
-```
-
-And in your fixture or startup:
+The solution is a custom options extension that carries the schema through EF Core's dependency injection system. When you configure your DbContext, you call:
 
 ```csharp
-var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-    .UseSqlServer(_connectionString, sql =>
-    {
-        // Migration history goes in schema too
-        sql.MigrationsHistoryTable("__EFMigrationsHistory", _schema);
-    })
-    .UseSchemaAwareMigrations(_schema)
-    .Options;
+optionsBuilder.UseSchemaAwareMigrations("dev");
 ```
 
-## Handling SQL Seed Scripts
+This replaces the default SQL generator with your custom one AND passes the schema value through so it's available when SQL generation happens.
 
-EF Core migrations often include raw SQL for seed data. Two patterns here:
+## Don't Forget The Migration History
 
-### Pattern 1: Environment-Specific Scripts
+Here's a gotcha that'll bite you if you're not careful: EF Core tracks which migrations have run in a table called `__EFMigrationsHistory`. By default, that table goes in `dbo`.
 
-Files named `SeedAppSettings.local.sql`, `SeedAppSettings.dev.sql`, etc. contain different data per environment. The schema is baked into the filename and SQL:
-
-```sql
--- SeedAppSettings.local.sql
-INSERT INTO [local].AppSettings ([Key], [Value], IsEncrypted)
-VALUES ('Jwt:Key', 'encrypted-local-key', 1);
-```
-
-### Pattern 2: Generic Scripts with Placeholders
-
-For data that's identical across environments, use a placeholder:
-
-```sql
--- SeedRoles.sql (generic)
-INSERT INTO {{SCHEMA}}AspNetRoles (Id, Name, NormalizedName)
-VALUES
-    ('11111111-0000-0000-0000-000000000001', 'Admin', 'ADMIN'),
-    ('11111111-0000-0000-0000-000000000002', 'User', 'USER');
-```
-
-Replace at runtime:
-
-```csharp
-private static string ApplySchemaPlaceholder(string scriptContent)
-{
-    var schema = Environment switch
-    {
-        "local" => "[local].",
-        "dev" => "[dev].",
-        "stg" => "[stg].",
-        "prod" => "",  // Production uses dbo, no prefix needed
-        _ => "[dev]."
-    };
-
-    return scriptContent.Replace("{{SCHEMA}}", schema);
-}
-```
-
-## Running Migrations Per Environment
-
-```powershell
-# Local schema
-$env:ASPNETCORE_ENVIRONMENT = "Local"
-dotnet ef database update --startup-project ../MyApp.Api
-
-# Staging schema
-$env:ASPNETCORE_ENVIRONMENT = "Staging"
-dotnet ef database update --startup-project ../MyApp.Api
-
-# Production (dbo)
-$env:ASPNETCORE_ENVIRONMENT = "Production"
-dotnet ef database update --startup-project ../MyApp.Api
-```
-
-Same migrations, different schemas. The SQL generator handles the transformation.
-
-## The Gotchas I Hit So You Don't Have To
-
-### 1. Create Schema First
-
-Non-dbo schemas don't exist by default:
-
-```csharp
-if (_schema != "dbo")
-{
-    await using var schemaCmd = connection.CreateCommand();
-    schemaCmd.CommandText = $@"
-        IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = '{_schema}')
-            EXEC('CREATE SCHEMA [{_schema}]')";
-    await schemaCmd.ExecuteNonQueryAsync();
-}
-```
-
-### 2. Migrations History Table Location
-
-By default, EF Core puts `__EFMigrationsHistory` in `dbo`. For true schema isolation:
+If you want true schema isolation, you need to tell EF Core to put the history table in your schema too:
 
 ```csharp
 optionsBuilder.UseSqlServer(connectionString, sql =>
 {
-    sql.MigrationsHistoryTable("__EFMigrationsHistory", _schema);
+    sql.MigrationsHistoryTable("__EFMigrationsHistory", schema);
 });
 ```
 
-### 3. HasDefaultSchema in OnModelCreating
+Otherwise you'll have one shared history table tracking migrations across all environments, which defeats the isolation and can cause "migration already applied" conflicts.
 
-This affects query generation, not just migrations:
+## SQL Scripts Need Love Too
 
-```csharp
-protected override void OnModelCreating(ModelBuilder builder)
-{
-    if (!string.IsNullOrEmpty(_schema) && _schema != "dbo")
-    {
-        builder.HasDefaultSchema(_schema);
-    }
-    // ...
-}
+Migrations often include raw SQL for seed data. That SQL also has hardcoded schemas (or no schemas, which means `dbo`).
+
+I use two patterns:
+
+**Environment-specific scripts** for data that differs per environment. Files named `SeedData.dev.sql` and `SeedData.prod.sql` with the schema baked in.
+
+**Templated scripts** for data that's identical but needs different schemas. The SQL uses a placeholder like `{{SCHEMA}}`, and a helper method replaces it at runtime based on the environment.
+
+The helper checks for an environment-specific file first, falls back to the generic templated version, and throws a helpful error if neither exists.
+
+## Running Migrations
+
+With all this in place, running migrations for different environments is straightforward:
+
+```powershell
+# Local development
+$env:ASPNETCORE_ENVIRONMENT = "Local"
+dotnet ef database update
+
+# Staging
+$env:ASPNETCORE_ENVIRONMENT = "Staging"
+dotnet ef database update
 ```
 
-Without this, your queries will look for tables in `dbo` even though they're in `[dev]`.
+Same migrations, different schemas. The SQL generator handles the transformation invisibly.
+
+## The Gotchas
+
+**Create schemas first**: Unlike `dbo`, custom schemas don't exist by default. Your fixture or startup needs to create the schema before running migrations.
+
+**HasDefaultSchema still matters**: You need this in `OnModelCreating` for *queries* to target the right schema. The SQL generator handles migrations; `HasDefaultSchema` handles runtime queries.
+
+**Test it thoroughly**: Run migrations against all environments and verify the tables ended up in the right schemas. A simple SQL query checking `INFORMATION_SCHEMA.TABLES` will tell you if something snuck into `dbo`.
+
+## When This Pattern Shines
+
+This approach is great when:
+- Multiple environments share a database server
+- You want to compare data across environments easily (same server = easy queries)
+- You're running integration tests that need isolated schemas
+- You don't want to maintain multiple migration sets
+
+It's overkill if you have separate database servers per environment. At that point, just let everything be `dbo`.
 
 ## The Payoff
 
-| Aspect | Before | After |
-|--------|--------|-------|
-| Migration files | One per environment | Single set |
-| Schema flexibility | Hardcoded | Runtime |
-| SQL scripts | Duplicated | Environment-specific or templated |
-| Test isolation | Complex | Natural (unique schema per test class) |
-| CI/CD | Multiple pipelines | Single pipeline, environment param |
+One set of migrations. One set of seed scripts. Deployed everywhere with environment-appropriate schemas.
 
-One set of migrations, one set of scripts, deployed everywhere. No more "which schema did that hit?" moments.
+No more "which schema did that hit?" moments. No more maintaining four copies of every migration. No more late-night Slack messages asking if you just broke production.
 
 ---
 
@@ -337,6 +153,6 @@ This pattern completes the trilogy:
 2. [Encrypted Configuration](encrypted-configuration-pattern) - Database-backed secrets with AES-256 encryption
 3. **Schema-Aware Migrations** - Multi-environment isolation in shared databases
 
-Together, they give you a robust foundation for enterprise database management. The upfront complexity pays dividends every time you add a new environment or onboard a new developer.
+Together, they give you a robust foundation for enterprise database management. The upfront complexity pays dividends every time you onboard a new developer or spin up a new environment.
 
 And most importantly: you'll always know which schema you just migrated.
