@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "writing-technical-content-when-debugging",
+      "title": "Writing Technical Content When You're Too Tired to Be Funny",
+      "description": "It's hour 6 of debugging. The bug is fixed. This is not the time to write something entertaining—but it is the perfect time to write something useful. Here's the two-pass approach to technical blogging.",
+      "category": "Writing",
+      "tags": ["writing", "blogging", "process", "debugging", "humor", "craft"],
+      "date": "2026-06-22",
+      "featured": true,
+      "image": "/img/posts/writing-technical-content-when-debugging.svg",
+      "linkedInHook": "It's 11:47 PM. The bug is fixed. I have 43 browser tabs open and my coffee went cold two hours ago.\n\nThis is not the time to write something entertaining.\n\nBut it IS the perfect time to write something useful.\n\nMost of my 'entertaining' technical posts started as exhausted notes at unreasonable hours. The wit wasn't there originally. The analogies came later.\n\nCapture the details while they're fresh. Add the humor when you can actually be funny.\n\nThe entertaining version is always a second pass."
+    },
+    {
       "slug": "schema-aware-ef-core-migrations",
       "title": "Schema-Aware EF Core Migrations: One Migration Set, Multiple Environments",
       "description": "EF Core migrations don't natively support runtime schema selection. Here's how to intercept migration operations and inject the correct schema for local, dev, staging, and production.",
