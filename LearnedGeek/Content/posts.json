@@ -328,7 +328,8 @@
       "date": "2026-01-26",
       "featured": true,
       "image": "/img/posts/a-modest-proposal-for-ai-safety.svg",
-      "linkedInHook": "With all the breathless AI discourse lately, I decided to write a modest proposal about our impending robotic overlords.\n\n(Jonathan Swift would be proud. Or horrified. Hard to tell with that guy.)"
+      "linkedInHook": "With all the breathless AI discourse lately, I decided to write a modest proposal about our impending robotic overlords.\n\n(Jonathan Swift would be proud. Or horrified. Hard to tell with that guy.)",
+      "linkedInPostedDate": "2026-01-25T12:00:00Z"
     },
     {
       "slug": "ai-wont-replace-developers-but",
@@ -339,7 +340,8 @@
       "date": "2026-01-21",
       "featured": true,
       "image": "/img/posts/ai-wont-replace-developers-but.svg",
-      "linkedInHook": "After a year building production apps with AI assistance, I have thoughts on the 'AI will replace developers' discourse.\n\nShort version: AI is like having a brilliant but inexperienced junior developer who works at 3 AM. The value comes from knowing what to ask and how to evaluate the answers. Expertise matters more, not less."
+      "linkedInHook": "After a year building production apps with AI assistance, I have thoughts on the 'AI will replace developers' discourse.\n\nShort version: AI is like having a brilliant but inexperienced junior developer who works at 3 AM. The value comes from knowing what to ask and how to evaluate the answers. Expertise matters more, not less.",
+      "linkedInPostedDate": "2026-01-21T12:00:00Z"
     },
     {
       "slug": "testing-stripe-webhooks-with-cli",
@@ -460,7 +462,8 @@
       "date": "2026-01-04",
       "featured": true,
       "image": "/img/posts/running-ai-on-your-own-computer.svg",
-      "linkedInHook": "Here's something that surprises most people: you can run real AI models on your own computer. Not a stripped-down demo—actual LLMs running locally. No internet, no fees, no one watching what you ask.\n\nI've been doing this for months. Here's how to get started with Ollama."
+      "linkedInHook": "Here's something that surprises most people: you can run real AI models on your own computer. Not a stripped-down demo—actual LLMs running locally. No internet, no fees, no one watching what you ask.\n\nI've been doing this for months. Here's how to get started with Ollama.",
+      "linkedInPostedDate": "2026-01-29T12:00:00Z"
     },
     {
       "slug": "what-1290-conversations-taught-me",
@@ -482,7 +485,8 @@
       "date": "2026-01-05",
       "featured": true,
       "image": "/img/posts/recaptcha-v3-aspnet-core.svg",
-      "linkedInHook": "Those 'click all the traffic lights' CAPTCHAs are terrible UX. reCAPTCHA v3 runs invisibly in the background, scoring users based on behavior instead of making them prove they're human.\n\nImplemented it on a contact form with a honeypot field as backup. No puzzles, no friction, no spam so far."
+      "linkedInHook": "Those 'click all the traffic lights' CAPTCHAs are terrible UX. reCAPTCHA v3 runs invisibly in the background, scoring users based on behavior instead of making them prove they're human.\n\nImplemented it on a contact form with a honeypot field as backup. No puzzles, no friction, no spam so far.",
+      "linkedInPostedDate": "2026-01-13T12:00:00Z"
     },
     {
       "slug": "ai-coding-showdown",
@@ -570,7 +574,8 @@
       "date": "2025-11-20",
       "featured": false,
       "image": "/img/posts/vscode-tasks-json.svg",
-      "linkedInHook": "Finally organized my VS Code tasks.json for .NET projects. Build, run, test, deploy—all as keyboard shortcuts instead of typing commands.\n\nSharing the config in case anyone else wants a starting point."
+      "linkedInHook": "Finally organized my VS Code tasks.json for .NET projects. Build, run, test, deploy—all as keyboard shortcuts instead of typing commands.\n\nSharing the config in case anyone else wants a starting point.",
+      "linkedInPostedDate": "2026-01-08T12:00:00Z"
     },
     {
       "slug": "celtic-gods-are-messy",
