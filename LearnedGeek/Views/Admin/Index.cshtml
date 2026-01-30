@@ -91,8 +91,8 @@
                                 <span id="linkedin-badge-@post.Slug">
                                 @if (post.LinkedInPostedDate.HasValue)
                                 {
-                                    <span class="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-2 py-0.5 rounded-full font-medium" title="Posted to LinkedIn on @post.LinkedInPostedDate.Value.ToString("MMM d, yyyy 'at' h:mm tt")">
-                                        ✓ LinkedIn @post.LinkedInPostedDate.Value.ToString("MMM d")
+                                    <span class="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-2 py-0.5 rounded-full font-medium">
+                                        ✓ @post.LinkedInPostedDate.Value.ToString("yyyy-MM-dd")
                                     </span>
                                 }
                                 </span>
@@ -242,8 +242,8 @@
                     const badge = document.getElementById('linkedin-badge-' + slug);
                     if (badge) {
                         const now = new Date();
-                        const monthDay = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                        badge.innerHTML = `<span class="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-2 py-0.5 rounded-full font-medium">✓ LinkedIn ${monthDay}</span>`;
+                        const dateStr = now.toISOString().split('T')[0];
+                        badge.innerHTML = `<span class="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-2 py-0.5 rounded-full font-medium">✓ ${dateStr}</span>`;
                     }
                 } else {
                     status.className = 'text-sm text-red-600 dark:text-red-400';
