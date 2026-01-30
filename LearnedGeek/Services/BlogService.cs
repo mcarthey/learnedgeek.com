@@ -113,6 +113,37 @@ public class BlogService : IBlogService
             .OrderByDescending(p => p.Date);
     }
 
+    public async Task<bool> UpdatePostLinkedInDateAsync(string slug, DateTime postedDate)
+    {
+        var posts = await LoadPostsMetadataAsync();
+        var post = posts.FirstOrDefault(p =>
+            string.Equals(p.Slug, slug, StringComparison.OrdinalIgnoreCase));
+
+        if (post == null)
+            return false;
+
+        post.LinkedInPostedDate = postedDate;
+
+        // Save back to posts.json
+        var postsJsonPath = Path.Combine(_contentPath, "posts.json");
+        var writeOptions = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) },
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+
+        var container = new PostsContainer { Posts = posts };
+        var json = JsonSerializer.Serialize(container, writeOptions);
+        await File.WriteAllTextAsync(postsJsonPath, json);
+
+        // Clear cache to ensure fresh data on next load
+        _postsCache = null;
+
+        return true;
+    }
+
     private class PostsContainer
     {
         public List<BlogPost> Posts { get; set; } = [];

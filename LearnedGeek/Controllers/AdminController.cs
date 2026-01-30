@@ -256,6 +256,7 @@ public class AdminController : Controller
         if (result.Success)
         {
             _logger.LogInformation("Shared post {Slug} to LinkedIn", slug);
+            await _blogService.UpdatePostLinkedInDateAsync(slug, DateTime.UtcNow);
         }
 
         return Json(new {

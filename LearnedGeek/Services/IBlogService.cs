@@ -11,4 +11,5 @@ public interface IBlogService
     Task<IEnumerable<BlogPost>> GetFeaturedPostsAsync();
     Task<Dictionary<string, int>> GetTagCountsAsync();
     Task<IEnumerable<BlogPost>> GetPostsByTagAsync(string tag);
+    Task<bool> UpdatePostLinkedInDateAsync(string slug, DateTime postedDate);
 }

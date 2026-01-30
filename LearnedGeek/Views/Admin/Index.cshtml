@@ -88,6 +88,14 @@
                                         Scheduled
                                     </span>
                                 }
+                                <span id="linkedin-badge-@post.Slug">
+                                @if (post.LinkedInPostedDate.HasValue)
+                                {
+                                    <span class="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-2 py-0.5 rounded-full font-medium" title="Posted to LinkedIn on @post.LinkedInPostedDate.Value.ToString("MMM d, yyyy 'at' h:mm tt")">
+                                        ✓ LinkedIn @post.LinkedInPostedDate.Value.ToString("MMM d")
+                                    </span>
+                                }
+                                </span>
                             </div>
                             <p class="text-sm text-neutral-500 mt-1">
                                 @post.Date.ToString("MMM d, yyyy") · @post.Category
@@ -229,6 +237,14 @@
                     status.className = 'text-sm text-green-600 dark:text-green-400';
                     status.textContent = '✓ Posted!';
                     btn.textContent = 'Shared!';
+
+                    // Add LinkedIn badge
+                    const badge = document.getElementById('linkedin-badge-' + slug);
+                    if (badge) {
+                        const now = new Date();
+                        const monthDay = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                        badge.innerHTML = `<span class="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-2 py-0.5 rounded-full font-medium">✓ LinkedIn ${monthDay}</span>`;
+                    }
                 } else {
                     status.className = 'text-sm text-red-600 dark:text-red-400';
                     status.textContent = '✗ ' + result.message;

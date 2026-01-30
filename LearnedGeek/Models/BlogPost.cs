@@ -11,6 +11,7 @@ public class BlogPost
     public bool Featured { get; set; }
     public string? Image { get; set; }
     public string? LinkedInHook { get; set; }
+    public DateTime? LinkedInPostedDate { get; set; }
     public string? Content { get; set; }
     public string? HtmlContent { get; set; }
 }
