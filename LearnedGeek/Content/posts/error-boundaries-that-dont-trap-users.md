@@ -221,6 +221,6 @@ When you design error handling, ask: "If this fails, what can the user still do?
 
 ## Related Posts
 
-- [MAUI Blazor's NavigationManager Not Initialized Gotcha](/blog/maui-blazor-navigationmanager-not-initialized) — A timing issue that can crash your error boundary during early initialization
-- [Testing Non-Virtual Members Without Moq](/blog/testing-non-virtual-members-without-moq) — How to test NavigationManager interactions when Moq won't cooperate
-- [Crockford Base32: Phone-Friendly Reference IDs](/blog/crockford-base32-phone-friendly-reference-ids) — The encoding behind those reference IDs for support calls
+- [MAUI Blazor's NavigationManager Not Initialized Gotcha](/Blog/Post/maui-blazor-navigationmanager-not-initialized) — A timing issue that can crash your error boundary during early initialization
+- [Testing Non-Virtual Members Without Moq](/Blog/Post/testing-non-virtual-members-without-moq) — How to test NavigationManager interactions when Moq won't cooperate
+- [Crockford Base32: Phone-Friendly Reference IDs](/Blog/Post/crockford-base32-phone-friendly-reference-ids) — The encoding behind those reference IDs for support calls

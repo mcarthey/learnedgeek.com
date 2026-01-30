@@ -242,5 +242,5 @@ The next time you're starting a complex system, resist the urge to build feature
 
 ## Related Posts
 
-- [Error Boundaries That Don't Trap Users](/blog/error-boundaries-that-dont-trap-users) — The error logging system mentioned here feeds into this error boundary
-- [Crockford Base32: Phone-Friendly Reference IDs](/blog/crockford-base32-phone-friendly-reference-ids) — How those support-friendly error reference IDs work
+- [Error Boundaries That Don't Trap Users](/Blog/Post/error-boundaries-that-dont-trap-users) — The error logging system mentioned here feeds into this error boundary
+- [Crockford Base32: Phone-Friendly Reference IDs](/Blog/Post/crockford-base32-phone-friendly-reference-ids) — How those support-friendly error reference IDs work

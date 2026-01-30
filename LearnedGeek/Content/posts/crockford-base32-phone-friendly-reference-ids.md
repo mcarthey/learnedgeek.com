@@ -221,5 +221,5 @@ Anywhere humans read, speak, or type IDs, Crockford Base32 reduces errors.
 
 ## Related Posts
 
-- [Error Boundaries That Don't Trap Users](/blog/error-boundaries-that-dont-trap-users) — Where these reference IDs get displayed to users
-- [Tracer Bullet Development: Prove Your Pipeline](/blog/tracer-bullet-development-prove-your-pipeline) — How error logging with reference IDs proved the architecture
+- [Error Boundaries That Don't Trap Users](/Blog/Post/error-boundaries-that-dont-trap-users) — Where these reference IDs get displayed to users
+- [Tracer Bullet Development: Prove Your Pipeline](/Blog/Post/tracer-bullet-development-prove-your-pipeline) — How error logging with reference IDs proved the architecture

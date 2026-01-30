@@ -148,5 +148,5 @@ Two lines of XML to save hours of confusion.
 
 ## Related Posts
 
-- [The Pending Count That Wouldn't Stay](/blog/maui-blazor-pending-count-debugging-marathon) — Another MAUI debugging deep dive
-- [MAUI Blazor NavigationManager Not Initialized](/blog/maui-blazor-navigationmanager-not-initialized) — More MAUI timing gotchas
+- [The Pending Count That Wouldn't Stay](/Blog/Post/maui-blazor-pending-count-debugging-marathon) — Another MAUI debugging deep dive
+- [MAUI Blazor NavigationManager Not Initialized](/Blog/Post/maui-blazor-navigationmanager-not-initialized) — More MAUI timing gotchas

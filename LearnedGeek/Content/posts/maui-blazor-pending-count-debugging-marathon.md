@@ -252,6 +252,6 @@ Sometimes a "quick test" is anything but.
 
 ## Related Posts
 
-- [MAUI Blazor NavigationManager Not Initialized](/blog/maui-blazor-navigationmanager-not-initialized) — Another MAUI Blazor timing gotcha
-- [Error Boundaries That Don't Trap Users](/blog/error-boundaries-that-dont-trap-users) — Building Blazor error boundaries that let users escape
-- [Tracer Bullet Development: Prove Your Pipeline](/blog/tracer-bullet-development-prove-your-pipeline) — Why error logging was the first thing we built end-to-end
+- [MAUI Blazor NavigationManager Not Initialized](/Blog/Post/maui-blazor-navigationmanager-not-initialized) — Another MAUI Blazor timing gotcha
+- [Error Boundaries That Don't Trap Users](/Blog/Post/error-boundaries-that-dont-trap-users) — Building Blazor error boundaries that let users escape
+- [Tracer Bullet Development: Prove Your Pipeline](/Blog/Post/tracer-bullet-development-prove-your-pipeline) — Why error logging was the first thing we built end-to-end

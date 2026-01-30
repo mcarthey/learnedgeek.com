@@ -231,5 +231,5 @@ Sometimes the solution to fragmentation isn't more complexity—it's embracing t
 
 ## Related Posts
 
-- [M3E for Blue-Collar Apps](/blog/m3e-design-for-field-workers) — The design context that led to this pattern
-- [Drawer vs. Bottom Nav: A UX Decision Framework](/blog/drawer-vs-bottom-nav-ux-framework) — Why the bottom nav is inside the card
+- [M3E for Blue-Collar Apps](/Blog/Post/m3e-design-for-field-workers) — The design context that led to this pattern
+- [Drawer vs. Bottom Nav: A UX Decision Framework](/Blog/Post/drawer-vs-bottom-nav-ux-framework) — Why the bottom nav is inside the card

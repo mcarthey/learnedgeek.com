@@ -279,8 +279,8 @@ On web/desktop, you might use a dropdown instead of navigation:
 
 ## Related Posts
 
-- [Drawer vs. Bottom Nav: A UX Decision Framework](/blog/drawer-vs-bottom-nav-ux-framework) — How we arrived at this navigation structure
-- [M3E for Blue-Collar Apps](/blog/m3e-design-for-field-workers) — The larger design context
+- [Drawer vs. Bottom Nav: A UX Decision Framework](/Blog/Post/drawer-vs-bottom-nav-ux-framework) — How we arrived at this navigation structure
+- [M3E for Blue-Collar Apps](/Blog/Post/m3e-design-for-field-workers) — The larger design context
 
 ---
 

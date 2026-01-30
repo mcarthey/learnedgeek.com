@@ -194,5 +194,5 @@ mock.Setup(x => x.CurrentUrl).Returns("test");  // SUCCESS!
 
 ## Related Posts
 
-- [MAUI Blazor's NavigationManager Not Initialized Gotcha](/blog/maui-blazor-navigationmanager-not-initialized) — The timing bug that made this testing pattern essential
-- [Error Boundaries That Don't Trap Users](/blog/error-boundaries-that-dont-trap-users) — The error boundary code we needed to test
+- [MAUI Blazor's NavigationManager Not Initialized Gotcha](/Blog/Post/maui-blazor-navigationmanager-not-initialized) — The timing bug that made this testing pattern essential
+- [Error Boundaries That Don't Trap Users](/Blog/Post/error-boundaries-that-dont-trap-users) — The error boundary code we needed to test

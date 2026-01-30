@@ -278,5 +278,5 @@ Blueprint isn't just a color palette. It's a statement: we understand your work.
 
 ## Related Posts
 
-- [M3E for Blue-Collar Apps](/blog/m3e-design-for-field-workers) — The M3E principles behind these choices
-- [The Floating Card Pattern](/blog/floating-card-pattern-device-agnostic-design) — How the navy background extends behind system chrome
+- [M3E for Blue-Collar Apps](/Blog/Post/m3e-design-for-field-workers) — The M3E principles behind these choices
+- [The Floating Card Pattern](/Blog/Post/floating-card-pattern-device-agnostic-design) — How the navy background extends behind system chrome

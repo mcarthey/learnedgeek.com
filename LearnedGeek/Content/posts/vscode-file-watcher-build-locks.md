@@ -159,5 +159,5 @@ Two lines of JSON. No more mystery build failures.
 
 ## Related Posts
 
-- [MAUI Fast Deployment and Wireless Debugging](/blog/maui-fast-deployment-wireless-debugging-crash) — Another developer experience gotcha with .NET builds
-- [Mobile CSS Micro-Fixes](/blog/mobile-css-micro-fixes) — More small fixes that make a big difference
+- [MAUI Fast Deployment and Wireless Debugging](/Blog/Post/maui-fast-deployment-wireless-debugging-crash) — Another developer experience gotcha with .NET builds
+- [Mobile CSS Micro-Fixes](/Blog/Post/mobile-css-micro-fixes) — More small fixes that make a big difference

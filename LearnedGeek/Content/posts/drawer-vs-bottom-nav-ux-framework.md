@@ -220,5 +220,5 @@ Our field worker app isn't Gmail.
 
 ## Related Posts
 
-- [M3E for Blue-Collar Apps](/blog/m3e-design-for-field-workers) — The design context for these decisions
-- [The Floating Card Pattern](/blog/floating-card-pattern-device-agnostic-design) — Where the bottom nav lives
+- [M3E for Blue-Collar Apps](/Blog/Post/m3e-design-for-field-workers) — The design context for these decisions
+- [The Floating Card Pattern](/Blog/Post/floating-card-pattern-device-agnostic-design) — Where the bottom nav lives

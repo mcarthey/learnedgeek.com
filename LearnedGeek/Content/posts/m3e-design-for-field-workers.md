@@ -208,8 +208,8 @@ That's the bar. Everything else is just aesthetics.
 
 ## Related Posts
 
-- [The Floating Card Pattern: Device-Agnostic Mobile Design](/blog/floating-card-pattern-device-agnostic-design) — Detailed CSS implementation
-- [Drawer vs. Bottom Nav: A UX Decision Framework](/blog/drawer-vs-bottom-nav-ux-framework) — Why we killed the hamburger menu
+- [The Floating Card Pattern: Device-Agnostic Mobile Design](/Blog/Post/floating-card-pattern-device-agnostic-design) — Detailed CSS implementation
+- [Drawer vs. Bottom Nav: A UX Decision Framework](/Blog/Post/drawer-vs-bottom-nav-ux-framework) — Why we killed the hamburger menu
 
 ## References
 

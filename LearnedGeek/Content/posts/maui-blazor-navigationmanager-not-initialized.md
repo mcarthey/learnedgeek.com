@@ -155,6 +155,6 @@ The pattern applies anywhere you access `NavigationManager` in MAUI Hybrid code 
 
 ## Related Posts
 
-- [Error Boundaries That Don't Trap Users](/blog/error-boundaries-that-dont-trap-users) — Building Blazor error boundaries that let users escape
-- [Testing Non-Virtual Members Without Moq](/blog/testing-non-virtual-members-without-moq) — How to test NavigationManager behavior when you can't mock it directly
-- [Tracer Bullet Development: Prove Your Pipeline](/blog/tracer-bullet-development-prove-your-pipeline) — How error logging became the first proof of the entire architecture
+- [Error Boundaries That Don't Trap Users](/Blog/Post/error-boundaries-that-dont-trap-users) — Building Blazor error boundaries that let users escape
+- [Testing Non-Virtual Members Without Moq](/Blog/Post/testing-non-virtual-members-without-moq) — How to test NavigationManager behavior when you can't mock it directly
+- [Tracer Bullet Development: Prove Your Pipeline](/Blog/Post/tracer-bullet-development-prove-your-pipeline) — How error logging became the first proof of the entire architecture

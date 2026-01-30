@@ -382,5 +382,5 @@ img {
 
 ## Related Posts
 
-- [The Floating Card Pattern](/blog/floating-card-pattern-device-agnostic-design) — Device-agnostic mobile design
-- [M3E for Blue-Collar Apps](/blog/m3e-design-for-field-workers) — Touch target sizing and more
+- [The Floating Card Pattern](/Blog/Post/floating-card-pattern-device-agnostic-design) — Device-agnostic mobile design
+- [M3E for Blue-Collar Apps](/Blog/Post/m3e-design-for-field-workers) — Touch target sizing and more
