@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="bgGrad8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="vscodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#007ACC"/>
+      <stop offset="100%" style="stop-color:#0065A9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bgGrad8)"/>
+
+  <!-- VS Code window mockup -->
+  <g transform="translate(50, 40)">
+    <rect width="320" height="200" rx="8" fill="#1e1e2e" stroke="#007ACC" stroke-width="2"/>
+
+    <!-- Title bar -->
+    <rect width="320" height="28" rx="8" fill="#323233"/>
+    <circle cx="16" cy="14" r="5" fill="#ff5f56"/>
+    <circle cx="32" cy="14" r="5" fill="#ffbd2e"/>
+    <circle cx="48" cy="14" r="5" fill="#27ca40"/>
+    <text x="160" y="19" font-family="system-ui, sans-serif" font-size="11" fill="#cccccc" text-anchor="middle">VS Code</text>
+
+    <!-- File explorer -->
+    <rect x="0" y="28" width="100" height="172" fill="#252526"/>
+    <text x="10" y="50" font-family="system-ui, sans-serif" font-size="9" fill="#cccccc">EXPLORER</text>
+    <text x="15" y="70" font-family="'Courier New', monospace" font-size="9" fill="#8b949e">📁 src/</text>
+    <text x="15" y="88" font-family="'Courier New', monospace" font-size="9" fill="#ffcc00">📁 bin/</text>
+    <text x="15" y="106" font-family="'Courier New', monospace" font-size="9" fill="#ffcc00">📁 obj/</text>
+
+    <!-- Eye watching icon -->
+    <g transform="translate(70, 80)">
+      <text x="0" y="0" font-family="system-ui, sans-serif" font-size="14" fill="#ff6b6b">👁️</text>
+    </g>
+
+    <!-- Editor area -->
+    <rect x="100" y="28" width="220" height="172" fill="#1e1e2e"/>
+
+    <!-- Terminal output showing error -->
+    <rect x="110" y="110" width="200" height="80" rx="4" fill="#0d1117"/>
+    <text x="120" y="130" font-family="'Courier New', monospace" font-size="8" fill="#4fc3f7">$ dotnet build</text>
+    <text x="120" y="148" font-family="'Courier New', monospace" font-size="8" fill="#ff6b6b">error MSB3021:</text>
+    <text x="120" y="163" font-family="'Courier New', monospace" font-size="8" fill="#ff6b6b">Unable to copy file...</text>
+    <text x="120" y="178" font-family="'Courier New', monospace" font-size="8" fill="#ff6b6b">being used by another process</text>
+  </g>
+
+  <!-- Arrow to solution -->
+  <g transform="translate(390, 120)">
+    <line x1="0" y1="20" x2="50" y2="20" stroke="#4caf50" stroke-width="3"/>
+    <polygon points="50,20 40,12 40,28" fill="#4caf50"/>
+  </g>
+
+  <!-- Solution: settings.json -->
+  <g transform="translate(460, 40)">
+    <rect width="300" height="200" rx="8" fill="#0d1117" stroke="#4caf50" stroke-width="2"/>
+
+    <!-- Title -->
+    <rect width="300" height="28" rx="8" fill="#161b22"/>
+    <text x="150" y="19" font-family="system-ui, sans-serif" font-size="11" fill="#4caf50" text-anchor="middle">⚙️ settings.json</text>
+
+    <!-- JSON content -->
+    <g font-family="'Courier New', monospace" font-size="10">
+      <text x="15" y="55" fill="#d4d4d4">{</text>
+      <text x="25" y="75" fill="#9cdcfe">"files.watcherExclude"</text><text x="175" y="75" fill="#d4d4d4">: {</text>
+      <text x="40" y="95" fill="#ce9178">"**/bin/**"</text><text x="120" y="95" fill="#d4d4d4">:</text><text x="130" y="95" fill="#569cd6"> true</text><text x="165" y="95" fill="#d4d4d4">,</text>
+      <text x="40" y="115" fill="#ce9178">"**/obj/**"</text><text x="120" y="115" fill="#d4d4d4">:</text><text x="130" y="115" fill="#569cd6"> true</text>
+      <text x="25" y="135" fill="#d4d4d4">}</text>
+      <text x="15" y="155" fill="#d4d4d4">}</text>
+    </g>
+
+    <!-- Checkmark -->
+    <g transform="translate(240, 160)">
+      <circle cx="20" cy="15" r="15" fill="#4caf50" opacity="0.2"/>
+      <text x="20" y="21" font-family="system-ui, sans-serif" font-size="18" fill="#4caf50" text-anchor="middle">✓</text>
+    </g>
+  </g>
+
+  <!-- Explanation diagram -->
+  <g transform="translate(80, 270)">
+    <text x="0" y="0" font-family="system-ui, sans-serif" font-size="12" fill="#ff6b6b" font-weight="bold">Before:</text>
+    <text x="60" y="0" font-family="system-ui, sans-serif" font-size="11" fill="#8b949e">VS Code watches bin/obj → locks files → build fails randomly</text>
+  </g>
+
+  <g transform="translate(80, 300)">
+    <text x="0" y="0" font-family="system-ui, sans-serif" font-size="12" fill="#4caf50" font-weight="bold">After:</text>
+    <text x="60" y="0" font-family="system-ui, sans-serif" font-size="11" fill="#8b949e">VS Code ignores bin/obj → no locks → builds succeed every time</text>
+  </g>
+
+  <!-- Stats -->
+  <g transform="translate(80, 340)">
+    <rect x="0" y="0" width="150" height="40" rx="8" fill="#1e1e2e" stroke="#30363d" stroke-width="1"/>
+    <text x="75" y="18" font-family="system-ui, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">Build Failures</text>
+    <text x="50" y="35" font-family="system-ui, sans-serif" font-size="14" fill="#ff6b6b" text-anchor="middle">Random</text>
+    <text x="90" y="35" font-family="system-ui, sans-serif" font-size="14" fill="#8b949e" text-anchor="middle">→</text>
+    <text x="120" y="35" font-family="system-ui, sans-serif" font-size="14" fill="#4caf50" text-anchor="middle">0</text>
+  </g>
+
+  <g transform="translate(260, 340)">
+    <rect x="0" y="0" width="150" height="40" rx="8" fill="#1e1e2e" stroke="#30363d" stroke-width="1"/>
+    <text x="75" y="18" font-family="system-ui, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">Time Wasted</text>
+    <text x="50" y="35" font-family="system-ui, sans-serif" font-size="14" fill="#ff6b6b" text-anchor="middle">Hours</text>
+    <text x="90" y="35" font-family="system-ui, sans-serif" font-size="14" fill="#8b949e" text-anchor="middle">→</text>
+    <text x="120" y="35" font-family="system-ui, sans-serif" font-size="14" fill="#4caf50" text-anchor="middle">0</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="405" font-family="system-ui, sans-serif" font-size="14" fill="#8b949e" text-anchor="middle">Stop VS Code from Fighting Your Build Process</text>
+</svg>

@@ -1,6 +1,94 @@
 {
   "posts": [
     {
+      "slug": "m3e-design-for-field-workers",
+      "title": "Material 3 Expressive for Field Workers: Designing for Work Gloves and Sunlight",
+      "description": "M3E's 46-study research was about consumer apps. But what about people wearing work gloves, squinting in sunlight, who need to clock in NOW? Here's how we adapted Material 3 for blue-collar reality.",
+      "category": "Computers",
+      "tags": ["mobile", "ux", "material-design", "m3e", "blazor", "maui", "accessibility"],
+      "date": "2026-08-01",
+      "featured": true,
+      "image": "/img/posts/m3e-design-for-field-workers.svg",
+      "linkedInHook": "Google's Material 3 Expressive is based on 46 studies with 18,000+ participants.\n\nBut those studies were about messaging apps and social media. What about people wearing work gloves? Squinting in sunlight? Who need to clock in in 3 seconds and get back to work?\n\n64px touch targets. 2-tab bottom nav. Industry-familiar blueprint aesthetics.\n\nM3E gave us the research to justify decisions we might otherwise have defended on instinct. 'Users spot key elements 4x faster' beats 'I think bigger buttons look better' in any stakeholder meeting."
+    },
+    {
+      "slug": "floating-card-pattern-device-agnostic-design",
+      "title": "The Floating Card Pattern: Device-Agnostic Mobile Design",
+      "description": "Android fragmentation is real—different phones have wildly different system chrome. Instead of fighting safe-area calculations, we made the system UI part of our design.",
+      "category": "Computers",
+      "tags": ["mobile", "css", "android", "ux", "blazor", "maui", "responsive"],
+      "date": "2026-07-27",
+      "featured": true,
+      "image": "/img/posts/floating-card-pattern-device-agnostic-design.svg",
+      "linkedInHook": "Android fragmentation is real. Design a layout on a Pixel, then watch it break on a Samsung with a massive navigation bar.\n\nThe usual solution: safe-area calculations everywhere.\n\nOur solution: stop fighting. Make the system chrome part of the design.\n\n8px insets, rounded corners, brand color behind everything. The same CSS works on every device. No calculations needed.\n\nSometimes the solution to fragmentation isn't more complexity—it's embracing the constraints."
+    },
+    {
+      "slug": "drawer-vs-bottom-nav-ux-framework",
+      "title": "Drawer vs. Bottom Nav: A UX Decision Framework",
+      "description": "We started with a hamburger menu. Three months later, we ripped it out. Here's the decision framework that made the choice obvious—and might save you the same refactoring.",
+      "category": "Computers",
+      "tags": ["mobile", "ux", "navigation", "material-design", "blazor", "accessibility"],
+      "date": "2026-07-22",
+      "featured": true,
+      "image": "/img/posts/drawer-vs-bottom-nav-ux-framework.svg",
+      "linkedInHook": "We built a hamburger menu. Three months later, we ripped it out.\n\nWatch someone use a drawer: tap hamburger → wait for animation → scan options → tap choice → wait for close. 7 steps to navigate.\n\nBottom nav: tap destination. 1 step.\n\nThe framework:\n• 2-4 actions? Bottom nav\n• 5+? Drawer (or rethink your IA)\n• One-handed use? Bottom nav wins\n• Novice users? Visible navigation always\n\nWe deleted more code removing the drawer than we added for the bottom nav."
+    },
+    {
+      "slug": "profile-avatar-navigation-pattern",
+      "title": "The Profile Avatar Navigation Pattern: Your Face is Your Settings",
+      "description": "Settings is important but shouldn't steal prime thumb-zone real estate. Put a profile avatar in the header—visible on every page, leading to settings when tapped.",
+      "category": "Computers",
+      "tags": ["mobile", "ux", "navigation", "patterns", "blazor", "accessibility"],
+      "date": "2026-07-17",
+      "featured": true,
+      "image": "/img/posts/profile-avatar-navigation-pattern.svg",
+      "linkedInHook": "Settings is a secondary action. Don't waste prime thumb-zone real estate on it.\n\nThe pattern: profile avatar in the header. Visible on every page. Tap → settings.\n\nWhy it works:\n• Avatars are universally understood as clickable\n• 'MJ' is more human than a gear icon\n• Bottom nav stays focused on primary actions\n• Users already know this from Gmail, Twitter, etc.\n\nThe best patterns feel obvious in retrospect. 'Put a profile avatar in the header' is so simple it almost doesn't need a blog post. But it took us three iterations to arrive at it."
+    },
+    {
+      "slug": "blueprint-theme-construction-industry-visual-identity",
+      "title": "Blueprint Theme: Construction Industry Visual Identity",
+      "description": "Generic business app aesthetics don't resonate with field workers. They spend their careers turning blueprints into reality—so we made our app look like one.",
+      "category": "Computers",
+      "tags": ["mobile", "ux", "design", "css", "branding", "construction"],
+      "date": "2026-07-12",
+      "featured": true,
+      "image": "/img/posts/blueprint-theme-construction-industry-visual-identity.svg",
+      "linkedInHook": "Generic business app aesthetics don't resonate with construction workers.\n\nThey spend their careers turning blueprints into reality. The visual language is familiar: grid patterns, navy tones, technical precision, corner measurement marks.\n\nSo we made our app look like a blueprint.\n\nCSS grid backgrounds. Teal tick marks at corners. Monospace for technical data. Navy gradients that feel like architectural drawings.\n\nWhen a 55-year-old master electrician opens the app and thinks 'this was made for people like me'—that's trust you can't buy with marketing."
+    },
+    {
+      "slug": "mobile-css-micro-fixes",
+      "title": "Mobile CSS Micro-Fixes: One-Liners That Make Web Apps Feel Native",
+      "description": "A running collection of CSS one-liners that fix the hundred tiny paper cuts making your mobile web app feel 'off' compared to native apps.",
+      "category": "Computers",
+      "tags": ["mobile", "css", "ux", "web-development", "blazor", "pwa"],
+      "date": "2026-07-07",
+      "featured": true,
+      "image": "/img/posts/mobile-css-micro-fixes.svg",
+      "linkedInHook": "Mobile web apps have a hundred tiny paper cuts that make them feel 'off.'\n\nNone are hard to fix—but you have to know they exist.\n\n• user-select: none (stop accidental text selection)\n• -webkit-tap-highlight-color: transparent (kill the blue flash)\n• overscroll-behavior: none (prevent pull-to-refresh hijacking)\n• font-size: 16px on inputs (prevent iOS zoom)\n• env(safe-area-inset-*) (respect notches)\n\nThis is a living document. Copy-paste the starter snippet and forget about these issues forever."
+    },
+    {
+      "slug": "maui-fast-deployment-wireless-debugging-crash",
+      "title": "MAUI Fast Deployment and Wireless Debugging: Why Your App Crashes on Launch",
+      "description": "The app works via USB. It works in the emulator. Switch to wireless debugging and it crashes instantly. Here's why Fast Deployment is the culprit—and the two-line fix.",
+      "category": "Computers",
+      "tags": ["maui", "android", "debugging", "dotnet", "mobile", "troubleshooting"],
+      "date": "2026-07-02",
+      "featured": true,
+      "image": "/img/posts/maui-fast-deployment-wireless-debugging-crash.svg",
+      "linkedInHook": "Works via USB. Works in the emulator. Switch to wireless debugging → immediate crash on launch. No error, no stack trace.\n\nThis cost me an hour.\n\nThe culprit: MAUI's Fast Deployment. Debug builds don't embed assemblies in the APK—they stream them over adb. Wireless connections can't always do that reliably.\n\nThe fix:\n<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>\n\nTwo lines of XML. Slower builds, but the app actually runs. Worth it."
+    },
+    {
+      "slug": "vscode-file-watcher-build-locks",
+      "title": "VS Code File Watchers and .NET Build Locks: The Mystery Build Failure",
+      "description": "Your .NET build fails randomly with 'file is locked.' Sometimes it works. Sometimes it doesn't. The culprit: VS Code is watching your bin/ folder.",
+      "category": "Computers",
+      "tags": ["vscode", "dotnet", "debugging", "build", "troubleshooting"],
+      "date": "2026-06-27",
+      "featured": true,
+      "image": "/img/posts/vscode-file-watcher-build-locks.svg",
+      "linkedInHook": "Sometimes the build works. Sometimes: 'The file is locked by Code.exe.'\n\nI blamed antivirus. I blamed my luck. The real culprit: VS Code's file watcher.\n\nVS Code watches everything in your workspace by default. When MSBuild writes to bin/, VS Code notices and briefly holds a handle. Race condition.\n\nThe fix:\n\"files.watcherExclude\": {\n  \"**/bin/**\": true,\n  \"**/obj/**\": true\n}\n\nTwo lines of JSON. No more mystery build failures. This took me MONTHS to figure out."
+    },
+    {
       "slug": "writing-technical-content-when-debugging",
       "title": "Writing Technical Content When You're Too Tired to Be Funny",
       "description": "It's hour 6 of debugging. The bug is fixed. This is not the time to write something entertaining—but it is the perfect time to write something useful. Here's the two-pass approach to technical blogging.",

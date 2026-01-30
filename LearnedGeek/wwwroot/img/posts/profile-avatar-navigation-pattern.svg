@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="bgGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6750A4"/>
+      <stop offset="100%" style="stop-color:#9C27B0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bgGrad4)"/>
+
+  <!-- Phone mockup -->
+  <g transform="translate(280, 30)">
+    <rect width="240" height="360" rx="24" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
+    <rect x="12" y="40" width="216" height="290" rx="4" fill="#161b22"/>
+
+    <!-- Header bar -->
+    <rect x="12" y="40" width="216" height="50" fill="#1e3a5f"/>
+    <text x="120" y="72" font-family="system-ui, sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="600">Dashboard</text>
+
+    <!-- Profile avatar in header (highlighted) -->
+    <g transform="translate(185, 50)">
+      <circle cx="18" cy="18" r="18" fill="url(#avatarGrad)" stroke="#4fc3f7" stroke-width="2"/>
+      <text x="18" y="24" font-family="system-ui, sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="bold">JD</text>
+    </g>
+
+    <!-- Tap indicator -->
+    <circle cx="203" cy="68" r="28" fill="none" stroke="#4fc3f7" stroke-width="2" stroke-dasharray="4 2" opacity="0.8">
+      <animate attributeName="r" values="28;35;28" dur="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Content cards -->
+    <rect x="22" y="105" width="196" height="70" rx="12" fill="#1e1e2e"/>
+    <rect x="35" y="118" width="120" height="12" rx="2" fill="#4fc3f7" opacity="0.6"/>
+    <rect x="35" y="138" width="90" height="8" rx="2" fill="#555" opacity="0.4"/>
+    <rect x="35" y="152" width="150" height="8" rx="2" fill="#555" opacity="0.4"/>
+
+    <rect x="22" y="185" width="196" height="70" rx="12" fill="#1e1e2e"/>
+    <rect x="35" y="198" width="100" height="12" rx="2" fill="#26A69A" opacity="0.6"/>
+    <rect x="35" y="218" width="80" height="8" rx="2" fill="#555" opacity="0.4"/>
+    <rect x="35" y="232" width="140" height="8" rx="2" fill="#555" opacity="0.4"/>
+
+    <!-- Bottom navigation (focused on primary actions) -->
+    <rect x="12" y="280" width="216" height="50" fill="#1e1e2e"/>
+    <g transform="translate(40, 292)">
+      <circle cx="12" cy="12" r="14" fill="#6750A4" opacity="0.3"/>
+      <text x="12" y="17" font-family="system-ui, sans-serif" font-size="14" fill="#E8DEF8" text-anchor="middle">🏠</text>
+    </g>
+    <g transform="translate(95, 292)">
+      <text x="12" y="17" font-family="system-ui, sans-serif" font-size="14" fill="#8b949e" text-anchor="middle">📊</text>
+    </g>
+    <g transform="translate(150, 292)">
+      <text x="12" y="17" font-family="system-ui, sans-serif" font-size="14" fill="#8b949e" text-anchor="middle">⏰</text>
+    </g>
+  </g>
+
+  <!-- Arrow pointing to profile -->
+  <g transform="translate(530, 45)">
+    <path d="M0 30 L60 30" stroke="#4fc3f7" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <polygon points="0,30 -10,25 -10,35" fill="#4fc3f7" transform="rotate(180, 0, 30) translate(-70, 0)"/>
+  </g>
+
+  <!-- Callout box -->
+  <g transform="translate(555, 60)">
+    <rect x="0" y="0" width="180" height="100" rx="12" fill="#1e1e2e" stroke="#4fc3f7" stroke-width="1"/>
+    <text x="90" y="25" font-family="system-ui, sans-serif" font-size="12" fill="#4fc3f7" text-anchor="middle" font-weight="bold">Profile Avatar</text>
+    <text x="90" y="48" font-family="system-ui, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">→ User Settings</text>
+    <text x="90" y="65" font-family="system-ui, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">→ Account Info</text>
+    <text x="90" y="82" font-family="system-ui, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">→ Log Out</text>
+  </g>
+
+  <!-- Left side benefit list -->
+  <g transform="translate(50, 140)">
+    <text x="0" y="0" font-family="system-ui, sans-serif" font-size="12" fill="#4caf50" font-weight="bold">✓ Benefits</text>
+    <text x="0" y="25" font-family="system-ui, sans-serif" font-size="11" fill="#8b949e">Bottom nav stays focused</text>
+    <text x="0" y="45" font-family="system-ui, sans-serif" font-size="11" fill="#8b949e">Familiar pattern (Gmail, etc)</text>
+    <text x="0" y="65" font-family="system-ui, sans-serif" font-size="11" fill="#8b949e">Personal touch with initials</text>
+    <text x="0" y="85" font-family="system-ui, sans-serif" font-size="11" fill="#8b949e">Settings always accessible</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="405" font-family="system-ui, sans-serif" font-size="14" fill="#8b949e" text-anchor="middle">Your Face is Your Navigation</text>
+</svg>

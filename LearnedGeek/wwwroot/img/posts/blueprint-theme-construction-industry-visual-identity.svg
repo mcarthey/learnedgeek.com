@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="blueprintBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d2137"/>
+      <stop offset="100%" style="stop-color:#1a3a5c"/>
+    </linearGradient>
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a5a8a" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#blueprintBg)"/>
+
+  <!-- Blueprint grid pattern -->
+  <rect width="800" height="420" fill="url(#gridPattern)"/>
+
+  <!-- Corner tick marks (blueprint style) -->
+  <g stroke="#4fc3f7" stroke-width="2" opacity="0.8">
+    <!-- Top left -->
+    <line x1="20" y1="20" x2="20" y2="40"/>
+    <line x1="20" y1="20" x2="40" y2="20"/>
+    <!-- Top right -->
+    <line x1="780" y1="20" x2="780" y2="40"/>
+    <line x1="780" y1="20" x2="760" y2="20"/>
+    <!-- Bottom left -->
+    <line x1="20" y1="400" x2="20" y2="380"/>
+    <line x1="20" y1="400" x2="40" y2="400"/>
+    <!-- Bottom right -->
+    <line x1="780" y1="400" x2="780" y2="380"/>
+    <line x1="780" y1="400" x2="760" y2="400"/>
+  </g>
+
+  <!-- Schematic-style app mockup -->
+  <g transform="translate(280, 50)">
+    <!-- Phone outline (blueprint style) -->
+    <rect width="240" height="320" rx="12" fill="none" stroke="#4fc3f7" stroke-width="2"/>
+    <rect x="10" y="35" width="220" height="250" fill="none" stroke="#4fc3f7" stroke-width="1" stroke-dasharray="4 2"/>
+
+    <!-- Header -->
+    <line x1="10" y1="70" x2="230" y2="70" stroke="#4fc3f7" stroke-width="1"/>
+    <text x="120" y="58" font-family="'Courier New', monospace" font-size="12" fill="#4fc3f7" text-anchor="middle">HEADER_BAR</text>
+
+    <!-- Content blocks (schematic style) -->
+    <rect x="20" y="85" width="200" height="50" fill="none" stroke="#26A69A" stroke-width="1"/>
+    <text x="120" y="115" font-family="'Courier New', monospace" font-size="10" fill="#26A69A" text-anchor="middle">CARD_COMPONENT_01</text>
+
+    <rect x="20" y="145" width="95" height="60" fill="none" stroke="#26A69A" stroke-width="1"/>
+    <text x="67" y="180" font-family="'Courier New', monospace" font-size="9" fill="#26A69A" text-anchor="middle">STAT_A</text>
+
+    <rect x="125" y="145" width="95" height="60" fill="none" stroke="#26A69A" stroke-width="1"/>
+    <text x="172" y="180" font-family="'Courier New', monospace" font-size="9" fill="#26A69A" text-anchor="middle">STAT_B</text>
+
+    <rect x="20" y="215" width="200" height="40" fill="#1e3a5f" stroke="#4fc3f7" stroke-width="1"/>
+    <text x="120" y="240" font-family="'Courier New', monospace" font-size="10" fill="#4fc3f7" text-anchor="middle">PRIMARY_ACTION</text>
+
+    <!-- Navigation bar -->
+    <line x1="10" y1="285" x2="230" y2="285" stroke="#4fc3f7" stroke-width="1"/>
+    <text x="120" y="305" font-family="'Courier New', monospace" font-size="10" fill="#4fc3f7" text-anchor="middle">NAV_BAR</text>
+  </g>
+
+  <!-- Color palette -->
+  <g transform="translate(560, 80)">
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="11" fill="#4fc3f7" font-weight="bold">COLOR_PALETTE:</text>
+
+    <rect x="0" y="15" width="30" height="30" fill="#0d2137" stroke="#4fc3f7" stroke-width="1"/>
+    <text x="40" y="35" font-family="'Courier New', monospace" font-size="9" fill="#8b949e">Navy #0d2137</text>
+
+    <rect x="0" y="55" width="30" height="30" fill="#1a3a5c" stroke="#4fc3f7" stroke-width="1"/>
+    <text x="40" y="75" font-family="'Courier New', monospace" font-size="9" fill="#8b949e">Steel #1a3a5c</text>
+
+    <rect x="0" y="95" width="30" height="30" fill="#26A69A" stroke="#4fc3f7" stroke-width="1"/>
+    <text x="40" y="115" font-family="'Courier New', monospace" font-size="9" fill="#8b949e">Teal #26A69A</text>
+
+    <rect x="0" y="135" width="30" height="30" fill="#4fc3f7" stroke="#4fc3f7" stroke-width="1"/>
+    <text x="40" y="155" font-family="'Courier New', monospace" font-size="9" fill="#8b949e">Cyan #4fc3f7</text>
+  </g>
+
+  <!-- Design elements list -->
+  <g transform="translate(560, 260)">
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="11" fill="#4fc3f7" font-weight="bold">ELEMENTS:</text>
+    <text x="0" y="20" font-family="'Courier New', monospace" font-size="9" fill="#8b949e">• Grid background</text>
+    <text x="0" y="38" font-family="'Courier New', monospace" font-size="9" fill="#8b949e">• Corner tick marks</text>
+    <text x="0" y="56" font-family="'Courier New', monospace" font-size="9" fill="#8b949e">• Technical typography</text>
+    <text x="0" y="74" font-family="'Courier New', monospace" font-size="9" fill="#8b949e">• Schematic lines</text>
+  </g>
+
+  <!-- Left side callout -->
+  <g transform="translate(50, 100)">
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="11" fill="#26A69A" font-weight="bold">INDUSTRY:</text>
+    <text x="0" y="20" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">Construction</text>
+    <text x="0" y="40" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">Field Service</text>
+    <text x="0" y="60" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">Trade Work</text>
+
+    <text x="0" y="100" font-family="'Courier New', monospace" font-size="11" fill="#26A69A" font-weight="bold">AESTHETIC:</text>
+    <text x="0" y="120" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">Professional</text>
+    <text x="0" y="140" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">Technical</text>
+    <text x="0" y="160" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">Trustworthy</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="405" font-family="'Courier New', monospace" font-size="13" fill="#4fc3f7" text-anchor="middle">BLUEPRINT THEME :: CONSTRUCTION INDUSTRY VISUAL IDENTITY</text>
+</svg>
