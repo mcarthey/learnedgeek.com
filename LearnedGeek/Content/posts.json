@@ -1,6 +1,28 @@
 {
   "posts": [
     {
+      "slug": "signalr-real-time-location-tracking",
+      "title": "Making SignalR Connections That Don't Give Up",
+      "description": "SignalR reconnects automatically—until it doesn't. Here's how to build resilient real-time connections with exponential backoff and HTTP polling fallback, so your map never freezes.",
+      "category": "Computers",
+      "tags": ["signalr", "websocket", "blazor", "real-time", "dotnet", "mobile", "resilience"],
+      "date": "2026-08-16",
+      "featured": true,
+      "image": "/img/posts/signalr-real-time-location-tracking.svg",
+      "linkedInHook": "SignalR's automatic reconnection tries a few times and gives up. Forever. If you're lucky, you get a disconnected event.\n\nFor a location tracking app where field workers drive through dead zones, that's not acceptable.\n\nThe fix: custom retry policy with exponential backoff, HTTP polling fallback when WebSocket dies, and connections that keep trying even while polling.\n\nSignalR is best-effort. Your app handles worst-effort."
+    },
+    {
+      "slug": "leaflet-blazor-javascript-interop",
+      "title": "When Your Map Library Doesn't Speak C#",
+      "description": "Leaflet.js is the best mapping library on the web. Blazor speaks C#. Making them talk requires a clean interop boundary—here's the pattern that finally made it work.",
+      "category": "Computers",
+      "tags": ["blazor", "javascript", "leaflet", "maps", "webassembly", "interop", "dotnet"],
+      "date": "2026-08-11",
+      "featured": true,
+      "image": "/img/posts/leaflet-blazor-javascript-interop.svg",
+      "linkedInHook": "Leaflet.js is the best mapping library on the web. My Blazor app speaks C#. These two languages looked at each other across the runtime divide like strangers at a wedding.\n\nThe pattern that worked: JavaScript owns all the state. C# just sends commands.\n\nNo juggling Leaflet objects across the interop boundary. Just primitives—strings, coordinates—and DotNetObjectReference for callbacks.\n\nJavaScript is the driver. C# is the passenger giving directions."
+    },
+    {
       "slug": "blazor-wasm-cloudflare-caching-gotcha",
       "title": "Blazor WASM + Cloudflare: The Caching Gotcha That Breaks Everything",
       "description": "Your Blazor WASM app works locally but shows 404s for .wasm files after deployment. Private browsing doesn't help. Different browsers give different results. Here's why CDN edge caching is the invisible culprit.",

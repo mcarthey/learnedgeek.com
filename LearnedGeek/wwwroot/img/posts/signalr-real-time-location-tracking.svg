@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="signalrGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#512bd4"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="wsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    <linearGradient id="httpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <linearGradient id="failGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.03">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#fff" stroke-width="1"/>
+    </pattern>
+    <rect width="800" height="450" fill="url(#grid)"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" font-weight="bold">
+    Making SignalR Connections That Don't Give Up
+  </text>
+  <text x="400" y="65" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">
+    Resilient Real-Time Location Tracking
+  </text>
+
+  <!-- Client Box (Left) -->
+  <g transform="translate(40, 100)">
+    <rect x="0" y="0" width="180" height="180" rx="10" fill="#2a2a4a" stroke="#7c3aed" stroke-width="2"/>
+
+    <text x="90" y="25" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">BLAZOR CLIENT</text>
+
+    <!-- Phone icon -->
+    <rect x="60" y="45" width="60" height="90" rx="8" fill="#1e293b" stroke="#4a4a6a" stroke-width="1"/>
+    <rect x="65" y="55" width="50" height="65" rx="2" fill="#2a3a4a"/>
+    <!-- Map dots on phone -->
+    <circle cx="80" cy="75" r="4" fill="#10b981"/>
+    <circle cx="100" cy="90" r="4" fill="#f59e0b"/>
+
+    <!-- State indicator -->
+    <rect x="15" y="145" width="150" height="25" rx="4" fill="#1e293b"/>
+    <text x="90" y="162" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle">LocationHubService</text>
+  </g>
+
+  <!-- Connection State Machine (Center) -->
+  <g transform="translate(250, 95)">
+    <rect x="0" y="0" width="300" height="230" rx="10" fill="#2a2a4a" stroke="#4a4a6a" stroke-width="2"/>
+
+    <text x="150" y="25" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">CONNECTION STATE MACHINE</text>
+
+    <!-- Connected State (Green) -->
+    <g transform="translate(30, 45)">
+      <rect x="0" y="0" width="100" height="50" rx="8" fill="url(#wsGrad)" opacity="0.9"/>
+      <text x="50" y="22" font-family="Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">CONNECTED</text>
+      <text x="50" y="38" font-family="Arial, sans-serif" font-size="9" fill="#d1fae5" text-anchor="middle">WebSocket</text>
+    </g>
+
+    <!-- Reconnecting State (Yellow) -->
+    <g transform="translate(170, 45)">
+      <rect x="0" y="0" width="100" height="50" rx="8" fill="url(#httpGrad)" opacity="0.9"/>
+      <text x="50" y="22" font-family="Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">RECONNECTING</text>
+      <text x="50" y="38" font-family="Arial, sans-serif" font-size="9" fill="#fef3c7" text-anchor="middle">Backoff: 1s→16s</text>
+    </g>
+
+    <!-- Arrow from Connected to Reconnecting -->
+    <path d="M135,70 L165,70" stroke="#94a3b8" stroke-width="2" fill="none"/>
+    <polygon points="168,67 168,73 175,70" fill="#94a3b8"/>
+    <text x="150" y="62" font-family="Arial, sans-serif" font-size="8" fill="#ef4444" text-anchor="middle">disconnect</text>
+
+    <!-- Polling Fallback State (Orange) -->
+    <g transform="translate(100, 120)">
+      <rect x="0" y="0" width="100" height="50" rx="8" fill="#3a3a5a" stroke="#f59e0b" stroke-width="2"/>
+      <text x="50" y="22" font-family="Arial, sans-serif" font-size="10" fill="#f59e0b" text-anchor="middle" font-weight="bold">POLLING</text>
+      <text x="50" y="38" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">HTTP every 30s</text>
+    </g>
+
+    <!-- Arrow from Reconnecting to Polling -->
+    <path d="M220,100 Q220,130 205,135" stroke="#94a3b8" stroke-width="2" fill="none"/>
+    <polygon points="202,132 202,138 195,135" fill="#94a3b8"/>
+    <text x="235" y="120" font-family="Arial, sans-serif" font-size="8" fill="#94a3b8">5 failures</text>
+
+    <!-- Arrow from Polling back to Connected -->
+    <path d="M100,145 Q50,145 50,110 Q50,70 80,55" stroke="#10b981" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+    <polygon points="83,52 77,52 80,45" fill="#10b981"/>
+    <text x="40" y="108" font-family="Arial, sans-serif" font-size="8" fill="#10b981">retry</text>
+
+    <!-- Key message -->
+    <rect x="25" y="185" width="250" height="35" rx="4" fill="#1e293b"/>
+    <text x="150" y="207" font-family="Arial, sans-serif" font-size="10" fill="#10b981" text-anchor="middle" font-weight="bold">Always showing data, never frozen</text>
+  </g>
+
+  <!-- Server Box (Right) -->
+  <g transform="translate(580, 100)">
+    <rect x="0" y="0" width="180" height="180" rx="10" fill="#2a2a4a" stroke="#512bd4" stroke-width="2"/>
+
+    <text x="90" y="25" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">SIGNALR HUB</text>
+
+    <!-- Server icon -->
+    <rect x="55" y="40" width="70" height="80" rx="4" fill="#1e293b" stroke="#4a4a6a" stroke-width="1"/>
+    <rect x="65" y="50" width="50" height="8" rx="2" fill="#512bd4"/>
+    <rect x="65" y="65" width="50" height="8" rx="2" fill="#512bd4" opacity="0.7"/>
+    <rect x="65" y="80" width="50" height="8" rx="2" fill="#512bd4" opacity="0.4"/>
+    <!-- Server lights -->
+    <circle cx="70" cy="105" r="4" fill="#10b981"/>
+    <circle cx="85" cy="105" r="4" fill="#10b981"/>
+    <circle cx="100" cy="105" r="4" fill="#fbbf24"/>
+
+    <!-- Hub interface -->
+    <rect x="15" y="130" width="150" height="40" rx="4" fill="#1e293b"/>
+    <text x="90" y="148" font-family="monospace" font-size="8" fill="#7c3aed" text-anchor="middle">ILocationHubClient</text>
+    <text x="90" y="162" font-family="monospace" font-size="8" fill="#94a3b8" text-anchor="middle">CrewLocationUpdated()</text>
+  </g>
+
+  <!-- WebSocket connection line -->
+  <g transform="translate(220, 160)">
+    <!-- Active connection -->
+    <line x1="0" y1="0" x2="30" y2="0" stroke="#10b981" stroke-width="3"/>
+    <text x="15" y="-10" font-family="Arial, sans-serif" font-size="8" fill="#10b981" text-anchor="middle">WS</text>
+  </g>
+
+  <!-- HTTP polling line -->
+  <g transform="translate(220, 200)">
+    <line x1="0" y1="0" x2="30" y2="0" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="15" y="-10" font-family="Arial, sans-serif" font-size="8" fill="#f59e0b" text-anchor="middle">HTTP</text>
+  </g>
+
+  <!-- Broadcast from server -->
+  <g transform="translate(550, 160)">
+    <line x1="0" y1="0" x2="30" y2="0" stroke="#7c3aed" stroke-width="3"/>
+    <polygon points="-5,-4 -5,4 -12,0" fill="#7c3aed"/>
+  </g>
+
+  <!-- JWT Token callout -->
+  <g transform="translate(40, 310)">
+    <rect x="0" y="0" width="200" height="60" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="100" y="18" font-family="Arial, sans-serif" font-size="10" fill="#f59e0b" text-anchor="middle" font-weight="bold">JWT VIA QUERY STRING</text>
+    <text x="100" y="35" font-family="monospace" font-size="8" fill="#94a3b8" text-anchor="middle">/hubs/location?access_token=...</text>
+    <text x="100" y="50" font-family="Arial, sans-serif" font-size="8" fill="#6ee7b7" text-anchor="middle">WebSockets can't use headers</text>
+  </g>
+
+  <!-- Exponential backoff visual -->
+  <g transform="translate(270, 340)">
+    <rect x="0" y="0" width="260" height="80" rx="6" fill="#2a2a4a" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="130" y="18" font-family="Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">EXPONENTIAL BACKOFF</text>
+
+    <!-- Retry bars -->
+    <rect x="20" y="30" width="20" height="10" rx="2" fill="#10b981"/>
+    <text x="30" y="55" font-family="Arial, sans-serif" font-size="7" fill="#94a3b8" text-anchor="middle">0s</text>
+
+    <rect x="50" y="30" width="25" height="15" rx="2" fill="#10b981" opacity="0.9"/>
+    <text x="62" y="55" font-family="Arial, sans-serif" font-size="7" fill="#94a3b8" text-anchor="middle">2s</text>
+
+    <rect x="85" y="30" width="30" height="20" rx="2" fill="#f59e0b" opacity="0.8"/>
+    <text x="100" y="60" font-family="Arial, sans-serif" font-size="7" fill="#94a3b8" text-anchor="middle">5s</text>
+
+    <rect x="125" y="30" width="35" height="25" rx="2" fill="#f59e0b" opacity="0.7"/>
+    <text x="142" y="65" font-family="Arial, sans-serif" font-size="7" fill="#94a3b8" text-anchor="middle">10s</text>
+
+    <rect x="170" y="30" width="40" height="30" rx="2" fill="#ef4444" opacity="0.6"/>
+    <text x="190" y="70" font-family="Arial, sans-serif" font-size="7" fill="#94a3b8" text-anchor="middle">30s</text>
+
+    <text x="225" y="50" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">then</text>
+    <text x="225" y="65" font-family="Arial, sans-serif" font-size="9" fill="#f59e0b" text-anchor="middle">poll</text>
+  </g>
+
+  <!-- Key insight box -->
+  <g transform="translate(550, 340)">
+    <rect x="0" y="0" width="220" height="80" rx="6" fill="#2a2a4a" stroke="#10b981" stroke-width="1"/>
+    <text x="110" y="22" font-family="Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">SignalR is best-effort.</text>
+    <text x="110" y="42" font-family="Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">Your app handles worst-effort.</text>
+    <text x="110" y="65" font-family="Arial, sans-serif" font-size="9" fill="#10b981" text-anchor="middle">Real-time when possible,</text>
+    <text x="110" y="78" font-family="Arial, sans-serif" font-size="9" fill="#10b981" text-anchor="middle">near-real-time when necessary.</text>
+  </g>
+</svg>
