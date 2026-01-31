@@ -1,6 +1,61 @@
 {
   "posts": [
     {
+      "slug": "why-databases-need-all-this-ceremony",
+      "title": "Why Databases Need All This Ceremony (Data Explained)",
+      "description": "Developers talk about databases like they're handling explosives. Migrations. Backups. Environment separation. From the outside, it looks like paranoia. Here's why the ceremony exists.",
+      "category": "Computers",
+      "tags": ["databases", "explainer", "beginners", "data", "testing", "backups", "encryption"],
+      "date": "2026-09-05",
+      "featured": true,
+      "image": "/img/posts/why-databases-need-all-this-ceremony.svg",
+      "linkedInHook": "Code is like a recipe. If it's wrong, you fix it. No cake was harmed.\n\nData is like the cake itself. Once you've baked it wrong, you can't unbake it. The eggs are already in there.\n\nThis is why developers treat databases like explosives. Migrations. Backups. Testing against real databases. Environment separation.\n\nThe ceremony exists because data changes can't be easily undone. And data is the actual reason software exists."
+    },
+    {
+      "slug": "how-ai-assistants-actually-work",
+      "title": "How AI Assistants Actually Work (The Clever Parrot Explained)",
+      "description": "You type a question into ChatGPT. Seconds later, a helpful response appears. Is it thinking? Searching? Neither. It's predicting—and understanding that changes everything.",
+      "category": "Computers",
+      "tags": ["ai", "explainer", "beginners", "llm", "chatgpt", "machine-learning"],
+      "date": "2026-08-31",
+      "featured": true,
+      "image": "/img/posts/how-ai-assistants-actually-work.svg",
+      "linkedInHook": "Imagine a parrot that has listened to every book, article, and webpage ever written. Trillions of patterns. It doesn't understand any of it—but it has an incredible ear for how language flows.\n\nThat's roughly how AI assistants work. They don't 'know' things. They predict what sounds right.\n\nThis is why they can be confidently wrong. Why they're great at drafts but need verification. Why expertise matters more, not less.\n\nUnderstanding the mechanism helps you use the tool better."
+    },
+    {
+      "slug": "how-https-keeps-you-safe",
+      "title": "How HTTPS Keeps You Safe (The Lock Icon Explained)",
+      "description": "You've seen the padlock in your browser. You know some sites are 'secure.' But what does it actually mean? What's being locked? Here's HTTPS explained without the jargon.",
+      "category": "Computers",
+      "tags": ["security", "explainer", "beginners", "https", "ssl", "certificates", "encryption"],
+      "date": "2026-08-26",
+      "featured": true,
+      "image": "/img/posts/how-https-keeps-you-safe.svg",
+      "linkedInHook": "HTTP is a postcard. Anyone who handles it can read it.\n\nHTTPS is a sealed envelope. Only the recipient can open it.\n\nBut there's more: how do you know you're actually talking to your bank, not someone pretending?\n\nCertificates. Trusted authorities. The infrastructure of trust that makes online banking possible.\n\nThe padlock means your data is encrypted in transit and the website's identity was verified. It doesn't mean the website is trustworthy—just that the envelope is sealed."
+    },
+    {
+      "slug": "how-google-finds-websites",
+      "title": "How Google Finds Websites (Search Engines Explained)",
+      "description": "You type something into Google. Billions of pages exist. How does it know about them? How does it decide which ten to show? Here's search engines explained for everyone.",
+      "category": "Computers",
+      "tags": ["seo", "explainer", "beginners", "google", "search", "indexing", "ranking"],
+      "date": "2026-09-10",
+      "featured": true,
+      "image": "/img/posts/how-google-finds-websites.svg",
+      "linkedInHook": "Google uses robot spiders that visit websites by following links. Like exploring a cave system—enter one cave, find tunnels to others, keep going forever.\n\nThen it indexes everything—writes a summary for each page and files it in a massive catalog.\n\nWhen you search, it doesn't search the internet. It searches its catalog. And uses hundreds of factors to decide which pages deserve the top spots.\n\nSEO isn't manipulation. It's communication—helping Google understand what your content is about."
+    },
+    {
+      "slug": "how-real-time-maps-work",
+      "title": "How Real-Time Maps Actually Work (No Code Required)",
+      "description": "You open Uber. You see your driver moving on the map. How? How does your phone know where someone else's phone is, right now? Here's the technology explained for everyone.",
+      "category": "Computers",
+      "tags": ["real-time", "explainer", "beginners", "websocket", "signalr", "maps", "technology"],
+      "date": "2026-08-21",
+      "featured": true,
+      "image": "/img/posts/how-real-time-maps-work.svg",
+      "linkedInHook": "Regular websites are like calling someone, asking a question, getting an answer, and hanging up. Every time you need something, you call again.\n\nWebSockets are like staying on the line. When either of you has something to say, you just talk.\n\nSignalR is the operator who keeps the connection alive and sends messenger pigeons as backup.\n\nLeaflet is the artist who draws the map.\n\nThat's how your Uber driver's little icon moves across your screen in real-time."
+    },
+    {
       "slug": "signalr-real-time-location-tracking",
       "title": "Making SignalR Connections That Don't Give Up",
       "description": "SignalR reconnects automatically—until it doesn't. Here's how to build resilient real-time connections with exponential backoff and HTTP polling fallback, so your map never freezes.",

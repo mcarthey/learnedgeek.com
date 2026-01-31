@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="phoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" fill="#fff" text-anchor="middle" font-weight="bold">
+    How Real-Time Maps Actually Work
+  </text>
+  <text x="400" y="65" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">
+    No Code Required
+  </text>
+
+  <!-- Phone call analogy - left side -->
+  <g transform="translate(80, 100)">
+    <rect x="0" y="0" width="280" height="170" rx="12" fill="#2a2a4a" stroke="#4a4a6a" stroke-width="2"/>
+    <text x="140" y="28" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">The Old Way: Postcards</text>
+
+    <!-- Request/response arrows -->
+    <g transform="translate(30, 50)">
+      <!-- Person icon -->
+      <circle cx="25" cy="20" r="12" fill="#6b7280"/>
+      <rect x="15" y="35" width="20" height="25" rx="3" fill="#6b7280"/>
+
+      <!-- Arrows going back and forth -->
+      <path d="M55,30 L165,30" stroke="#f59e0b" stroke-width="2"/>
+      <polygon points="170,27 170,33 180,30" fill="#f59e0b"/>
+      <text x="115" y="22" font-family="Arial, sans-serif" font-size="9" fill="#f59e0b" text-anchor="middle">Request</text>
+
+      <path d="M165,50 L55,50" stroke="#94a3b8" stroke-width="2"/>
+      <polygon points="50,47 50,53 40,50" fill="#94a3b8"/>
+      <text x="115" y="65" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Response</text>
+
+      <!-- Server icon -->
+      <rect x="185" y="10" width="50" height="50" rx="4" fill="#1e293b" stroke="#4a4a6a"/>
+      <rect x="195" y="20" width="30" height="6" rx="2" fill="#4a4a6a"/>
+      <rect x="195" y="30" width="30" height="6" rx="2" fill="#4a4a6a"/>
+      <rect x="195" y="40" width="30" height="6" rx="2" fill="#4a4a6a"/>
+    </g>
+
+    <text x="140" y="130" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Ask... wait... answer... silence.</text>
+    <text x="140" y="148" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Ask again... wait... answer...</text>
+  </g>
+
+  <!-- Phone call analogy - right side -->
+  <g transform="translate(440, 100)">
+    <rect x="0" y="0" width="280" height="170" rx="12" fill="#2a2a4a" stroke="#10b981" stroke-width="2"/>
+    <text x="140" y="28" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">The New Way: Phone Call</text>
+
+    <!-- Continuous connection -->
+    <g transform="translate(30, 50)">
+      <!-- Person icon -->
+      <circle cx="25" cy="25" r="12" fill="#10b981"/>
+      <rect x="15" y="40" width="20" height="25" rx="3" fill="#10b981"/>
+
+      <!-- Wavy continuous line -->
+      <path d="M55,35 Q80,25 105,35 Q130,45 155,35 Q180,25 205,35" stroke="#10b981" stroke-width="3" fill="none"/>
+
+      <!-- Phone icon at end -->
+      <rect x="210" y="15" width="35" height="50" rx="4" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+      <rect x="215" y="22" width="25" height="35" rx="2" fill="#2a3a4a"/>
+      <circle cx="227" cy="58" r="4" fill="#10b981"/>
+    </g>
+
+    <text x="140" y="130" font-family="Arial, sans-serif" font-size="11" fill="#10b981" text-anchor="middle">Connection stays open.</text>
+    <text x="140" y="148" font-family="Arial, sans-serif" font-size="11" fill="#10b981" text-anchor="middle">Updates flow instantly.</text>
+  </g>
+
+  <!-- Map visualization at bottom -->
+  <g transform="translate(200, 290)">
+    <rect x="0" y="0" width="400" height="130" rx="12" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+
+    <!-- Map roads -->
+    <line x1="30" y1="65" x2="370" y2="65" stroke="#3f4f5f" stroke-width="3"/>
+    <line x1="200" y1="20" x2="200" y2="110" stroke="#3f4f5f" stroke-width="3"/>
+    <line x1="80" y1="30" x2="320" y2="100" stroke="#3f4f5f" stroke-width="2"/>
+
+    <!-- Moving marker with trail -->
+    <circle cx="100" cy="65" r="6" fill="#10b981" opacity="0.3"/>
+    <circle cx="140" cy="65" r="6" fill="#10b981" opacity="0.5"/>
+    <circle cx="180" cy="65" r="6" fill="#10b981" opacity="0.7"/>
+    <circle cx="220" cy="65" r="15" fill="#10b981"/>
+    <text x="220" y="70" font-family="Arial, sans-serif" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">JD</text>
+
+    <!-- Arrow showing movement -->
+    <path d="M240,65 L280,65" stroke="#10b981" stroke-width="2" stroke-dasharray="4,2"/>
+    <polygon points="285,62 285,68 295,65" fill="#10b981"/>
+
+    <!-- Destination marker -->
+    <g transform="translate(330, 45)">
+      <path d="M0,25 L10,0 L20,25 Q10,30 0,25" fill="#ef4444"/>
+      <circle cx="10" cy="12" r="4" fill="#fff"/>
+    </g>
+
+    <text x="200" y="-10" font-family="Arial, sans-serif" font-size="12" fill="#10b981" text-anchor="middle">Live Updates</text>
+  </g>
+
+  <!-- Key insight -->
+  <g transform="translate(80, 380)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="12" fill="#94a3b8">
+      WebSocket = Phone call that never hangs up
+    </text>
+    <text x="0" y="20" font-family="Arial, sans-serif" font-size="12" fill="#94a3b8">
+      SignalR = Operator who keeps you connected
+    </text>
+    <text x="0" y="40" font-family="Arial, sans-serif" font-size="12" fill="#94a3b8">
+      Leaflet = Artist who draws the map
+    </text>
+  </g>
+</svg>

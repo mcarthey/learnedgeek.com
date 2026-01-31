@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="dbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" fill="#fff" text-anchor="middle" font-weight="bold">
+    Why Databases Need All This Ceremony
+  </text>
+  <text x="400" y="65" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">
+    Data Explained
+  </text>
+
+  <!-- Code vs Data comparison -->
+  <g transform="translate(60, 95)">
+    <rect x="0" y="0" width="320" height="150" rx="12" fill="#2a2a4a" stroke="#10b981" stroke-width="2"/>
+    <text x="160" y="28" font-family="Arial, sans-serif" font-size="14" fill="#10b981" text-anchor="middle" font-weight="bold">Code = Recipe</text>
+
+    <!-- Recipe card -->
+    <g transform="translate(30, 45)">
+      <rect x="0" y="0" width="120" height="80" rx="4" fill="#1e293b" stroke="#4a4a6a"/>
+      <text x="10" y="20" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Bake at 350°</text>
+      <text x="10" y="35" font-family="Arial, sans-serif" font-size="9" fill="#ef4444" text-decoration="line-through">450°</text>
+      <text x="50" y="35" font-family="Arial, sans-serif" font-size="9" fill="#10b981">350°</text>
+      <text x="10" y="55" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">for 30 minutes</text>
+    </g>
+
+    <!-- Arrow and fix -->
+    <g transform="translate(170, 70)">
+      <path d="M0,20 L50,20" stroke="#10b981" stroke-width="2"/>
+      <polygon points="55,17 55,23 65,20" fill="#10b981"/>
+      <text x="32" y="10" font-family="Arial, sans-serif" font-size="9" fill="#10b981" text-anchor="middle">Fix it!</text>
+    </g>
+
+    <!-- Happy cake -->
+    <g transform="translate(240, 55)">
+      <rect x="0" y="40" width="50" height="30" rx="4" fill="#f59e0b"/>
+      <rect x="5" y="35" width="40" height="10" rx="2" fill="#ec4899"/>
+      <rect x="20" y="20" width="10" height="20" fill="#f59e0b"/>
+      <ellipse cx="25" cy="18" rx="8" ry="6" fill="#ef4444"/>
+    </g>
+
+    <text x="160" y="140" font-family="Arial, sans-serif" font-size="10" fill="#10b981" text-anchor="middle">Wrong recipe? Fix it. No cake harmed.</text>
+  </g>
+
+  <g transform="translate(420, 95)">
+    <rect x="0" y="0" width="320" height="150" rx="12" fill="#2a2a4a" stroke="#ef4444" stroke-width="2"/>
+    <text x="160" y="28" font-family="Arial, sans-serif" font-size="14" fill="#ef4444" text-anchor="middle" font-weight="bold">Data = The Cake Itself</text>
+
+    <!-- Cake being destroyed -->
+    <g transform="translate(40, 50)">
+      <!-- Sad ruined cake -->
+      <rect x="0" y="40" width="50" height="30" rx="4" fill="#6b7280"/>
+      <rect x="5" y="35" width="40" height="10" rx="2" fill="#4b5563"/>
+      <!-- Crack lines -->
+      <path d="M10,45 L20,60 L15,75" stroke="#1e293b" stroke-width="2" fill="none"/>
+      <path d="M35,40 L40,55 L30,70" stroke="#1e293b" stroke-width="2" fill="none"/>
+    </g>
+
+    <!-- X mark -->
+    <g transform="translate(120, 60)">
+      <circle cx="20" cy="20" r="18" fill="#ef4444" opacity="0.2"/>
+      <path d="M10,10 L30,30 M30,10 L10,30" stroke="#ef4444" stroke-width="3"/>
+    </g>
+
+    <!-- Text -->
+    <g transform="translate(180, 55)">
+      <text x="0" y="15" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Can't un-bake</text>
+      <text x="0" y="32" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Can't un-scramble</text>
+      <text x="0" y="49" font-family="Arial, sans-serif" font-size="10" fill="#ef4444">Damage is done</text>
+    </g>
+
+    <text x="160" y="140" font-family="Arial, sans-serif" font-size="10" fill="#ef4444" text-anchor="middle">Wrong data change? It's gone forever.</text>
+  </g>
+
+  <!-- Why ceremony matters -->
+  <g transform="translate(100, 270)">
+    <rect x="0" y="0" width="600" height="130" rx="12" fill="#2a2a4a" stroke="#3b82f6" stroke-width="2"/>
+    <text x="300" y="28" font-family="Arial, sans-serif" font-size="14" fill="#3b82f6" text-anchor="middle" font-weight="bold">The Ceremony Exists Because...</text>
+
+    <!-- Icons and explanations -->
+    <g transform="translate(30, 50)">
+      <!-- Migrations -->
+      <rect x="0" y="0" width="35" height="35" rx="4" fill="url(#dbGrad)"/>
+      <text x="17" y="23" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle">1</text>
+      <text x="50" y="15" font-family="Arial, sans-serif" font-size="11" fill="#fff">Migrations = Controlled change</text>
+      <text x="50" y="30" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Track every modification, in order</text>
+    </g>
+
+    <g transform="translate(220, 50)">
+      <!-- Testing -->
+      <rect x="0" y="0" width="35" height="35" rx="4" fill="url(#dbGrad)"/>
+      <text x="17" y="23" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle">2</text>
+      <text x="50" y="15" font-family="Arial, sans-serif" font-size="11" fill="#fff">Real DB Testing = Honest tests</text>
+      <text x="50" y="30" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Fake databases lie to you</text>
+    </g>
+
+    <g transform="translate(410, 50)">
+      <!-- Backups -->
+      <rect x="0" y="0" width="35" height="35" rx="4" fill="url(#dbGrad)"/>
+      <text x="17" y="23" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle">3</text>
+      <text x="50" y="15" font-family="Arial, sans-serif" font-size="11" fill="#fff">Backups = Insurance</text>
+      <text x="50" y="30" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Test restoring them too!</text>
+    </g>
+
+    <g transform="translate(130, 95)">
+      <!-- Encryption -->
+      <rect x="0" y="0" width="35" height="35" rx="4" fill="url(#dbGrad)"/>
+      <text x="17" y="23" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle">4</text>
+      <text x="50" y="15" font-family="Arial, sans-serif" font-size="11" fill="#fff">Encryption = Protection at rest</text>
+      <text x="50" y="30" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Breaches happen</text>
+    </g>
+
+    <g transform="translate(340, 95)">
+      <!-- Environments -->
+      <rect x="0" y="0" width="35" height="35" rx="4" fill="url(#dbGrad)"/>
+      <text x="17" y="23" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle">5</text>
+      <text x="50" y="15" font-family="Arial, sans-serif" font-size="11" fill="#fff">Environments = Safe practice</text>
+      <text x="50" y="30" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Never experiment on production</text>
+    </g>
+  </g>
+
+  <!-- Key insight -->
+  <g transform="translate(200, 420)">
+    <text x="200" y="0" font-family="Arial, sans-serif" font-size="13" fill="#3b82f6" text-anchor="middle" font-weight="bold">
+      Data is the reason software exists. Treat it accordingly.
+    </text>
+  </g>
+</svg>

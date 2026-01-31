@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" fill="#fff" text-anchor="middle" font-weight="bold">
+    How AI Assistants Actually Work
+  </text>
+  <text x="400" y="65" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">
+    The Clever Parrot Explained
+  </text>
+
+  <!-- Parrot analogy visual -->
+  <g transform="translate(60, 100)">
+    <rect x="0" y="0" width="320" height="180" rx="12" fill="#2a2a4a" stroke="#a855f7" stroke-width="2"/>
+    <text x="160" y="28" font-family="Arial, sans-serif" font-size="14" fill="#a855f7" text-anchor="middle" font-weight="bold">The World's Most Well-Read Parrot</text>
+
+    <!-- Parrot icon (stylized) -->
+    <g transform="translate(30, 50)">
+      <ellipse cx="50" cy="60" rx="35" ry="45" fill="url(#brainGrad)"/>
+      <ellipse cx="50" cy="35" rx="25" ry="20" fill="#a855f7"/>
+      <circle cx="40" cy="32" r="6" fill="#1e293b"/>
+      <circle cx="42" cy="30" r="2" fill="#fff"/>
+      <path d="M60,40 L80,35 L75,45 Z" fill="#f59e0b"/>
+      <!-- Wing -->
+      <ellipse cx="65" cy="70" rx="20" ry="30" fill="#7c3aed"/>
+    </g>
+
+    <!-- Books flowing into parrot -->
+    <g transform="translate(130, 45)">
+      <rect x="0" y="0" width="30" height="20" rx="2" fill="#374151" stroke="#6b7280"/>
+      <rect x="40" y="10" width="30" height="20" rx="2" fill="#374151" stroke="#6b7280"/>
+      <rect x="80" y="0" width="30" height="20" rx="2" fill="#374151" stroke="#6b7280"/>
+      <rect x="20" y="35" width="30" height="20" rx="2" fill="#374151" stroke="#6b7280"/>
+      <rect x="60" y="40" width="30" height="20" rx="2" fill="#374151" stroke="#6b7280"/>
+      <rect x="100" y="30" width="30" height="20" rx="2" fill="#374151" stroke="#6b7280"/>
+
+      <!-- Arrow -->
+      <path d="M70,75 L70,95" stroke="#a855f7" stroke-width="2"/>
+      <polygon points="65,95 75,95 70,105" fill="#a855f7"/>
+    </g>
+
+    <text x="200" y="130" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Billions of sentences</text>
+    <text x="200" y="145" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Trillions of patterns</text>
+    <text x="160" y="170" font-family="Arial, sans-serif" font-size="10" fill="#a855f7" text-anchor="middle">"What sounds like it should come next?"</text>
+  </g>
+
+  <!-- Prediction visualization -->
+  <g transform="translate(420, 100)">
+    <rect x="0" y="0" width="320" height="180" rx="12" fill="#2a2a4a" stroke="#4a4a6a" stroke-width="2"/>
+    <text x="160" y="28" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">Autocomplete on Steroids</text>
+
+    <!-- Text prediction example -->
+    <g transform="translate(20, 50)">
+      <text x="0" y="0" font-family="monospace" font-size="12" fill="#94a3b8">The capital of France is</text>
+      <rect x="175" y="-15" width="80" height="22" rx="4" fill="#10b981"/>
+      <text x="215" y="2" font-family="monospace" font-size="12" fill="#fff" text-anchor="middle">Paris</text>
+    </g>
+
+    <g transform="translate(20, 85)">
+      <text x="0" y="0" font-family="monospace" font-size="12" fill="#94a3b8">Write me a poem about</text>
+      <rect x="160" y="-15" width="95" height="22" rx="4" fill="#a855f7"/>
+      <text x="207" y="2" font-family="monospace" font-size="11" fill="#fff" text-anchor="middle">the ocean...</text>
+    </g>
+
+    <g transform="translate(20, 120)">
+      <text x="0" y="0" font-family="monospace" font-size="12" fill="#94a3b8">def calculate_tax(</text>
+      <rect x="135" y="-15" width="120" height="22" rx="4" fill="#3b82f6"/>
+      <text x="195" y="2" font-family="monospace" font-size="11" fill="#fff" text-anchor="middle">income, rate):</text>
+    </g>
+
+    <text x="160" y="165" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Predicts the most likely next words</text>
+  </g>
+
+  <!-- Key concepts at bottom -->
+  <g transform="translate(60, 300)">
+    <rect x="0" y="0" width="220" height="100" rx="8" fill="#2a2a4a" stroke="#10b981" stroke-width="1"/>
+    <text x="110" y="25" font-family="Arial, sans-serif" font-size="12" fill="#10b981" text-anchor="middle" font-weight="bold">What It's Good At</text>
+    <text x="20" y="48" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">• Pattern completion</text>
+    <text x="20" y="65" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">• Style matching</text>
+    <text x="20" y="82" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">• Brainstorming ideas</text>
+  </g>
+
+  <g transform="translate(290, 300)">
+    <rect x="0" y="0" width="220" height="100" rx="8" fill="#2a2a4a" stroke="#ef4444" stroke-width="1"/>
+    <text x="110" y="25" font-family="Arial, sans-serif" font-size="12" fill="#ef4444" text-anchor="middle" font-weight="bold">What It's Bad At</text>
+    <text x="20" y="48" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">• Reliable facts</text>
+    <text x="20" y="65" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">• Novel reasoning</text>
+    <text x="20" y="82" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">• Knowing what it doesn't know</text>
+  </g>
+
+  <g transform="translate(520, 300)">
+    <rect x="0" y="0" width="220" height="100" rx="8" fill="#2a2a4a" stroke="#fbbf24" stroke-width="1"/>
+    <text x="110" y="25" font-family="Arial, sans-serif" font-size="12" fill="#fbbf24" text-anchor="middle" font-weight="bold">The Takeaway</text>
+    <text x="110" y="55" font-family="Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle">It doesn't "know" things.</text>
+    <text x="110" y="75" font-family="Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle">It predicts what sounds right.</text>
+    <text x="110" y="92" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Sometimes that's enough.</text>
+  </g>
+
+  <!-- Key insight -->
+  <g transform="translate(200, 420)">
+    <text x="200" y="0" font-family="Arial, sans-serif" font-size="13" fill="#a855f7" text-anchor="middle" font-weight="bold">
+      Pattern matching at incomprehensible scale
+    </text>
+  </g>
+</svg>
