@@ -12,4 +12,10 @@ public interface IBlogService
     Task<Dictionary<string, int>> GetTagCountsAsync();
     Task<IEnumerable<BlogPost>> GetPostsByTagAsync(string tag);
     Task<bool> UpdatePostLinkedInDateAsync(string slug, DateTime postedDate);
+    Task<bool> UpdatePostInstagramDateAsync(string slug, DateTime postedDate);
+
+    // Post date management
+    Task<bool> UpdatePostDateAsync(string slug, DateTime newDate);
+    Task<IEnumerable<BlogPost>> GetScheduledPostsAsync();
+    Task<bool> UpdatePostDatesAsync(Dictionary<string, DateTime> slugDates);
 }

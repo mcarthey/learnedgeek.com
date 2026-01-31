@@ -22,6 +22,14 @@ builder.Services.AddSingleton<IBlogService, BlogService>();
 builder.Services.Configure<LinkedInSettings>(builder.Configuration.GetSection("LinkedIn"));
 builder.Services.AddHttpClient<ILinkedInService, LinkedInService>();
 
+// Instagram integration
+builder.Services.Configure<InstagramSettings>(builder.Configuration.GetSection("Instagram"));
+builder.Services.AddHttpClient<IInstagramService, InstagramService>();
+
+// Hashtag generation (Claude API)
+builder.Services.Configure<AnthropicSettings>(builder.Configuration.GetSection("Anthropic"));
+builder.Services.AddHttpClient<IHashtagService, HashtagService>();
+
 // Admin settings
 builder.Services.Configure<AdminSettings>(builder.Configuration.GetSection("Admin"));
 

@@ -3,6 +3,9 @@
     ViewData["Title"] = "Admin Dashboard";
     var linkedInConfigured = (bool)ViewBag.LinkedInConfigured;
     var linkedInConnected = (bool)ViewBag.LinkedInConnected;
+    var instagramConfigured = (bool)ViewBag.InstagramConfigured;
+    var instagramConnected = (bool)ViewBag.InstagramConnected;
+    var hashtagsConfigured = (bool)ViewBag.HashtagsConfigured;
 
     string GenerateSuggestedPost(LearnedGeek.Models.BlogPost post)
     {
@@ -31,6 +34,16 @@
         </form>
     </div>
 
+    <!-- Quick Links -->
+    <div class="flex gap-4">
+        <a href="/admin/schedule" class="bg-white dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors flex items-center gap-3">
+            <svg class="w-5 h-5 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            <span class="text-sm font-medium text-neutral-900 dark:text-white">Schedule Manager</span>
+        </a>
+    </div>
+
     <!-- LinkedIn Status -->
     <div class="bg-white dark:bg-neutral-800 rounded-lg p-6 border border-neutral-200 dark:border-neutral-700">
         <h2 class="text-lg font-semibold text-neutral-900 dark:text-white mb-4">LinkedIn Integration</h2>
@@ -57,6 +70,45 @@
                 <span class="w-2 h-2 bg-green-500 rounded-full"></span>
                 <span class="text-green-600 dark:text-green-400 text-sm">Connected and ready to post</span>
             </div>
+        }
+    </div>
+
+    <!-- Instagram Status -->
+    <div class="bg-white dark:bg-neutral-800 rounded-lg p-6 border border-neutral-200 dark:border-neutral-700">
+        <h2 class="text-lg font-semibold text-neutral-900 dark:text-white mb-4">Instagram Integration</h2>
+
+        @if (!instagramConfigured)
+        {
+            <p class="text-neutral-500 dark:text-neutral-400 text-sm">
+                Instagram App ID and Secret not configured in appsettings.json.
+            </p>
+            <p class="text-neutral-400 dark:text-neutral-500 text-xs mt-2">
+                Requires: Facebook Developer App + Instagram Business/Creator account
+            </p>
+        }
+        else if (!instagramConnected)
+        {
+            <div class="flex items-center gap-4">
+                <span class="text-yellow-600 dark:text-yellow-400 text-sm">Not connected</span>
+                <a asp-action="InstagramConnect"
+                   class="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-medium py-2 px-4 rounded hover:from-purple-600 hover:to-pink-600 transition-colors">
+                    Connect Instagram
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+                <span class="text-pink-600 dark:text-pink-400 text-sm">Connected and ready to post</span>
+            </div>
+        }
+
+        @if (!hashtagsConfigured)
+        {
+            <p class="text-neutral-400 dark:text-neutral-500 text-xs mt-3">
+                AI hashtag generation not available (Anthropic API key not configured)
+            </p>
         }
     </div>
 
@@ -92,7 +144,15 @@
                                 @if (post.LinkedInPostedDate.HasValue)
                                 {
                                     <span class="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-2 py-0.5 rounded-full font-medium">
-                                        ✓ @post.LinkedInPostedDate.Value.ToString("yyyy-MM-dd")
+                                        LI @post.LinkedInPostedDate.Value.ToString("yyyy-MM-dd")
+                                    </span>
+                                }
+                                </span>
+                                <span id="instagram-badge-@post.Slug">
+                                @if (post.InstagramPostedDate.HasValue)
+                                {
+                                    <span class="text-xs bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-300 px-2 py-0.5 rounded-full font-medium">
+                                        IG @post.InstagramPostedDate.Value.ToString("yyyy-MM-dd")
                                     </span>
                                 }
                                 </span>
@@ -103,23 +163,39 @@
                         </div>
                         <div class="flex items-center gap-3">
                             <div id="status-@post.Slug" class="text-sm hidden whitespace-nowrap"></div>
-                            @if (linkedInConnected)
-                            {
-                                <svg id="chevron-@post.Slug" class="w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            }
+                            <svg id="chevron-@post.Slug" class="w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
                         </div>
                     </div>
 
-                    @if (linkedInConnected)
-                    {
-                        <!-- Expandable share section -->
-                        <div id="expand-@post.Slug" class="hidden mt-4 space-y-4">
+                    <!-- Expandable section -->
+                    <div id="expand-@post.Slug" class="hidden mt-4 space-y-4">
+                        <!-- Date Management -->
+                        <div class="border-b border-neutral-200 dark:border-neutral-700 pb-4">
+                            <label class="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+                                Scheduled Date
+                            </label>
+                            <div class="flex items-center gap-3">
+                                <input type="date"
+                                       id="date-@post.Slug"
+                                       value="@post.Date.ToString("yyyy-MM-dd")"
+                                       class="bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-600 rounded px-3 py-2 text-sm text-neutral-900 dark:text-white focus:outline-none focus:border-neutral-500 dark:focus:border-neutral-400" />
+                                <button onclick="updatePostDate('@post.Slug')"
+                                        id="date-btn-@post.Slug"
+                                        class="text-sm bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 px-3 py-2 rounded hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors">
+                                    Save Date
+                                </button>
+                                <span id="date-status-@post.Slug" class="text-sm hidden"></span>
+                            </div>
+                        </div>
+
+                        @if (linkedInConnected)
+                        {
                             <!-- Textarea for post content -->
                             <div>
                                 <label class="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
-                                    Post Content
+                                    LinkedIn Post Content
                                 </label>
                                 <textarea id="commentary-@post.Slug"
                                           rows="5"
@@ -167,12 +243,166 @@
                                     Share to LinkedIn
                                 </button>
                             </div>
-                        </div>
-                    }
-                    else
-                    {
-                        <span class="text-neutral-500 text-sm mt-2 block">Connect LinkedIn to share</span>
-                    }
+                        }
+                        else
+                        {
+                            <p class="text-neutral-500 dark:text-neutral-400 text-sm">Connect LinkedIn above to enable sharing.</p>
+                        }
+
+                        @if (instagramConnected)
+                        {
+                            <div class="border-t border-neutral-200 dark:border-neutral-700 pt-4 mt-4">
+                                <!-- Image Type Tabs -->
+                                <div class="flex gap-2 mb-4">
+                                    <button onclick="setImageType('@post.Slug', 'quote')"
+                                            id="tab-quote-@post.Slug"
+                                            class="text-sm px-4 py-2 rounded-t border-b-2 border-purple-500 text-purple-600 dark:text-purple-400 font-medium">
+                                        Quote Card
+                                    </button>
+                                    <button onclick="setImageType('@post.Slug', 'code')"
+                                            id="tab-code-@post.Slug"
+                                            class="text-sm px-4 py-2 rounded-t border-b-2 border-transparent text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300">
+                                        Code Snippet
+                                    </button>
+                                    <button onclick="setImageType('@post.Slug', 'carousel')"
+                                            id="tab-carousel-@post.Slug"
+                                            class="text-sm px-4 py-2 rounded-t border-b-2 border-transparent text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300">
+                                        Carousel (2-10)
+                                    </button>
+                                </div>
+                                <input type="hidden" id="ig-type-@post.Slug" value="quote" />
+
+                                <!-- Quote Card Section -->
+                                <div id="ig-quote-section-@post.Slug" class="mb-4">
+                                    <label class="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+                                        Quote Card Text
+                                    </label>
+                                    <div class="flex gap-2">
+                                        <input type="text"
+                                               id="ig-quote-@post.Slug"
+                                               class="flex-1 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-600 rounded px-3 py-2 text-sm text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none focus:border-neutral-500 dark:focus:border-neutral-400"
+                                               placeholder="Enter a compelling quote or insight..."
+                                               oninput="updateQuotePreview('@post.Slug')" />
+                                        @if (hashtagsConfigured)
+                                        {
+                                            <button onclick="generateQuote('@post.Slug')"
+                                                    id="quote-btn-@post.Slug"
+                                                    class="text-sm bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 px-3 py-2 rounded hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors whitespace-nowrap">
+                                                ✨ Generate
+                                            </button>
+                                        }
+                                    </div>
+                                    <p class="text-xs text-neutral-400 mt-1">
+                                        50-120 characters works best. This will be displayed on a branded quote card image.
+                                    </p>
+                                </div>
+
+                                <!-- Code Snippet Section -->
+                                <div id="ig-code-section-@post.Slug" class="mb-4 hidden">
+                                    <label class="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+                                        Code Snippet
+                                    </label>
+                                    <div class="flex gap-2 mb-2">
+                                        <select id="ig-lang-@post.Slug"
+                                                class="bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-600 rounded px-3 py-2 text-sm text-neutral-900 dark:text-white"
+                                                onchange="updateCodePreview('@post.Slug')">
+                                            <option value="csharp">C#</option>
+                                            <option value="javascript">JavaScript</option>
+                                            <option value="typescript">TypeScript</option>
+                                            <option value="python">Python</option>
+                                            <option value="sql">SQL</option>
+                                            <option value="html">HTML</option>
+                                            <option value="css">CSS</option>
+                                            <option value="json">JSON</option>
+                                            <option value="bash">Bash</option>
+                                            <option value="code">Other</option>
+                                        </select>
+                                    </div>
+                                    <textarea id="ig-code-@post.Slug"
+                                              rows="8"
+                                              class="w-full bg-neutral-900 border border-neutral-600 rounded px-3 py-2 text-sm text-green-400 font-mono placeholder-neutral-500 focus:outline-none focus:border-neutral-400 resize-none"
+                                              placeholder="// Paste your code snippet here..."
+                                              oninput="updateCodePreview('@post.Slug')"></textarea>
+                                    <p class="text-xs text-neutral-400 mt-1">
+                                        Keep it concise - about 15-20 lines max for readability.
+                                    </p>
+                                </div>
+
+                                <!-- Carousel Section -->
+                                <div id="ig-carousel-section-@post.Slug" class="mb-4 hidden">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <label class="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+                                            Carousel Slides
+                                        </label>
+                                        <button onclick="addCarouselSlide('@post.Slug')"
+                                                class="text-sm text-purple-600 dark:text-purple-400 hover:underline">
+                                            + Add Slide
+                                        </button>
+                                    </div>
+                                    <div id="carousel-slides-@post.Slug" class="space-y-3">
+                                        <!-- Slides will be added dynamically -->
+                                    </div>
+                                    <p class="text-xs text-neutral-400 mt-2">
+                                        Min 2, max 10 slides. Each slide can be a quote or code snippet.
+                                    </p>
+
+                                    <!-- Carousel Preview -->
+                                    <div id="carousel-preview-@post.Slug" class="mt-3 hidden">
+                                        <p class="text-xs text-neutral-500 mb-1">Preview (scroll to see all):</p>
+                                        <div class="flex gap-2 overflow-x-auto pb-2" id="carousel-preview-imgs-@post.Slug">
+                                            <!-- Preview images will be added dynamically -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Image Preview (for single image modes) -->
+                                <div id="ig-preview-@post.Slug" class="mb-4 hidden">
+                                    <p class="text-xs text-neutral-500 mb-1">Preview:</p>
+                                    <img id="ig-preview-img-@post.Slug"
+                                         class="w-64 h-64 rounded border border-neutral-300 dark:border-neutral-600 object-cover"
+                                         alt="Instagram image preview" />
+                                </div>
+
+                                <!-- Caption Section -->
+                                <label class="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+                                    Instagram Caption
+                                </label>
+                                <textarea id="ig-caption-@post.Slug"
+                                          rows="4"
+                                          class="w-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-600 rounded px-3 py-2 text-sm text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none focus:border-neutral-500 dark:focus:border-neutral-400 resize-none"
+                                          placeholder="Write your Instagram caption here..."></textarea>
+                                <p class="text-xs text-neutral-400 mt-1">
+                                    Max 2,200 characters. 30 hashtags max.
+                                </p>
+                                <div class="flex gap-2 mt-3 flex-wrap">
+                                    @if (hashtagsConfigured)
+                                    {
+                                        <button onclick="generateCaption('@post.Slug')"
+                                                id="caption-btn-@post.Slug"
+                                                class="text-sm bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 px-3 py-2 rounded hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors">
+                                            ✨ Generate Caption
+                                        </button>
+                                        <button onclick="generateHashtags('@post.Slug')"
+                                                id="hashtag-btn-@post.Slug"
+                                                class="text-sm bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 px-3 py-2 rounded hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors">
+                                            # Generate Hashtags
+                                        </button>
+                                    }
+                                    <div class="flex-1"></div>
+                                    <button onclick="shareToInstagram('@post.Slug')"
+                                            class="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-medium py-2 px-4 rounded hover:from-purple-600 hover:to-pink-600 transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                                            id="ig-btn-@post.Slug">
+                                        Share to Instagram
+                                    </button>
+                                </div>
+                                <span id="ig-status-@post.Slug" class="text-sm hidden mt-2 block"></span>
+                            </div>
+                        }
+                        else if (instagramConfigured)
+                        {
+                            <p class="text-neutral-500 dark:text-neutral-400 text-sm border-t border-neutral-200 dark:border-neutral-700 pt-4 mt-4">Connect Instagram above to enable sharing.</p>
+                        }
+                    </div>
                 </div>
             }
         </div>
@@ -204,6 +434,91 @@
             const textarea = document.getElementById('commentary-' + slug);
             textarea.value = suggested;
             updatePreview(slug);
+        }
+
+        async function updatePostDate(slug) {
+            const dateInput = document.getElementById('date-' + slug);
+            const btn = document.getElementById('date-btn-' + slug);
+            const status = document.getElementById('date-status-' + slug);
+            const newDate = dateInput.value;
+
+            btn.disabled = true;
+            btn.textContent = 'Saving...';
+            status.classList.add('hidden');
+
+            try {
+                const formData = new FormData();
+                formData.append('slug', slug);
+                formData.append('newDate', newDate);
+
+                const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+
+                const response = await fetch('/admin/update-date', {
+                    method: 'POST',
+                    headers: {
+                        'RequestVerificationToken': token || ''
+                    },
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                status.classList.remove('hidden');
+                if (result.success) {
+                    status.className = 'text-sm text-green-600 dark:text-green-400';
+                    status.textContent = '✓ Saved!';
+                    btn.textContent = 'Save Date';
+                    btn.disabled = false;
+
+                    // Update the displayed date in the post header
+                    const postEl = document.getElementById('post-' + slug);
+                    if (postEl) {
+                        const dateSpan = postEl.querySelector('.text-neutral-500.mt-1');
+                        if (dateSpan) {
+                            const date = new Date(newDate + 'T00:00:00');
+                            const formatted = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                            const category = dateSpan.textContent.split('·')[1]?.trim() || '';
+                            dateSpan.textContent = formatted + ' · ' + category;
+                        }
+                    }
+
+                    // Update scheduled badge if needed
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    const selectedDate = new Date(newDate + 'T00:00:00');
+                    const badgeContainer = postEl?.querySelector('.flex.items-center.gap-2');
+                    const existingBadge = badgeContainer?.querySelector('.bg-amber-100, .dark\\:bg-amber-900');
+
+                    if (selectedDate > today) {
+                        if (!existingBadge) {
+                            const badge = document.createElement('span');
+                            badge.className = 'text-xs bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded-full font-medium';
+                            badge.textContent = 'Scheduled';
+                            const linkedInBadge = badgeContainer?.querySelector('[id^="linkedin-badge-"]');
+                            if (linkedInBadge) {
+                                badgeContainer.insertBefore(badge, linkedInBadge);
+                            }
+                        }
+                    } else {
+                        existingBadge?.remove();
+                    }
+
+                    setTimeout(() => {
+                        status.classList.add('hidden');
+                    }, 2000);
+                } else {
+                    status.className = 'text-sm text-red-600 dark:text-red-400';
+                    status.textContent = '✗ ' + result.message;
+                    btn.textContent = 'Save Date';
+                    btn.disabled = false;
+                }
+            } catch (err) {
+                status.classList.remove('hidden');
+                status.className = 'text-sm text-red-600 dark:text-red-400';
+                status.textContent = '✗ ' + err.message;
+                btn.textContent = 'Save Date';
+                btn.disabled = false;
+            }
         }
 
         async function shareToLinkedIn(slug) {
@@ -256,6 +571,462 @@
                 status.className = 'text-sm text-red-600 dark:text-red-400';
                 status.textContent = '✗ ' + err.message;
                 btn.textContent = 'Share to LinkedIn';
+                btn.disabled = false;
+            }
+        }
+
+        function setImageType(slug, type) {
+            const typeInput = document.getElementById('ig-type-' + slug);
+            const quoteTab = document.getElementById('tab-quote-' + slug);
+            const codeTab = document.getElementById('tab-code-' + slug);
+            const carouselTab = document.getElementById('tab-carousel-' + slug);
+            const quoteSection = document.getElementById('ig-quote-section-' + slug);
+            const codeSection = document.getElementById('ig-code-section-' + slug);
+            const carouselSection = document.getElementById('ig-carousel-section-' + slug);
+            const singlePreview = document.getElementById('ig-preview-' + slug);
+
+            typeInput.value = type;
+
+            const activeClass = 'text-sm px-4 py-2 rounded-t border-b-2 border-purple-500 text-purple-600 dark:text-purple-400 font-medium';
+            const inactiveClass = 'text-sm px-4 py-2 rounded-t border-b-2 border-transparent text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300';
+
+            quoteTab.className = inactiveClass;
+            codeTab.className = inactiveClass;
+            carouselTab.className = inactiveClass;
+            quoteSection.classList.add('hidden');
+            codeSection.classList.add('hidden');
+            carouselSection.classList.add('hidden');
+            singlePreview.classList.add('hidden');
+
+            if (type === 'quote') {
+                quoteTab.className = activeClass;
+                quoteSection.classList.remove('hidden');
+                updateQuotePreview(slug);
+            } else if (type === 'code') {
+                codeTab.className = activeClass;
+                codeSection.classList.remove('hidden');
+                updateCodePreview(slug);
+            } else if (type === 'carousel') {
+                carouselTab.className = activeClass;
+                carouselSection.classList.remove('hidden');
+                // Initialize with 2 slides if empty
+                const container = document.getElementById('carousel-slides-' + slug);
+                if (container.children.length === 0) {
+                    addCarouselSlide(slug);
+                    addCarouselSlide(slug);
+                }
+                updateCarouselPreview(slug);
+            }
+        }
+
+        let slideCounters = {};
+
+        function addCarouselSlide(slug) {
+            const container = document.getElementById('carousel-slides-' + slug);
+            if (container.children.length >= 10) {
+                alert('Maximum 10 slides allowed');
+                return;
+            }
+
+            if (!slideCounters[slug]) slideCounters[slug] = 0;
+            const slideNum = slideCounters[slug]++;
+
+            const slideHtml = `
+                <div class="bg-neutral-100 dark:bg-neutral-900 rounded p-3 border border-neutral-300 dark:border-neutral-600" id="slide-${slug}-${slideNum}">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-medium text-neutral-500">Slide ${container.children.length + 1}</span>
+                        <button onclick="removeCarouselSlide('${slug}', ${slideNum})" class="text-xs text-red-500 hover:text-red-700">Remove</button>
+                    </div>
+                    <select class="w-full mb-2 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 text-sm"
+                            onchange="updateCarouselPreview('${slug}')" id="slide-type-${slug}-${slideNum}">
+                        <option value="quote">Quote</option>
+                        <option value="code">Code</option>
+                    </select>
+                    <div id="slide-quote-${slug}-${slideNum}">
+                        <input type="text" class="w-full bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 text-sm"
+                               placeholder="Enter quote text..."
+                               oninput="updateCarouselPreview('${slug}')" id="slide-quote-input-${slug}-${slideNum}" />
+                    </div>
+                    <div id="slide-code-${slug}-${slideNum}" class="hidden">
+                        <select class="w-full mb-1 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 text-xs"
+                                onchange="updateCarouselPreview('${slug}')" id="slide-lang-${slug}-${slideNum}">
+                            <option value="csharp">C#</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                            <option value="sql">SQL</option>
+                            <option value="code">Other</option>
+                        </select>
+                        <textarea class="w-full bg-neutral-900 border border-neutral-600 rounded px-2 py-1 text-xs text-green-400 font-mono"
+                                  rows="4" placeholder="// Code..."
+                                  oninput="updateCarouselPreview('${slug}')" id="slide-code-input-${slug}-${slideNum}"></textarea>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', slideHtml);
+
+            // Add change listener for slide type
+            document.getElementById(`slide-type-${slug}-${slideNum}`).addEventListener('change', function() {
+                const quoteDiv = document.getElementById(`slide-quote-${slug}-${slideNum}`);
+                const codeDiv = document.getElementById(`slide-code-${slug}-${slideNum}`);
+                if (this.value === 'quote') {
+                    quoteDiv.classList.remove('hidden');
+                    codeDiv.classList.add('hidden');
+                } else {
+                    quoteDiv.classList.add('hidden');
+                    codeDiv.classList.remove('hidden');
+                }
+                updateCarouselPreview(slug);
+            });
+
+            updateSlideNumbers(slug);
+            updateCarouselPreview(slug);
+        }
+
+        function removeCarouselSlide(slug, slideNum) {
+            const container = document.getElementById('carousel-slides-' + slug);
+            if (container.children.length <= 2) {
+                alert('Minimum 2 slides required');
+                return;
+            }
+            const slide = document.getElementById(`slide-${slug}-${slideNum}`);
+            if (slide) slide.remove();
+            updateSlideNumbers(slug);
+            updateCarouselPreview(slug);
+        }
+
+        function updateSlideNumbers(slug) {
+            const container = document.getElementById('carousel-slides-' + slug);
+            const slides = container.children;
+            for (let i = 0; i < slides.length; i++) {
+                const label = slides[i].querySelector('span');
+                if (label) label.textContent = `Slide ${i + 1}`;
+            }
+        }
+
+        function updateCarouselPreview(slug) {
+            const container = document.getElementById('carousel-slides-' + slug);
+            const previewContainer = document.getElementById('carousel-preview-' + slug);
+            const previewImgs = document.getElementById('carousel-preview-imgs-' + slug);
+            previewImgs.innerHTML = '';
+
+            const slides = container.children;
+            if (slides.length < 2) {
+                previewContainer.classList.add('hidden');
+                return;
+            }
+
+            for (let i = 0; i < slides.length; i++) {
+                const slide = slides[i];
+                const slideId = slide.id.split('-').pop();
+                const type = document.getElementById(`slide-type-${slug}-${slideId}`)?.value || 'quote';
+
+                let imgUrl;
+                if (type === 'quote') {
+                    const quote = document.getElementById(`slide-quote-input-${slug}-${slideId}`)?.value || '';
+                    if (!quote.trim()) continue;
+                    imgUrl = `/img/instagram/${slug}.png?quote=${encodeURIComponent(quote)}&t=${Date.now()}`;
+                } else {
+                    const code = document.getElementById(`slide-code-input-${slug}-${slideId}`)?.value || '';
+                    const lang = document.getElementById(`slide-lang-${slug}-${slideId}`)?.value || 'code';
+                    if (!code.trim()) continue;
+                    imgUrl = `/img/instagram/${slug}.png?code=${encodeURIComponent(code)}&lang=${lang}&t=${Date.now()}`;
+                }
+
+                const img = document.createElement('img');
+                img.src = imgUrl;
+                img.className = 'w-32 h-32 flex-shrink-0 rounded border border-neutral-300 dark:border-neutral-600 object-cover';
+                img.alt = `Slide ${i + 1}`;
+                previewImgs.appendChild(img);
+            }
+
+            if (previewImgs.children.length > 0) {
+                previewContainer.classList.remove('hidden');
+            } else {
+                previewContainer.classList.add('hidden');
+            }
+        }
+
+        function getCarouselData(slug) {
+            const container = document.getElementById('carousel-slides-' + slug);
+            const slides = container.children;
+            const data = [];
+
+            for (let i = 0; i < slides.length; i++) {
+                const slide = slides[i];
+                const slideId = slide.id.split('-').pop();
+                const type = document.getElementById(`slide-type-${slug}-${slideId}`)?.value || 'quote';
+
+                if (type === 'quote') {
+                    const quote = document.getElementById(`slide-quote-input-${slug}-${slideId}`)?.value || '';
+                    if (quote.trim()) {
+                        data.push({ type: 'quote', quote: quote.trim() });
+                    }
+                } else {
+                    const code = document.getElementById(`slide-code-input-${slug}-${slideId}`)?.value || '';
+                    const lang = document.getElementById(`slide-lang-${slug}-${slideId}`)?.value || 'code';
+                    if (code.trim()) {
+                        data.push({ type: 'code', code: code.trim(), lang: lang });
+                    }
+                }
+            }
+
+            return data;
+        }
+
+        async function generateQuote(slug) {
+            const btn = document.getElementById('quote-btn-' + slug);
+            const quoteInput = document.getElementById('ig-quote-' + slug);
+
+            btn.disabled = true;
+            btn.textContent = 'Generating...';
+
+            try {
+                const formData = new FormData();
+                formData.append('slug', slug);
+
+                const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+
+                const response = await fetch('/admin/generate-quote', {
+                    method: 'POST',
+                    headers: {
+                        'RequestVerificationToken': token || ''
+                    },
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success && result.quote) {
+                    quoteInput.value = result.quote;
+                    updateQuotePreview(slug);
+                    btn.textContent = '✨ Generate';
+                    btn.disabled = false;
+                } else {
+                    alert('Failed to generate quote: ' + (result.message || 'Unknown error'));
+                    btn.textContent = '✨ Generate';
+                    btn.disabled = false;
+                }
+            } catch (err) {
+                alert('Error: ' + err.message);
+                btn.textContent = '✨ Generate';
+                btn.disabled = false;
+            }
+        }
+
+        function updateQuotePreview(slug) {
+            const quoteInput = document.getElementById('ig-quote-' + slug);
+            const preview = document.getElementById('ig-preview-' + slug);
+            const img = document.getElementById('ig-preview-img-' + slug);
+            const quote = quoteInput.value.trim();
+
+            if (quote) {
+                const encodedQuote = encodeURIComponent(quote);
+                img.src = `/img/instagram/${slug}.png?quote=${encodedQuote}&t=${Date.now()}`;
+                preview.classList.remove('hidden');
+            } else {
+                preview.classList.add('hidden');
+            }
+        }
+
+        function updateCodePreview(slug) {
+            const codeInput = document.getElementById('ig-code-' + slug);
+            const langSelect = document.getElementById('ig-lang-' + slug);
+            const preview = document.getElementById('ig-preview-' + slug);
+            const img = document.getElementById('ig-preview-img-' + slug);
+            const code = codeInput.value.trim();
+            const lang = langSelect.value;
+
+            if (code) {
+                const encodedCode = encodeURIComponent(code);
+                img.src = `/img/instagram/${slug}.png?code=${encodedCode}&lang=${lang}&t=${Date.now()}`;
+                preview.classList.remove('hidden');
+            } else {
+                preview.classList.add('hidden');
+            }
+        }
+
+        async function generateCaption(slug) {
+            const btn = document.getElementById('caption-btn-' + slug);
+            const caption = document.getElementById('ig-caption-' + slug);
+
+            btn.disabled = true;
+            btn.textContent = 'Generating...';
+
+            try {
+                const formData = new FormData();
+                formData.append('slug', slug);
+
+                const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+
+                const response = await fetch('/admin/generate-caption', {
+                    method: 'POST',
+                    headers: {
+                        'RequestVerificationToken': token || ''
+                    },
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success && result.caption) {
+                    // Set caption (preserving existing hashtags if any)
+                    const currentCaption = caption.value.trim();
+                    const hashtagMatch = currentCaption.match(/(#\w+[\s\n]*)+$/);
+                    if (hashtagMatch) {
+                        // Keep existing hashtags at the end
+                        caption.value = result.caption + '\n\n' + hashtagMatch[0].trim();
+                    } else {
+                        caption.value = result.caption;
+                    }
+                    btn.textContent = '✨ Generate Caption';
+                    btn.disabled = false;
+                } else {
+                    alert('Failed to generate caption: ' + (result.message || 'Unknown error'));
+                    btn.textContent = '✨ Generate Caption';
+                    btn.disabled = false;
+                }
+            } catch (err) {
+                alert('Error: ' + err.message);
+                btn.textContent = '✨ Generate Caption';
+                btn.disabled = false;
+            }
+        }
+
+        async function generateHashtags(slug) {
+            const btn = document.getElementById('hashtag-btn-' + slug);
+            const caption = document.getElementById('ig-caption-' + slug);
+
+            btn.disabled = true;
+            btn.textContent = 'Generating...';
+
+            try {
+                const formData = new FormData();
+                formData.append('slug', slug);
+
+                const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+
+                const response = await fetch('/admin/suggest-hashtags', {
+                    method: 'POST',
+                    headers: {
+                        'RequestVerificationToken': token || ''
+                    },
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success && result.hashtags) {
+                    // Group hashtags for readability (4 per line)
+                    const groupSize = 4;
+                    const hashtagGroups = [];
+                    for (let i = 0; i < result.hashtags.length; i += groupSize) {
+                        hashtagGroups.push(result.hashtags.slice(i, i + groupSize).join(' '));
+                    }
+                    const hashtags = hashtagGroups.join('\n');
+                    const currentCaption = caption.value.trim();
+                    caption.value = currentCaption ? `${currentCaption}\n\n${hashtags}` : hashtags;
+                    btn.textContent = '# Generate Hashtags';
+                    btn.disabled = false;
+                } else {
+                    alert('Failed to generate hashtags: ' + (result.message || 'Unknown error'));
+                    btn.textContent = '# Generate Hashtags';
+                    btn.disabled = false;
+                }
+            } catch (err) {
+                alert('Error: ' + err.message);
+                btn.textContent = '# Generate Hashtags';
+                btn.disabled = false;
+            }
+        }
+
+        async function shareToInstagram(slug) {
+            const btn = document.getElementById('ig-btn-' + slug);
+            const status = document.getElementById('ig-status-' + slug);
+            const caption = document.getElementById('ig-caption-' + slug).value;
+            const imageType = document.getElementById('ig-type-' + slug).value;
+
+            if (!caption.trim()) {
+                alert('Please enter a caption for your Instagram post.');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Sharing...';
+            status.classList.add('hidden');
+
+            try {
+                const formData = new FormData();
+                formData.append('slug', slug);
+                formData.append('caption', caption);
+                formData.append('imageType', imageType);
+
+                if (imageType === 'quote') {
+                    const quote = document.getElementById('ig-quote-' + slug).value;
+                    if (!quote.trim()) {
+                        alert('Please enter a quote for the image card.');
+                        btn.disabled = false;
+                        btn.textContent = 'Share to Instagram';
+                        return;
+                    }
+                    formData.append('quote', quote);
+                } else if (imageType === 'code') {
+                    const code = document.getElementById('ig-code-' + slug).value;
+                    const lang = document.getElementById('ig-lang-' + slug).value;
+                    if (!code.trim()) {
+                        alert('Please enter code for the snippet card.');
+                        btn.disabled = false;
+                        btn.textContent = 'Share to Instagram';
+                        return;
+                    }
+                    formData.append('code', code);
+                    formData.append('lang', lang);
+                } else if (imageType === 'carousel') {
+                    const carouselData = getCarouselData(slug);
+                    if (carouselData.length < 2) {
+                        alert('Carousel needs at least 2 slides with content.');
+                        btn.disabled = false;
+                        btn.textContent = 'Share to Instagram';
+                        return;
+                    }
+                    formData.append('carouselData', JSON.stringify(carouselData));
+                }
+
+                const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+
+                const response = await fetch('/admin/share-instagram', {
+                    method: 'POST',
+                    headers: {
+                        'RequestVerificationToken': token || ''
+                    },
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                status.classList.remove('hidden');
+                if (result.success) {
+                    status.className = 'text-sm text-pink-600 dark:text-pink-400';
+                    status.textContent = '✓ Posted to Instagram!';
+                    btn.textContent = 'Shared!';
+
+                    // Add Instagram badge
+                    const badge = document.getElementById('instagram-badge-' + slug);
+                    if (badge) {
+                        const now = new Date();
+                        const dateStr = now.toISOString().split('T')[0];
+                        badge.innerHTML = `<span class="text-xs bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-300 px-2 py-0.5 rounded-full font-medium">IG ${dateStr}</span>`;
+                    }
+                } else {
+                    status.className = 'text-sm text-red-600 dark:text-red-400';
+                    status.textContent = '✗ ' + result.message;
+                    btn.textContent = 'Share to Instagram';
+                    btn.disabled = false;
+                }
+            } catch (err) {
+                status.classList.remove('hidden');
+                status.className = 'text-sm text-red-600 dark:text-red-400';
+                status.textContent = '✗ ' + err.message;
+                btn.textContent = 'Share to Instagram';
                 btn.disabled = false;
             }
         }

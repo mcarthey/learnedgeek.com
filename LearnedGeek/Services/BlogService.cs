@@ -144,6 +144,78 @@ public class BlogService : IBlogService
         return true;
     }
 
+    public async Task<bool> UpdatePostInstagramDateAsync(string slug, DateTime postedDate)
+    {
+        var posts = await LoadPostsMetadataAsync();
+        var post = posts.FirstOrDefault(p =>
+            string.Equals(p.Slug, slug, StringComparison.OrdinalIgnoreCase));
+
+        if (post == null)
+            return false;
+
+        post.InstagramPostedDate = postedDate;
+
+        await SavePostsAsync(posts);
+        return true;
+    }
+
+    public async Task<bool> UpdatePostDateAsync(string slug, DateTime newDate)
+    {
+        var posts = await LoadPostsMetadataAsync();
+        var post = posts.FirstOrDefault(p =>
+            string.Equals(p.Slug, slug, StringComparison.OrdinalIgnoreCase));
+
+        if (post == null)
+            return false;
+
+        post.Date = newDate;
+
+        await SavePostsAsync(posts);
+        return true;
+    }
+
+    public async Task<IEnumerable<BlogPost>> GetScheduledPostsAsync()
+    {
+        var posts = await LoadPostsMetadataAsync();
+        return posts
+            .Where(p => p.Date.Date > DateTime.Today)
+            .OrderBy(p => p.Date);
+    }
+
+    public async Task<bool> UpdatePostDatesAsync(Dictionary<string, DateTime> slugDates)
+    {
+        var posts = await LoadPostsMetadataAsync();
+
+        foreach (var (slug, newDate) in slugDates)
+        {
+            var post = posts.FirstOrDefault(p =>
+                string.Equals(p.Slug, slug, StringComparison.OrdinalIgnoreCase));
+            if (post != null)
+                post.Date = newDate;
+        }
+
+        await SavePostsAsync(posts);
+        return true;
+    }
+
+    private async Task SavePostsAsync(List<BlogPost> posts)
+    {
+        var postsJsonPath = Path.Combine(_contentPath, "posts.json");
+        var writeOptions = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) },
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+
+        var container = new PostsContainer { Posts = posts };
+        var json = JsonSerializer.Serialize(container, writeOptions);
+        await File.WriteAllTextAsync(postsJsonPath, json);
+
+        _postsCache = null;
+    }
+
     private class PostsContainer
     {
         public List<BlogPost> Posts { get; set; } = [];

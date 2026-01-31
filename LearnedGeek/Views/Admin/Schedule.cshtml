@@ -1,0 +1,280 @@
+@model List<LearnedGeek.Models.BlogPost>
+@{
+    ViewData["Title"] = "Schedule Manager";
+}
+
+@Html.AntiForgeryToken()
+
+<div class="space-y-8">
+    <div class="flex justify-between items-center">
+        <div>
+            <h1 class="text-3xl font-semibold text-neutral-900 dark:text-white">Schedule Manager</h1>
+            <p class="text-neutral-500 dark:text-neutral-400 mt-1">Manage scheduled post dates</p>
+        </div>
+        <a href="/admin" class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+            &larr; Back to Dashboard
+        </a>
+    </div>
+
+    @if (Model.Count == 0)
+    {
+        <div class="bg-white dark:bg-neutral-800 rounded-lg p-8 border border-neutral-200 dark:border-neutral-700 text-center">
+            <svg class="w-12 h-12 text-neutral-300 dark:text-neutral-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            <p class="text-neutral-500 dark:text-neutral-400">No scheduled posts</p>
+            <p class="text-sm text-neutral-400 dark:text-neutral-500 mt-1">Posts with future dates will appear here</p>
+        </div>
+    }
+    else
+    {
+        <div class="bg-white dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <div class="p-6 border-b border-neutral-200 dark:border-neutral-700">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h2 class="text-lg font-semibold text-neutral-900 dark:text-white">Scheduled Posts</h2>
+                        <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">@Model.Count post(s) scheduled</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <!-- Range Slider for Redistribute -->
+                        <div class="flex items-center gap-3 bg-neutral-100 dark:bg-neutral-700 rounded px-4 py-2">
+                            <span class="text-sm text-neutral-600 dark:text-neutral-300 whitespace-nowrap">Space:</span>
+                            <div class="relative w-40">
+                                <div class="range-slider-track h-1 bg-neutral-300 dark:bg-neutral-600 rounded-full relative">
+                                    <div id="range-highlight" class="absolute h-1 bg-purple-500 rounded-full"></div>
+                                </div>
+                                <input type="range" id="range-min" min="1" max="10" value="3"
+                                       class="range-slider absolute w-full top-0 -translate-y-1/2 pointer-events-auto"
+                                       oninput="updateRangeSlider()">
+                                <input type="range" id="range-max" min="1" max="10" value="7"
+                                       class="range-slider absolute w-full top-0 -translate-y-1/2 pointer-events-auto"
+                                       oninput="updateRangeSlider()">
+                            </div>
+                            <span id="range-display" class="text-sm font-medium text-neutral-900 dark:text-white w-16">3-7 days</span>
+                        </div>
+                        <button onclick="redistributeRandomized()"
+                                class="text-sm bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition-colors whitespace-nowrap">
+                            Redistribute
+                        </button>
+                        <button onclick="saveAllDates()"
+                                id="save-all-btn"
+                                class="text-sm bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-4 py-2 rounded hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors">
+                            Save All Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="text-left text-sm text-neutral-500 dark:text-neutral-400 border-b border-neutral-200 dark:border-neutral-700">
+                            <th class="px-6 py-3 font-medium">Post</th>
+                            <th class="px-6 py-3 font-medium w-40">Current Date</th>
+                            <th class="px-6 py-3 font-medium w-48">New Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+                        @foreach (var post in Model)
+                        {
+                            <tr class="hover:bg-neutral-50 dark:hover:bg-neutral-750" data-slug="@post.Slug">
+                                <td class="px-6 py-4">
+                                    <a href="/Blog/Post/@post.Slug"
+                                       target="_blank"
+                                       class="text-neutral-900 dark:text-white font-medium hover:text-blue-600 dark:hover:text-blue-400 hover:underline">
+                                        @post.Title
+                                    </a>
+                                    <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1">@post.Category</p>
+                                </td>
+                                <td class="px-6 py-4 text-neutral-500 dark:text-neutral-400 text-sm">
+                                    @post.Date.ToString("MMM d, yyyy")
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input type="date"
+                                           class="schedule-date bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-600 rounded px-3 py-2 text-sm text-neutral-900 dark:text-white focus:outline-none focus:border-neutral-500 dark:focus:border-neutral-400"
+                                           data-slug="@post.Slug"
+                                           data-original="@post.Date.ToString("yyyy-MM-dd")"
+                                           value="@post.Date.ToString("yyyy-MM-dd")" />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="p-6 border-t border-neutral-200 dark:border-neutral-700 flex justify-between items-center">
+                <div id="save-status" class="text-sm hidden"></div>
+                <div class="flex gap-3">
+                    <button onclick="resetAllDates()"
+                            class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors">
+                        Reset to Original
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <style>
+        .range-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 20px;
+            background: transparent;
+            cursor: pointer;
+        }
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #9333ea;
+            border: 2px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            cursor: grab;
+        }
+        .range-slider::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #9333ea;
+            border: 2px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            cursor: grab;
+        }
+        .range-slider:active::-webkit-slider-thumb { cursor: grabbing; }
+        .range-slider:active::-moz-range-thumb { cursor: grabbing; }
+    </style>
+    <script>
+        // Initialize range slider on page load
+        document.addEventListener('DOMContentLoaded', updateRangeSlider);
+
+        function updateRangeSlider() {
+            const minSlider = document.getElementById('range-min');
+            const maxSlider = document.getElementById('range-max');
+            const highlight = document.getElementById('range-highlight');
+            const display = document.getElementById('range-display');
+
+            let minVal = parseInt(minSlider.value);
+            let maxVal = parseInt(maxSlider.value);
+
+            // Ensure min doesn't exceed max
+            if (minVal > maxVal) {
+                if (this && this.id === 'range-min') {
+                    minSlider.value = maxVal;
+                    minVal = maxVal;
+                } else {
+                    maxSlider.value = minVal;
+                    maxVal = minVal;
+                }
+            }
+
+            // Update highlight bar position (1-10 range maps to 0-100%)
+            const minPercent = ((minVal - 1) / 9) * 100;
+            const maxPercent = ((maxVal - 1) / 9) * 100;
+            highlight.style.left = minPercent + '%';
+            highlight.style.width = (maxPercent - minPercent) + '%';
+
+            // Update display text
+            if (minVal === maxVal) {
+                display.textContent = minVal + ' days';
+            } else {
+                display.textContent = minVal + '-' + maxVal + ' days';
+            }
+        }
+
+        function redistributeRandomized() {
+            const inputs = document.querySelectorAll('.schedule-date');
+            if (inputs.length === 0) return;
+
+            const minSpacing = parseInt(document.getElementById('range-min').value);
+            const maxSpacing = parseInt(document.getElementById('range-max').value);
+
+            // Start from tomorrow
+            let currentDate = new Date();
+            currentDate.setDate(currentDate.getDate() + 1);
+            currentDate.setHours(0, 0, 0, 0);
+
+            inputs.forEach((input, index) => {
+                if (index === 0) {
+                    // First post is tomorrow
+                    input.value = currentDate.toISOString().split('T')[0];
+                } else {
+                    // Add random days within the range
+                    const randomSpacing = Math.floor(Math.random() * (maxSpacing - minSpacing + 1)) + minSpacing;
+                    currentDate.setDate(currentDate.getDate() + randomSpacing);
+                    input.value = currentDate.toISOString().split('T')[0];
+                }
+            });
+        }
+
+        function resetAllDates() {
+            const inputs = document.querySelectorAll('.schedule-date');
+            inputs.forEach(input => {
+                input.value = input.dataset.original;
+            });
+        }
+
+        async function saveAllDates() {
+            const btn = document.getElementById('save-all-btn');
+            const status = document.getElementById('save-status');
+            const inputs = document.querySelectorAll('.schedule-date');
+
+            // Build the slug -> date dictionary
+            const slugDates = {};
+            inputs.forEach(input => {
+                slugDates[input.dataset.slug] = input.value + 'T00:00:00';
+            });
+
+            btn.disabled = true;
+            btn.textContent = 'Saving...';
+            status.classList.add('hidden');
+
+            try {
+                const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+
+                const response = await fetch('/admin/schedule', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token || ''
+                    },
+                    body: JSON.stringify(slugDates)
+                });
+
+                const result = await response.json();
+
+                status.classList.remove('hidden');
+                if (result.success) {
+                    status.className = 'text-sm text-green-600 dark:text-green-400';
+                    status.textContent = '✓ All dates saved successfully!';
+                    btn.textContent = 'Save All Changes';
+                    btn.disabled = false;
+
+                    // Update original values
+                    inputs.forEach(input => {
+                        input.dataset.original = input.value;
+                    });
+
+                    // Refresh the page to show updated "Current Date" column
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                } else {
+                    status.className = 'text-sm text-red-600 dark:text-red-400';
+                    status.textContent = '✗ Failed to save dates';
+                    btn.textContent = 'Save All Changes';
+                    btn.disabled = false;
+                }
+            } catch (err) {
+                status.classList.remove('hidden');
+                status.className = 'text-sm text-red-600 dark:text-red-400';
+                status.textContent = '✗ ' + err.message;
+                btn.textContent = 'Save All Changes';
+                btn.disabled = false;
+            }
+        }
+    </script>
+}
