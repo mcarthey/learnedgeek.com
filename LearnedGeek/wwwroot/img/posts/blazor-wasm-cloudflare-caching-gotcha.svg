@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="cloudflareGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F48120"/>
+      <stop offset="100%" style="stop-color:#FAAD3F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="400" y="35" font-family="system-ui, sans-serif" font-size="14" fill="#8b949e" text-anchor="middle">The Invisible CDN Cache Problem</text>
+
+  <!-- Browser on left -->
+  <g transform="translate(60, 70)">
+    <rect width="120" height="180" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
+    <rect x="8" y="25" width="104" height="130" fill="#161b22"/>
+    <text x="60" y="18" font-family="system-ui, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">Browser</text>
+
+    <!-- Loading forever -->
+    <text x="60" y="70" font-family="system-ui, sans-serif" font-size="11" fill="#ff6b6b" text-anchor="middle">Loading...</text>
+    <text x="60" y="90" font-family="system-ui, sans-serif" font-size="9" fill="#ff6b6b" text-anchor="middle">(forever)</text>
+
+    <!-- Console errors -->
+    <rect x="12" y="105" width="96" height="45" rx="3" fill="#1e1e2e"/>
+    <text x="18" y="118" font-family="monospace" font-size="7" fill="#ff6b6b">404 .wasm</text>
+    <text x="18" y="130" font-family="monospace" font-size="7" fill="#ff6b6b">404 .wasm</text>
+    <text x="18" y="142" font-family="monospace" font-size="7" fill="#ff6b6b">404 .wasm</text>
+
+    <text x="60" y="175" font-family="system-ui, sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Console errors</text>
+  </g>
+
+  <!-- Arrow from browser to CDN -->
+  <g transform="translate(190, 150)">
+    <line x1="0" y1="0" x2="80" y2="0" stroke="#4fc3f7" stroke-width="2"/>
+    <polygon points="80,0 70,-6 70,6" fill="#4fc3f7"/>
+    <text x="40" y="-10" font-family="system-ui, sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Request</text>
+  </g>
+
+  <!-- Cloudflare CDN in middle (THE CULPRIT) -->
+  <g transform="translate(290, 70)">
+    <rect width="220" height="180" rx="12" fill="#1e1e2e" stroke="#F48120" stroke-width="3"/>
+
+    <!-- Cloudflare logo area -->
+    <rect x="60" y="10" width="100" height="30" rx="4" fill="url(#cloudflareGrad)"/>
+    <text x="110" y="30" font-family="system-ui, sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">Cloudflare CDN</text>
+
+    <!-- Cache status -->
+    <text x="110" y="60" font-family="system-ui, sans-serif" font-size="10" fill="#F48120" text-anchor="middle" font-weight="bold">⚠️ CACHED</text>
+
+    <!-- Old boot.js -->
+    <rect x="20" y="75" width="180" height="50" rx="6" fill="#2d1f1f" stroke="#ff6b6b" stroke-width="1"/>
+    <text x="110" y="92" font-family="monospace" font-size="9" fill="#ff6b6b" text-anchor="middle">dotnet.boot.js (OLD)</text>
+    <text x="110" y="108" font-family="monospace" font-size="8" fill="#8b949e" text-anchor="middle">fingerprint: b2ks6tgw1g</text>
+    <text x="110" y="120" font-family="system-ui, sans-serif" font-size="7" fill="#ff6b6b" text-anchor="middle">↑ This file should NOT be cached!</text>
+
+    <!-- Cache headers -->
+    <rect x="20" y="135" width="180" height="35" rx="4" fill="#0d1117"/>
+    <text x="30" y="150" font-family="monospace" font-size="8" fill="#F48120">cf-cache-status: HIT</text>
+    <text x="30" y="162" font-family="monospace" font-size="8" fill="#F48120">max-age: 31536000</text>
+  </g>
+
+  <!-- Arrow from CDN to Server -->
+  <g transform="translate(520, 150)">
+    <line x1="0" y1="0" x2="60" y2="0" stroke="#4caf50" stroke-width="2" stroke-dasharray="5,3"/>
+    <polygon points="60,0 50,-6 50,6" fill="#4caf50"/>
+    <text x="30" y="-10" font-family="system-ui, sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Cache miss</text>
+    <text x="30" y="15" font-family="system-ui, sans-serif" font-size="7" fill="#8b949e" text-anchor="middle">(rarely hit)</text>
+  </g>
+
+  <!-- Origin Server on right -->
+  <g transform="translate(600, 70)">
+    <rect width="140" height="180" rx="8" fill="#0d1117" stroke="#4caf50" stroke-width="2"/>
+    <text x="70" y="20" font-family="system-ui, sans-serif" font-size="10" fill="#4caf50" text-anchor="middle">Origin Server</text>
+
+    <!-- New files -->
+    <rect x="10" y="35" width="120" height="55" rx="4" fill="#1e3a5f"/>
+    <text x="70" y="52" font-family="monospace" font-size="9" fill="#4caf50" text-anchor="middle">dotnet.boot.js (NEW)</text>
+    <text x="70" y="68" font-family="monospace" font-size="8" fill="#8b949e" text-anchor="middle">fingerprint: q1maem3emw</text>
+    <text x="70" y="82" font-family="system-ui, sans-serif" font-size="7" fill="#4caf50" text-anchor="middle">✓ Updated!</text>
+
+    <!-- WASM files -->
+    <rect x="10" y="100" width="120" height="70" rx="4" fill="#1e3a5f"/>
+    <text x="70" y="117" font-family="system-ui, sans-serif" font-size="9" fill="#4caf50" text-anchor="middle">.wasm files</text>
+    <text x="70" y="133" font-family="monospace" font-size="7" fill="#8b949e" text-anchor="middle">...q1maem3emw.wasm ✓</text>
+    <text x="70" y="147" font-family="monospace" font-size="7" fill="#ff6b6b" text-anchor="middle" text-decoration="line-through">...b2ks6tgw1g.wasm</text>
+    <text x="70" y="160" font-family="system-ui, sans-serif" font-size="7" fill="#8b949e" text-anchor="middle">(old files deleted)</text>
+  </g>
+
+  <!-- Bottom explanation -->
+  <g transform="translate(50, 280)">
+    <rect width="700" height="110" rx="8" fill="#1e1e2e" stroke="#30363d" stroke-width="1"/>
+
+    <text x="20" y="25" font-family="system-ui, sans-serif" font-size="11" fill="#ff6b6b" font-weight="bold">The Problem:</text>
+    <text x="20" y="42" font-family="system-ui, sans-serif" font-size="10" fill="#8b949e">CDN caches the boot manifest → You deploy new WASM files → Old files deleted</text>
+    <text x="20" y="57" font-family="system-ui, sans-serif" font-size="10" fill="#8b949e">→ CDN still serves old manifest → Browser requests files that don't exist → 404</text>
+
+    <text x="380" y="25" font-family="system-ui, sans-serif" font-size="11" fill="#4caf50" font-weight="bold">The Fix:</text>
+    <text x="380" y="42" font-family="system-ui, sans-serif" font-size="10" fill="#8b949e">Set Cache-Control: no-cache for</text>
+    <text x="380" y="57" font-family="monospace" font-size="9" fill="#4fc3f7">dotnet.boot.js</text>
+    <text x="490" y="57" font-family="system-ui, sans-serif" font-size="10" fill="#8b949e">and</text>
+    <text x="510" y="57" font-family="monospace" font-size="9" fill="#4fc3f7">blazor.webassembly.js</text>
+
+    <text x="20" y="85" font-family="system-ui, sans-serif" font-size="9" fill="#F48120">💡 Private/Incognito mode doesn't help — the cache is at the CDN edge, not in your browser!</text>
+    <text x="20" y="100" font-family="system-ui, sans-serif" font-size="9" fill="#F48120">💡 VPNs can hit different CDN edges with different cache states — that's why it works in Chrome but not Opera!</text>
+  </g>
+</svg>

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "blazor-wasm-cloudflare-caching-gotcha",
+      "title": "Blazor WASM + Cloudflare: The Caching Gotcha That Breaks Everything",
+      "description": "Your Blazor WASM app works locally but shows 404s for .wasm files after deployment. Private browsing doesn't help. Different browsers give different results. Here's why CDN edge caching is the invisible culprit.",
+      "category": "Computers",
+      "tags": ["blazor", "webassembly", "cloudflare", "caching", "dotnet", "debugging", "cdn"],
+      "date": "2026-08-06",
+      "featured": true,
+      "image": "/img/posts/blazor-wasm-cloudflare-caching-gotcha.svg",
+      "linkedInHook": "Your Blazor WASM app works perfectly. You deploy an update. Now users get 404 errors for .wasm files.\n\nPrivate browsing doesn't fix it. Different browsers give different results. Chrome works, Opera doesn't. VPNs change everything.\n\nThe culprit: Cloudflare cached your dotnet.boot.js manifest. You deleted the old .wasm files. The CDN is serving users a shopping list for groceries you threw away.\n\nThe fix: Cache-Control: no-cache for dotnet.boot.js and blazor.webassembly.js.\n\nTwo lines in web.config. Hours of debugging avoided."
+    },
+    {
       "slug": "m3e-design-for-field-workers",
       "title": "Material 3 Expressive for Field Workers: Designing for Work Gloves and Sunlight",
       "description": "M3E's 46-study research was about consumer apps. But what about people wearing work gloves, squinting in sunlight, who need to clock in NOW? Here's how we adapted Material 3 for blue-collar reality.",
