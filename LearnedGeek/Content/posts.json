@@ -9,7 +9,8 @@
       "date": "2026-09-05",
       "featured": true,
       "image": "/img/posts/why-databases-need-all-this-ceremony.svg",
-      "linkedInHook": "Code is like a recipe. If it's wrong, you fix it. No cake was harmed.\n\nData is like the cake itself. Once you've baked it wrong, you can't unbake it. The eggs are already in there.\n\nThis is why developers treat databases like explosives. Migrations. Backups. Testing against real databases. Environment separation.\n\nThe ceremony exists because data changes can't be easily undone. And data is the actual reason software exists."
+      "linkedInHook": "Code is like a recipe. If it's wrong, you fix it. No cake was harmed.\n\nData is like the cake itself. Once you've baked it wrong, you can't unbake it. The eggs are already in there.\n\nThis is why developers treat databases like explosives. Migrations. Backups. Testing against real databases. Environment separation.\n\nThe ceremony exists because data changes can't be easily undone. And data is the actual reason software exists.",
+      "blueskyHook": "Code is a recipe—fix it if it's wrong, no harm done.\n\nData is the cake. Bake it wrong and you can't unbake it.\n\nThat's why databases get all the ceremony. Explained without jargon:"
     },
     {
       "slug": "how-ai-assistants-actually-work",
@@ -20,7 +21,8 @@
       "date": "2026-08-31",
       "featured": true,
       "image": "/img/posts/how-ai-assistants-actually-work.svg",
-      "linkedInHook": "Imagine a parrot that has listened to every book, article, and webpage ever written. Trillions of patterns. It doesn't understand any of it—but it has an incredible ear for how language flows.\n\nThat's roughly how AI assistants work. They don't 'know' things. They predict what sounds right.\n\nThis is why they can be confidently wrong. Why they're great at drafts but need verification. Why expertise matters more, not less.\n\nUnderstanding the mechanism helps you use the tool better."
+      "linkedInHook": "Imagine a parrot that has listened to every book, article, and webpage ever written. Trillions of patterns. It doesn't understand any of it—but it has an incredible ear for how language flows.\n\nThat's roughly how AI assistants work. They don't 'know' things. They predict what sounds right.\n\nThis is why they can be confidently wrong. Why they're great at drafts but need verification. Why expertise matters more, not less.\n\nUnderstanding the mechanism helps you use the tool better.",
+      "blueskyHook": "AI assistants don't \"know\" things. They predict what sounds right—like a parrot that's read the entire internet.\n\nUnderstanding this changes how you use them:"
     },
     {
       "slug": "how-https-keeps-you-safe",
@@ -31,7 +33,8 @@
       "date": "2026-08-26",
       "featured": true,
       "image": "/img/posts/how-https-keeps-you-safe.svg",
-      "linkedInHook": "HTTP is a postcard. Anyone who handles it can read it.\n\nHTTPS is a sealed envelope. Only the recipient can open it.\n\nBut there's more: how do you know you're actually talking to your bank, not someone pretending?\n\nCertificates. Trusted authorities. The infrastructure of trust that makes online banking possible.\n\nThe padlock means your data is encrypted in transit and the website's identity was verified. It doesn't mean the website is trustworthy—just that the envelope is sealed."
+      "linkedInHook": "HTTP is a postcard. Anyone who handles it can read it.\n\nHTTPS is a sealed envelope. Only the recipient can open it.\n\nBut there's more: how do you know you're actually talking to your bank, not someone pretending?\n\nCertificates. Trusted authorities. The infrastructure of trust that makes online banking possible.\n\nThe padlock means your data is encrypted in transit and the website's identity was verified. It doesn't mean the website is trustworthy—just that the envelope is sealed.",
+      "blueskyHook": "HTTP = postcard (anyone can read it)\nHTTPS = sealed envelope (only recipient can open)\n\nBut what does that padlock actually mean? Here's the explainer:"
     },
     {
       "slug": "how-google-finds-websites",
@@ -42,7 +45,8 @@
       "date": "2026-09-10",
       "featured": true,
       "image": "/img/posts/how-google-finds-websites.svg",
-      "linkedInHook": "Google uses robot spiders that visit websites by following links. Like exploring a cave system—enter one cave, find tunnels to others, keep going forever.\n\nThen it indexes everything—writes a summary for each page and files it in a massive catalog.\n\nWhen you search, it doesn't search the internet. It searches its catalog. And uses hundreds of factors to decide which pages deserve the top spots.\n\nSEO isn't manipulation. It's communication—helping Google understand what your content is about."
+      "linkedInHook": "Google uses robot spiders that visit websites by following links. Like exploring a cave system—enter one cave, find tunnels to others, keep going forever.\n\nThen it indexes everything—writes a summary for each page and files it in a massive catalog.\n\nWhen you search, it doesn't search the internet. It searches its catalog. And uses hundreds of factors to decide which pages deserve the top spots.\n\nSEO isn't manipulation. It's communication—helping Google understand what your content is about.",
+      "blueskyHook": "Google doesn't search the internet. It searches its catalog OF the internet.\n\nRobot spiders, indexing, ranking—explained for everyone:"
     },
     {
       "slug": "how-real-time-maps-work",
@@ -53,7 +57,8 @@
       "date": "2026-08-21",
       "featured": true,
       "image": "/img/posts/how-real-time-maps-work.svg",
-      "linkedInHook": "Regular websites are like calling someone, asking a question, getting an answer, and hanging up. Every time you need something, you call again.\n\nWebSockets are like staying on the line. When either of you has something to say, you just talk.\n\nSignalR is the operator who keeps the connection alive and sends messenger pigeons as backup.\n\nLeaflet is the artist who draws the map.\n\nThat's how your Uber driver's little icon moves across your screen in real-time."
+      "linkedInHook": "Regular websites are like calling someone, asking a question, getting an answer, and hanging up. Every time you need something, you call again.\n\nWebSockets are like staying on the line. When either of you has something to say, you just talk.\n\nSignalR is the operator who keeps the connection alive and sends messenger pigeons as backup.\n\nLeaflet is the artist who draws the map.\n\nThat's how your Uber driver's little icon moves across your screen in real-time.",
+      "blueskyHook": "Ever wonder how Uber shows your driver moving in real-time?\n\nWebSockets, SignalR, Leaflet—explained with zero code, just analogies:"
     },
     {
       "slug": "signalr-real-time-location-tracking",
@@ -64,7 +69,8 @@
       "date": "2026-08-16",
       "featured": true,
       "image": "/img/posts/signalr-real-time-location-tracking.svg",
-      "linkedInHook": "SignalR's automatic reconnection tries a few times and gives up. Forever. If you're lucky, you get a disconnected event.\n\nFor a location tracking app where field workers drive through dead zones, that's not acceptable.\n\nThe fix: custom retry policy with exponential backoff, HTTP polling fallback when WebSocket dies, and connections that keep trying even while polling.\n\nSignalR is best-effort. Your app handles worst-effort."
+      "linkedInHook": "SignalR's automatic reconnection tries a few times and gives up. Forever. If you're lucky, you get a disconnected event.\n\nFor a location tracking app where field workers drive through dead zones, that's not acceptable.\n\nThe fix: custom retry policy with exponential backoff, HTTP polling fallback when WebSocket dies, and connections that keep trying even while polling.\n\nSignalR is best-effort. Your app handles worst-effort.",
+      "blueskyHook": "SignalR reconnects automatically... until it doesn't. Then your map freezes forever.\n\nHere's how to build connections that actually fight to stay alive:"
     },
     {
       "slug": "leaflet-blazor-javascript-interop",
@@ -75,7 +81,8 @@
       "date": "2026-08-11",
       "featured": true,
       "image": "/img/posts/leaflet-blazor-javascript-interop.svg",
-      "linkedInHook": "Leaflet.js is the best mapping library on the web. My Blazor app speaks C#. These two languages looked at each other across the runtime divide like strangers at a wedding.\n\nThe pattern that worked: JavaScript owns all the state. C# just sends commands.\n\nNo juggling Leaflet objects across the interop boundary. Just primitives—strings, coordinates—and DotNetObjectReference for callbacks.\n\nJavaScript is the driver. C# is the passenger giving directions."
+      "linkedInHook": "Leaflet.js is the best mapping library on the web. My Blazor app speaks C#. These two languages looked at each other across the runtime divide like strangers at a wedding.\n\nThe pattern that worked: JavaScript owns all the state. C# just sends commands.\n\nNo juggling Leaflet objects across the interop boundary. Just primitives—strings, coordinates—and DotNetObjectReference for callbacks.\n\nJavaScript is the driver. C# is the passenger giving directions.",
+      "blueskyHook": "Leaflet speaks JavaScript. Blazor speaks C#. Making them work together was like arranging a conversation between strangers at a wedding.\n\nThe pattern that finally worked:"
     },
     {
       "slug": "blazor-wasm-cloudflare-caching-gotcha",
@@ -86,7 +93,8 @@
       "date": "2026-08-06",
       "featured": true,
       "image": "/img/posts/blazor-wasm-cloudflare-caching-gotcha.svg",
-      "linkedInHook": "Your Blazor WASM app works perfectly. You deploy an update. Now users get 404 errors for .wasm files.\n\nPrivate browsing doesn't fix it. Different browsers give different results. Chrome works, Opera doesn't. VPNs change everything.\n\nThe culprit: Cloudflare cached your dotnet.boot.js manifest. You deleted the old .wasm files. The CDN is serving users a shopping list for groceries you threw away.\n\nThe fix: Cache-Control: no-cache for dotnet.boot.js and blazor.webassembly.js.\n\nTwo lines in web.config. Hours of debugging avoided."
+      "linkedInHook": "Your Blazor WASM app works perfectly. You deploy an update. Now users get 404 errors for .wasm files.\n\nPrivate browsing doesn't fix it. Different browsers give different results. Chrome works, Opera doesn't. VPNs change everything.\n\nThe culprit: Cloudflare cached your dotnet.boot.js manifest. You deleted the old .wasm files. The CDN is serving users a shopping list for groceries you threw away.\n\nThe fix: Cache-Control: no-cache for dotnet.boot.js and blazor.webassembly.js.\n\nTwo lines in web.config. Hours of debugging avoided.",
+      "blueskyHook": "Blazor WASM works locally. Deploy to Cloudflare. Now random 404s on .wasm files.\n\nPrivate browsing doesn't help. The culprit is invisible. Here's what's happening:"
     },
     {
       "slug": "m3e-design-for-field-workers",
