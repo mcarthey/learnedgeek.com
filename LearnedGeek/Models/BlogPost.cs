@@ -12,6 +12,7 @@ public class BlogPost
     public string? Image { get; set; }
     public string? LinkedInHook { get; set; }
     public DateTime? LinkedInPostedDate { get; set; }
+    public string? BlueskyHook { get; set; }
     public string? InstagramCaption { get; set; }
     public DateTime? InstagramPostedDate { get; set; }
     public string? Content { get; set; }
