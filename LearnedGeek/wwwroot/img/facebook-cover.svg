@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 312">
+  <rect width="820" height="312" fill="#0a0a0a"/>
+
+  <!-- Subtle code snippets - barely visible -->
+  <g fill="#1a1a1a" font-family="'Courier New', monospace" font-size="11">
+    <!-- Left side code block -->
+    <text x="20" y="30">public class AppService</text>
+    <text x="20" y="45">{</text>
+    <text x="20" y="60">    private readonly ILogger _log;</text>
+    <text x="20" y="75">    private readonly IConfig _config;</text>
+    <text x="20" y="90"></text>
+    <text x="20" y="105">    public async Task&lt;Result&gt; Execute()</text>
+    <text x="20" y="120">    {</text>
+    <text x="20" y="135">        await _service.InitAsync();</text>
+    <text x="20" y="150">        return Result.Success();</text>
+    <text x="20" y="165">    }</text>
+    <text x="20" y="180">}</text>
+
+    <!-- Middle code block -->
+    <text x="300" y="80">interface IRepository&lt;T&gt;</text>
+    <text x="300" y="95">{</text>
+    <text x="300" y="110">    Task&lt;T?&gt; GetByIdAsync(int id);</text>
+    <text x="300" y="125">    Task&lt;IEnumerable&lt;T&gt;&gt; GetAllAsync();</text>
+    <text x="300" y="140">    Task CreateAsync(T entity);</text>
+    <text x="300" y="155">    Task UpdateAsync(T entity);</text>
+    <text x="300" y="170">}</text>
+
+    <!-- Right side code block -->
+    <text x="580" y="40">// Configuration</text>
+    <text x="580" y="55">builder.Services</text>
+    <text x="580" y="70">    .AddScoped&lt;IService, Service&gt;()</text>
+    <text x="580" y="85">    .AddSingleton&lt;ICache&gt;()</text>
+    <text x="580" y="100">    .AddHttpClient();</text>
+    <text x="580" y="130">var app = builder.Build();</text>
+    <text x="580" y="145">app.UseRouting();</text>
+    <text x="580" y="160">app.MapControllers();</text>
+
+    <!-- Bottom scattered code -->
+    <text x="40" y="220">await context.SaveChangesAsync();</text>
+    <text x="40" y="235">_logger.LogInformation("Done");</text>
+
+    <text x="350" y="230">return Ok(new { success = true });</text>
+
+    <text x="580" y="220">catch (Exception ex)</text>
+    <text x="580" y="235">{</text>
+    <text x="580" y="250">    _log.LogError(ex, "Failed");</text>
+    <text x="580" y="265">    throw;</text>
+    <text x="580" y="280">}</text>
+
+    <text x="100" y="280">.Where(x =&gt; x.IsActive)</text>
+    <text x="100" y="295">.OrderBy(x =&gt; x.Created)</text>
+
+    <text x="380" y="275">// TODO: Implement caching</text>
+    <text x="380" y="290">// var cached = await _cache.GetAsync(key);</text>
+  </g>
+</svg>
