@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f23"/>
+      <stop offset="100%" style="stop-color:#1a1a3e"/>
+    </linearGradient>
+    <linearGradient id="dangerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e74c3c"/>
+      <stop offset="100%" style="stop-color:#c0392b"/>
+    </linearGradient>
+    <linearGradient id="safeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#27ae60"/>
+      <stop offset="100%" style="stop-color:#2ecc71"/>
+    </linearGradient>
+    <linearGradient id="lockGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f39c12"/>
+      <stop offset="100%" style="stop-color:#e67e22"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad2)"/>
+
+  <!-- Grid pattern -->
+  <g opacity="0.05" stroke="white" stroke-width="1">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="55" font-family="Arial, sans-serif" font-size="36" font-weight="bold"
+        fill="white" text-anchor="middle">Thread-Safe Sync with SemaphoreSlim</text>
+  <text x="600" y="90" font-family="Arial, sans-serif" font-size="18"
+        fill="#95a5a6" text-anchor="middle">Replacing boolean flags with proper synchronization</text>
+
+  <!-- LEFT SIDE: The Problem (Race Condition) -->
+  <g transform="translate(50, 130)">
+    <text x="200" y="0" font-family="Arial, sans-serif" font-size="20" font-weight="bold"
+          fill="#e74c3c" text-anchor="middle">The Race Condition</text>
+
+    <!-- Boolean flag box -->
+    <rect x="150" y="30" width="100" height="40" rx="5" fill="#2c3e50" stroke="#e74c3c" stroke-width="2"/>
+    <text x="200" y="55" font-family="monospace" font-size="12" fill="white" text-anchor="middle">_isSyncing</text>
+
+    <!-- Thread A -->
+    <g transform="translate(0, 100)">
+      <rect x="0" y="0" width="180" height="200" rx="8" fill="#34495e" stroke="#3498db" stroke-width="2"/>
+      <text x="90" y="25" font-family="Arial, sans-serif" font-size="14" font-weight="bold"
+            fill="#3498db" text-anchor="middle">Thread A</text>
+
+      <text x="15" y="55" font-family="monospace" font-size="10" fill="#ecf0f1">1. if(!_isSyncing)</text>
+      <text x="150" y="55" font-family="monospace" font-size="10" fill="#2ecc71">false</text>
+
+      <text x="15" y="85" font-family="monospace" font-size="10" fill="#ecf0f1">2. _isSyncing=true</text>
+
+      <text x="15" y="115" font-family="monospace" font-size="10" fill="#ecf0f1">3. DoSyncAsync()</text>
+      <rect x="10" y="125" width="160" height="60" rx="3" fill="#e74c3c" opacity="0.3"/>
+      <text x="90" y="155" font-family="monospace" font-size="11" fill="#e74c3c" text-anchor="middle">EXECUTING</text>
+    </g>
+
+    <!-- Thread B -->
+    <g transform="translate(220, 100)">
+      <rect x="0" y="0" width="180" height="200" rx="8" fill="#34495e" stroke="#9b59b6" stroke-width="2"/>
+      <text x="90" y="25" font-family="Arial, sans-serif" font-size="14" font-weight="bold"
+            fill="#9b59b6" text-anchor="middle">Thread B</text>
+
+      <text x="15" y="55" font-family="monospace" font-size="10" fill="#ecf0f1">1. if(!_isSyncing)</text>
+      <text x="150" y="55" font-family="monospace" font-size="10" fill="#2ecc71">false</text>
+
+      <text x="15" y="85" font-family="monospace" font-size="10" fill="#ecf0f1">2. _isSyncing=true</text>
+
+      <text x="15" y="115" font-family="monospace" font-size="10" fill="#ecf0f1">3. DoSyncAsync()</text>
+      <rect x="10" y="125" width="160" height="60" rx="3" fill="#e74c3c" opacity="0.3"/>
+      <text x="90" y="155" font-family="monospace" font-size="11" fill="#e74c3c" text-anchor="middle">ALSO EXECUTING!</text>
+    </g>
+
+    <!-- Collision indicator -->
+    <g transform="translate(140, 340)">
+      <polygon points="60,0 120,50 0,50" fill="#e74c3c"/>
+      <text x="60" y="35" font-family="Arial, sans-serif" font-size="12" font-weight="bold"
+            fill="white" text-anchor="middle">RACE!</text>
+    </g>
+
+    <!-- X mark -->
+    <g transform="translate(175, 400)">
+      <circle cx="25" cy="25" r="25" fill="none" stroke="#e74c3c" stroke-width="3"/>
+      <line x1="10" y1="10" x2="40" y2="40" stroke="#e74c3c" stroke-width="3"/>
+      <line x1="40" y1="10" x2="10" y2="40" stroke="#e74c3c" stroke-width="3"/>
+    </g>
+  </g>
+
+  <!-- RIGHT SIDE: The Solution (SemaphoreSlim) -->
+  <g transform="translate(650, 130)">
+    <text x="225" y="0" font-family="Arial, sans-serif" font-size="20" font-weight="bold"
+          fill="#27ae60" text-anchor="middle">The Solution</text>
+
+    <!-- Semaphore lock visual -->
+    <g transform="translate(175, 20)">
+      <rect x="0" y="30" width="100" height="60" rx="5" fill="url(#lockGrad)"/>
+      <rect x="25" y="0" width="50" height="40" rx="25" fill="none" stroke="#f39c12" stroke-width="8"/>
+      <text x="50" y="65" font-family="monospace" font-size="11" fill="white" text-anchor="middle">SemaphoreSlim</text>
+      <text x="50" y="80" font-family="monospace" font-size="10" fill="white" text-anchor="middle">(1, 1)</text>
+    </g>
+
+    <!-- Thread A -->
+    <g transform="translate(0, 100)">
+      <rect x="0" y="0" width="200" height="200" rx="8" fill="#34495e" stroke="#3498db" stroke-width="2"/>
+      <text x="100" y="25" font-family="Arial, sans-serif" font-size="14" font-weight="bold"
+            fill="#3498db" text-anchor="middle">Thread A</text>
+
+      <text x="15" y="55" font-family="monospace" font-size="10" fill="#ecf0f1">1. WaitAsync(0)</text>
+      <text x="165" y="55" font-family="monospace" font-size="10" fill="#2ecc71">acquired</text>
+
+      <text x="15" y="85" font-family="monospace" font-size="10" fill="#ecf0f1">2. DoSyncAsync()</text>
+      <rect x="10" y="95" width="180" height="50" rx="3" fill="#27ae60" opacity="0.3"/>
+      <text x="100" y="125" font-family="monospace" font-size="11" fill="#27ae60" text-anchor="middle">EXECUTING</text>
+
+      <text x="15" y="170" font-family="monospace" font-size="10" fill="#ecf0f1">3. Release()</text>
+    </g>
+
+    <!-- Thread B -->
+    <g transform="translate(250, 100)">
+      <rect x="0" y="0" width="200" height="200" rx="8" fill="#34495e" stroke="#9b59b6" stroke-width="2"/>
+      <text x="100" y="25" font-family="Arial, sans-serif" font-size="14" font-weight="bold"
+            fill="#9b59b6" text-anchor="middle">Thread B</text>
+
+      <text x="15" y="55" font-family="monospace" font-size="10" fill="#ecf0f1">1. WaitAsync(0)</text>
+      <text x="165" y="55" font-family="monospace" font-size="10" fill="#e74c3c">false</text>
+
+      <text x="15" y="85" font-family="monospace" font-size="10" fill="#7f8c8d">2. return false</text>
+
+      <rect x="10" y="100" width="180" height="80" rx="3" fill="#2c3e50"/>
+      <text x="100" y="135" font-family="monospace" font-size="11" fill="#95a5a6" text-anchor="middle">BLOCKED</text>
+      <text x="100" y="155" font-family="monospace" font-size="10" fill="#95a5a6" text-anchor="middle">(returns immediately)</text>
+    </g>
+
+    <!-- Success indicator -->
+    <g transform="translate(200, 340)">
+      <rect x="0" y="0" width="100" height="40" rx="20" fill="#27ae60"/>
+      <text x="50" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold"
+            fill="white" text-anchor="middle">SAFE</text>
+    </g>
+
+    <!-- Checkmark -->
+    <g transform="translate(200, 400)">
+      <circle cx="25" cy="25" r="25" fill="none" stroke="#27ae60" stroke-width="3"/>
+      <polyline points="12,25 22,35 40,15" fill="none" stroke="#27ae60" stroke-width="3"/>
+    </g>
+  </g>
+
+  <!-- Bottom comparison -->
+  <g transform="translate(100, 540)">
+    <rect x="0" y="0" width="450" height="60" rx="8" fill="#c0392b" opacity="0.2"/>
+    <text x="225" y="25" font-family="monospace" font-size="14" fill="#e74c3c" text-anchor="middle">if (_isSyncing) return;</text>
+    <text x="225" y="45" font-family="Arial, sans-serif" font-size="12" fill="#95a5a6" text-anchor="middle">Race condition between check and set</text>
+  </g>
+
+  <g transform="translate(650, 540)">
+    <rect x="0" y="0" width="450" height="60" rx="8" fill="#27ae60" opacity="0.2"/>
+    <text x="225" y="25" font-family="monospace" font-size="14" fill="#27ae60" text-anchor="middle">if (!await _lock.WaitAsync(0)) return;</text>
+    <text x="225" y="45" font-family="Arial, sans-serif" font-size="12" fill="#95a5a6" text-anchor="middle">Atomic acquire-or-fail operation</text>
+  </g>
+</svg>

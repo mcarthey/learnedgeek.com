@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="retryGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e94560"/>
+      <stop offset="100%" style="stop-color:#ff6b6b"/>
+    </linearGradient>
+    <linearGradient id="circuitGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0f3460"/>
+      <stop offset="100%" style="stop-color:#533483"/>
+    </linearGradient>
+    <linearGradient id="successGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00b894"/>
+      <stop offset="100%" style="stop-color:#55efc4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Network pattern background -->
+  <g opacity="0.1" stroke="#e94560" stroke-width="1" fill="none">
+    <circle cx="100" cy="100" r="50"/>
+    <circle cx="200" cy="200" r="30"/>
+    <circle cx="1100" cy="500" r="40"/>
+    <circle cx="1000" cy="150" r="35"/>
+    <line x1="100" y1="100" x2="200" y2="200"/>
+    <line x1="1000" y1="150" x2="1100" y2="500"/>
+  </g>
+
+  <!-- Main visual: Request flow with retry arrows -->
+  <g transform="translate(100, 180)">
+    <!-- Mobile device -->
+    <rect x="0" y="50" width="80" height="140" rx="10" fill="#2d3436" stroke="#636e72" stroke-width="2"/>
+    <rect x="10" y="65" width="60" height="100" fill="#0984e3"/>
+    <circle cx="40" cy="175" r="8" fill="#636e72"/>
+    <text x="40" y="110" font-family="monospace" font-size="10" fill="white" text-anchor="middle">APP</text>
+
+    <!-- Polly shield -->
+    <g transform="translate(180, 80)">
+      <path d="M50,0 L100,25 L100,75 C100,110 50,130 50,130 C50,130 0,110 0,75 L0,25 Z"
+            fill="url(#retryGrad)" opacity="0.9"/>
+      <text x="50" y="60" font-family="Arial, sans-serif" font-size="14" font-weight="bold"
+            fill="white" text-anchor="middle">POLLY</text>
+      <text x="50" y="80" font-family="monospace" font-size="10" fill="white" text-anchor="middle">Retry</text>
+      <text x="50" y="95" font-family="monospace" font-size="10" fill="white" text-anchor="middle">Circuit</text>
+    </g>
+
+    <!-- Retry arrows -->
+    <g transform="translate(320, 60)">
+      <text x="80" y="0" font-family="monospace" font-size="12" fill="#ff6b6b">Attempt 1</text>
+      <path d="M0,20 L150,20" stroke="#ff6b6b" stroke-width="2" fill="none" marker-end="url(#arrowRed)"/>
+      <text x="170" y="25" font-family="monospace" font-size="11" fill="#ff6b6b">500</text>
+
+      <text x="80" y="50" font-family="monospace" font-size="12" fill="#ffa502">Attempt 2 (+1s)</text>
+      <path d="M0,70 L150,70" stroke="#ffa502" stroke-width="2" fill="none"/>
+      <text x="170" y="75" font-family="monospace" font-size="11" fill="#ffa502">503</text>
+
+      <text x="80" y="100" font-family="monospace" font-size="12" fill="#00b894">Attempt 3 (+2s)</text>
+      <path d="M0,120 L150,120" stroke="#00b894" stroke-width="3" fill="none"/>
+      <text x="170" y="125" font-family="monospace" font-size="11" fill="#00b894">200</text>
+    </g>
+
+    <!-- Server -->
+    <g transform="translate(520, 50)">
+      <rect x="0" y="0" width="100" height="140" rx="5" fill="#2d3436" stroke="#636e72" stroke-width="2"/>
+      <rect x="10" y="15" width="80" height="10" rx="2" fill="#e94560"/>
+      <rect x="10" y="35" width="80" height="10" rx="2" fill="#00b894"/>
+      <rect x="10" y="55" width="80" height="10" rx="2" fill="#0984e3"/>
+      <text x="50" y="95" font-family="monospace" font-size="12" fill="#b2bec3" text-anchor="middle">SERVER</text>
+      <!-- Blinking lights -->
+      <circle cx="20" cy="115" r="5" fill="#00b894"/>
+      <circle cx="40" cy="115" r="5" fill="#00b894"/>
+      <circle cx="60" cy="115" r="5" fill="#ffa502"/>
+    </g>
+  </g>
+
+  <!-- Circuit Breaker States -->
+  <g transform="translate(750, 200)">
+    <text x="150" y="-20" font-family="Arial, sans-serif" font-size="18" font-weight="bold"
+          fill="white" text-anchor="middle">Circuit Breaker</text>
+
+    <!-- CLOSED state -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="100" height="60" rx="8" fill="#00b894"/>
+      <text x="50" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold"
+            fill="white" text-anchor="middle">CLOSED</text>
+      <text x="50" y="45" font-family="monospace" font-size="10" fill="white" text-anchor="middle">Normal</text>
+    </g>
+
+    <!-- Arrow down -->
+    <path d="M50,70 L50,100 L40,90 M50,100 L60,90" stroke="#ff6b6b" stroke-width="2" fill="none"/>
+    <text x="100" y="90" font-family="monospace" font-size="9" fill="#ff6b6b">5 failures</text>
+
+    <!-- OPEN state -->
+    <g transform="translate(0, 110)">
+      <rect x="0" y="0" width="100" height="60" rx="8" fill="#e94560"/>
+      <text x="50" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold"
+            fill="white" text-anchor="middle">OPEN</text>
+      <text x="50" y="45" font-family="monospace" font-size="10" fill="white" text-anchor="middle">Fail Fast</text>
+    </g>
+
+    <!-- Arrow to HALF-OPEN -->
+    <path d="M110,140 L180,140" stroke="#ffa502" stroke-width="2" fill="none"/>
+    <text x="145" y="130" font-family="monospace" font-size="9" fill="#ffa502">30s</text>
+
+    <!-- HALF-OPEN state -->
+    <g transform="translate(190, 110)">
+      <rect x="0" y="0" width="100" height="60" rx="8" fill="#ffa502"/>
+      <text x="50" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold"
+            fill="white" text-anchor="middle">HALF-OPEN</text>
+      <text x="50" y="45" font-family="monospace" font-size="10" fill="white" text-anchor="middle">Testing</text>
+    </g>
+
+    <!-- Arrow back to CLOSED -->
+    <path d="M240,100 L240,50 L110,50" stroke="#00b894" stroke-width="2" fill="none"/>
+    <text x="175" y="40" font-family="monospace" font-size="9" fill="#00b894">success</text>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="60" font-family="Arial, sans-serif" font-size="36" font-weight="bold"
+        fill="white" text-anchor="middle">HTTP Resilience with Polly</text>
+  <text x="600" y="95" font-family="Arial, sans-serif" font-size="20"
+        fill="#b2bec3" text-anchor="middle">Retry + Circuit Breaker Patterns</text>
+
+  <!-- Bottom stats -->
+  <g transform="translate(100, 530)">
+    <rect x="0" y="0" width="200" height="60" rx="8" fill="url(#circuitGrad)" opacity="0.8"/>
+    <text x="100" y="25" font-family="monospace" font-size="12" fill="white" text-anchor="middle">Exponential Backoff</text>
+    <text x="100" y="45" font-family="monospace" font-size="14" fill="#55efc4" text-anchor="middle">1s → 2s → 4s</text>
+  </g>
+
+  <g transform="translate(500, 530)">
+    <rect x="0" y="0" width="200" height="60" rx="8" fill="url(#circuitGrad)" opacity="0.8"/>
+    <text x="100" y="25" font-family="monospace" font-size="12" fill="white" text-anchor="middle">Circuit Break</text>
+    <text x="100" y="45" font-family="monospace" font-size="14" fill="#ff6b6b" text-anchor="middle">5 failures = OPEN</text>
+  </g>
+
+  <g transform="translate(900, 530)">
+    <rect x="0" y="0" width="200" height="60" rx="8" fill="url(#circuitGrad)" opacity="0.8"/>
+    <text x="100" y="25" font-family="monospace" font-size="12" fill="white" text-anchor="middle">Recovery Window</text>
+    <text x="100" y="45" font-family="monospace" font-size="14" fill="#ffa502" text-anchor="middle">30 seconds</text>
+  </g>
+</svg>
