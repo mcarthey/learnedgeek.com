@@ -1,12 +1,24 @@
 {
   "posts": [
     {
+      "slug": "grading-dashboard-github-classroom",
+      "title": "I Built a Robot to Grade My Students (Kind Of)",
+      "description": "Teaching database programming means checking 30 GitHub repos weekly. Manual review was killing me. So I built a dashboard that scans for build status, TODOs, student questions, and code quality—automatically.",
+      "category": "Computers",
+      "tags": ["teaching", "github-actions", "automation", "github-classroom", "sonarcloud", "education"],
+      "date": "2026-09-15",
+      "featured": true,
+      "image": "/img/posts/grading-dashboard-github-classroom.svg",
+      "linkedInHook": "I teach database programming. Every week: 30 student repos to review. Did it compile? Did they finish? Did anyone leave a desperate '// is this right???' at 2 AM?\n\nMy old workflow: click, check, repeat, forget where I was, start over.\n\nSo I built a dashboard. GitHub Actions scans every 6 hours for build status, TODO counts, student questions in comments, SonarCloud metrics.\n\nNow grading takes 1 hour instead of 4. And I actually catch the students who need help.",
+      "blueskyHook": "Teaching means checking 30 GitHub repos weekly. Click, check, repeat, forget where I was, start over.\n\nBuilt a dashboard that scans automatically. Grading: 4 hours → 1 hour. And I catch students who need help:"
+    },
+    {
       "slug": "why-databases-need-all-this-ceremony",
       "title": "Why Databases Need All This Ceremony (Data Explained)",
       "description": "Developers talk about databases like they're handling explosives. Migrations. Backups. Environment separation. From the outside, it looks like paranoia. Here's why the ceremony exists.",
       "category": "Computers",
       "tags": ["databases", "explainer", "beginners", "data", "testing", "backups", "encryption"],
-      "date": "2026-09-05",
+      "date": "2026-06-10",
       "featured": true,
       "image": "/img/posts/why-databases-need-all-this-ceremony.svg",
       "linkedInHook": "Code is like a recipe. If it's wrong, you fix it. No cake was harmed.\n\nData is like the cake itself. Once you've baked it wrong, you can't unbake it. The eggs are already in there.\n\nThis is why developers treat databases like explosives. Migrations. Backups. Testing against real databases. Environment separation.\n\nThe ceremony exists because data changes can't be easily undone. And data is the actual reason software exists.",
@@ -18,7 +30,7 @@
       "description": "You type a question into ChatGPT. Seconds later, a helpful response appears. Is it thinking? Searching? Neither. It's predicting—and understanding that changes everything.",
       "category": "Computers",
       "tags": ["ai", "explainer", "beginners", "llm", "chatgpt", "machine-learning"],
-      "date": "2026-08-31",
+      "date": "2026-03-25",
       "featured": true,
       "image": "/img/posts/how-ai-assistants-actually-work.svg",
       "linkedInHook": "Imagine a parrot that has listened to every book, article, and webpage ever written. Trillions of patterns. It doesn't understand any of it—but it has an incredible ear for how language flows.\n\nThat's roughly how AI assistants work. They don't 'know' things. They predict what sounds right.\n\nThis is why they can be confidently wrong. Why they're great at drafts but need verification. Why expertise matters more, not less.\n\nUnderstanding the mechanism helps you use the tool better.",
@@ -30,7 +42,7 @@
       "description": "You've seen the padlock in your browser. You know some sites are 'secure.' But what does it actually mean? What's being locked? Here's HTTPS explained without the jargon.",
       "category": "Computers",
       "tags": ["security", "explainer", "beginners", "https", "ssl", "certificates", "encryption"],
-      "date": "2026-08-26",
+      "date": "2026-06-04",
       "featured": true,
       "image": "/img/posts/how-https-keeps-you-safe.svg",
       "linkedInHook": "HTTP is a postcard. Anyone who handles it can read it.\n\nHTTPS is a sealed envelope. Only the recipient can open it.\n\nBut there's more: how do you know you're actually talking to your bank, not someone pretending?\n\nCertificates. Trusted authorities. The infrastructure of trust that makes online banking possible.\n\nThe padlock means your data is encrypted in transit and the website's identity was verified. It doesn't mean the website is trustworthy—just that the envelope is sealed.",
@@ -42,7 +54,7 @@
       "description": "You type something into Google. Billions of pages exist. How does it know about them? How does it decide which ten to show? Here's search engines explained for everyone.",
       "category": "Computers",
       "tags": ["seo", "explainer", "beginners", "google", "search", "indexing", "ranking"],
-      "date": "2026-09-10",
+      "date": "2026-03-05",
       "featured": true,
       "image": "/img/posts/how-google-finds-websites.svg",
       "linkedInHook": "Google uses robot spiders that visit websites by following links. Like exploring a cave system—enter one cave, find tunnels to others, keep going forever.\n\nThen it indexes everything—writes a summary for each page and files it in a massive catalog.\n\nWhen you search, it doesn't search the internet. It searches its catalog. And uses hundreds of factors to decide which pages deserve the top spots.\n\nSEO isn't manipulation. It's communication—helping Google understand what your content is about.",
@@ -54,7 +66,7 @@
       "description": "You open Uber. You see your driver moving on the map. How? How does your phone know where someone else's phone is, right now? Here's the technology explained for everyone.",
       "category": "Computers",
       "tags": ["real-time", "explainer", "beginners", "websocket", "signalr", "maps", "technology"],
-      "date": "2026-08-21",
+      "date": "2026-08-06",
       "featured": true,
       "image": "/img/posts/how-real-time-maps-work.svg",
       "linkedInHook": "Regular websites are like calling someone, asking a question, getting an answer, and hanging up. Every time you need something, you call again.\n\nWebSockets are like staying on the line. When either of you has something to say, you just talk.\n\nSignalR is the operator who keeps the connection alive and sends messenger pigeons as backup.\n\nLeaflet is the artist who draws the map.\n\nThat's how your Uber driver's little icon moves across your screen in real-time.",
@@ -90,7 +102,7 @@
       "description": "Your Blazor WASM app works locally but shows 404s for .wasm files after deployment. Private browsing doesn't help. Different browsers give different results. Here's why CDN edge caching is the invisible culprit.",
       "category": "Computers",
       "tags": ["blazor", "webassembly", "cloudflare", "caching", "dotnet", "debugging", "cdn"],
-      "date": "2026-08-06",
+      "date": "2026-08-21",
       "featured": true,
       "image": "/img/posts/blazor-wasm-cloudflare-caching-gotcha.svg",
       "linkedInHook": "Your Blazor WASM app works perfectly. You deploy an update. Now users get 404 errors for .wasm files.\n\nPrivate browsing doesn't fix it. Different browsers give different results. Chrome works, Opera doesn't. VPNs change everything.\n\nThe culprit: Cloudflare cached your dotnet.boot.js manifest. You deleted the old .wasm files. The CDN is serving users a shopping list for groceries you threw away.\n\nThe fix: Cache-Control: no-cache for dotnet.boot.js and blazor.webassembly.js.\n\nTwo lines in web.config. Hours of debugging avoided.",
@@ -105,7 +117,8 @@
       "date": "2026-08-01",
       "featured": true,
       "image": "/img/posts/m3e-design-for-field-workers.svg",
-      "linkedInHook": "Google's Material 3 Expressive is based on 46 studies with 18,000+ participants.\n\nBut those studies were about messaging apps and social media. What about people wearing work gloves? Squinting in sunlight? Who need to clock in in 3 seconds and get back to work?\n\n64px touch targets. 2-tab bottom nav. Industry-familiar blueprint aesthetics.\n\nM3E gave us the research to justify decisions we might otherwise have defended on instinct. 'Users spot key elements 4x faster' beats 'I think bigger buttons look better' in any stakeholder meeting."
+      "linkedInHook": "Google's Material 3 Expressive is based on 46 studies with 18,000+ participants.\n\nBut those studies were about messaging apps and social media. What about people wearing work gloves? Squinting in sunlight? Who need to clock in in 3 seconds and get back to work?\n\n64px touch targets. 2-tab bottom nav. Industry-familiar blueprint aesthetics.\n\nM3E gave us the research to justify decisions we might otherwise have defended on instinct. 'Users spot key elements 4x faster' beats 'I think bigger buttons look better' in any stakeholder meeting.",
+      "blueskyHook": "Google's M3E research was about consumer apps. What about field workers in work gloves, squinting in sunlight?\n\n64px touch targets. 2-tab nav. Blueprint aesthetics. Here's how we adapted:"
     },
     {
       "slug": "floating-card-pattern-device-agnostic-design",
@@ -116,7 +129,8 @@
       "date": "2026-07-27",
       "featured": true,
       "image": "/img/posts/floating-card-pattern-device-agnostic-design.svg",
-      "linkedInHook": "Android fragmentation is real. Design a layout on a Pixel, then watch it break on a Samsung with a massive navigation bar.\n\nThe usual solution: safe-area calculations everywhere.\n\nOur solution: stop fighting. Make the system chrome part of the design.\n\n8px insets, rounded corners, brand color behind everything. The same CSS works on every device. No calculations needed.\n\nSometimes the solution to fragmentation isn't more complexity—it's embracing the constraints."
+      "linkedInHook": "Android fragmentation is real. Design a layout on a Pixel, then watch it break on a Samsung with a massive navigation bar.\n\nThe usual solution: safe-area calculations everywhere.\n\nOur solution: stop fighting. Make the system chrome part of the design.\n\n8px insets, rounded corners, brand color behind everything. The same CSS works on every device. No calculations needed.\n\nSometimes the solution to fragmentation isn't more complexity—it's embracing the constraints.",
+      "blueskyHook": "Android fragmentation breaks every layout. Instead of fighting with safe-area calculations, we made system chrome part of the design.\n\n8px insets, same CSS on every device:"
     },
     {
       "slug": "drawer-vs-bottom-nav-ux-framework",
@@ -127,7 +141,8 @@
       "date": "2026-07-22",
       "featured": true,
       "image": "/img/posts/drawer-vs-bottom-nav-ux-framework.svg",
-      "linkedInHook": "We built a hamburger menu. Three months later, we ripped it out.\n\nWatch someone use a drawer: tap hamburger → wait for animation → scan options → tap choice → wait for close. 7 steps to navigate.\n\nBottom nav: tap destination. 1 step.\n\nThe framework:\n• 2-4 actions? Bottom nav\n• 5+? Drawer (or rethink your IA)\n• One-handed use? Bottom nav wins\n• Novice users? Visible navigation always\n\nWe deleted more code removing the drawer than we added for the bottom nav."
+      "linkedInHook": "We built a hamburger menu. Three months later, we ripped it out.\n\nWatch someone use a drawer: tap hamburger → wait for animation → scan options → tap choice → wait for close. 7 steps to navigate.\n\nBottom nav: tap destination. 1 step.\n\nThe framework:\n• 2-4 actions? Bottom nav\n• 5+? Drawer (or rethink your IA)\n• One-handed use? Bottom nav wins\n• Novice users? Visible navigation always\n\nWe deleted more code removing the drawer than we added for the bottom nav.",
+      "blueskyHook": "Built a hamburger menu. Three months later, ripped it out.\n\nDrawer: 7 steps to navigate.\nBottom nav: 1 step.\n\nHere's the decision framework that made the choice obvious:"
     },
     {
       "slug": "profile-avatar-navigation-pattern",
@@ -138,7 +153,8 @@
       "date": "2026-07-17",
       "featured": true,
       "image": "/img/posts/profile-avatar-navigation-pattern.svg",
-      "linkedInHook": "Settings is a secondary action. Don't waste prime thumb-zone real estate on it.\n\nThe pattern: profile avatar in the header. Visible on every page. Tap → settings.\n\nWhy it works:\n• Avatars are universally understood as clickable\n• 'MJ' is more human than a gear icon\n• Bottom nav stays focused on primary actions\n• Users already know this from Gmail, Twitter, etc.\n\nThe best patterns feel obvious in retrospect. 'Put a profile avatar in the header' is so simple it almost doesn't need a blog post. But it took us three iterations to arrive at it."
+      "linkedInHook": "Settings is a secondary action. Don't waste prime thumb-zone real estate on it.\n\nThe pattern: profile avatar in the header. Visible on every page. Tap → settings.\n\nWhy it works:\n• Avatars are universally understood as clickable\n• 'MJ' is more human than a gear icon\n• Bottom nav stays focused on primary actions\n• Users already know this from Gmail, Twitter, etc.\n\nThe best patterns feel obvious in retrospect. 'Put a profile avatar in the header' is so simple it almost doesn't need a blog post. But it took us three iterations to arrive at it.",
+      "blueskyHook": "Settings is important but shouldn't steal prime thumb-zone real estate.\n\nThe pattern: profile avatar in the header. Visible everywhere, leads to settings. Simple, but took 3 iterations to get right:"
     },
     {
       "slug": "blueprint-theme-construction-industry-visual-identity",
@@ -149,7 +165,8 @@
       "date": "2026-07-12",
       "featured": true,
       "image": "/img/posts/blueprint-theme-construction-industry-visual-identity.svg",
-      "linkedInHook": "Generic business app aesthetics don't resonate with construction workers.\n\nThey spend their careers turning blueprints into reality. The visual language is familiar: grid patterns, navy tones, technical precision, corner measurement marks.\n\nSo we made our app look like a blueprint.\n\nCSS grid backgrounds. Teal tick marks at corners. Monospace for technical data. Navy gradients that feel like architectural drawings.\n\nWhen a 55-year-old master electrician opens the app and thinks 'this was made for people like me'—that's trust you can't buy with marketing."
+      "linkedInHook": "Generic business app aesthetics don't resonate with construction workers.\n\nThey spend their careers turning blueprints into reality. The visual language is familiar: grid patterns, navy tones, technical precision, corner measurement marks.\n\nSo we made our app look like a blueprint.\n\nCSS grid backgrounds. Teal tick marks at corners. Monospace for technical data. Navy gradients that feel like architectural drawings.\n\nWhen a 55-year-old master electrician opens the app and thinks 'this was made for people like me'—that's trust you can't buy with marketing.",
+      "blueskyHook": "Generic business app aesthetics don't resonate with construction workers. They spend careers turning blueprints into reality.\n\nSo we made our app look like one:"
     },
     {
       "slug": "mobile-css-micro-fixes",
@@ -160,7 +177,8 @@
       "date": "2026-07-07",
       "featured": true,
       "image": "/img/posts/mobile-css-micro-fixes.svg",
-      "linkedInHook": "Mobile web apps have a hundred tiny paper cuts that make them feel 'off.'\n\nNone are hard to fix—but you have to know they exist.\n\n• user-select: none (stop accidental text selection)\n• -webkit-tap-highlight-color: transparent (kill the blue flash)\n• overscroll-behavior: none (prevent pull-to-refresh hijacking)\n• font-size: 16px on inputs (prevent iOS zoom)\n• env(safe-area-inset-*) (respect notches)\n\nThis is a living document. Copy-paste the starter snippet and forget about these issues forever."
+      "linkedInHook": "Mobile web apps have a hundred tiny paper cuts that make them feel 'off.'\n\nNone are hard to fix—but you have to know they exist.\n\n• user-select: none (stop accidental text selection)\n• -webkit-tap-highlight-color: transparent (kill the blue flash)\n• overscroll-behavior: none (prevent pull-to-refresh hijacking)\n• font-size: 16px on inputs (prevent iOS zoom)\n• env(safe-area-inset-*) (respect notches)\n\nThis is a living document. Copy-paste the starter snippet and forget about these issues forever.",
+      "blueskyHook": "Mobile web apps have a hundred tiny paper cuts. None are hard to fix—but you have to know they exist.\n\nHere's the CSS one-liners that make web apps feel native:"
     },
     {
       "slug": "maui-fast-deployment-wireless-debugging-crash",
@@ -171,7 +189,8 @@
       "date": "2026-07-02",
       "featured": true,
       "image": "/img/posts/maui-fast-deployment-wireless-debugging-crash.svg",
-      "linkedInHook": "Works via USB. Works in the emulator. Switch to wireless debugging → immediate crash on launch. No error, no stack trace.\n\nThis cost me an hour.\n\nThe culprit: MAUI's Fast Deployment. Debug builds don't embed assemblies in the APK—they stream them over adb. Wireless connections can't always do that reliably.\n\nThe fix:\n<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>\n\nTwo lines of XML. Slower builds, but the app actually runs. Worth it."
+      "linkedInHook": "Works via USB. Works in the emulator. Switch to wireless debugging → immediate crash on launch. No error, no stack trace.\n\nThis cost me an hour.\n\nThe culprit: MAUI's Fast Deployment. Debug builds don't embed assemblies in the APK—they stream them over adb. Wireless connections can't always do that reliably.\n\nThe fix:\n<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>\n\nTwo lines of XML. Slower builds, but the app actually runs. Worth it.",
+      "blueskyHook": "MAUI app works via USB. Works in emulator. Switch to wireless debugging → immediate crash. No error.\n\nThe culprit is Fast Deployment. Two-line fix:"
     },
     {
       "slug": "vscode-file-watcher-build-locks",
@@ -182,7 +201,8 @@
       "date": "2026-06-27",
       "featured": true,
       "image": "/img/posts/vscode-file-watcher-build-locks.svg",
-      "linkedInHook": "Sometimes the build works. Sometimes: 'The file is locked by Code.exe.'\n\nI blamed antivirus. I blamed my luck. The real culprit: VS Code's file watcher.\n\nVS Code watches everything in your workspace by default. When MSBuild writes to bin/, VS Code notices and briefly holds a handle. Race condition.\n\nThe fix:\n\"files.watcherExclude\": {\n  \"**/bin/**\": true,\n  \"**/obj/**\": true\n}\n\nTwo lines of JSON. No more mystery build failures. This took me MONTHS to figure out."
+      "linkedInHook": "Sometimes the build works. Sometimes: 'The file is locked by Code.exe.'\n\nI blamed antivirus. I blamed my luck. The real culprit: VS Code's file watcher.\n\nVS Code watches everything in your workspace by default. When MSBuild writes to bin/, VS Code notices and briefly holds a handle. Race condition.\n\nThe fix:\n\"files.watcherExclude\": {\n  \"**/bin/**\": true,\n  \"**/obj/**\": true\n}\n\nTwo lines of JSON. No more mystery build failures. This took me MONTHS to figure out.",
+      "blueskyHook": ".NET build randomly fails: \"file locked by Code.exe\"\n\nThe culprit: VS Code watches bin/obj folders. Race condition.\n\nTwo lines in settings.json. Took me MONTHS to figure out:"
     },
     {
       "slug": "writing-technical-content-when-debugging",
@@ -193,7 +213,8 @@
       "date": "2026-06-22",
       "featured": true,
       "image": "/img/posts/writing-technical-content-when-debugging.svg",
-      "linkedInHook": "It's 11:47 PM. The bug is fixed. I have 43 browser tabs open and my coffee went cold two hours ago.\n\nThis is not the time to write something entertaining.\n\nBut it IS the perfect time to write something useful.\n\nMost of my 'entertaining' technical posts started as exhausted notes at unreasonable hours. The wit wasn't there originally. The analogies came later.\n\nCapture the details while they're fresh. Add the humor when you can actually be funny.\n\nThe entertaining version is always a second pass."
+      "linkedInHook": "It's 11:47 PM. The bug is fixed. I have 43 browser tabs open and my coffee went cold two hours ago.\n\nThis is not the time to write something entertaining.\n\nBut it IS the perfect time to write something useful.\n\nMost of my 'entertaining' technical posts started as exhausted notes at unreasonable hours. The wit wasn't there originally. The analogies came later.\n\nCapture the details while they're fresh. Add the humor when you can actually be funny.\n\nThe entertaining version is always a second pass.",
+      "blueskyHook": "11:47 PM. Bug fixed. 43 browser tabs. Cold coffee.\n\nNot time to be entertaining. But perfect time to be useful.\n\nCapture details while fresh. Add humor later. The entertaining version is always pass two:"
     },
     {
       "slug": "schema-aware-ef-core-migrations",
@@ -204,7 +225,8 @@
       "date": "2026-06-16",
       "featured": true,
       "image": "/img/posts/schema-aware-ef-core-migrations.svg",
-      "linkedInHook": "\"Which environment did that migration just run against?\"\n\nI stared at Slack with that sinking feeling. EF Core migrations don't support runtime schema selection—the schema is baked in when you generate the migration.\n\nSo I built a custom SQL generator that intercepts operations mid-flight and injects the correct schema.\n\nNow: same migrations, different schemas. [local], [dev], [stg], [dbo]. No more \"wait, which one did I just hit?\" moments.\n\nPart 3 of the Enterprise Database Patterns series."
+      "linkedInHook": "\"Which environment did that migration just run against?\"\n\nI stared at Slack with that sinking feeling. EF Core migrations don't support runtime schema selection—the schema is baked in when you generate the migration.\n\nSo I built a custom SQL generator that intercepts operations mid-flight and injects the correct schema.\n\nNow: same migrations, different schemas. [local], [dev], [stg], [dbo]. No more \"wait, which one did I just hit?\" moments.\n\nPart 3 of the Enterprise Database Patterns series.",
+      "blueskyHook": "EF Core migrations don't support runtime schema selection. Schema is baked in at generation time.\n\nBuilt a custom SQL generator that intercepts operations and injects the correct schema:"
     },
     {
       "slug": "encrypted-configuration-pattern",
@@ -212,10 +234,11 @@
       "description": "I once committed an API key to a public repo at 3 AM. That incident taught me secrets in source control are a when problem, not an if problem. Here's the pattern that makes the mistake impossible.",
       "category": "Computers",
       "tags": ["security", "encryption", "dotnet", "configuration", "aes-gcm", "patterns"],
-      "date": "2026-06-10",
+      "date": "2026-09-05",
       "featured": true,
       "image": "/img/posts/encrypted-configuration-pattern.svg",
-      "linkedInHook": "I once committed an API key to a public GitHub repo. It was 3 AM. The deploy was \"almost done.\"\n\nThree hours later, my inbox was full of AWS alerts.\n\nThat incident taught me: secrets in source control are a WHEN problem, not an IF problem.\n\nSo I built database-backed configuration with AES-256-GCM encryption. The key file is gitignored. Secrets are encrypted at rest. Your code uses IConfiguration normally—it just works.\n\nPart 2 of the Enterprise Database Patterns series."
+      "linkedInHook": "I once committed an API key to a public GitHub repo. It was 3 AM. The deploy was \"almost done.\"\n\nThree hours later, my inbox was full of AWS alerts.\n\nThat incident taught me: secrets in source control are a WHEN problem, not an IF problem.\n\nSo I built database-backed configuration with AES-256-GCM encryption. The key file is gitignored. Secrets are encrypted at rest. Your code uses IConfiguration normally—it just works.\n\nPart 2 of the Enterprise Database Patterns series.",
+      "blueskyHook": "3 AM. Committed an API key to a public repo. Three hours later, AWS alerts everywhere.\n\nSecrets in source control are a WHEN problem. Here's the encrypted config pattern that makes the mistake impossible:"
     },
     {
       "slug": "modern-database-testing-with-xunit-fixtures",
@@ -223,10 +246,11 @@
       "description": "My test passed locally and caught fire in staging. That's when I learned UseInMemoryDatabase() is like a friend who tells you that outfit looks great when it definitely does not.",
       "category": "Computers",
       "tags": ["testing", "xunit", "ef-core", "sql-server", "respawn", "integration-testing"],
-      "date": "2026-06-04",
+      "date": "2026-08-26",
       "featured": true,
       "image": "/img/posts/modern-database-testing-with-xunit-fixtures.svg",
-      "linkedInHook": "The test passed. Ship it, right?\n\nThen I deployed to staging and watched everything catch fire. The LINQ query that worked against UseInMemoryDatabase() generated SQL that SQL Server refused to execute.\n\nInMemory databases lie to you. They're fast and convenient, like a friend who tells you that outfit looks great when it definitely does not.\n\nThe fix: real SQL Server + Respawn. ~20ms resets instead of ~1000ms. When tests pass now, I actually believe them.\n\nPart 1 of the Enterprise Database Patterns series."
+      "linkedInHook": "The test passed. Ship it, right?\n\nThen I deployed to staging and watched everything catch fire. The LINQ query that worked against UseInMemoryDatabase() generated SQL that SQL Server refused to execute.\n\nInMemory databases lie to you. They're fast and convenient, like a friend who tells you that outfit looks great when it definitely does not.\n\nThe fix: real SQL Server + Respawn. ~20ms resets instead of ~1000ms. When tests pass now, I actually believe them.\n\nPart 1 of the Enterprise Database Patterns series.",
+      "blueskyHook": "Test passed. Deployed. Staging caught fire.\n\nUseInMemoryDatabase() lies to you. Like a friend who says that outfit looks great when it doesn't.\n\nReal SQL Server + Respawn. ~20ms resets. Tests I actually believe:"
     },
     {
       "slug": "cicd-version-verification",
@@ -237,7 +261,8 @@
       "date": "2026-05-29",
       "featured": true,
       "image": "/img/posts/cicd-version-verification.svg",
-      "linkedInHook": "Your deploy succeeded. But did it *actually* work?\n\nMSDeploy syncs files successfully, but that doesn't mean your app is healthy. Config might be wrong. Database might not connect. App might crash on startup.\n\nThe fix: version endpoints that return what's actually running, and a verify job that compares it to what you just deployed.\n\nBonus: include uptime in the response. If it shows 0:00:05 when you expected hours, something restarted unexpectedly.\n\nVersion endpoints are cheap insurance. A few minutes of setup saves hours of 'why isn't my code deployed?' debugging."
+      "linkedInHook": "Your deploy succeeded. But did it *actually* work?\n\nMSDeploy syncs files successfully, but that doesn't mean your app is healthy. Config might be wrong. Database might not connect. App might crash on startup.\n\nThe fix: version endpoints that return what's actually running, and a verify job that compares it to what you just deployed.\n\nBonus: include uptime in the response. If it shows 0:00:05 when you expected hours, something restarted unexpectedly.\n\nVersion endpoints are cheap insurance. A few minutes of setup saves hours of 'why isn't my code deployed?' debugging.",
+      "blueskyHook": "Deploy succeeded. But did it actually work?\n\nMSDeploy syncs files, doesn't mean app is healthy.\n\nVersion endpoints + verify job = cheap insurance. Here's how:"
     },
     {
       "slug": "maui-blazor-pending-count-debugging-marathon",
@@ -248,7 +273,8 @@
       "date": "2026-05-24",
       "featured": true,
       "image": "/img/posts/maui-blazor-pending-count-debugging-marathon.svg",
-      "linkedInHook": "Navigate away and back. The pending count is 0.\n\nThe data was still there. The count just wasn't updating.\n\n7+ hours later, I found the root cause: two services were both calling SetPendingCount() with their own count. LoggingService set it to 3, then SyncService immediately overwrote it with 0.\n\nThe fix: separate counts per service, INotifyPropertyChanged for granular updates, and Blazor components that subscribe to changes.\n\nPlus 4 bonus rabbit holes: ObjectDisposedException, Debug APKs that won't start, MinVer returning 0.0.0, and syncing to the wrong server.\n\nSometimes a 'quick test' is anything but."
+      "linkedInHook": "Navigate away and back. The pending count is 0.\n\nThe data was still there. The count just wasn't updating.\n\n7+ hours later, I found the root cause: two services were both calling SetPendingCount() with their own count. LoggingService set it to 3, then SyncService immediately overwrote it with 0.\n\nThe fix: separate counts per service, INotifyPropertyChanged for granular updates, and Blazor components that subscribe to changes.\n\nPlus 4 bonus rabbit holes: ObjectDisposedException, Debug APKs that won't start, MinVer returning 0.0.0, and syncing to the wrong server.\n\nSometimes a 'quick test' is anything but.",
+      "blueskyHook": "Navigate away and back. Pending count is 0. Data's there, count isn't.\n\n7+ hours later: two services overwriting each other's count.\n\nPlus 4 bonus rabbit holes. Sometimes 'quick test' is anything but:"
     },
     {
       "slug": "breaking-circular-dependencies-with-solid-principles",
@@ -259,7 +285,8 @@
       "date": "2026-05-19",
       "featured": true,
       "image": "/img/posts/breaking-circular-dependencies-with-solid-principles.svg",
-      "linkedInHook": "The build failed. Circular dependency detected.\n\nTwo services needed each other. SyncService logs operations. LoggingService syncs logs. Classic tangle.\n\nThe quick fix: IServiceProvider + lazy loading. It compiles. It runs.\n\nThe problem: hidden dependencies, testing nightmares, and the architectural wound stays open.\n\nThe real fix: extract the shared concern. Create ISyncStatusService to own the state both services need. Now they depend on the abstraction, not each other.\n\n30 minutes longer. Pays dividends forever."
+      "linkedInHook": "The build failed. Circular dependency detected.\n\nTwo services needed each other. SyncService logs operations. LoggingService syncs logs. Classic tangle.\n\nThe quick fix: IServiceProvider + lazy loading. It compiles. It runs.\n\nThe problem: hidden dependencies, testing nightmares, and the architectural wound stays open.\n\nThe real fix: extract the shared concern. Create ISyncStatusService to own the state both services need. Now they depend on the abstraction, not each other.\n\n30 minutes longer. Pays dividends forever.",
+      "blueskyHook": "Circular dependency detected. Two services needed each other.\n\nThe quick fix (IServiceProvider + lazy loading) compiles but leaves the wound open.\n\nThe real fix: extract the shared concern. 30 mins longer, pays dividends forever:"
     },
     {
       "slug": "automatic-semantic-versioning-with-minver",
@@ -270,7 +297,8 @@
       "date": "2026-05-14",
       "featured": true,
       "image": "/img/posts/automatic-semantic-versioning-with-minver.svg",
-      "linkedInHook": "I used to dread version bumps. Update three .csproj files, create a git tag, hope I didn't fat-finger 0.9.1 as 0.91.\n\nThen I discovered MinVer. Now I never manually set a version number.\n\nThe version IS the git tag. MinVer reads your git history and calculates the version at build time. Developers commit code. Release pipelines create tags. The cycle continues automatically.\n\nOne Directory.Build.props file. Zero manual edits. Zero version mismatches."
+      "linkedInHook": "I used to dread version bumps. Update three .csproj files, create a git tag, hope I didn't fat-finger 0.9.1 as 0.91.\n\nThen I discovered MinVer. Now I never manually set a version number.\n\nThe version IS the git tag. MinVer reads your git history and calculates the version at build time. Developers commit code. Release pipelines create tags. The cycle continues automatically.\n\nOne Directory.Build.props file. Zero manual edits. Zero version mismatches.",
+      "blueskyHook": "Used to dread version bumps. Update 3 .csproj files, create git tag, hope no fat-fingers.\n\nMinVer: the version IS the git tag. Zero manual edits. Zero mismatches:"
     },
     {
       "slug": "tracer-bullet-development-prove-your-pipeline",
@@ -281,7 +309,8 @@
       "date": "2026-05-09",
       "featured": true,
       "image": "/img/posts/tracer-bullet-development-prove-your-pipeline.svg",
-      "linkedInHook": "How do you know your architecture works before building months of features?\n\nBuild a tracer bullet. One thin, end-to-end implementation that proves the whole pipeline.\n\nI chose error logging. Simple data, no business rules, but it touches every layer: Mobile → API → Database → Web Admin.\n\nIn one day, I validated 11 integration points. And found 4 bugs that would have been painful to debug in complex features.\n\nNow every new feature is 'just another endpoint' instead of 'I hope this fits together.'"
+      "linkedInHook": "How do you know your architecture works before building months of features?\n\nBuild a tracer bullet. One thin, end-to-end implementation that proves the whole pipeline.\n\nI chose error logging. Simple data, no business rules, but it touches every layer: Mobile → API → Database → Web Admin.\n\nIn one day, I validated 11 integration points. And found 4 bugs that would have been painful to debug in complex features.\n\nNow every new feature is 'just another endpoint' instead of 'I hope this fits together.'",
+      "blueskyHook": "How do you know your architecture works before months of features?\n\nTracer bullet: one thin end-to-end implementation. Validated 11 integration points in one day. Found 4 bugs early:"
     },
     {
       "slug": "testing-non-virtual-members-without-moq",
@@ -292,7 +321,8 @@
       "date": "2026-05-04",
       "featured": true,
       "image": "/img/posts/testing-non-virtual-members-without-moq.svg",
-      "linkedInHook": "Moq threw NotSupportedException: 'Non-overridable members may not be used in setup expressions.'\n\nNavigationManager.Uri isn't virtual. Microsoft chose safety over testability—you can't bypass their initialization logic.\n\nThis is SOLID in action. LSP says subclasses should be substitutable. Microsoft said 'we don't trust your substitution here.'\n\nTwo workarounds: inherit and override protected methods, or wrap it in your own interface. Both work. Choose based on what you're testing."
+      "linkedInHook": "Moq threw NotSupportedException: 'Non-overridable members may not be used in setup expressions.'\n\nNavigationManager.Uri isn't virtual. Microsoft chose safety over testability—you can't bypass their initialization logic.\n\nThis is SOLID in action. LSP says subclasses should be substitutable. Microsoft said 'we don't trust your substitution here.'\n\nTwo workarounds: inherit and override protected methods, or wrap it in your own interface. Both work. Choose based on what you're testing.",
+      "blueskyHook": "Moq: NotSupportedException on NavigationManager.Uri—not virtual.\n\nMicrosoft chose safety over testability. This is SOLID in action.\n\nTwo workarounds when Moq can't help:"
     },
     {
       "slug": "maui-blazor-navigationmanager-not-initialized",
@@ -303,7 +333,20 @@
       "date": "2026-04-29",
       "featured": true,
       "image": "/img/posts/maui-blazor-navigationmanager-not-initialized.svg",
-      "linkedInHook": "Built an error boundary that worked perfectly in Blazor WASM. Deployed to MAUI Hybrid on Android. Immediate crash:\n\n'WebViewNavigationManager has not been initialized.'\n\nThe issue: in MAUI, NavigationManager wraps a native WebView. During early error handling, the WebView isn't ready yet. Accessing .Uri throws.\n\nThe fix is embarrassingly simple: wrap it in try-catch. Defensive programming wins again."
+      "linkedInHook": "Built an error boundary that worked perfectly in Blazor WASM. Deployed to MAUI Hybrid on Android. Immediate crash:\n\n'WebViewNavigationManager has not been initialized.'\n\nThe issue: in MAUI, NavigationManager wraps a native WebView. During early error handling, the WebView isn't ready yet. Accessing .Uri throws.\n\nThe fix is embarrassingly simple: wrap it in try-catch. Defensive programming wins again.",
+      "blueskyHook": "Error boundary works in Blazor WASM. MAUI Hybrid on Android: immediate crash.\n\n\"WebViewNavigationManager not initialized\"\n\nEmbarrassingly simple fix:"
+    },
+    {
+      "slug": "global-exception-handling-aspnet-core",
+      "title": "Global Exception Handling in ASP.NET Core",
+      "description": "The API threw a NullReferenceException. The client got an HTML error page with a full stack trace. In production. Here's how to centralize error handling with correlation IDs and environment-appropriate responses.",
+      "category": "Computers",
+      "tags": ["aspnet-core", "error-handling", "middleware", "api", "logging", "correlation-id", "dotnet"],
+      "date": "2026-04-22",
+      "featured": true,
+      "image": "/img/posts/global-exception-handling-aspnet-core.svg",
+      "linkedInHook": "The API threw a NullReferenceException. The client got an HTML error page with a full stack trace.\n\nIn production. With file paths and line numbers. Exactly what you'd want if you were looking for vulnerabilities.\n\nCentralized exception handling middleware:\n• Consistent JSON responses\n• Correlation IDs for support\n• Stack traces in dev only\n• Exception-to-status-code mapping\n\nOne middleware. No try-catch everywhere. No leaked secrets.",
+      "blueskyHook": "API threw NullReferenceException. Client got HTML error page with full stack trace. In production.\n\nCentralized middleware: correlation IDs, consistent JSON, no leaked secrets:"
     },
     {
       "slug": "error-boundaries-that-dont-trap-users",
@@ -314,7 +357,8 @@
       "date": "2026-04-24",
       "featured": true,
       "image": "/img/posts/error-boundaries-that-dont-trap-users.svg",
-      "linkedInHook": "Added an ErrorBoundary to my Blazor app. Caught errors, showed a nice message. Great!\n\nThen a user hit an error and tried to navigate away. Nothing happened. They were trapped.\n\nThe error boundary was a cage, not a safety net.\n\nThe fix: subscribe to NavigationManager.LocationChanged and call Recover() when the user navigates. Now errors don't break navigation.\n\nRule: errors should never block the user's escape route."
+      "linkedInHook": "Added an ErrorBoundary to my Blazor app. Caught errors, showed a nice message. Great!\n\nThen a user hit an error and tried to navigate away. Nothing happened. They were trapped.\n\nThe error boundary was a cage, not a safety net.\n\nThe fix: subscribe to NavigationManager.LocationChanged and call Recover() when the user navigates. Now errors don't break navigation.\n\nRule: errors should never block the user's escape route.",
+      "blueskyHook": "ErrorBoundary catches the error, shows nice message. User tries to navigate away. Nothing happens. Trapped.\n\nThe boundary was a cage, not a safety net. Here's the fix:"
     },
     {
       "slug": "crockford-base32-phone-friendly-reference-ids",
@@ -325,7 +369,8 @@
       "date": "2026-04-19",
       "featured": true,
       "image": "/img/posts/crockford-base32-phone-friendly-reference-ids.svg",
-      "linkedInHook": "User calls support: 'My error code is seven-eff-three-ay-nine-one-bee-zero...'\n\nSupport: 'Is that a zero or the letter O?'\n\nUser: 'Um...'\n\nThis is why Douglas Crockford designed a Base32 encoding that removes confusing characters. No I, L, O, or U.\n\nNow error codes like ERR-QB20S0VJ are unambiguous. Users can even use NATO phonetic alphabet naturally.\n\nSmall design choice. Big difference in real-world support."
+      "linkedInHook": "User calls support: 'My error code is seven-eff-three-ay-nine-one-bee-zero...'\n\nSupport: 'Is that a zero or the letter O?'\n\nUser: 'Um...'\n\nThis is why Douglas Crockford designed a Base32 encoding that removes confusing characters. No I, L, O, or U.\n\nNow error codes like ERR-QB20S0VJ are unambiguous. Users can even use NATO phonetic alphabet naturally.\n\nSmall design choice. Big difference in real-world support.",
+      "blueskyHook": "\"Is that zero or letter O?\"\n\nGUIDs over the phone are a nightmare. Crockford Base32 removes ambiguous characters entirely.\n\nSmall design choice. Big real-world difference:"
     },
     {
       "slug": "iis-app-offline-deployment-trick",
@@ -336,7 +381,8 @@
       "date": "2026-04-14",
       "featured": true,
       "image": "/img/posts/iis-app-offline-deployment-trick.svg",
-      "linkedInHook": "Deploying to IIS and hitting ERROR_FILE_IN_USE is infuriating. The app is running, IIS has file locks, MSDeploy fails. I'd been working around this with retry loops and manual FTP deletions.\n\nTurns out there's a feature that's been in IIS all along: app_offline.htm.\n\nDrop that file in your app root and IIS immediately stops the app, releases all locks, and serves a maintenance page. Deploy your files. Delete the file. App restarts.\n\nOne file. No more lock errors."
+      "linkedInHook": "Deploying to IIS and hitting ERROR_FILE_IN_USE is infuriating. The app is running, IIS has file locks, MSDeploy fails. I'd been working around this with retry loops and manual FTP deletions.\n\nTurns out there's a feature that's been in IIS all along: app_offline.htm.\n\nDrop that file in your app root and IIS immediately stops the app, releases all locks, and serves a maintenance page. Deploy your files. Delete the file. App restarts.\n\nOne file. No more lock errors.",
+      "blueskyHook": "ERROR_FILE_IN_USE when deploying to IIS. App running, locks held, MSDeploy fails.\n\nOne file stops your app and releases all locks: app_offline.htm\n\nBeen in IIS all along:"
     },
     {
       "slug": "environment-specific-ef-core-migrations",
@@ -347,7 +393,32 @@
       "date": "2026-04-09",
       "featured": true,
       "image": "/img/posts/environment-specific-ef-core-migrations.svg",
-      "linkedInHook": "EF Core migrations are great for schema changes, but they run the same code everywhere. Real apps need different seed data per environment—demo users in dev, minimal data in staging, nothing in production.\n\nThe typical fix is wrapping everything in if (Environment.IsDevelopment()) checks. That gets ugly fast.\n\nHere's a cleaner pattern: convention-based SQL scripts that load automatically based on environment. Script.dev.sql for dev, Script.prod.sql for production. The migration code stays simple."
+      "linkedInHook": "EF Core migrations are great for schema changes, but they run the same code everywhere. Real apps need different seed data per environment—demo users in dev, minimal data in staging, nothing in production.\n\nThe typical fix is wrapping everything in if (Environment.IsDevelopment()) checks. That gets ugly fast.\n\nHere's a cleaner pattern: convention-based SQL scripts that load automatically based on environment. Script.dev.sql for dev, Script.prod.sql for production. The migration code stays simple.",
+      "blueskyHook": "EF Core migrations run same code everywhere. But real apps need different seed data per environment.\n\nConvention-based SQL scripts that load automatically: Script.dev.sql, Script.prod.sql. Clean pattern:"
+    },
+    {
+      "slug": "semaphore-thread-safe-sync",
+      "title": "Thread-Safe Synchronization with SemaphoreSlim",
+      "description": "The sync bug only happened on Mondays. Two sync operations running simultaneously, corrupting data. The fix was embarrassingly simple once I stopped using boolean flags.",
+      "category": "Computers",
+      "tags": ["csharp", "async", "threading", "mobile", "maui", "patterns", "synchronization"],
+      "date": "2026-04-07",
+      "featured": true,
+      "image": "/img/posts/semaphore-thread-safe-sync.svg",
+      "linkedInHook": "I had a sync bug that only happened on Mondays.\n\nApp resume and network recovery both triggered sync within milliseconds. Two syncs ran at once. Data corruption.\n\nThe culprit: a boolean flag that looked safe but had a race condition.\n\nThe fix: SemaphoreSlim(1, 1) with WaitAsync(0). Atomic acquire-or-fail. No race condition possible.\n\nBoolean flags for synchronization are a bug waiting to happen.",
+      "blueskyHook": "Sync bug only on Mondays. Two operations running simultaneously.\n\nThe culprit: boolean flag with a race condition. The fix: SemaphoreSlim.\n\nAtomic acquire-or-fail. No race possible:"
+    },
+    {
+      "slug": "polly-http-resilience-patterns",
+      "title": "HTTP Resilience with Polly: Retry and Circuit Breaker Patterns",
+      "description": "The mobile app worked great on WiFi. Then a user drove through a tunnel and the sync button showed 'syncing' for 30 seconds before erroring. Here's how to make HTTP calls that handle the real world.",
+      "category": "Computers",
+      "tags": ["polly", "http", "resilience", "mobile", "maui", "retry", "circuit-breaker", "dotnet"],
+      "date": "2026-04-02",
+      "featured": true,
+      "image": "/img/posts/polly-http-resilience-patterns.svg",
+      "linkedInHook": "The mobile app worked great on WiFi. Then a user drove through a tunnel.\n\nSync button showed 'syncing' for 30 seconds. Error. They tapped again. Another 30 seconds. More errors.\n\nWithout resilience patterns, temporary failures crash the user experience. With them, most failures become invisible retries.\n\nPolly gives you:\n• Exponential backoff (1s → 2s → 4s)\n• Circuit breakers (fail fast when server is down)\n• Jitter (prevent thundering herd)\n\nUsers don't care why the network failed. They want the app to handle it.",
+      "blueskyHook": "Mobile app worked great on WiFi. User drove through a tunnel. Sync button hung for 30 seconds. Then errored.\n\nPolly: retry + circuit breaker patterns that make failures invisible:"
     },
     {
       "slug": "upgrading-certbot-to-wildcard-certificates",
@@ -358,7 +429,8 @@
       "date": "2026-04-04",
       "featured": true,
       "image": "/img/posts/upgrading-certbot-to-wildcard-certificates.svg",
-      "linkedInHook": "My SSL automation was humming along—until I needed subdomains for a multi-tenant SaaS app. Adding each one manually meant regenerating certs every time a client onboarded.\n\nSolution: wildcard certificates. One cert covers *.domain.com.\n\nBut Certbot doesn't just upgrade in place. It creates a new cert with a -0001 suffix. And the rename command doesn't exist in older versions. Here's how to handle it cleanly."
+      "linkedInHook": "My SSL automation was humming along—until I needed subdomains for a multi-tenant SaaS app. Adding each one manually meant regenerating certs every time a client onboarded.\n\nSolution: wildcard certificates. One cert covers *.domain.com.\n\nBut Certbot doesn't just upgrade in place. It creates a new cert with a -0001 suffix. And the rename command doesn't exist in older versions. Here's how to handle it cleanly.",
+      "blueskyHook": "SSL automation worked great until I needed subdomains for multi-tenant SaaS.\n\nWildcard certs cover *.domain.com. But Certbot's upgrade path has gotchas:"
     },
     {
       "slug": "when-ai-gives-you-coaching-not-construction",
@@ -369,7 +441,8 @@
       "date": "2026-03-30",
       "featured": true,
       "image": "/img/posts/when-ai-gives-you-coaching-not-construction.svg",
-      "linkedInHook": "I asked ChatGPT for an algorithm to track customer outage patterns in real-time. Fifteen minutes of 'you could consider...' and 'one approach might be...' later, I still had nothing concrete.\n\nAsked Gemini. Thirty seconds later I had an exponential decay accumulator—the same mathematical structure used in fraud detection and SLO burn-rates.\n\nThen I asked ChatGPT to explain why this keeps happening. Its self-diagnosis was surprisingly honest."
+      "linkedInHook": "I asked ChatGPT for an algorithm to track customer outage patterns in real-time. Fifteen minutes of 'you could consider...' and 'one approach might be...' later, I still had nothing concrete.\n\nAsked Gemini. Thirty seconds later I had an exponential decay accumulator—the same mathematical structure used in fraud detection and SLO burn-rates.\n\nThen I asked ChatGPT to explain why this keeps happening. Its self-diagnosis was surprisingly honest.",
+      "blueskyHook": "Asked ChatGPT for an algorithm. 15 mins of \"you could consider...\" Nothing concrete.\n\nAsked Gemini. 30 seconds: exponential decay accumulator.\n\nThen ChatGPT explained why it keeps doing this:"
     },
     {
       "slug": "codecov-error-state-debugging",
@@ -377,10 +450,11 @@
       "description": "Your CI shows green checkmarks. The upload returned 200. But Codecov reports 0 files and 0% coverage. Here's how to debug it—and why deleting your config file might be the fix.",
       "category": "Computers",
       "tags": ["codecov", "ci-cd", "github-actions", "coverage", "debugging", "dotnet"],
-      "date": "2026-03-25",
+      "date": "2026-08-31",
       "featured": true,
       "image": "/img/posts/codecov-error-state-debugging.svg",
-      "linkedInHook": "I keep running into this pattern with developer tooling: the 'improvements' that silently break things. This week it was Codecov. I added a config file to make things better, and it silently broke everything. The fix was deleting the config entirely.\n\nIt got me thinking about how often we add complexity thinking we're being thorough, when the simpler default would have worked fine."
+      "linkedInHook": "I keep running into this pattern with developer tooling: the 'improvements' that silently break things. This week it was Codecov. I added a config file to make things better, and it silently broke everything. The fix was deleting the config entirely.\n\nIt got me thinking about how often we add complexity thinking we're being thorough, when the simpler default would have worked fine.",
+      "blueskyHook": "Codecov shows \"Error\" but upload returned 200. 0 files, 0% coverage.\n\nAdded a config file to improve things. It silently broke everything. Fix: delete the config:"
     },
     {
       "slug": "blazor-wasm-loading-forever-fix",
@@ -391,7 +465,8 @@
       "date": "2026-03-20",
       "featured": true,
       "image": "/img/posts/blazor-wasm-loading-forever-fix.svg",
-      "linkedInHook": "Spent way too long debugging a Blazor WASM app that just showed 'Loading...' forever. The console errors pointed at '/0' which made no sense. Turns out there's a bug in .NET 10 preview where the boot config gets inlined wrong.\n\nOne line in the csproj fixed it. Documenting this so the next person doesn't lose their afternoon."
+      "linkedInHook": "Spent way too long debugging a Blazor WASM app that just showed 'Loading...' forever. The console errors pointed at '/0' which made no sense. Turns out there's a bug in .NET 10 preview where the boot config gets inlined wrong.\n\nOne line in the csproj fixed it. Documenting this so the next person doesn't lose their afternoon.",
+      "blueskyHook": "Blazor WASM shows \"Loading...\" forever. Console errors point at \"/0\". Makes no sense.\n\n.NET 10 preview bug. One-line fix:"
     },
     {
       "slug": "blazor-wasm-debugging-chrome-devtools",
@@ -402,7 +477,8 @@
       "date": "2026-03-15",
       "featured": true,
       "image": "/img/posts/blazor-wasm-debugging-chrome-devtools.svg",
-      "linkedInHook": "Started a new Blazor WASM project and got curious about a mysterious URL in the console: /_framework/debug. Chrome asked for special flags. Then I saw 'Inspectable pages' in a separate window.\n\nDown the rabbit hole I went. Turns out there's a whole debugging proxy architecture that makes breakpoints work in WebAssembly. Pretty elegant once you understand what's happening."
+      "linkedInHook": "Started a new Blazor WASM project and got curious about a mysterious URL in the console: /_framework/debug. Chrome asked for special flags. Then I saw 'Inspectable pages' in a separate window.\n\nDown the rabbit hole I went. Turns out there's a whole debugging proxy architecture that makes breakpoints work in WebAssembly. Pretty elegant once you understand what's happening.",
+      "blueskyHook": "Mysterious URL in Blazor WASM console: /_framework/debug. Chrome wants special flags. \"Inspectable pages\" window appears.\n\nDown the rabbit hole: how WebAssembly debugging actually works:"
     },
     {
       "slug": "recaptcha-v3-mobile-users-scoring",
@@ -413,7 +489,8 @@
       "date": "2026-03-10",
       "featured": true,
       "image": "/img/posts/recaptcha-v3-mobile-users-scoring.svg",
-      "linkedInHook": "My wife tried to use a contact form I built. She was on her phone, on our couch, clearly a real person. reCAPTCHA scored her 0.1—basically flagged as a bot.\n\nTurns out the 0.5 threshold everyone recommends is way too aggressive for mobile users. Google doesn't exactly advertise this. Wrote up what I learned."
+      "linkedInHook": "My wife tried to use a contact form I built. She was on her phone, on our couch, clearly a real person. reCAPTCHA scored her 0.1—basically flagged as a bot.\n\nTurns out the 0.5 threshold everyone recommends is way too aggressive for mobile users. Google doesn't exactly advertise this. Wrote up what I learned.",
+      "blueskyHook": "My wife on our couch, on her phone, clearly human. reCAPTCHA scored her 0.1 (bot).\n\nThe 0.5 threshold everyone recommends is too aggressive for mobile. Here's what I learned:"
     },
     {
       "slug": "seo-oops-recovery-guide",
@@ -421,10 +498,11 @@
       "description": "Your admin dashboard is in Google. Your API key is in git history. That angry TODO comment is now public. Here's the emergency recovery guide.",
       "category": "Computers",
       "tags": ["seo", "git", "security", "robots-txt", "recovery", "troubleshooting"],
-      "date": "2026-03-05",
+      "date": "2026-09-10",
       "featured": true,
       "image": "/img/posts/seo-oops-recovery-guide.svg",
-      "linkedInHook": "Every developer has that moment of cold sweat when they realize something that shouldn't be public is now indexed by Google. Or worse, that angry TODO comment in a commit message.\n\nI've been there. Here's the recovery playbook I wish I'd had."
+      "linkedInHook": "Every developer has that moment of cold sweat when they realize something that shouldn't be public is now indexed by Google. Or worse, that angry TODO comment in a commit message.\n\nI've been there. Here's the recovery playbook I wish I'd had.",
+      "blueskyHook": "That cold sweat when you realize your admin dashboard is in Google. Or that angry TODO is now public.\n\nThe emergency recovery playbook:"
     },
     {
       "slug": "custom-error-pages-teaching-moments",
@@ -435,7 +513,8 @@
       "date": "2026-02-28",
       "featured": true,
       "image": "/img/posts/custom-error-pages-teaching-moments.svg",
-      "linkedInHook": "Error pages are guaranteed traffic. Every site has them. Every visitor eventually sees one. So why do most of them look like the server is personally offended by your existence?\n\nI decided to turn my 404s into tiny teaching moments. Here's the philosophy and implementation."
+      "linkedInHook": "Error pages are guaranteed traffic. Every site has them. Every visitor eventually sees one. So why do most of them look like the server is personally offended by your existence?\n\nI decided to turn my 404s into tiny teaching moments. Here's the philosophy and implementation.",
+      "blueskyHook": "Error pages are guaranteed traffic. Why do most look like the server is personally offended?\n\nTurned my 404s into tiny teaching moments:"
     },
     {
       "slug": "tailwind-v4-source-directive-gotcha",
@@ -446,7 +525,8 @@
       "date": "2026-02-23",
       "featured": true,
       "image": "/img/posts/tailwind-v4-source-directive-gotcha.svg",
-      "linkedInHook": "Upgraded to Tailwind v4. Build ran. CSS generated. Half my styles were missing.\n\nNo errors. No warnings. Just... gone. Turns out v4 ignores your content array in tailwind.config.js. You need @source directives in CSS now. The migration path doesn't exactly scream this at you."
+      "linkedInHook": "Upgraded to Tailwind v4. Build ran. CSS generated. Half my styles were missing.\n\nNo errors. No warnings. Just... gone. Turns out v4 ignores your content array in tailwind.config.js. You need @source directives in CSS now. The migration path doesn't exactly scream this at you.",
+      "blueskyHook": "Tailwind v4: build ran, CSS generated, half my styles missing.\n\nNo errors. No warnings. V4 ignores your content array—needs @source directives now:"
     },
     {
       "slug": "tailwind-dynamic-classes-layer-gotchas",
@@ -457,7 +537,8 @@
       "date": "2026-02-18",
       "featured": true,
       "image": "/img/posts/tailwind-dynamic-classes-layer-gotchas.svg",
-      "linkedInHook": "Tailwind's JIT compiler is amazing until it silently ignores your classes. Built a progress bar component with dynamic widths like `w-[${percent}%]`. None of them worked.\n\nThe JIT compiler only scans for complete class names in your source files. String concatenation breaks it. Here's what to do instead."
+      "linkedInHook": "Tailwind's JIT compiler is amazing until it silently ignores your classes. Built a progress bar component with dynamic widths like `w-[${percent}%]`. None of them worked.\n\nThe JIT compiler only scans for complete class names in your source files. String concatenation breaks it. Here's what to do instead.",
+      "blueskyHook": "Built dynamic widths: `w-[${percent}%]`. None worked.\n\nTailwind JIT only scans for COMPLETE class names. String concatenation breaks it. Here's the fix:"
     },
     {
       "slug": "tailwind-vs-bootstrap-paradigm-shift",
@@ -468,7 +549,8 @@
       "date": "2026-02-13",
       "featured": true,
       "image": "/img/posts/tailwind-vs-bootstrap-paradigm-shift.svg",
-      "linkedInHook": "I resisted Tailwind for years. 'Why would I write class names that look like inline styles from 2003?'\n\nThen I actually tried it. The mental shift from 'CSS describes components' to 'CSS describes design primitives' finally clicked. Here's what changed my mind."
+      "linkedInHook": "I resisted Tailwind for years. 'Why would I write class names that look like inline styles from 2003?'\n\nThen I actually tried it. The mental shift from 'CSS describes components' to 'CSS describes design primitives' finally clicked. Here's what changed my mind.",
+      "blueskyHook": "Resisted Tailwind for years. \"Why write class names like inline styles from 2003?\"\n\nThen I tried it. The paradigm shift that finally made sense:"
     },
     {
       "slug": "events-delegates-handlers-restaurant-analogy",
@@ -479,7 +561,20 @@
       "date": "2026-02-08",
       "featured": true,
       "image": "/img/posts/events-delegates-handlers-restaurant-analogy.svg",
-      "linkedInHook": "I've been copying EventCallback patterns in Blazor for months without really understanding them. Every explanation starts with 'a delegate is a type-safe function pointer' and my brain checks out.\n\nThen I thought about it as restaurant bells and it finally clicked. The kitchen doesn't know who's listening. It just rings."
+      "linkedInHook": "I've been copying EventCallback patterns in Blazor for months without really understanding them. Every explanation starts with 'a delegate is a type-safe function pointer' and my brain checks out.\n\nThen I thought about it as restaurant bells and it finally clicked. The kitchen doesn't know who's listening. It just rings.",
+      "blueskyHook": "\"A delegate is a type-safe function pointer.\" Brain checks out.\n\nThink restaurant bells instead. Kitchen doesn't know who's listening. It just rings. That's events:"
+    },
+    {
+      "slug": "ai-fiction-writing-honest-review",
+      "title": "I Tried Using AI to Write Fiction. Here's What Actually Happened.",
+      "description": "ChatGPT will not write your novel for you. After months of trying, here's what AI actually does well for fiction—and where it fails catastrophically.",
+      "category": "Writing",
+      "tags": ["writing", "ai", "creative-writing", "chatgpt", "fiction", "honest-review"],
+      "date": "2026-02-06",
+      "featured": true,
+      "image": "/img/posts/ai-fiction-writing-honest-review.svg",
+      "linkedInHook": "I tried using AI to write fiction. The marketing said I'd become the director while AI wrote.\n\nReality: My protagonist suddenly became a marine biologist mid-chapter. The AI thought it would 'add spice.'\n\nVoice? Gone. Continuity? Nonexistent. Every scene became a meditation on fate featuring sunset-gazing.\n\nWhat AI actually does well: brainstorming, plot hole detection, 'what if' exploration.\n\nWhat it can't do: write your book. That's still on you.",
+      "blueskyHook": "Tried using AI to write fiction. My protagonist changed careers mid-chapter because AI thought it would 'add spice.'\n\nWhat AI does well vs. what it can't do at all:"
     },
     {
       "slug": "rss-feeds-and-social-automation",
@@ -490,7 +585,20 @@
       "date": "2026-02-03",
       "featured": true,
       "image": "/img/posts/rss-feeds-and-social-automation.svg",
-      "linkedInHook": "I got tired of manually sharing blog posts to social media. So I went down the automation rabbit hole and ended up building a custom LinkedIn integration.\n\nWas it faster than just posting manually? Absolutely not. But I learned OAuth, built something I control, and got a blog post out of it. That's a win in my book."
+      "linkedInHook": "I got tired of manually sharing blog posts to social media. So I went down the automation rabbit hole and ended up building a custom LinkedIn integration.\n\nWas it faster than just posting manually? Absolutely not. But I learned OAuth, built something I control, and got a blog post out of it. That's a win in my book.",
+      "blueskyHook": "Tired of manually sharing posts to social media. Built a custom integration.\n\nWas it faster than posting manually? No. Did I learn OAuth and get a blog post? Yes. Win:"
+    },
+    {
+      "slug": "novel90-kickoff-2026",
+      "title": "2025 Was Draft Year. 2026 Is Edit Year. Here's the Plan.",
+      "description": "Tonight I'm joining Novel90's Spring 2026 cohort. 90 days to turn a messy first draft into something publishable. Here's why I'm doing it publicly.",
+      "category": "Writing",
+      "tags": ["writing", "novel90", "editing", "creative-writing", "accountability", "goals"],
+      "date": "2026-02-01",
+      "featured": true,
+      "image": "/img/posts/novel90-kickoff-2026.svg",
+      "linkedInHook": "2025 was about getting words on paper. Any words. Terrible words.\n\nThe first draft exists. Now it needs to become a book.\n\nTonight I'm joining Novel90—90 days of structured editing. Daily accountability. A cohort of writers at the same stage.\n\nThere's never a perfect time. So I'm doing this alongside teaching, client work, and a day job.\n\n45 minutes a day = 67 hours of focused editing. That's not nothing.",
+      "blueskyHook": "2025: Year of the Draft (done)\n2026: Year of the Edit (starting now)\n\nJoining Novel90 tonight—90 days to turn a messy first draft into something real. Here's the plan:"
     },
     {
       "slug": "gdpr-cookie-consent-essential-only",
