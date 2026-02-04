@@ -589,6 +589,18 @@
       "blueskyHook": "Tired of manually sharing posts to social media. Built a custom integration.\n\nWas it faster than posting manually? No. Did I learn OAuth and get a blog post? Yes. Win:"
     },
     {
+      "slug": "sms-llm-texting-custom-ai",
+      "title": "Texting My Own AI: Building an SMS Interface to a Custom LLM in an Hour",
+      "description": "Can I text an AI instead of opening another app? Turns out yes—and it validates a compelling business model. Here's how I built SMS-to-custom-LLM in ~40 lines of code.",
+      "category": "Computers",
+      "tags": ["ai", "sms", "twilio", "ollama", "local-ai", "consulting", "dotnet", "csharp", "business-model", "poc"],
+      "date": "2026-02-04",
+      "featured": true,
+      "image": "/img/posts/sms-llm-texting-custom-ai.svg",
+      "linkedInHook": "Can I text an AI instead of opening another app?\n\nBuilt it in an hour: Twilio → ngrok → .NET minimal API → Ollama.\n\n~40 lines of code. $1.15/month. Zero API costs (local LLM).\n\nBut the real value: What if clients could text questions about THEIR project and get answers from an AI trained on THEIR docs?\n\nNo portal. No app. Just text a number.\n\nPrivacy? 100% local. Their data never leaves your infrastructure.\n\nThis is a legit consulting offering, not just a toy.",
+      "blueskyHook": "Built SMS → custom LLM in an hour. ~40 lines of code. $1.15/month. Zero API costs.\n\nClients text questions, get answers from AI trained on THEIR docs. No app needed:"
+    },
+    {
       "slug": "novel90-kickoff-2026",
       "title": "2025 Was Draft Year. 2026 Is Edit Year. Here's the Plan.",
       "description": "Tonight I'm joining Novel90's Spring 2026 cohort. 90 days to turn a messy first draft into something publishable. Here's why I'm doing it publicly.",

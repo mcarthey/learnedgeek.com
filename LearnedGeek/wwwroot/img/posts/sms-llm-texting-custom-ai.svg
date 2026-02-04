@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgGradSms" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="phoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#334155"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="bubbleOut" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <linearGradient id="bubbleIn" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#374151"/>
+      <stop offset="100%" style="stop-color:#4b5563"/>
+    </linearGradient>
+    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="serverGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669"/>
+      <stop offset="100%" style="stop-color:#047857"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradSms)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.05" stroke="white" stroke-width="1">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="55" font-family="Arial, sans-serif" font-size="36" font-weight="bold"
+        fill="white" text-anchor="middle">Texting My Own AI</text>
+  <text x="600" y="90" font-family="Arial, sans-serif" font-size="18"
+        fill="#94a3b8" text-anchor="middle">SMS → Custom LLM in ~40 Lines of Code</text>
+
+  <!-- Phone -->
+  <g transform="translate(80, 140)">
+    <!-- Phone body -->
+    <rect x="0" y="0" width="160" height="320" rx="20" fill="url(#phoneGrad)" stroke="#475569" stroke-width="2"/>
+    <!-- Screen -->
+    <rect x="10" y="40" width="140" height="240" rx="5" fill="#0f172a"/>
+    <!-- Speaker -->
+    <rect x="55" y="15" width="50" height="6" rx="3" fill="#475569"/>
+    <!-- Home button -->
+    <circle cx="80" cy="300" r="12" fill="none" stroke="#475569" stroke-width="2"/>
+
+    <!-- Chat bubbles on screen -->
+    <!-- Outgoing -->
+    <g transform="translate(15, 60)">
+      <rect x="30" y="0" width="95" height="35" rx="12" fill="url(#bubbleOut)"/>
+      <text x="78" y="22" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Hello!</text>
+    </g>
+
+    <!-- Incoming -->
+    <g transform="translate(15, 110)">
+      <rect x="0" y="0" width="110" height="50" rx="12" fill="url(#bubbleIn)"/>
+      <text x="55" y="20" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">Hello! How can</text>
+      <text x="55" y="35" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">I help you today?</text>
+    </g>
+
+    <!-- Outgoing -->
+    <g transform="translate(15, 175)">
+      <rect x="15" y="0" width="110" height="35" rx="12" fill="url(#bubbleOut)"/>
+      <text x="70" y="22" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">What's our API?</text>
+    </g>
+
+    <!-- Incoming (longer) -->
+    <g transform="translate(15, 220)">
+      <rect x="0" y="0" width="120" height="45" rx="12" fill="url(#bubbleIn)"/>
+      <text x="60" y="17" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">Based on your docs,</text>
+      <text x="60" y="30" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">the endpoint is...</text>
+    </g>
+  </g>
+
+  <!-- Flow arrows and components -->
+
+  <!-- Arrow: Phone to Twilio -->
+  <path d="M260,300 L340,300" stroke="#3b82f6" stroke-width="3" fill="none" marker-end="url(#arrowBlue)"/>
+  <text x="300" y="285" font-family="monospace" font-size="11" fill="#3b82f6" text-anchor="middle">SMS</text>
+
+  <!-- Twilio box -->
+  <g transform="translate(350, 250)">
+    <rect x="0" y="0" width="120" height="100" rx="10" fill="#e11d48" opacity="0.9"/>
+    <text x="60" y="35" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">Twilio</text>
+    <text x="60" y="55" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.8)" text-anchor="middle">Webhook</text>
+    <text x="60" y="75" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.6)" text-anchor="middle">$1.15/mo</text>
+  </g>
+
+  <!-- Arrow: Twilio to ngrok -->
+  <path d="M480,300 L540,300" stroke="#f59e0b" stroke-width="3" fill="none"/>
+  <text x="510" y="285" font-family="monospace" font-size="10" fill="#f59e0b" text-anchor="middle">POST</text>
+
+  <!-- ngrok box -->
+  <g transform="translate(550, 250)">
+    <rect x="0" y="0" width="100" height="100" rx="10" fill="#1e40af" opacity="0.9"/>
+    <text x="50" y="35" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">ngrok</text>
+    <text x="50" y="55" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.8)" text-anchor="middle">Tunnel</text>
+    <text x="50" y="75" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)" text-anchor="middle">localhost:5036</text>
+  </g>
+
+  <!-- Arrow: ngrok to .NET -->
+  <path d="M660,300 L720,300" stroke="#10b981" stroke-width="3" fill="none"/>
+
+  <!-- .NET API box -->
+  <g transform="translate(730, 240)">
+    <rect x="0" y="0" width="130" height="120" rx="10" fill="url(#serverGrad)"/>
+    <text x="65" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">.NET API</text>
+    <text x="65" y="50" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.8)" text-anchor="middle">Minimal API</text>
+    <rect x="15" y="65" width="100" height="40" rx="5" fill="rgba(0,0,0,0.2)"/>
+    <text x="65" y="82" font-family="monospace" font-size="8" fill="white" text-anchor="middle">app.MapPost</text>
+    <text x="65" y="95" font-family="monospace" font-size="8" fill="white" text-anchor="middle">("/sms", ...)</text>
+  </g>
+
+  <!-- Arrow: .NET to Ollama -->
+  <path d="M870,300 L930,300" stroke="#8b5cf6" stroke-width="3" fill="none"/>
+
+  <!-- Ollama/LLM box -->
+  <g transform="translate(940, 220)">
+    <rect x="0" y="0" width="160" height="160" rx="15" fill="url(#aiGrad)"/>
+    <text x="80" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">Ollama</text>
+    <text x="80" y="55" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.8)" text-anchor="middle">Custom LLM</text>
+
+    <!-- Brain icon simplified -->
+    <g transform="translate(40, 70)">
+      <circle cx="40" cy="30" r="25" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+      <path d="M30,25 Q35,15 40,25 Q45,15 50,25" stroke="white" stroke-width="2" fill="none"/>
+      <path d="M30,35 Q35,45 40,35 Q45,45 50,35" stroke="white" stroke-width="2" fill="none"/>
+      <circle cx="35" cy="30" r="3" fill="white"/>
+      <circle cx="45" cy="30" r="3" fill="white"/>
+    </g>
+
+    <text x="80" y="135" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">Fine-tuned on</text>
+    <text x="80" y="148" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">YOUR data</text>
+  </g>
+
+  <!-- Return arrow (bottom) -->
+  <path d="M940,400 L300,400 L300,350" stroke="#22c55e" stroke-width="2" stroke-dasharray="8,4" fill="none"/>
+  <text x="620" y="420" font-family="monospace" font-size="11" fill="#22c55e" text-anchor="middle">TwiML Response → SMS Delivered</text>
+
+  <!-- Bottom stats boxes -->
+  <g transform="translate(100, 500)">
+    <rect x="0" y="0" width="180" height="70" rx="10" fill="rgba(59,130,246,0.2)" stroke="#3b82f6" stroke-width="1"/>
+    <text x="90" y="25" font-family="Arial, sans-serif" font-size="12" fill="#3b82f6" text-anchor="middle">Build Time</text>
+    <text x="90" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">~1 Hour</text>
+  </g>
+
+  <g transform="translate(320, 500)">
+    <rect x="0" y="0" width="180" height="70" rx="10" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="1"/>
+    <text x="90" y="25" font-family="Arial, sans-serif" font-size="12" fill="#10b981" text-anchor="middle">Lines of Code</text>
+    <text x="90" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">~40</text>
+  </g>
+
+  <g transform="translate(540, 500)">
+    <rect x="0" y="0" width="180" height="70" rx="10" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="1"/>
+    <text x="90" y="25" font-family="Arial, sans-serif" font-size="12" fill="#8b5cf6" text-anchor="middle">API Costs</text>
+    <text x="90" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">$0</text>
+  </g>
+
+  <g transform="translate(760, 500)">
+    <rect x="0" y="0" width="180" height="70" rx="10" fill="rgba(234,179,8,0.2)" stroke="#eab308" stroke-width="1"/>
+    <text x="90" y="25" font-family="Arial, sans-serif" font-size="12" fill="#eab308" text-anchor="middle">Monthly Cost</text>
+    <text x="90" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">$1.15</text>
+  </g>
+
+  <g transform="translate(980, 500)">
+    <rect x="0" y="0" width="140" height="70" rx="10" fill="rgba(34,197,94,0.2)" stroke="#22c55e" stroke-width="1"/>
+    <text x="70" y="25" font-family="Arial, sans-serif" font-size="12" fill="#22c55e" text-anchor="middle">Privacy</text>
+    <text x="70" y="50" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">100% Local</text>
+  </g>
+</svg>
