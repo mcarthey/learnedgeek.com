@@ -693,32 +693,32 @@ public class AdminController : Controller
             canvas.DrawCircle(buttonStartX + 56, buttonY, buttonRadius, greenPaint);
 
             // Language label
+            using var langTypeface = SKTypeface.FromFamilyName("Consolas", SKFontStyleWeight.Normal, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright);
+            using var langFont = new SKFont(langTypeface, 14);
             using var langPaint = new SKPaint
             {
                 Color = new SKColor(139, 148, 158), // Gray text
-                IsAntialias = true,
-                TextSize = 14,
-                Typeface = SKTypeface.FromFamilyName("Consolas", SKFontStyleWeight.Normal, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright)
+                IsAntialias = true
             };
             var langText = language.ToLowerInvariant();
-            var langWidth = langPaint.MeasureText(langText);
-            canvas.DrawText(langText, size - padding - langWidth, buttonY + 5, langPaint);
+            var langWidth = langFont.MeasureText(langText);
+            canvas.DrawText(langText, size - padding - langWidth, buttonY + 5, SKTextAlign.Left, langFont, langPaint);
 
             // Code text
+            using var codeTypeface = SKTypeface.FromFamilyName("Consolas", SKFontStyleWeight.Normal, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright)
+                    ?? SKTypeface.FromFamilyName("Courier New")
+                    ?? SKTypeface.Default;
+            using var codeFont = new SKFont(codeTypeface, 22);
             using var codePaint = new SKPaint
             {
                 Color = new SKColor(248, 248, 242), // Light text #f8f8f2
-                IsAntialias = true,
-                TextSize = 22,
-                Typeface = SKTypeface.FromFamilyName("Consolas", SKFontStyleWeight.Normal, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright)
-                    ?? SKTypeface.FromFamilyName("Courier New")
-                    ?? SKTypeface.Default
+                IsAntialias = true
             };
 
             // Split code into lines and wrap if necessary
             var lines = code.Split('\n');
             var maxTextWidth = size - (padding * 2);
-            var lineHeight = codePaint.TextSize * 1.5f;
+            var lineHeight = codeFont.Size * 1.5f;
             var startY = headerHeight + padding;
             var maxLines = (int)((size - headerHeight - padding * 2 - 60) / lineHeight); // Leave room for branding
 
@@ -729,31 +729,31 @@ public class AdminController : Controller
 
                 // Handle long lines by truncating with ellipsis
                 var displayLine = line;
-                if (codePaint.MeasureText(displayLine) > maxTextWidth)
+                if (codeFont.MeasureText(displayLine) > maxTextWidth)
                 {
-                    while (codePaint.MeasureText(displayLine + "...") > maxTextWidth && displayLine.Length > 0)
+                    while (codeFont.MeasureText(displayLine + "...") > maxTextWidth && displayLine.Length > 0)
                     {
                         displayLine = displayLine[..^1];
                     }
                     displayLine += "...";
                 }
 
-                canvas.DrawText(displayLine, padding, startY + (renderedLines * lineHeight), codePaint);
+                canvas.DrawText(displayLine, padding, startY + (renderedLines * lineHeight), SKTextAlign.Left, codeFont, codePaint);
                 renderedLines++;
             }
 
             // Branding at bottom
+            using var brandTypeface = SKTypeface.FromFamilyName("Arial", SKFontStyleWeight.Bold, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright);
+            using var brandFont = new SKFont(brandTypeface, 18);
             using var brandPaint = new SKPaint
             {
                 Color = new SKColor(107, 33, 168), // Purple
-                IsAntialias = true,
-                TextSize = 18,
-                Typeface = SKTypeface.FromFamilyName("Arial", SKFontStyleWeight.Bold, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright)
+                IsAntialias = true
             };
 
             var brandText = "learnedgeek.com";
-            var brandWidth = brandPaint.MeasureText(brandText);
-            canvas.DrawText(brandText, size - padding - brandWidth, size - 30, brandPaint);
+            var brandWidth = brandFont.MeasureText(brandText);
+            canvas.DrawText(brandText, size - padding - brandWidth, size - 30, SKTextAlign.Left, brandFont, brandPaint);
 
             using var image = SKImage.FromBitmap(bitmap);
             using var data = image.Encode(SKEncodedImageFormat.Png, 95);
@@ -849,12 +849,12 @@ public class AdminController : Controller
             }
 
             // Quote text - centered, wrapped (handle line breaks)
+            using var quoteTypeface = SKTypeface.FromFamilyName("Arial", SKFontStyleWeight.Bold, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright);
+            using var quoteFont = new SKFont(quoteTypeface, 52);
             using var quotePaint = new SKPaint
             {
                 Color = textColor,
-                IsAntialias = true,
-                TextSize = 52,
-                Typeface = SKTypeface.FromFamilyName("Arial", SKFontStyleWeight.Bold, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright)
+                IsAntialias = true
             };
 
             // Word wrap the quote (split by explicit line breaks first)
@@ -869,12 +869,12 @@ public class AdminController : Controller
                 }
                 else
                 {
-                    allLines.AddRange(WrapText(para, quotePaint, maxTextWidth));
+                    allLines.AddRange(WrapText(para, quoteFont, maxTextWidth));
                 }
             }
 
             // Calculate total text height
-            var lineHeight = quotePaint.TextSize * 1.4f;
+            var lineHeight = quoteFont.Size * 1.4f;
             var totalTextHeight = allLines.Count * lineHeight;
 
             // Start Y position to center text vertically
@@ -893,9 +893,9 @@ public class AdminController : Controller
             {
                 if (!string.IsNullOrEmpty(line))
                 {
-                    var lineWidth = quotePaint.MeasureText(line);
+                    var lineWidth = quoteFont.MeasureText(line);
                     var x = (size - lineWidth) / 2;
-                    canvas.DrawText(line, x, textStartY, quotePaint);
+                    canvas.DrawText(line, x, textStartY, SKTextAlign.Left, quoteFont, quotePaint);
                 }
                 textStartY += lineHeight;
             }
@@ -914,30 +914,30 @@ public class AdminController : Controller
                 canvas.DrawLine(size / 2 - 60, lineY, size / 2 + 60, lineY, accentPaint);
 
                 // "LEARNEDGEEK" text at bottom
-                using var brandPaint = new SKPaint
+                using var quoteBrandTypeface = SKTypeface.FromFamilyName("Arial", SKFontStyleWeight.Bold, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright);
+                using var quoteBrandFont = new SKFont(quoteBrandTypeface, 28);
+                using var quoteBrandPaint = new SKPaint
                 {
                     Color = textColor,
-                    IsAntialias = true,
-                    TextSize = 28,
-                    Typeface = SKTypeface.FromFamilyName("Arial", SKFontStyleWeight.Bold, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright)
+                    IsAntialias = true
                 };
 
                 var brandText = "LEARNEDGEEK";
-                var brandWidth = brandPaint.MeasureText(brandText);
-                canvas.DrawText(brandText, (size - brandWidth) / 2, size - 100, brandPaint);
+                var brandWidth = quoteBrandFont.MeasureText(brandText);
+                canvas.DrawText(brandText, (size - brandWidth) / 2, size - 100, SKTextAlign.Left, quoteBrandFont, quoteBrandPaint);
 
                 // "learnedgeek.com" URL
+                using var urlTypeface = SKTypeface.FromFamilyName("Arial", SKFontStyleWeight.Normal, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright);
+                using var urlFont = new SKFont(urlTypeface, 22);
                 using var urlPaint = new SKPaint
                 {
                     Color = accentColor,
-                    IsAntialias = true,
-                    TextSize = 22,
-                    Typeface = SKTypeface.FromFamilyName("Arial", SKFontStyleWeight.Normal, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright)
+                    IsAntialias = true
                 };
 
                 var urlText = "learnedgeek.com";
-                var urlWidth = urlPaint.MeasureText(urlText);
-                canvas.DrawText(urlText, (size - urlWidth) / 2, size - 60, urlPaint);
+                var urlWidth = urlFont.MeasureText(urlText);
+                canvas.DrawText(urlText, (size - urlWidth) / 2, size - 60, SKTextAlign.Left, urlFont, urlPaint);
             }
 
             using var image = SKImage.FromBitmap(bitmap);
@@ -952,7 +952,7 @@ public class AdminController : Controller
         }
     }
 
-    private List<string> WrapText(string text, SKPaint paint, float maxWidth)
+    private List<string> WrapText(string text, SKFont font, float maxWidth)
     {
         var lines = new List<string>();
         var words = text.Split(' ');
@@ -961,7 +961,7 @@ public class AdminController : Controller
         foreach (var word in words)
         {
             var testLine = string.IsNullOrEmpty(currentLine) ? word : $"{currentLine} {word}";
-            var testWidth = paint.MeasureText(testLine);
+            var testWidth = font.MeasureText(testLine);
 
             if (testWidth > maxWidth && !string.IsNullOrEmpty(currentLine))
             {
