@@ -305,22 +305,39 @@
                                         Quote Card Text
                                     </label>
                                     <div class="flex gap-2">
-                                        <input type="text"
-                                               id="ig-quote-@post.Slug"
-                                               class="flex-1 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-600 rounded px-3 py-2 text-sm text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none focus:border-neutral-500 dark:focus:border-neutral-400"
-                                               placeholder="Enter a compelling quote or insight..."
-                                               oninput="updateQuotePreview('@post.Slug')" />
+                                        <textarea id="ig-quote-@post.Slug"
+                                               rows="3"
+                                               class="flex-1 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-600 rounded px-3 py-2 text-sm text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none focus:border-neutral-500 dark:focus:border-neutral-400 resize-none"
+                                               placeholder="Enter a compelling quote or insight... (use Enter for line breaks)"
+                                               oninput="updateQuotePreview('@post.Slug')"></textarea>
                                         @if (hashtagsConfigured)
                                         {
                                             <button onclick="generateQuote('@post.Slug')"
                                                     id="quote-btn-@post.Slug"
-                                                    class="text-sm bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 px-3 py-2 rounded hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors whitespace-nowrap">
+                                                    class="text-sm bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 px-3 py-2 rounded hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors whitespace-nowrap self-start">
                                                 ✨ Generate
                                             </button>
                                         }
                                     </div>
+                                    <div class="flex gap-2 mt-2">
+                                        <select id="ig-quote-color-@post.Slug"
+                                                class="flex-1 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 text-xs text-neutral-900 dark:text-white"
+                                                onchange="updateQuotePreview('@post.Slug')">
+                                            <option value="light">Light Gray Theme</option>
+                                            <option value="dark">Dark Theme</option>
+                                            <option value="purple">Purple Theme</option>
+                                        </select>
+                                        <select id="ig-quote-logo-@post.Slug"
+                                                class="flex-1 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 text-xs text-neutral-900 dark:text-white"
+                                                onchange="updateQuotePreview('@post.Slug')">
+                                            <option value="top">Logo: Top Center</option>
+                                            <option value="bottom-right">Logo: Bottom Right</option>
+                                            <option value="bottom-left">Logo: Bottom Left</option>
+                                            <option value="none">No Logo</option>
+                                        </select>
+                                    </div>
                                     <p class="text-xs text-neutral-400 mt-1">
-                                        50-120 characters works best. This will be displayed on a branded quote card image.
+                                        Use Enter for line breaks. This will be displayed on a branded quote card image.
                                     </p>
                                 </div>
 
@@ -694,9 +711,24 @@
                         <option value="code">Code</option>
                     </select>
                     <div id="slide-quote-${slug}-${slideNum}">
-                        <input type="text" class="w-full bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 text-sm"
-                               placeholder="Enter quote text..."
-                               oninput="updateCarouselPreview('${slug}')" id="slide-quote-input-${slug}-${slideNum}" />
+                        <textarea class="w-full bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 text-sm resize-none"
+                               rows="3" placeholder="Enter quote text... (use Enter for line breaks)"
+                               oninput="updateCarouselPreview('${slug}')" id="slide-quote-input-${slug}-${slideNum}"></textarea>
+                        <div class="flex gap-2 mt-2">
+                            <select class="flex-1 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 text-xs"
+                                    onchange="updateCarouselPreview('${slug}')" id="slide-color-${slug}-${slideNum}">
+                                <option value="light">Light Gray</option>
+                                <option value="dark">Dark</option>
+                                <option value="purple">Purple</option>
+                            </select>
+                            <select class="flex-1 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 text-xs"
+                                    onchange="updateCarouselPreview('${slug}')" id="slide-logo-${slug}-${slideNum}">
+                                <option value="top">Logo: Top</option>
+                                <option value="bottom-right">Logo: Bottom Right</option>
+                                <option value="bottom-left">Logo: Bottom Left</option>
+                                <option value="none">No Logo</option>
+                            </select>
+                        </div>
                     </div>
                     <div id="slide-code-${slug}-${slideNum}" class="hidden">
                         <select class="w-full mb-1 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 text-xs"
@@ -774,8 +806,10 @@
                 let imgUrl;
                 if (type === 'quote') {
                     const quote = document.getElementById(`slide-quote-input-${slug}-${slideId}`)?.value || '';
+                    const color = document.getElementById(`slide-color-${slug}-${slideId}`)?.value || 'light';
+                    const logo = document.getElementById(`slide-logo-${slug}-${slideId}`)?.value || 'top';
                     if (!quote.trim()) continue;
-                    imgUrl = `/img/instagram/${slug}.png?quote=${encodeURIComponent(quote)}&t=${Date.now()}`;
+                    imgUrl = `/img/instagram/${slug}.png?quote=${encodeURIComponent(quote)}&color=${color}&logo=${logo}&t=${Date.now()}`;
                 } else {
                     const code = document.getElementById(`slide-code-input-${slug}-${slideId}`)?.value || '';
                     const lang = document.getElementById(`slide-lang-${slug}-${slideId}`)?.value || 'code';
@@ -809,8 +843,10 @@
 
                 if (type === 'quote') {
                     const quote = document.getElementById(`slide-quote-input-${slug}-${slideId}`)?.value || '';
+                    const color = document.getElementById(`slide-color-${slug}-${slideId}`)?.value || 'light';
+                    const logo = document.getElementById(`slide-logo-${slug}-${slideId}`)?.value || 'top';
                     if (quote.trim()) {
-                        data.push({ type: 'quote', quote: quote.trim() });
+                        data.push({ type: 'quote', quote: quote.trim(), color: color, logo: logo });
                     }
                 } else {
                     const code = document.getElementById(`slide-code-input-${slug}-${slideId}`)?.value || '';
@@ -866,13 +902,17 @@
 
         function updateQuotePreview(slug) {
             const quoteInput = document.getElementById('ig-quote-' + slug);
+            const colorSelect = document.getElementById('ig-quote-color-' + slug);
+            const logoSelect = document.getElementById('ig-quote-logo-' + slug);
             const preview = document.getElementById('ig-preview-' + slug);
             const img = document.getElementById('ig-preview-img-' + slug);
             const quote = quoteInput.value.trim();
+            const color = colorSelect?.value || 'light';
+            const logo = logoSelect?.value || 'top';
 
             if (quote) {
                 const encodedQuote = encodeURIComponent(quote);
-                img.src = `/img/instagram/${slug}.png?quote=${encodedQuote}&t=${Date.now()}`;
+                img.src = `/img/instagram/${slug}.png?quote=${encodedQuote}&color=${color}&logo=${logo}&t=${Date.now()}`;
                 preview.classList.remove('hidden');
             } else {
                 preview.classList.add('hidden');
@@ -1013,6 +1053,8 @@
 
                 if (imageType === 'quote') {
                     const quote = document.getElementById('ig-quote-' + slug).value;
+                    const color = document.getElementById('ig-quote-color-' + slug)?.value || 'light';
+                    const logo = document.getElementById('ig-quote-logo-' + slug)?.value || 'top';
                     if (!quote.trim()) {
                         alert('Please enter a quote for the image card.');
                         btn.disabled = false;
@@ -1020,6 +1062,8 @@
                         return;
                     }
                     formData.append('quote', quote);
+                    formData.append('quoteColor', color);
+                    formData.append('quoteLogo', logo);
                 } else if (imageType === 'code') {
                     const code = document.getElementById('ig-code-' + slug).value;
                     const lang = document.getElementById('ig-lang-' + slug).value;

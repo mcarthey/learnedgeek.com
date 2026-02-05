@@ -419,7 +419,7 @@ public class AdminController : Controller
 
     [HttpPost("share-instagram")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> ShareToInstagram(string slug, string caption, string? imageType, string? quote, string? code, string? lang, string? carouselData)
+    public async Task<IActionResult> ShareToInstagram(string slug, string caption, string? imageType, string? quote, string? code, string? lang, string? carouselData, string? quoteColor, string? quoteLogo)
     {
         if (!IsAuthorized())
         {
@@ -461,7 +461,9 @@ public class AdminController : Controller
                 else if (!string.IsNullOrWhiteSpace(slide.Quote))
                 {
                     var encodedQuote = Uri.EscapeDataString(slide.Quote);
-                    imageUrl = $"https://learnedgeek.com/img/instagram/{slug}.png?quote={encodedQuote}";
+                    var color = Uri.EscapeDataString(slide.Color ?? "light");
+                    var logo = Uri.EscapeDataString(slide.Logo ?? "top");
+                    imageUrl = $"https://learnedgeek.com/img/instagram/{slug}.png?quote={encodedQuote}&color={color}&logo={logo}";
                 }
                 else
                 {
@@ -490,7 +492,9 @@ public class AdminController : Controller
             else if (!string.IsNullOrWhiteSpace(quote))
             {
                 var encodedQuote = Uri.EscapeDataString(quote);
-                imageUrl = $"https://learnedgeek.com/img/instagram/{slug}.png?quote={encodedQuote}";
+                var color = Uri.EscapeDataString(quoteColor ?? "light");
+                var logo = Uri.EscapeDataString(quoteLogo ?? "top");
+                imageUrl = $"https://learnedgeek.com/img/instagram/{slug}.png?quote={encodedQuote}&color={color}&logo={logo}";
             }
             else
             {
@@ -529,6 +533,12 @@ public class AdminController : Controller
 
         [System.Text.Json.Serialization.JsonPropertyName("lang")]
         public string? Lang { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("color")]
+        public string? Color { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("logo")]
+        public string? Logo { get; set; }
     }
 
     [HttpPost("suggest-hashtags")]
@@ -619,7 +629,7 @@ public class AdminController : Controller
     }
 
     [HttpGet("/img/instagram/{slug}.png")]
-    public IActionResult GetQuoteCardImage(string slug, [FromQuery] string? quote, [FromQuery] string? code, [FromQuery] string? lang)
+    public IActionResult GetQuoteCardImage(string slug, [FromQuery] string? quote, [FromQuery] string? code, [FromQuery] string? lang, [FromQuery] string? color, [FromQuery] string? logo)
     {
         byte[]? imageData;
 
@@ -630,8 +640,8 @@ public class AdminController : Controller
         }
         else if (!string.IsNullOrEmpty(quote))
         {
-            // Generate quote card
-            imageData = GenerateQuoteCard(quote);
+            // Generate quote card with color and logo options
+            imageData = GenerateQuoteCard(quote, color ?? "light", logo ?? "top");
         }
         else
         {
@@ -757,7 +767,7 @@ public class AdminController : Controller
         }
     }
 
-    private byte[]? GenerateQuoteCard(string quoteText)
+    private byte[]? GenerateQuoteCard(string quoteText, string colorTheme = "light", string logoPosition = "top")
     {
         try
         {
@@ -767,27 +777,69 @@ public class AdminController : Controller
             using var bitmap = new SKBitmap(size, size);
             using var canvas = new SKCanvas(bitmap);
 
-            // Background - light gray like business card back
-            canvas.Clear(new SKColor(232, 232, 232)); // #E8E8E8
+            // Color theme settings
+            SKColor bgColor, textColor, accentColor;
+            byte logoAlpha;
 
-            // Load and draw watermark logo (faded, positioned at top)
+            switch (colorTheme.ToLowerInvariant())
+            {
+                case "dark":
+                    bgColor = new SKColor(23, 23, 23); // Near black
+                    textColor = new SKColor(248, 248, 248); // Near white
+                    accentColor = new SKColor(139, 92, 246); // Lighter purple for dark bg
+                    logoAlpha = 80;
+                    break;
+                case "purple":
+                    bgColor = new SKColor(107, 33, 168); // Purple #6B21A8
+                    textColor = new SKColor(255, 255, 255); // White
+                    accentColor = new SKColor(232, 232, 232); // Light gray accent
+                    logoAlpha = 60;
+                    break;
+                default: // light
+                    bgColor = new SKColor(232, 232, 232); // #E8E8E8
+                    textColor = new SKColor(23, 23, 23); // Near black
+                    accentColor = new SKColor(107, 33, 168); // Purple #6B21A8
+                    logoAlpha = 120;
+                    break;
+            }
+
+            canvas.Clear(bgColor);
+
+            // Load logo
             var logoPath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "learned-geek-logo-transparent.png");
-            if (System.IO.File.Exists(logoPath))
+            if (logoPosition != "none" && System.IO.File.Exists(logoPath))
             {
                 using var logoStream = System.IO.File.OpenRead(logoPath);
                 using var logoBitmap = SKBitmap.Decode(logoStream);
                 if (logoBitmap != null)
                 {
-                    // Scale logo smaller as subtle watermark (about 35% of card width)
-                    var logoScale = (size * 0.35f) / logoBitmap.Width;
+                    float logoScale, logoX, logoY;
+
+                    switch (logoPosition.ToLowerInvariant())
+                    {
+                        case "bottom-right":
+                            logoScale = (size * 0.20f) / logoBitmap.Width;
+                            logoX = size - padding - (logoBitmap.Width * logoScale);
+                            logoY = size - padding - (logoBitmap.Height * logoScale);
+                            break;
+                        case "bottom-left":
+                            logoScale = (size * 0.20f) / logoBitmap.Width;
+                            logoX = padding;
+                            logoY = size - padding - (logoBitmap.Height * logoScale);
+                            break;
+                        default: // top
+                            logoScale = (size * 0.35f) / logoBitmap.Width;
+                            logoX = (size - (logoBitmap.Width * logoScale)) / 2;
+                            logoY = padding;
+                            break;
+                    }
+
                     var logoWidth = logoBitmap.Width * logoScale;
                     var logoHeight = logoBitmap.Height * logoScale;
-                    var logoX = (size - logoWidth) / 2;
-                    var logoY = padding; // Position at top
 
                     using var logoPaint = new SKPaint
                     {
-                        Color = SKColors.White.WithAlpha(120), // More subtle
+                        Color = SKColors.White.WithAlpha(logoAlpha),
                         IsAntialias = true
                     };
 
@@ -796,70 +848,97 @@ public class AdminController : Controller
                 }
             }
 
-            // Quote text - centered, wrapped
+            // Quote text - centered, wrapped (handle line breaks)
             using var quotePaint = new SKPaint
             {
-                Color = new SKColor(23, 23, 23), // Near black
+                Color = textColor,
                 IsAntialias = true,
                 TextSize = 52,
                 Typeface = SKTypeface.FromFamilyName("Arial", SKFontStyleWeight.Bold, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright)
             };
 
-            // Word wrap the quote
+            // Word wrap the quote (split by explicit line breaks first)
             var maxTextWidth = size - (padding * 2);
-            var lines = WrapText(quoteText, quotePaint, maxTextWidth);
+            var allLines = new List<string>();
+            var paragraphs = quoteText.Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.None);
+            foreach (var para in paragraphs)
+            {
+                if (string.IsNullOrEmpty(para))
+                {
+                    allLines.Add(""); // Preserve empty lines
+                }
+                else
+                {
+                    allLines.AddRange(WrapText(para, quotePaint, maxTextWidth));
+                }
+            }
 
             // Calculate total text height
             var lineHeight = quotePaint.TextSize * 1.4f;
-            var totalTextHeight = lines.Count * lineHeight;
+            var totalTextHeight = allLines.Count * lineHeight;
 
-            // Start Y position to center text vertically (slightly below center to avoid logo at top)
-            var startY = (size - totalTextHeight) / 2 + 60;
-
-            // Draw each line centered
-            foreach (var line in lines)
+            // Start Y position to center text vertically
+            float textStartY;
+            if (logoPosition == "top")
             {
-                var lineWidth = quotePaint.MeasureText(line);
-                var x = (size - lineWidth) / 2;
-                canvas.DrawText(line, x, startY, quotePaint);
-                startY += lineHeight;
+                textStartY = (size - totalTextHeight) / 2 + 60; // Shift down to avoid top logo
+            }
+            else
+            {
+                textStartY = (size - totalTextHeight) / 2;
             }
 
-            // Purple accent line
-            using var accentPaint = new SKPaint
+            // Draw each line centered
+            foreach (var line in allLines)
             {
-                Color = new SKColor(107, 33, 168), // Purple #6B21A8
-                StrokeWidth = 4,
-                IsAntialias = true
-            };
-            var lineY = size - 160;
-            canvas.DrawLine(size / 2 - 60, lineY, size / 2 + 60, lineY, accentPaint);
+                if (!string.IsNullOrEmpty(line))
+                {
+                    var lineWidth = quotePaint.MeasureText(line);
+                    var x = (size - lineWidth) / 2;
+                    canvas.DrawText(line, x, textStartY, quotePaint);
+                }
+                textStartY += lineHeight;
+            }
 
-            // "LEARNEDGEEK" text at bottom
-            using var brandPaint = new SKPaint
+            // Only show bottom branding if logo is not at bottom positions
+            if (logoPosition != "bottom-right" && logoPosition != "bottom-left")
             {
-                Color = new SKColor(23, 23, 23),
-                IsAntialias = true,
-                TextSize = 28,
-                Typeface = SKTypeface.FromFamilyName("Arial", SKFontStyleWeight.Bold, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright)
-            };
+                // Accent line
+                using var accentPaint = new SKPaint
+                {
+                    Color = accentColor,
+                    StrokeWidth = 4,
+                    IsAntialias = true
+                };
+                var lineY = size - 160;
+                canvas.DrawLine(size / 2 - 60, lineY, size / 2 + 60, lineY, accentPaint);
 
-            var brandText = "LEARNEDGEEK";
-            var brandWidth = brandPaint.MeasureText(brandText);
-            canvas.DrawText(brandText, (size - brandWidth) / 2, size - 100, brandPaint);
+                // "LEARNEDGEEK" text at bottom
+                using var brandPaint = new SKPaint
+                {
+                    Color = textColor,
+                    IsAntialias = true,
+                    TextSize = 28,
+                    Typeface = SKTypeface.FromFamilyName("Arial", SKFontStyleWeight.Bold, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright)
+                };
 
-            // "learnedgeek.com" URL
-            using var urlPaint = new SKPaint
-            {
-                Color = new SKColor(107, 33, 168), // Purple
-                IsAntialias = true,
-                TextSize = 22,
-                Typeface = SKTypeface.FromFamilyName("Arial", SKFontStyleWeight.Normal, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright)
-            };
+                var brandText = "LEARNEDGEEK";
+                var brandWidth = brandPaint.MeasureText(brandText);
+                canvas.DrawText(brandText, (size - brandWidth) / 2, size - 100, brandPaint);
 
-            var urlText = "learnedgeek.com";
-            var urlWidth = urlPaint.MeasureText(urlText);
-            canvas.DrawText(urlText, (size - urlWidth) / 2, size - 60, urlPaint);
+                // "learnedgeek.com" URL
+                using var urlPaint = new SKPaint
+                {
+                    Color = accentColor,
+                    IsAntialias = true,
+                    TextSize = 22,
+                    Typeface = SKTypeface.FromFamilyName("Arial", SKFontStyleWeight.Normal, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright)
+                };
+
+                var urlText = "learnedgeek.com";
+                var urlWidth = urlPaint.MeasureText(urlText);
+                canvas.DrawText(urlText, (size - urlWidth) / 2, size - 60, urlPaint);
+            }
 
             using var image = SKImage.FromBitmap(bitmap);
             using var data = image.Encode(SKEncodedImageFormat.Png, 95);
