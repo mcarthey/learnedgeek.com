@@ -1,0 +1,260 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgGradRag" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="chromaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="50%" style="stop-color:#eab308"/>
+      <stop offset="100%" style="stop-color:#22c55e"/>
+    </linearGradient>
+    <linearGradient id="ragGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#0891b2"/>
+    </linearGradient>
+    <linearGradient id="aiGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="memoryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899"/>
+      <stop offset="100%" style="stop-color:#be185d"/>
+    </linearGradient>
+    <linearGradient id="pollyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="docGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#334155"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradRag)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.03" stroke="white" stroke-width="1">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="50" font-family="Arial, sans-serif" font-size="34" font-weight="bold"
+        fill="white" text-anchor="middle">From POC to Production</text>
+  <text x="600" y="82" font-family="Arial, sans-serif" font-size="18"
+        fill="#94a3b8" text-anchor="middle">RAG + Vector Search + Conversation Memory + Resilience</text>
+
+  <!-- Part 2 badge -->
+  <g transform="translate(1050, 25)">
+    <rect x="0" y="0" width="80" height="30" rx="15" fill="url(#aiGrad2)"/>
+    <text x="40" y="20" font-family="Arial, sans-serif" font-size="12" font-weight="bold"
+          fill="white" text-anchor="middle">PART 2</text>
+  </g>
+
+  <!-- Main flow: SMS Input -->
+  <g transform="translate(40, 130)">
+    <rect x="0" y="0" width="100" height="80" rx="10" fill="#e11d48"/>
+    <text x="50" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold"
+          fill="white" text-anchor="middle">SMS</text>
+    <text x="50" y="50" font-family="monospace" font-size="9"
+          fill="rgba(255,255,255,0.8)" text-anchor="middle">Twilio</text>
+    <text x="50" y="65" font-family="monospace" font-size="8"
+          fill="rgba(255,255,255,0.6)" text-anchor="middle">Webhook</text>
+  </g>
+
+  <!-- Arrow to .NET API -->
+  <path d="M150,170 L200,170" stroke="#3b82f6" stroke-width="3" fill="none"/>
+
+  <!-- .NET API with Polly -->
+  <g transform="translate(210, 115)">
+    <rect x="0" y="0" width="140" height="110" rx="10" fill="url(#pollyGrad)"/>
+    <text x="70" y="25" font-family="Arial, sans-serif" font-size="14" font-weight="bold"
+          fill="white" text-anchor="middle">.NET API</text>
+    <text x="70" y="45" font-family="monospace" font-size="10"
+          fill="rgba(255,255,255,0.8)" text-anchor="middle">+ Polly</text>
+    <!-- Polly icons -->
+    <g transform="translate(20, 55)">
+      <rect x="0" y="0" width="95" height="40" rx="5" fill="rgba(0,0,0,0.2)"/>
+      <text x="48" y="15" font-family="monospace" font-size="8" fill="white" text-anchor="middle">Retry | Circuit</text>
+      <text x="48" y="30" font-family="monospace" font-size="8" fill="white" text-anchor="middle">Breaker | Timeout</text>
+    </g>
+  </g>
+
+  <!-- Arrow to RAG Pipeline -->
+  <path d="M360,170 L410,170" stroke="#06b6d4" stroke-width="3" fill="none"/>
+
+  <!-- RAG Pipeline (central) -->
+  <g transform="translate(420, 100)">
+    <rect x="0" y="0" width="180" height="140" rx="12" fill="url(#ragGrad)"/>
+    <text x="90" y="28" font-family="Arial, sans-serif" font-size="18" font-weight="bold"
+          fill="white" text-anchor="middle">RAG Pipeline</text>
+    <text x="90" y="48" font-family="monospace" font-size="10"
+          fill="rgba(255,255,255,0.8)" text-anchor="middle">Retrieval Augmented Gen</text>
+
+    <!-- Pipeline steps -->
+    <g transform="translate(15, 60)">
+      <rect x="0" y="0" width="150" height="65" rx="5" fill="rgba(0,0,0,0.2)"/>
+      <text x="75" y="18" font-family="monospace" font-size="9" fill="white" text-anchor="middle">1. Search documents</text>
+      <text x="75" y="33" font-family="monospace" font-size="9" fill="white" text-anchor="middle">2. Inject context</text>
+      <text x="75" y="48" font-family="monospace" font-size="9" fill="white" text-anchor="middle">3. Generate response</text>
+    </g>
+  </g>
+
+  <!-- Arrow to Ollama -->
+  <path d="M610,170 L660,170" stroke="#8b5cf6" stroke-width="3" fill="none"/>
+
+  <!-- Ollama/LLM -->
+  <g transform="translate(670, 110)">
+    <rect x="0" y="0" width="130" height="120" rx="12" fill="url(#aiGrad2)"/>
+    <text x="65" y="28" font-family="Arial, sans-serif" font-size="16" font-weight="bold"
+          fill="white" text-anchor="middle">Ollama</text>
+    <text x="65" y="46" font-family="monospace" font-size="10"
+          fill="rgba(255,255,255,0.8)" text-anchor="middle">Local LLM</text>
+    <!-- Brain icon -->
+    <g transform="translate(30, 55)">
+      <circle cx="35" cy="25" r="22" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+      <path d="M25,20 Q30,12 35,20 Q40,12 45,20" stroke="white" stroke-width="2" fill="none"/>
+      <path d="M25,30 Q30,38 35,30 Q40,38 45,30" stroke="white" stroke-width="2" fill="none"/>
+      <circle cx="30" cy="25" r="2.5" fill="white"/>
+      <circle cx="40" cy="25" r="2.5" fill="white"/>
+    </g>
+  </g>
+
+  <!-- ChromaDB (vector database) - below RAG -->
+  <g transform="translate(350, 290)">
+    <rect x="0" y="0" width="160" height="130" rx="12" fill="url(#chromaGrad)"/>
+    <text x="80" y="30" font-family="Arial, sans-serif" font-size="16" font-weight="bold"
+          fill="white" text-anchor="middle">ChromaDB</text>
+    <text x="80" y="50" font-family="monospace" font-size="10"
+          fill="rgba(255,255,255,0.9)" text-anchor="middle">Vector Database</text>
+
+    <!-- Vector visualization -->
+    <g transform="translate(20, 60)">
+      <!-- Document icons with vectors -->
+      <rect x="0" y="0" width="25" height="30" rx="3" fill="rgba(255,255,255,0.3)"/>
+      <text x="12" y="40" font-family="monospace" font-size="7" fill="white" text-anchor="middle">[0.2,</text>
+      <text x="12" y="50" font-family="monospace" font-size="7" fill="white" text-anchor="middle">0.8]</text>
+
+      <rect x="45" y="0" width="25" height="30" rx="3" fill="rgba(255,255,255,0.3)"/>
+      <text x="57" y="40" font-family="monospace" font-size="7" fill="white" text-anchor="middle">[0.7,</text>
+      <text x="57" y="50" font-family="monospace" font-size="7" fill="white" text-anchor="middle">0.3]</text>
+
+      <rect x="90" y="0" width="25" height="30" rx="3" fill="rgba(255,255,255,0.3)"/>
+      <text x="102" y="40" font-family="monospace" font-size="7" fill="white" text-anchor="middle">[0.5,</text>
+      <text x="102" y="50" font-family="monospace" font-size="7" fill="white" text-anchor="middle">0.5]</text>
+    </g>
+  </g>
+
+  <!-- Arrow from RAG to ChromaDB -->
+  <path d="M510,240 L510,280 L480,280" stroke="#f97316" stroke-width="2" fill="none"/>
+  <text x="495" y="265" font-family="monospace" font-size="9" fill="#f97316">search</text>
+
+  <!-- Arrow from ChromaDB back up -->
+  <path d="M430,280 L430,250 L480,250" stroke="#22c55e" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+  <text x="455" y="245" font-family="monospace" font-size="8" fill="#22c55e">context</text>
+
+  <!-- Embeddings service (connected to ChromaDB) -->
+  <g transform="translate(560, 320)">
+    <rect x="0" y="0" width="130" height="80" rx="10" fill="#334155"/>
+    <text x="65" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold"
+          fill="white" text-anchor="middle">Embeddings</text>
+    <text x="65" y="43" font-family="monospace" font-size="9"
+          fill="#94a3b8" text-anchor="middle">nomic-embed-text</text>
+    <text x="65" y="60" font-family="monospace" font-size="8"
+          fill="#64748b" text-anchor="middle">text → [768 floats]</text>
+  </g>
+
+  <!-- Arrow from ChromaDB to Embeddings -->
+  <path d="M520,360 L550,360" stroke="#94a3b8" stroke-width="2" fill="none"/>
+
+  <!-- Conversation Memory - right side -->
+  <g transform="translate(850, 130)">
+    <rect x="0" y="0" width="150" height="120" rx="12" fill="url(#memoryGrad)"/>
+    <text x="75" y="28" font-family="Arial, sans-serif" font-size="14" font-weight="bold"
+          fill="white" text-anchor="middle">Memory</text>
+    <text x="75" y="46" font-family="monospace" font-size="9"
+          fill="rgba(255,255,255,0.8)" text-anchor="middle">Per Phone Number</text>
+
+    <!-- Chat history visualization -->
+    <g transform="translate(15, 55)">
+      <rect x="0" y="0" width="120" height="50" rx="5" fill="rgba(0,0,0,0.25)"/>
+      <text x="60" y="15" font-family="monospace" font-size="7" fill="white" text-anchor="middle">User: "My name is Alice"</text>
+      <text x="60" y="27" font-family="monospace" font-size="7" fill="white" text-anchor="middle">AI: "Nice to meet you!"</text>
+      <text x="60" y="39" font-family="monospace" font-size="7" fill="white" text-anchor="middle">User: "What's my name?"</text>
+    </g>
+  </g>
+
+  <!-- Arrow from LLM to Memory -->
+  <path d="M810,170 L840,170" stroke="#ec4899" stroke-width="2" fill="none"/>
+
+  <!-- Documents stack (left side, below SMS) -->
+  <g transform="translate(60, 290)">
+    <text x="60" y="0" font-family="Arial, sans-serif" font-size="12" font-weight="bold"
+          fill="#94a3b8" text-anchor="middle">Your Documents</text>
+    <!-- Stacked docs -->
+    <rect x="20" y="15" width="80" height="25" rx="4" fill="#475569" transform="rotate(-3 60 27)"/>
+    <rect x="20" y="45" width="80" height="25" rx="4" fill="#475569" transform="rotate(2 60 57)"/>
+    <rect x="20" y="75" width="80" height="25" rx="4" fill="#475569"/>
+    <text x="60" y="33" font-family="monospace" font-size="7" fill="#94a3b8" text-anchor="middle">refund-policy.md</text>
+    <text x="60" y="63" font-family="monospace" font-size="7" fill="#94a3b8" text-anchor="middle">shipping.md</text>
+    <text x="60" y="93" font-family="monospace" font-size="7" fill="#94a3b8" text-anchor="middle">api-docs.md</text>
+  </g>
+
+  <!-- Arrow from docs to ChromaDB -->
+  <path d="M180,360 L340,360" stroke="#64748b" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+  <text x="260" y="350" font-family="monospace" font-size="8" fill="#64748b" text-anchor="middle">ingest + embed</text>
+
+  <!-- Response flow back -->
+  <path d="M800,220 L800,460 L100,460 L100,220" stroke="#22c55e" stroke-width="2" stroke-dasharray="8,4" fill="none"/>
+  <text x="450" y="480" font-family="monospace" font-size="11" fill="#22c55e" text-anchor="middle">Contextual Response → SMS Delivered</text>
+
+  <!-- Bottom comparison boxes -->
+  <g transform="translate(80, 520)">
+    <rect x="0" y="0" width="200" height="80" rx="10" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1"/>
+    <text x="100" y="22" font-family="Arial, sans-serif" font-size="11" fill="#ef4444" text-anchor="middle">Before (Part 1)</text>
+    <text x="100" y="42" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle">"What's your refund policy?"</text>
+    <text x="100" y="58" font-family="monospace" font-size="9" fill="#fca5a5" text-anchor="middle">"Generally, 30 days..."</text>
+    <text x="100" y="72" font-family="Arial, sans-serif" font-size="10" fill="#ef4444" text-anchor="middle">HALLUCINATED</text>
+  </g>
+
+  <g transform="translate(320, 520)">
+    <rect x="0" y="0" width="30" height="80" rx="5" fill="transparent"/>
+    <text x="15" y="50" font-family="Arial, sans-serif" font-size="24" fill="#64748b" text-anchor="middle">→</text>
+  </g>
+
+  <g transform="translate(370, 520)">
+    <rect x="0" y="0" width="220" height="80" rx="10" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="1"/>
+    <text x="110" y="22" font-family="Arial, sans-serif" font-size="11" fill="#22c55e" text-anchor="middle">After (Part 2 - RAG)</text>
+    <text x="110" y="42" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle">"What's your refund policy?"</text>
+    <text x="110" y="58" font-family="monospace" font-size="9" fill="#86efac" text-anchor="middle">"30 days with receipt, 5-7 days"</text>
+    <text x="110" y="72" font-family="Arial, sans-serif" font-size="10" fill="#22c55e" text-anchor="middle">FROM YOUR DOCS</text>
+  </g>
+
+  <!-- Tech stack badges -->
+  <g transform="translate(640, 530)">
+    <rect x="0" y="0" width="70" height="28" rx="14" fill="rgba(6,182,212,0.3)" stroke="#06b6d4" stroke-width="1"/>
+    <text x="35" y="18" font-family="monospace" font-size="9" fill="#06b6d4" text-anchor="middle">RAG</text>
+  </g>
+  <g transform="translate(720, 530)">
+    <rect x="0" y="0" width="90" height="28" rx="14" fill="rgba(249,115,22,0.3)" stroke="#f97316" stroke-width="1"/>
+    <text x="45" y="18" font-family="monospace" font-size="9" fill="#f97316" text-anchor="middle">ChromaDB</text>
+  </g>
+  <g transform="translate(820, 530)">
+    <rect x="0" y="0" width="70" height="28" rx="14" fill="rgba(59,130,246,0.3)" stroke="#3b82f6" stroke-width="1"/>
+    <text x="35" y="18" font-family="monospace" font-size="9" fill="#3b82f6" text-anchor="middle">Polly</text>
+  </g>
+  <g transform="translate(900, 530)">
+    <rect x="0" y="0" width="80" height="28" rx="14" fill="rgba(236,72,153,0.3)" stroke="#ec4899" stroke-width="1"/>
+    <text x="40" y="18" font-family="monospace" font-size="9" fill="#ec4899" text-anchor="middle">Memory</text>
+  </g>
+  <g transform="translate(990, 530)">
+    <rect x="0" y="0" width="100" height="28" rx="14" fill="rgba(34,197,94,0.3)" stroke="#22c55e" stroke-width="1"/>
+    <text x="50" y="18" font-family="monospace" font-size="9" fill="#22c55e" text-anchor="middle">100% Local</text>
+  </g>
+</svg>

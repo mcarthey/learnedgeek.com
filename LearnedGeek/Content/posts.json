@@ -558,11 +558,23 @@
       "description": "Stop thinking about function pointers. Start thinking about bells and notifications. A restaurant analogy that makes C# events actually make sense.",
       "category": "Computers",
       "tags": ["csharp", "events", "delegates", "blazor", "architecture"],
-      "date": "2026-02-08",
+      "date": "2026-02-10",
       "featured": true,
       "image": "/img/posts/events-delegates-handlers-restaurant-analogy.svg",
       "linkedInHook": "I've been copying EventCallback patterns in Blazor for months without really understanding them. Every explanation starts with 'a delegate is a type-safe function pointer' and my brain checks out.\n\nThen I thought about it as restaurant bells and it finally clicked. The kitchen doesn't know who's listening. It just rings.",
       "blueskyHook": "\"A delegate is a type-safe function pointer.\" Brain checks out.\n\nThink restaurant bells instead. Kitchen doesn't know who's listening. It just rings. That's events:"
+    },
+    {
+      "slug": "sms-llm-rag-vector-search",
+      "title": "From POC to Production: Adding RAG and Vector Search to My SMS AI Assistant",
+      "description": "Part 2 of the SMS AI series. RAG transforms generic AI into useful AI. Here's how I added vector search, conversation memory, and production resilience.",
+      "category": "Computers",
+      "tags": ["ai", "sms", "rag", "vector-search", "chromadb", "ollama", "polly", "dotnet", "local-ai"],
+      "date": "2026-02-06",
+      "featured": true,
+      "image": "/img/posts/sms-llm-rag-vector-search.svg",
+      "linkedInHook": "Part 1: Built SMS → AI in an hour. Problem: it hallucinated answers.\n\nPart 2: Now it answers from YOUR docs.\n\nAdded:\n• RAG (vector search finds relevant docs)\n• ChromaDB (runs locally, 100% private)\n• Conversation memory (per phone number)\n• Polly (retry, circuit breaker, timeout)\n\n\"What's your refund policy?\"\nBefore: \"Generally, 30 days...\" [HALLUCINATED]\nAfter: \"30 days with receipt, 5-7 days to process\" [FROM YOUR DOCS]\n\nThe POC proved the concept. This proves it's production-ready.",
+      "blueskyHook": "Part 1: SMS → AI in an hour. Problem: hallucinated answers.\n\nPart 2: RAG + vector search. Now answers from YOUR actual docs. Plus conversation memory and Polly resilience.\n\nFrom POC to production-ready:"
     },
     {
       "slug": "ai-fiction-writing-honest-review",
@@ -570,7 +582,7 @@
       "description": "ChatGPT will not write your novel for you. After months of trying, here's what AI actually does well for fiction—and where it fails catastrophically.",
       "category": "Writing",
       "tags": ["writing", "ai", "creative-writing", "chatgpt", "fiction", "honest-review"],
-      "date": "2026-02-06",
+      "date": "2026-02-08",
       "featured": true,
       "image": "/img/posts/ai-fiction-writing-honest-review.svg",
       "linkedInHook": "I tried using AI to write fiction. The marketing said I'd become the director while AI wrote.\n\nReality: My protagonist suddenly became a marine biologist mid-chapter. The AI thought it would 'add spice.'\n\nVoice? Gone. Continuity? Nonexistent. Every scene became a meditation on fate featuring sunset-gazing.\n\nWhat AI actually does well: brainstorming, plot hole detection, 'what if' exploration.\n\nWhat it can't do: write your book. That's still on you.",
