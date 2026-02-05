@@ -55,6 +55,16 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult SmsPrivacy()
+    {
+        return View();
+    }
+
+    public IActionResult SmsTerms()
+    {
+        return View();
+    }
+
     [HttpGet]
     public IActionResult Contact()
     {
