@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bg2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="dangerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    <linearGradient id="fixGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="dboGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#475569"/>
+      <stop offset="100%" style="stop-color:#334155"/>
+    </linearGradient>
+    <linearGradient id="stg2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg2Grad)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.05" stroke="#ef4444" stroke-width="0.5">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="32" font-family="sans-serif" font-size="14" fill="#e2e8f0" text-anchor="middle" font-weight="bold">The MigrationsHistoryTable Bug</text>
+
+  <!-- Part 2 badge -->
+  <g transform="translate(710, 12)">
+    <rect x="0" y="0" width="60" height="22" rx="11" fill="url(#dangerGrad)"/>
+    <text x="30" y="15" font-family="sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">PART 2</text>
+  </g>
+
+  <!-- LEFT SIDE: THE BUG -->
+  <text x="200" y="60" font-family="sans-serif" font-size="11" fill="#fca5a5" text-anchor="middle" font-weight="bold">THE BUG</text>
+
+  <!-- Shared dbo history table -->
+  <g transform="translate(80, 75)">
+    <rect x="0" y="0" width="240" height="90" rx="6" fill="url(#dboGrad)" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,2"/>
+    <text x="120" y="20" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle">dbo.__EFMigrationsHistory</text>
+    <line x1="15" y1="28" x2="225" y2="28" stroke="#64748b" stroke-width="0.5"/>
+    <text x="120" y="44" font-family="monospace" font-size="8" fill="#9ca3af" text-anchor="middle">All environments share ONE table</text>
+
+    <!-- Migration rows -->
+    <g transform="translate(20, 52)">
+      <rect x="0" y="0" width="200" height="12" rx="2" fill="rgba(239,68,68,0.2)"/>
+      <text x="5" y="9" font-family="monospace" font-size="7" fill="#fca5a5">20240101_Init     | dbo run</text>
+    </g>
+    <g transform="translate(20, 67)">
+      <rect x="0" y="0" width="200" height="12" rx="2" fill="rgba(239,68,68,0.2)"/>
+      <text x="5" y="9" font-family="monospace" font-size="7" fill="#fca5a5">20240201_AddWork  | dbo run</text>
+    </g>
+  </g>
+
+  <!-- Arrow down to consequence -->
+  <path d="M200 170 L200 190" stroke="#ef4444" stroke-width="2" fill="none"/>
+  <polygon points="200,195 195,188 205,188" fill="#ef4444"/>
+
+  <!-- Staging tries to migrate -->
+  <g transform="translate(80, 200)">
+    <rect x="0" y="0" width="240" height="70" rx="6" fill="#16213e" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="120" y="20" font-family="monospace" font-size="9" fill="#f59e0b" text-anchor="middle">stg: dotnet ef database update</text>
+    <line x1="15" y1="28" x2="225" y2="28" stroke="#475569" stroke-width="0.5"/>
+    <text x="120" y="44" font-family="monospace" font-size="8" fill="#9ca3af" text-anchor="middle">Checks dbo.__EFMigrationsHistory</text>
+    <text x="120" y="58" font-family="monospace" font-size="8" fill="#fca5a5" text-anchor="middle">"Already up to date" (WRONG!)</text>
+  </g>
+
+  <!-- Result: empty stg schema -->
+  <g transform="translate(80, 290)">
+    <rect x="0" y="0" width="240" height="50" rx="6" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="120" y="22" font-family="monospace" font-size="9" fill="#ef4444" text-anchor="middle">stg schema: EMPTY</text>
+    <text x="120" y="38" font-family="monospace" font-size="8" fill="#fca5a5" text-anchor="middle">Invalid object name 'stg.AspNetUsers'</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M200 275 L200 285" stroke="#ef4444" stroke-width="1.5" fill="none"/>
+  <polygon points="200,290 196,284 204,284" fill="#ef4444"/>
+
+  <!-- Divider -->
+  <line x1="400" y1="55" x2="400" y2="360" stroke="#475569" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- RIGHT SIDE: THE FIX -->
+  <text x="600" y="60" font-family="sans-serif" font-size="11" fill="#86efac" text-anchor="middle" font-weight="bold">THE FIX</text>
+
+  <!-- Isolated history tables -->
+  <g transform="translate(440, 75)">
+    <rect x="0" y="0" width="145" height="55" rx="6" fill="#16213e" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="72" y="18" font-family="monospace" font-size="8" fill="#22c55e" text-anchor="middle">dev.__EFMigrationsHistory</text>
+    <text x="72" y="35" font-family="monospace" font-size="7" fill="#9ca3af" text-anchor="middle">dev migrations only</text>
+    <circle cx="125" cy="42" r="6" fill="#22c55e" opacity="0.3"/>
+    <text x="125" y="45" font-family="sans-serif" font-size="7" fill="#22c55e" text-anchor="middle">!</text>
+  </g>
+
+  <g transform="translate(600, 75)">
+    <rect x="0" y="0" width="145" height="55" rx="6" fill="#16213e" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="72" y="18" font-family="monospace" font-size="8" fill="#f59e0b" text-anchor="middle">stg.__EFMigrationsHistory</text>
+    <text x="72" y="35" font-family="monospace" font-size="7" fill="#9ca3af" text-anchor="middle">stg migrations only</text>
+    <circle cx="125" cy="42" r="6" fill="#f59e0b" opacity="0.3"/>
+    <text x="125" y="45" font-family="sans-serif" font-size="7" fill="#f59e0b" text-anchor="middle">!</text>
+  </g>
+
+  <!-- Fix code box -->
+  <g transform="translate(440, 150)">
+    <rect x="0" y="0" width="305" height="85" rx="6" fill="#16213e" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="152" y="18" font-family="monospace" font-size="8" fill="#93c5fd" text-anchor="middle">DesignTimeDbContextFactory</text>
+    <line x1="15" y1="24" x2="290" y2="24" stroke="#3b82f6" stroke-width="0.5" opacity="0.3"/>
+    <text x="15" y="40" font-family="monospace" font-size="7" fill="#9ca3af">MigrationsHistoryTable(schema)</text>
+    <text x="15" y="55" font-family="monospace" font-size="7" fill="#9ca3af">UseSchemaAwareMigrations(schema)</text>
+    <text x="15" y="70" font-family="monospace" font-size="7" fill="#9ca3af">HasDefaultSchema(schema)</text>
+  </g>
+
+  <!-- Result boxes -->
+  <g transform="translate(440, 255)">
+    <rect x="0" y="0" width="145" height="50" rx="6" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="1"/>
+    <text x="72" y="20" font-family="monospace" font-size="9" fill="#22c55e" text-anchor="middle">[dev] tables</text>
+    <text x="72" y="37" font-family="monospace" font-size="7" fill="#86efac" text-anchor="middle">All 15+ tables correct</text>
+  </g>
+
+  <g transform="translate(600, 255)">
+    <rect x="0" y="0" width="145" height="50" rx="6" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="1"/>
+    <text x="72" y="20" font-family="monospace" font-size="9" fill="#f59e0b" text-anchor="middle">[stg] tables</text>
+    <text x="72" y="37" font-family="monospace" font-size="7" fill="#fde68a" text-anchor="middle">All 15+ tables correct</text>
+  </g>
+
+  <!-- Arrows from fix to results -->
+  <path d="M512 240 L512 250" stroke="#22c55e" stroke-width="1.5" fill="none"/>
+  <polygon points="512,255 508,249 516,249" fill="#22c55e"/>
+  <path d="M672 240 L672 250" stroke="#f59e0b" stroke-width="1.5" fill="none"/>
+  <polygon points="672,255 668,249 676,249" fill="#f59e0b"/>
+
+  <!-- Bottom: 4 components needed -->
+  <g transform="translate(440, 320)">
+    <rect x="0" y="0" width="305" height="45" rx="6" fill="rgba(59,130,246,0.1)" stroke="#3b82f6" stroke-width="1"/>
+    <text x="152" y="16" font-family="sans-serif" font-size="8" fill="#93c5fd" text-anchor="middle" font-weight="bold">Four pieces required for true isolation:</text>
+    <text x="152" y="33" font-family="monospace" font-size="7" fill="#9ca3af" text-anchor="middle">HasDefaultSchema | MigrationsHistoryTable | SchemaAwareSqlGen | MigrationHelper</text>
+  </g>
+
+  <!-- Bottom tagline -->
+  <text x="400" y="388" font-family="sans-serif" font-size="10" fill="#a0aec0" text-anchor="middle">Silent failures, cascade bugs, and the design-time configuration that fixes them</text>
+</svg>

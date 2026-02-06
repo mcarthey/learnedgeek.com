@@ -217,6 +217,30 @@
       "blueskyHook": "11:47 PM. Bug fixed. 43 browser tabs. Cold coffee.\n\nNot time to be entertaining. But perfect time to be useful.\n\nCapture details while fresh. Add humor later. The entertaining version is always pass two:"
     },
     {
+      "slug": "schema-aware-ef-core-migrations-part-3",
+      "title": "Hardening Schema-Aware Migrations: Tests That Let You Sleep at Night",
+      "description": "After days of chasing schema bugs, we had no systematic way to verify correctness. Here are the five layers of testing that finally gave us confidence in our multi-environment schema isolation.",
+      "category": "Computers",
+      "tags": ["ef-core", "dotnet", "sql-server", "migrations", "testing", "xunit", "ci-cd", "health-checks"],
+      "date": "2026-06-20",
+      "featured": true,
+      "image": "/img/posts/schema-aware-ef-core-migrations-part-3.svg",
+      "linkedInHook": "After days debugging schema-aware EF Core migrations, we realized something uncomfortable: we had no systematic way to verify our schema configuration was correct.\n\nEach fix felt like whack-a-mole. So we built five layers of verification:\n\n1. Unit tests for configuration consistency\n2. Integration tests against actual databases\n3. CI post-migration schema queries\n4. Startup validation (fail fast)\n5. Runtime health checks\n\nThe investment seems excessive until you discover schema bugs through user-reported errors in production.\n\nPart 3 of the Schema-Aware EF Core Migrations series.",
+      "blueskyHook": "Schema-aware EF Core migrations are powerful but fragile. Configuration scattered across 5 files.\n\nBuilt five layers of verification: unit tests, integration tests, CI checks, startup validation, health checks. Sleep well, test deeply:"
+    },
+    {
+      "slug": "schema-aware-ef-core-migrations-part-2",
+      "title": "The MigrationsHistoryTable Bug That Silently Broke Everything",
+      "description": "Three months after implementing schema-aware migrations, migrations ran successfully but staging couldn't log in. The history table was in the wrong schema, silently skipping every migration.",
+      "category": "Computers",
+      "tags": ["ef-core", "dotnet", "sql-server", "migrations", "debugging", "multi-tenant"],
+      "date": "2026-06-18",
+      "featured": true,
+      "image": "/img/posts/schema-aware-ef-core-migrations-part-2.svg",
+      "linkedInHook": "Three months after implementing schema-aware EF Core migrations, staging broke. Migrations ran successfully. CI was green. But the site couldn't log in.\n\n'Invalid object name stg.AspNetUsers'\n\nThe root cause: HasDefaultSchema() does NOT affect the migrations history table. Our history was in dbo. Every environment checked the same table and saw 'already applied.'\n\nThen we fixed that... and hit a SECOND bug. Tables still going to dbo.\n\nTwo days of debugging. Four configuration points that ALL must agree. Miss any one and you get silent failures.\n\nPart 2 of the Schema-Aware EF Core Migrations series.",
+      "blueskyHook": "Schema-aware EF Core migrations: green CI, successful migrations, site can't log in.\n\nThe history table was in the wrong schema. Every environment thought migrations were 'already applied.' Silent failure:"
+    },
+    {
       "slug": "schema-aware-ef-core-migrations",
       "title": "Schema-Aware EF Core Migrations: One Migration Set, Multiple Environments",
       "description": "EF Core migrations don't natively support runtime schema selection. Here's how to intercept migration operations and inject the correct schema for local, dev, staging, and production.",
