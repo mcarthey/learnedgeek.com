@@ -44,7 +44,7 @@
   </g>
 
   <!-- ELI5 text -->
-  <g filter="url(#crayon)">
+  <g>
     <text x="50" y="72" text-anchor="middle" font-family="Comic Sans MS, Chalkboard, cursive" font-size="26" font-weight="bold" letter-spacing="3">
       <tspan fill="#E24444">E</tspan><tspan fill="#3B82F6">L</tspan><tspan fill="#22C55E">I</tspan><tspan fill="#F59E0B">5</tspan>
     </text>

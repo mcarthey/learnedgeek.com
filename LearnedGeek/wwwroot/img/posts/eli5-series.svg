@@ -111,14 +111,14 @@
   </g>
 
   <!-- ELI5 text - big chunky crayon letters -->
-  <g filter="url(#crayonHeavy)">
+  <g>
     <text x="400" y="400" text-anchor="middle" font-family="Comic Sans MS, Chalkboard, cursive" font-size="72" font-weight="bold" letter-spacing="12">
       <tspan fill="#E24444">E</tspan><tspan fill="#3B82F6">L</tspan><tspan fill="#22C55E">I</tspan><tspan fill="#F59E0B">5</tspan>
     </text>
   </g>
 
   <!-- Small "series" text below -->
-  <text x="400" y="430" text-anchor="middle" font-family="Comic Sans MS, Chalkboard, cursive" font-size="18" fill="#888" opacity="0.7" filter="url(#crayon)">
+  <text x="400" y="430" text-anchor="middle" font-family="Comic Sans MS, Chalkboard, cursive" font-size="18" fill="#888" opacity="0.7">
     s e r i e s
   </text>
 

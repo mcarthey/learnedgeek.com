@@ -149,7 +149,7 @@
       <text x="6" y="-2" font-family="Comic Sans MS, Chalkboard, cursive" font-size="7" font-weight="bold" fill="#22C55E">10</text>
       <text x="5" y="8" font-family="Comic Sans MS, Chalkboard, cursive" font-size="7" font-weight="bold" fill="#8B5CF6">01</text>
     </g>
-    <g filter="url(#eli5_crayon)">
+    <g>
       <text x="46" y="68" text-anchor="middle" font-family="Comic Sans MS, Chalkboard, cursive" font-size="24" font-weight="bold" letter-spacing="2">
         <tspan fill="#E24444">E</tspan><tspan fill="#3B82F6">L</tspan><tspan fill="#22C55E">I</tspan><tspan fill="#F59E0B">5</tspan>
       </text>
