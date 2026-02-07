@@ -97,12 +97,12 @@
       <rect x="8" y="72" width="84" height="26" rx="2" fill="#2a3a5a" stroke="#4a5a7a"/>
       <rect x="38" y="81" width="24" height="7" rx="2" fill="#f59e0b" opacity="0.5"/>
 
-      <!-- Index card popping out -->
-      <g transform="translate(12, -18) rotate(-6)">
-        <rect x="0" y="0" width="55" height="35" rx="2" fill="#FFF9F0" stroke="#DDD"/>
-        <line x1="5" y1="10" x2="50" y2="10" stroke="#ddd" stroke-width="0.8"/>
-        <line x1="5" y1="18" x2="40" y2="18" stroke="#ddd" stroke-width="0.8"/>
-        <line x1="5" y1="26" x2="45" y2="26" stroke="#ddd" stroke-width="0.8"/>
+      <!-- Index card popping out to the right -->
+      <g transform="translate(60, -8) rotate(6)">
+        <rect x="0" y="0" width="50" height="32" rx="2" fill="#FFF9F0" stroke="#DDD"/>
+        <line x1="5" y1="9" x2="45" y2="9" stroke="#ddd" stroke-width="0.8"/>
+        <line x1="5" y1="16" x2="38" y2="16" stroke="#ddd" stroke-width="0.8"/>
+        <line x1="5" y1="23" x2="42" y2="23" stroke="#ddd" stroke-width="0.8"/>
       </g>
     </g>
 
