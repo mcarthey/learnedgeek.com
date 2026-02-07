@@ -190,7 +190,7 @@ protected override void OnModelCreating(ModelBuilder builder)
 }
 ```
 
-Without this, your SELECT statements look for tables in the wrong schema. All environments use explicit named schemas---no `dbo` special cases.
+Without this, your SELECT statements look for tables in the wrong schema. All environments use explicit named schemas—no `dbo` special cases.
 
 ## Running Migrations
 

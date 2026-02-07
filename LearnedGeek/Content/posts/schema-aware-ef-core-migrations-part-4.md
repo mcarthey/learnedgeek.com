@@ -2,7 +2,7 @@
 
 *Part 4 of the Schema-Aware EF Core Migrations series. Read [Part 1](/Blog/Post/schema-aware-ef-core-migrations), [Part 2](/Blog/Post/schema-aware-ef-core-migrations-part-2), and [Part 3](/Blog/Post/schema-aware-ef-core-migrations-part-3) first.*
 
-We thought we had schema-aware migrations figured out. The SQL generator was rewriting table operations, the history table was per-schema, tests were passing. Then EF Core started complaining about "pending model changes"---even though there weren't any.
+We thought we had schema-aware migrations figured out. The SQL generator was rewriting table operations, the history table was per-schema, tests were passing. Then EF Core started complaining about "pending model changes"—even though there weren't any.
 
 ## The Symptom
 
@@ -62,7 +62,7 @@ This is dangerous. It masks legitimate warnings about actual pending changes. Yo
 
 ## The Real Solution: IModelCacheKeyFactory
 
-EF Core caches compiled models by context type. The default cache key is just `typeof(ApplicationDbContext)`. That means every instance of your context---regardless of schema---shares the same cached model.
+EF Core caches compiled models by context type. The default cache key is just `typeof(ApplicationDbContext)`. That means every instance of your context—regardless of schema—shares the same cached model.
 
 When the first context is created with schema "local", that model gets cached. When a second context is created with schema "stg", EF Core uses the cached "local" model and detects a mismatch.
 
@@ -217,7 +217,7 @@ public void SchemaAwareModelCacheKeyFactory_RegisteredViaReplaceService()
 
 ## The Moral
 
-EF Core's schema handling isn't a single problem---it's a constellation of related problems:
+EF Core's schema handling isn't a single problem—it's a constellation of related problems:
 
 1. **SQL generation** - Where tables get created
 2. **Query generation** - Where SELECT statements look for tables
