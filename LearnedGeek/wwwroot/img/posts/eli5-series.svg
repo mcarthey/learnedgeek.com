@@ -110,16 +110,17 @@
     </g>
   </g>
 
-  <!-- ELI5 text - big chunky crayon letters -->
-  <g>
-    <text x="400" y="400" text-anchor="middle" font-family="Comic Sans MS, Chalkboard, cursive" font-size="72" font-weight="bold" letter-spacing="12">
-      <tspan fill="#E24444">E</tspan><tspan fill="#3B82F6">L</tspan><tspan fill="#22C55E">I</tspan><tspan fill="#F59E0B">5</tspan>
-    </text>
+  <!-- ELI5 text as paths (font-independent) -->
+  <g stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M311,352 V400 M311,352 H349 M311,376 H341 M311,400 H349" stroke="#E24444"/>
+    <path d="M365,352 V400 H403" stroke="#3B82F6"/>
+    <path d="M415,352 H431 M423,352 V400 M415,400 H431" stroke="#22C55E"/>
+    <path d="M485,352 H449 V374 H475 Q489,374 489,387 Q489,400 475,400 H449" stroke="#F59E0B"/>
   </g>
 
   <!-- Small "series" text below -->
-  <text x="400" y="430" text-anchor="middle" font-family="Comic Sans MS, Chalkboard, cursive" font-size="18" fill="#888" opacity="0.7">
-    s e r i e s
+  <text x="400" y="430" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#888" opacity="0.7" letter-spacing="8">
+    series
   </text>
 
   <!-- Crayon lying at bottom-right corner -->

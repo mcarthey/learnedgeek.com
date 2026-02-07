@@ -43,10 +43,11 @@
     <text x="5" y="8" font-family="Comic Sans MS, Chalkboard, cursive" font-size="7" font-weight="bold" fill="#8B5CF6">01</text>
   </g>
 
-  <!-- ELI5 text -->
-  <g>
-    <text x="50" y="72" text-anchor="middle" font-family="Comic Sans MS, Chalkboard, cursive" font-size="26" font-weight="bold" letter-spacing="3">
-      <tspan fill="#E24444">E</tspan><tspan fill="#3B82F6">L</tspan><tspan fill="#22C55E">I</tspan><tspan fill="#F59E0B">5</tspan>
-    </text>
+  <!-- ELI5 text as paths (font-independent) -->
+  <g stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M25,56 V72 M25,56 H35 M25,64 H33 M25,72 H35" stroke="#E24444"/>
+    <path d="M40,56 V72 H50" stroke="#3B82F6"/>
+    <path d="M54,56 H60 M57,56 V72 M54,72 H60" stroke="#22C55E"/>
+    <path d="M74,56 H65 V63 H71 Q75,63 75,67.5 Q75,72 71,72 H65" stroke="#F59E0B"/>
   </g>
 </svg>

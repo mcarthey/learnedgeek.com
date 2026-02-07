@@ -149,8 +149,11 @@
         <line x1="-10" y1="-3" x2="-8" y2="6" stroke="#3B82F6" stroke-width="1" stroke-linecap="round"/>
       </g>
     </g>
-    <text x="46" y="68" text-anchor="middle" font-family="Comic Sans MS, Chalkboard, cursive" font-size="24" font-weight="bold" letter-spacing="2">
-      <tspan fill="#E24444">E</tspan><tspan fill="#3B82F6">L</tspan><tspan fill="#22C55E">I</tspan><tspan fill="#F59E0B">5</tspan>
-    </text>
+    <g stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M22,54 V68 M22,54 H32 M22,61 H30 M22,68 H32" stroke="#E24444"/>
+      <path d="M37,54 V68 H47" stroke="#3B82F6"/>
+      <path d="M50,54 H56 M53,54 V68 M50,68 H56" stroke="#22C55E"/>
+      <path d="M68,54 H60 V60 H65 Q70,60 70,64 Q70,68 65,68 H60" stroke="#F59E0B"/>
+    </g>
   </g>
 </svg>
