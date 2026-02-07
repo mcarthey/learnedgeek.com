@@ -17,7 +17,7 @@
   </g>
 
   <!-- Crayon brain mini version -->
-  <g filter="url(#crayon)" transform="translate(50, 32)">
+  <g transform="translate(50, 32)">
     <!-- Left bracket -->
     <g stroke="#E24444" fill="none" stroke-width="2.5" stroke-linecap="round">
       <polyline points="-22,-12 -26,-12 -26,12 -22,12"/>

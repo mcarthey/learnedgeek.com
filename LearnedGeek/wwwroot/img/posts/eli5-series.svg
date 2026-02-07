@@ -40,8 +40,8 @@
   <!-- Red margin line -->
   <line x1="80" y1="40" x2="80" y2="440" stroke="#E8A0A0" stroke-width="1.5" opacity="0.25"/>
 
-  <!-- Main content group with crayon filter -->
-  <g filter="url(#crayon)">
+  <!-- Main content group -->
+  <g>
 
     <!-- Left bracket - red crayon -->
     <g stroke="#E24444" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
@@ -124,7 +124,7 @@
   </text>
 
   <!-- Crayon lying at bottom-right corner -->
-  <g filter="url(#crayon)" transform="translate(640, 395) rotate(-25)">
+  <g transform="translate(640, 395) rotate(-25)">
     <!-- Crayon body -->
     <rect x="0" y="0" width="90" height="18" rx="2" fill="#E24444" stroke="#C33" stroke-width="1.5"/>
     <!-- Crayon tip -->
@@ -136,7 +136,7 @@
   </g>
 
   <!-- Second crayon - blue -->
-  <g filter="url(#crayon)" transform="translate(660, 410) rotate(-15)">
+  <g transform="translate(660, 410) rotate(-15)">
     <rect x="0" y="0" width="80" height="16" rx="2" fill="#3B82F6" stroke="#2563EB" stroke-width="1.5"/>
     <polygon points="80,0 80,16 96,8" fill="#F4D4A0" stroke="#C9A96E" stroke-width="1"/>
     <rect x="18" y="2.5" width="40" height="11" rx="1" fill="#2563EB" opacity="0.5"/>
