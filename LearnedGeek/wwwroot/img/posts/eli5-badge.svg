@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <filter id="crayon" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="4" seed="2" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- Badge background - slightly tilted notebook paper scrap -->
+  <g transform="rotate(-3, 50, 50)">
+    <rect x="5" y="8" width="90" height="84" rx="4" fill="#FFF9F0" stroke="#DDD" stroke-width="1" opacity="0.95"/>
+    <!-- Faint ruled lines -->
+    <line x1="10" y1="28" x2="90" y2="28" stroke="#89B4D6" stroke-width="0.5" opacity="0.2"/>
+    <line x1="10" y1="42" x2="90" y2="42" stroke="#89B4D6" stroke-width="0.5" opacity="0.2"/>
+    <line x1="10" y1="56" x2="90" y2="56" stroke="#89B4D6" stroke-width="0.5" opacity="0.2"/>
+    <line x1="10" y1="70" x2="90" y2="70" stroke="#89B4D6" stroke-width="0.5" opacity="0.2"/>
+  </g>
+
+  <!-- Crayon brain mini version -->
+  <g filter="url(#crayon)" transform="translate(50, 32)">
+    <!-- Left bracket -->
+    <g stroke="#E24444" fill="none" stroke-width="2.5" stroke-linecap="round">
+      <polyline points="-22,-12 -26,-12 -26,12 -22,12"/>
+    </g>
+    <!-- Right bracket -->
+    <g stroke="#E24444" fill="none" stroke-width="2.5" stroke-linecap="round">
+      <polyline points="22,-12 26,-12 26,12 22,12"/>
+    </g>
+    <!-- Left brain half -->
+    <path d="M 0,-13 C -8,-14 -16,-12 -19,-6 C -20,0 -19,6 -18,10 C -16,14 -8,15 0,14"
+          fill="#D4E8FC" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+    <!-- Right brain half -->
+    <path d="M 0,-13 C 8,-14 16,-12 19,-6 C 20,0 19,6 18,10 C 16,14 8,15 0,14"
+          fill="#D4F8D4" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/>
+    <!-- Center line -->
+    <line x1="0" y1="-12" x2="0" y2="13" stroke="#999" stroke-width="1" opacity="0.3"/>
+    <!-- Simple circuit dots left -->
+    <circle cx="-10" cy="-3" r="2" fill="#F59E0B" stroke="#E24444" stroke-width="1"/>
+    <circle cx="-8" cy="6" r="2" fill="#F59E0B" stroke="#E24444" stroke-width="1"/>
+    <line x1="-10" y1="-3" x2="-8" y2="6" stroke="#3B82F6" stroke-width="1" stroke-linecap="round"/>
+    <!-- Binary right -->
+    <text x="6" y="-2" font-family="Comic Sans MS, Chalkboard, cursive" font-size="7" font-weight="bold" fill="#22C55E">10</text>
+    <text x="5" y="8" font-family="Comic Sans MS, Chalkboard, cursive" font-size="7" font-weight="bold" fill="#8B5CF6">01</text>
+  </g>
+
+  <!-- ELI5 text -->
+  <g filter="url(#crayon)">
+    <text x="50" y="72" text-anchor="middle" font-family="Comic Sans MS, Chalkboard, cursive" font-size="26" font-weight="bold" letter-spacing="3">
+      <tspan fill="#E24444">E</tspan><tspan fill="#3B82F6">L</tspan><tspan fill="#22C55E">I</tspan><tspan fill="#F59E0B">5</tspan>
+    </text>
+  </g>
+</svg>
