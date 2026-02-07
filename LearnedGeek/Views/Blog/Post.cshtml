@@ -34,9 +34,9 @@
                 <div class="mt-6 flex flex-wrap gap-2">
                     @foreach (var tag in Model.Tags)
                     {
-                        <span class="px-3 py-1 text-sm font-medium text-neutral-500 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-800">
+                        <a asp-action="Index" asp-route-tag="@tag" class="px-3 py-1 text-sm font-medium text-neutral-500 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
                             @tag
-                        </span>
+                        </a>
                     }
                 </div>
             }
