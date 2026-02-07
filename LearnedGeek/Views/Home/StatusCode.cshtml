@@ -90,13 +90,13 @@
 
         <!-- Actions -->
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/" class="btn-primary">
+            <a asp-controller="Home" asp-action="Index" class="btn-primary">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
                 Back to Home
             </a>
-            <a href="/blog" class="btn-secondary">
+            <a asp-controller="Blog" asp-action="Index" class="btn-secondary">
                 Learn Something Instead
             </a>
         </div>
@@ -107,13 +107,13 @@
                 Maybe you were looking for one of these?
             </p>
             <div class="flex flex-wrap justify-center gap-3">
-                <a href="/about" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">About</a>
+                <a asp-controller="Home" asp-action="About" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">About</a>
                 <span class="text-neutral-300 dark:text-neutral-600">|</span>
-                <a href="/services" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">Services</a>
+                <a asp-controller="Home" asp-action="Services" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">Services</a>
                 <span class="text-neutral-300 dark:text-neutral-600">|</span>
-                <a href="/blog" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">Blog</a>
+                <a asp-controller="Blog" asp-action="Index" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">Blog</a>
                 <span class="text-neutral-300 dark:text-neutral-600">|</span>
-                <a href="/contact" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">Contact</a>
+                <a asp-controller="Home" asp-action="Contact" class="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white underline">Contact</a>
             </div>
         </div>
     </div>

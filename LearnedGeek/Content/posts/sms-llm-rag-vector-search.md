@@ -1,6 +1,6 @@
 # From POC to Production: Adding RAG and Vector Search to My SMS AI Assistant
 
-*Part 2 of the SMS AI series. [Read Part 1: Texting My Own AI](/blog/sms-llm-texting-custom-ai) first.*
+*Part 2 of the SMS AI series. [Read Part 1: Texting My Own AI](/Blog/Post/sms-llm-texting-custom-ai) first.*
 
 I built an SMS-to-LLM integration. Text a question, get an AI-powered answer. 40 lines of code.
 
@@ -388,7 +388,7 @@ Client data never touches OpenAI, Anthropic, or any cloud AI provider. For regul
 
 The code is open source: [github.com/mcarthey/SmsAiAssistant](https://github.com/mcarthey/SmsAiAssistant)
 
-I'm exploring workshop formats where teams can build this hands-on. If that sounds interesting, [reach out](/contact).
+I'm exploring workshop formats where teams can build this hands-on. If that sounds interesting, [reach out](/Home/Contact).
 
 ---
 
@@ -416,6 +416,6 @@ The POC proved the concept. This proves it's production-ready.
 
 ---
 
-*Part 1: [Texting My Own AI: Building an SMS Interface to a Custom LLM in an Hour](/blog/sms-llm-texting-custom-ai)*
+*Part 1: [Texting My Own AI: Building an SMS Interface to a Custom LLM in an Hour](/Blog/Post/sms-llm-texting-custom-ai)*
 
-*Related: [Running AI On Your Own Computer](/blog/running-ai-on-your-own-computer) covers getting started with Ollama and local LLMs.*
+*Related: [Running AI On Your Own Computer](/Blog/Post/running-ai-on-your-own-computer) covers getting started with Ollama and local LLMs.*

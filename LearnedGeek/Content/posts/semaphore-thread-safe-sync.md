@@ -208,4 +208,4 @@ Boolean flags for synchronization are a race condition waiting to happen. `Semap
 
 ---
 
-*Part of the Production Hardening series. See also: [HTTP Resilience with Polly](/blog/polly-http-resilience-patterns) for retry and circuit breaker patterns that work with thread-safe sync.*
+*Part of the Production Hardening series. See also: [HTTP Resilience with Polly](/Blog/Post/polly-http-resilience-patterns) for retry and circuit breaker patterns that work with thread-safe sync.*

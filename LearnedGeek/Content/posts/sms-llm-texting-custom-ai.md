@@ -8,7 +8,7 @@ Here's how I built a working SMS-to-LLM integration in about an hour, what I lea
 
 ## The Idea
 
-I've been experimenting with [local LLMs](/blog/running-ai-on-your-own-computer) lately, specifically fine-tuning models and running them through Ollama. But constantly switching between apps felt cumbersome. I wanted something more natural. Something I already do dozens of times a day: texting.
+I've been experimenting with [local LLMs](/Blog/Post/running-ai-on-your-own-computer) lately, specifically fine-tuning models and running them through Ollama. But constantly switching between apps felt cumbersome. I wanted something more natural. Something I already do dozens of times a day: texting.
 
 Then it clicked: What if clients could text questions about their projects and get answers from an AI trained on their documentation, codebase, and requirements? No portal to log into, no app to download. Just text a number.
 
@@ -258,4 +258,4 @@ If you're a consultant with technical clients, this is worth exploring. The tech
 
 ---
 
-*Related: [Running AI On Your Own Computer](/blog/running-ai-on-your-own-computer) covers getting started with Ollama and local LLMs.*
+*Related: [Running AI On Your Own Computer](/Blog/Post/running-ai-on-your-own-computer) covers getting started with Ollama and local LLMs.*

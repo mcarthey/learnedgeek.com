@@ -1,6 +1,6 @@
 # Hardening Schema-Aware Migrations: Tests That Let You Sleep at Night
 
-*Part 3 of the Schema-Aware EF Core Migrations series. Read [Part 1](/blog/schema-aware-ef-core-migrations) and [Part 2](/blog/schema-aware-ef-core-migrations-part-2) first.*
+*Part 3 of the Schema-Aware EF Core Migrations series. Read [Part 1](/Blog/Post/schema-aware-ef-core-migrations) and [Part 2](/Blog/Post/schema-aware-ef-core-migrations-part-2) first.*
 
 After spending days chasing schema bugs one-by-one, we realized something uncomfortable: we had no systematic way to verify our schema configuration was correct. Each fix felt like whack-a-mole. The only way we knew something was broken was when it broke in production.
 
@@ -355,8 +355,8 @@ Sleep well. Test deeply.
 
 *Schema-Aware EF Core Migrations series:*
 
-1. *[Schema-Aware EF Core Migrations](/blog/schema-aware-ef-core-migrations) - The custom SQL generator approach*
-2. *[The MigrationsHistoryTable Bug](/blog/schema-aware-ef-core-migrations-part-2) - Why history table schema matters*
+1. *[Schema-Aware EF Core Migrations](/Blog/Post/schema-aware-ef-core-migrations) - The custom SQL generator approach*
+2. *[The MigrationsHistoryTable Bug](/Blog/Post/schema-aware-ef-core-migrations-part-2) - Why history table schema matters*
 3. ***Hardening Schema Migrations** - Tests that let you sleep at night (this post)*
 
 *With all three pieces in place, you have both the implementation and the verification for production-grade multi-tenant schema isolation.*

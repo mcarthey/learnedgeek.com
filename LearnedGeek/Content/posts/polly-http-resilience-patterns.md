@@ -166,4 +166,4 @@ Polly transforms brittle HTTP calls into resilient operations. For mobile apps e
 
 ---
 
-*Part of the Production Hardening series. See also: [Thread-Safe Synchronization with SemaphoreSlim](/blog/semaphore-thread-safe-sync) for protecting your sync operations from race conditions.*
+*Part of the Production Hardening series. See also: [Thread-Safe Synchronization with SemaphoreSlim](/Blog/Post/semaphore-thread-safe-sync) for protecting your sync operations from race conditions.*

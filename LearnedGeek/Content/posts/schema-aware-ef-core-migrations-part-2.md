@@ -1,6 +1,6 @@
 # The MigrationsHistoryTable Bug That Silently Broke Everything
 
-*Part 2 of the Schema-Aware EF Core Migrations series. [Read Part 1](/blog/schema-aware-ef-core-migrations) first.*
+*Part 2 of the Schema-Aware EF Core Migrations series. [Read Part 1](/Blog/Post/schema-aware-ef-core-migrations) first.*
 
 Three months after implementing schema-aware migrations, we hit a bug that cost us two days of debugging. The migrations ran successfully. CI was green. But the staging site couldn't log in.
 
@@ -290,6 +290,6 @@ Build a CI workflow that deploys to a test schema first. Verify tables exist in 
 
 *Schema-Aware EF Core Migrations series:*
 
-1. *[Schema-Aware EF Core Migrations](/blog/schema-aware-ef-core-migrations) - The custom SQL generator approach*
+1. *[Schema-Aware EF Core Migrations](/Blog/Post/schema-aware-ef-core-migrations) - The custom SQL generator approach*
 2. ***The MigrationsHistoryTable Bug** - Why history table schema matters (this post)*
-3. *[Hardening Schema Migrations](/blog/schema-aware-ef-core-migrations-part-3) - Tests that let you sleep at night*
+3. *[Hardening Schema Migrations](/Blog/Post/schema-aware-ef-core-migrations-part-3) - Tests that let you sleep at night*

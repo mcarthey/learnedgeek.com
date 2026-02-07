@@ -178,7 +178,7 @@ Custom middleware gives you full control in one place.
 
 No more "Can you describe what you were doing?" No more "Try clearing your cache." Just the correlation ID.
 
-For extra credit, format your correlation IDs using [Crockford Base32](/blog/crockford-base32-phone-friendly-reference-ids) so users can read them over the phone.
+For extra credit, format your correlation IDs using [Crockford Base32](/Blog/Post/crockford-base32-phone-friendly-reference-ids) so users can read them over the phone.
 
 ## Testing
 
@@ -212,4 +212,4 @@ The middleware is simple, testable, and gives you full control. Every API should
 
 ---
 
-*Part of the Production Hardening series. See also: [Error Boundaries That Don't Trap Users](/blog/error-boundaries-that-dont-trap-users) for the client-side equivalent in Blazor.*
+*Part of the Production Hardening series. See also: [Error Boundaries That Don't Trap Users](/Blog/Post/error-boundaries-that-dont-trap-users) for the client-side equivalent in Blazor.*

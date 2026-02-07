@@ -234,15 +234,15 @@ No more "which schema did that hit?" moments. No more maintaining four copies of
 *Schema-Aware EF Core Migrations series:*
 
 1. ***Schema-Aware Migrations** - The custom SQL generator approach (this post)*
-2. *[The MigrationsHistoryTable Bug](/blog/schema-aware-ef-core-migrations-part-2) - Why history table schema matters*
-3. *[Hardening Schema Migrations](/blog/schema-aware-ef-core-migrations-part-3) - Tests that let you sleep at night*
+2. *[The MigrationsHistoryTable Bug](/Blog/Post/schema-aware-ef-core-migrations-part-2) - Why history table schema matters*
+3. *[Hardening Schema Migrations](/Blog/Post/schema-aware-ef-core-migrations-part-3) - Tests that let you sleep at night*
 
 ---
 
 This pattern is also part of the Enterprise Database Patterns trilogy:
 
-1. [Modern Database Testing](/blog/modern-database-testing-with-xunit-fixtures) - Real database testing with xUnit and Respawn
-2. [Encrypted Configuration](/blog/encrypted-configuration-pattern) - Database-backed secrets with AES-256 encryption
+1. [Modern Database Testing](/Blog/Post/modern-database-testing-with-xunit-fixtures) - Real database testing with xUnit and Respawn
+2. [Encrypted Configuration](/Blog/Post/encrypted-configuration-pattern) - Database-backed secrets with AES-256 encryption
 3. **Schema-Aware Migrations** - Multi-environment isolation in shared databases
 
 Together, they give you a robust foundation for enterprise database management. The upfront complexity pays dividends every time you onboard a new developer or spin up a new environment.

@@ -33,7 +33,7 @@ Every blog post starts as an entry in `posts.json`:
 }
 ```
 
-This is the *metadata* - everything about the post except the actual content. The `slug` is the URL-friendly name (`/blog/how-this-blog-works`). The `date` controls when it appears (future dates stay hidden until that day).
+This is the *metadata* - everything about the post except the actual content. The `slug` is the URL-friendly name (`/Blog/Post/how-this-blog-works`). The `date` controls when it appears (future dates stay hidden until that day).
 
 Think of it like a library card catalog. The card tells you where to find the book, what it's about, and when it was published - but it's not the book itself.
 
@@ -103,7 +103,7 @@ The heavy lifting is done by [Markdig](https://github.com/xoofx/markdig), a fant
 
 ## The Flow
 
-When you visit `/blog/how-this-blog-works`, here's what happens:
+When you visit `/Blog/Post/how-this-blog-works`, here's what happens:
 
 1. **Controller receives request** - "Someone wants the post with slug 'how-this-blog-works'"
 2. **BlogService checks the JSON** - "Do we have that post? Is its date today or earlier?"
