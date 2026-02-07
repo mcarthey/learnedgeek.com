@@ -152,6 +152,6 @@ When you create something valuable, share it, get others to link to it, and make
 
 ---
 
-*This is part of a series explaining technical concepts without the jargon. For technical SEO implementation guides, see [SEO Demystified](/Blog/Post/seo-demystified) and [Google Search Console Setup](/Blog/Post/google-search-console-setup).*
+*This is part of the ELI5 series—technical concepts explained without the jargon. For technical SEO implementation guides, see [SEO Demystified](/Blog/Post/seo-demystified) and [Google Search Console Setup](/Blog/Post/google-search-console-setup).*
 
 *The internet is vast. Search engines are how we navigate it. Understanding them helps you be found.*

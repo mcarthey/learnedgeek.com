@@ -144,6 +144,6 @@ And when all of them work in concert, you get to watch a little car icon crawl t
 
 ---
 
-*This is the first in a series explaining technical concepts without the technical jargon. If you want to see how these ideas translate into actual code, check out [When Your Map Library Doesn't Speak C#](/Blog/Post/leaflet-blazor-javascript-interop) and [Making SignalR Connections That Don't Give Up](/Blog/Post/signalr-real-time-location-tracking).*
+*This is part of the ELI5 series—technical concepts explained without the jargon. If you want to see how these ideas translate into actual code, check out [When Your Map Library Doesn't Speak C#](/Blog/Post/leaflet-blazor-javascript-interop) and [Making SignalR Connections That Don't Give Up](/Blog/Post/signalr-real-time-location-tracking).*
 
 *Sometimes the best way to understand something technical is to forget it's technical at all.*

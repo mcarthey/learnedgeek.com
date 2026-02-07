@@ -132,6 +132,6 @@ Understanding what's under the hood helps you use it better—and helps you know
 
 ---
 
-*This is part of a series explaining technical concepts without the jargon. For practical experiences using AI for coding, see [When AI Gives You Coaching Instead of Construction](/Blog/Post/when-ai-gives-you-coaching-not-construction) and [When Your AI Coding Assistant Gaslights You](/Blog/Post/ai-coding-showdown).*
+*This is part of the ELI5 series—technical concepts explained without the jargon. For practical experiences using AI for coding, see [When AI Gives You Coaching Instead of Construction](/Blog/Post/when-ai-gives-you-coaching-not-construction) and [When Your AI Coding Assistant Gaslights You](/Blog/Post/ai-coding-showdown).*
 
 *The best tool users understand their tools. AI is a tool worth understanding.*

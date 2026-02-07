@@ -139,6 +139,6 @@ Treat it accordingly.
 
 ---
 
-*This is part of a series explaining technical concepts without the jargon. For detailed patterns on database testing and migrations, see [Modern Database Testing](/Blog/Post/modern-database-testing-with-xunit-fixtures) and [Schema-Aware EF Core Migrations](/Blog/Post/schema-aware-ef-core-migrations).*
+*This is part of the ELI5 series—technical concepts explained without the jargon. For detailed patterns on database testing and migrations, see [Modern Database Testing](/Blog/Post/modern-database-testing-with-xunit-fixtures) and [Schema-Aware EF Core Migrations](/Blog/Post/schema-aware-ef-core-migrations).*
 
 *Data is not just files. It's trust.*

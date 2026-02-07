@@ -125,6 +125,6 @@ It's not magic. It's math and trust infrastructure. But the result is pretty mag
 
 ---
 
-*This is part of a series explaining technical concepts without the jargon. For the technical implementation of SSL automation, see [SSL Automation with Let's Encrypt and Cloudflare](/Blog/Post/ssl-automation-with-letsencrypt-and-cloudflare) and [Upgrading Certbot to Wildcard Certificates](/Blog/Post/upgrading-certbot-to-wildcard-certificates).*
+*This is part of the ELI5 series—technical concepts explained without the jargon. For the technical implementation of SSL automation, see [SSL Automation with Let's Encrypt and Cloudflare](/Blog/Post/ssl-automation-with-letsencrypt-and-cloudflare) and [Upgrading Certbot to Wildcard Certificates](/Blog/Post/upgrading-certbot-to-wildcard-certificates).*
 
 *The best security is invisible. When everything works, you just see a little padlock and go about your day.*
