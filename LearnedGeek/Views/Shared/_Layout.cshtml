@@ -53,6 +53,7 @@
     <link rel="alternate" type="application/rss+xml" title="Learned Geek RSS Feed" href="/feed.xml" />
     <link rel="alternate" type="application/json" title="Learned Geek JSON Feed" href="/feed.json" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- JSON-LD Structured Data -->
     @if (contentType == "article" && seo != null)
@@ -114,6 +115,8 @@
     <partial name="_Footer" />
 
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

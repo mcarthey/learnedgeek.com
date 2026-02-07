@@ -53,11 +53,12 @@
   }
 
   .prose pre code {
-    @apply bg-transparent text-neutral-100 p-0 text-sm font-mono;
-    color: #e5e5e5 !important;
-    background: transparent !important;
+    @apply bg-transparent p-0 text-sm font-mono;
+    color: #e5e5e5;
+    background: transparent;
   }
 
+  /* Inline code (not inside pre blocks) */
   .prose code {
     @apply text-sm bg-neutral-100 text-neutral-800 px-1.5 py-0.5 rounded font-mono;
     @apply dark:bg-neutral-700 dark:text-neutral-200;
@@ -66,5 +67,11 @@
   .prose code::before,
   .prose code::after {
     content: none;
+  }
+
+  /* Prism.js overrides - use our backgrounds, let Prism handle syntax colors */
+  .prose pre[class*="language-"],
+  .prose code[class*="language-"] {
+    background: transparent;
   }
 }
