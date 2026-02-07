@@ -82,11 +82,11 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<Applicatio
 
         var schema = environment switch
         {
-            "Local" => "dbo",
+            "Local" => "local",
             "Development" => "dev",
             "Staging" => "stg",
-            "Production" => "dbo",
-            _ => "dbo"
+            "Production" => "prod",
+            _ => "prod"  // Default to prod for safety
         };
 
         var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
@@ -104,10 +104,10 @@ Now each environment has isolated migrations history:
 
 | Environment | Schema | History Table |
 |------------|--------|---------------|
-| Local | dbo | dbo.__EFMigrationsHistory |
+| Local | local | local.__EFMigrationsHistory |
 | Development | dev | dev.__EFMigrationsHistory |
 | Staging | stg | stg.__EFMigrationsHistory |
-| Production | dbo | dbo.__EFMigrationsHistory |
+| Production | prod | prod.__EFMigrationsHistory |
 
 ## Recovering From The Bug
 
@@ -195,11 +195,11 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<Applicatio
 
         var schema = environment switch
         {
-            "Local" => "dbo",
+            "Local" => "local",
             "Development" => "dev",
             "Staging" => "stg",
-            "Production" => "dbo",
-            _ => "dbo"
+            "Production" => "prod",
+            _ => "prod"  // Default to prod for safety
         };
 
         var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
@@ -209,11 +209,8 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<Applicatio
             options.MigrationsHistoryTable("__EFMigrationsHistory", schema));
 
         // FIX #2: Register the custom SQL generator at design time
-        // Without this, CREATE TABLE statements won't have schema prefixes
-        if (schema != "dbo")
-        {
-            optionsBuilder.UseSchemaAwareMigrations(schema);
-        }
+        // All environments use named schemas - no special cases
+        optionsBuilder.UseSchemaAwareMigrations(schema);
 
         // ... rest of configuration
     }
@@ -293,3 +290,6 @@ Build a CI workflow that deploys to a test schema first. Verify tables exist in 
 1. *[Schema-Aware EF Core Migrations](/Blog/Post/schema-aware-ef-core-migrations) - The custom SQL generator approach*
 2. ***The MigrationsHistoryTable Bug** - Why history table schema matters (this post)*
 3. *[Hardening Schema Migrations](/Blog/Post/schema-aware-ef-core-migrations-part-3) - Tests that let you sleep at night*
+4. *[The Model Cache Key Factory](/Blog/Post/schema-aware-ef-core-migrations-part-4) - Preventing false PendingModelChangesWarning*
+
+*Note: Updated February 2026 to reflect using explicit named schemas for all environments (local, dev, stg, prod).*

@@ -2,7 +2,7 @@
 
 I stared at my colleague's Slack message with the sinking feeling you get when you realize you might have just updated production instead of staging.
 
-We were sharing a SQL Server, using different schemas to isolate environments: `[local]` for developer sandboxes, `[dev]` for CI, `[stg]` for staging, and `[dbo]` for production. It was elegant in theory—one database server, complete isolation, easy to compare data across environments.
+We were sharing a SQL Server, using different schemas to isolate environments: `[local]` for developer sandboxes, `[dev]` for development, `[stg]` for staging, and `[prod]` for production. It was elegant in theory—one database server, complete isolation, easy to compare data across environments.
 
 In practice, EF Core didn't get the memo.
 
@@ -47,14 +47,14 @@ That SQL generator is a replaceable service. I can intercept operations *after* 
 Here's the core of it. We inherit from `SqlServerMigrationsSqlGenerator` and override `Generate`:
 
 ```csharp
-public class SchemaAwareSqlGenerator : SqlServerMigrationsSqlGenerator
+public class SchemaAwareMigrationsSqlGenerator : SqlServerMigrationsSqlGenerator
 {
     private readonly string _schema;
 
-    public SchemaAwareSqlGenerator(
+    public SchemaAwareMigrationsSqlGenerator(
         MigrationsSqlGeneratorDependencies dependencies,
         ICommandBatchPreparer batchPreparer,
-        IOptions<SchemaSettings> settings)
+        IOptions<DatabaseSettings> settings)
         : base(dependencies, batchPreparer)
     {
         _schema = settings.Value.Schema;
@@ -128,9 +128,9 @@ Register the custom generator and pass the schema through:
 public static DbContextOptionsBuilder UseSchemaAwareMigrations(
     this DbContextOptionsBuilder builder, string schema)
 {
-    builder.ReplaceService<IMigrationsSqlGenerator, SchemaAwareSqlGenerator>();
+    builder.ReplaceService<IMigrationsSqlGenerator, SchemaAwareMigrationsSqlGenerator>();
 
-    // Pass schema via options - your SchemaSettings class
+    // Pass schema via options - your DatabaseSettings class
     builder.AddOrUpdateExtension(new SchemaOptionsExtension(schema));
 
     return builder;
@@ -185,12 +185,12 @@ The SQL generator handles migrations. But for runtime *queries*, you still need:
 ```csharp
 protected override void OnModelCreating(ModelBuilder builder)
 {
-    if (!string.IsNullOrEmpty(_schema) && _schema != "dbo")
+    if (!string.IsNullOrEmpty(_schema))
         builder.HasDefaultSchema(_schema);
 }
 ```
 
-Without this, your SELECT statements look for tables in `dbo` even though they're in `[dev]`.
+Without this, your SELECT statements look for tables in the wrong schema. All environments use explicit named schemas---no `dbo` special cases.
 
 ## Running Migrations
 
@@ -210,15 +210,12 @@ Same migrations, different schemas. The SQL generator handles the transformation
 
 ## The Gotchas
 
-**Create schemas first**: Unlike `dbo`, custom schemas don't exist by default:
+**Create schemas first**: Custom schemas don't exist by default:
 
 ```csharp
-if (schema != "dbo")
-{
-    await connection.ExecuteAsync($@"
-        IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = '{schema}')
-            EXEC('CREATE SCHEMA [{schema}]')");
-}
+await connection.ExecuteAsync($@"
+    IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = '{schema}')
+        EXEC('CREATE SCHEMA [{schema}]')");
 ```
 
 **Test thoroughly**: Run migrations against all environments and verify tables ended up in the right schemas. Check `INFORMATION_SCHEMA.TABLES` if something looks wrong.
@@ -236,6 +233,9 @@ No more "which schema did that hit?" moments. No more maintaining four copies of
 1. ***Schema-Aware Migrations** - The custom SQL generator approach (this post)*
 2. *[The MigrationsHistoryTable Bug](/Blog/Post/schema-aware-ef-core-migrations-part-2) - Why history table schema matters*
 3. *[Hardening Schema Migrations](/Blog/Post/schema-aware-ef-core-migrations-part-3) - Tests that let you sleep at night*
+4. *[The Model Cache Key Factory](/Blog/Post/schema-aware-ef-core-migrations-part-4) - Preventing false PendingModelChangesWarning*
+
+*Note: Updated February 2026 to reflect using explicit named schemas for all environments (local, dev, stg, prod).*
 
 ---
 

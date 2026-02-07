@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bg4Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="warningGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <linearGradient id="fixGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#15803d"/>
+    </linearGradient>
+    <linearGradient id="cacheGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <linearGradient id="schemaGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="schemaGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg4Grad)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.05" stroke="#f59e0b" stroke-width="0.5">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="32" font-family="sans-serif" font-size="14" fill="#e2e8f0" text-anchor="middle" font-weight="bold">IModelCacheKeyFactory: Schema-Aware Model Caching</text>
+
+  <!-- Part 4 badge -->
+  <g transform="translate(710, 12)">
+    <rect x="0" y="0" width="60" height="22" rx="11" fill="url(#warningGrad)"/>
+    <text x="30" y="15" font-family="sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">PART 4</text>
+  </g>
+
+  <!-- LEFT SIDE: The Problem -->
+  <text x="200" y="62" font-family="sans-serif" font-size="12" fill="#fca5a5" text-anchor="middle" font-weight="bold">THE PROBLEM</text>
+
+  <!-- Default cache key box -->
+  <g transform="translate(50, 75)">
+    <rect x="0" y="0" width="300" height="35" rx="4" fill="url(#cacheGrad)" opacity="0.2" stroke="#3b82f6" stroke-width="1"/>
+    <text x="15" y="14" font-family="monospace" font-size="8" fill="#93c5fd">Default Cache Key:</text>
+    <text x="15" y="28" font-family="monospace" font-size="9" fill="#60a5fa" font-weight="bold">typeof(ApplicationDbContext)</text>
+  </g>
+
+  <!-- Arrow down -->
+  <line x1="200" y1="115" x2="200" y2="130" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowDown)"/>
+
+  <!-- Two contexts sharing same cache -->
+  <g transform="translate(60, 135)">
+    <!-- Context 1: local -->
+    <rect x="0" y="0" width="130" height="55" rx="4" fill="url(#schemaGrad1)" opacity="0.2" stroke="#8b5cf6" stroke-width="1"/>
+    <text x="65" y="16" font-family="monospace" font-size="8" fill="#c4b5fd" text-anchor="middle">Context #1</text>
+    <text x="65" y="32" font-family="monospace" font-size="9" fill="#a78bfa" text-anchor="middle" font-weight="bold">schema: "local"</text>
+    <text x="65" y="48" font-family="monospace" font-size="7" fill="#7c3aed" text-anchor="middle">cached first</text>
+
+    <!-- Context 2: stg -->
+    <rect x="150" y="0" width="130" height="55" rx="4" fill="url(#schemaGrad2)" opacity="0.2" stroke="#ef4444" stroke-width="1"/>
+    <text x="215" y="16" font-family="monospace" font-size="8" fill="#fca5a5" text-anchor="middle">Context #2</text>
+    <text x="215" y="32" font-family="monospace" font-size="9" fill="#f87171" text-anchor="middle" font-weight="bold">schema: "stg"</text>
+    <text x="215" y="48" font-family="monospace" font-size="7" fill="#dc2626" text-anchor="middle">uses cached "local"!</text>
+  </g>
+
+  <!-- Collision arrow -->
+  <g transform="translate(140, 155)">
+    <line x1="0" y1="0" x2="60" y2="0" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,3"/>
+    <text x="30" y="-6" font-family="sans-serif" font-size="7" fill="#fbbf24" text-anchor="middle">COLLISION</text>
+  </g>
+
+  <!-- Warning result -->
+  <g transform="translate(50, 205)">
+    <rect x="0" y="0" width="300" height="40" rx="4" fill="#f59e0b" opacity="0.15" stroke="#f59e0b" stroke-width="1.5"/>
+    <!-- Warning triangle -->
+    <text x="15" y="18" font-family="sans-serif" font-size="14" fill="#fbbf24">!</text>
+    <text x="30" y="16" font-family="monospace" font-size="7" fill="#fde68a">PendingModelChangesWarning</text>
+    <text x="30" y="32" font-family="monospace" font-size="7" fill="#fcd34d">"The model has pending changes..."</text>
+  </g>
+
+  <!-- Divider -->
+  <line x1="400" y1="55" x2="400" y2="370" stroke="#334155" stroke-width="1" stroke-dasharray="6,4"/>
+
+  <!-- RIGHT SIDE: The Solution -->
+  <text x="600" y="62" font-family="sans-serif" font-size="12" fill="#86efac" text-anchor="middle" font-weight="bold">THE SOLUTION</text>
+
+  <!-- Schema-aware cache key box -->
+  <g transform="translate(440, 75)">
+    <rect x="0" y="0" width="320" height="35" rx="4" fill="url(#fixGrad)" opacity="0.2" stroke="#22c55e" stroke-width="1"/>
+    <text x="15" y="14" font-family="monospace" font-size="8" fill="#86efac">Schema-Aware Cache Key:</text>
+    <text x="15" y="28" font-family="monospace" font-size="9" fill="#4ade80" font-weight="bold">(Type, Schema, DesignTime)</text>
+  </g>
+
+  <!-- Two isolated cache entries -->
+  <g transform="translate(450, 125)">
+    <!-- Cache entry 1 -->
+    <rect x="0" y="0" width="300" height="45" rx="4" fill="url(#schemaGrad1)" opacity="0.15" stroke="#8b5cf6" stroke-width="1"/>
+    <text x="15" y="16" font-family="monospace" font-size="8" fill="#c4b5fd">Cache Key #1:</text>
+    <text x="15" y="34" font-family="monospace" font-size="9" fill="#a78bfa" font-weight="bold">(AppDbContext, "local", false)</text>
+    <!-- Checkmark -->
+    <g transform="translate(270, 10)">
+      <circle cx="10" cy="10" r="10" fill="#22c55e" opacity="0.3"/>
+      <path d="M5 10 L9 14 L16 6" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <g transform="translate(450, 180)">
+    <!-- Cache entry 2 -->
+    <rect x="0" y="0" width="300" height="45" rx="4" fill="url(#schemaGrad2)" opacity="0.15" stroke="#ef4444" stroke-width="1"/>
+    <text x="15" y="16" font-family="monospace" font-size="8" fill="#fca5a5">Cache Key #2:</text>
+    <text x="15" y="34" font-family="monospace" font-size="9" fill="#f87171" font-weight="bold">(AppDbContext, "stg", false)</text>
+    <!-- Checkmark -->
+    <g transform="translate(270, 10)">
+      <circle cx="10" cy="10" r="10" fill="#22c55e" opacity="0.3"/>
+      <path d="M5 10 L9 14 L16 6" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- Result: No false warning -->
+  <g transform="translate(450, 240)">
+    <rect x="0" y="0" width="300" height="40" rx="4" fill="#22c55e" opacity="0.15" stroke="#22c55e" stroke-width="1.5"/>
+    <g transform="translate(10, 8)">
+      <circle cx="10" cy="10" r="10" fill="#22c55e" opacity="0.3"/>
+      <path d="M5 10 L9 14 L16 6" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text x="38" y="18" font-family="monospace" font-size="8" fill="#86efac">No false warnings</text>
+    <text x="38" y="32" font-family="monospace" font-size="8" fill="#4ade80">Each schema = isolated model</text>
+  </g>
+
+  <!-- Bottom: Complete Stack Summary -->
+  <g transform="translate(40, 295)">
+    <text x="0" y="0" font-family="sans-serif" font-size="10" fill="#94a3b8" font-weight="bold">The Complete Schema-Aware Stack:</text>
+
+    <g transform="translate(0, 15)">
+      <rect x="0" y="0" width="145" height="28" rx="3" fill="#3b82f6" opacity="0.2" stroke="#3b82f6" stroke-width="0.5"/>
+      <text x="72" y="12" font-family="monospace" font-size="7" fill="#93c5fd" text-anchor="middle">HasDefaultSchema()</text>
+      <text x="72" y="23" font-family="monospace" font-size="6" fill="#64748b" text-anchor="middle">queries</text>
+    </g>
+
+    <g transform="translate(152, 15)">
+      <rect x="0" y="0" width="145" height="28" rx="3" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="0.5"/>
+      <text x="72" y="12" font-family="monospace" font-size="7" fill="#c4b5fd" text-anchor="middle">MigrationsHistoryTable()</text>
+      <text x="72" y="23" font-family="monospace" font-size="6" fill="#64748b" text-anchor="middle">history isolation</text>
+    </g>
+
+    <g transform="translate(304, 15)">
+      <rect x="0" y="0" width="155" height="28" rx="3" fill="#f59e0b" opacity="0.2" stroke="#f59e0b" stroke-width="0.5"/>
+      <text x="77" y="12" font-family="monospace" font-size="7" fill="#fde68a" text-anchor="middle">UseSchemaAwareMigrations()</text>
+      <text x="77" y="23" font-family="monospace" font-size="6" fill="#64748b" text-anchor="middle">SQL generation</text>
+    </g>
+
+    <g transform="translate(466, 15)">
+      <rect x="0" y="0" width="145" height="28" rx="3" fill="#22c55e" opacity="0.2" stroke="#22c55e" stroke-width="1"/>
+      <text x="72" y="12" font-family="monospace" font-size="7" fill="#86efac" text-anchor="middle">IModelCacheKeyFactory</text>
+      <text x="72" y="23" font-family="monospace" font-size="6" fill="#64748b" text-anchor="middle">model caching</text>
+    </g>
+
+    <g transform="translate(618, 15)">
+      <rect x="0" y="0" width="140" height="28" rx="3" fill="#ef4444" opacity="0.2" stroke="#ef4444" stroke-width="0.5"/>
+      <text x="70" y="12" font-family="monospace" font-size="7" fill="#fca5a5" text-anchor="middle">MigrationHelper.Env</text>
+      <text x="70" y="23" font-family="monospace" font-size="6" fill="#64748b" text-anchor="middle">seed scripts</text>
+    </g>
+  </g>
+
+  <!-- Bottom: Five required -->
+  <g transform="translate(40, 355)">
+    <text x="0" y="0" font-family="monospace" font-size="7" fill="#64748b">All five required for production-grade schema-per-environment isolation</text>
+  </g>
+
+  <!-- Bottom tagline -->
+  <text x="400" y="388" font-family="sans-serif" font-size="10" fill="#a0aec0" text-anchor="middle">Don't suppress warnings. Fix the root cause.</text>
+</svg>

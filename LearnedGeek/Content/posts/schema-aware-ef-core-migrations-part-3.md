@@ -35,10 +35,10 @@ Test that all the schema mappings agree with each other:
 public class SchemaConfigurationTests
 {
     [Theory]
-    [InlineData("Local", "dbo", "local")]
+    [InlineData("Local", "local", "local")]
     [InlineData("Development", "dev", "dev")]
     [InlineData("Staging", "stg", "stg")]
-    [InlineData("Production", "dbo", "prod")]
+    [InlineData("Production", "prod", "prod")]
     public void AllSchemaConfigurations_AreConsistent(
         string environment,
         string expectedSchema,
@@ -358,5 +358,6 @@ Sleep well. Test deeply.
 1. *[Schema-Aware EF Core Migrations](/Blog/Post/schema-aware-ef-core-migrations) - The custom SQL generator approach*
 2. *[The MigrationsHistoryTable Bug](/Blog/Post/schema-aware-ef-core-migrations-part-2) - Why history table schema matters*
 3. ***Hardening Schema Migrations** - Tests that let you sleep at night (this post)*
+4. *[The Model Cache Key Factory](/Blog/Post/schema-aware-ef-core-migrations-part-4) - Preventing false PendingModelChangesWarning*
 
-*With all three pieces in place, you have both the implementation and the verification for production-grade multi-tenant schema isolation.*
+*With all four pieces in place, you have both the implementation and the verification for production-grade multi-tenant schema isolation.*
