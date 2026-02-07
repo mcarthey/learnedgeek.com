@@ -54,7 +54,7 @@
       "description": "You type something into Google. Billions of pages exist. How does it know about them? How does it decide which ten to show? Here's search engines explained for everyone.",
       "category": "Computers",
       "tags": ["seo", "eli5", "explainer", "beginners", "google", "search", "indexing", "ranking"],
-      "date": "2026-03-05",
+      "date": "2026-02-06",
       "featured": true,
       "image": "/img/posts/how-google-finds-websites.svg",
       "linkedInHook": "Google uses robot spiders that visit websites by following links. Like exploring a cave system—enter one cave, find tunnels to others, keep going forever.\n\nThen it indexes everything—writes a summary for each page and files it in a massive catalog.\n\nWhen you search, it doesn't search the internet. It searches its catalog. And uses hundreds of factors to decide which pages deserve the top spots.\n\nSEO isn't manipulation. It's communication—helping Google understand what your content is about.",
