@@ -279,6 +279,23 @@
                         @if (instagramConnected)
                         {
                             <div class="border-t border-neutral-200 dark:border-neutral-700 pt-4 mt-4">
+                                @if (post.Tags.Contains("eli5"))
+                                {
+                                    <!-- ELI5 Series Branding Toggle -->
+                                    <div class="mb-4 p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+                                        <label class="flex items-center gap-3 cursor-pointer">
+                                            <input type="checkbox" id="eli5-toggle-@post.Slug" checked
+                                                   class="w-4 h-4 rounded border-amber-300 text-amber-500 focus:ring-amber-500"
+                                                   onchange="toggleEli5Preview('@post.Slug')" />
+                                            <span class="text-sm font-medium text-amber-800 dark:text-amber-200">Include ELI5 Series Branding</span>
+                                            <span class="text-xs text-amber-600 dark:text-amber-400">(adds series cover as first carousel slide)</span>
+                                        </label>
+                                        <div id="eli5-preview-@post.Slug" class="mt-2 flex items-center gap-3">
+                                            <img src="/img/eli5-series.png" class="w-20 h-20 rounded border border-amber-300 dark:border-amber-700 object-cover" alt="ELI5 Series Cover" />
+                                            <span class="text-xs text-amber-600 dark:text-amber-400">Slide 1: ELI5 Series cover &rarr; Slide 2: Your content</span>
+                                        </div>
+                                    </div>
+                                }
                                 <!-- Image Type Tabs -->
                                 <div class="flex gap-2 mb-4">
                                     <button onclick="setImageType('@post.Slug', 'quote')"
@@ -455,6 +472,14 @@
 
 @section Scripts {
     <script>
+        function toggleEli5Preview(slug) {
+            const preview = document.getElementById('eli5-preview-' + slug);
+            const toggle = document.getElementById('eli5-toggle-' + slug);
+            if (toggle && preview) {
+                preview.style.display = toggle.checked ? 'flex' : 'none';
+            }
+        }
+
         function togglePost(slug) {
             const expand = document.getElementById('expand-' + slug);
             const chevron = document.getElementById('chevron-' + slug);
@@ -1050,6 +1075,12 @@
                 formData.append('slug', slug);
                 formData.append('caption', caption);
                 formData.append('imageType', imageType);
+
+                // Check ELI5 branding toggle
+                const eli5Toggle = document.getElementById('eli5-toggle-' + slug);
+                if (eli5Toggle && eli5Toggle.checked) {
+                    formData.append('eli5Carousel', 'true');
+                }
 
                 if (imageType === 'quote') {
                     const quote = document.getElementById('ig-quote-' + slug).value;

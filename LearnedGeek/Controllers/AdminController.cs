@@ -419,7 +419,7 @@ public class AdminController : Controller
 
     [HttpPost("share-instagram")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> ShareToInstagram(string slug, string caption, string? imageType, string? quote, string? code, string? lang, string? carouselData, string? quoteColor, string? quoteLogo)
+    public async Task<IActionResult> ShareToInstagram(string slug, string caption, string? imageType, string? quote, string? code, string? lang, string? carouselData, string? quoteColor, string? quoteLogo, bool eli5Carousel = false)
     {
         if (!IsAuthorized())
         {
@@ -438,6 +438,7 @@ public class AdminController : Controller
         }
 
         InstagramPostResult result;
+        const string eli5CoverUrl = "https://learnedgeek.com/img/eli5-series.png";
 
         if (imageType == "carousel" && !string.IsNullOrWhiteSpace(carouselData))
         {
@@ -449,6 +450,13 @@ public class AdminController : Controller
             }
 
             var imageUrls = new List<string>();
+
+            // Prepend ELI5 series cover as first slide when enabled
+            if (eli5Carousel)
+            {
+                imageUrls.Add(eli5CoverUrl);
+            }
+
             foreach (var slide in slides)
             {
                 string imageUrl;
@@ -505,7 +513,16 @@ public class AdminController : Controller
                 }
             }
 
-            result = await _instagramService.ShareImagePostAsync(caption, imageUrl);
+            // ELI5 carousel: pair ELI5 series cover + content image as 2-slide carousel
+            if (eli5Carousel)
+            {
+                var carouselUrls = new List<string> { eli5CoverUrl, imageUrl };
+                result = await _instagramService.ShareCarouselPostAsync(caption, carouselUrls);
+            }
+            else
+            {
+                result = await _instagramService.ShareImagePostAsync(caption, imageUrl);
+            }
         }
 
         if (result.Success)
@@ -1013,6 +1030,24 @@ public class AdminController : Controller
         if (imageData == null)
         {
             return NotFound();
+        }
+
+        return File(imageData, "image/png");
+    }
+
+    [HttpGet("/img/eli5-series.png")]
+    public IActionResult GetEli5SeriesPng()
+    {
+        var svgPath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "posts", "eli5-series.svg");
+        if (!System.IO.File.Exists(svgPath))
+        {
+            return NotFound();
+        }
+
+        var imageData = ConvertSvgToPng(svgPath);
+        if (imageData == null)
+        {
+            return StatusCode(500, "Failed to convert ELI5 series SVG to PNG");
         }
 
         return File(imageData, "image/png");
