@@ -119,8 +119,12 @@
   </g>
 
   <!-- Small "series" text below -->
-  <text x="400" y="430" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#888" opacity="0.7" letter-spacing="8">
+  <text x="400" y="425" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#888" opacity="0.7" letter-spacing="8">
     series
+  </text>
+  <!-- Tagline -->
+  <text x="400" y="445" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#888" opacity="0.5" font-style="italic">
+    Tech, made simple.
   </text>
 
   <!-- Crayon lying at bottom-right corner -->
