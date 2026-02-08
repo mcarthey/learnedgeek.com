@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bg5Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="dtGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <linearGradient id="rtGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg5Grad)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.05" stroke="#94a3b8" stroke-width="0.5">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="32" font-family="sans-serif" font-size="14" fill="#e2e8f0" text-anchor="middle" font-weight="bold">The Design-Time vs Runtime Mental Model</text>
+
+  <!-- Part 5 badge -->
+  <g transform="translate(710, 12)">
+    <rect x="0" y="0" width="60" height="22" rx="11" fill="url(#dtGrad)"/>
+    <text x="30" y="15" font-family="sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">PART 5</text>
+  </g>
+
+  <!-- Center divider -->
+  <line x1="400" y1="50" x2="400" y2="370" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- LEFT: Design-Time -->
+  <text x="200" y="62" font-family="sans-serif" font-size="12" fill="#fbbf24" text-anchor="middle" font-weight="bold">DESIGN-TIME</text>
+  <text x="200" y="78" font-family="sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">dotnet ef migrations add / update</text>
+
+  <!-- CLI entry point -->
+  <g transform="translate(60, 90)">
+    <rect x="0" y="0" width="280" height="32" rx="4" fill="#f59e0b" opacity="0.15" stroke="#f59e0b" stroke-width="1"/>
+    <text x="15" y="14" font-family="monospace" font-size="8" fill="#fde68a">Entry Point:</text>
+    <text x="15" y="26" font-family="monospace" font-size="9" fill="#fbbf24" font-weight="bold">IDesignTimeDbContextFactory</text>
+  </g>
+
+  <!-- Design-time config items -->
+  <g transform="translate(60, 135)">
+    <rect x="0" y="0" width="280" height="28" rx="3" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="0.5"/>
+    <text x="10" y="12" font-family="monospace" font-size="7" fill="#c4b5fd">UseSchemaAwareMigrations(schema)</text>
+    <text x="10" y="23" font-family="sans-serif" font-size="6" fill="#64748b">SQL generator uses schema for DDL</text>
+  </g>
+  <g transform="translate(60, 170)">
+    <rect x="0" y="0" width="280" height="28" rx="3" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="0.5"/>
+    <text x="10" y="12" font-family="monospace" font-size="7" fill="#c4b5fd">MigrationsHistoryTable(schema)</text>
+    <text x="10" y="23" font-family="sans-serif" font-size="6" fill="#64748b">History isolation per environment</text>
+  </g>
+  <g transform="translate(60, 205)">
+    <rect x="0" y="0" width="280" height="28" rx="3" fill="#22c55e" opacity="0.15" stroke="#22c55e" stroke-width="1"/>
+    <text x="10" y="12" font-family="monospace" font-size="7" fill="#86efac">DatabaseSettings.Schema = ""</text>
+    <text x="10" y="23" font-family="sans-serif" font-size="6" fill="#64748b">CRITICAL: Keeps snapshot schema-less</text>
+  </g>
+
+  <!-- Arrow to outputs -->
+  <line x1="200" y1="240" x2="200" y2="255" stroke="#f59e0b" stroke-width="1.5"/>
+  <polygon points="196,255 204,255 200,263" fill="#f59e0b"/>
+
+  <!-- Outputs -->
+  <g transform="translate(60, 268)">
+    <rect x="0" y="0" width="280" height="55" rx="6" fill="#16213e" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="140" y="16" font-family="sans-serif" font-size="9" fill="#fde68a" text-anchor="middle" font-weight="bold">Artifacts (on disk)</text>
+    <text x="15" y="32" font-family="monospace" font-size="7" fill="#94a3b8">ModelSnapshot.cs</text>
+    <text x="155" y="32" font-family="monospace" font-size="7" fill="#86efac">schema = null</text>
+    <text x="15" y="46" font-family="monospace" font-size="7" fill="#94a3b8">*_Migration.cs</text>
+    <text x="155" y="46" font-family="monospace" font-size="7" fill="#86efac">schema = null</text>
+  </g>
+
+  <!-- RIGHT: Runtime -->
+  <text x="600" y="62" font-family="sans-serif" font-size="12" fill="#60a5fa" text-anchor="middle" font-weight="bold">RUNTIME</text>
+  <text x="600" y="78" font-family="sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">Application startup + requests</text>
+
+  <!-- Runtime entry point -->
+  <g transform="translate(450, 90)">
+    <rect x="0" y="0" width="300" height="32" rx="4" fill="#3b82f6" opacity="0.15" stroke="#3b82f6" stroke-width="1"/>
+    <text x="15" y="14" font-family="monospace" font-size="8" fill="#93c5fd">Entry Point:</text>
+    <text x="15" y="26" font-family="monospace" font-size="9" fill="#60a5fa" font-weight="bold">Program.cs + appsettings.json</text>
+  </g>
+
+  <!-- Runtime config items -->
+  <g transform="translate(450, 135)">
+    <rect x="0" y="0" width="300" height="28" rx="3" fill="#3b82f6" opacity="0.15" stroke="#3b82f6" stroke-width="0.5"/>
+    <text x="10" y="12" font-family="monospace" font-size="7" fill="#93c5fd">HasDefaultSchema("dev")</text>
+    <text x="10" y="23" font-family="sans-serif" font-size="6" fill="#64748b">Queries target correct schema</text>
+  </g>
+  <g transform="translate(450, 170)">
+    <rect x="0" y="0" width="300" height="28" rx="3" fill="#3b82f6" opacity="0.15" stroke="#3b82f6" stroke-width="0.5"/>
+    <text x="10" y="12" font-family="monospace" font-size="7" fill="#93c5fd">UseSchemaAwareMigrations("dev")</text>
+    <text x="10" y="23" font-family="sans-serif" font-size="6" fill="#64748b">DDL operations target correct schema</text>
+  </g>
+  <g transform="translate(450, 205)">
+    <rect x="0" y="0" width="300" height="28" rx="3" fill="#3b82f6" opacity="0.15" stroke="#3b82f6" stroke-width="0.5"/>
+    <text x="10" y="12" font-family="monospace" font-size="7" fill="#93c5fd">IModelCacheKeyFactory (Type, Schema)</text>
+    <text x="10" y="23" font-family="sans-serif" font-size="6" fill="#64748b">Multi-schema processes don't collide</text>
+  </g>
+  <g transform="translate(450, 240)">
+    <rect x="0" y="0" width="300" height="28" rx="3" fill="#3b82f6" opacity="0.15" stroke="#3b82f6" stroke-width="0.5"/>
+    <text x="10" y="12" font-family="monospace" font-size="7" fill="#93c5fd">MigrationsHistoryTable("dev")</text>
+    <text x="10" y="23" font-family="sans-serif" font-size="6" fill="#64748b">History isolation per environment</text>
+  </g>
+
+  <!-- Arrow to result -->
+  <line x1="600" y1="275" x2="600" y2="285" stroke="#3b82f6" stroke-width="1.5"/>
+  <polygon points="596,285 604,285 600,293" fill="#3b82f6"/>
+
+  <!-- Runtime result -->
+  <g transform="translate(450, 298)">
+    <rect x="0" y="0" width="300" height="28" rx="4" fill="#22c55e" opacity="0.15" stroke="#22c55e" stroke-width="1.5"/>
+    <g transform="translate(10, 5)">
+      <circle cx="8" cy="8" r="8" fill="#22c55e" opacity="0.3"/>
+      <path d="M4 8 L7 11 L13 5" stroke="#22c55e" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text x="32" y="18" font-family="monospace" font-size="8" fill="#86efac">All operations use "dev" schema</text>
+  </g>
+
+  <!-- Key insight at bottom -->
+  <g transform="translate(60, 345)">
+    <rect x="0" y="0" width="680" height="38" rx="6" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+    <text x="340" y="16" font-family="sans-serif" font-size="9" fill="#fbbf24" text-anchor="middle" font-weight="bold">KEY INSIGHT</text>
+    <text x="340" y="30" font-family="sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">Design-time generates portable artifacts (no schema baked in). Runtime applies environment-specific configuration.</text>
+  </g>
+
+  <!-- Bottom tagline -->
+  <text x="400" y="398" font-family="sans-serif" font-size="10" fill="#a0aec0" text-anchor="middle">Two phases, two goals, two configurations. Once you see the split, everything clicks.</text>
+</svg>

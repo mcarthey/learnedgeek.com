@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <filter id="eli5_shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" font-weight="bold">
+    Why Your Database Needs Colored Folders
+  </text>
+  <text x="400" y="62" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">
+    Schema-Aware Migrations, Simplified
+  </text>
+
+  <!-- Apartment Building -->
+  <g transform="translate(80, 85)">
+    <rect x="0" y="0" width="250" height="240" rx="8" fill="#2a2a4a" stroke="#4a4a6a" stroke-width="2"/>
+    <text x="125" y="24" font-family="Arial, sans-serif" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">One Database</text>
+
+    <!-- Building shape -->
+    <g transform="translate(30, 40)">
+      <!-- Building body -->
+      <rect x="20" y="0" width="150" height="170" rx="3" fill="#1e293b" stroke="#4a5a7a" stroke-width="1.5"/>
+      <!-- Roof -->
+      <polygon points="15,-5 105,-25 195,-5" fill="#1e293b" stroke="#4a5a7a" stroke-width="1.5"/>
+      <!-- Door -->
+      <rect x="75" y="130" width="40" height="40" rx="2" fill="#2a3a5a" stroke="#4a5a7a"/>
+      <circle cx="108" cy="152" r="2" fill="#f59e0b"/>
+
+      <!-- Windows - 4 rows of 3 -->
+      <g fill="#2a3a5a" stroke="#4a5a7a" stroke-width="0.5">
+        <rect x="32" y="14" width="30" height="22" rx="1"/>
+        <rect x="80" y="14" width="30" height="22" rx="1"/>
+        <rect x="128" y="14" width="30" height="22" rx="1"/>
+        <rect x="32" y="46" width="30" height="22" rx="1"/>
+        <rect x="80" y="46" width="30" height="22" rx="1"/>
+        <rect x="128" y="46" width="30" height="22" rx="1"/>
+        <rect x="32" y="78" width="30" height="22" rx="1"/>
+        <rect x="80" y="78" width="30" height="22" rx="1"/>
+        <rect x="128" y="78" width="30" height="22" rx="1"/>
+      </g>
+
+      <!-- Window glows - some lit up in schema colors -->
+      <rect x="33" y="15" width="28" height="20" rx="1" fill="#8b5cf6" opacity="0.25"/>
+      <rect x="81" y="47" width="28" height="20" rx="1" fill="#22c55e" opacity="0.25"/>
+      <rect x="129" y="15" width="28" height="20" rx="1" fill="#f59e0b" opacity="0.25"/>
+      <rect x="33" y="79" width="28" height="20" rx="1" fill="#ef4444" opacity="0.25"/>
+    </g>
+
+    <text x="125" y="232" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Same building, same rooms</text>
+  </g>
+
+  <!-- Arrow -->
+  <g transform="translate(335, 200)">
+    <path d="M0,0 L35,0" stroke="#94a3b8" stroke-width="2.5"/>
+    <polygon points="40,-5 40,5 52,0" fill="#94a3b8"/>
+  </g>
+
+  <!-- Colored Folders -->
+  <g transform="translate(395, 85)">
+    <rect x="0" y="0" width="280" height="240" rx="8" fill="#2a2a4a" stroke="#4a4a6a" stroke-width="2"/>
+    <text x="140" y="24" font-family="Arial, sans-serif" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">Colored Folders (Schemas)</text>
+
+    <!-- Blue folder - Local -->
+    <g transform="translate(20, 38)">
+      <rect x="0" y="5" width="110" height="36" rx="3" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+      <rect x="5" y="0" width="40" height="12" rx="2" fill="#8b5cf6" opacity="0.3"/>
+      <text x="55" y="20" font-family="monospace" font-size="9" fill="#c4b5fd" text-anchor="middle" font-weight="bold">[local]</text>
+      <text x="55" y="34" font-family="Arial, sans-serif" font-size="7" fill="#8b5cf6" text-anchor="middle">Your laptop</text>
+    </g>
+
+    <!-- Green folder - Dev -->
+    <g transform="translate(150, 38)">
+      <rect x="0" y="5" width="110" height="36" rx="3" fill="#22c55e" opacity="0.2" stroke="#22c55e" stroke-width="1.5"/>
+      <rect x="5" y="0" width="40" height="12" rx="2" fill="#22c55e" opacity="0.3"/>
+      <text x="55" y="20" font-family="monospace" font-size="9" fill="#86efac" text-anchor="middle" font-weight="bold">[dev]</text>
+      <text x="55" y="34" font-family="Arial, sans-serif" font-size="7" fill="#22c55e" text-anchor="middle">Team dev</text>
+    </g>
+
+    <!-- Yellow folder - Staging -->
+    <g transform="translate(20, 95)">
+      <rect x="0" y="5" width="110" height="36" rx="3" fill="#f59e0b" opacity="0.2" stroke="#f59e0b" stroke-width="1.5"/>
+      <rect x="5" y="0" width="40" height="12" rx="2" fill="#f59e0b" opacity="0.3"/>
+      <text x="55" y="20" font-family="monospace" font-size="9" fill="#fde68a" text-anchor="middle" font-weight="bold">[stg]</text>
+      <text x="55" y="34" font-family="Arial, sans-serif" font-size="7" fill="#f59e0b" text-anchor="middle">Pre-launch</text>
+    </g>
+
+    <!-- Red folder - Production -->
+    <g transform="translate(150, 95)">
+      <rect x="0" y="5" width="110" height="36" rx="3" fill="#ef4444" opacity="0.2" stroke="#ef4444" stroke-width="1.5"/>
+      <rect x="5" y="0" width="40" height="12" rx="2" fill="#ef4444" opacity="0.3"/>
+      <text x="55" y="20" font-family="monospace" font-size="9" fill="#fca5a5" text-anchor="middle" font-weight="bold">[prod]</text>
+      <text x="55" y="34" font-family="Arial, sans-serif" font-size="7" fill="#ef4444" text-anchor="middle">Real customers</text>
+    </g>
+
+    <!-- What's inside each folder -->
+    <g transform="translate(20, 150)">
+      <text x="120" y="0" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Each folder has its own copy:</text>
+      <g transform="translate(0, 10)">
+        <rect x="5" y="0" width="72" height="18" rx="2" fill="#1e293b" stroke="#4a4a6a" stroke-width="0.5"/>
+        <text x="41" y="12" font-family="monospace" font-size="7" fill="#94a3b8" text-anchor="middle">Users</text>
+        <rect x="84" y="0" width="72" height="18" rx="2" fill="#1e293b" stroke="#4a4a6a" stroke-width="0.5"/>
+        <text x="120" y="12" font-family="monospace" font-size="7" fill="#94a3b8" text-anchor="middle">Orders</text>
+        <rect x="163" y="0" width="72" height="18" rx="2" fill="#1e293b" stroke="#4a4a6a" stroke-width="0.5"/>
+        <text x="199" y="12" font-family="monospace" font-size="7" fill="#94a3b8" text-anchor="middle">Products</text>
+      </g>
+    </g>
+
+    <text x="140" y="232" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Everything separated by color</text>
+  </g>
+
+  <!-- Bottom insight box -->
+  <g transform="translate(50, 345)">
+    <rect x="0" y="0" width="620" height="80" rx="10" fill="#2a2a4a" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="310" y="22" font-family="Arial, sans-serif" font-size="12" fill="#3b82f6" text-anchor="middle" font-weight="bold">What Broke?</text>
+
+    <g transform="translate(15, 32)">
+      <circle cx="8" cy="8" r="7" fill="#ef4444" opacity="0.2"/>
+      <text x="8" y="12" font-family="Arial, sans-serif" font-size="9" fill="#ef4444" text-anchor="middle" font-weight="bold">1</text>
+      <text x="22" y="12" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0">Label maker</text>
+    </g>
+
+    <g transform="translate(165, 32)">
+      <circle cx="8" cy="8" r="7" fill="#f59e0b" opacity="0.2"/>
+      <text x="8" y="12" font-family="Arial, sans-serif" font-size="9" fill="#f59e0b" text-anchor="middle" font-weight="bold">2</text>
+      <text x="22" y="12" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0">Changelog</text>
+    </g>
+
+    <g transform="translate(305, 32)">
+      <circle cx="8" cy="8" r="7" fill="#8b5cf6" opacity="0.2"/>
+      <text x="8" y="12" font-family="Arial, sans-serif" font-size="9" fill="#8b5cf6" text-anchor="middle" font-weight="bold">3</text>
+      <text x="22" y="12" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0">Testing</text>
+    </g>
+
+    <g transform="translate(435, 32)">
+      <circle cx="8" cy="8" r="7" fill="#3b82f6" opacity="0.2"/>
+      <text x="8" y="12" font-family="Arial, sans-serif" font-size="9" fill="#3b82f6" text-anchor="middle" font-weight="bold">4</text>
+      <text x="22" y="12" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0">Comparison engine</text>
+    </g>
+
+    <text x="310" y="68" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">
+      The database handles colored folders fine. The tools get confused.
+    </text>
+  </g>
+
+  <!-- ELI5 Badge - lower right -->
+  <g transform="translate(695, 355)">
+    <g filter="url(#eli5_shadow)">
+      <g transform="rotate(-5, 50, 45)">
+        <rect x="2" y="4" width="88" height="82" rx="4" fill="#FFF9F0" stroke="#DDD" stroke-width="1" opacity="0.95"/>
+        <line x1="8" y1="24" x2="84" y2="24" stroke="#89B4D6" stroke-width="0.5" opacity="0.2"/>
+        <line x1="8" y1="38" x2="84" y2="38" stroke="#89B4D6" stroke-width="0.5" opacity="0.2"/>
+        <line x1="8" y1="52" x2="84" y2="52" stroke="#89B4D6" stroke-width="0.5" opacity="0.2"/>
+        <line x1="8" y1="66" x2="84" y2="66" stroke="#89B4D6" stroke-width="0.5" opacity="0.2"/>
+      </g>
+      <g transform="translate(46, 30)">
+        <g stroke="#E24444" fill="none" stroke-width="2.5" stroke-linecap="round">
+          <polyline points="-22,-12 -26,-12 -26,12 -22,12"/>
+        </g>
+        <g stroke="#E24444" fill="none" stroke-width="2.5" stroke-linecap="round">
+          <polyline points="22,-12 26,-12 26,12 22,12"/>
+        </g>
+        <path d="M 0,-13 C -8,-14 -16,-12 -19,-6 C -20,0 -19,6 -18,10 C -16,14 -8,15 0,14" fill="#D4E8FC" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 0,-13 C 8,-14 16,-12 19,-6 C 20,0 19,6 18,10 C 16,14 8,15 0,14" fill="#D4F8D4" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/>
+        <line x1="0" y1="-12" x2="0" y2="13" stroke="#999" stroke-width="1" opacity="0.3"/>
+        <circle cx="-10" cy="-3" r="2" fill="#F59E0B" stroke="#E24444" stroke-width="1"/>
+        <circle cx="-8" cy="6" r="2" fill="#F59E0B" stroke="#E24444" stroke-width="1"/>
+        <line x1="-10" y1="-3" x2="-8" y2="6" stroke="#3B82F6" stroke-width="1" stroke-linecap="round"/>
+      </g>
+    </g>
+    <g stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M22,54 V68 M22,54 H32 M22,61 H30 M22,68 H32" stroke="#E24444"/>
+      <path d="M37,54 V68 H47" stroke="#3B82F6"/>
+      <path d="M50,54 H56 M53,54 V68 M50,68 H56" stroke="#22C55E"/>
+      <path d="M68,54 H60 V60 H65 Q70,60 70,64 Q70,68 65,68 H60" stroke="#F59E0B"/>
+    </g>
+  </g>
+</svg>
