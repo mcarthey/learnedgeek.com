@@ -182,17 +182,18 @@ The cache key factory gives you proper isolation with no downsides.
 
 ## The Complete Schema-Aware Stack
 
-After four parts, here's the complete picture:
+Across this series, here's the complete picture:
 
 | Component | Purpose | Registration |
 |-----------|---------|--------------|
 | `HasDefaultSchema()` | Runtime queries use target schema | `OnModelCreating` |
+| Empty schema at design-time | Schema-less snapshot generation | `DesignTimeDbContextFactory` |
 | `MigrationsHistoryTable()` | History table per schema | `UseSqlServer()` options |
 | `UseSchemaAwareMigrations()` | Rewrite CREATE/ALTER/INDEX operations | `DbContextOptionsBuilder` |
-| `ReplaceService<IModelCacheKeyFactory>()` | Prevent false pending changes warnings | `DbContextOptionsBuilder` |
+| `ReplaceService<IModelCacheKeyFactory>()` | Runtime model caching per schema | `DbContextOptionsBuilder` |
 | `MigrationHelper.Environment` | Environment-specific seed scripts | `DesignTimeDbContextFactory` |
 
-Each solves a different problem. All five are required for robust schema-per-environment isolation.
+Each solves a different problem. All six are required for robust schema-per-environment isolation. See the February 2026 update below for details on the schema-less snapshot requirement.
 
 ## Testing the Cache Key Factory
 
@@ -236,5 +237,95 @@ Don't suppress warnings. Understand why they're firing and fix the root cause.
 2. *[The MigrationsHistoryTable Bug](/Blog/Post/schema-aware-ef-core-migrations-part-2) - Why history table schema matters*
 3. *[Hardening Schema Migrations](/Blog/Post/schema-aware-ef-core-migrations-part-3) - Tests that let you sleep at night*
 4. ***The Model Cache Key Factory** - Preventing false PendingModelChangesWarning (this post)*
+5. *[The Design-Time vs Runtime Mental Model](/Blog/Post/schema-aware-ef-core-migrations-part-5) - Why schema handling is actually two systems*
 
-*With all four pieces in place, you have production-grade multi-tenant schema isolation in EF Core.*
+*With all six pieces in place (see the February 2026 update below), you have production-grade multi-tenant schema isolation in EF Core.*
+
+---
+
+## Update: The Missing Piece - Schema-Less Snapshots
+
+*February 2026*
+
+After deploying the cache key factory, CI started failing with `PendingModelChangesWarning`. Turns out we were solving the wrong problem.
+
+### What the Cache Key Factory Actually Solves
+
+The cache key factory prevents **runtime model cache collisions**—when the same process creates contexts with different schemas, each gets its own cached model. This is important for:
+
+- Multi-tenant apps serving different schemas simultaneously
+- Tests that run with different schema configurations in the same process
+
+### What It Doesn't Solve
+
+The cache key factory does NOT prevent `PendingModelChangesWarning` triggered by **snapshot comparison**. EF Core compares the runtime model against the snapshot file (`ApplicationDbContextModelSnapshot.cs`) *before* any caching happens.
+
+If your snapshot has `HasDefaultSchema("local")` but you run with schema `"dev"`, EF Core sees a mismatch—regardless of caching.
+
+### The Root Cause
+
+Our `DesignTimeDbContextFactory` was passing the actual schema to `DatabaseSettings`:
+
+```csharp
+// OLD (problematic)
+var databaseSettings = Options.Create(new DatabaseSettings { Schema = schema });
+```
+
+This caused `OnModelCreating` to call `HasDefaultSchema("local")`, which got baked into the snapshot. When CI ran with `"dev"` schema, the models didn't match.
+
+### The Real Fix
+
+Keep the snapshot schema-less by passing empty schema at design-time:
+
+```csharp
+public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
+{
+    public ApplicationDbContext CreateDbContext(string[] args)
+    {
+        var schema = environment switch { ... };  // Still compute for SQL generator
+
+        optionsBuilder.UseSqlServer(connectionString, sql =>
+            sql.MigrationsHistoryTable("__EFMigrationsHistory", schema));
+
+        optionsBuilder.UseSchemaAwareMigrations(schema);  // SQL generator uses schema
+        optionsBuilder.ReplaceService<IModelCacheKeyFactory, SchemaAwareModelCacheKeyFactory>();
+
+        // CRITICAL: Pass empty schema to DatabaseSettings
+        // This prevents HasDefaultSchema() from being called in OnModelCreating
+        // The snapshot stays schema-less, compatible with all environments
+        var databaseSettings = Options.Create(new DatabaseSettings { Schema = string.Empty });
+
+        return new ApplicationDbContext(optionsBuilder.Options, databaseSettings);
+    }
+}
+```
+
+With this fix:
+- **Snapshot**: No schema (tables use `ToTable("X", (string)null)`)
+- **SQL Generation**: Schema applied via `SchemaAwareMigrationsSqlGenerator`
+- **Runtime Queries**: Schema applied via `HasDefaultSchema()` in `Program.cs`
+- **Runtime Caching**: Schema-aware via `SchemaAwareModelCacheKeyFactory`
+
+### Handling Tests
+
+Tests need the actual schema for queries to work, so they'll still see a model/snapshot mismatch. But since migrations apply correctly (via the SQL generator), we can safely log the warning instead of throwing:
+
+```csharp
+// In test fixtures only
+options.ConfigureWarnings(w => w.Log(RelationalEventId.PendingModelChangesWarning));
+```
+
+This is different from `Ignore()` which suppresses completely. `Log()` still records the warning for visibility, but doesn't fail the migration.
+
+### The Complete Six-Component Stack
+
+| Component | Purpose | Where |
+|-----------|---------|-------|
+| `HasDefaultSchema()` | Runtime queries | `OnModelCreating` (runtime only) |
+| Empty schema at design-time | Schema-less snapshot | `DesignTimeDbContextFactory` |
+| `MigrationsHistoryTable()` | History table per schema | `UseSqlServer()` options |
+| `UseSchemaAwareMigrations()` | Rewrite DDL operations | `DbContextOptionsBuilder` |
+| `ReplaceService<IModelCacheKeyFactory>()` | Runtime model caching | `DbContextOptionsBuilder` |
+| `MigrationHelper.Environment` | Environment-specific seeds | `DesignTimeDbContextFactory` |
+
+The cache key factory is still essential for runtime isolation. But preventing snapshot contamination is the key to avoiding `PendingModelChangesWarning` in CI.

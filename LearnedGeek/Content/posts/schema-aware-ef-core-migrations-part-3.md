@@ -342,6 +342,8 @@ Before deploying schema-aware migrations to a new environment:
 - [ ] Health check includes schema validation
 - [ ] Startup validation is enabled
 - [ ] Rollback plan documented
+- [ ] Migration snapshot is schema-less (no `HasDefaultSchema()` baked in)
+- [ ] Model cache key factory registered (for runtime schema isolation)
 
 ## The Moral
 
@@ -359,5 +361,6 @@ Sleep well. Test deeply.
 2. *[The MigrationsHistoryTable Bug](/Blog/Post/schema-aware-ef-core-migrations-part-2) - Why history table schema matters*
 3. ***Hardening Schema Migrations** - Tests that let you sleep at night (this post)*
 4. *[The Model Cache Key Factory](/Blog/Post/schema-aware-ef-core-migrations-part-4) - Preventing false PendingModelChangesWarning*
+5. *[The Design-Time vs Runtime Mental Model](/Blog/Post/schema-aware-ef-core-migrations-part-5) - Why schema handling is actually two systems*
 
-*With all four pieces in place, you have both the implementation and the verification for production-grade multi-tenant schema isolation.*
+*With the full configuration stack in place (see the complete component table in [Part 2](/Blog/Post/schema-aware-ef-core-migrations-part-2) and the snapshot fix in [Part 4](/Blog/Post/schema-aware-ef-core-migrations-part-4)), you have both the implementation and the verification for production-grade multi-tenant schema isolation.*

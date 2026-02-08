@@ -205,6 +205,30 @@
       "blueskyHook": ".NET build randomly fails: \"file locked by Code.exe\"\n\nThe culprit: VS Code watches bin/obj folders. Race condition.\n\nTwo lines in settings.json. Took me MONTHS to figure out:"
     },
     {
+      "slug": "eli5-schema-aware-migrations",
+      "title": "ELI5: Why Your Database Needs Colored Folders",
+      "description": "You survived the 5-part schema-aware migrations deep dive. This is the explain-it-to-your-mom version. Apartment buildings, colored folders, and why the label maker keeps breaking.",
+      "category": "Computers",
+      "tags": ["ef-core", "dotnet", "sql-server", "migrations", "multi-tenant", "eli5", "explainer", "beginners"],
+      "date": "2026-06-26",
+      "featured": true,
+      "image": "/img/posts/eli5-schema-aware-migrations.svg",
+      "linkedInHook": "I wrote a 5-part series on schema-aware EF Core migrations. Custom SQL generators. Cache key factories. Design-time vs runtime mental models.\n\nThen I tried to explain it to a non-developer.\n\nTurns out, the whole thing is just colored folders. Blue for local, green for dev, yellow for staging, red for production. Same building, same rooms, different colors.\n\nThe hard part wasn't the concept. It was that our tools assumed you'd only ever use one color.",
+      "blueskyHook": "Schema-aware EF Core migrations in 5 parts was a lot.\n\nThe ELI5 version: your database needs colored folders. Same building, different colors. The tools just weren't built for it:"
+    },
+    {
+      "slug": "schema-aware-ef-core-migrations-part-5",
+      "title": "The Design-Time vs Runtime Mental Model",
+      "description": "After four blog posts debugging schema issues, I finally understood why EF Core schema handling is confusing: it's actually two separate systems. Design-time generates artifacts. Runtime applies configuration. Once you see the split, everything clicks.",
+      "category": "Computers",
+      "tags": ["ef-core", "dotnet", "sql-server", "migrations", "multi-tenant", "architecture", "mental-model"],
+      "date": "2026-06-25",
+      "featured": true,
+      "image": "/img/posts/schema-aware-ef-core-migrations-part-5.svg",
+      "linkedInHook": "After four blog posts debugging EF Core schema issues, I finally understood why it's so confusing.\n\nEF Core isn't one system. It's two.\n\nDesign-time: dotnet ef migrations add. Generates files. Uses IDesignTimeDbContextFactory.\n\nRuntime: Your app starts. Uses Program.cs.\n\nThese are SEPARATE code paths. If they disagree on schema handling, you get mysterious failures.\n\nThe key insight: keep the snapshot schema-less at design-time, apply the real schema at runtime. Two different goals, two different configurations.\n\nPart 5 of the Schema-Aware EF Core Migrations series.",
+      "blueskyHook": "EF Core schema handling is confusing because it's actually two separate systems.\n\nDesign-time generates artifacts. Runtime applies configuration. Different entry points, different goals.\n\nOnce you see the split, everything clicks:"
+    },
+    {
       "slug": "writing-technical-content-when-debugging",
       "title": "Writing Technical Content When You're Too Tired to Be Funny",
       "description": "It's hour 6 of debugging. The bug is fixed. This is not the time to write something entertaining—but it is the perfect time to write something useful. Here's the two-pass approach to technical blogging.",

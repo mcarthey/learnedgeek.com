@@ -235,16 +235,18 @@ Every single table and index operation now includes the `[dev].` prefix.
 
 ## The Complete Picture
 
-For true schema isolation in EF Core migrations, you need **all four** pieces:
+For true schema isolation in EF Core migrations, you need **all six** pieces:
 
 | Component | Purpose | Where Configured |
 |-----------|---------|------------------|
-| `HasDefaultSchema()` | Runtime queries use target schema | `OnModelCreating` |
+| `HasDefaultSchema()` | Runtime queries use target schema | `OnModelCreating` (runtime only) |
+| Empty schema at design-time | Schema-less snapshot generation | `DesignTimeDbContextFactory` |
 | `MigrationsHistoryTable()` | History table per schema | `UseSqlServer()` options |
 | `UseSchemaAwareMigrations()` | Rewrite CREATE/ALTER/INDEX operations | `DbContextOptionsBuilder` |
+| `ReplaceService<IModelCacheKeyFactory>()` | Runtime model caching per schema | `DbContextOptionsBuilder` |
 | `MigrationHelper.Environment` | Environment-specific seed scripts | `DesignTimeDbContextFactory` |
 
-Miss any one and you get subtle failures that only show up when you query the database directly.
+Miss any one and you get subtle failures that only show up when you query the database directly. See [Part 4](/Blog/Post/schema-aware-ef-core-migrations-part-4) for details on the schema-less snapshot requirement and model cache key factory.
 
 ## The Verification Queries
 
@@ -291,5 +293,6 @@ Build a CI workflow that deploys to a test schema first. Verify tables exist in 
 2. ***The MigrationsHistoryTable Bug** - Why history table schema matters (this post)*
 3. *[Hardening Schema Migrations](/Blog/Post/schema-aware-ef-core-migrations-part-3) - Tests that let you sleep at night*
 4. *[The Model Cache Key Factory](/Blog/Post/schema-aware-ef-core-migrations-part-4) - Preventing false PendingModelChangesWarning*
+5. *[The Design-Time vs Runtime Mental Model](/Blog/Post/schema-aware-ef-core-migrations-part-5) - Why schema handling is actually two systems*
 
 *Note: Updated February 2026 to reflect using explicit named schemas for all environments (local, dev, stg, prod).*

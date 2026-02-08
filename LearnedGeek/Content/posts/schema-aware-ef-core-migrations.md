@@ -190,7 +190,9 @@ protected override void OnModelCreating(ModelBuilder builder)
 }
 ```
 
-Without this, your SELECT statements look for tables in the wrong schema. All environments use explicit named schemas—no `dbo` special cases.
+Without this, your SELECT statements look for tables in the wrong schema. All environments use explicit named schemas—no special cases.
+
+**Important caveat (February 2026)**: Keep `HasDefaultSchema()` runtime-only. If called at design-time, the schema gets baked into the migration snapshot (`ApplicationDbContextModelSnapshot.cs`), causing `PendingModelChangesWarning` when running with different schemas. Pass empty schema to `DatabaseSettings` in `DesignTimeDbContextFactory` so the snapshot stays schema-less. See [Part 4](/Blog/Post/schema-aware-ef-core-migrations-part-4) for the complete solution.
 
 ## Running Migrations
 
@@ -234,6 +236,7 @@ No more "which schema did that hit?" moments. No more maintaining four copies of
 2. *[The MigrationsHistoryTable Bug](/Blog/Post/schema-aware-ef-core-migrations-part-2) - Why history table schema matters*
 3. *[Hardening Schema Migrations](/Blog/Post/schema-aware-ef-core-migrations-part-3) - Tests that let you sleep at night*
 4. *[The Model Cache Key Factory](/Blog/Post/schema-aware-ef-core-migrations-part-4) - Preventing false PendingModelChangesWarning*
+5. *[The Design-Time vs Runtime Mental Model](/Blog/Post/schema-aware-ef-core-migrations-part-5) - Why schema handling is actually two systems*
 
 *Note: Updated February 2026 to reflect using explicit named schemas for all environments (local, dev, stg, prod).*
 
