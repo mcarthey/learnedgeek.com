@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="400" y="35" font-family="sans-serif" font-size="15" fill="#e2e8f0" text-anchor="middle" font-weight="bold">Adding Syntax Highlighting (The Easy Way)</text>
+
+  <!-- LEFT: Before - monochrome -->
+  <g transform="translate(40, 55)">
+    <text x="155" y="0" font-family="sans-serif" font-size="11" fill="#ef4444" text-anchor="middle" font-weight="bold">BEFORE</text>
+
+    <!-- Code block -->
+    <rect x="0" y="10" width="310" height="280" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="10" width="310" height="22" rx="8" fill="#1e293b"/>
+    <rect x="0" y="22" width="310" height="10" fill="#1e293b"/>
+    <circle cx="14" cy="22" r="4" fill="#ef4444" opacity="0.6"/>
+    <circle cx="28" cy="22" r="4" fill="#f59e0b" opacity="0.6"/>
+    <circle cx="42" cy="22" r="4" fill="#22c55e" opacity="0.6"/>
+
+    <!-- Monochrome code - all same color -->
+    <text x="15" y="52" font-family="monospace" font-size="9" fill="#9ca3af">public class SchemaAware</text>
+    <text x="15" y="66" font-family="monospace" font-size="9" fill="#9ca3af">    ModelCacheKeyFactory</text>
+    <text x="15" y="80" font-family="monospace" font-size="9" fill="#9ca3af">    : IModelCacheKeyFactory</text>
+    <text x="15" y="94" font-family="monospace" font-size="9" fill="#9ca3af">{</text>
+    <text x="15" y="114" font-family="monospace" font-size="9" fill="#9ca3af">  public object Create(</text>
+    <text x="15" y="128" font-family="monospace" font-size="9" fill="#9ca3af">    DbContext context,</text>
+    <text x="15" y="142" font-family="monospace" font-size="9" fill="#9ca3af">    bool designTime)</text>
+    <text x="15" y="156" font-family="monospace" font-size="9" fill="#9ca3af">  {</text>
+    <text x="15" y="176" font-family="monospace" font-size="9" fill="#9ca3af">    var schema =</text>
+    <text x="15" y="190" font-family="monospace" font-size="9" fill="#9ca3af">      (context as</text>
+    <text x="15" y="204" font-family="monospace" font-size="9" fill="#9ca3af">       ApplicationDbContext)</text>
+    <text x="15" y="218" font-family="monospace" font-size="9" fill="#9ca3af">      ?.Schema ?? "prod";</text>
+    <text x="15" y="238" font-family="monospace" font-size="9" fill="#9ca3af">    return new SchemaCacheKey(</text>
+    <text x="15" y="252" font-family="monospace" font-size="9" fill="#9ca3af">      context, schema,</text>
+    <text x="15" y="266" font-family="monospace" font-size="9" fill="#9ca3af">      designTime);</text>
+    <text x="15" y="280" font-family="monospace" font-size="9" fill="#9ca3af">  }</text>
+
+    <!-- Sad label -->
+    <text x="155" y="305" font-family="sans-serif" font-size="8" fill="#64748b" text-anchor="middle">Same color. Functional. Boring.</text>
+  </g>
+
+  <!-- Arrow -->
+  <g transform="translate(365, 185)">
+    <path d="M0,0 L45,0" stroke="#f59e0b" stroke-width="2.5"/>
+    <polygon points="50,-5 50,5 62,0" fill="#f59e0b"/>
+    <text x="30" y="-12" font-family="sans-serif" font-size="9" fill="#fbbf24" text-anchor="middle" font-weight="bold">Prism.js</text>
+    <text x="30" y="18" font-family="sans-serif" font-size="7" fill="#94a3b8" text-anchor="middle">15 minutes</text>
+  </g>
+
+  <!-- RIGHT: After - syntax highlighted -->
+  <g transform="translate(440, 55)">
+    <text x="155" y="0" font-family="sans-serif" font-size="11" fill="#22c55e" text-anchor="middle" font-weight="bold">AFTER</text>
+
+    <!-- Code block -->
+    <rect x="0" y="10" width="310" height="280" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1.5"/>
+    <rect x="0" y="10" width="310" height="22" rx="8" fill="#1e293b"/>
+    <rect x="0" y="22" width="310" height="10" fill="#1e293b"/>
+    <circle cx="14" cy="22" r="4" fill="#ef4444" opacity="0.6"/>
+    <circle cx="28" cy="22" r="4" fill="#f59e0b" opacity="0.6"/>
+    <circle cx="42" cy="22" r="4" fill="#22c55e" opacity="0.6"/>
+
+    <!-- Syntax-highlighted code -->
+    <text x="15" y="52" font-family="monospace" font-size="9">
+      <tspan fill="#c792ea">public</tspan><tspan fill="#e2e8f0"> </tspan><tspan fill="#c792ea">class</tspan><tspan fill="#e2e8f0"> </tspan><tspan fill="#ffcb6b">SchemaAware</tspan>
+    </text>
+    <text x="15" y="66" font-family="monospace" font-size="9">
+      <tspan fill="#e2e8f0">    </tspan><tspan fill="#ffcb6b">ModelCacheKeyFactory</tspan>
+    </text>
+    <text x="15" y="80" font-family="monospace" font-size="9">
+      <tspan fill="#e2e8f0">    : </tspan><tspan fill="#ffcb6b">IModelCacheKeyFactory</tspan>
+    </text>
+    <text x="15" y="94" font-family="monospace" font-size="9" fill="#e2e8f0">{</text>
+
+    <text x="15" y="114" font-family="monospace" font-size="9">
+      <tspan fill="#e2e8f0">  </tspan><tspan fill="#c792ea">public</tspan><tspan fill="#e2e8f0"> </tspan><tspan fill="#ffcb6b">object</tspan><tspan fill="#e2e8f0"> </tspan><tspan fill="#82aaff">Create</tspan><tspan fill="#e2e8f0">(</tspan>
+    </text>
+    <text x="15" y="128" font-family="monospace" font-size="9">
+      <tspan fill="#e2e8f0">    </tspan><tspan fill="#ffcb6b">DbContext</tspan><tspan fill="#e2e8f0"> </tspan><tspan fill="#f78c6c">context</tspan><tspan fill="#e2e8f0">,</tspan>
+    </text>
+    <text x="15" y="142" font-family="monospace" font-size="9">
+      <tspan fill="#e2e8f0">    </tspan><tspan fill="#c792ea">bool</tspan><tspan fill="#e2e8f0"> </tspan><tspan fill="#f78c6c">designTime</tspan><tspan fill="#e2e8f0">)</tspan>
+    </text>
+    <text x="15" y="156" font-family="monospace" font-size="9" fill="#e2e8f0">  {</text>
+
+    <text x="15" y="176" font-family="monospace" font-size="9">
+      <tspan fill="#e2e8f0">    </tspan><tspan fill="#c792ea">var</tspan><tspan fill="#e2e8f0"> </tspan><tspan fill="#f78c6c">schema</tspan><tspan fill="#e2e8f0"> =</tspan>
+    </text>
+    <text x="15" y="190" font-family="monospace" font-size="9">
+      <tspan fill="#e2e8f0">      (</tspan><tspan fill="#f78c6c">context</tspan><tspan fill="#e2e8f0"> </tspan><tspan fill="#c792ea">as</tspan>
+    </text>
+    <text x="15" y="204" font-family="monospace" font-size="9">
+      <tspan fill="#e2e8f0">       </tspan><tspan fill="#ffcb6b">ApplicationDbContext</tspan><tspan fill="#e2e8f0">)</tspan>
+    </text>
+    <text x="15" y="218" font-family="monospace" font-size="9">
+      <tspan fill="#e2e8f0">      ?.Schema ?? </tspan><tspan fill="#c3e88d">"prod"</tspan><tspan fill="#e2e8f0">;</tspan>
+    </text>
+
+    <text x="15" y="238" font-family="monospace" font-size="9">
+      <tspan fill="#e2e8f0">    </tspan><tspan fill="#c792ea">return</tspan><tspan fill="#e2e8f0"> </tspan><tspan fill="#c792ea">new</tspan><tspan fill="#e2e8f0"> </tspan><tspan fill="#ffcb6b">SchemaCacheKey</tspan><tspan fill="#e2e8f0">(</tspan>
+    </text>
+    <text x="15" y="252" font-family="monospace" font-size="9">
+      <tspan fill="#e2e8f0">      </tspan><tspan fill="#f78c6c">context</tspan><tspan fill="#e2e8f0">, </tspan><tspan fill="#f78c6c">schema</tspan><tspan fill="#e2e8f0">,</tspan>
+    </text>
+    <text x="15" y="266" font-family="monospace" font-size="9">
+      <tspan fill="#e2e8f0">      </tspan><tspan fill="#f78c6c">designTime</tspan><tspan fill="#e2e8f0">);</tspan>
+    </text>
+    <text x="15" y="280" font-family="monospace" font-size="9" fill="#e2e8f0">  }</text>
+
+    <!-- Happy label -->
+    <text x="155" y="305" font-family="sans-serif" font-size="8" fill="#86efac" text-anchor="middle">Keywords, types, strings — visible at a glance.</text>
+  </g>
+
+  <!-- Bottom: Setup summary -->
+  <g transform="translate(120, 355)">
+    <rect x="0" y="0" width="560" height="28" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="280" y="12" font-family="sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">1 CSS theme</text>
+    <text x="280" y="23" font-family="monospace" font-size="7" fill="#64748b" text-anchor="middle">+ 2 script tags + autoloader = all 290+ languages on demand</text>
+  </g>
+
+  <!-- Tagline -->
+  <text x="400" y="398" font-family="sans-serif" font-size="10" fill="#a0aec0" text-anchor="middle">Your code blocks deserve better than monochrome.</text>
+</svg>

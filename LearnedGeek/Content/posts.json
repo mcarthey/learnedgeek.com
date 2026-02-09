@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "adding-syntax-highlighting-with-prismjs",
+      "title": "Adding Syntax Highlighting to a Blog (The Easy Way)",
+      "description": "For months, the code blocks on this blog were monochrome. White text on dark. Then Prism.js happened—three lines in the HTML, a CSS tweak, and fifteen minutes later every language has color.",
+      "category": "Computers",
+      "tags": ["javascript", "css", "blogging", "prism", "syntax-highlighting", "web-development", "markdown"],
+      "date": "2026-09-18",
+      "featured": true,
+      "image": "/img/posts/adding-syntax-highlighting-with-prismjs.svg",
+      "linkedInHook": "For months, every code block on my blog was the same flat gray. C#, JavaScript, SQL—all identical monochrome.\n\nThen I added Prism.js. One CSS link. Two script tags. Fifteen minutes.\n\nKeywords are purple. Strings are green. Comments are gray. The autoloader fetches only the grammars you actually use—290+ languages on demand.\n\nThe only gotcha: a Tailwind !important rule was overriding Prism's token colors. Remove that, and it just works.\n\nYour code blocks deserve better than monochrome.",
+      "blueskyHook": "Blog code blocks: monochrome for months. Same flat gray for every language.\n\nPrism.js: 1 CSS link + 2 script tags + 15 minutes = syntax highlighting for 290+ languages.\n\nYour code blocks deserve better:"
+    },
+    {
       "slug": "grading-dashboard-github-classroom",
       "title": "I Built a Robot to Grade My Students (Kind Of)",
       "description": "Teaching database programming means checking 30 GitHub repos weekly. Manual review was killing me. So I built a dashboard that scans for build status, TODOs, student questions, and code quality—automatically.",
@@ -601,6 +613,18 @@
       "blueskyHook": "Built dynamic widths: `w-[${percent}%]`. None worked.\n\nTailwind JIT only scans for COMPLETE class names. String concatenation breaks it. Here's the fix:"
     },
     {
+      "slug": "reverse-engineering-mobile-game",
+      "title": "I Reverse-Engineered a Mobile Game to Build a Better Team",
+      "description": "I downloaded an APK, cracked open its Unity asset bundles, extracted 2,880 compiled Lua files, and built a team optimizer that actually knows the math. Here's how.",
+      "category": "Computers",
+      "tags": ["python", "unity", "reverse-engineering", "game-data", "lua", "mobile-games", "side-project"],
+      "date": "2026-02-14",
+      "featured": true,
+      "image": "/img/posts/reverse-engineering-mobile-game.svg",
+      "linkedInHook": "Which heroes synergize? What are the real faction bonus numbers? The game won't tell you.\n\nSo I took the game apart.\n\nDownloaded the APK. Extracted Unity asset bundles. Parsed 2,880 compiled Lua bytecode files. Found every stat, bond, and faction multiplier the developers hid behind vague tooltips.\n\nThen built a Python optimizer that evaluates all 12,376 possible team combinations and ranks them by actual synergy.\n\nSometimes the best strategy guide is the one you extract yourself.",
+      "blueskyHook": "The game hides its mechanics behind vague tooltips. So I took the APK apart.\n\n2,880 Lua bytecode files. Every hidden stat decoded. Built a team optimizer. Sometimes the best strategy guide is the one you extract yourself:"
+    },
+    {
       "slug": "tailwind-vs-bootstrap-paradigm-shift",
       "title": "Tailwind vs Bootstrap: The Paradigm Shift That Finally Made Sense",
       "description": "You've been using Bootstrap for years. Then someone mentions Tailwind and suddenly you're supposed to write class names that look like inline styles from 2003. Here's why it's actually better.",
@@ -611,6 +635,18 @@
       "image": "/img/posts/tailwind-vs-bootstrap-paradigm-shift.svg",
       "linkedInHook": "I resisted Tailwind for years. 'Why would I write class names that look like inline styles from 2003?'\n\nThen I actually tried it. The mental shift from 'CSS describes components' to 'CSS describes design primitives' finally clicked. Here's what changed my mind.",
       "blueskyHook": "Resisted Tailwind for years. \"Why write class names like inline styles from 2003?\"\n\nThen I tried it. The paradigm shift that finally made sense:"
+    },
+    {
+      "slug": "the-stones-remember-proof-day",
+      "title": "The Stones Remember: Proof Day",
+      "description": "There's a moment in every project where the thing you've been building becomes real. In software, it's the first production deploy. In fiction, it's the day the proof arrives.",
+      "category": "Writing",
+      "tags": ["writing", "publishing", "fiction", "personal", "creative-process", "books"],
+      "date": "2026-02-11",
+      "featured": true,
+      "image": "/img/posts/the-stones-remember-proof-day.svg",
+      "linkedInHook": "There's a moment in every project where the thing you've been building becomes real.\n\nIn software: first production deploy.\nIn fiction: the day the proof arrives.\n\nA proof is the book's staging environment. Same cover, same paper, same binding. You hold something you've been staring at on screens for years.\n\nFirst draft = prototype. Editing = refactoring. Beta readers = QA. Formatting = CSS. The proof = staging.\n\nProjects finish. Not quickly, not easily, not without bugs—but they finish.",
+      "blueskyHook": "First draft = prototype. Editing = refactoring. Beta readers = QA. Formatting = CSS.\n\nThe proof = staging deployment you can hold in your hands.\n\nProof day is ship day minus one:"
     },
     {
       "slug": "events-delegates-handlers-restaurant-analogy",
