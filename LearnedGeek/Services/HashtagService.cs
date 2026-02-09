@@ -326,11 +326,11 @@ public class HashtagService : IHashtagService
     {
         var categoryContext = post.Category switch
         {
-            Category.Computers => "software development and technology",
+            Category.Tech => "software development and technology",
             Category.Writing => "writing and content creation",
-            Category.Automotive => "cars and automotive",
-            Category.Woodworking => "woodworking and DIY",
-            Category.HomeImprovement => "home improvement and DIY",
+            Category.Gaming => "gaming, game development, and data mining",
+            Category.Project => "hands-on projects and DIY",
+            Category.Personal => "personal stories and reflections",
             _ => "general interest"
         };
 
@@ -358,11 +358,11 @@ public class HashtagService : IHashtagService
     {
         var categoryContext = post.Category switch
         {
-            Category.Computers => "software development, programming, and technology",
+            Category.Tech => "software development, programming, and technology",
             Category.Writing => "writing, creativity, and content creation",
-            Category.Automotive => "cars, automotive, and vehicles",
-            Category.Woodworking => "woodworking, DIY, and craftsmanship",
-            Category.HomeImprovement => "home improvement, DIY, and renovation",
+            Category.Gaming => "gaming, game development, and data mining",
+            Category.Project => "hands-on projects, DIY, and tinkering",
+            Category.Personal => "personal stories, reflections, and life",
             _ => "general interest topics"
         };
 
