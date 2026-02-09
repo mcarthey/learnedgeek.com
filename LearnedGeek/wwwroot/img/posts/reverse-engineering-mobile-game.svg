@@ -1,25 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="reBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#1a1a2e"/>
       <stop offset="100%" style="stop-color:#16213e"/>
     </linearGradient>
-    <linearGradient id="apkGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="reApkGrad" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#22c55e"/>
       <stop offset="100%" style="stop-color:#15803d"/>
     </linearGradient>
-    <linearGradient id="luaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="reLuaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#3b82f6"/>
       <stop offset="100%" style="stop-color:#1d4ed8"/>
     </linearGradient>
-    <linearGradient id="dataGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="reDataGrad" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#f59e0b"/>
       <stop offset="100%" style="stop-color:#d97706"/>
     </linearGradient>
   </defs>
 
   <!-- Background -->
-  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  <rect width="800" height="400" fill="url(#reBgGrad)"/>
 
   <!-- Subtle grid -->
   <g opacity="0.04" stroke="#22c55e" stroke-width="0.5">
@@ -32,43 +32,42 @@
   <!-- Title -->
   <text x="400" y="35" font-family="sans-serif" font-size="15" fill="#e2e8f0" text-anchor="middle" font-weight="bold">I Reverse-Engineered a Mobile Game</text>
 
-  <!-- LEFT: APK / Phone -->
+  <!-- LEFT: Phone with hidden game data -->
   <g transform="translate(60, 55)">
     <!-- Phone outline -->
     <rect x="20" y="0" width="120" height="210" rx="14" fill="#0f172a" stroke="#475569" stroke-width="2"/>
+    <!-- Screen -->
     <rect x="28" y="16" width="104" height="170" rx="4" fill="#1e293b"/>
-    <!-- Screen content - game-like grid -->
+    <!-- Hero grid -->
     <g transform="translate(34, 22)">
-      <!-- Hero grid icons -->
       <rect x="0" y="0" width="28" height="28" rx="4" fill="#8b5cf6" opacity="0.5"/>
       <rect x="32" y="0" width="28" height="28" rx="4" fill="#ef4444" opacity="0.5"/>
       <rect x="64" y="0" width="28" height="28" rx="4" fill="#22c55e" opacity="0.5"/>
       <rect x="0" y="32" width="28" height="28" rx="4" fill="#f59e0b" opacity="0.5"/>
       <rect x="32" y="32" width="28" height="28" rx="4" fill="#3b82f6" opacity="0.5"/>
       <rect x="64" y="32" width="28" height="28" rx="4" fill="#ec4899" opacity="0.5"/>
-      <!-- Question marks on heroes -->
+      <!-- Question marks -->
       <text x="14" y="20" font-family="sans-serif" font-size="14" fill="white" text-anchor="middle" opacity="0.7">?</text>
       <text x="46" y="20" font-family="sans-serif" font-size="14" fill="white" text-anchor="middle" opacity="0.7">?</text>
       <text x="78" y="20" font-family="sans-serif" font-size="14" fill="white" text-anchor="middle" opacity="0.7">?</text>
       <text x="14" y="52" font-family="sans-serif" font-size="14" fill="white" text-anchor="middle" opacity="0.7">?</text>
       <text x="46" y="52" font-family="sans-serif" font-size="14" fill="white" text-anchor="middle" opacity="0.7">?</text>
       <text x="78" y="52" font-family="sans-serif" font-size="14" fill="white" text-anchor="middle" opacity="0.7">?</text>
-      <!-- Vague tooltip -->
+      <!-- Vague tooltips -->
       <rect x="0" y="72" width="92" height="20" rx="3" fill="#334155"/>
-      <text x="46" y="86" font-family="sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">"Increases ATK slightly"</text>
+      <text x="46" y="86" font-family="sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">Increases ATK slightly</text>
       <rect x="0" y="98" width="92" height="40" rx="3" fill="#334155"/>
       <text x="46" y="112" font-family="monospace" font-size="7" fill="#64748b" text-anchor="middle">Synergy: ???</text>
       <text x="46" y="125" font-family="monospace" font-size="7" fill="#64748b" text-anchor="middle">Faction bonus: ???</text>
     </g>
     <!-- Home button -->
     <circle cx="80" cy="200" r="6" fill="none" stroke="#475569" stroke-width="1"/>
-
     <text x="80" y="235" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Hidden mechanics</text>
   </g>
 
-  <!-- Arrow 1: APK extract -->
+  <!-- Arrow: APK extract -->
   <g transform="translate(200, 140)">
-    <path d="M0,0 L60,0" stroke="#22c55e" stroke-width="2"/>
+    <line x1="0" y1="0" x2="60" y2="0" stroke="#22c55e" stroke-width="2"/>
     <polygon points="65,-4 65,4 75,0" fill="#22c55e"/>
     <text x="37" y="-8" font-family="monospace" font-size="7" fill="#86efac" text-anchor="middle">.apk</text>
   </g>
@@ -76,7 +75,7 @@
   <!-- CENTER: Extraction pipeline -->
   <g transform="translate(280, 55)">
     <!-- UnityFS bundle -->
-    <rect x="0" y="0" width="200" height="42" rx="6" fill="url(#apkGrad)" opacity="0.9"/>
+    <rect x="0" y="0" width="200" height="42" rx="6" fill="url(#reApkGrad)" opacity="0.9"/>
     <text x="100" y="18" font-family="monospace" font-size="10" fill="white" text-anchor="middle" font-weight="bold">lua_code_name.ab</text>
     <text x="100" y="34" font-family="sans-serif" font-size="8" fill="#bbf7d0" text-anchor="middle">UnityFS asset bundle (16MB)</text>
 
@@ -85,7 +84,7 @@
     <polygon points="96,65 104,65 100,73" fill="#3b82f6"/>
 
     <!-- Lua bytecode -->
-    <rect x="0" y="78" width="200" height="42" rx="6" fill="url(#luaGrad)" opacity="0.9"/>
+    <rect x="0" y="78" width="200" height="42" rx="6" fill="url(#reLuaGrad)" opacity="0.9"/>
     <text x="100" y="96" font-family="monospace" font-size="10" fill="white" text-anchor="middle" font-weight="bold">Lua 5.3 Bytecode</text>
     <text x="100" y="112" font-family="monospace" font-size="8" fill="#93c5fd" text-anchor="middle">2,880 compiled data files</text>
 
@@ -94,32 +93,29 @@
     <polygon points="96,143 104,143 100,151" fill="#f59e0b"/>
 
     <!-- Extracted data -->
-    <rect x="0" y="156" width="200" height="42" rx="6" fill="url(#dataGrad)" opacity="0.9"/>
+    <rect x="0" y="156" width="200" height="42" rx="6" fill="url(#reDataGrad)" opacity="0.9"/>
     <text x="100" y="174" font-family="monospace" font-size="10" fill="white" text-anchor="middle" font-weight="bold">String Constants</text>
     <text x="100" y="190" font-family="sans-serif" font-size="8" fill="#fef3c7" text-anchor="middle">Heroes, stats, bonds, factions</text>
   </g>
 
-  <!-- Arrow 2: to results -->
+  <!-- Arrow: to results -->
   <g transform="translate(485, 140)">
-    <path d="M0,0 L55,0" stroke="#f59e0b" stroke-width="2"/>
+    <line x1="0" y1="0" x2="55" y2="0" stroke="#f59e0b" stroke-width="2"/>
     <polygon points="60,-4 60,4 70,0" fill="#f59e0b"/>
     <text x="35" y="-8" font-family="monospace" font-size="7" fill="#fde68a" text-anchor="middle">parse</text>
   </g>
 
-  <!-- RIGHT: Results -->
+  <!-- RIGHT: Team optimizer results -->
   <g transform="translate(560, 55)">
-    <!-- Team optimizer output -->
     <rect x="0" y="0" width="200" height="210" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1.5"/>
     <text x="100" y="22" font-family="sans-serif" font-size="11" fill="#86efac" text-anchor="middle" font-weight="bold">Team Optimizer</text>
     <line x1="15" y1="30" x2="185" y2="30" stroke="#22c55e" stroke-width="0.5" opacity="0.3"/>
 
-    <!-- Faction bonus revealed -->
+    <!-- Revealed data -->
     <text x="15" y="48" font-family="monospace" font-size="7" fill="#fde68a">Faction (6): +30% HP, +20% ATK</text>
-
-    <!-- Bond data -->
     <text x="15" y="66" font-family="monospace" font-size="7" fill="#c4b5fd">Bond trio: ATK/Crit +50,000</text>
 
-    <!-- Team result -->
+    <!-- Best team -->
     <g transform="translate(10, 78)">
       <rect x="0" y="0" width="180" height="55" rx="4" fill="#22c55e" opacity="0.1" stroke="#22c55e" stroke-width="0.5"/>
       <text x="90" y="14" font-family="sans-serif" font-size="8" fill="#86efac" text-anchor="middle" font-weight="bold">Best Team: Score 51.6</text>
@@ -140,7 +136,7 @@
 
     <!-- Stats -->
     <text x="15" y="152" font-family="monospace" font-size="7" fill="#94a3b8">12,376 combinations</text>
-    <text x="15" y="166" font-family="monospace" font-size="7" fill="#94a3b8">evaluated in &lt;1 second</text>
+    <text x="15" y="166" font-family="monospace" font-size="7" fill="#94a3b8">evaluated in under 1 second</text>
 
     <!-- Checkmark -->
     <g transform="translate(155, 148)">
@@ -148,16 +144,16 @@
       <path d="M6 12 L10 16 L18 7" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
 
-    <text x="100" y="200" font-family="monospace" font-size="7" fill="#64748b" text-anchor="middle">ATK values * 10,000 decoded</text>
+    <text x="100" y="200" font-family="monospace" font-size="7" fill="#64748b" text-anchor="middle">ATK values x 10,000 decoded</text>
   </g>
 
-  <!-- Bottom: Python + tools -->
+  <!-- Bottom: terminal command -->
   <g transform="translate(50, 310)">
     <rect x="0" y="0" width="700" height="32" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
     <text x="20" y="14" font-family="monospace" font-size="8" fill="#fde68a">$</text>
     <text x="32" y="14" font-family="monospace" font-size="8" fill="#86efac">pip install UnityPy</text>
-    <text x="200" y="14" font-family="monospace" font-size="8" fill="#64748b">&&</text>
-    <text x="220" y="14" font-family="monospace" font-size="8" fill="#86efac">python team_optimizer.py</text>
+    <text x="200" y="14" font-family="monospace" font-size="8" fill="#64748b">&amp;&amp;</text>
+    <text x="222" y="14" font-family="monospace" font-size="8" fill="#86efac">python team_optimizer.py</text>
     <text x="350" y="26" font-family="sans-serif" font-size="7" fill="#64748b">Python + UnityPy + string extraction = real game data</text>
   </g>
 
