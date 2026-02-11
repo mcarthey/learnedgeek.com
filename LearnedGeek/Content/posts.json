@@ -721,6 +721,18 @@
       "blueskyHook": "First draft = prototype. Editing = refactoring. Beta readers = QA. Formatting = CSS.\n\nThe proof = staging deployment you can hold in your hands.\n\nProof day is ship day minus one:"
     },
     {
+      "slug": "dark-mode-toggle-tailwind-localstorage",
+      "title": "Adding Dark Mode to Any Site With Tailwind and localStorage",
+      "description": "Good dark mode should be instant, persistent, and user-controlled. Here's how to build it in about 20 lines of code — no library, no framework, no flash of wrong theme.",
+      "category": "Tech",
+      "tags": ["tailwind", "css", "javascript", "dark-mode", "web-development", "frontend", "localStorage"],
+      "date": "2026-02-12",
+      "featured": true,
+      "image": "/img/posts/dark-mode-toggle-tailwind-localstorage.svg",
+      "linkedInHook": "Most dark mode implementations get at least one thing wrong:\n\n• Flash of white before dark kicks in\n• Preference lost on reload\n• Only works if your OS is set to dark\n\nThe fix is three pieces: one line in Tailwind config, four lines in <head> to prevent flash, and ten lines for the toggle. No library. No dependency.\n\nThe trick most tutorials miss: the localStorage check must run synchronously in <head>, before the first paint. Put it in your JS file and you get the flash.",
+      "blueskyHook": "Most dark modes flash white before going dark. Or forget your preference. Or only work with OS settings.\n\nThe fix: 3 pieces, ~20 lines, no dependencies. The key is a sync script in <head> before first paint:"
+    },
+    {
       "slug": "events-delegates-handlers-restaurant-analogy",
       "title": "Events, Delegates, and Handlers: The Restaurant Analogy That Finally Made It Click",
       "description": "Stop thinking about function pointers. Start thinking about bells and notifications. A restaurant analogy that makes C# events actually make sense.",
