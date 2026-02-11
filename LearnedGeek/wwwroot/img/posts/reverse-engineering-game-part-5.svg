@@ -1,0 +1,375 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="re5BgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f1729"/>
+      <stop offset="100%" style="stop-color:#1a1a3e"/>
+    </linearGradient>
+    <linearGradient id="re5TealGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2dd4bf"/>
+      <stop offset="100%" style="stop-color:#0d9488"/>
+    </linearGradient>
+    <linearGradient id="re5GoldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <linearGradient id="re5PurpleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a78bfa"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="re5GreenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ade80"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="re5DeskGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#334155"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="re5ScreenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="re5BadgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+    <radialGradient id="re5Glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#2dd4bf;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#2dd4bf;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="re5Shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="re5GlowFilter">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#re5BgGrad)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.03" stroke="#2dd4bf" stroke-width="0.5">
+    <line x1="0" y1="80" x2="800" y2="80"/>
+    <line x1="0" y1="160" x2="800" y2="160"/>
+    <line x1="0" y1="240" x2="800" y2="240"/>
+    <line x1="0" y1="320" x2="800" y2="320"/>
+    <line x1="100" y1="0" x2="100" y2="400"/>
+    <line x1="200" y1="0" x2="200" y2="400"/>
+    <line x1="300" y1="0" x2="300" y2="400"/>
+    <line x1="400" y1="0" x2="400" y2="400"/>
+    <line x1="500" y1="0" x2="500" y2="400"/>
+    <line x1="600" y1="0" x2="600" y2="400"/>
+    <line x1="700" y1="0" x2="700" y2="400"/>
+  </g>
+
+  <!-- Ambient glow behind robot -->
+  <ellipse cx="300" cy="240" rx="160" ry="120" fill="url(#re5Glow)"/>
+
+  <!-- === DESK === -->
+  <rect x="100" y="280" width="420" height="12" rx="3" fill="url(#re5DeskGrad)" stroke="#475569" stroke-width="0.5"/>
+  <!-- Desk legs -->
+  <rect x="130" y="292" width="6" height="50" rx="1" fill="#334155"/>
+  <rect x="484" y="292" width="6" height="50" rx="1" fill="#334155"/>
+
+  <!-- === ROBOT (sitting at desk) === -->
+  <g transform="translate(240, 120)" filter="url(#re5Shadow)">
+    <!-- Robot body -->
+    <rect x="20" y="70" width="80" height="90" rx="10" fill="url(#re5TealGrad)"/>
+    <!-- Chest panel -->
+    <rect x="35" y="82" width="50" height="30" rx="4" fill="#0f172a" opacity="0.5"/>
+    <!-- Chest lights -->
+    <circle cx="48" cy="92" r="3" fill="#4ade80" opacity="0.9"/>
+    <circle cx="60" cy="92" r="3" fill="#fbbf24" opacity="0.9"/>
+    <circle cx="72" cy="92" r="3" fill="#f87171" opacity="0.7"/>
+    <!-- Chest bar (activity indicator) -->
+    <rect x="42" y="100" width="36" height="4" rx="2" fill="#22d3ee" opacity="0.6"/>
+
+    <!-- Robot head -->
+    <rect x="25" y="15" width="70" height="55" rx="12" fill="url(#re5TealGrad)"/>
+    <!-- Antenna -->
+    <line x1="60" y1="15" x2="60" y2="2" stroke="#5eead4" stroke-width="2"/>
+    <circle cx="60" cy="0" r="4" fill="#fbbf24"/>
+    <!-- Eyes (happy curved lines) -->
+    <path d="M42 38 Q47 32 52 38" stroke="#0f172a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M62 38 Q67 32 72 38" stroke="#0f172a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <!-- Smile -->
+    <path d="M45 48 Q57 58 72 48" stroke="#0f172a" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <!-- Cheek blush -->
+    <ellipse cx="40" cy="46" rx="5" ry="3" fill="#f472b6" opacity="0.35"/>
+    <ellipse cx="78" cy="46" rx="5" ry="3" fill="#f472b6" opacity="0.35"/>
+
+    <!-- Left arm (reaching to phone) -->
+    <path d="M20 85 Q-10 100 -5 135 Q-3 145 5 145" stroke="url(#re5TealGrad)" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <!-- Left hand (finger tapping) -->
+    <circle cx="6" cy="145" r="7" fill="#5eead4"/>
+    <!-- Tap effect -->
+    <circle cx="6" cy="150" r="10" fill="none" stroke="#22d3ee" stroke-width="1" opacity="0.5"/>
+    <circle cx="6" cy="150" r="16" fill="none" stroke="#22d3ee" stroke-width="0.5" opacity="0.3"/>
+
+    <!-- Right arm -->
+    <path d="M100 85 Q130 95 125 130" stroke="url(#re5TealGrad)" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <circle cx="125" cy="132" r="7" fill="#5eead4"/>
+  </g>
+
+  <!-- === PHONE ON DESK === -->
+  <g transform="translate(195, 215)">
+    <!-- Phone body -->
+    <rect x="0" y="0" width="60" height="72" rx="8" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
+    <!-- Screen -->
+    <rect x="4" y="8" width="52" height="56" rx="3" fill="url(#re5ScreenGrad)"/>
+    <!-- Game UI elements on phone screen -->
+    <!-- Mini health bar -->
+    <rect x="8" y="12" width="30" height="3" rx="1" fill="#334155"/>
+    <rect x="8" y="12" width="22" height="3" rx="1" fill="#4ade80"/>
+    <!-- Mini enemy -->
+    <rect x="28" y="22" width="16" height="16" rx="3" fill="#8b5cf6" opacity="0.7"/>
+    <!-- Mini attack button -->
+    <rect x="10" y="48" width="18" height="10" rx="2" fill="#ef4444" opacity="0.8"/>
+    <rect x="32" y="48" width="18" height="10" rx="2" fill="#3b82f6" opacity="0.8"/>
+    <!-- Collecting sparkle -->
+    <circle cx="42" cy="30" r="2" fill="#fbbf24"/>
+    <line x1="42" y1="26" x2="42" y2="24" stroke="#fbbf24" stroke-width="0.5"/>
+    <line x1="42" y1="34" x2="42" y2="36" stroke="#fbbf24" stroke-width="0.5"/>
+    <line x1="38" y1="30" x2="36" y2="30" stroke="#fbbf24" stroke-width="0.5"/>
+    <line x1="46" y1="30" x2="48" y2="30" stroke="#fbbf24" stroke-width="0.5"/>
+  </g>
+
+  <!-- === FLOATING CHECKLIST === -->
+  <g transform="translate(455, 40)" filter="url(#re5Shadow)">
+    <!-- Clipboard background -->
+    <rect x="0" y="0" width="160" height="230" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <!-- Clipboard clip -->
+    <rect x="55" y="-6" width="50" height="14" rx="4" fill="#475569"/>
+    <circle cx="80" cy="0" r="3" fill="#64748b"/>
+
+    <!-- Task 1: Checked (Mail) -->
+    <g transform="translate(12, 22)">
+      <!-- Checkbox checked -->
+      <rect x="0" y="0" width="16" height="16" rx="3" fill="#16a34a" opacity="0.3" stroke="#4ade80" stroke-width="1"/>
+      <path d="M3 8 L6 12 L13 4" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Mail icon -->
+      <rect x="22" y="2" width="14" height="10" rx="2" fill="none" stroke="#94a3b8" stroke-width="1"/>
+      <path d="M22 4 L29 9 L36 4" stroke="#94a3b8" stroke-width="0.8" fill="none"/>
+      <!-- Bar representing text -->
+      <rect x="42" y="4" width="70" height="3" rx="1" fill="#475569"/>
+      <rect x="42" y="10" width="50" height="3" rx="1" fill="#334155"/>
+    </g>
+
+    <!-- Task 2: Checked (Arena - swords) -->
+    <g transform="translate(12, 50)">
+      <rect x="0" y="0" width="16" height="16" rx="3" fill="#16a34a" opacity="0.3" stroke="#4ade80" stroke-width="1"/>
+      <path d="M3 8 L6 12 L13 4" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Crossed swords icon -->
+      <line x1="24" y1="3" x2="34" y2="13" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="34" y1="3" x2="24" y2="13" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/>
+      <rect x="42" y="4" width="80" height="3" rx="1" fill="#475569"/>
+      <rect x="42" y="10" width="40" height="3" rx="1" fill="#334155"/>
+    </g>
+
+    <!-- Task 3: Checked (Gift box) -->
+    <g transform="translate(12, 78)">
+      <rect x="0" y="0" width="16" height="16" rx="3" fill="#16a34a" opacity="0.3" stroke="#4ade80" stroke-width="1"/>
+      <path d="M3 8 L6 12 L13 4" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Gift box icon -->
+      <rect x="24" y="6" width="12" height="8" rx="1" fill="#f472b6" opacity="0.7"/>
+      <rect x="23" y="4" width="14" height="4" rx="1" fill="#f472b6" opacity="0.9"/>
+      <line x1="30" y1="4" x2="30" y2="14" stroke="#fce7f3" stroke-width="1"/>
+      <line x1="23" y1="8" x2="37" y2="8" stroke="#fce7f3" stroke-width="0.5"/>
+      <rect x="42" y="4" width="65" height="3" rx="1" fill="#475569"/>
+      <rect x="42" y="10" width="45" height="3" rx="1" fill="#334155"/>
+    </g>
+
+    <!-- Task 4: Checked (Gold coins) -->
+    <g transform="translate(12, 106)">
+      <rect x="0" y="0" width="16" height="16" rx="3" fill="#16a34a" opacity="0.3" stroke="#4ade80" stroke-width="1"/>
+      <path d="M3 8 L6 12 L13 4" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Coin icon -->
+      <circle cx="29" cy="8" r="6" fill="url(#re5GoldGrad)" stroke="#92400e" stroke-width="0.5"/>
+      <ellipse cx="29" cy="8" rx="3" ry="5" fill="none" stroke="#92400e" stroke-width="0.5"/>
+      <rect x="42" y="4" width="75" height="3" rx="1" fill="#475569"/>
+      <rect x="42" y="10" width="55" height="3" rx="1" fill="#334155"/>
+    </g>
+
+    <!-- Task 5: Checked (Campaign/sword) -->
+    <g transform="translate(12, 134)">
+      <rect x="0" y="0" width="16" height="16" rx="3" fill="#16a34a" opacity="0.3" stroke="#4ade80" stroke-width="1"/>
+      <path d="M3 8 L6 12 L13 4" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Shield icon -->
+      <path d="M29 2 L35 5 L35 10 Q35 14 29 16 Q23 14 23 10 L23 5 Z" fill="url(#re5PurpleGrad)" opacity="0.7"/>
+      <rect x="42" y="4" width="60" height="3" rx="1" fill="#475569"/>
+      <rect x="42" y="10" width="48" height="3" rx="1" fill="#334155"/>
+    </g>
+
+    <!-- Task 6: In progress (Tower) - animated feel -->
+    <g transform="translate(12, 162)">
+      <rect x="0" y="0" width="16" height="16" rx="3" fill="#fbbf24" opacity="0.15" stroke="#fbbf24" stroke-width="1"/>
+      <!-- Loading spinner-ish dots -->
+      <circle cx="5" cy="8" r="1.5" fill="#fbbf24" opacity="0.9"/>
+      <circle cx="11" cy="8" r="1.5" fill="#fbbf24" opacity="0.5"/>
+      <!-- Tower icon -->
+      <rect x="26" y="3" width="8" height="12" rx="1" fill="#64748b"/>
+      <rect x="24" y="1" width="12" height="4" rx="1" fill="#64748b"/>
+      <rect x="28" y="7" width="3" height="4" rx="0.5" fill="#1e293b"/>
+      <rect x="42" y="4" width="70" height="3" rx="1" fill="#475569"/>
+      <rect x="42" y="10" width="55" height="3" rx="1" fill="#334155"/>
+    </g>
+
+    <!-- Task 7: Pending (Summoning) -->
+    <g transform="translate(12, 190)">
+      <rect x="0" y="0" width="16" height="16" rx="3" fill="none" stroke="#475569" stroke-width="1"/>
+      <!-- Star icon -->
+      <path d="M29 3 L31 7 L35 8 L32 11 L33 15 L29 13 L25 15 L26 11 L23 8 L27 7 Z" fill="#475569" opacity="0.6"/>
+      <rect x="42" y="4" width="55" height="3" rx="1" fill="#475569" opacity="0.5"/>
+      <rect x="42" y="10" width="40" height="3" rx="1" fill="#334155" opacity="0.5"/>
+    </g>
+  </g>
+
+  <!-- === STOPWATCH / TIMER (floating near top-left) === -->
+  <g transform="translate(70, 30)" filter="url(#re5Shadow)">
+    <!-- Watch body -->
+    <circle cx="30" cy="35" r="28" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+    <circle cx="30" cy="35" r="24" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <!-- Watch button top -->
+    <rect x="26" y="2" width="8" height="6" rx="2" fill="#475569"/>
+    <!-- Watch ring -->
+    <rect x="28" y="6" width="4" height="4" rx="1" fill="#64748b"/>
+    <!-- Clock ticks -->
+    <line x1="30" y1="14" x2="30" y2="17" stroke="#64748b" stroke-width="1"/>
+    <line x1="30" y1="53" x2="30" y2="56" stroke="#64748b" stroke-width="1"/>
+    <line x1="11" y1="35" x2="14" y2="35" stroke="#64748b" stroke-width="1"/>
+    <line x1="46" y1="35" x2="49" y2="35" stroke="#64748b" stroke-width="1"/>
+    <!-- Clock hands -->
+    <line x1="30" y1="35" x2="30" y2="19" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="30" y1="35" x2="42" y2="30" stroke="#22d3ee" stroke-width="1" stroke-linecap="round"/>
+    <!-- Center dot -->
+    <circle cx="30" cy="35" r="2" fill="#4ade80"/>
+    <!-- "90" as SVG paths (hand-drawn style numbers) -->
+    <!-- 9 -->
+    <path d="M20 72 Q20 66 25 66 Q30 66 30 72 Q30 76 25 76 Q20 76 20 74 L20 74 Q20 78 25 80" stroke="#4ade80" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <!-- 0 -->
+    <path d="M34 66 Q34 66 38 66 Q42 66 42 73 Q42 80 38 80 Q34 80 34 73 Z" stroke="#4ade80" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <!-- sec as a simple small shape indicator (3 tiny dots) -->
+    <circle cx="46" cy="76" r="1" fill="#4ade80" opacity="0.6"/>
+    <circle cx="50" cy="76" r="1" fill="#4ade80" opacity="0.6"/>
+    <circle cx="54" cy="76" r="1" fill="#4ade80" opacity="0.6"/>
+  </g>
+
+  <!-- === FLOATING GAME ICONS (rewards being collected) === -->
+
+  <!-- Gold coins floating up from phone -->
+  <g transform="translate(210, 170)" opacity="0.9">
+    <circle cx="0" cy="0" r="7" fill="url(#re5GoldGrad)" stroke="#92400e" stroke-width="0.5"/>
+    <ellipse cx="0" cy="0" rx="3.5" ry="6" fill="none" stroke="#92400e" stroke-width="0.5"/>
+  </g>
+  <g transform="translate(228, 155)" opacity="0.7">
+    <circle cx="0" cy="0" r="5" fill="url(#re5GoldGrad)" stroke="#92400e" stroke-width="0.5"/>
+    <ellipse cx="0" cy="0" rx="2.5" ry="4" fill="none" stroke="#92400e" stroke-width="0.5"/>
+  </g>
+  <g transform="translate(218, 140)" opacity="0.5">
+    <circle cx="0" cy="0" r="4" fill="url(#re5GoldGrad)" stroke="#92400e" stroke-width="0.3"/>
+  </g>
+
+  <!-- Mail icon floating -->
+  <g transform="translate(178, 165)" opacity="0.6">
+    <rect x="0" y="0" width="16" height="11" rx="2" fill="none" stroke="#60a5fa" stroke-width="1"/>
+    <path d="M0 2 L8 7 L16 2" stroke="#60a5fa" stroke-width="0.8" fill="none"/>
+  </g>
+
+  <!-- Gift sparkle -->
+  <g transform="translate(250, 165)" opacity="0.6">
+    <path d="M0 -6 L1 -1 L6 0 L1 1 L0 6 L-1 1 L-6 0 L-1 -1 Z" fill="#f472b6"/>
+  </g>
+
+  <!-- === MIRROR ROBOT (fighting yourself bug!) === -->
+  <g transform="translate(630, 175)" opacity="0.35">
+    <!-- Smaller mirrored robot (flipped) -->
+    <g transform="scale(-0.55, 0.55)">
+      <!-- Robot body -->
+      <rect x="20" y="70" width="80" height="90" rx="10" fill="url(#re5TealGrad)"/>
+      <!-- Chest panel -->
+      <rect x="35" y="82" width="50" height="30" rx="4" fill="#0f172a" opacity="0.5"/>
+      <circle cx="48" cy="92" r="3" fill="#4ade80" opacity="0.9"/>
+      <circle cx="60" cy="92" r="3" fill="#fbbf24" opacity="0.9"/>
+      <circle cx="72" cy="92" r="3" fill="#f87171" opacity="0.7"/>
+      <!-- Robot head -->
+      <rect x="25" y="15" width="70" height="55" rx="12" fill="url(#re5TealGrad)"/>
+      <line x1="60" y1="15" x2="60" y2="2" stroke="#5eead4" stroke-width="2"/>
+      <circle cx="60" cy="0" r="4" fill="#fbbf24"/>
+      <!-- Confused eyes (X X) -->
+      <line x1="42" y1="33" x2="52" y2="43" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+      <line x1="52" y1="33" x2="42" y2="43" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+      <line x1="62" y1="33" x2="72" y2="43" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+      <line x1="72" y1="33" x2="62" y2="43" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+      <!-- Wavy confused mouth -->
+      <path d="M45 52 Q52 48 58 52 Q65 56 72 52" stroke="#0f172a" stroke-width="1.5" fill="none"/>
+    </g>
+  </g>
+
+  <!-- VS spark between main robot and mirror -->
+  <g transform="translate(575, 215)">
+    <!-- Lightning bolt shape -->
+    <path d="M0 -12 L4 -2 L-2 -2 L3 12 L-1 2 L5 2 Z" fill="#fbbf24" opacity="0.5"/>
+    <!-- Impact stars -->
+    <circle cx="-10" cy="-5" r="2" fill="#fbbf24" opacity="0.4"/>
+    <circle cx="12" cy="5" r="1.5" fill="#fbbf24" opacity="0.3"/>
+    <path d="M-8 8 L-7 5 L-5 8 L-7 7 Z" fill="#f59e0b" opacity="0.4"/>
+  </g>
+
+  <!-- === FLOATING PARTICLES / SPARKLES === -->
+  <circle cx="180" cy="100" r="1.5" fill="#2dd4bf" opacity="0.4"/>
+  <circle cx="420" cy="50" r="1" fill="#fbbf24" opacity="0.5"/>
+  <circle cx="350" cy="80" r="1.5" fill="#a78bfa" opacity="0.3"/>
+  <circle cx="520" cy="300" r="1" fill="#22d3ee" opacity="0.4"/>
+  <circle cx="680" cy="100" r="1.5" fill="#4ade80" opacity="0.3"/>
+  <circle cx="750" cy="300" r="1" fill="#f472b6" opacity="0.3"/>
+  <circle cx="155" cy="310" r="1" fill="#fbbf24" opacity="0.3"/>
+  <circle cx="445" cy="320" r="1.5" fill="#2dd4bf" opacity="0.25"/>
+
+  <!-- Tiny stars scattered -->
+  <path d="M160 50 L161 53 L164 54 L161 55 L160 58 L159 55 L156 54 L159 53 Z" fill="white" opacity="0.15"/>
+  <path d="M650 60 L651 63 L654 64 L651 65 L650 68 L649 65 L646 64 L649 63 Z" fill="white" opacity="0.12"/>
+  <path d="M720 180 L721 182 L723 183 L721 184 L720 186 L719 184 L717 183 L719 182 Z" fill="white" opacity="0.1"/>
+
+  <!-- === PART 5 BADGE (bottom-right corner) === -->
+  <g transform="translate(700, 340)">
+    <!-- Badge background -->
+    <rect x="0" y="0" width="80" height="40" rx="8" fill="url(#re5BadgeGrad)" opacity="0.9"/>
+    <rect x="2" y="2" width="76" height="36" rx="7" fill="none" stroke="white" stroke-width="0.5" opacity="0.3"/>
+    <!-- "Part" as tiny path shapes -->
+    <!-- P -->
+    <path d="M14 12 L14 28" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M14 12 Q22 12 22 16 Q22 20 14 20" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <!-- 5 -->
+    <path d="M38 12 L30 12 L29 20 Q33 18 37 20 Q40 22 38 26 Q36 30 30 30 Q27 30 26 28" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Decorative dots -->
+    <circle cx="50" cy="20" r="1.5" fill="white" opacity="0.5"/>
+    <!-- Small robot silhouette icon in badge -->
+    <rect x="56" y="12" width="14" height="16" rx="3" fill="white" opacity="0.3"/>
+    <rect x="58" y="6" width="10" height="8" rx="3" fill="white" opacity="0.3"/>
+    <circle cx="63" cy="4" r="2" fill="white" opacity="0.4"/>
+  </g>
+
+  <!-- === SUCCESS AURA around checklist === -->
+  <!-- Green progress bar at bottom of checklist -->
+  <g transform="translate(455, 275)">
+    <rect x="10" y="0" width="140" height="6" rx="3" fill="#334155"/>
+    <rect x="10" y="0" width="108" height="6" rx="3" fill="url(#re5GreenGrad)" opacity="0.7"/>
+  </g>
+
+  <!-- === AUTOMATION ARROWS (loop) === -->
+  <!-- Curved arrow from checklist back to robot suggesting automation loop -->
+  <path d="M455 160 Q430 160 410 140 Q395 125 395 110 Q395 90 415 85" stroke="#22d3ee" stroke-width="1" fill="none" stroke-dasharray="4,3" opacity="0.35"/>
+  <polygon points="415,82 415,88 420,85" fill="#22d3ee" opacity="0.35"/>
+
+  <!-- Another curved automation arrow -->
+  <path d="M370 280 Q380 300 430 310 Q460 315 470 295" stroke="#22d3ee" stroke-width="1" fill="none" stroke-dasharray="4,3" opacity="0.25"/>
+  <polygon points="470,298 474,292 468,292" fill="#22d3ee" opacity="0.25"/>
+
+  <!-- === GROUND SHADOW === -->
+  <ellipse cx="310" cy="292" rx="100" ry="5" fill="#000" opacity="0.15"/>
+
+</svg>

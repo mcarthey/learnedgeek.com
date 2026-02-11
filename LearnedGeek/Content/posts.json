@@ -625,6 +625,78 @@
       "blueskyHook": "The game hides its mechanics behind vague tooltips. So I took the APK apart.\n\n2,880 Lua bytecode files. Every hidden stat decoded. Built a team optimizer. Sometimes the best strategy guide is the one you extract yourself:"
     },
     {
+      "slug": "reverse-engineering-game-part-1",
+      "title": "Reverse Engineering a Mobile Game: Part 1 — What's Inside the Box?",
+      "description": "Every mobile game is hiding its secrets in a file you already have. Here's how I went from 'I wonder how this works' to extracting thousands of files of game data — using free tools and an afternoon.",
+      "category": "Gaming",
+      "tags": ["reverse-engineering", "android", "unity", "lua", "gaming", "tutorial", "python"],
+      "date": "2026-02-17",
+      "featured": true,
+      "image": "/img/posts/reverse-engineering-game-part-1.svg",
+      "linkedInHook": "Every Android app is just a ZIP file wearing a costume.\n\nI renamed a game APK to .zip, unzipped it, and found 2,880 compiled Lua bytecode files — every hero stat, skill formula, and hidden multiplier the game never wanted me to see.\n\nThe strings in compiled bytecode? Stored in plaintext. No decompiler needed.\n\nPart 1 of a 5-part series on reverse engineering a mobile game. From APK to automation bot.",
+      "blueskyHook": "Every Android app is a ZIP file in costume. Rename, unzip, find 2,880 files of game secrets.\n\nLua bytecode stores strings in plaintext. No decompiler needed.\n\nPart 1 of 5 — What's Inside the Box:"
+    },
+    {
+      "slug": "reverse-engineering-game-part-2",
+      "title": "Reverse Engineering a Mobile Game: Part 2 — Eavesdropping on the Conversation",
+      "description": "Your phone and the game server have a constant conversation. With the right tools, you can listen in. The hard part is usually getting past SSL pinning — unless the developers forgot to lock the door.",
+      "category": "Gaming",
+      "tags": ["reverse-engineering", "networking", "mitmproxy", "websocket", "gaming", "tutorial", "security"],
+      "date": "2026-02-20",
+      "featured": true,
+      "image": "/img/posts/reverse-engineering-game-part-2.svg",
+      "linkedInHook": "The hardest part of intercepting mobile game traffic is usually SSL certificate pinning.\n\nUnless the developers forgot.\n\nNo pinning config. No custom trust manager. No certificate validation at all. The digital equivalent of leaving the Wi-Fi password on a sticky note.\n\nPlus: the game logs everything — credentials, tokens, message IDs — to the system console. In plaintext.\n\nPart 2 of the reverse engineering series.",
+      "blueskyHook": "SSL pinning is the #1 obstacle in mobile game traffic capture.\n\nThis game had none. Zero. Plus it logs credentials to plaintext console output.\n\nPart 2 of 5 — Eavesdropping on the Conversation:"
+    },
+    {
+      "slug": "reverse-engineering-game-part-3",
+      "title": "Reverse Engineering a Mobile Game: Part 3 — Learning to Speak Binary",
+      "description": "The game speaks a custom binary language over WebSocket. The hardest part wasn't finding the protocol — it was getting one field type wrong by 4 bytes. A homemade Lua disassembler finally settled the argument.",
+      "category": "Gaming",
+      "tags": ["reverse-engineering", "binary-protocol", "lua", "gaming", "tutorial", "python"],
+      "date": "2026-02-24",
+      "featured": true,
+      "image": "/img/posts/reverse-engineering-game-part-3.svg",
+      "linkedInHook": "Four bytes. That was the difference between 'rejected' and 'accepted.'\n\nThe game uses a custom binary protocol. I had the Lua source code for encoding messages, captured binary frames, and debug logs. Just needed to match them up.\n\nMy first guess: 8-byte timestamp. Close enough to look right. Wrong enough to break everything.\n\nSo I built a Lua 5.3 bytecode disassembler. Ten opcodes is all you need to trace function logic.\n\nPart 3 of the reverse engineering series.",
+      "blueskyHook": "Got the binary protocol 4 bytes wrong. Looked plausible. Broke everything.\n\nBuilt a Lua bytecode disassembler to settle the argument. You only need ~10 opcodes.\n\nPart 3 of 5 — Learning to Speak Binary:"
+    },
+    {
+      "slug": "reverse-engineering-game-part-4",
+      "title": "Reverse Engineering a Mobile Game: Part 4 — Building Our Own Controller",
+      "description": "With the binary protocol cracked, I built a Python client that authenticates, connects, and speaks the game's language. The auth system uses MD5 with hardcoded keys — the digital equivalent of hiding your house key under the doormat.",
+      "category": "Gaming",
+      "tags": ["reverse-engineering", "api", "authentication", "python", "gaming", "tutorial", "websocket"],
+      "date": "2026-02-27",
+      "featured": true,
+      "image": "/img/posts/reverse-engineering-game-part-4.svg",
+      "linkedInHook": "The game authenticates guest accounts using only a device fingerprint hash. No password. No 2FA. No CAPTCHA.\n\nIt's like a bank that identifies you by your shoe size.\n\nThe request signing? MD5 with hardcoded keys — sitting right there in the Lua bytecode anyone can extract from the APK.\n\nHiding your house key under the doormat. The lock works great. The hiding spot... less so.\n\nPart 4 of the reverse engineering series.",
+      "blueskyHook": "Game auth: device fingerprint only. No password. No 2FA.\n\nMD5 signing with hardcoded keys. In the Lua bytecode. Anyone can extract.\n\nHouse key under the doormat.\n\nPart 4 of 5 — Building Our Own Controller:"
+    },
+    {
+      "slug": "reverse-engineering-game-part-5",
+      "title": "Reverse Engineering a Mobile Game: Part 5 — Teaching a Bot to Play",
+      "description": "The final piece: an automation bot that logs in and completes daily tasks in 90 seconds. The hardest part wasn't sending messages — it was figuring out what the responses meant. Also, I accidentally fought myself in the arena.",
+      "category": "Gaming",
+      "tags": ["reverse-engineering", "automation", "python", "gaming", "tutorial", "bot"],
+      "date": "2026-03-02",
+      "featured": true,
+      "image": "/img/posts/reverse-engineering-game-part-5.svg",
+      "linkedInHook": "Seven daily tasks. 90 seconds. Zero tapping.\n\nThe daily grind in mobile RPGs is menu navigation — collect rewards, claim gifts, fight arena battles. None of it is strategic. All of it is required.\n\nSo I built a bot. It probes 1,400 message types to learn response formats, then runs each task in priority order with human-like delays.\n\nBest bug: the arena opponent list included my own character. First automated fight? I fought myself. And won.\n\nPart 5 (finale) of the reverse engineering series.",
+      "blueskyHook": "7 daily game tasks. 90 seconds. Zero tapping.\n\nBest bug: arena opponents include yourself. First bot fight? Fought myself. Won.\n\nPart 5 of 5 — Teaching a Bot to Play:"
+    },
+    {
+      "slug": "eli5-reverse-engineering-apps",
+      "title": "ELI5: How Do People Figure Out What Apps Are Doing?",
+      "description": "You download a game. You tap buttons. Things happen. But what's actually going on behind the scenes — and how do people peek behind the curtain? Here's reverse engineering explained with pizza boxes and walkie-talkies.",
+      "category": "Gaming",
+      "tags": ["reverse-engineering", "eli5", "explainer", "beginners", "gaming", "security", "mobile"],
+      "date": "2026-03-05",
+      "featured": true,
+      "image": "/img/posts/eli5-reverse-engineering-apps.svg",
+      "linkedInHook": "Every app on your phone is a ZIP file in a costume. Every online feature is a conversation you can listen to.\n\nReverse engineering sounds intimidating. But at its core, it's just opening the pizza box and looking at the recipe.\n\nI wrote a 5-part series on reverse engineering a mobile game. Then I explained the whole thing with pizza boxes and walkie-talkies.\n\nThe tools are free. The skills transfer to real security work. And the pizza box isn't sealed — it's just closed.",
+      "blueskyHook": "Every app on your phone is a ZIP file in a costume.\n\nReverse engineering = opening the pizza box and reading the recipe.\n\nThe ELI5 version of my 5-part series — no jargon, just pizza and walkie-talkies:"
+    },
+    {
       "slug": "tailwind-vs-bootstrap-paradigm-shift",
       "title": "Tailwind vs Bootstrap: The Paradigm Shift That Finally Made Sense",
       "description": "You've been using Bootstrap for years. Then someone mentions Tailwind and suddenly you're supposed to write class names that look like inline styles from 2003. Here's why it's actually better.",

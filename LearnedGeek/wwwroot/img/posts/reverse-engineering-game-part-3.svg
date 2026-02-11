@@ -1,0 +1,622 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="re3BgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e27"/>
+      <stop offset="50%" style="stop-color:#111940"/>
+      <stop offset="100%" style="stop-color:#0d1330"/>
+    </linearGradient>
+
+    <!-- Teal gradient for binary/hex data -->
+    <linearGradient id="re3TealGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2dd4bf"/>
+      <stop offset="100%" style="stop-color:#0d9488"/>
+    </linearGradient>
+
+    <!-- Gold/orange gradient for decoded data -->
+    <linearGradient id="re3GoldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+
+    <!-- Purple gradient for decoder mechanism -->
+    <linearGradient id="re3PurpleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a78bfa"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+
+    <radialGradient id="re3PurpleGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#a78bfa;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:0"/>
+    </radialGradient>
+
+    <linearGradient id="re3BadgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#4c1d95"/>
+    </linearGradient>
+
+    <!-- Glow filter for decoder ring -->
+    <filter id="re3Glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Subtle glow for data streams -->
+    <filter id="re3DataGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#re3BgGrad)"/>
+
+  <!-- Subtle matrix grid -->
+  <g opacity="0.03" stroke="#2dd4bf" stroke-width="0.5">
+    <line x1="0" y1="50" x2="800" y2="50"/>
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="150" x2="800" y2="150"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="250" x2="800" y2="250"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="350" x2="800" y2="350"/>
+    <line x1="100" y1="0" x2="100" y2="400"/>
+    <line x1="200" y1="0" x2="200" y2="400"/>
+    <line x1="300" y1="0" x2="300" y2="400"/>
+    <line x1="400" y1="0" x2="400" y2="400"/>
+    <line x1="500" y1="0" x2="500" y2="400"/>
+    <line x1="600" y1="0" x2="600" y2="400"/>
+    <line x1="700" y1="0" x2="700" y2="400"/>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- LEFT SIDE: Binary/Hex chaos (teal themed)    -->
+  <!-- ============================================ -->
+  <g transform="translate(20, 30)">
+    <!-- Chaotic binary stream panel -->
+    <rect x="0" y="0" width="220" height="330" rx="8" fill="#0a1628" stroke="#2dd4bf" stroke-width="1" opacity="0.8"/>
+    <rect x="0" y="0" width="220" height="330" rx="8" fill="none" stroke="#2dd4bf" stroke-width="0.5" opacity="0.2"/>
+
+    <!-- Binary/hex data rows - rendered as small rectangles simulating monospace characters -->
+    <!-- Row 1: 0x1B 4C 75 61 (Lua header bytes) -->
+    <g transform="translate(10, 15)" opacity="0.9" filter="url(#re3DataGlow)">
+      <!-- Byte blocks row 1 -->
+      <rect x="0" y="0" width="18" height="10" rx="1" fill="#2dd4bf" opacity="0.15"/>
+      <rect x="20" y="0" width="18" height="10" rx="1" fill="#2dd4bf" opacity="0.25"/>
+      <rect x="40" y="0" width="18" height="10" rx="1" fill="#2dd4bf" opacity="0.2"/>
+      <rect x="60" y="0" width="18" height="10" rx="1" fill="#2dd4bf" opacity="0.3"/>
+      <rect x="82" y="0" width="18" height="10" rx="1" fill="#2dd4bf" opacity="0.15"/>
+      <rect x="102" y="0" width="18" height="10" rx="1" fill="#2dd4bf" opacity="0.25"/>
+      <rect x="122" y="0" width="30" height="10" rx="1" fill="#2dd4bf" opacity="0.1"/>
+      <rect x="156" y="0" width="40" height="10" rx="1" fill="#2dd4bf" opacity="0.18"/>
+    </g>
+
+    <!-- Scattered binary digits as small dots and dashes -->
+    <g opacity="0.6" fill="#2dd4bf">
+      <!-- Column of 0s and 1s (vertical binary stream) -->
+      <!-- 0 shapes (small circles) -->
+      <circle cx="25" cy="42" r="3" fill="none" stroke="#2dd4bf" stroke-width="1"/>
+      <rect x="33" y="39" width="5" height="6" rx="1" fill="#2dd4bf"/>
+      <circle cx="47" cy="42" r="3" fill="none" stroke="#2dd4bf" stroke-width="1"/>
+      <circle cx="59" cy="42" r="3" fill="none" stroke="#2dd4bf" stroke-width="1"/>
+      <rect x="67" y="39" width="5" height="6" rx="1" fill="#2dd4bf"/>
+      <rect x="77" y="39" width="5" height="6" rx="1" fill="#2dd4bf"/>
+      <circle cx="91" cy="42" r="3" fill="none" stroke="#2dd4bf" stroke-width="1"/>
+      <rect x="99" y="39" width="5" height="6" rx="1" fill="#2dd4bf"/>
+
+      <rect x="21" y="54" width="5" height="6" rx="1" fill="#2dd4bf"/>
+      <circle cx="37" cy="57" r="3" fill="none" stroke="#2dd4bf" stroke-width="1"/>
+      <rect x="45" y="54" width="5" height="6" rx="1" fill="#2dd4bf"/>
+      <rect x="55" y="54" width="5" height="6" rx="1" fill="#2dd4bf"/>
+      <circle cx="69" cy="57" r="3" fill="none" stroke="#2dd4bf" stroke-width="1"/>
+      <circle cx="81" cy="57" r="3" fill="none" stroke="#2dd4bf" stroke-width="1"/>
+      <rect x="89" y="54" width="5" height="6" rx="1" fill="#2dd4bf"/>
+      <circle cx="103" cy="57" r="3" fill="none" stroke="#2dd4bf" stroke-width="1"/>
+    </g>
+
+    <!-- Hex dump visualization blocks -->
+    <g transform="translate(10, 70)" opacity="0.7">
+      <!-- Row of hex byte blocks -->
+      <rect x="0" y="0" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.4"/>
+      <rect x="16" y="0" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.6"/>
+      <rect x="32" y="0" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.3"/>
+      <rect x="48" y="0" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.5"/>
+      <rect x="68" y="0" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.4"/>
+      <rect x="84" y="0" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.7"/>
+      <rect x="100" y="0" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.3"/>
+      <rect x="116" y="0" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.5"/>
+      <rect x="136" y="0" width="14" height="8" rx="1" fill="#0d9488" opacity="0.3"/>
+      <rect x="152" y="0" width="14" height="8" rx="1" fill="#0d9488" opacity="0.5"/>
+      <rect x="168" y="0" width="14" height="8" rx="1" fill="#0d9488" opacity="0.4"/>
+      <rect x="184" y="0" width="14" height="8" rx="1" fill="#0d9488" opacity="0.6"/>
+
+      <rect x="0" y="12" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.5"/>
+      <rect x="16" y="12" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.3"/>
+      <rect x="32" y="12" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.7"/>
+      <rect x="48" y="12" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.4"/>
+      <rect x="68" y="12" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.6"/>
+      <rect x="84" y="12" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.3"/>
+      <rect x="100" y="12" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.5"/>
+      <rect x="116" y="12" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.4"/>
+      <rect x="136" y="12" width="14" height="8" rx="1" fill="#0d9488" opacity="0.5"/>
+      <rect x="152" y="12" width="14" height="8" rx="1" fill="#0d9488" opacity="0.3"/>
+      <rect x="168" y="12" width="14" height="8" rx="1" fill="#0d9488" opacity="0.6"/>
+      <rect x="184" y="12" width="14" height="8" rx="1" fill="#0d9488" opacity="0.4"/>
+
+      <rect x="0" y="24" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.3"/>
+      <rect x="16" y="24" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.5"/>
+      <rect x="32" y="24" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.4"/>
+      <rect x="48" y="24" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.6"/>
+      <rect x="68" y="24" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.7"/>
+      <rect x="84" y="24" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.3"/>
+      <rect x="100" y="24" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.5"/>
+      <rect x="116" y="24" width="14" height="8" rx="1" fill="#14b8a6" opacity="0.4"/>
+      <rect x="136" y="24" width="14" height="8" rx="1" fill="#0d9488" opacity="0.4"/>
+      <rect x="152" y="24" width="14" height="8" rx="1" fill="#0d9488" opacity="0.6"/>
+      <rect x="168" y="24" width="14" height="8" rx="1" fill="#0d9488" opacity="0.3"/>
+      <rect x="184" y="24" width="14" height="8" rx="1" fill="#0d9488" opacity="0.5"/>
+    </g>
+
+    <!-- Lua bytecode header visualization -->
+    <g transform="translate(10, 118)">
+      <!-- Header block highlight -->
+      <rect x="0" y="0" width="200" height="24" rx="3" fill="#2dd4bf" fill-opacity="0.08" stroke="#2dd4bf" stroke-width="0.5" stroke-opacity="0.3"/>
+      <!-- Byte sequence blocks (representing 1B 4C 75 61 53 00) -->
+      <rect x="4" y="4" width="16" height="16" rx="2" fill="#2dd4bf" opacity="0.3"/>
+      <rect x="24" y="4" width="16" height="16" rx="2" fill="#2dd4bf" opacity="0.4"/>
+      <rect x="44" y="4" width="16" height="16" rx="2" fill="#2dd4bf" opacity="0.35"/>
+      <rect x="64" y="4" width="16" height="16" rx="2" fill="#2dd4bf" opacity="0.45"/>
+      <rect x="84" y="4" width="16" height="16" rx="2" fill="#2dd4bf" opacity="0.25"/>
+      <rect x="104" y="4" width="16" height="16" rx="2" fill="#2dd4bf" opacity="0.15"/>
+      <!-- Separator -->
+      <rect x="128" y="4" width="3" height="16" rx="1" fill="#2dd4bf" opacity="0.2"/>
+      <!-- More bytes -->
+      <rect x="136" y="4" width="16" height="16" rx="2" fill="#0d9488" opacity="0.3"/>
+      <rect x="156" y="4" width="16" height="16" rx="2" fill="#0d9488" opacity="0.25"/>
+      <rect x="176" y="4" width="16" height="16" rx="2" fill="#0d9488" opacity="0.35"/>
+    </g>
+
+    <!-- Opcode instruction blocks -->
+    <g transform="translate(10, 150)">
+      <!-- Instruction rows with different opcode colors -->
+      <rect x="0" y="0" width="8" height="8" rx="1" fill="#5eead4" opacity="0.6"/>
+      <rect x="10" y="0" width="40" height="8" rx="1" fill="#2dd4bf" opacity="0.2"/>
+      <rect x="54" y="0" width="30" height="8" rx="1" fill="#2dd4bf" opacity="0.15"/>
+      <rect x="90" y="0" width="8" height="8" rx="1" fill="#5eead4" opacity="0.4"/>
+      <rect x="100" y="0" width="45" height="8" rx="1" fill="#2dd4bf" opacity="0.2"/>
+      <rect x="150" y="0" width="25" height="8" rx="1" fill="#2dd4bf" opacity="0.15"/>
+
+      <rect x="0" y="12" width="8" height="8" rx="1" fill="#5eead4" opacity="0.5"/>
+      <rect x="10" y="12" width="35" height="8" rx="1" fill="#2dd4bf" opacity="0.25"/>
+      <rect x="48" y="12" width="38" height="8" rx="1" fill="#2dd4bf" opacity="0.15"/>
+      <rect x="90" y="12" width="8" height="8" rx="1" fill="#5eead4" opacity="0.55"/>
+      <rect x="100" y="12" width="50" height="8" rx="1" fill="#2dd4bf" opacity="0.2"/>
+      <rect x="155" y="12" width="20" height="8" rx="1" fill="#2dd4bf" opacity="0.15"/>
+
+      <rect x="0" y="24" width="8" height="8" rx="1" fill="#5eead4" opacity="0.45"/>
+      <rect x="10" y="24" width="42" height="8" rx="1" fill="#2dd4bf" opacity="0.2"/>
+      <rect x="56" y="24" width="28" height="8" rx="1" fill="#2dd4bf" opacity="0.18"/>
+      <rect x="90" y="24" width="8" height="8" rx="1" fill="#5eead4" opacity="0.5"/>
+      <rect x="100" y="24" width="38" height="8" rx="1" fill="#2dd4bf" opacity="0.22"/>
+      <rect x="142" y="24" width="32" height="8" rx="1" fill="#2dd4bf" opacity="0.15"/>
+
+      <rect x="0" y="36" width="8" height="8" rx="1" fill="#5eead4" opacity="0.55"/>
+      <rect x="10" y="36" width="48" height="8" rx="1" fill="#2dd4bf" opacity="0.2"/>
+      <rect x="62" y="36" width="22" height="8" rx="1" fill="#2dd4bf" opacity="0.15"/>
+      <rect x="90" y="36" width="8" height="8" rx="1" fill="#5eead4" opacity="0.4"/>
+      <rect x="100" y="36" width="42" height="8" rx="1" fill="#2dd4bf" opacity="0.2"/>
+      <rect x="146" y="36" width="28" height="8" rx="1" fill="#2dd4bf" opacity="0.18"/>
+    </g>
+
+    <!-- Lua curly braces as shapes -->
+    <g transform="translate(15, 210)" opacity="0.5">
+      <!-- Opening brace { -->
+      <path d="M8 0 Q4 0 4 4 L4 10 Q4 14 0 14 Q4 14 4 18 L4 24 Q4 28 8 28" fill="none" stroke="#2dd4bf" stroke-width="1.5"/>
+      <!-- Content blocks inside -->
+      <rect x="14" y="4" width="55" height="6" rx="1" fill="#2dd4bf" opacity="0.2"/>
+      <rect x="14" y="14" width="70" height="6" rx="1" fill="#2dd4bf" opacity="0.15"/>
+      <rect x="14" y="24" width="45" height="6" rx="1" fill="#2dd4bf" opacity="0.2"/>
+      <!-- Closing brace } -->
+      <path d="M92 0 Q96 0 96 4 L96 10 Q96 14 100 14 Q96 14 96 18 L96 24 Q96 28 92 28" fill="none" stroke="#2dd4bf" stroke-width="1.5"/>
+    </g>
+
+    <!-- More scrambled data blocks -->
+    <g transform="translate(10, 250)" opacity="0.5">
+      <rect x="0" y="0" width="195" height="8" rx="1" fill="#0d9488" opacity="0.15"/>
+      <rect x="0" y="12" width="160" height="8" rx="1" fill="#0d9488" opacity="0.2"/>
+      <rect x="0" y="24" width="180" height="8" rx="1" fill="#0d9488" opacity="0.12"/>
+      <rect x="0" y="36" width="145" height="8" rx="1" fill="#0d9488" opacity="0.18"/>
+      <rect x="0" y="48" width="190" height="8" rx="1" fill="#0d9488" opacity="0.15"/>
+      <rect x="0" y="60" width="170" height="8" rx="1" fill="#0d9488" opacity="0.2"/>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- CENTER: Decoder mechanism (purple themed)    -->
+  <!-- ============================================ -->
+  <g transform="translate(400, 200)">
+    <!-- Outer glow -->
+    <circle cx="0" cy="0" r="120" fill="url(#re3PurpleGlow)"/>
+
+    <!-- Decoder ring - outer ring -->
+    <circle cx="0" cy="0" r="95" fill="none" stroke="#7c3aed" stroke-width="2.5" opacity="0.6"/>
+    <!-- Tick marks around the ring -->
+    <g opacity="0.4" stroke="#a78bfa" stroke-width="1">
+      <line x1="0" y1="-95" x2="0" y2="-85"/>
+      <line x1="23" y1="-92" x2="21" y2="-82"/>
+      <line x1="45" y1="-83" x2="41" y2="-74"/>
+      <line x1="63" y1="-70" x2="58" y2="-62"/>
+      <line x1="77" y1="-54" x2="71" y2="-48"/>
+      <line x1="86" y1="-35" x2="79" y2="-32"/>
+      <line x1="95" y1="0" x2="85" y2="0"/>
+      <line x1="86" y1="35" x2="79" y2="32"/>
+      <line x1="77" y1="54" x2="71" y2="48"/>
+      <line x1="63" y1="70" x2="58" y2="62"/>
+      <line x1="45" y1="83" x2="41" y2="74"/>
+      <line x1="23" y1="92" x2="21" y2="82"/>
+      <line x1="0" y1="95" x2="0" y2="85"/>
+      <line x1="-23" y1="92" x2="-21" y2="82"/>
+      <line x1="-45" y1="83" x2="-41" y2="74"/>
+      <line x1="-63" y1="70" x2="-58" y2="62"/>
+      <line x1="-77" y1="54" x2="-71" y2="48"/>
+      <line x1="-86" y1="35" x2="-79" y2="32"/>
+      <line x1="-95" y1="0" x2="-85" y2="0"/>
+      <line x1="-86" y1="-35" x2="-79" y2="-32"/>
+      <line x1="-77" y1="-54" x2="-71" y2="-48"/>
+      <line x1="-63" y1="-70" x2="-58" y2="-62"/>
+      <line x1="-45" y1="-83" x2="-41" y2="-74"/>
+      <line x1="-23" y1="-92" x2="-21" y2="-82"/>
+    </g>
+
+    <!-- Inner decoder ring -->
+    <circle cx="0" cy="0" r="72" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0.5"/>
+
+    <!-- Rotating inner ring with offset -->
+    <g transform="rotate(15)">
+      <circle cx="0" cy="0" r="58" fill="none" stroke="#c4b5fd" stroke-width="1" opacity="0.4"/>
+      <!-- Inner tick marks -->
+      <g opacity="0.35" stroke="#c4b5fd" stroke-width="0.8">
+        <line x1="0" y1="-58" x2="0" y2="-50"/>
+        <line x1="28" y1="-51" x2="24" y2="-44"/>
+        <line x1="50" y1="-29" x2="43" y2="-25"/>
+        <line x1="58" y1="0" x2="50" y2="0"/>
+        <line x1="50" y1="29" x2="43" y2="25"/>
+        <line x1="28" y1="51" x2="24" y2="44"/>
+        <line x1="0" y1="58" x2="0" y2="50"/>
+        <line x1="-28" y1="51" x2="-24" y2="44"/>
+        <line x1="-50" y1="29" x2="-43" y2="25"/>
+        <line x1="-58" y1="0" x2="-50" y2="0"/>
+        <line x1="-50" y1="-29" x2="-43" y2="-25"/>
+        <line x1="-28" y1="-51" x2="-24" y2="-44"/>
+      </g>
+    </g>
+
+    <!-- Center hub -->
+    <circle cx="0" cy="0" r="22" fill="#1a1040" stroke="#a78bfa" stroke-width="2" filter="url(#re3Glow)"/>
+    <circle cx="0" cy="0" r="14" fill="#2d1b69" stroke="#c4b5fd" stroke-width="1"/>
+
+    <!-- Key/lock symbol in center -->
+    <g transform="translate(0, -4)">
+      <!-- Keyhole circle -->
+      <circle cx="0" cy="0" r="5" fill="#c4b5fd" opacity="0.8"/>
+      <!-- Key shaft -->
+      <rect x="-1.5" y="3" width="3" height="9" rx="1" fill="#c4b5fd" opacity="0.8"/>
+      <!-- Key teeth -->
+      <rect x="1.5" y="7" width="3" height="2" rx="0.5" fill="#c4b5fd" opacity="0.6"/>
+      <rect x="1.5" y="10" width="2" height="2" rx="0.5" fill="#c4b5fd" opacity="0.6"/>
+    </g>
+
+    <!-- Mapping lines from outer to inner (showing translation) -->
+    <!-- Teal (binary) segments on left side of ring -->
+    <g opacity="0.6">
+      <path d="M-85 -35 Q-60 -25 -50 -15" fill="none" stroke="#2dd4bf" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <path d="M-90 0 Q-60 5 -50 10" fill="none" stroke="#2dd4bf" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <path d="M-85 35 Q-60 30 -50 20" fill="none" stroke="#2dd4bf" stroke-width="1.5" stroke-dasharray="3 2"/>
+    </g>
+
+    <!-- Gold (decoded) segments on right side of ring -->
+    <g opacity="0.6">
+      <path d="M50 -15 Q60 -25 85 -35" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <path d="M50 10 Q60 5 90 0" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <path d="M50 20 Q60 30 85 35" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3 2"/>
+    </g>
+
+    <!-- Small symbols around the ring -->
+    <!-- Teal binary symbols on left arc -->
+    <g transform="translate(-80, -55)" opacity="0.7">
+      <circle cx="0" cy="0" r="3" fill="none" stroke="#2dd4bf" stroke-width="1"/>
+      <rect x="5" y="-2" width="4" height="4" rx="0.5" fill="#2dd4bf"/>
+    </g>
+    <g transform="translate(-88, 15)" opacity="0.7">
+      <rect x="0" y="-2" width="4" height="4" rx="0.5" fill="#2dd4bf"/>
+      <circle cx="8" cy="0" r="3" fill="none" stroke="#2dd4bf" stroke-width="1"/>
+    </g>
+    <g transform="translate(-80, 55)" opacity="0.7">
+      <rect x="0" y="-2" width="4" height="4" rx="0.5" fill="#2dd4bf"/>
+      <rect x="6" y="-2" width="4" height="4" rx="0.5" fill="#2dd4bf"/>
+    </g>
+
+    <!-- Gold decoded symbols on right arc -->
+    <!-- Sword icon -->
+    <g transform="translate(76, -55)" opacity="0.7">
+      <line x1="3" y1="-4" x2="3" y2="6" stroke="#fbbf24" stroke-width="1.5"/>
+      <line x1="0" y1="0" x2="6" y2="0" stroke="#fbbf24" stroke-width="1.5"/>
+      <circle cx="3" cy="-4" r="1.5" fill="#fbbf24"/>
+    </g>
+    <!-- Shield icon -->
+    <g transform="translate(82, 15)" opacity="0.7">
+      <path d="M0 -4 L5 -2 L5 3 L0 6 L-5 3 L-5 -2 Z" fill="none" stroke="#fbbf24" stroke-width="1"/>
+    </g>
+    <!-- Star icon -->
+    <g transform="translate(76, 55)" opacity="0.7">
+      <path d="M0 -4 L1.2 -1.2 L4 -1.2 L2 0.8 L2.8 4 L0 2.2 L-2.8 4 L-2 0.8 L-4 -1.2 L-1.2 -1.2 Z" fill="#fbbf24" opacity="0.8"/>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- Translation arrows (left to center)          -->
+  <!-- ============================================ -->
+  <g opacity="0.7">
+    <!-- Teal arrows flowing from binary panel to decoder -->
+    <path d="M245 120 C270 120 285 155 305 165" fill="none" stroke="#2dd4bf" stroke-width="1.5" stroke-dasharray="4 3">
+      <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M245 195 C275 195 290 195 305 195" fill="none" stroke="#2dd4bf" stroke-width="1.5" stroke-dasharray="4 3">
+      <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="2.3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M245 270 C270 270 285 235 305 225" fill="none" stroke="#2dd4bf" stroke-width="1.5" stroke-dasharray="4 3">
+      <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="1.8s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- Translation arrows (center to right)         -->
+  <!-- ============================================ -->
+  <g opacity="0.7">
+    <!-- Gold arrows flowing from decoder to decoded panel -->
+    <path d="M495 165 C515 155 530 120 555 120" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4 3">
+      <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M495 195 C510 195 525 195 555 195" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4 3">
+      <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="2.3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M495 225 C515 235 530 270 555 270" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4 3">
+      <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="1.8s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Arrow heads -->
+    <polygon points="555,116 555,124 563,120" fill="#fbbf24" opacity="0.7"/>
+    <polygon points="555,191 555,199 563,195" fill="#fbbf24" opacity="0.7"/>
+    <polygon points="555,266 555,274 563,270" fill="#fbbf24" opacity="0.7"/>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- RIGHT SIDE: Decoded game data (gold themed)  -->
+  <!-- ============================================ -->
+  <g transform="translate(565, 30)">
+    <!-- Decoded data panel -->
+    <rect x="0" y="0" width="215" height="330" rx="8" fill="#0f1628" stroke="#fbbf24" stroke-width="1" opacity="0.8"/>
+
+    <!-- Hero stats card -->
+    <g transform="translate(10, 12)">
+      <rect x="0" y="0" width="195" height="65" rx="5" fill="#fbbf24" fill-opacity="0.08" stroke="#fbbf24" stroke-width="0.5" stroke-opacity="0.3"/>
+
+      <!-- Hero avatar placeholder -->
+      <circle cx="25" cy="25" r="18" fill="#7c3aed" opacity="0.4" stroke="#a78bfa" stroke-width="1"/>
+      <!-- Helmet shape on avatar -->
+      <path d="M15 22 Q25 10 35 22" fill="none" stroke="#c4b5fd" stroke-width="1.5"/>
+      <circle cx="21" cy="25" r="2" fill="#c4b5fd" opacity="0.7"/>
+      <circle cx="29" cy="25" r="2" fill="#c4b5fd" opacity="0.7"/>
+
+      <!-- Stat bars -->
+      <rect x="50" y="8" width="80" height="6" rx="3" fill="#1e293b"/>
+      <rect x="50" y="8" width="62" height="6" rx="3" fill="#fbbf24" opacity="0.7"/>
+
+      <rect x="50" y="20" width="80" height="6" rx="3" fill="#1e293b"/>
+      <rect x="50" y="20" width="45" height="6" rx="3" fill="#f59e0b" opacity="0.7"/>
+
+      <rect x="50" y="32" width="80" height="6" rx="3" fill="#1e293b"/>
+      <rect x="50" y="32" width="71" height="6" rx="3" fill="#fbbf24" opacity="0.7"/>
+
+      <rect x="50" y="44" width="80" height="6" rx="3" fill="#1e293b"/>
+      <rect x="50" y="44" width="38" height="6" rx="3" fill="#f59e0b" opacity="0.7"/>
+
+      <!-- Stat icons (sword, shield, heart, bolt) -->
+      <!-- Sword -->
+      <line x1="142" y1="7" x2="142" y2="16" stroke="#fbbf24" stroke-width="1.2"/>
+      <line x1="139" y1="10" x2="145" y2="10" stroke="#fbbf24" stroke-width="1.2"/>
+      <!-- Shield -->
+      <path d="M139 19 L142 18 L145 19 L145 24 L142 26 L139 24 Z" fill="none" stroke="#fbbf24" stroke-width="0.8"/>
+      <!-- Heart -->
+      <path d="M140 33 Q140 31 142 31 Q144 31 144 33 Q144 35 142 37 Q140 35 140 33" fill="#fbbf24" opacity="0.6"/>
+      <!-- Lightning bolt -->
+      <path d="M143 43 L141 47 L143 47 L141 51" fill="none" stroke="#fbbf24" stroke-width="1"/>
+
+      <!-- Number indicators -->
+      <g transform="translate(150, 6)">
+        <rect x="0" y="0" width="38" height="9" rx="2" fill="#fbbf24" opacity="0.15"/>
+        <rect x="0" y="13" width="38" height="9" rx="2" fill="#fbbf24" opacity="0.12"/>
+        <rect x="0" y="26" width="38" height="9" rx="2" fill="#fbbf24" opacity="0.15"/>
+        <rect x="0" y="39" width="38" height="9" rx="2" fill="#fbbf24" opacity="0.12"/>
+      </g>
+    </g>
+
+    <!-- Arena team composition -->
+    <g transform="translate(10, 88)">
+      <rect x="0" y="0" width="195" height="50" rx="5" fill="#fbbf24" fill-opacity="0.06" stroke="#fbbf24" stroke-width="0.5" stroke-opacity="0.2"/>
+
+      <!-- Team member circles -->
+      <circle cx="22" cy="22" r="14" fill="#22c55e" opacity="0.3" stroke="#4ade80" stroke-width="1"/>
+      <circle cx="58" cy="22" r="14" fill="#3b82f6" opacity="0.3" stroke="#60a5fa" stroke-width="1"/>
+      <circle cx="94" cy="22" r="14" fill="#ef4444" opacity="0.3" stroke="#f87171" stroke-width="1"/>
+      <circle cx="130" cy="22" r="14" fill="#f59e0b" opacity="0.3" stroke="#fbbf24" stroke-width="1"/>
+      <circle cx="166" cy="22" r="14" fill="#8b5cf6" opacity="0.3" stroke="#a78bfa" stroke-width="1"/>
+
+      <!-- Tiny icons inside team circles -->
+      <!-- Warrior -->
+      <line x1="22" y1="16" x2="22" y2="28" stroke="#4ade80" stroke-width="1.5"/>
+      <line x1="17" y1="21" x2="27" y2="21" stroke="#4ade80" stroke-width="1.5"/>
+      <!-- Mage -->
+      <path d="M55 17 L58 14 L61 17 L58 28" fill="none" stroke="#60a5fa" stroke-width="1.2"/>
+      <!-- Rogue -->
+      <path d="M89 18 L99 26" stroke="#f87171" stroke-width="1.5"/>
+      <path d="M89 26 L99 18" stroke="#f87171" stroke-width="1.5"/>
+      <!-- Healer -->
+      <path d="M127 22 Q130 16 133 22 Q130 28 127 22" fill="none" stroke="#fbbf24" stroke-width="1.2"/>
+      <!-- Archer -->
+      <circle cx="166" cy="22" r="6" fill="none" stroke="#a78bfa" stroke-width="1"/>
+      <circle cx="166" cy="22" r="2" fill="#a78bfa" opacity="0.6"/>
+
+      <!-- Connection lines between team members -->
+      <line x1="36" y1="42" x2="152" y2="42" stroke="#fbbf24" stroke-width="0.5" opacity="0.3" stroke-dasharray="2 2"/>
+    </g>
+
+    <!-- Faction bonus data -->
+    <g transform="translate(10, 148)">
+      <rect x="0" y="0" width="195" height="45" rx="5" fill="#fbbf24" fill-opacity="0.05" stroke="#fbbf24" stroke-width="0.5" stroke-opacity="0.2"/>
+
+      <!-- Faction icons (3 groups) -->
+      <g transform="translate(12, 8)">
+        <!-- Triangle faction -->
+        <polygon points="0,-8 7,5 -7,5" fill="none" stroke="#fbbf24" stroke-width="1.2"/>
+        <rect x="15" y="-4" width="40" height="5" rx="2" fill="#fbbf24" opacity="0.2"/>
+        <rect x="15" y="4" width="30" height="5" rx="2" fill="#fbbf24" opacity="0.15"/>
+      </g>
+      <g transform="translate(82, 8)">
+        <!-- Diamond faction -->
+        <polygon points="0,-8 7,0 0,8 -7,0" fill="none" stroke="#f59e0b" stroke-width="1.2"/>
+        <rect x="15" y="-4" width="35" height="5" rx="2" fill="#f59e0b" opacity="0.2"/>
+        <rect x="15" y="4" width="45" height="5" rx="2" fill="#f59e0b" opacity="0.15"/>
+      </g>
+      <g transform="translate(12, 32)">
+        <!-- Circle faction -->
+        <circle cx="0" cy="0" r="7" fill="none" stroke="#fbbf24" stroke-width="1.2"/>
+        <rect x="15" y="-4" width="50" height="5" rx="2" fill="#fbbf24" opacity="0.2"/>
+      </g>
+
+      <!-- Checkmarks -->
+      <g transform="translate(170, 8)">
+        <path d="M0 0 L3 3 L8 -3" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(170, 22)">
+        <path d="M0 0 L3 3 L8 -3" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/>
+      </g>
+    </g>
+
+    <!-- Bond synergy grid -->
+    <g transform="translate(10, 203)">
+      <rect x="0" y="0" width="195" height="55" rx="5" fill="#fbbf24" fill-opacity="0.05" stroke="#fbbf24" stroke-width="0.5" stroke-opacity="0.2"/>
+
+      <!-- Synergy network visualization -->
+      <circle cx="40" cy="18" r="8" fill="#fbbf24" opacity="0.15" stroke="#fbbf24" stroke-width="0.8"/>
+      <circle cx="97" cy="12" r="8" fill="#f59e0b" opacity="0.15" stroke="#f59e0b" stroke-width="0.8"/>
+      <circle cx="155" cy="18" r="8" fill="#fbbf24" opacity="0.15" stroke="#fbbf24" stroke-width="0.8"/>
+      <circle cx="65" cy="40" r="8" fill="#f59e0b" opacity="0.15" stroke="#f59e0b" stroke-width="0.8"/>
+      <circle cx="130" cy="40" r="8" fill="#fbbf24" opacity="0.15" stroke="#fbbf24" stroke-width="0.8"/>
+
+      <!-- Connection lines -->
+      <line x1="48" y1="18" x2="89" y2="12" stroke="#fbbf24" stroke-width="0.6" opacity="0.4"/>
+      <line x1="105" y1="12" x2="147" y2="18" stroke="#fbbf24" stroke-width="0.6" opacity="0.4"/>
+      <line x1="40" y1="26" x2="65" y2="32" stroke="#fbbf24" stroke-width="0.6" opacity="0.4"/>
+      <line x1="73" y1="40" x2="122" y2="40" stroke="#fbbf24" stroke-width="0.6" opacity="0.4"/>
+      <line x1="138" y1="40" x2="155" y2="26" stroke="#fbbf24" stroke-width="0.6" opacity="0.4"/>
+      <line x1="97" y1="20" x2="65" y2="32" stroke="#f59e0b" stroke-width="0.6" opacity="0.3"/>
+      <line x1="97" y1="20" x2="130" y2="32" stroke="#f59e0b" stroke-width="0.6" opacity="0.3"/>
+    </g>
+
+    <!-- Protocol structure indicator -->
+    <g transform="translate(10, 268)">
+      <rect x="0" y="0" width="195" height="50" rx="5" fill="#fbbf24" fill-opacity="0.05" stroke="#fbbf24" stroke-width="0.5" stroke-opacity="0.2"/>
+
+      <!-- Stacked data structure bars (like a protocol layout) -->
+      <rect x="8" y="6" width="55" height="8" rx="2" fill="#7c3aed" opacity="0.3"/>
+      <rect x="66" y="6" width="35" height="8" rx="2" fill="#a78bfa" opacity="0.25"/>
+      <rect x="104" y="6" width="83" height="8" rx="2" fill="#c4b5fd" opacity="0.2"/>
+
+      <rect x="8" y="18" width="40" height="8" rx="2" fill="#7c3aed" opacity="0.3"/>
+      <rect x="51" y="18" width="50" height="8" rx="2" fill="#a78bfa" opacity="0.25"/>
+      <rect x="104" y="18" width="83" height="8" rx="2" fill="#c4b5fd" opacity="0.2"/>
+
+      <rect x="8" y="30" width="70" height="8" rx="2" fill="#7c3aed" opacity="0.3"/>
+      <rect x="81" y="30" width="25" height="8" rx="2" fill="#a78bfa" opacity="0.25"/>
+      <rect x="109" y="30" width="78" height="8" rx="2" fill="#c4b5fd" opacity="0.2"/>
+
+      <!-- Right-side arrows showing decoded structure -->
+      <path d="M192 10 L198 10" stroke="#fbbf24" stroke-width="0.8" opacity="0.5"/>
+      <path d="M192 22 L198 22" stroke="#fbbf24" stroke-width="0.8" opacity="0.5"/>
+      <path d="M192 34 L198 34" stroke="#fbbf24" stroke-width="0.8" opacity="0.5"/>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- Floating particles / data bits               -->
+  <!-- ============================================ -->
+  <!-- Teal particles drifting toward center -->
+  <g opacity="0.4">
+    <circle cx="250" cy="100" r="2" fill="#2dd4bf">
+      <animate attributeName="cx" from="250" to="310" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" from="0.6" to="0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="255" cy="200" r="1.5" fill="#2dd4bf">
+      <animate attributeName="cx" from="255" to="315" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" from="0.5" to="0" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="248" cy="290" r="1.8" fill="#2dd4bf">
+      <animate attributeName="cx" from="248" to="308" dur="3.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" from="0.5" to="0" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Gold particles drifting from center to right -->
+  <g opacity="0.4">
+    <circle cx="490" cy="120" r="2" fill="#fbbf24">
+      <animate attributeName="cx" from="490" to="555" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" from="0" to="0.6" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="495" cy="200" r="1.5" fill="#fbbf24">
+      <animate attributeName="cx" from="495" to="555" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" from="0" to="0.5" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="488" cy="280" r="1.8" fill="#fbbf24">
+      <animate attributeName="cx" from="488" to="555" dur="3.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" from="0" to="0.5" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- "Part 3" badge (top-right corner)            -->
+  <!-- ============================================ -->
+  <g transform="translate(720, 15)">
+    <!-- Badge background -->
+    <rect x="0" y="0" width="60" height="28" rx="6" fill="url(#re3BadgeGrad)" stroke="#a78bfa" stroke-width="1"/>
+    <!-- "PT" and "3" as simple shapes -->
+    <g transform="translate(8, 7)">
+      <!-- P shape -->
+      <path d="M0 0 L0 12 M0 0 L5 0 Q8 0 8 3 Q8 6 5 6 L0 6" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- period -->
+      <circle cx="11" cy="12" r="1" fill="white"/>
+      <!-- 3 shape -->
+      <path d="M17 0 L24 0 Q27 0 27 3 Q27 6 24 6 L20 6 M24 6 Q27 6 27 9 Q27 12 24 12 L17 12" fill="none" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- Subtle "decoder ring" rotation animation on center -->
+  <g transform="translate(400, 200)">
+    <!-- Animated dotted circle suggesting rotation -->
+    <circle cx="0" cy="0" r="82" fill="none" stroke="#a78bfa" stroke-width="0.5" stroke-dasharray="2 6" opacity="0.3">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="30s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="65" fill="none" stroke="#c4b5fd" stroke-width="0.5" stroke-dasharray="2 8" opacity="0.2">
+      <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="25s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Bottom decorative line -->
+  <line x1="50" y1="385" x2="750" y2="385" stroke="#a78bfa" stroke-width="0.5" opacity="0.15"/>
+</svg>

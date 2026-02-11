@@ -1,9 +1,5 @@
 # I Reverse-Engineered a Mobile Game to Build a Better Team
 
-**Tags:** unity, game-data, python, reverse-engineering, lua, mobile-games, side-project
-
-**Summary:** I downloaded an APK, cracked open its Unity asset bundles, extracted 2,880 compiled Lua files, and built a team optimizer that actually knows the math. Here's how.
-
 ---
 
 ## The Problem With Guessing

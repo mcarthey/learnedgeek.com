@@ -1,0 +1,515 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="re1_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e27"/>
+      <stop offset="50%" style="stop-color:#111b3d"/>
+      <stop offset="100%" style="stop-color:#0a0e27"/>
+    </linearGradient>
+
+    <!-- Box body gradient -->
+    <linearGradient id="re1_box" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5b3a1a"/>
+      <stop offset="100%" style="stop-color:#3d2510"/>
+    </linearGradient>
+
+    <!-- Box lid gradient -->
+    <linearGradient id="re1_lid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7a4f28"/>
+      <stop offset="100%" style="stop-color:#5b3a1a"/>
+    </linearGradient>
+
+    <!-- Gold glow gradient -->
+    <radialGradient id="re1_glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:0.6"/>
+      <stop offset="60%" style="stop-color:#f59e0b;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Sword blade gradient -->
+    <linearGradient id="re1_blade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c0c0c0"/>
+      <stop offset="50%" style="stop-color:#f0f0f0"/>
+      <stop offset="100%" style="stop-color:#c0c0c0"/>
+    </linearGradient>
+
+    <!-- Shield gradient -->
+    <linearGradient id="re1_shield" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2dd4bf"/>
+      <stop offset="100%" style="stop-color:#14b8a6"/>
+    </linearGradient>
+
+    <!-- Gem gradient -->
+    <linearGradient id="re1_gem" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c084fc"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+
+    <!-- Badge gradient -->
+    <linearGradient id="re1_badge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+
+    <!-- Coin gradient -->
+    <linearGradient id="re1_coin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fcd34d"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+
+    <!-- Potion gradient -->
+    <linearGradient id="re1_potion" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f43f5e"/>
+      <stop offset="100%" style="stop-color:#be123c"/>
+    </linearGradient>
+
+    <!-- Star burst filter for glow effect -->
+    <filter id="re1_glowFilter" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft glow for items -->
+    <filter id="re1_itemGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Android green -->
+    <linearGradient id="re1_android" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3ddc84"/>
+      <stop offset="100%" style="stop-color:#2fa86b"/>
+    </linearGradient>
+
+    <!-- Zipper gradient -->
+    <linearGradient id="re1_zip" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#9ca3af"/>
+      <stop offset="50%" style="stop-color:#d1d5db"/>
+      <stop offset="100%" style="stop-color:#9ca3af"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#re1_bg)"/>
+
+  <!-- Subtle binary/hex background text - scattered digits as tiny rectangles/pixel patterns -->
+  <g opacity="0.06" fill="#60a5fa">
+    <!-- Row 1 - binary-like pixel clusters -->
+    <rect x="30" y="20" width="3" height="6"/><rect x="35" y="20" width="3" height="6"/>
+    <rect x="42" y="20" width="3" height="6"/><rect x="42" y="28" width="3" height="6"/>
+    <rect x="80" y="35" width="3" height="6"/><rect x="85" y="35" width="3" height="6"/><rect x="85" y="43" width="3" height="6"/>
+    <rect x="130" y="15" width="3" height="6"/><rect x="135" y="15" width="3" height="6"/>
+    <rect x="180" y="40" width="3" height="6"/><rect x="180" y="48" width="3" height="6"/>
+    <rect x="220" y="25" width="3" height="6"/><rect x="225" y="25" width="3" height="6"/><rect x="225" y="33" width="3" height="6"/>
+    <rect x="290" y="18" width="3" height="6"/><rect x="295" y="18" width="3" height="6"/>
+    <rect x="350" y="30" width="3" height="6"/><rect x="355" y="30" width="3" height="6"/><rect x="350" y="38" width="3" height="6"/>
+    <rect x="420" y="22" width="3" height="6"/><rect x="425" y="22" width="3" height="6"/>
+    <rect x="500" y="35" width="3" height="6"/><rect x="505" y="35" width="3" height="6"/><rect x="500" y="43" width="3" height="6"/>
+    <rect x="570" y="15" width="3" height="6"/><rect x="575" y="15" width="3" height="6"/>
+    <rect x="640" y="28" width="3" height="6"/><rect x="640" y="36" width="3" height="6"/>
+    <rect x="710" y="20" width="3" height="6"/><rect x="715" y="20" width="3" height="6"/><rect x="710" y="28" width="3" height="6"/>
+    <rect x="760" y="40" width="3" height="6"/><rect x="765" y="40" width="3" height="6"/>
+
+    <!-- Row 2 -->
+    <rect x="50" y="70" width="3" height="6"/><rect x="55" y="70" width="3" height="6"/>
+    <rect x="120" y="80" width="3" height="6"/><rect x="120" y="88" width="3" height="6"/>
+    <rect x="200" y="65" width="3" height="6"/><rect x="205" y="65" width="3" height="6"/><rect x="205" y="73" width="3" height="6"/>
+    <rect x="310" y="75" width="3" height="6"/><rect x="315" y="75" width="3" height="6"/>
+    <rect x="450" y="68" width="3" height="6"/><rect x="455" y="68" width="3" height="6"/><rect x="450" y="76" width="3" height="6"/>
+    <rect x="550" y="82" width="3" height="6"/><rect x="555" y="82" width="3" height="6"/>
+    <rect x="670" y="70" width="3" height="6"/><rect x="675" y="70" width="3" height="6"/><rect x="670" y="78" width="3" height="6"/>
+    <rect x="740" y="85" width="3" height="6"/><rect x="745" y="85" width="3" height="6"/>
+
+    <!-- Hex-like patterns scattered around -->
+    <rect x="60" y="340" width="3" height="6"/><rect x="65" y="340" width="3" height="6"/>
+    <rect x="150" y="360" width="3" height="6"/><rect x="155" y="360" width="3" height="6"/><rect x="150" y="368" width="3" height="6"/>
+    <rect x="620" y="350" width="3" height="6"/><rect x="625" y="350" width="3" height="6"/>
+    <rect x="700" y="345" width="3" height="6"/><rect x="705" y="345" width="3" height="6"/><rect x="700" y="353" width="3" height="6"/>
+    <rect x="750" y="370" width="3" height="6"/><rect x="755" y="370" width="3" height="6"/>
+  </g>
+
+  <!-- More visible hex strings in background -->
+  <g opacity="0.07" fill="#818cf8">
+    <!-- Hex pattern clusters - groups of small blocks resembling "0x4F" etc -->
+    <!-- Left area -->
+    <rect x="20" y="120" width="2" height="4"/><rect x="24" y="120" width="2" height="4"/><rect x="28" y="120" width="2" height="4"/><rect x="32" y="120" width="2" height="4"/>
+    <rect x="20" y="126" width="2" height="4"/><rect x="28" y="126" width="2" height="4"/><rect x="32" y="126" width="2" height="4"/>
+    <rect x="20" y="132" width="2" height="4"/><rect x="24" y="132" width="2" height="4"/><rect x="28" y="132" width="2" height="4"/><rect x="32" y="132" width="2" height="4"/>
+
+    <!-- Right area -->
+    <rect x="720" y="130" width="2" height="4"/><rect x="724" y="130" width="2" height="4"/><rect x="728" y="130" width="2" height="4"/>
+    <rect x="720" y="136" width="2" height="4"/><rect x="728" y="136" width="2" height="4"/>
+    <rect x="720" y="142" width="2" height="4"/><rect x="724" y="142" width="2" height="4"/><rect x="728" y="142" width="2" height="4"/>
+
+    <!-- Scattered singles -->
+    <rect x="100" y="300" width="2" height="4"/><rect x="104" y="300" width="2" height="4"/><rect x="108" y="300" width="2" height="4"/>
+    <rect x="680" y="280" width="2" height="4"/><rect x="684" y="280" width="2" height="4"/><rect x="688" y="280" width="2" height="4"/>
+  </g>
+
+  <!-- Subtle grid lines -->
+  <g stroke="#1e3a5f" stroke-width="0.3" opacity="0.15">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="200" y1="0" x2="200" y2="400"/>
+    <line x1="400" y1="0" x2="400" y2="400"/>
+    <line x1="600" y1="0" x2="600" y2="400"/>
+  </g>
+
+  <!-- Golden glow emanating from the box -->
+  <ellipse cx="400" cy="240" rx="200" ry="140" fill="url(#re1_glow)" opacity="0.5"/>
+
+  <!-- Sparkle particles rising from box -->
+  <g filter="url(#re1_glowFilter)">
+    <circle cx="340" cy="120" r="2" fill="#fbbf24" opacity="0.7"/>
+    <circle cx="420" cy="100" r="1.5" fill="#fcd34d" opacity="0.5"/>
+    <circle cx="380" cy="80" r="2" fill="#fbbf24" opacity="0.6"/>
+    <circle cx="460" cy="110" r="1.5" fill="#fcd34d" opacity="0.4"/>
+    <circle cx="350" cy="150" r="2.5" fill="#fbbf24" opacity="0.8"/>
+    <circle cx="440" cy="140" r="2" fill="#fcd34d" opacity="0.6"/>
+    <circle cx="310" cy="90" r="1.5" fill="#fbbf24" opacity="0.4"/>
+    <circle cx="480" cy="85" r="1.5" fill="#fbbf24" opacity="0.5"/>
+    <circle cx="370" cy="60" r="1" fill="#fcd34d" opacity="0.3"/>
+    <circle cx="430" cy="70" r="1" fill="#fcd34d" opacity="0.3"/>
+    <circle cx="360" cy="165" r="3" fill="#fbbf24" opacity="0.5"/>
+    <circle cx="450" cy="155" r="2" fill="#fcd34d" opacity="0.4"/>
+  </g>
+
+  <!-- === THE BOX (APK Package) === -->
+  <g transform="translate(290, 230)">
+    <!-- Box body - front face -->
+    <path d="M0,40 L0,120 L220,120 L220,40 Z" fill="url(#re1_box)" stroke="#8b6331" stroke-width="1.5"/>
+
+    <!-- Box body - right side (3D) -->
+    <path d="M220,40 L220,120 L250,100 L250,20 Z" fill="#4a2e12" stroke="#8b6331" stroke-width="1"/>
+
+    <!-- Box body - horizontal plank lines -->
+    <line x1="0" y1="65" x2="220" y2="65" stroke="#4a2e12" stroke-width="0.8" opacity="0.5"/>
+    <line x1="0" y1="90" x2="220" y2="90" stroke="#4a2e12" stroke-width="0.8" opacity="0.5"/>
+
+    <!-- Metal bands on box -->
+    <rect x="0" y="38" width="220" height="5" fill="#9ca3af" opacity="0.4" rx="1"/>
+    <rect x="0" y="117" width="220" height="5" fill="#9ca3af" opacity="0.4" rx="1"/>
+
+    <!-- Metal corner brackets -->
+    <path d="M2,40 L2,55 L15,55 L15,50 L7,50 L7,40 Z" fill="#9ca3af" opacity="0.5"/>
+    <path d="M218,40 L218,55 L205,55 L205,50 L213,50 L213,40 Z" fill="#9ca3af" opacity="0.5"/>
+    <path d="M2,120 L2,105 L15,105 L15,110 L7,110 L7,120 Z" fill="#9ca3af" opacity="0.5"/>
+    <path d="M218,120 L218,105 L205,105 L205,110 L213,110 L213,120 Z" fill="#9ca3af" opacity="0.5"/>
+
+    <!-- Zipper running down the center of the box front -->
+    <g opacity="0.7">
+      <line x1="110" y1="40" x2="110" y2="120" stroke="url(#re1_zip)" stroke-width="4"/>
+      <!-- Zipper teeth -->
+      <g fill="#d1d5db">
+        <rect x="106" y="45" width="3" height="3" rx="0.5"/>
+        <rect x="111" y="45" width="3" height="3" rx="0.5"/>
+        <rect x="106" y="52" width="3" height="3" rx="0.5"/>
+        <rect x="111" y="52" width="3" height="3" rx="0.5"/>
+        <rect x="106" y="59" width="3" height="3" rx="0.5"/>
+        <rect x="111" y="59" width="3" height="3" rx="0.5"/>
+        <rect x="106" y="66" width="3" height="3" rx="0.5"/>
+        <rect x="111" y="66" width="3" height="3" rx="0.5"/>
+        <rect x="106" y="73" width="3" height="3" rx="0.5"/>
+        <rect x="111" y="73" width="3" height="3" rx="0.5"/>
+        <rect x="106" y="80" width="3" height="3" rx="0.5"/>
+        <rect x="111" y="80" width="3" height="3" rx="0.5"/>
+        <rect x="106" y="87" width="3" height="3" rx="0.5"/>
+        <rect x="111" y="87" width="3" height="3" rx="0.5"/>
+        <rect x="106" y="94" width="3" height="3" rx="0.5"/>
+        <rect x="111" y="94" width="3" height="3" rx="0.5"/>
+        <rect x="106" y="101" width="3" height="3" rx="0.5"/>
+        <rect x="111" y="101" width="3" height="3" rx="0.5"/>
+        <rect x="106" y="108" width="3" height="3" rx="0.5"/>
+        <rect x="111" y="108" width="3" height="3" rx="0.5"/>
+      </g>
+      <!-- Zipper pull tab -->
+      <path d="M108,42 L112,42 L114,37 L106,37 Z" fill="#e5e7eb" stroke="#9ca3af" stroke-width="0.5"/>
+    </g>
+
+    <!-- Android robot icon on the box (left of zipper) -->
+    <g transform="translate(40, 60)" opacity="0.6">
+      <!-- Android body -->
+      <rect x="5" y="14" width="30" height="22" rx="4" fill="url(#re1_android)"/>
+      <!-- Android head -->
+      <rect x="7" y="2" width="26" height="14" rx="6" fill="url(#re1_android)"/>
+      <!-- Eyes -->
+      <circle cx="15" cy="9" r="2" fill="#0a0e27"/>
+      <circle cx="25" cy="9" r="2" fill="#0a0e27"/>
+      <!-- Antennae -->
+      <line x1="14" y1="2" x2="10" y2="-5" stroke="#3ddc84" stroke-width="2" stroke-linecap="round"/>
+      <line x1="26" y1="2" x2="30" y2="-5" stroke="#3ddc84" stroke-width="2" stroke-linecap="round"/>
+      <!-- Arms -->
+      <rect x="-3" y="16" width="6" height="16" rx="3" fill="url(#re1_android)"/>
+      <rect x="37" y="16" width="6" height="16" rx="3" fill="url(#re1_android)"/>
+      <!-- Legs -->
+      <rect x="11" y="36" width="6" height="10" rx="3" fill="url(#re1_android)"/>
+      <rect x="23" y="36" width="6" height="10" rx="3" fill="url(#re1_android)"/>
+    </g>
+
+    <!-- ".APK" label on box right side - as pixel-style dots -->
+    <g transform="translate(140, 68)" fill="#fbbf24" opacity="0.5">
+      <!-- Dot pattern suggesting "APK" -->
+      <!-- A -->
+      <rect x="0" y="0" width="2" height="2"/>
+      <rect x="4" y="0" width="2" height="2"/>
+      <rect x="0" y="3" width="6" height="2"/>
+      <rect x="0" y="6" width="2" height="2"/>
+      <rect x="4" y="6" width="2" height="2"/>
+      <rect x="0" y="9" width="2" height="2"/>
+      <rect x="4" y="9" width="2" height="2"/>
+      <!-- P -->
+      <rect x="10" y="0" width="2" height="2"/>
+      <rect x="14" y="0" width="2" height="2"/>
+      <rect x="10" y="3" width="6" height="2"/>
+      <rect x="10" y="6" width="2" height="2"/>
+      <rect x="10" y="9" width="2" height="2"/>
+      <!-- K -->
+      <rect x="20" y="0" width="2" height="2"/>
+      <rect x="24" y="0" width="2" height="2"/>
+      <rect x="20" y="3" width="4" height="2"/>
+      <rect x="20" y="6" width="2" height="2"/>
+      <rect x="24" y="6" width="2" height="2"/>
+      <rect x="20" y="9" width="2" height="2"/>
+      <rect x="24" y="9" width="2" height="2"/>
+    </g>
+
+    <!-- Box lid - flung open, tilted back -->
+    <g transform="translate(10, -10) rotate(-70, 110, 40)">
+      <!-- Lid top face -->
+      <path d="M0,0 L220,0 L250,-20 L30,-20 Z" fill="url(#re1_lid)" stroke="#8b6331" stroke-width="1.5"/>
+      <!-- Lid front edge -->
+      <path d="M0,0 L0,-8 L220,-8 L220,0 Z" fill="#6b4420" stroke="#8b6331" stroke-width="0.8"/>
+      <!-- Metal band on lid -->
+      <rect x="0" y="-8" width="220" height="3" fill="#9ca3af" opacity="0.3" rx="1"/>
+    </g>
+  </g>
+
+  <!-- === FLOATING GAME ITEMS === -->
+
+  <!-- Pixel-art sword (floating upper-left of box) -->
+  <g transform="translate(195, 80) rotate(-30)" filter="url(#re1_itemGlow)">
+    <!-- Blade -->
+    <rect x="-3" y="-50" width="6" height="40" fill="url(#re1_blade)" rx="1"/>
+    <!-- Blade tip -->
+    <polygon points="0,-55 -3,-50 3,-50" fill="#e0e0e0"/>
+    <!-- Blade shine -->
+    <rect x="-1" y="-48" width="2" height="35" fill="white" opacity="0.4"/>
+    <!-- Guard -->
+    <rect x="-10" y="-10" width="20" height="5" fill="#f59e0b" rx="1"/>
+    <!-- Grip -->
+    <rect x="-3" y="-5" width="6" height="15" fill="#92400e" rx="1"/>
+    <!-- Grip wrap -->
+    <rect x="-3" y="-2" width="6" height="2" fill="#78350f"/>
+    <rect x="-3" y="3" width="6" height="2" fill="#78350f"/>
+    <rect x="-3" y="8" width="6" height="2" fill="#78350f"/>
+    <!-- Pommel -->
+    <circle cx="0" cy="12" r="4" fill="#f59e0b"/>
+  </g>
+
+  <!-- Shield (floating upper-right of box) -->
+  <g transform="translate(590, 95)" filter="url(#re1_itemGlow)">
+    <!-- Shield body -->
+    <path d="M0,-35 L-30,-18 L-25,15 L0,35 L25,15 L30,-18 Z" fill="url(#re1_shield)" stroke="#0d9488" stroke-width="2"/>
+    <!-- Shield inner design -->
+    <path d="M0,-22 L-16,-10 L-13,10 L0,22 L13,10 L16,-10 Z" fill="#0f766e" opacity="0.6"/>
+    <!-- Shield cross/emblem -->
+    <rect x="-2" y="-15" width="4" height="30" fill="#5eead4" rx="1"/>
+    <rect x="-12" y="-2" width="24" height="4" fill="#5eead4" rx="1"/>
+    <!-- Shield shine -->
+    <path d="M-20,-15 L-10,-25 L-5,-12 L-15,-2 Z" fill="white" opacity="0.15"/>
+  </g>
+
+  <!-- Purple gem (floating above box center) -->
+  <g transform="translate(400, 90)" filter="url(#re1_itemGlow)">
+    <!-- Gem shape -->
+    <polygon points="0,-25 -18,-8 -12,15 12,15 18,-8" fill="url(#re1_gem)" stroke="#a78bfa" stroke-width="1.5"/>
+    <!-- Gem facets -->
+    <polygon points="0,-25 -8,-5 8,-5" fill="#d8b4fe" opacity="0.4"/>
+    <polygon points="0,-25 -18,-8 -8,-5" fill="#c084fc" opacity="0.3"/>
+    <polygon points="0,-25 18,-8 8,-5" fill="#e9d5ff" opacity="0.2"/>
+    <!-- Gem bottom facets -->
+    <polygon points="-8,-5 -12,15 0,8" fill="#7c3aed" opacity="0.4"/>
+    <polygon points="8,-5 12,15 0,8" fill="#9333ea" opacity="0.3"/>
+    <!-- Gem sparkle -->
+    <circle cx="-5" cy="-12" r="2" fill="white" opacity="0.6"/>
+  </g>
+
+  <!-- Gold coin 1 (tumbling out) -->
+  <g transform="translate(320, 160) rotate(15)" filter="url(#re1_itemGlow)">
+    <ellipse cx="0" cy="0" rx="14" ry="14" fill="url(#re1_coin)" stroke="#d97706" stroke-width="1.5"/>
+    <!-- Coin inner circle -->
+    <circle cx="0" cy="0" r="10" fill="none" stroke="#d97706" stroke-width="1"/>
+    <!-- Coin star/dollar pixel design -->
+    <rect x="-1" y="-7" width="2" height="14" fill="#d97706" opacity="0.6"/>
+    <rect x="-5" y="-1" width="10" height="2" fill="#d97706" opacity="0.6"/>
+    <!-- Coin shine -->
+    <path d="M-6,-8 Q-2,-12 2,-8 Q-2,-4 -6,-8" fill="white" opacity="0.3"/>
+  </g>
+
+  <!-- Gold coin 2 -->
+  <g transform="translate(490, 175) rotate(-20)" filter="url(#re1_itemGlow)">
+    <ellipse cx="0" cy="0" rx="11" ry="11" fill="url(#re1_coin)" stroke="#d97706" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="7.5" fill="none" stroke="#d97706" stroke-width="1"/>
+    <rect x="-1" y="-5" width="2" height="10" fill="#d97706" opacity="0.6"/>
+    <path d="M-4,-5 Q-1,-8 2,-5 Q-1,-2 -4,-5" fill="white" opacity="0.3"/>
+  </g>
+
+  <!-- Gold coin 3 (smaller, further away) -->
+  <g transform="translate(260, 130) rotate(40)">
+    <ellipse cx="0" cy="0" rx="8" ry="8" fill="url(#re1_coin)" stroke="#d97706" stroke-width="1"/>
+    <circle cx="0" cy="0" r="5.5" fill="none" stroke="#d97706" stroke-width="0.8"/>
+  </g>
+
+  <!-- Potion bottle (floating left) -->
+  <g transform="translate(240, 155) rotate(10)" filter="url(#re1_itemGlow)">
+    <!-- Bottle neck -->
+    <rect x="-4" y="-22" width="8" height="10" fill="#6b7280" rx="2"/>
+    <!-- Cork -->
+    <rect x="-3" y="-25" width="6" height="5" fill="#d4a574" rx="1"/>
+    <!-- Bottle body -->
+    <path d="M-4,-12 Q-12,-6 -12,5 Q-12,15 0,18 Q12,15 12,5 Q12,-6 4,-12 Z" fill="url(#re1_potion)" stroke="#be123c" stroke-width="1"/>
+    <!-- Liquid highlight -->
+    <ellipse cx="-4" cy="2" rx="4" ry="6" fill="white" opacity="0.15"/>
+    <!-- Bubbles -->
+    <circle cx="2" cy="8" r="1.5" fill="white" opacity="0.2"/>
+    <circle cx="-3" cy="12" r="1" fill="white" opacity="0.15"/>
+  </g>
+
+  <!-- Pixel-art hero character (small, floating right) -->
+  <g transform="translate(560, 140)">
+    <!-- Head -->
+    <rect x="-6" y="-30" width="12" height="12" fill="#fbbf24" rx="2"/>
+    <!-- Eyes (pixel) -->
+    <rect x="-4" y="-26" width="3" height="3" fill="#1e1b4b"/>
+    <rect x="1" y="-26" width="3" height="3" fill="#1e1b4b"/>
+    <!-- Body/armor -->
+    <rect x="-8" y="-18" width="16" height="14" fill="#2dd4bf" rx="1"/>
+    <!-- Belt -->
+    <rect x="-8" y="-7" width="16" height="3" fill="#92400e"/>
+    <rect x="-1" y="-7" width="3" height="3" fill="#f59e0b"/>
+    <!-- Legs -->
+    <rect x="-7" y="-4" width="5" height="10" fill="#4338ca" rx="1"/>
+    <rect x="2" y="-4" width="5" height="10" fill="#4338ca" rx="1"/>
+    <!-- Tiny sword in hand -->
+    <rect x="9" y="-25" width="2" height="16" fill="#d1d5db"/>
+    <rect x="7" y="-10" width="6" height="2" fill="#f59e0b"/>
+  </g>
+
+  <!-- Small scroll/document icon (data files) -->
+  <g transform="translate(170, 170) rotate(-15)">
+    <rect x="-10" y="-14" width="20" height="28" fill="#fef3c7" stroke="#d97706" stroke-width="1" rx="2"/>
+    <!-- Scroll curl top -->
+    <ellipse cx="0" cy="-14" rx="10" ry="3" fill="#fde68a" stroke="#d97706" stroke-width="0.8"/>
+    <!-- Text lines on scroll -->
+    <line x1="-6" y1="-6" x2="6" y2="-6" stroke="#92400e" stroke-width="1" opacity="0.4"/>
+    <line x1="-6" y1="-1" x2="6" y2="-1" stroke="#92400e" stroke-width="1" opacity="0.4"/>
+    <line x1="-6" y1="4" x2="4" y2="4" stroke="#92400e" stroke-width="1" opacity="0.4"/>
+    <line x1="-6" y1="9" x2="6" y2="9" stroke="#92400e" stroke-width="1" opacity="0.4"/>
+  </g>
+
+  <!-- Pixel-art key (secrets!) -->
+  <g transform="translate(530, 60) rotate(25)" filter="url(#re1_itemGlow)">
+    <!-- Key head (ring) -->
+    <circle cx="0" cy="0" r="8" fill="none" stroke="#fbbf24" stroke-width="3"/>
+    <!-- Key shaft -->
+    <rect x="6" y="-1.5" width="22" height="3" fill="#fbbf24" rx="1"/>
+    <!-- Key teeth -->
+    <rect x="22" y="-1.5" width="3" height="7" fill="#fbbf24" rx="0.5"/>
+    <rect x="17" y="-1.5" width="3" height="5" fill="#fbbf24" rx="0.5"/>
+  </g>
+
+  <!-- Small treasure items: tiny pixel stars scattered -->
+  <g fill="#fbbf24" opacity="0.8">
+    <!-- 4-point pixel stars -->
+    <g transform="translate(300, 50)">
+      <rect x="-1" y="-5" width="2" height="10"/>
+      <rect x="-5" y="-1" width="10" height="2"/>
+    </g>
+    <g transform="translate(510, 45)">
+      <rect x="-1" y="-4" width="2" height="8"/>
+      <rect x="-4" y="-1" width="8" height="2"/>
+    </g>
+    <g transform="translate(210, 110)">
+      <rect x="-1" y="-3" width="2" height="6"/>
+      <rect x="-3" y="-1" width="6" height="2"/>
+    </g>
+    <g transform="translate(580, 50)">
+      <rect x="-1" y="-3" width="2" height="6"/>
+      <rect x="-3" y="-1" width="6" height="2"/>
+    </g>
+  </g>
+
+  <!-- Teal sparkle stars (smaller) -->
+  <g fill="#2dd4bf" opacity="0.6">
+    <g transform="translate(155, 90)">
+      <rect x="-1" y="-3" width="2" height="6"/>
+      <rect x="-3" y="-1" width="6" height="2"/>
+    </g>
+    <g transform="translate(630, 120)">
+      <rect x="-1" y="-3" width="2" height="6"/>
+      <rect x="-3" y="-1" width="6" height="2"/>
+    </g>
+    <g transform="translate(450, 55)">
+      <rect x="-1" y="-2" width="2" height="4"/>
+      <rect x="-2" y="-1" width="4" height="2"/>
+    </g>
+  </g>
+
+  <!-- Purple sparkles -->
+  <g fill="#c084fc" opacity="0.5">
+    <g transform="translate(280, 75)">
+      <rect x="-1" y="-3" width="2" height="6"/>
+      <rect x="-3" y="-1" width="6" height="2"/>
+    </g>
+    <g transform="translate(615, 75)">
+      <rect x="-1" y="-2" width="2" height="4"/>
+      <rect x="-2" y="-1" width="4" height="2"/>
+    </g>
+  </g>
+
+  <!-- === PART 1 BADGE (lower-right corner) === -->
+  <g transform="translate(710, 340)">
+    <!-- Badge background -->
+    <rect x="-35" y="-18" width="70" height="36" rx="6" fill="url(#re1_badge)" stroke="#fdba74" stroke-width="1.5"/>
+    <!-- "PT" pixel text (Part) -->
+    <g fill="white" transform="translate(-26, -10)">
+      <!-- P -->
+      <rect x="0" y="0" width="2" height="10"/>
+      <rect x="2" y="0" width="4" height="2"/>
+      <rect x="6" y="0" width="2" height="6"/>
+      <rect x="2" y="4" width="4" height="2"/>
+      <!-- T -->
+      <rect x="12" y="0" width="8" height="2"/>
+      <rect x="15" y="2" width="2" height="8"/>
+    </g>
+    <!-- "1" pixel number (large) -->
+    <g fill="white" transform="translate(-6, -8)">
+      <rect x="8" y="0" width="5" height="3"/>
+      <rect x="10" y="3" width="5" height="3"/>
+      <rect x="10" y="6" width="5" height="3"/>
+      <rect x="10" y="9" width="5" height="3"/>
+      <rect x="5" y="12" width="15" height="3"/>
+    </g>
+  </g>
+
+  <!-- Bottom shadow/ground effect -->
+  <ellipse cx="400" cy="370" rx="160" ry="10" fill="#000" opacity="0.3"/>
+
+  <!-- Subtle vignette overlay -->
+  <rect width="800" height="400" fill="url(#re1_bg)" opacity="0" pointer-events="none"/>
+
+  <!-- Corner vignette darkening -->
+  <radialGradient id="re1_vignette" cx="50%" cy="50%" r="60%">
+    <stop offset="0%" style="stop-color:transparent;stop-opacity:0"/>
+    <stop offset="100%" style="stop-color:#050816;stop-opacity:0.5"/>
+  </radialGradient>
+  <rect width="800" height="400" fill="url(#re1_vignette)"/>
+</svg>
