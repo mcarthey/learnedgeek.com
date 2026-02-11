@@ -4,9 +4,9 @@
 
 ## The Problem With Guessing
 
-I've been playing Skull Up, a mobile hero collector by eFun Games. It's the usual formula: collect heroes, level them up, build teams. But like every game in this genre, it gives you almost no information about what actually works.
+I've been playing a mobile hero collector — one of those idle RPGs where you collect heroes, level them up, and build teams. It's the usual formula. And like every game in this genre, it gives you almost no information about what actually works.
 
-Which heroes synergize? What are the real faction bonus numbers? Does it matter if I stack three Nether heroes or spread across factions? The in-game tooltips are vague, the wiki is empty, and the Reddit has twelve posts — half of them asking the same questions I have.
+Which heroes synergize? What are the real faction bonus numbers? Does it matter if I stack three same-faction heroes or spread across factions? The in-game tooltips are vague, the wiki is empty, and the Reddit has twelve posts — half of them asking the same questions I have.
 
 So I did what any reasonable person would do. I took the game apart.
 
@@ -14,7 +14,7 @@ So I did what any reasonable person would do. I took the game apart.
 
 ## What's Inside an APK?
 
-An APK is just a ZIP file with a different extension. Rename it, unzip it, and you're looking at the guts of an Android app. For a Unity game like Skull Up, the structure looks something like this:
+An APK is just a ZIP file with a different extension. Rename it, unzip it, and you're looking at the guts of an Android app. For a Unity-based mobile game, the structure looks something like this:
 
 | Path | What's In There |
 |------|----------------|
@@ -122,13 +122,13 @@ The extraction yielded some genuinely useful discoveries.
 
 ### 160 Heroes, 12 Bond Trios
 
-The game has 80 base heroes across 5 factions (Chiefs, Nether, Humans, Tribe, Elves) plus special/legendary variants. Heroes are organized into 12 bond trios — groups of three that activate stat bonuses when you deploy two or three of them together.
+The game has 80+ base heroes across 5 factions plus special/legendary variants. Heroes are organized into 12 bond trios — groups of three that activate stat bonuses when you deploy two or three of them together.
 
 | Trio | Heroes | Bonus |
 |------|--------|-------|
-| 4 | Drowena + Warren + Wizzy | ATK/Crit +50,000 |
-| 8 | Thurin + Sparky + Dawn | ATK/Crit +30,000 |
-| 7 | Spinner + Bat Armor + Zero | ATK/Crit +50,000 |
+| A | [Hero 1] + [Hero 2] + [Hero 3] | ATK/Crit +50,000 |
+| B | [Hero 4] + [Hero 5] + [Hero 6] | ATK/Crit +30,000 |
+| C | [Hero 7] + [Hero 8] + [Hero 9] | ATK/Crit +50,000 |
 
 The game shows you bond pairs in the hero screen, but it never tells you the actual numbers, or that the +50,000 trios are strictly better than the +30,000 ones. That matters when you're deciding which heroes to invest in.
 
@@ -170,12 +170,12 @@ The workflow is simple: edit a text file with your heroes, run the script, get r
 
 ```
 # my_heroes.txt
-Dawn 6
-Thurin 6
-Sparky 6
-Griff 5
-Aeris 5
-Pally 5
+HeroA 6
+HeroB 6
+HeroC 6
+HeroD 5
+HeroE 5
+HeroF 5
 ```
 
 ```
@@ -190,11 +190,11 @@ For a 17-hero roster, it evaluates all 12,376 possible 6-hero combinations in un
 
 ## The Payoff
 
-Running the optimizer against my actual roster produced immediately useful results. My best team scores 51.6 — a full Human faction stack with Dawn, Thurin, and Sparky forming a complete bond trio, Griff providing CC triggers for Thurin's passive, and Aeris amplifying Sparky's burn damage.
+Running the optimizer against my actual roster produced immediately useful results. My best team scores 51.6 — a full same-faction stack with a complete bond trio, one hero providing CC triggers for another's passive, and a third amplifying burn damage.
 
 Before this analysis, I was spreading resources across heroes that didn't synergize. Now I know exactly which heroes to prioritize and which to save for.
 
-The "Heroes Worth Acquiring" section is probably the most valuable output. It told me Dawn would be my single biggest roster upgrade (Value: 18) because she completed a bond trio AND was S-tier AND enabled Human faction stacking. When I pulled her, my team score jumped 33% overnight.
+The "Heroes Worth Acquiring" section is probably the most valuable output. It told me one specific hero would be my single biggest roster upgrade (Value: 18) because she completed a bond trio AND was S-tier AND enabled faction stacking. When I pulled her, my team score jumped 33% overnight.
 
 ---
 
@@ -210,7 +210,7 @@ The approach works on any Unity game that uses Lua or similar scripting for data
 
 You'll need Python and `pip install UnityPy`. That's it.
 
-The code for the Skull Up optimizer is straightforward enough to adapt for other hero collectors. The scoring engine is generic — swap in different heroes, bonds, and faction tables, and it works for any game with similar mechanics.
+The optimizer code is straightforward enough to adapt for other hero collectors. The scoring engine is generic — swap in different heroes, bonds, and faction tables, and it works for any game with similar mechanics.
 
 ---
 

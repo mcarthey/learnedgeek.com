@@ -89,12 +89,12 @@ for match in re.findall(rb'[\x20-\x7e]{4,}', data):
 ```
 hero_avatar
 name
-Drowena
+[HeroName1]
 icon
 hero_id
-Pan
-Warren
-Kit
+[HeroName2]
+[HeroName3]
+[HeroName4]
 ...
 ```
 
