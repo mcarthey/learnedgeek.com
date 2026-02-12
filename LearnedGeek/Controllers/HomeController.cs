@@ -65,6 +65,11 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult SmsAssistant()
+    {
+        return View();
+    }
+
     [HttpGet]
     public IActionResult Contact()
     {
