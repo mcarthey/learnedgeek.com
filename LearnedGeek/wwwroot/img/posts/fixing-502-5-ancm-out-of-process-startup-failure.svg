@@ -1,0 +1,203 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="ancm_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="ancm_error" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    <linearGradient id="ancm_success" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="ancm_iis" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0078d4"/>
+      <stop offset="100%" style="stop-color:#005a9e"/>
+    </linearGradient>
+    <linearGradient id="ancm_kestrel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="ancm_divider" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#475569;stop-opacity:0"/>
+      <stop offset="50%" style="stop-color:#475569;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#475569;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#ancm_bg)"/>
+
+  <!-- Subtle grid -->
+  <g stroke="#334155" stroke-width="0.5" opacity="0.15">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="200" y1="0" x2="200" y2="400"/>
+    <line x1="400" y1="0" x2="400" y2="400"/>
+    <line x1="600" y1="0" x2="600" y2="400"/>
+  </g>
+
+  <!-- Center divider line -->
+  <line x1="400" y1="20" x2="400" y2="340" stroke="url(#ancm_divider)" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- ============ LEFT SIDE: THE PROBLEM ============ -->
+
+  <!-- Left header -->
+  <text x="200" y="30" text-anchor="middle" fill="#ef4444" font-family="sans-serif" font-size="12" font-weight="bold" letter-spacing="2">THE PROBLEM</text>
+
+  <!-- Browser window showing 502.5 -->
+  <g transform="translate(30, 45)">
+    <rect x="0" y="0" width="340" height="130" rx="6" fill="#111827" stroke="url(#ancm_error)" stroke-width="1.5"/>
+    <!-- Title bar -->
+    <rect x="0" y="0" width="340" height="22" rx="6" fill="#374151"/>
+    <rect x="0" y="12" width="340" height="10" fill="#374151"/>
+    <!-- Browser dots -->
+    <circle cx="12" cy="11" r="4" fill="#ef4444"/>
+    <circle cx="24" cy="11" r="4" fill="#f59e0b"/>
+    <circle cx="36" cy="11" r="4" fill="#22c55e"/>
+    <!-- URL bar -->
+    <rect x="48" y="4" width="280" height="14" rx="3" fill="#1f2937"/>
+    <text x="56" y="14" fill="#6b7280" font-family="sans-serif" font-size="7">mysite.com</text>
+
+    <!-- Error content -->
+    <text x="170" y="50" text-anchor="middle" fill="#ef4444" font-family="sans-serif" font-size="28" font-weight="bold">502.5</text>
+    <text x="170" y="70" text-anchor="middle" fill="#9ca3af" font-family="sans-serif" font-size="9">ANCM Out-Of-Process</text>
+    <text x="170" y="82" text-anchor="middle" fill="#9ca3af" font-family="sans-serif" font-size="9">Startup Failure</text>
+
+    <!-- Red X icon -->
+    <g transform="translate(145, 92)">
+      <circle cx="12" cy="12" r="14" fill="#ef4444" opacity="0.15"/>
+      <line x1="5" y1="5" x2="19" y2="19" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+      <line x1="19" y1="5" x2="5" y2="19" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- Disconnected IIS and Kestrel gears -->
+  <g transform="translate(40, 195)">
+    <!-- IIS Gear (left, larger) -->
+    <g transform="translate(70, 50)">
+      <!-- Gear shape using path -->
+      <path d="M 0,-30 L 6,-28 L 8,-22 L 14,-20 L 18,-26 L 24,-22 L 20,-16 L 22,-10 L 28,-8 L 28,-2 L 22,-0 L 22,6 L 28,10 L 26,16 L 20,14 L 16,18 L 18,26 L 12,28 L 8,22 L 2,22 L 0,28 L -6,26 L -6,20 L -12,16 L -18,20 L -22,14 L -16,10 L -16,4 L -22,0 L -22,-6 L -16,-6 L -14,-12 L -20,-16 L -16,-22 L -10,-18 L -6,-22 L -8,-28 Z"
+            fill="url(#ancm_iis)" opacity="0.9" stroke="#60a5fa" stroke-width="0.5"/>
+      <circle cx="0" cy="0" r="12" fill="#1e293b"/>
+      <text x="0" y="4" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="8" font-weight="bold">IIS</text>
+    </g>
+
+    <!-- Kestrel Gear (right, offset/misaligned) -->
+    <g transform="translate(175, 25) rotate(15)">
+      <path d="M 0,-22 L 5,-20 L 6,-16 L 10,-14 L 14,-18 L 18,-14 L 14,-10 L 16,-6 L 20,-4 L 20,0 L 16,2 L 16,6 L 20,8 L 18,12 L 14,10 L 12,14 L 14,20 L 10,22 L 6,16 L 2,16 L 0,22 L -4,20 L -4,16 L -8,12 L -12,16 L -16,12 L -12,8 L -12,4 L -16,0 L -16,-4 L -12,-4 L -10,-8 L -14,-12 L -10,-16 L -6,-12 L -4,-16 L -6,-20 Z"
+            fill="url(#ancm_kestrel)" opacity="0.9" stroke="#c084fc" stroke-width="0.5"/>
+      <circle cx="0" cy="0" r="9" fill="#1e293b"/>
+      <text x="0" y="3" text-anchor="middle" fill="#c084fc" font-family="sans-serif" font-size="6" font-weight="bold">K</text>
+    </g>
+
+    <!-- Broken connection indicator -->
+    <g transform="translate(118, 35)">
+      <line x1="0" y1="0" x2="20" y2="0" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,3"/>
+      <line x1="24" y1="0" x2="44" y2="0" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,3"/>
+      <!-- Lightning bolt / break symbol -->
+      <path d="M 18,-6 L 22,0 L 18,0 L 22,6" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Labels -->
+    <text x="70" y="95" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="9">IIS (In-Process)</text>
+    <text x="175" y="95" text-anchor="middle" fill="#c084fc" font-family="sans-serif" font-size="9">Kestrel (OOP)</text>
+    <text x="130" y="115" text-anchor="middle" fill="#ef4444" font-family="sans-serif" font-size="8">Mismatched hosting model</text>
+  </g>
+
+
+  <!-- ============ RIGHT SIDE: THE FIX ============ -->
+
+  <!-- Right header -->
+  <text x="600" y="30" text-anchor="middle" fill="#22c55e" font-family="sans-serif" font-size="12" font-weight="bold" letter-spacing="2">THE FIX</text>
+
+  <!-- Code snippet: the fix -->
+  <g transform="translate(420, 45)">
+    <rect x="0" y="0" width="350" height="130" rx="6" fill="#111827" stroke="url(#ancm_success)" stroke-width="1.5"/>
+    <!-- Title bar -->
+    <rect x="0" y="0" width="350" height="22" rx="6" fill="#374151"/>
+    <rect x="0" y="12" width="350" height="10" fill="#374151"/>
+    <!-- File tab -->
+    <text x="14" y="14" fill="#f59e0b" font-family="sans-serif" font-size="8" font-weight="bold">MyApp.csproj</text>
+
+    <!-- XML code -->
+    <text x="12" y="42" fill="#6b7280" font-family="sans-serif" font-size="8">&lt;PropertyGroup&gt;</text>
+
+    <!-- Highlighted key line -->
+    <rect x="6" y="48" width="338" height="28" rx="3" fill="#052e16" opacity="0.5"/>
+    <text x="20" y="60" fill="#22c55e" font-family="sans-serif" font-size="8">&lt;AspNetCoreHostingModel&gt;</text>
+    <text x="24" y="72" fill="#fbbf24" font-family="sans-serif" font-size="9" font-weight="bold">OutOfProcess</text>
+    <text x="109" y="72" fill="#22c55e" font-family="sans-serif" font-size="8">&lt;/AspNetCoreHostingModel&gt;</text>
+
+    <!-- Additional context lines -->
+    <text x="20" y="90" fill="#60a5fa" font-family="sans-serif" font-size="8">&lt;TargetFramework&gt;</text>
+    <text x="140" y="90" fill="#22c55e" font-family="sans-serif" font-size="8">net8.0</text>
+    <text x="167" y="90" fill="#60a5fa" font-family="sans-serif" font-size="8">&lt;/TargetFramework&gt;</text>
+
+    <text x="12" y="106" fill="#6b7280" font-family="sans-serif" font-size="8">&lt;/PropertyGroup&gt;</text>
+
+    <!-- Green checkmark -->
+    <g transform="translate(310, 96)">
+      <circle cx="12" cy="12" r="14" fill="#22c55e" opacity="0.15"/>
+      <path d="M 5 12 L 10 17 L 19 7" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- Connected IIS and Kestrel gears -->
+  <g transform="translate(430, 195)">
+    <!-- IIS Gear (left, meshing correctly) -->
+    <g transform="translate(70, 50)">
+      <path d="M 0,-30 L 6,-28 L 8,-22 L 14,-20 L 18,-26 L 24,-22 L 20,-16 L 22,-10 L 28,-8 L 28,-2 L 22,-0 L 22,6 L 28,10 L 26,16 L 20,14 L 16,18 L 18,26 L 12,28 L 8,22 L 2,22 L 0,28 L -6,26 L -6,20 L -12,16 L -18,20 L -22,14 L -16,10 L -16,4 L -22,0 L -22,-6 L -16,-6 L -14,-12 L -20,-16 L -16,-22 L -10,-18 L -6,-22 L -8,-28 Z"
+            fill="url(#ancm_iis)" opacity="0.9" stroke="#60a5fa" stroke-width="0.5"/>
+      <circle cx="0" cy="0" r="12" fill="#1e293b"/>
+      <text x="0" y="4" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="8" font-weight="bold">IIS</text>
+    </g>
+
+    <!-- Kestrel Gear (right, properly meshed) -->
+    <g transform="translate(148, 38)">
+      <path d="M 0,-22 L 5,-20 L 6,-16 L 10,-14 L 14,-18 L 18,-14 L 14,-10 L 16,-6 L 20,-4 L 20,0 L 16,2 L 16,6 L 20,8 L 18,12 L 14,10 L 12,14 L 14,20 L 10,22 L 6,16 L 2,16 L 0,22 L -4,20 L -4,16 L -8,12 L -12,16 L -16,12 L -12,8 L -12,4 L -16,0 L -16,-4 L -12,-4 L -10,-8 L -14,-12 L -10,-16 L -6,-12 L -4,-16 L -6,-20 Z"
+            fill="url(#ancm_kestrel)" opacity="0.9" stroke="#c084fc" stroke-width="0.5"/>
+      <circle cx="0" cy="0" r="9" fill="#1e293b"/>
+      <text x="0" y="3" text-anchor="middle" fill="#c084fc" font-family="sans-serif" font-size="6" font-weight="bold">K</text>
+    </g>
+
+    <!-- Connected line (solid green) -->
+    <g transform="translate(100, 48)">
+      <line x1="0" y1="0" x2="28" y2="0" stroke="#22c55e" stroke-width="2"/>
+      <!-- Small checkmark on the connection -->
+      <path d="M 10,-6 L 14,-2 L 20,-8" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Labels -->
+    <text x="70" y="95" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="9">IIS (Reverse Proxy)</text>
+    <text x="148" y="95" text-anchor="middle" fill="#c084fc" font-family="sans-serif" font-size="9">Kestrel (OOP)</text>
+    <text x="115" y="115" text-anchor="middle" fill="#22c55e" font-family="sans-serif" font-size="8">OutOfProcess = aligned</text>
+  </g>
+
+  <!-- Bottom banner -->
+  <rect x="100" y="355" width="600" height="34" rx="6" fill="#111827" stroke="#374151" stroke-width="1"/>
+  <text x="400" y="372" text-anchor="middle" fill="#9ca3af" font-family="sans-serif" font-size="10">HTTP 502.5 ANCM Out-Of-Process Startup Failure</text>
+  <text x="400" y="384" text-anchor="middle" fill="#6b7280" font-family="sans-serif" font-size="8">ASP.NET Core on Shared Hosting</text>
+
+  <!-- Tech badges -->
+  <g transform="translate(210, 330)">
+    <rect x="0" y="0" width="65" height="20" rx="10" fill="#1f2937" stroke="#374151" stroke-width="0.5"/>
+    <text x="32" y="14" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="8">ASP.NET</text>
+
+    <rect x="75" y="0" width="45" height="20" rx="10" fill="#1f2937" stroke="#374151" stroke-width="0.5"/>
+    <text x="97" y="14" text-anchor="middle" fill="#0078d4" font-family="sans-serif" font-size="8">IIS</text>
+
+    <rect x="130" y="0" width="60" height="20" rx="10" fill="#1f2937" stroke="#374151" stroke-width="0.5"/>
+    <text x="160" y="14" text-anchor="middle" fill="#c084fc" font-family="sans-serif" font-size="8">Kestrel</text>
+
+    <rect x="200" y="0" width="55" height="20" rx="10" fill="#1f2937" stroke="#374151" stroke-width="0.5"/>
+    <text x="227" y="14" text-anchor="middle" fill="#f59e0b" font-family="sans-serif" font-size="8">ANCM</text>
+
+    <rect x="265" y="0" width="95" height="20" rx="10" fill="#1f2937" stroke="#374151" stroke-width="0.5"/>
+    <text x="312" y="14" text-anchor="middle" fill="#ef4444" font-family="sans-serif" font-size="8">Shared Hosting</text>
+  </g>
+</svg>

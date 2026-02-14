@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "fixing-502-5-ancm-out-of-process-startup-failure",
+      "title": "Fixing HTTP 502.5 — ANCM Out-Of-Process Startup Failure",
+      "description": "You publish your ASP.NET Core app to shared hosting and get 502.5. The error page is useless. The actual fix: your new project defaults to InProcess but your application pool requires OutOfProcess. Two XML properties, two files, done.",
+      "category": "Tech",
+      "tags": ["aspnet-core", "iis", "deployment", "hosting", "dotnet", "troubleshooting", "shared-hosting"],
+      "date": "2026-09-20",
+      "featured": true,
+      "image": "/img/posts/fixing-502-5-ancm-out-of-process-startup-failure.svg",
+      "linkedInHook": "Published an ASP.NET Core app to shared hosting. Got 502.5 ANCM Out-Of-Process Startup Failure.\n\nThe error page suggests checking event logs and attaching a debugger. Helpful.\n\nThe actual problem: new .NET projects default to InProcess hosting. But all apps in an IIS application pool must use the same hosting model. If your existing sites run OutOfProcess, the new one needs to match.\n\nThe fix: add AspNetCoreHostingModel=OutOfProcess to your .csproj AND .pubxml. Both files. They must agree.\n\nI've fixed this three times and kept forgetting. Now it's a blog post.",
+      "blueskyHook": "Published to shared hosting. Got 502.5. Error page: \"check event logs.\"\n\nActual fix: new .NET projects default to InProcess. Your app pool runs OutOfProcess. They must match.\n\nTwo XML properties, two files, done:"
+    },
+    {
       "slug": "adding-syntax-highlighting-with-prismjs",
       "title": "Adding Syntax Highlighting to a Blog (The Easy Way)",
       "description": "For months, the code blocks on this blog were monochrome. White text on dark. Then Prism.js happened—three lines in the HTML, a CSS tweak, and fifteen minutes later every language has color.",
