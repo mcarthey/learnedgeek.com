@@ -10,6 +10,27 @@
 
     var projects = new (string title, string description, string? image, string? link, string[] tags)[] {
         (
+            "API Combat",
+            "A turn-based strategic combat game played entirely through REST API endpoints. No GUI — players make HTTP requests to register, build teams, design battle strategies in JSON, and compete in ranked matches. Features 6 unit classes, 50+ battle units, a strategy marketplace, guild wars, seasonal leaderboards, tournaments, and an education mode for instructors teaching hands-on API skills.",
+            "/img/work/api-combat.svg",
+            "https://apicombat.com",
+            new[] { "ASP.NET Core", "REST API", "Game Design", "Education", "Competitive PvP" }
+        ),
+        (
+            "CrewTrack",
+            "Field crew management platform for landscaping, construction, and service companies. Back-office dashboard with live map tracking of crews in the field, drag-and-drop scheduling, and work order management. Mobile app for contractors with GPS-verified clock-in/out, job-site photo documentation, and materials tracking. Designed to replace clipboard-and-spreadsheet workflows with real-time visibility.",
+            "/img/work/crewtrack.svg",
+            "https://crewtrackapp.com",
+            new[] { "ASP.NET Core", "Entity Framework", "GPS Tracking", "Mobile-First", "SaaS" }
+        ),
+        (
+            "TXT-GEEK AI Assistant",
+            "An SMS-based AI assistant you can text from any phone — no app, no account. Send a question about software development, technology, or anything else to (205) TXT-GEEK and get a conversational AI response powered by Claude. Maintains conversation context across messages, includes code examples, and handles opt-in/out compliance automatically.",
+            "/img/work/txt-geek-ai.svg",
+            "/Home/SmsAssistant",
+            new[] { "Twilio", "Claude API", "SMS", "AI", "Conversational" }
+        ),
+        (
             "Lake Country Spanish",
             "Online Spanish tutoring platform connecting students with a native Peruvian instructor. Features tiered pricing packages, Stripe payment integration with webhook handling, a student rewards system with points and badges, daily vocabulary content, class scheduling, and full localization support. Public marketing site plus authenticated student portal.",
             "/img/work/lake-country-spanish.svg",
@@ -22,6 +43,13 @@
             "/img/work/ellis-hope-foundation.svg",
             "https://ellishopefoundation.org",
             new[] { "ASP.NET Core", "Entity Framework", "Role-Based Auth", "QuestPDF", "Playwright" }
+        ),
+        (
+            "LearnedGeek.com",
+            "This blog — built from scratch as a custom ASP.NET Core platform. Markdown-based content with JSON metadata, Tailwind CSS with dark/light mode toggle, Prism.js syntax highlighting, admin dashboard with LinkedIn cross-posting, tag-based filtering, and hand-crafted SVG hero images for every post. 20+ posts across 6 series including ELI5, schema-aware migrations, and reverse engineering.",
+            "/img/work/learnedgeek-blog.svg",
+            "https://learnedgeek.com/Blog",
+            new[] { "ASP.NET Core", "Tailwind CSS", "Markdown", "Admin Dashboard", "LinkedIn API" }
         )
     };
 }
