@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "designing-business-cards-with-inkscape",
+      "title": "Designing Business Cards with Inkscape",
+      "description": "I designed my own business cards using Inkscape, a free open-source tool. Print design turned out to be a completely different world from web design.",
+      "category": "Tech",
+      "tags": ["design", "inkscape", "print-design", "svg", "branding"],
+      "date": "2026-02-19",
+      "featured": false,
+      "image": "/img/posts/designing-business-cards-with-inkscape.svg",
+      "linkedInHook": "I designed my own business cards this weekend using Inkscape — a free, open-source tool.\n\nI'd been avoiding online template wizards because they never felt right. So I figured, I work with SVGs all the time for my blog... why not just build the cards myself?\n\nTurns out print design is a completely different world from web design. Things I had no clue about going in:\n\n- Bleed margins (your design extends past the cut line in case the trim is slightly off)\n- Safe zones (keep important stuff away from edges)\n- 300 DPI vs 96 DPI (screen resolution looks terrible in print)\n- Spot UV finishing requires a separate mask file — black where you want gloss, white everywhere else\n\nThe biggest surprise? Inkscape's XML editor. Being able to directly edit SVG attributes — opacity, letter-spacing, fills, node ordering — was faster than navigating menus. Felt like using browser DevTools but for print design.\n\nWould I recommend this approach? Only if you enjoy learning by doing. It took longer than a template wizard, but I understand print design now in a way I wouldn't have otherwise.\n\n#inkscape #design #printdesign #opensource #learningbydoing"
+    },
+    {
       "slug": "or-you-could-actually-learn",
       "title": "\"Or You Could Actually Learn CSS\"",
       "description": "Someone dropped the classic comment under my Tailwind post. It's the same false choice that shows up with every new tool: ORMs vs SQL, TypeScript vs JavaScript, AI vs coding. The premise — that using modern tools means you skipped the fundamentals — is almost always backwards.",

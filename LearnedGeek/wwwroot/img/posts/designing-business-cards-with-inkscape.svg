@@ -1,0 +1,104 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background -->
+  <rect width="800" height="450" fill="#1a1a2e"/>
+
+  <!-- Grid pattern for design/layout theme -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a2a3e" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid)" opacity="0.3"/>
+
+  <!-- Business card mockup (front) - left side -->
+  <g transform="translate(80, 120)">
+    <!-- Card shadow -->
+    <rect x="3" y="3" width="280" height="160" rx="8" fill="#000000" opacity="0.2"/>
+    <!-- Card background -->
+    <rect width="280" height="160" rx="8" fill="#ffffff"/>
+
+    <!-- Mini brain logo representation -->
+    <g transform="translate(40, 50)">
+      <!-- Left hemisphere (circuits) -->
+      <circle cx="15" cy="20" r="25" fill="none" stroke="#1a1a2e" stroke-width="2"/>
+      <line x1="10" y1="15" x2="20" y2="15" stroke="#1a1a2e" stroke-width="1.5"/>
+      <line x1="8" y1="22" x2="22" y2="22" stroke="#1a1a2e" stroke-width="1.5"/>
+      <line x1="12" y1="29" x2="18" y2="29" stroke="#1a1a2e" stroke-width="1.5"/>
+      <circle cx="8" cy="15" r="2" fill="#1a1a2e"/>
+      <circle cx="22" cy="22" r="2" fill="#1a1a2e"/>
+
+      <!-- Right hemisphere (binary) -->
+      <circle cx="40" cy="20" r="25" fill="none" stroke="#1a1a2e" stroke-width="2"/>
+      <text x="33" y="18" font-family="monospace" font-size="8" fill="#1a1a2e" font-weight="bold">101</text>
+      <text x="31" y="27" font-family="monospace" font-size="8" fill="#1a1a2e" font-weight="bold">0110</text>
+    </g>
+
+    <!-- Brand name representation -->
+    <text x="95" y="75" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1a1a2e">LEARNED<tspan fill="#8b5cf6">GEEK</tspan></text>
+    <text x="95" y="90" font-family="Arial, sans-serif" font-size="6" fill="#666666" letter-spacing="1">CURIOSITY DRIVEN. CUSTOM BUILT.</text>
+  </g>
+
+  <!-- Business card mockup (back) - right side -->
+  <g transform="translate(440, 120)">
+    <!-- Card shadow -->
+    <rect x="3" y="3" width="280" height="160" rx="8" fill="#000000" opacity="0.2"/>
+    <!-- Card background -->
+    <rect width="280" height="160" rx="8" fill="#f5f5f5"/>
+
+    <!-- Purple accent bar -->
+    <rect width="8" height="160" rx="8 0 0 8" fill="#8b5cf6"/>
+
+    <!-- Two column layout representation -->
+    <!-- Left column -->
+    <text x="25" y="40" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1a1a2e">Mark McArthey</text>
+    <text x="25" y="55" font-family="Arial, sans-serif" font-size="7" fill="#8b5cf6" font-weight="600">Software Consultant</text>
+    <text x="25" y="67" font-family="Arial, sans-serif" font-size="6" fill="#aaaaaa">LEARNED GEEK LLC</text>
+
+    <!-- Right column -->
+    <text x="160" y="35" font-family="Arial, sans-serif" font-size="7" fill="#333333">262-496-8978</text>
+    <text x="160" y="48" font-family="Arial, sans-serif" font-size="7" fill="#8b5cf6" font-weight="bold">(205) TXT-GEEK</text>
+    <text x="160" y="65" font-family="Arial, sans-serif" font-size="7" fill="#333333">markm@learnedgeek.com</text>
+    <text x="160" y="78" font-family="Arial, sans-serif" font-size="7" fill="#333333">learnedgeek.com</text>
+    <text x="160" y="91" font-family="Arial, sans-serif" font-size="7" fill="#333333">linkedin.com/in/mcarthey</text>
+
+    <!-- Bottom tagline -->
+    <line x1="25" y1="135" x2="255" y2="135" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="140" y="148" font-family="Arial, sans-serif" font-size="6" fill="#bbbbbb" text-anchor="middle" letter-spacing="0.5">CURIOSITY DRIVEN. CUSTOM BUILT.</text>
+  </g>
+
+  <!-- Inkscape XML editor representation - bottom -->
+  <g transform="translate(50, 320)">
+    <!-- Editor window -->
+    <rect width="700" height="90" rx="4" fill="#2d2d2d"/>
+
+    <!-- Title bar -->
+    <rect width="700" height="20" rx="4 4 0 0" fill="#3a3a3a"/>
+    <text x="10" y="14" font-family="monospace" font-size="10" fill="#cccccc">XML Editor - business-card.svg</text>
+
+    <!-- XML content -->
+    <text x="15" y="42" font-family="monospace" font-size="9" fill="#569cd6">&lt;text</text>
+    <text x="50" y="42" font-family="monospace" font-size="9" fill="#9cdcfe">id=</text>
+    <text x="70" y="42" font-family="monospace" font-size="9" fill="#ce9178">"tagline"</text>
+    <text x="125" y="42" font-family="monospace" font-size="9" fill="#9cdcfe">style=</text>
+    <text x="165" y="42" font-family="monospace" font-size="9" fill="#ce9178">"letter-spacing: 0.005px;"</text>
+    <text x="330" y="42" font-family="monospace" font-size="9" fill="#569cd6">&gt;</text>
+
+    <text x="15" y="58" font-family="monospace" font-size="9" fill="#569cd6">&lt;rect</text>
+    <text x="50" y="58" font-family="monospace" font-size="9" fill="#9cdcfe">id=</text>
+    <text x="70" y="58" font-family="monospace" font-size="9" fill="#ce9178">"accent-bar"</text>
+    <text x="145" y="58" font-family="monospace" font-size="9" fill="#9cdcfe">fill=</text>
+    <text x="175" y="58" font-family="monospace" font-size="9" fill="#ce9178">"#8b5cf6"</text>
+    <text x="235" y="58" font-family="monospace" font-size="9" fill="#569cd6">/&gt;</text>
+
+    <text x="15" y="74" font-family="monospace" font-size="9" fill="#569cd6">&lt;path</text>
+    <text x="50" y="74" font-family="monospace" font-size="9" fill="#9cdcfe">id=</text>
+    <text x="70" y="74" font-family="monospace" font-size="9" fill="#ce9178">"logo"</text>
+    <text x="110" y="74" font-family="monospace" font-size="9" fill="#9cdcfe">opacity=</text>
+    <text x="165" y="74" font-family="monospace" font-size="9" fill="#ce9178">"1"</text>
+    <text x="185" y="74" font-family="monospace" font-size="9" fill="#569cd6">/&gt;</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#ffffff" text-anchor="middle">Designing Business Cards</text>
+  <text x="400" y="80" font-family="Arial, sans-serif" font-size="18" fill="#8b5cf6" text-anchor="middle">with Inkscape</text>
+</svg>
