@@ -352,6 +352,20 @@ Give it a real try on a real project. Not a todo app. Something with actual desi
 
 The paradigm shift is worth it.
 
+## Update: "But What About AI-Generated Code?"
+
+After this post went up on LinkedIn, a reader raised an interesting concern: what happens when AI tools generate Tailwind? Won't you end up with inconsistent shades — `blue-500` in one component, `blue-600` in another — requiring some kind of "enforcer script" to keep things consistent?
+
+It's a fair worry, but here's the thing: **Tailwind's utility classes *are* the enforcer.**
+
+With raw CSS, an AI (or a tired developer at 2am) might write `color: #3b82f6` in one file and `color: #3a80f4` in another. Those are close enough to look intentional but different enough to bother a designer. There's nothing stopping it. The design system exists only in someone's head or a style guide nobody reads.
+
+With Tailwind, that can't happen. There is no `blue-523`. The token is `blue-500` or `blue-600` — discrete, named values from a constrained palette. If an AI generates `text-blue-500` in one component and `text-blue-600` in another, that's a two-step difference you can *see and grep for*. Try grepping for "slightly wrong hex values" in a raw CSS codebase.
+
+This is actually one of Tailwind's underappreciated strengths: it turns your design system into a compiler constraint. You can't accidentally drift because the vocabulary won't let you. The same way a strongly-typed language prevents you from passing a string where an integer belongs, Tailwind's finite set of utilities prevents you from inventing colors that don't exist in your system.
+
+So the enforcer script the commenter imagined? It's already running. It's called `tailwind.config.js`.
+
 ---
 
 *This post is part of a series on Tailwind CSS. See also: [Dynamic Classes and @layer Gotchas](/Blog/Post/tailwind-dynamic-classes-layer-gotchas) on handling dynamic class names and cascade layers, and [The v4 @source Directive Gotcha](/Blog/Post/tailwind-v4-source-directive-gotcha) on migrating from v3's content array.*
