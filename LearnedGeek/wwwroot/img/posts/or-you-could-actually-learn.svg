@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="left_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <linearGradient id="right_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="center_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#0891b2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bg_grad)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.04" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="50" x2="800" y2="50"/>
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="150" x2="800" y2="150"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="250" x2="800" y2="250"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="350" x2="800" y2="350"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="100" y1="0" x2="100" y2="450"/>
+    <line x1="200" y1="0" x2="200" y2="450"/>
+    <line x1="300" y1="0" x2="300" y2="450"/>
+    <line x1="400" y1="0" x2="400" y2="450"/>
+    <line x1="500" y1="0" x2="500" y2="450"/>
+    <line x1="600" y1="0" x2="600" y2="450"/>
+    <line x1="700" y1="0" x2="700" y2="450"/>
+  </g>
+
+  <!-- Left circle: Fundamentals -->
+  <circle cx="310" cy="225" r="130" fill="url(#left_grad)" opacity="0.15" stroke="#3b82f6" stroke-width="2" stroke-opacity="0.4"/>
+
+  <!-- Right circle: Modern Tools -->
+  <circle cx="490" cy="225" r="130" fill="url(#right_grad)" opacity="0.15" stroke="#8b5cf6" stroke-width="2" stroke-opacity="0.4"/>
+
+  <!-- Overlap highlight -->
+  <clipPath id="left_clip">
+    <circle cx="310" cy="225" r="130"/>
+  </clipPath>
+  <clipPath id="right_clip">
+    <circle cx="490" cy="225" r="130"/>
+  </clipPath>
+  <circle cx="490" cy="225" r="130" clip-path="url(#left_clip)" fill="url(#center_grad)" opacity="0.25"/>
+
+  <!-- Left label: FUNDAMENTALS -->
+  <text x="245" y="218" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#93c5fd" text-anchor="middle" letter-spacing="2">FUNDAMENTALS</text>
+
+  <!-- Left items -->
+  <text x="245" y="242" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">CSS · SQL · HTTP</text>
+  <text x="245" y="258" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Algorithms · DOM</text>
+
+  <!-- Right label: MODERN TOOLS -->
+  <text x="555" y="218" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#c4b5fd" text-anchor="middle" letter-spacing="2">MODERN TOOLS</text>
+
+  <!-- Right items -->
+  <text x="555" y="242" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Tailwind · ORMs · AI</text>
+  <text x="555" y="258" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">TypeScript · React</text>
+
+  <!-- Center overlap label -->
+  <text x="400" y="200" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#67e8f9" text-anchor="middle" letter-spacing="1">THE SWEET</text>
+  <text x="400" y="216" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#67e8f9" text-anchor="middle" letter-spacing="1">SPOT</text>
+
+  <!-- Plus sign in overlap -->
+  <line x1="390" y1="240" x2="410" y2="240" stroke="#22d3ee" stroke-width="3" stroke-linecap="round"/>
+  <line x1="400" y1="230" x2="400" y2="250" stroke="#22d3ee" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Title at top -->
+  <text x="400" y="55" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#f1f5f9" text-anchor="middle" letter-spacing="0.5">"Or You Could Actually Learn CSS"</text>
+
+  <!-- Subtitle -->
+  <text x="400" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748b" text-anchor="middle">The false choice between fundamentals and modern tools</text>
+
+  <!-- Bottom tagline -->
+  <text x="400" y="400" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle" font-style="italic">These things are not mutually exclusive.</text>
+
+  <!-- Arrows converging to center from outside -->
+  <!-- Left arrow -->
+  <line x1="100" y1="225" x2="165" y2="225" stroke="#3b82f6" stroke-width="2" stroke-opacity="0.5" stroke-linecap="round"/>
+  <polygon points="170,225 160,220 160,230" fill="#3b82f6" opacity="0.5"/>
+
+  <!-- Right arrow -->
+  <line x1="700" y1="225" x2="635" y2="225" stroke="#8b5cf6" stroke-width="2" stroke-opacity="0.5" stroke-linecap="round"/>
+  <polygon points="630,225 640,220 640,230" fill="#8b5cf6" opacity="0.5"/>
+
+  <!-- Small decorative dots -->
+  <circle cx="80" cy="120" r="2" fill="#3b82f6" opacity="0.3"/>
+  <circle cx="720" cy="130" r="2" fill="#8b5cf6" opacity="0.3"/>
+  <circle cx="90" cy="340" r="2" fill="#3b82f6" opacity="0.2"/>
+  <circle cx="710" cy="320" r="2" fill="#8b5cf6" opacity="0.2"/>
+  <circle cx="400" cy="430" r="2" fill="#06b6d4" opacity="0.3"/>
+</svg>

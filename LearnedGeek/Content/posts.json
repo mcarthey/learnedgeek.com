@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "or-you-could-actually-learn",
+      "title": "\"Or You Could Actually Learn CSS\"",
+      "description": "Someone dropped the classic comment under my Tailwind post. It's the same false choice that shows up with every new tool: ORMs vs SQL, TypeScript vs JavaScript, AI vs coding. The premise — that using modern tools means you skipped the fundamentals — is almost always backwards.",
+      "category": "Tech",
+      "tags": ["opinion", "tools", "career", "css", "tailwind", "ai"],
+      "date": "2026-02-14",
+      "featured": true,
+      "image": "/img/posts/or-you-could-actually-learn.svg",
+      "linkedInHook": "Someone commented on my Tailwind post: \"Or you could actually learn CSS.\"\n\nI've heard this before. So have you:\n\n• \"ORMs? Or you could actually learn SQL.\"\n• \"TypeScript? Or you could actually learn JavaScript.\"\n• \"AI tools? Or you could actually learn to code.\"\n\nThe implication: if you use the tool, you must not understand the thing underneath it.\n\nIn my experience, it's usually the opposite. I didn't switch to Tailwind because I couldn't write CSS. I switched because I'd written enough CSS to know where the pain points are.\n\nThe carpenter who understands wood grain isn't cheating by using a power saw. They're being efficient — and they'll notice when the saw makes a bad cut precisely because they understand the material.\n\nFundamentals and modern tools aren't mutually exclusive. They never were.",
+      "blueskyHook": "Someone commented on my Tailwind post: \"Or you could actually learn CSS.\"\n\nSame energy as \"ORMs? Or you could learn SQL\" and \"AI tools? Or you could learn to code.\"\n\nUsing modern tools doesn't mean you skipped the fundamentals. Usually it means the opposite:"
+    },
+    {
       "slug": "fixing-502-5-ancm-out-of-process-startup-failure",
       "title": "Fixing HTTP 502.5 — ANCM Out-Of-Process Startup Failure",
       "description": "You publish your ASP.NET Core app to shared hosting and get 502.5. The error page is useless. The actual fix: your new project defaults to InProcess but your application pool requires OutOfProcess. Two XML properties, two files, done.",
