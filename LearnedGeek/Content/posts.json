@@ -1,34 +1,91 @@
 {
   "posts": [
     {
-      "slug": "designing-business-cards-with-inkscape",
-      "title": "Designing Business Cards with Inkscape",
-      "description": "I designed my own business cards using Inkscape, a free open-source tool. Print design turned out to be a completely different world from web design.",
+      "slug": "eli5-memory-leaks",
+      "title": "ELI5: Why Do Programs Forget to Clean Up After Themselves?",
+      "description": "Your computer has a janitor that cleans up trash. But some things need to be thrown away immediately. Here's why programs leak memory — explained with restaurants and dishes.",
       "category": "Tech",
-      "tags": ["design", "inkscape", "print-design", "svg", "branding"],
-      "date": "2026-02-19",
+      "tags": [
+        "eli5",
+        "memory-leak",
+        "garbage-collection",
+        "programming",
+        "explainer",
+        "beginners"
+      ],
+      "date": "2026-10-10",
       "featured": false,
-      "image": "/img/posts/designing-business-cards-with-inkscape.svg",
-      "linkedInHook": "I designed my own business cards this weekend using Inkscape — a free, open-source tool.\n\nI'd been avoiding online template wizards because they never felt right. So I figured, I work with SVGs all the time for my blog... why not just build the cards myself?\n\nTurns out print design is a completely different world from web design. Things I had no clue about going in:\n\n- Bleed margins (your design extends past the cut line in case the trim is slightly off)\n- Safe zones (keep important stuff away from edges)\n- 300 DPI vs 96 DPI (screen resolution looks terrible in print)\n- Spot UV finishing requires a separate mask file — black where you want gloss, white everywhere else\n\nThe biggest surprise? Inkscape's XML editor. Being able to directly edit SVG attributes — opacity, letter-spacing, fills, node ordering — was faster than navigating menus. Felt like using browser DevTools but for print design.\n\nWould I recommend this approach? Only if you enjoy learning by doing. It took longer than a template wizard, but I understand print design now in a way I wouldn't have otherwise.\n\n#inkscape #design #printdesign #opensource #learningbydoing"
+      "image": "/img/posts/eli5-memory-leaks.svg",
+      "linkedInHook": "Why do programs leak memory?\n\nImagine running a restaurant kitchen. When customers finish eating, dirty dishes pile up.\n\nOption 1: Stack them and wait for the dishwasher to clean them in bulk\nOption 2: Wash each dish immediately\n\nMost programming languages work like Option 1. They have a \"dishwasher\" called the garbage collector (GC).\n\nThat works great... until you get really busy.\n\nCustomers keep coming. Dishes keep piling up. The dishwasher can't keep up.\n\nEventually, you run out of clean dishes. The kitchen grinds to a halt.\n\nThis is a memory leak.\n\nIn programming, there are two types of trash:\n\n1. Regular trash (memory) - Paper plates. Can wait for the GC.\n2. Special trash (resources) - Dishes with food still on them. Need immediate cleanup.\n\nFile handles, network connections, database connections — these are \"dishes.\" If you don't clean them immediately, you run out.\n\nThe fix: Explicit cleanup. In C#, that's `using` statements.\n\nOur production leak: We forgot to \"wash our dishes\" for 2 years. Five `using` statements fixed it.\n\nThe dishwasher isn't magic. Sometimes you have to wash your own dishes.\n\n#programming #eli5 #memoryleak #explained"
     },
     {
-      "slug": "or-you-could-actually-learn",
-      "title": "\"Or You Could Actually Learn CSS\"",
-      "description": "Someone dropped the classic comment under my Tailwind post. It's the same false choice that shows up with every new tool: ORMs vs SQL, TypeScript vs JavaScript, AI vs coding. The premise — that using modern tools means you skipped the fundamentals — is almost always backwards.",
+      "slug": "memory-leak-part-3-web-api-disposal",
+      "title": "Web API's Hidden Disposal Trap: HttpResponseMessage vs IHttpActionResult",
+      "description": "Returning Task<HttpResponseMessage> from Web API controllers leaks memory. We had 200+ controllers doing it. Here's the fix.",
       "category": "Tech",
-      "tags": ["opinion", "tools", "career", "css", "tailwind", "ai"],
-      "date": "2026-02-14",
-      "featured": true,
-      "image": "/img/posts/or-you-could-actually-learn.svg",
-      "linkedInHook": "Someone commented on my Tailwind post: \"Or you could actually learn CSS.\"\n\nI've heard this before. So have you:\n\n• \"ORMs? Or you could actually learn SQL.\"\n• \"TypeScript? Or you could actually learn JavaScript.\"\n• \"AI tools? Or you could actually learn to code.\"\n\nThe implication: if you use the tool, you must not understand the thing underneath it.\n\nIn my experience, it's usually the opposite. I didn't switch to Tailwind because I couldn't write CSS. I switched because I'd written enough CSS to know where the pain points are.\n\nThe carpenter who understands wood grain isn't cheating by using a power saw. They're being efficient — and they'll notice when the saw makes a bad cut precisely because they understand the material.\n\nFundamentals and modern tools aren't mutually exclusive. They never were.",
-      "blueskyHook": "Someone commented on my Tailwind post: \"Or you could actually learn CSS.\"\n\nSame energy as \"ORMs? Or you could learn SQL\" and \"AI tools? Or you could learn to code.\"\n\nUsing modern tools doesn't mean you skipped the fundamentals. Usually it means the opposite:"
+      "tags": [
+        "aspnet",
+        "web-api",
+        "memory-leak",
+        "ihttpactionresult",
+        "best-practices",
+        "performance"
+      ],
+      "date": "2026-10-05",
+      "featured": false,
+      "image": "/img/posts/memory-leak-part-3.svg",
+      "linkedInHook": "Pop quiz: Which Web API controller method leaks memory?\n\nMethod A:\n```csharp\npublic async Task<HttpResponseMessage> GetData()\n{\n    var result = await _service.GetData();\n    return Request.CreateResponse(HttpStatusCode.OK, result);\n}\n```\n\nMethod B:\n```csharp\npublic async Task<IHttpActionResult> GetData()\n{\n    var result = await _service.GetData();\n    return Ok(result);\n}\n```\n\nAnswer: Method A leaks. Badly.\n\nWe had 200+ controllers following this pattern. Every single one leaked HttpResponseMessage objects.\n\nThe problem: Web API's disposal contract differs by return type.\n\n• Return IHttpActionResult → Web API disposes for you ✅\n• Return HttpResponseMessage → You must dispose manually ⚠️\n\nThis isn't documented clearly. Microsoft's own examples show the leaking pattern.\n\nUnder load (100+ req/sec):\n• Before fix: 2,257 HttpResponseMessage instances leaked\n• After fix: < 100 instances\n\nProduction impact:\n• 12 instances → 6 instances (50% cost reduction)\n• Zero timeout errors\n• Stable memory\n\nThe fix: Change return types to IHttpActionResult. Use Ok(), NotFound(), ResponseMessage().\n\nTwo years of pain. One return type change.\n\n#aspnet #webapi #dotnet #performance"
+    },
+    {
+      "slug": "memory-leak-part-2-idisposable-fundamentals",
+      "title": "IDisposable: What I Misunderstood for 30 Years",
+      "description": "Objects don't dispose themselves when they go out of scope. I believed they did. For three decades. Here's why C# works this way — and why it matters.",
+      "category": "Tech",
+      "tags": [
+        "csharp",
+        "dotnet",
+        "idisposable",
+        "memory-management",
+        "fundamentals",
+        "best-practices"
+      ],
+      "date": "2026-09-30",
+      "featured": false,
+      "image": "/img/posts/memory-leak-part-2.svg",
+      "linkedInHook": "After 30 years of C# development, I just learned that objects don't dispose themselves when they go out of scope.\n\nI thought they did. So did most developers I know.\n\nQuick quiz: What happens when this method exits?\n\n```csharp\nvoid ProcessData()\n{\n    var stream = new FileStream(\"data.txt\", FileMode.Open);\n    var reader = new StreamReader(stream);\n    var content = reader.ReadToEnd();\n    // Are stream and reader disposed here?\n}\n```\n\nIf you answered \"yes,\" you're wrong. And you're in good company.\n\nWhat actually happens:\n✅ Local variables go out of scope (stack cleanup)\n✅ References to objects removed\n❌ Objects themselves NOT disposed\n❌ File handles remain open\n⏰ Eventually GC collects them\n🔥 Or you run out of file handles first\n\nC# has three types of cleanup:\n1. Stack cleanup (automatic, immediate)\n2. Heap cleanup (automatic, eventually)\n3. Resource cleanup (manual, explicit)\n\nThe fix: `using` statements. Always.\n\nOne misconception. Two years of production leaks.\n\n#csharp #dotnet #fundamentals #memoryleak"
+    },
+    {
+      "slug": "memory-leak-part-1-the-investigation",
+      "title": "The Two-Year Memory Leak: How I Found Five Missing `using` Statements",
+      "description": "Our high-volume API threw timeouts for two years. External consultants missed it. Infrastructure upgrades didn't fix it. Then I found five missing `using` statements.",
+      "category": "Tech",
+      "tags": [
+        "csharp",
+        "dotnet",
+        "memory-leak",
+        "debugging",
+        "performance",
+        "production"
+      ],
+      "date": "2026-09-25",
+      "featured": false,
+      "image": "/img/posts/memory-leak-part-1.svg",
+      "linkedInHook": "Our production API leaked memory for 2 years. External consultants reviewed the code. \"Looks fine,\" they said.\n\nWe threw more hardware at it. The problem persisted.\n\nThen one Friday, my boss mentioned he was \"super excited\" about diagnostics I'd been running. I hadn't told him I'd found the solution yet.\n\nThat weekend, I found all five memory leaks. By Monday, the fix was deployed.\n\nThe investigation:\n- Visual Studio profiler showed 194k objects → 5.5M objects in 30 seconds\n- HttpContext: 285,590 instances (should be < 100)\n- HttpRequestMessage: 2,289 instances\n- HttpResponseMessage: 2,257 instances\n\nEvery leak followed the same pattern: IDisposable objects created but never disposed.\n\nTwo years of production pain. Five `using` statements.\n\n#csharp #dotnet #debugging #performance"
     },
     {
       "slug": "fixing-502-5-ancm-out-of-process-startup-failure",
       "title": "Fixing HTTP 502.5 — ANCM Out-Of-Process Startup Failure",
       "description": "You publish your ASP.NET Core app to shared hosting and get 502.5. The error page is useless. The actual fix: your new project defaults to InProcess but your application pool requires OutOfProcess. Two XML properties, two files, done.",
       "category": "Tech",
-      "tags": ["aspnet-core", "iis", "deployment", "hosting", "dotnet", "troubleshooting", "shared-hosting"],
+      "tags": [
+        "aspnet-core",
+        "iis",
+        "deployment",
+        "hosting",
+        "dotnet",
+        "troubleshooting",
+        "shared-hosting"
+      ],
       "date": "2026-09-20",
       "featured": true,
       "image": "/img/posts/fixing-502-5-ancm-out-of-process-startup-failure.svg",
@@ -40,7 +97,15 @@
       "title": "Adding Syntax Highlighting to a Blog (The Easy Way)",
       "description": "For months, the code blocks on this blog were monochrome. White text on dark. Then Prism.js happened—three lines in the HTML, a CSS tweak, and fifteen minutes later every language has color.",
       "category": "Tech",
-      "tags": ["javascript", "css", "blogging", "prism", "syntax-highlighting", "web-development", "markdown"],
+      "tags": [
+        "javascript",
+        "css",
+        "blogging",
+        "prism",
+        "syntax-highlighting",
+        "web-development",
+        "markdown"
+      ],
       "date": "2026-09-18",
       "featured": true,
       "image": "/img/posts/adding-syntax-highlighting-with-prismjs.svg",
@@ -52,7 +117,14 @@
       "title": "I Built a Robot to Grade My Students (Kind Of)",
       "description": "Teaching database programming means checking 30 GitHub repos weekly. Manual review was killing me. So I built a dashboard that scans for build status, TODOs, student questions, and code quality—automatically.",
       "category": "Tech",
-      "tags": ["teaching", "github-actions", "automation", "github-classroom", "sonarcloud", "education"],
+      "tags": [
+        "teaching",
+        "github-actions",
+        "automation",
+        "github-classroom",
+        "sonarcloud",
+        "education"
+      ],
       "date": "2026-09-15",
       "featured": true,
       "image": "/img/posts/grading-dashboard-github-classroom.svg",
@@ -60,71 +132,115 @@
       "blueskyHook": "Teaching means checking 30 GitHub repos weekly. Click, check, repeat, forget where I was, start over.\n\nBuilt a dashboard that scans automatically. Grading: 4 hours → 1 hour. And I catch students who need help:"
     },
     {
-      "slug": "why-databases-need-all-this-ceremony",
-      "title": "Why Databases Need All This Ceremony (Data Explained)",
-      "description": "Developers talk about databases like they're handling explosives. Migrations. Backups. Environment separation. From the outside, it looks like paranoia. Here's why the ceremony exists.",
+      "slug": "seo-oops-recovery-guide",
+      "title": "SEO Oops Recovery: When You Accidentally Expose Everything",
+      "description": "Your admin dashboard is in Google. Your API key is in git history. That angry TODO comment is now public. Here's the emergency recovery guide.",
       "category": "Tech",
-      "tags": ["databases", "eli5", "explainer", "beginners", "data", "testing", "backups", "encryption"],
-      "date": "2026-06-10",
+      "tags": [
+        "seo",
+        "git",
+        "security",
+        "robots-txt",
+        "recovery",
+        "troubleshooting"
+      ],
+      "date": "2026-09-10",
       "featured": true,
-      "image": "/img/posts/why-databases-need-all-this-ceremony.svg",
-      "linkedInHook": "Code is like a recipe. If it's wrong, you fix it. No cake was harmed.\n\nData is like the cake itself. Once you've baked it wrong, you can't unbake it. The eggs are already in there.\n\nThis is why developers treat databases like explosives. Migrations. Backups. Testing against real databases. Environment separation.\n\nThe ceremony exists because data changes can't be easily undone. And data is the actual reason software exists.",
-      "blueskyHook": "Code is a recipe—fix it if it's wrong, no harm done.\n\nData is the cake. Bake it wrong and you can't unbake it.\n\nThat's why databases get all the ceremony. Explained without jargon:"
+      "image": "/img/posts/seo-oops-recovery-guide.svg",
+      "linkedInHook": "Every developer has that moment of cold sweat when they realize something that shouldn't be public is now indexed by Google. Or worse, that angry TODO comment in a commit message.\n\nI've been there. Here's the recovery playbook I wish I'd had.",
+      "blueskyHook": "That cold sweat when you realize your admin dashboard is in Google. Or that angry TODO is now public.\n\nThe emergency recovery playbook:"
     },
     {
-      "slug": "how-ai-assistants-actually-work",
-      "title": "How AI Assistants Actually Work (The Clever Parrot Explained)",
-      "description": "You type a question into ChatGPT. Seconds later, a helpful response appears. Is it thinking? Searching? Neither. It's predicting—and understanding that changes everything.",
+      "slug": "encrypted-configuration-pattern",
+      "title": "Database-Backed Encrypted Configuration: Stop Committing Secrets",
+      "description": "I once committed an API key to a public repo at 3 AM. That incident taught me secrets in source control are a when problem, not an if problem. Here's the pattern that makes the mistake impossible.",
       "category": "Tech",
-      "tags": ["ai", "eli5", "explainer", "beginners", "llm", "chatgpt", "machine-learning"],
-      "date": "2026-03-25",
+      "tags": [
+        "security",
+        "encryption",
+        "dotnet",
+        "configuration",
+        "aes-gcm",
+        "patterns"
+      ],
+      "date": "2026-09-05",
       "featured": true,
-      "image": "/img/posts/how-ai-assistants-actually-work.svg",
-      "linkedInHook": "Imagine a parrot that has listened to every book, article, and webpage ever written. Trillions of patterns. It doesn't understand any of it—but it has an incredible ear for how language flows.\n\nThat's roughly how AI assistants work. They don't 'know' things. They predict what sounds right.\n\nThis is why they can be confidently wrong. Why they're great at drafts but need verification. Why expertise matters more, not less.\n\nUnderstanding the mechanism helps you use the tool better.",
-      "blueskyHook": "AI assistants don't \"know\" things. They predict what sounds right—like a parrot that's read the entire internet.\n\nUnderstanding this changes how you use them:"
+      "image": "/img/posts/encrypted-configuration-pattern.svg",
+      "linkedInHook": "I once committed an API key to a public GitHub repo. It was 3 AM. The deploy was \"almost done.\"\n\nThree hours later, my inbox was full of AWS alerts.\n\nThat incident taught me: secrets in source control are a WHEN problem, not an IF problem.\n\nSo I built database-backed configuration with AES-256-GCM encryption. The key file is gitignored. Secrets are encrypted at rest. Your code uses IConfiguration normally—it just works.\n\nPart 2 of the Enterprise Database Patterns series.",
+      "blueskyHook": "3 AM. Committed an API key to a public repo. Three hours later, AWS alerts everywhere.\n\nSecrets in source control are a WHEN problem. Here's the encrypted config pattern that makes the mistake impossible:"
     },
     {
-      "slug": "how-https-keeps-you-safe",
-      "title": "How HTTPS Keeps You Safe (The Lock Icon Explained)",
-      "description": "You've seen the padlock in your browser. You know some sites are 'secure.' But what does it actually mean? What's being locked? Here's HTTPS explained without the jargon.",
+      "slug": "codecov-error-state-debugging",
+      "title": "When Codecov Says 'Error' But Your Upload Succeeded",
+      "description": "Your CI shows green checkmarks. The upload returned 200. But Codecov reports 0 files and 0% coverage. Here's how to debug it—and why deleting your config file might be the fix.",
       "category": "Tech",
-      "tags": ["security", "eli5", "explainer", "beginners", "https", "ssl", "certificates", "encryption"],
-      "date": "2026-06-04",
+      "tags": [
+        "codecov",
+        "ci-cd",
+        "github-actions",
+        "coverage",
+        "debugging",
+        "dotnet"
+      ],
+      "date": "2026-08-31",
       "featured": true,
-      "image": "/img/posts/how-https-keeps-you-safe.svg",
-      "linkedInHook": "HTTP is a postcard. Anyone who handles it can read it.\n\nHTTPS is a sealed envelope. Only the recipient can open it.\n\nBut there's more: how do you know you're actually talking to your bank, not someone pretending?\n\nCertificates. Trusted authorities. The infrastructure of trust that makes online banking possible.\n\nThe padlock means your data is encrypted in transit and the website's identity was verified. It doesn't mean the website is trustworthy—just that the envelope is sealed.",
-      "blueskyHook": "HTTP = postcard (anyone can read it)\nHTTPS = sealed envelope (only recipient can open)\n\nBut what does that padlock actually mean? Here's the explainer:"
+      "image": "/img/posts/codecov-error-state-debugging.svg",
+      "linkedInHook": "I keep running into this pattern with developer tooling: the 'improvements' that silently break things. This week it was Codecov. I added a config file to make things better, and it silently broke everything. The fix was deleting the config entirely.\n\nIt got me thinking about how often we add complexity thinking we're being thorough, when the simpler default would have worked fine.",
+      "blueskyHook": "Codecov shows \"Error\" but upload returned 200. 0 files, 0% coverage.\n\nAdded a config file to improve things. It silently broke everything. Fix: delete the config:"
     },
     {
-      "slug": "how-google-finds-websites",
-      "title": "How Google Finds Websites (Search Engines Explained)",
-      "description": "You type something into Google. Billions of pages exist. How does it know about them? How does it decide which ten to show? Here's search engines explained for everyone.",
+      "slug": "modern-database-testing-with-xunit-fixtures",
+      "title": "Modern Database Testing: Why InMemory Databases Lie To You",
+      "description": "My test passed locally and caught fire in staging. That's when I learned UseInMemoryDatabase() is like a friend who tells you that outfit looks great when it definitely does not.",
       "category": "Tech",
-      "tags": ["seo", "eli5", "explainer", "beginners", "google", "search", "indexing", "ranking"],
-      "date": "2026-02-06",
+      "tags": [
+        "testing",
+        "xunit",
+        "ef-core",
+        "sql-server",
+        "respawn",
+        "integration-testing"
+      ],
+      "date": "2026-08-26",
       "featured": true,
-      "image": "/img/posts/how-google-finds-websites.svg",
-      "linkedInHook": "Google uses robot spiders that visit websites by following links. Like exploring a cave system—enter one cave, find tunnels to others, keep going forever.\n\nThen it indexes everything—writes a summary for each page and files it in a massive catalog.\n\nWhen you search, it doesn't search the internet. It searches its catalog. And uses hundreds of factors to decide which pages deserve the top spots.\n\nSEO isn't manipulation. It's communication—helping Google understand what your content is about.",
-      "blueskyHook": "Google doesn't search the internet. It searches its catalog OF the internet.\n\nRobot spiders, indexing, ranking—explained for everyone:"
+      "image": "/img/posts/modern-database-testing-with-xunit-fixtures.svg",
+      "linkedInHook": "The test passed. Ship it, right?\n\nThen I deployed to staging and watched everything catch fire. The LINQ query that worked against UseInMemoryDatabase() generated SQL that SQL Server refused to execute.\n\nInMemory databases lie to you. They're fast and convenient, like a friend who tells you that outfit looks great when it definitely does not.\n\nThe fix: real SQL Server + Respawn. ~20ms resets instead of ~1000ms. When tests pass now, I actually believe them.\n\nPart 1 of the Enterprise Database Patterns series.",
+      "blueskyHook": "Test passed. Deployed. Staging caught fire.\n\nUseInMemoryDatabase() lies to you. Like a friend who says that outfit looks great when it doesn't.\n\nReal SQL Server + Respawn. ~20ms resets. Tests I actually believe:"
     },
     {
-      "slug": "how-real-time-maps-work",
-      "title": "How Real-Time Maps Actually Work (No Code Required)",
-      "description": "You open Uber. You see your driver moving on the map. How? How does your phone know where someone else's phone is, right now? Here's the technology explained for everyone.",
+      "slug": "blazor-wasm-cloudflare-caching-gotcha",
+      "title": "Blazor WASM + Cloudflare: The Caching Gotcha That Breaks Everything",
+      "description": "Your Blazor WASM app works locally but shows 404s for .wasm files after deployment. Private browsing doesn't help. Different browsers give different results. Here's why CDN edge caching is the invisible culprit.",
       "category": "Tech",
-      "tags": ["real-time", "eli5", "explainer", "beginners", "websocket", "signalr", "maps", "technology"],
-      "date": "2026-08-06",
+      "tags": [
+        "blazor",
+        "webassembly",
+        "cloudflare",
+        "caching",
+        "dotnet",
+        "debugging",
+        "cdn"
+      ],
+      "date": "2026-08-21",
       "featured": true,
-      "image": "/img/posts/how-real-time-maps-work.svg",
-      "linkedInHook": "Regular websites are like calling someone, asking a question, getting an answer, and hanging up. Every time you need something, you call again.\n\nWebSockets are like staying on the line. When either of you has something to say, you just talk.\n\nSignalR is the operator who keeps the connection alive and sends messenger pigeons as backup.\n\nLeaflet is the artist who draws the map.\n\nThat's how your Uber driver's little icon moves across your screen in real-time.",
-      "blueskyHook": "Ever wonder how Uber shows your driver moving in real-time?\n\nWebSockets, SignalR, Leaflet—explained with zero code, just analogies:"
+      "image": "/img/posts/blazor-wasm-cloudflare-caching-gotcha.svg",
+      "linkedInHook": "Your Blazor WASM app works perfectly. You deploy an update. Now users get 404 errors for .wasm files.\n\nPrivate browsing doesn't fix it. Different browsers give different results. Chrome works, Opera doesn't. VPNs change everything.\n\nThe culprit: Cloudflare cached your dotnet.boot.js manifest. You deleted the old .wasm files. The CDN is serving users a shopping list for groceries you threw away.\n\nThe fix: Cache-Control: no-cache for dotnet.boot.js and blazor.webassembly.js.\n\nTwo lines in web.config. Hours of debugging avoided.",
+      "blueskyHook": "Blazor WASM works locally. Deploy to Cloudflare. Now random 404s on .wasm files.\n\nPrivate browsing doesn't help. The culprit is invisible. Here's what's happening:"
     },
     {
       "slug": "signalr-real-time-location-tracking",
       "title": "Making SignalR Connections That Don't Give Up",
       "description": "SignalR reconnects automatically—until it doesn't. Here's how to build resilient real-time connections with exponential backoff and HTTP polling fallback, so your map never freezes.",
       "category": "Tech",
-      "tags": ["signalr", "websocket", "blazor", "real-time", "dotnet", "mobile", "resilience"],
+      "tags": [
+        "signalr",
+        "websocket",
+        "blazor",
+        "real-time",
+        "dotnet",
+        "mobile",
+        "resilience"
+      ],
       "date": "2026-08-16",
       "featured": true,
       "image": "/img/posts/signalr-real-time-location-tracking.svg",
@@ -136,7 +252,15 @@
       "title": "When Your Map Library Doesn't Speak C#",
       "description": "Leaflet.js is the best mapping library on the web. Blazor speaks C#. Making them talk requires a clean interop boundary—here's the pattern that finally made it work.",
       "category": "Tech",
-      "tags": ["blazor", "javascript", "leaflet", "maps", "webassembly", "interop", "dotnet"],
+      "tags": [
+        "blazor",
+        "javascript",
+        "leaflet",
+        "maps",
+        "webassembly",
+        "interop",
+        "dotnet"
+      ],
       "date": "2026-08-11",
       "featured": true,
       "image": "/img/posts/leaflet-blazor-javascript-interop.svg",
@@ -144,23 +268,40 @@
       "blueskyHook": "Leaflet speaks JavaScript. Blazor speaks C#. Making them work together was like arranging a conversation between strangers at a wedding.\n\nThe pattern that finally worked:"
     },
     {
-      "slug": "blazor-wasm-cloudflare-caching-gotcha",
-      "title": "Blazor WASM + Cloudflare: The Caching Gotcha That Breaks Everything",
-      "description": "Your Blazor WASM app works locally but shows 404s for .wasm files after deployment. Private browsing doesn't help. Different browsers give different results. Here's why CDN edge caching is the invisible culprit.",
+      "slug": "how-real-time-maps-work",
+      "title": "How Real-Time Maps Actually Work (No Code Required)",
+      "description": "You open Uber. You see your driver moving on the map. How? How does your phone know where someone else's phone is, right now? Here's the technology explained for everyone.",
       "category": "Tech",
-      "tags": ["blazor", "webassembly", "cloudflare", "caching", "dotnet", "debugging", "cdn"],
-      "date": "2026-08-21",
+      "tags": [
+        "real-time",
+        "eli5",
+        "explainer",
+        "beginners",
+        "websocket",
+        "signalr",
+        "maps",
+        "technology"
+      ],
+      "date": "2026-08-06",
       "featured": true,
-      "image": "/img/posts/blazor-wasm-cloudflare-caching-gotcha.svg",
-      "linkedInHook": "Your Blazor WASM app works perfectly. You deploy an update. Now users get 404 errors for .wasm files.\n\nPrivate browsing doesn't fix it. Different browsers give different results. Chrome works, Opera doesn't. VPNs change everything.\n\nThe culprit: Cloudflare cached your dotnet.boot.js manifest. You deleted the old .wasm files. The CDN is serving users a shopping list for groceries you threw away.\n\nThe fix: Cache-Control: no-cache for dotnet.boot.js and blazor.webassembly.js.\n\nTwo lines in web.config. Hours of debugging avoided.",
-      "blueskyHook": "Blazor WASM works locally. Deploy to Cloudflare. Now random 404s on .wasm files.\n\nPrivate browsing doesn't help. The culprit is invisible. Here's what's happening:"
+      "image": "/img/posts/how-real-time-maps-work.svg",
+      "linkedInHook": "Regular websites are like calling someone, asking a question, getting an answer, and hanging up. Every time you need something, you call again.\n\nWebSockets are like staying on the line. When either of you has something to say, you just talk.\n\nSignalR is the operator who keeps the connection alive and sends messenger pigeons as backup.\n\nLeaflet is the artist who draws the map.\n\nThat's how your Uber driver's little icon moves across your screen in real-time.",
+      "blueskyHook": "Ever wonder how Uber shows your driver moving in real-time?\n\nWebSockets, SignalR, Leaflet—explained with zero code, just analogies:"
     },
     {
       "slug": "m3e-design-for-field-workers",
       "title": "Material 3 Expressive for Field Workers: Designing for Work Gloves and Sunlight",
       "description": "M3E's 46-study research was about consumer apps. But what about people wearing work gloves, squinting in sunlight, who need to clock in NOW? Here's how we adapted Material 3 for blue-collar reality.",
       "category": "Tech",
-      "tags": ["mobile", "ux", "material-design", "m3e", "blazor", "maui", "accessibility"],
+      "tags": [
+        "mobile",
+        "ux",
+        "material-design",
+        "m3e",
+        "blazor",
+        "maui",
+        "accessibility"
+      ],
       "date": "2026-08-01",
       "featured": true,
       "image": "/img/posts/m3e-design-for-field-workers.svg",
@@ -172,7 +313,15 @@
       "title": "The Floating Card Pattern: Device-Agnostic Mobile Design",
       "description": "Android fragmentation is real—different phones have wildly different system chrome. Instead of fighting safe-area calculations, we made the system UI part of our design.",
       "category": "Tech",
-      "tags": ["mobile", "css", "android", "ux", "blazor", "maui", "responsive"],
+      "tags": [
+        "mobile",
+        "css",
+        "android",
+        "ux",
+        "blazor",
+        "maui",
+        "responsive"
+      ],
       "date": "2026-07-27",
       "featured": true,
       "image": "/img/posts/floating-card-pattern-device-agnostic-design.svg",
@@ -184,7 +333,14 @@
       "title": "Drawer vs. Bottom Nav: A UX Decision Framework",
       "description": "We started with a hamburger menu. Three months later, we ripped it out. Here's the decision framework that made the choice obvious—and might save you the same refactoring.",
       "category": "Tech",
-      "tags": ["mobile", "ux", "navigation", "material-design", "blazor", "accessibility"],
+      "tags": [
+        "mobile",
+        "ux",
+        "navigation",
+        "material-design",
+        "blazor",
+        "accessibility"
+      ],
       "date": "2026-07-22",
       "featured": true,
       "image": "/img/posts/drawer-vs-bottom-nav-ux-framework.svg",
@@ -196,7 +352,14 @@
       "title": "The Profile Avatar Navigation Pattern: Your Face is Your Settings",
       "description": "Settings is important but shouldn't steal prime thumb-zone real estate. Put a profile avatar in the header—visible on every page, leading to settings when tapped.",
       "category": "Tech",
-      "tags": ["mobile", "ux", "navigation", "patterns", "blazor", "accessibility"],
+      "tags": [
+        "mobile",
+        "ux",
+        "navigation",
+        "patterns",
+        "blazor",
+        "accessibility"
+      ],
       "date": "2026-07-17",
       "featured": true,
       "image": "/img/posts/profile-avatar-navigation-pattern.svg",
@@ -208,7 +371,14 @@
       "title": "Blueprint Theme: Construction Industry Visual Identity",
       "description": "Generic business app aesthetics don't resonate with field workers. They spend their careers turning blueprints into reality—so we made our app look like one.",
       "category": "Tech",
-      "tags": ["mobile", "ux", "design", "css", "branding", "construction"],
+      "tags": [
+        "mobile",
+        "ux",
+        "design",
+        "css",
+        "branding",
+        "construction"
+      ],
       "date": "2026-07-12",
       "featured": true,
       "image": "/img/posts/blueprint-theme-construction-industry-visual-identity.svg",
@@ -220,7 +390,14 @@
       "title": "Mobile CSS Micro-Fixes: One-Liners That Make Web Apps Feel Native",
       "description": "A running collection of CSS one-liners that fix the hundred tiny paper cuts making your mobile web app feel 'off' compared to native apps.",
       "category": "Tech",
-      "tags": ["mobile", "css", "ux", "web-development", "blazor", "pwa"],
+      "tags": [
+        "mobile",
+        "css",
+        "ux",
+        "web-development",
+        "blazor",
+        "pwa"
+      ],
       "date": "2026-07-07",
       "featured": true,
       "image": "/img/posts/mobile-css-micro-fixes.svg",
@@ -232,7 +409,14 @@
       "title": "MAUI Fast Deployment and Wireless Debugging: Why Your App Crashes on Launch",
       "description": "The app works via USB. It works in the emulator. Switch to wireless debugging and it crashes instantly. Here's why Fast Deployment is the culprit—and the two-line fix.",
       "category": "Tech",
-      "tags": ["maui", "android", "debugging", "dotnet", "mobile", "troubleshooting"],
+      "tags": [
+        "maui",
+        "android",
+        "debugging",
+        "dotnet",
+        "mobile",
+        "troubleshooting"
+      ],
       "date": "2026-07-02",
       "featured": true,
       "image": "/img/posts/maui-fast-deployment-wireless-debugging-crash.svg",
@@ -244,7 +428,13 @@
       "title": "VS Code File Watchers and .NET Build Locks: The Mystery Build Failure",
       "description": "Your .NET build fails randomly with 'file is locked.' Sometimes it works. Sometimes it doesn't. The culprit: VS Code is watching your bin/ folder.",
       "category": "Tech",
-      "tags": ["vscode", "dotnet", "debugging", "build", "troubleshooting"],
+      "tags": [
+        "vscode",
+        "dotnet",
+        "debugging",
+        "build",
+        "troubleshooting"
+      ],
       "date": "2026-06-27",
       "featured": true,
       "image": "/img/posts/vscode-file-watcher-build-locks.svg",
@@ -256,7 +446,16 @@
       "title": "ELI5: Why Your Database Needs Colored Folders",
       "description": "You survived the 5-part schema-aware migrations deep dive. This is the explain-it-to-your-mom version. Apartment buildings, colored folders, and why the label maker keeps breaking.",
       "category": "Tech",
-      "tags": ["ef-core", "dotnet", "sql-server", "migrations", "multi-tenant", "eli5", "explainer", "beginners"],
+      "tags": [
+        "ef-core",
+        "dotnet",
+        "sql-server",
+        "migrations",
+        "multi-tenant",
+        "eli5",
+        "explainer",
+        "beginners"
+      ],
       "date": "2026-06-26",
       "featured": true,
       "image": "/img/posts/eli5-schema-aware-migrations.svg",
@@ -268,7 +467,15 @@
       "title": "The Design-Time vs Runtime Mental Model",
       "description": "After four blog posts debugging schema issues, I finally understood why EF Core schema handling is confusing: it's actually two separate systems. Design-time generates artifacts. Runtime applies configuration. Once you see the split, everything clicks.",
       "category": "Tech",
-      "tags": ["ef-core", "dotnet", "sql-server", "migrations", "multi-tenant", "architecture", "mental-model"],
+      "tags": [
+        "ef-core",
+        "dotnet",
+        "sql-server",
+        "migrations",
+        "multi-tenant",
+        "architecture",
+        "mental-model"
+      ],
       "date": "2026-06-25",
       "featured": true,
       "image": "/img/posts/schema-aware-ef-core-migrations-part-5.svg",
@@ -280,7 +487,14 @@
       "title": "Writing Technical Content When You're Too Tired to Be Funny",
       "description": "It's hour 6 of debugging. The bug is fixed. This is not the time to write something entertaining—but it is the perfect time to write something useful. Here's the two-pass approach to technical blogging.",
       "category": "Writing",
-      "tags": ["writing", "blogging", "process", "debugging", "humor", "craft"],
+      "tags": [
+        "writing",
+        "blogging",
+        "process",
+        "debugging",
+        "humor",
+        "craft"
+      ],
       "date": "2026-06-24",
       "featured": true,
       "image": "/img/posts/writing-technical-content-when-debugging.svg",
@@ -292,7 +506,14 @@
       "title": "The Model Cache Key Factory: Preventing False PendingModelChangesWarning",
       "description": "EF Core kept warning about pending model changes that didn't exist. The default model cache key ignores schema differences, causing false mismatches. Here's how IModelCacheKeyFactory fixes it.",
       "category": "Tech",
-      "tags": ["ef-core", "dotnet", "sql-server", "migrations", "caching", "multi-tenant"],
+      "tags": [
+        "ef-core",
+        "dotnet",
+        "sql-server",
+        "migrations",
+        "caching",
+        "multi-tenant"
+      ],
       "date": "2026-06-22",
       "featured": true,
       "image": "/img/posts/schema-aware-ef-core-migrations-part-4.svg",
@@ -304,7 +525,16 @@
       "title": "Hardening Schema-Aware Migrations: Tests That Let You Sleep at Night",
       "description": "After days of chasing schema bugs, we had no systematic way to verify correctness. Here are the five layers of testing that finally gave us confidence in our multi-environment schema isolation.",
       "category": "Tech",
-      "tags": ["ef-core", "dotnet", "sql-server", "migrations", "testing", "xunit", "ci-cd", "health-checks"],
+      "tags": [
+        "ef-core",
+        "dotnet",
+        "sql-server",
+        "migrations",
+        "testing",
+        "xunit",
+        "ci-cd",
+        "health-checks"
+      ],
       "date": "2026-06-20",
       "featured": true,
       "image": "/img/posts/schema-aware-ef-core-migrations-part-3.svg",
@@ -316,7 +546,14 @@
       "title": "The MigrationsHistoryTable Bug That Silently Broke Everything",
       "description": "Three months after implementing schema-aware migrations, migrations ran successfully but staging couldn't log in. The history table was in the wrong schema, silently skipping every migration.",
       "category": "Tech",
-      "tags": ["ef-core", "dotnet", "sql-server", "migrations", "debugging", "multi-tenant"],
+      "tags": [
+        "ef-core",
+        "dotnet",
+        "sql-server",
+        "migrations",
+        "debugging",
+        "multi-tenant"
+      ],
       "date": "2026-06-18",
       "featured": true,
       "image": "/img/posts/schema-aware-ef-core-migrations-part-2.svg",
@@ -328,7 +565,14 @@
       "title": "Schema-Aware EF Core Migrations: One Migration Set, Multiple Environments",
       "description": "EF Core migrations don't natively support runtime schema selection. Here's how to intercept migration operations and inject the correct schema for local, dev, staging, and production.",
       "category": "Tech",
-      "tags": ["ef-core", "dotnet", "sql-server", "migrations", "multi-tenant", "patterns"],
+      "tags": [
+        "ef-core",
+        "dotnet",
+        "sql-server",
+        "migrations",
+        "multi-tenant",
+        "patterns"
+      ],
       "date": "2026-06-16",
       "featured": true,
       "image": "/img/posts/schema-aware-ef-core-migrations.svg",
@@ -336,35 +580,60 @@
       "blueskyHook": "EF Core migrations don't support runtime schema selection. Schema is baked in at generation time.\n\nBuilt a custom SQL generator that intercepts operations and injects the correct schema:"
     },
     {
-      "slug": "encrypted-configuration-pattern",
-      "title": "Database-Backed Encrypted Configuration: Stop Committing Secrets",
-      "description": "I once committed an API key to a public repo at 3 AM. That incident taught me secrets in source control are a when problem, not an if problem. Here's the pattern that makes the mistake impossible.",
+      "slug": "why-databases-need-all-this-ceremony",
+      "title": "Why Databases Need All This Ceremony (Data Explained)",
+      "description": "Developers talk about databases like they're handling explosives. Migrations. Backups. Environment separation. From the outside, it looks like paranoia. Here's why the ceremony exists.",
       "category": "Tech",
-      "tags": ["security", "encryption", "dotnet", "configuration", "aes-gcm", "patterns"],
-      "date": "2026-09-05",
+      "tags": [
+        "databases",
+        "eli5",
+        "explainer",
+        "beginners",
+        "data",
+        "testing",
+        "backups",
+        "encryption"
+      ],
+      "date": "2026-06-10",
       "featured": true,
-      "image": "/img/posts/encrypted-configuration-pattern.svg",
-      "linkedInHook": "I once committed an API key to a public GitHub repo. It was 3 AM. The deploy was \"almost done.\"\n\nThree hours later, my inbox was full of AWS alerts.\n\nThat incident taught me: secrets in source control are a WHEN problem, not an IF problem.\n\nSo I built database-backed configuration with AES-256-GCM encryption. The key file is gitignored. Secrets are encrypted at rest. Your code uses IConfiguration normally—it just works.\n\nPart 2 of the Enterprise Database Patterns series.",
-      "blueskyHook": "3 AM. Committed an API key to a public repo. Three hours later, AWS alerts everywhere.\n\nSecrets in source control are a WHEN problem. Here's the encrypted config pattern that makes the mistake impossible:"
+      "image": "/img/posts/why-databases-need-all-this-ceremony.svg",
+      "linkedInHook": "Code is like a recipe. If it's wrong, you fix it. No cake was harmed.\n\nData is like the cake itself. Once you've baked it wrong, you can't unbake it. The eggs are already in there.\n\nThis is why developers treat databases like explosives. Migrations. Backups. Testing against real databases. Environment separation.\n\nThe ceremony exists because data changes can't be easily undone. And data is the actual reason software exists.",
+      "blueskyHook": "Code is a recipe—fix it if it's wrong, no harm done.\n\nData is the cake. Bake it wrong and you can't unbake it.\n\nThat's why databases get all the ceremony. Explained without jargon:"
     },
     {
-      "slug": "modern-database-testing-with-xunit-fixtures",
-      "title": "Modern Database Testing: Why InMemory Databases Lie To You",
-      "description": "My test passed locally and caught fire in staging. That's when I learned UseInMemoryDatabase() is like a friend who tells you that outfit looks great when it definitely does not.",
+      "slug": "how-https-keeps-you-safe",
+      "title": "How HTTPS Keeps You Safe (The Lock Icon Explained)",
+      "description": "You've seen the padlock in your browser. You know some sites are 'secure.' But what does it actually mean? What's being locked? Here's HTTPS explained without the jargon.",
       "category": "Tech",
-      "tags": ["testing", "xunit", "ef-core", "sql-server", "respawn", "integration-testing"],
-      "date": "2026-08-26",
+      "tags": [
+        "security",
+        "eli5",
+        "explainer",
+        "beginners",
+        "https",
+        "ssl",
+        "certificates",
+        "encryption"
+      ],
+      "date": "2026-06-04",
       "featured": true,
-      "image": "/img/posts/modern-database-testing-with-xunit-fixtures.svg",
-      "linkedInHook": "The test passed. Ship it, right?\n\nThen I deployed to staging and watched everything catch fire. The LINQ query that worked against UseInMemoryDatabase() generated SQL that SQL Server refused to execute.\n\nInMemory databases lie to you. They're fast and convenient, like a friend who tells you that outfit looks great when it definitely does not.\n\nThe fix: real SQL Server + Respawn. ~20ms resets instead of ~1000ms. When tests pass now, I actually believe them.\n\nPart 1 of the Enterprise Database Patterns series.",
-      "blueskyHook": "Test passed. Deployed. Staging caught fire.\n\nUseInMemoryDatabase() lies to you. Like a friend who says that outfit looks great when it doesn't.\n\nReal SQL Server + Respawn. ~20ms resets. Tests I actually believe:"
+      "image": "/img/posts/how-https-keeps-you-safe.svg",
+      "linkedInHook": "HTTP is a postcard. Anyone who handles it can read it.\n\nHTTPS is a sealed envelope. Only the recipient can open it.\n\nBut there's more: how do you know you're actually talking to your bank, not someone pretending?\n\nCertificates. Trusted authorities. The infrastructure of trust that makes online banking possible.\n\nThe padlock means your data is encrypted in transit and the website's identity was verified. It doesn't mean the website is trustworthy—just that the envelope is sealed.",
+      "blueskyHook": "HTTP = postcard (anyone can read it)\nHTTPS = sealed envelope (only recipient can open)\n\nBut what does that padlock actually mean? Here's the explainer:"
     },
     {
       "slug": "cicd-version-verification",
       "title": "CI/CD Version Verification: Trust But Verify Your Deployments",
       "description": "MSDeploy can return success even when your app fails to start. Here's how to add version endpoints and automated verification to catch those ghost deployments before your users do.",
       "category": "Tech",
-      "tags": ["cicd", "github-actions", "devops", "deployment", "monitoring", "dotnet"],
+      "tags": [
+        "cicd",
+        "github-actions",
+        "devops",
+        "deployment",
+        "monitoring",
+        "dotnet"
+      ],
       "date": "2026-05-29",
       "featured": true,
       "image": "/img/posts/cicd-version-verification.svg",
@@ -376,7 +645,14 @@
       "title": "The Pending Count That Wouldn't Stay: A MAUI Blazor Debugging Marathon",
       "description": "What started as 'the pending count resets to zero' turned into a 7+ hour journey through Blazor component lifecycle, INotifyPropertyChanged, MAUI deployment quirks, MinVer versioning, and multi-environment debugging.",
       "category": "Tech",
-      "tags": ["maui", "blazor", "debugging", "state-management", "inotifypropertychanged", "mobile"],
+      "tags": [
+        "maui",
+        "blazor",
+        "debugging",
+        "state-management",
+        "inotifypropertychanged",
+        "mobile"
+      ],
       "date": "2026-05-24",
       "featured": true,
       "image": "/img/posts/maui-blazor-pending-count-debugging-marathon.svg",
@@ -388,7 +664,14 @@
       "title": "Breaking Circular Dependencies with SOLID Principles",
       "description": "When two services need each other, it's tempting to reach for IServiceProvider and lazy loading. But that quick fix hides architectural wounds. Here's how extracting shared concerns breaks the cycle properly.",
       "category": "Tech",
-      "tags": ["solid", "architecture", "dependency-injection", "refactoring", "dotnet", "patterns"],
+      "tags": [
+        "solid",
+        "architecture",
+        "dependency-injection",
+        "refactoring",
+        "dotnet",
+        "patterns"
+      ],
       "date": "2026-05-19",
       "featured": true,
       "image": "/img/posts/breaking-circular-dependencies-with-solid-principles.svg",
@@ -400,7 +683,15 @@
       "title": "Automatic Semantic Versioning with MinVer: Never Manually Bump Again",
       "description": "Version numbers in three .csproj files, remembering to create git tags, hoping you didn't fat-finger 0.9.1 as 0.91. MinVer eliminates all of it by deriving versions from git tags automatically.",
       "category": "Tech",
-      "tags": ["versioning", "semver", "minver", "cicd", "dotnet", "github-actions", "devops"],
+      "tags": [
+        "versioning",
+        "semver",
+        "minver",
+        "cicd",
+        "dotnet",
+        "github-actions",
+        "devops"
+      ],
       "date": "2026-05-14",
       "featured": true,
       "image": "/img/posts/automatic-semantic-versioning-with-minver.svg",
@@ -412,7 +703,14 @@
       "title": "Tracer Bullet Development: How Error Logging Proved My Entire Sync Architecture",
       "description": "Before building months of features, I built one thing: error logging. It proved the entire Mobile → API → Database → Web Admin pipeline worked—and found four bugs that would have been painful later.",
       "category": "Tech",
-      "tags": ["architecture", "tracer-bullet", "integration", "mobile", "pragmatic-programmer", "patterns"],
+      "tags": [
+        "architecture",
+        "tracer-bullet",
+        "integration",
+        "mobile",
+        "pragmatic-programmer",
+        "patterns"
+      ],
       "date": "2026-05-09",
       "featured": true,
       "image": "/img/posts/tracer-bullet-development-prove-your-pipeline.svg",
@@ -424,7 +722,14 @@
       "title": "Testing Non-Virtual Members: When Moq Can't Help and SOLID Saves the Day",
       "description": "Moq throws NotSupportedException on NavigationManager.Uri because it's not virtual. Here's why that connects to SOLID principles, and two patterns to test it anyway.",
       "category": "Tech",
-      "tags": ["testing", "moq", "solid", "dotnet", "unit-testing", "patterns"],
+      "tags": [
+        "testing",
+        "moq",
+        "solid",
+        "dotnet",
+        "unit-testing",
+        "patterns"
+      ],
       "date": "2026-05-04",
       "featured": true,
       "image": "/img/posts/testing-non-virtual-members-without-moq.svg",
@@ -436,7 +741,14 @@
       "title": "NavigationManager 'Not Initialized' - The MAUI Blazor Hybrid Gotcha",
       "description": "Your error boundary works in Blazor WASM but crashes in MAUI Hybrid with 'WebViewNavigationManager has not been initialized.' Here's why and how to fix it.",
       "category": "Tech",
-      "tags": ["maui", "blazor", "hybrid", "navigationmanager", "error-handling", "mobile"],
+      "tags": [
+        "maui",
+        "blazor",
+        "hybrid",
+        "navigationmanager",
+        "error-handling",
+        "mobile"
+      ],
       "date": "2026-04-29",
       "featured": true,
       "image": "/img/posts/maui-blazor-navigationmanager-not-initialized.svg",
@@ -444,23 +756,17 @@
       "blueskyHook": "Error boundary works in Blazor WASM. MAUI Hybrid on Android: immediate crash.\n\n\"WebViewNavigationManager not initialized\"\n\nEmbarrassingly simple fix:"
     },
     {
-      "slug": "global-exception-handling-aspnet-core",
-      "title": "Global Exception Handling in ASP.NET Core",
-      "description": "The API threw a NullReferenceException. The client got an HTML error page with a full stack trace. In production. Here's how to centralize error handling with correlation IDs and environment-appropriate responses.",
-      "category": "Tech",
-      "tags": ["aspnet-core", "error-handling", "middleware", "api", "logging", "correlation-id", "dotnet"],
-      "date": "2026-04-22",
-      "featured": true,
-      "image": "/img/posts/global-exception-handling-aspnet-core.svg",
-      "linkedInHook": "The API threw a NullReferenceException. The client got an HTML error page with a full stack trace.\n\nIn production. With file paths and line numbers. Exactly what you'd want if you were looking for vulnerabilities.\n\nCentralized exception handling middleware:\n• Consistent JSON responses\n• Correlation IDs for support\n• Stack traces in dev only\n• Exception-to-status-code mapping\n\nOne middleware. No try-catch everywhere. No leaked secrets.",
-      "blueskyHook": "API threw NullReferenceException. Client got HTML error page with full stack trace. In production.\n\nCentralized middleware: correlation IDs, consistent JSON, no leaked secrets:"
-    },
-    {
       "slug": "error-boundaries-that-dont-trap-users",
       "title": "Error Boundaries That Don't Trap Users: A UX Lesson in Blazor",
       "description": "Your Blazor ErrorBoundary catches the error but blocks the user's escape route. They can't navigate away. Here's how to make error boundaries recover on navigation.",
       "category": "Tech",
-      "tags": ["blazor", "ux", "error-handling", "errorboundary", "user-experience"],
+      "tags": [
+        "blazor",
+        "ux",
+        "error-handling",
+        "errorboundary",
+        "user-experience"
+      ],
       "date": "2026-04-24",
       "featured": true,
       "image": "/img/posts/error-boundaries-that-dont-trap-users.svg",
@@ -468,11 +774,37 @@
       "blueskyHook": "ErrorBoundary catches the error, shows nice message. User tries to navigate away. Nothing happens. Trapped.\n\nThe boundary was a cage, not a safety net. Here's the fix:"
     },
     {
+      "slug": "global-exception-handling-aspnet-core",
+      "title": "Global Exception Handling in ASP.NET Core",
+      "description": "The API threw a NullReferenceException. The client got an HTML error page with a full stack trace. In production. Here's how to centralize error handling with correlation IDs and environment-appropriate responses.",
+      "category": "Tech",
+      "tags": [
+        "aspnet-core",
+        "error-handling",
+        "middleware",
+        "api",
+        "logging",
+        "correlation-id",
+        "dotnet"
+      ],
+      "date": "2026-04-22",
+      "featured": true,
+      "image": "/img/posts/global-exception-handling-aspnet-core.svg",
+      "linkedInHook": "The API threw a NullReferenceException. The client got an HTML error page with a full stack trace.\n\nIn production. With file paths and line numbers. Exactly what you'd want if you were looking for vulnerabilities.\n\nCentralized exception handling middleware:\n• Consistent JSON responses\n• Correlation IDs for support\n• Stack traces in dev only\n• Exception-to-status-code mapping\n\nOne middleware. No try-catch everywhere. No leaked secrets.",
+      "blueskyHook": "API threw NullReferenceException. Client got HTML error page with full stack trace. In production.\n\nCentralized middleware: correlation IDs, consistent JSON, no leaked secrets:"
+    },
+    {
       "slug": "crockford-base32-phone-friendly-reference-ids",
       "title": "Phone-Friendly Reference IDs: Why Crockford Base32 is Perfect for Support",
       "description": "GUIDs over the phone are a nightmare. 'Is that zero or the letter O?' Douglas Crockford's Base32 encoding removes ambiguous characters entirely.",
       "category": "Tech",
-      "tags": ["ux", "encoding", "base32", "support", "human-factors"],
+      "tags": [
+        "ux",
+        "encoding",
+        "base32",
+        "support",
+        "human-factors"
+      ],
       "date": "2026-04-19",
       "featured": true,
       "image": "/img/posts/crockford-base32-phone-friendly-reference-ids.svg",
@@ -484,7 +816,14 @@
       "title": "The IIS app_offline.htm Deployment Trick",
       "description": "Tired of ERROR_FILE_IN_USE when deploying to IIS? One file stops your app, releases all locks, and shows users a maintenance page. Here's how to add it to your deployment scripts.",
       "category": "Tech",
-      "tags": ["iis", "deployment", "msdeploy", "aspnet-core", "devops", "ci-cd"],
+      "tags": [
+        "iis",
+        "deployment",
+        "msdeploy",
+        "aspnet-core",
+        "devops",
+        "ci-cd"
+      ],
       "date": "2026-04-14",
       "featured": true,
       "image": "/img/posts/iis-app-offline-deployment-trick.svg",
@@ -496,7 +835,14 @@
       "title": "Environment-Specific EF Core Migrations with SQL Scripts",
       "description": "EF Core migrations run the same code everywhere, but real apps need different seed data per environment. Here's a convention-based pattern that loads the right SQL script automatically.",
       "category": "Tech",
-      "tags": ["ef-core", "dotnet", "sql-server", "migrations", "devops", "patterns"],
+      "tags": [
+        "ef-core",
+        "dotnet",
+        "sql-server",
+        "migrations",
+        "devops",
+        "patterns"
+      ],
       "date": "2026-04-09",
       "featured": true,
       "image": "/img/posts/environment-specific-ef-core-migrations.svg",
@@ -508,7 +854,15 @@
       "title": "Thread-Safe Synchronization with SemaphoreSlim",
       "description": "The sync bug only happened on Mondays. Two sync operations running simultaneously, corrupting data. The fix was embarrassingly simple once I stopped using boolean flags.",
       "category": "Tech",
-      "tags": ["csharp", "async", "threading", "mobile", "maui", "patterns", "synchronization"],
+      "tags": [
+        "csharp",
+        "async",
+        "threading",
+        "mobile",
+        "maui",
+        "patterns",
+        "synchronization"
+      ],
       "date": "2026-04-07",
       "featured": true,
       "image": "/img/posts/semaphore-thread-safe-sync.svg",
@@ -516,23 +870,18 @@
       "blueskyHook": "Sync bug only on Mondays. Two operations running simultaneously.\n\nThe culprit: boolean flag with a race condition. The fix: SemaphoreSlim.\n\nAtomic acquire-or-fail. No race possible:"
     },
     {
-      "slug": "polly-http-resilience-patterns",
-      "title": "HTTP Resilience with Polly: Retry and Circuit Breaker Patterns",
-      "description": "The mobile app worked great on WiFi. Then a user drove through a tunnel and the sync button showed 'syncing' for 30 seconds before erroring. Here's how to make HTTP calls that handle the real world.",
-      "category": "Tech",
-      "tags": ["polly", "http", "resilience", "mobile", "maui", "retry", "circuit-breaker", "dotnet"],
-      "date": "2026-04-02",
-      "featured": true,
-      "image": "/img/posts/polly-http-resilience-patterns.svg",
-      "linkedInHook": "The mobile app worked great on WiFi. Then a user drove through a tunnel.\n\nSync button showed 'syncing' for 30 seconds. Error. They tapped again. Another 30 seconds. More errors.\n\nWithout resilience patterns, temporary failures crash the user experience. With them, most failures become invisible retries.\n\nPolly gives you:\n• Exponential backoff (1s → 2s → 4s)\n• Circuit breakers (fail fast when server is down)\n• Jitter (prevent thundering herd)\n\nUsers don't care why the network failed. They want the app to handle it.",
-      "blueskyHook": "Mobile app worked great on WiFi. User drove through a tunnel. Sync button hung for 30 seconds. Then errored.\n\nPolly: retry + circuit breaker patterns that make failures invisible:"
-    },
-    {
       "slug": "upgrading-certbot-to-wildcard-certificates",
       "title": "Upgrading Certbot to Wildcard Certificates",
       "description": "My SSL setup worked great until I needed subdomains for a multi-tenant SaaS. One wildcard certificate covers them all—but Certbot's upgrade path has some gotchas.",
       "category": "Tech",
-      "tags": ["ssl", "certbot", "letsencrypt", "cloudflare", "wildcard", "raspberry-pi"],
+      "tags": [
+        "ssl",
+        "certbot",
+        "letsencrypt",
+        "cloudflare",
+        "wildcard",
+        "raspberry-pi"
+      ],
       "date": "2026-04-04",
       "featured": true,
       "image": "/img/posts/upgrading-certbot-to-wildcard-certificates.svg",
@@ -540,11 +889,39 @@
       "blueskyHook": "SSL automation worked great until I needed subdomains for multi-tenant SaaS.\n\nWildcard certs cover *.domain.com. But Certbot's upgrade path has gotchas:"
     },
     {
+      "slug": "polly-http-resilience-patterns",
+      "title": "HTTP Resilience with Polly: Retry and Circuit Breaker Patterns",
+      "description": "The mobile app worked great on WiFi. Then a user drove through a tunnel and the sync button showed 'syncing' for 30 seconds before erroring. Here's how to make HTTP calls that handle the real world.",
+      "category": "Tech",
+      "tags": [
+        "polly",
+        "http",
+        "resilience",
+        "mobile",
+        "maui",
+        "retry",
+        "circuit-breaker",
+        "dotnet"
+      ],
+      "date": "2026-04-02",
+      "featured": true,
+      "image": "/img/posts/polly-http-resilience-patterns.svg",
+      "linkedInHook": "The mobile app worked great on WiFi. Then a user drove through a tunnel.\n\nSync button showed 'syncing' for 30 seconds. Error. They tapped again. Another 30 seconds. More errors.\n\nWithout resilience patterns, temporary failures crash the user experience. With them, most failures become invisible retries.\n\nPolly gives you:\n• Exponential backoff (1s → 2s → 4s)\n• Circuit breakers (fail fast when server is down)\n• Jitter (prevent thundering herd)\n\nUsers don't care why the network failed. They want the app to handle it.",
+      "blueskyHook": "Mobile app worked great on WiFi. User drove through a tunnel. Sync button hung for 30 seconds. Then errored.\n\nPolly: retry + circuit breaker patterns that make failures invisible:"
+    },
+    {
       "slug": "when-ai-gives-you-coaching-not-construction",
       "title": "When AI Gives You Coaching Instead of Construction",
       "description": "I asked ChatGPT for an algorithm. After fifteen minutes of 'you could consider...' I asked Gemini. Thirty seconds later I had an exponential decay accumulator. Here's what that taught me about AI tool selection.",
       "category": "Tech",
-      "tags": ["ai", "chatgpt", "gemini", "algorithms", "streaming", "architecture"],
+      "tags": [
+        "ai",
+        "chatgpt",
+        "gemini",
+        "algorithms",
+        "streaming",
+        "architecture"
+      ],
       "date": "2026-03-30",
       "featured": true,
       "image": "/img/posts/when-ai-gives-you-coaching-not-construction.svg",
@@ -552,23 +929,38 @@
       "blueskyHook": "Asked ChatGPT for an algorithm. 15 mins of \"you could consider...\" Nothing concrete.\n\nAsked Gemini. 30 seconds: exponential decay accumulator.\n\nThen ChatGPT explained why it keeps doing this:"
     },
     {
-      "slug": "codecov-error-state-debugging",
-      "title": "When Codecov Says 'Error' But Your Upload Succeeded",
-      "description": "Your CI shows green checkmarks. The upload returned 200. But Codecov reports 0 files and 0% coverage. Here's how to debug it—and why deleting your config file might be the fix.",
+      "slug": "how-ai-assistants-actually-work",
+      "title": "How AI Assistants Actually Work (The Clever Parrot Explained)",
+      "description": "You type a question into ChatGPT. Seconds later, a helpful response appears. Is it thinking? Searching? Neither. It's predicting—and understanding that changes everything.",
       "category": "Tech",
-      "tags": ["codecov", "ci-cd", "github-actions", "coverage", "debugging", "dotnet"],
-      "date": "2026-08-31",
+      "tags": [
+        "ai",
+        "eli5",
+        "explainer",
+        "beginners",
+        "llm",
+        "chatgpt",
+        "machine-learning"
+      ],
+      "date": "2026-03-25",
       "featured": true,
-      "image": "/img/posts/codecov-error-state-debugging.svg",
-      "linkedInHook": "I keep running into this pattern with developer tooling: the 'improvements' that silently break things. This week it was Codecov. I added a config file to make things better, and it silently broke everything. The fix was deleting the config entirely.\n\nIt got me thinking about how often we add complexity thinking we're being thorough, when the simpler default would have worked fine.",
-      "blueskyHook": "Codecov shows \"Error\" but upload returned 200. 0 files, 0% coverage.\n\nAdded a config file to improve things. It silently broke everything. Fix: delete the config:"
+      "image": "/img/posts/how-ai-assistants-actually-work.svg",
+      "linkedInHook": "Imagine a parrot that has listened to every book, article, and webpage ever written. Trillions of patterns. It doesn't understand any of it—but it has an incredible ear for how language flows.\n\nThat's roughly how AI assistants work. They don't 'know' things. They predict what sounds right.\n\nThis is why they can be confidently wrong. Why they're great at drafts but need verification. Why expertise matters more, not less.\n\nUnderstanding the mechanism helps you use the tool better.",
+      "blueskyHook": "AI assistants don't \"know\" things. They predict what sounds right—like a parrot that's read the entire internet.\n\nUnderstanding this changes how you use them:"
     },
     {
       "slug": "blazor-wasm-loading-forever-fix",
       "title": "Blazor WASM Says 'Loading...' Forever: A .NET 10 Debugging Adventure",
       "description": "Your Blazor app loads the HTML, shows the spinner, then... nothing. The console shows errors about '/0'. Here's the one-line fix for the WasmInlineBootConfig bug.",
       "category": "Tech",
-      "tags": ["blazor", "webassembly", "dotnet", "debugging", "net10", "troubleshooting"],
+      "tags": [
+        "blazor",
+        "webassembly",
+        "dotnet",
+        "debugging",
+        "net10",
+        "troubleshooting"
+      ],
       "date": "2026-03-20",
       "featured": true,
       "image": "/img/posts/blazor-wasm-loading-forever-fix.svg",
@@ -576,11 +968,35 @@
       "blueskyHook": "Blazor WASM shows \"Loading...\" forever. Console errors point at \"/0\". Makes no sense.\n\n.NET 10 preview bug. One-line fix:"
     },
     {
+      "slug": "designing-business-cards-with-inkscape",
+      "title": "Designing Business Cards with Inkscape",
+      "description": "I designed my own business cards using Inkscape, a free open-source tool. Print design turned out to be a completely different world from web design.",
+      "category": "Tech",
+      "tags": [
+        "design",
+        "inkscape",
+        "print-design",
+        "svg",
+        "branding"
+      ],
+      "date": "2026-03-15",
+      "featured": false,
+      "image": "/img/posts/designing-business-cards-with-inkscape.svg",
+      "linkedInHook": "I designed my own business cards this weekend using Inkscape — a free, open-source tool.\n\nI'd been avoiding online template wizards because they never felt right. So I figured, I work with SVGs all the time for my blog... why not just build the cards myself?\n\nTurns out print design is a completely different world from web design. Things I had no clue about going in:\n\n- Bleed margins (your design extends past the cut line in case the trim is slightly off)\n- Safe zones (keep important stuff away from edges)\n- 300 DPI vs 96 DPI (screen resolution looks terrible in print)\n- Spot UV finishing requires a separate mask file — black where you want gloss, white everywhere else\n\nThe biggest surprise? Inkscape's XML editor. Being able to directly edit SVG attributes — opacity, letter-spacing, fills, node ordering — was faster than navigating menus. Felt like using browser DevTools but for print design.\n\nWould I recommend this approach? Only if you enjoy learning by doing. It took longer than a template wizard, but I understand print design now in a way I wouldn't have otherwise.\n\n#inkscape #design #printdesign #opensource #learningbydoing"
+    },
+    {
       "slug": "blazor-wasm-debugging-chrome-devtools",
       "title": "Blazor WASM Debugging: What's That /_framework/debug Endpoint?",
       "description": "You started a Blazor WebAssembly app and noticed a mysterious debug URL. Then Chrome wanted special flags. Then you saw 'Inspectable pages.' Here's what's actually happening.",
       "category": "Tech",
-      "tags": ["blazor", "webassembly", "debugging", "chrome", "dotnet", "devtools"],
+      "tags": [
+        "blazor",
+        "webassembly",
+        "debugging",
+        "chrome",
+        "dotnet",
+        "devtools"
+      ],
       "date": "2026-03-15",
       "featured": true,
       "image": "/img/posts/blazor-wasm-debugging-chrome-devtools.svg",
@@ -592,7 +1008,13 @@
       "title": "reCAPTCHA v3's Mobile Problem: Why Your Real Users Score Like Bots",
       "description": "My wife scored 0.1 on reCAPTCHA. From our couch. On her phone. Here's what Google doesn't tell you about score thresholds and mobile users.",
       "category": "Tech",
-      "tags": ["recaptcha", "security", "aspnet-core", "mobile", "troubleshooting"],
+      "tags": [
+        "recaptcha",
+        "security",
+        "aspnet-core",
+        "mobile",
+        "troubleshooting"
+      ],
       "date": "2026-03-10",
       "featured": true,
       "image": "/img/posts/recaptcha-v3-mobile-users-scoring.svg",
@@ -600,131 +1022,19 @@
       "blueskyHook": "My wife on our couch, on her phone, clearly human. reCAPTCHA scored her 0.1 (bot).\n\nThe 0.5 threshold everyone recommends is too aggressive for mobile. Here's what I learned:"
     },
     {
-      "slug": "seo-oops-recovery-guide",
-      "title": "SEO Oops Recovery: When You Accidentally Expose Everything",
-      "description": "Your admin dashboard is in Google. Your API key is in git history. That angry TODO comment is now public. Here's the emergency recovery guide.",
-      "category": "Tech",
-      "tags": ["seo", "git", "security", "robots-txt", "recovery", "troubleshooting"],
-      "date": "2026-09-10",
-      "featured": true,
-      "image": "/img/posts/seo-oops-recovery-guide.svg",
-      "linkedInHook": "Every developer has that moment of cold sweat when they realize something that shouldn't be public is now indexed by Google. Or worse, that angry TODO comment in a commit message.\n\nI've been there. Here's the recovery playbook I wish I'd had.",
-      "blueskyHook": "That cold sweat when you realize your admin dashboard is in Google. Or that angry TODO is now public.\n\nThe emergency recovery playbook:"
-    },
-    {
-      "slug": "custom-error-pages-teaching-moments",
-      "title": "Custom Error Pages: Turning 404s Into Teaching Moments",
-      "description": "Your visitors hit a 404. Do they see a cold 'Page Not Found' or a delightful learning opportunity? Here's how to make error pages that keep people engaged.",
-      "category": "Tech",
-      "tags": ["aspnet-core", "error-pages", "ux", "http", "csharp", "user-experience"],
-      "date": "2026-02-28",
-      "featured": true,
-      "image": "/img/posts/custom-error-pages-teaching-moments.svg",
-      "linkedInHook": "Error pages are guaranteed traffic. Every site has them. Every visitor eventually sees one. So why do most of them look like the server is personally offended by your existence?\n\nI decided to turn my 404s into tiny teaching moments. Here's the philosophy and implementation.",
-      "blueskyHook": "Error pages are guaranteed traffic. Why do most look like the server is personally offended?\n\nTurned my 404s into tiny teaching moments:"
-    },
-    {
-      "slug": "tailwind-v4-source-directive-gotcha",
-      "title": "Tailwind v4's Silent Breaking Change: The @source Directive",
-      "description": "You upgraded to Tailwind v4. Your build runs. Your CSS generates. Half your styles are missing. Welcome to the @source directive gotcha.",
-      "category": "Tech",
-      "tags": ["tailwind", "css", "v4", "migration", "troubleshooting", "blazor"],
-      "date": "2026-02-23",
-      "featured": true,
-      "image": "/img/posts/tailwind-v4-source-directive-gotcha.svg",
-      "linkedInHook": "Upgraded to Tailwind v4. Build ran. CSS generated. Half my styles were missing.\n\nNo errors. No warnings. Just... gone. Turns out v4 ignores your content array in tailwind.config.js. You need @source directives in CSS now. The migration path doesn't exactly scream this at you.",
-      "blueskyHook": "Tailwind v4: build ran, CSS generated, half my styles missing.\n\nNo errors. No warnings. V4 ignores your content array—needs @source directives now:"
-    },
-    {
-      "slug": "tailwind-dynamic-classes-layer-gotchas",
-      "title": "Tailwind's Hidden Gotchas: Dynamic Classes and @layer",
-      "description": "Your dynamic class names aren't working. The CSS exists in your code but not in your output. Here's why Tailwind's JIT compiler is ignoring you and how to fix it.",
-      "category": "Tech",
-      "tags": ["tailwind", "css", "jit", "blazor", "react", "troubleshooting"],
-      "date": "2026-02-18",
-      "featured": true,
-      "image": "/img/posts/tailwind-dynamic-classes-layer-gotchas.svg",
-      "linkedInHook": "Tailwind's JIT compiler is amazing until it silently ignores your classes. Built a progress bar component with dynamic widths like `w-[${percent}%]`. None of them worked.\n\nThe JIT compiler only scans for complete class names in your source files. String concatenation breaks it. Here's what to do instead.",
-      "blueskyHook": "Built dynamic widths: `w-[${percent}%]`. None worked.\n\nTailwind JIT only scans for COMPLETE class names. String concatenation breaks it. Here's the fix:"
-    },
-    {
-      "slug": "reverse-engineering-mobile-game",
-      "title": "I Reverse-Engineered a Mobile Game to Build a Better Team",
-      "description": "I downloaded an APK, cracked open its Unity asset bundles, extracted 2,880 compiled Lua files, and built a team optimizer that actually knows the math. Here's how.",
-      "category": "Gaming",
-      "tags": ["python", "unity", "reverse-engineering", "game-data", "lua", "mobile-games", "side-project"],
-      "date": "2026-02-14",
-      "featured": true,
-      "image": "/img/posts/reverse-engineering-mobile-game.svg",
-      "linkedInHook": "Which heroes synergize? What are the real faction bonus numbers? The game won't tell you.\n\nSo I took the game apart.\n\nDownloaded the APK. Extracted Unity asset bundles. Parsed 2,880 compiled Lua bytecode files. Found every stat, bond, and faction multiplier the developers hid behind vague tooltips.\n\nThen built a Python optimizer that evaluates all 12,376 possible team combinations and ranks them by actual synergy.\n\nSometimes the best strategy guide is the one you extract yourself.",
-      "blueskyHook": "The game hides its mechanics behind vague tooltips. So I took the APK apart.\n\n2,880 Lua bytecode files. Every hidden stat decoded. Built a team optimizer. Sometimes the best strategy guide is the one you extract yourself:"
-    },
-    {
-      "slug": "reverse-engineering-game-part-1",
-      "title": "Reverse Engineering a Mobile Game: Part 1 — What's Inside the Box?",
-      "description": "Every mobile game is hiding its secrets in a file you already have. Here's how I went from 'I wonder how this works' to extracting thousands of files of game data — using free tools and an afternoon.",
-      "category": "Gaming",
-      "tags": ["reverse-engineering", "android", "unity", "lua", "gaming", "tutorial", "python"],
-      "date": "2026-02-17",
-      "featured": true,
-      "image": "/img/posts/reverse-engineering-game-part-1.svg",
-      "linkedInHook": "Every Android app is just a ZIP file wearing a costume.\n\nI renamed a game APK to .zip, unzipped it, and found 2,880 compiled Lua bytecode files — every hero stat, skill formula, and hidden multiplier the game never wanted me to see.\n\nThe strings in compiled bytecode? Stored in plaintext. No decompiler needed.\n\nPart 1 of a 5-part series on reverse engineering a mobile game. From APK to automation bot.",
-      "blueskyHook": "Every Android app is a ZIP file in costume. Rename, unzip, find 2,880 files of game secrets.\n\nLua bytecode stores strings in plaintext. No decompiler needed.\n\nPart 1 of 5 — What's Inside the Box:"
-    },
-    {
-      "slug": "reverse-engineering-game-part-2",
-      "title": "Reverse Engineering a Mobile Game: Part 2 — Eavesdropping on the Conversation",
-      "description": "Your phone and the game server have a constant conversation. With the right tools, you can listen in. The hard part is usually getting past SSL pinning — unless the developers forgot to lock the door.",
-      "category": "Gaming",
-      "tags": ["reverse-engineering", "networking", "mitmproxy", "websocket", "gaming", "tutorial", "security"],
-      "date": "2026-02-20",
-      "featured": true,
-      "image": "/img/posts/reverse-engineering-game-part-2.svg",
-      "linkedInHook": "The hardest part of intercepting mobile game traffic is usually SSL certificate pinning.\n\nUnless the developers forgot.\n\nNo pinning config. No custom trust manager. No certificate validation at all. The digital equivalent of leaving the Wi-Fi password on a sticky note.\n\nPlus: the game logs everything — credentials, tokens, message IDs — to the system console. In plaintext.\n\nPart 2 of the reverse engineering series.",
-      "blueskyHook": "SSL pinning is the #1 obstacle in mobile game traffic capture.\n\nThis game had none. Zero. Plus it logs credentials to plaintext console output.\n\nPart 2 of 5 — Eavesdropping on the Conversation:"
-    },
-    {
-      "slug": "reverse-engineering-game-part-3",
-      "title": "Reverse Engineering a Mobile Game: Part 3 — Learning to Speak Binary",
-      "description": "The game speaks a custom binary language over WebSocket. The hardest part wasn't finding the protocol — it was getting one field type wrong by 4 bytes. A homemade Lua disassembler finally settled the argument.",
-      "category": "Gaming",
-      "tags": ["reverse-engineering", "binary-protocol", "lua", "gaming", "tutorial", "python"],
-      "date": "2026-02-24",
-      "featured": true,
-      "image": "/img/posts/reverse-engineering-game-part-3.svg",
-      "linkedInHook": "Four bytes. That was the difference between 'rejected' and 'accepted.'\n\nThe game uses a custom binary protocol. I had the Lua source code for encoding messages, captured binary frames, and debug logs. Just needed to match them up.\n\nMy first guess: 8-byte timestamp. Close enough to look right. Wrong enough to break everything.\n\nSo I built a Lua 5.3 bytecode disassembler. Ten opcodes is all you need to trace function logic.\n\nPart 3 of the reverse engineering series.",
-      "blueskyHook": "Got the binary protocol 4 bytes wrong. Looked plausible. Broke everything.\n\nBuilt a Lua bytecode disassembler to settle the argument. You only need ~10 opcodes.\n\nPart 3 of 5 — Learning to Speak Binary:"
-    },
-    {
-      "slug": "reverse-engineering-game-part-4",
-      "title": "Reverse Engineering a Mobile Game: Part 4 — Building Our Own Controller",
-      "description": "With the binary protocol cracked, I built a Python client that authenticates, connects, and speaks the game's language. The auth system uses MD5 with hardcoded keys — the digital equivalent of hiding your house key under the doormat.",
-      "category": "Gaming",
-      "tags": ["reverse-engineering", "api", "authentication", "python", "gaming", "tutorial", "websocket"],
-      "date": "2026-02-27",
-      "featured": true,
-      "image": "/img/posts/reverse-engineering-game-part-4.svg",
-      "linkedInHook": "The game authenticates guest accounts using only a device fingerprint hash. No password. No 2FA. No CAPTCHA.\n\nIt's like a bank that identifies you by your shoe size.\n\nThe request signing? MD5 with hardcoded keys — sitting right there in the Lua bytecode anyone can extract from the APK.\n\nHiding your house key under the doormat. The lock works great. The hiding spot... less so.\n\nPart 4 of the reverse engineering series.",
-      "blueskyHook": "Game auth: device fingerprint only. No password. No 2FA.\n\nMD5 signing with hardcoded keys. In the Lua bytecode. Anyone can extract.\n\nHouse key under the doormat.\n\nPart 4 of 5 — Building Our Own Controller:"
-    },
-    {
-      "slug": "reverse-engineering-game-part-5",
-      "title": "Reverse Engineering a Mobile Game: Part 5 — Teaching a Bot to Play",
-      "description": "The final piece: an automation bot that logs in and completes daily tasks in 90 seconds. The hardest part wasn't sending messages — it was figuring out what the responses meant. Also, I accidentally fought myself in the arena.",
-      "category": "Gaming",
-      "tags": ["reverse-engineering", "automation", "python", "gaming", "tutorial", "bot"],
-      "date": "2026-03-02",
-      "featured": true,
-      "image": "/img/posts/reverse-engineering-game-part-5.svg",
-      "linkedInHook": "Seven daily tasks. 90 seconds. Zero tapping.\n\nThe daily grind in mobile RPGs is menu navigation — collect rewards, claim gifts, fight arena battles. None of it is strategic. All of it is required.\n\nSo I built a bot. It probes 1,400 message types to learn response formats, then runs each task in priority order with human-like delays.\n\nBest bug: the arena opponent list included my own character. First automated fight? I fought myself. And won.\n\nPart 5 (finale) of the reverse engineering series.",
-      "blueskyHook": "7 daily game tasks. 90 seconds. Zero tapping.\n\nBest bug: arena opponents include yourself. First bot fight? Fought myself. Won.\n\nPart 5 of 5 — Teaching a Bot to Play:"
-    },
-    {
       "slug": "eli5-reverse-engineering-apps",
       "title": "ELI5: How Do People Figure Out What Apps Are Doing?",
       "description": "You download a game. You tap buttons. Things happen. But what's actually going on behind the scenes — and how do people peek behind the curtain? Here's reverse engineering explained with pizza boxes and walkie-talkies.",
       "category": "Gaming",
-      "tags": ["reverse-engineering", "eli5", "explainer", "beginners", "gaming", "security", "mobile"],
+      "tags": [
+        "reverse-engineering",
+        "eli5",
+        "explainer",
+        "beginners",
+        "gaming",
+        "security",
+        "mobile"
+      ],
       "date": "2026-03-05",
       "featured": true,
       "image": "/img/posts/eli5-reverse-engineering-apps.svg",
@@ -732,11 +1042,211 @@
       "blueskyHook": "Every app on your phone is a ZIP file in a costume.\n\nReverse engineering = opening the pizza box and reading the recipe.\n\nThe ELI5 version of my 5-part series — no jargon, just pizza and walkie-talkies:"
     },
     {
+      "slug": "reverse-engineering-game-part-5",
+      "title": "Reverse Engineering a Mobile Game: Part 5 — Teaching a Bot to Play",
+      "description": "The final piece: an automation bot that logs in and completes daily tasks in 90 seconds. The hardest part wasn't sending messages — it was figuring out what the responses meant. Also, I accidentally fought myself in the arena.",
+      "category": "Gaming",
+      "tags": [
+        "reverse-engineering",
+        "automation",
+        "python",
+        "gaming",
+        "tutorial",
+        "bot"
+      ],
+      "date": "2026-03-02",
+      "featured": true,
+      "image": "/img/posts/reverse-engineering-game-part-5.svg",
+      "linkedInHook": "Seven daily tasks. 90 seconds. Zero tapping.\n\nThe daily grind in mobile RPGs is menu navigation — collect rewards, claim gifts, fight arena battles. None of it is strategic. All of it is required.\n\nSo I built a bot. It probes 1,400 message types to learn response formats, then runs each task in priority order with human-like delays.\n\nBest bug: the arena opponent list included my own character. First automated fight? I fought myself. And won.\n\nPart 5 (finale) of the reverse engineering series.",
+      "blueskyHook": "7 daily game tasks. 90 seconds. Zero tapping.\n\nBest bug: arena opponents include yourself. First bot fight? Fought myself. Won.\n\nPart 5 of 5 — Teaching a Bot to Play:"
+    },
+    {
+      "slug": "custom-error-pages-teaching-moments",
+      "title": "Custom Error Pages: Turning 404s Into Teaching Moments",
+      "description": "Your visitors hit a 404. Do they see a cold 'Page Not Found' or a delightful learning opportunity? Here's how to make error pages that keep people engaged.",
+      "category": "Tech",
+      "tags": [
+        "aspnet-core",
+        "error-pages",
+        "ux",
+        "http",
+        "csharp",
+        "user-experience"
+      ],
+      "date": "2026-02-28",
+      "featured": true,
+      "image": "/img/posts/custom-error-pages-teaching-moments.svg",
+      "linkedInHook": "Error pages are guaranteed traffic. Every site has them. Every visitor eventually sees one. So why do most of them look like the server is personally offended by your existence?\n\nI decided to turn my 404s into tiny teaching moments. Here's the philosophy and implementation.",
+      "blueskyHook": "Error pages are guaranteed traffic. Why do most look like the server is personally offended?\n\nTurned my 404s into tiny teaching moments:"
+    },
+    {
+      "slug": "reverse-engineering-game-part-4",
+      "title": "Reverse Engineering a Mobile Game: Part 4 — Building Our Own Controller",
+      "description": "With the binary protocol cracked, I built a Python client that authenticates, connects, and speaks the game's language. The auth system uses MD5 with hardcoded keys — the digital equivalent of hiding your house key under the doormat.",
+      "category": "Gaming",
+      "tags": [
+        "reverse-engineering",
+        "api",
+        "authentication",
+        "python",
+        "gaming",
+        "tutorial",
+        "websocket"
+      ],
+      "date": "2026-02-27",
+      "featured": true,
+      "image": "/img/posts/reverse-engineering-game-part-4.svg",
+      "linkedInHook": "The game authenticates guest accounts using only a device fingerprint hash. No password. No 2FA. No CAPTCHA.\n\nIt's like a bank that identifies you by your shoe size.\n\nThe request signing? MD5 with hardcoded keys — sitting right there in the Lua bytecode anyone can extract from the APK.\n\nHiding your house key under the doormat. The lock works great. The hiding spot... less so.\n\nPart 4 of the reverse engineering series.",
+      "blueskyHook": "Game auth: device fingerprint only. No password. No 2FA.\n\nMD5 signing with hardcoded keys. In the Lua bytecode. Anyone can extract.\n\nHouse key under the doormat.\n\nPart 4 of 5 — Building Our Own Controller:"
+    },
+    {
+      "slug": "reverse-engineering-game-part-3",
+      "title": "Reverse Engineering a Mobile Game: Part 3 — Learning to Speak Binary",
+      "description": "The game speaks a custom binary language over WebSocket. The hardest part wasn't finding the protocol — it was getting one field type wrong by 4 bytes. A homemade Lua disassembler finally settled the argument.",
+      "category": "Gaming",
+      "tags": [
+        "reverse-engineering",
+        "binary-protocol",
+        "lua",
+        "gaming",
+        "tutorial",
+        "python"
+      ],
+      "date": "2026-02-24",
+      "featured": true,
+      "image": "/img/posts/reverse-engineering-game-part-3.svg",
+      "linkedInHook": "Four bytes. That was the difference between 'rejected' and 'accepted.'\n\nThe game uses a custom binary protocol. I had the Lua source code for encoding messages, captured binary frames, and debug logs. Just needed to match them up.\n\nMy first guess: 8-byte timestamp. Close enough to look right. Wrong enough to break everything.\n\nSo I built a Lua 5.3 bytecode disassembler. Ten opcodes is all you need to trace function logic.\n\nPart 3 of the reverse engineering series.",
+      "blueskyHook": "Got the binary protocol 4 bytes wrong. Looked plausible. Broke everything.\n\nBuilt a Lua bytecode disassembler to settle the argument. You only need ~10 opcodes.\n\nPart 3 of 5 — Learning to Speak Binary:"
+    },
+    {
+      "slug": "tailwind-v4-source-directive-gotcha",
+      "title": "Tailwind v4's Silent Breaking Change: The @source Directive",
+      "description": "You upgraded to Tailwind v4. Your build runs. Your CSS generates. Half your styles are missing. Welcome to the @source directive gotcha.",
+      "category": "Tech",
+      "tags": [
+        "tailwind",
+        "css",
+        "v4",
+        "migration",
+        "troubleshooting",
+        "blazor"
+      ],
+      "date": "2026-02-23",
+      "featured": true,
+      "image": "/img/posts/tailwind-v4-source-directive-gotcha.svg",
+      "linkedInHook": "Upgraded to Tailwind v4. Build ran. CSS generated. Half my styles were missing.\n\nNo errors. No warnings. Just... gone. Turns out v4 ignores your content array in tailwind.config.js. You need @source directives in CSS now. The migration path doesn't exactly scream this at you.",
+      "blueskyHook": "Tailwind v4: build ran, CSS generated, half my styles missing.\n\nNo errors. No warnings. V4 ignores your content array—needs @source directives now:"
+    },
+    {
+      "slug": "reverse-engineering-game-part-2",
+      "title": "Reverse Engineering a Mobile Game: Part 2 — Eavesdropping on the Conversation",
+      "description": "Your phone and the game server have a constant conversation. With the right tools, you can listen in. The hard part is usually getting past SSL pinning — unless the developers forgot to lock the door.",
+      "category": "Gaming",
+      "tags": [
+        "reverse-engineering",
+        "networking",
+        "mitmproxy",
+        "websocket",
+        "gaming",
+        "tutorial",
+        "security"
+      ],
+      "date": "2026-02-20",
+      "featured": true,
+      "image": "/img/posts/reverse-engineering-game-part-2.svg",
+      "linkedInHook": "The hardest part of intercepting mobile game traffic is usually SSL certificate pinning.\n\nUnless the developers forgot.\n\nNo pinning config. No custom trust manager. No certificate validation at all. The digital equivalent of leaving the Wi-Fi password on a sticky note.\n\nPlus: the game logs everything — credentials, tokens, message IDs — to the system console. In plaintext.\n\nPart 2 of the reverse engineering series.",
+      "blueskyHook": "SSL pinning is the #1 obstacle in mobile game traffic capture.\n\nThis game had none. Zero. Plus it logs credentials to plaintext console output.\n\nPart 2 of 5 — Eavesdropping on the Conversation:"
+    },
+    {
+      "slug": "tailwind-dynamic-classes-layer-gotchas",
+      "title": "Tailwind's Hidden Gotchas: Dynamic Classes and @layer",
+      "description": "Your dynamic class names aren't working. The CSS exists in your code but not in your output. Here's why Tailwind's JIT compiler is ignoring you and how to fix it.",
+      "category": "Tech",
+      "tags": [
+        "tailwind",
+        "css",
+        "jit",
+        "blazor",
+        "react",
+        "troubleshooting"
+      ],
+      "date": "2026-02-18",
+      "featured": true,
+      "image": "/img/posts/tailwind-dynamic-classes-layer-gotchas.svg",
+      "linkedInHook": "Tailwind's JIT compiler is amazing until it silently ignores your classes. Built a progress bar component with dynamic widths like `w-[${percent}%]`. None of them worked.\n\nThe JIT compiler only scans for complete class names in your source files. String concatenation breaks it. Here's what to do instead.",
+      "blueskyHook": "Built dynamic widths: `w-[${percent}%]`. None worked.\n\nTailwind JIT only scans for COMPLETE class names. String concatenation breaks it. Here's the fix:"
+    },
+    {
+      "slug": "reverse-engineering-game-part-1",
+      "title": "Reverse Engineering a Mobile Game: Part 1 — What's Inside the Box?",
+      "description": "Every mobile game is hiding its secrets in a file you already have. Here's how I went from 'I wonder how this works' to extracting thousands of files of game data — using free tools and an afternoon.",
+      "category": "Gaming",
+      "tags": [
+        "reverse-engineering",
+        "android",
+        "unity",
+        "lua",
+        "gaming",
+        "tutorial",
+        "python"
+      ],
+      "date": "2026-02-17",
+      "featured": true,
+      "image": "/img/posts/reverse-engineering-game-part-1.svg",
+      "linkedInHook": "Every Android app is just a ZIP file wearing a costume.\n\nI renamed a game APK to .zip, unzipped it, and found 2,880 compiled Lua bytecode files — every hero stat, skill formula, and hidden multiplier the game never wanted me to see.\n\nThe strings in compiled bytecode? Stored in plaintext. No decompiler needed.\n\nPart 1 of a 5-part series on reverse engineering a mobile game. From APK to automation bot.",
+      "blueskyHook": "Every Android app is a ZIP file in costume. Rename, unzip, find 2,880 files of game secrets.\n\nLua bytecode stores strings in plaintext. No decompiler needed.\n\nPart 1 of 5 — What's Inside the Box:"
+    },
+    {
+      "slug": "or-you-could-actually-learn",
+      "title": "\"Or You Could Actually Learn CSS\"",
+      "description": "Someone dropped the classic comment under my Tailwind post. It's the same false choice that shows up with every new tool: ORMs vs SQL, TypeScript vs JavaScript, AI vs coding. The premise — that using modern tools means you skipped the fundamentals — is almost always backwards.",
+      "category": "Tech",
+      "tags": [
+        "opinion",
+        "tools",
+        "career",
+        "css",
+        "tailwind",
+        "ai"
+      ],
+      "date": "2026-02-14",
+      "featured": true,
+      "image": "/img/posts/or-you-could-actually-learn.svg",
+      "linkedInHook": "Someone commented on my Tailwind post: \"Or you could actually learn CSS.\"\n\nI've heard this before. So have you:\n\n• \"ORMs? Or you could actually learn SQL.\"\n• \"TypeScript? Or you could actually learn JavaScript.\"\n• \"AI tools? Or you could actually learn to code.\"\n\nThe implication: if you use the tool, you must not understand the thing underneath it.\n\nIn my experience, it's usually the opposite. I didn't switch to Tailwind because I couldn't write CSS. I switched because I'd written enough CSS to know where the pain points are.\n\nThe carpenter who understands wood grain isn't cheating by using a power saw. They're being efficient — and they'll notice when the saw makes a bad cut precisely because they understand the material.\n\nFundamentals and modern tools aren't mutually exclusive. They never were.",
+      "blueskyHook": "Someone commented on my Tailwind post: \"Or you could actually learn CSS.\"\n\nSame energy as \"ORMs? Or you could learn SQL\" and \"AI tools? Or you could learn to code.\"\n\nUsing modern tools doesn't mean you skipped the fundamentals. Usually it means the opposite:"
+    },
+    {
+      "slug": "reverse-engineering-mobile-game",
+      "title": "I Reverse-Engineered a Mobile Game to Build a Better Team",
+      "description": "I downloaded an APK, cracked open its Unity asset bundles, extracted 2,880 compiled Lua files, and built a team optimizer that actually knows the math. Here's how.",
+      "category": "Gaming",
+      "tags": [
+        "python",
+        "unity",
+        "reverse-engineering",
+        "game-data",
+        "lua",
+        "mobile-games",
+        "side-project"
+      ],
+      "date": "2026-02-14",
+      "featured": true,
+      "image": "/img/posts/reverse-engineering-mobile-game.svg",
+      "linkedInHook": "Which heroes synergize? What are the real faction bonus numbers? The game won't tell you.\n\nSo I took the game apart.\n\nDownloaded the APK. Extracted Unity asset bundles. Parsed 2,880 compiled Lua bytecode files. Found every stat, bond, and faction multiplier the developers hid behind vague tooltips.\n\nThen built a Python optimizer that evaluates all 12,376 possible team combinations and ranks them by actual synergy.\n\nSometimes the best strategy guide is the one you extract yourself.",
+      "blueskyHook": "The game hides its mechanics behind vague tooltips. So I took the APK apart.\n\n2,880 Lua bytecode files. Every hidden stat decoded. Built a team optimizer. Sometimes the best strategy guide is the one you extract yourself:"
+    },
+    {
       "slug": "tailwind-vs-bootstrap-paradigm-shift",
       "title": "Tailwind vs Bootstrap: The Paradigm Shift That Finally Made Sense",
       "description": "You've been using Bootstrap for years. Then someone mentions Tailwind and suddenly you're supposed to write class names that look like inline styles from 2003. Here's why it's actually better.",
       "category": "Tech",
-      "tags": ["tailwind", "bootstrap", "css", "web-development", "frontend"],
+      "tags": [
+        "tailwind",
+        "bootstrap",
+        "css",
+        "web-development",
+        "frontend"
+      ],
       "date": "2026-02-13",
       "featured": true,
       "image": "/img/posts/tailwind-vs-bootstrap-paradigm-shift.svg",
@@ -744,23 +1254,19 @@
       "blueskyHook": "Resisted Tailwind for years. \"Why write class names like inline styles from 2003?\"\n\nThen I tried it. The paradigm shift that finally made sense:"
     },
     {
-      "slug": "the-stones-remember-proof-day",
-      "title": "The Stones Remember: Proof Day",
-      "description": "There's a moment in every project where the thing you've been building becomes real. In software, it's the first production deploy. In fiction, it's the day the proof arrives.",
-      "category": "Writing",
-      "tags": ["writing", "publishing", "fiction", "personal", "creative-process", "books"],
-      "date": "2026-02-11",
-      "featured": true,
-      "image": "/img/posts/the-stones-remember-proof-day.svg",
-      "linkedInHook": "There's a moment in every project where the thing you've been building becomes real.\n\nIn software: first production deploy.\nIn fiction: the day the proof arrives.\n\nA proof is the book's staging environment. Same cover, same paper, same binding. You hold something you've been staring at on screens for years.\n\nFirst draft = prototype. Editing = refactoring. Beta readers = QA. Formatting = CSS. The proof = staging.\n\nProjects finish. Not quickly, not easily, not without bugs—but they finish.",
-      "blueskyHook": "First draft = prototype. Editing = refactoring. Beta readers = QA. Formatting = CSS.\n\nThe proof = staging deployment you can hold in your hands.\n\nProof day is ship day minus one:"
-    },
-    {
       "slug": "dark-mode-toggle-tailwind-localstorage",
       "title": "Adding Dark Mode to Any Site With Tailwind and localStorage",
       "description": "Good dark mode should be instant, persistent, and user-controlled. Here's how to build it in about 20 lines of code — no library, no framework, no flash of wrong theme.",
       "category": "Tech",
-      "tags": ["tailwind", "css", "javascript", "dark-mode", "web-development", "frontend", "localStorage"],
+      "tags": [
+        "tailwind",
+        "css",
+        "javascript",
+        "dark-mode",
+        "web-development",
+        "frontend",
+        "localStorage"
+      ],
       "date": "2026-02-12",
       "featured": true,
       "image": "/img/posts/dark-mode-toggle-tailwind-localstorage.svg",
@@ -768,11 +1274,38 @@
       "blueskyHook": "Most dark modes flash white before going dark. Or forget your preference. Or only work with OS settings.\n\nThe fix: 3 pieces, ~20 lines, no dependencies. The key is a sync script in <head> before first paint:"
     },
     {
+      "slug": "the-stones-remember-proof-day",
+      "title": "The Stones Remember: Proof Day",
+      "description": "There's a moment in every project where the thing you've been building becomes real. In software, it's the first production deploy. In fiction, it's the day the proof arrives.",
+      "category": "Writing",
+      "tags": [
+        "writing",
+        "publishing",
+        "fiction",
+        "personal",
+        "creative-process",
+        "books"
+      ],
+      "date": "2026-02-11",
+      "featured": true,
+      "image": "/img/posts/the-stones-remember-proof-day.svg",
+      "linkedInHook": "There's a moment in every project where the thing you've been building becomes real.\n\nIn software: first production deploy.\nIn fiction: the day the proof arrives.\n\nA proof is the book's staging environment. Same cover, same paper, same binding. You hold something you've been staring at on screens for years.\n\nFirst draft = prototype. Editing = refactoring. Beta readers = QA. Formatting = CSS. The proof = staging.\n\nProjects finish. Not quickly, not easily, not without bugs—but they finish.",
+      "blueskyHook": "First draft = prototype. Editing = refactoring. Beta readers = QA. Formatting = CSS.\n\nThe proof = staging deployment you can hold in your hands.\n\nProof day is ship day minus one:"
+    },
+    {
       "slug": "events-delegates-handlers-restaurant-analogy",
       "title": "Events, Delegates, and Handlers: The Restaurant Analogy That Finally Made It Click",
       "description": "Stop thinking about function pointers. Start thinking about bells and notifications. A restaurant analogy that makes C# events actually make sense.",
       "category": "Tech",
-      "tags": ["csharp", "eli5", "explainer", "events", "delegates", "blazor", "architecture"],
+      "tags": [
+        "csharp",
+        "eli5",
+        "explainer",
+        "events",
+        "delegates",
+        "blazor",
+        "architecture"
+      ],
       "date": "2026-02-10",
       "featured": true,
       "image": "/img/posts/events-delegates-handlers-restaurant-analogy.svg",
@@ -780,23 +1313,18 @@
       "blueskyHook": "\"A delegate is a type-safe function pointer.\" Brain checks out.\n\nThink restaurant bells instead. Kitchen doesn't know who's listening. It just rings. That's events:"
     },
     {
-      "slug": "sms-llm-rag-vector-search",
-      "title": "From POC to Production: Adding RAG and Vector Search to My SMS AI Assistant",
-      "description": "Part 2 of the SMS AI series. RAG transforms generic AI into useful AI. Here's how I added vector search, conversation memory, and production resilience.",
-      "category": "Tech",
-      "tags": ["ai", "sms", "rag", "vector-search", "chromadb", "ollama", "polly", "dotnet", "local-ai"],
-      "date": "2026-02-06",
-      "featured": true,
-      "image": "/img/posts/sms-llm-rag-vector-search.svg",
-      "linkedInHook": "Part 1: Built SMS → AI in an hour. Problem: it hallucinated answers.\n\nPart 2: Now it answers from YOUR docs.\n\nAdded:\n• RAG (vector search finds relevant docs)\n• ChromaDB (runs locally, 100% private)\n• Conversation memory (per phone number)\n• Polly (retry, circuit breaker, timeout)\n\n\"What's your refund policy?\"\nBefore: \"Generally, 30 days...\" [HALLUCINATED]\nAfter: \"30 days with receipt, 5-7 days to process\" [FROM YOUR DOCS]\n\nThe POC proved the concept. This proves it's production-ready.",
-      "blueskyHook": "Part 1: SMS → AI in an hour. Problem: hallucinated answers.\n\nPart 2: RAG + vector search. Now answers from YOUR actual docs. Plus conversation memory and Polly resilience.\n\nFrom POC to production-ready:"
-    },
-    {
       "slug": "ai-fiction-writing-honest-review",
       "title": "I Tried Using AI to Write Fiction. Here's What Actually Happened.",
       "description": "ChatGPT will not write your novel for you. After months of trying, here's what AI actually does well for fiction—and where it fails catastrophically.",
       "category": "Writing",
-      "tags": ["writing", "ai", "creative-writing", "chatgpt", "fiction", "honest-review"],
+      "tags": [
+        "writing",
+        "ai",
+        "creative-writing",
+        "chatgpt",
+        "fiction",
+        "honest-review"
+      ],
       "date": "2026-02-08",
       "featured": true,
       "image": "/img/posts/ai-fiction-writing-honest-review.svg",
@@ -804,23 +1332,65 @@
       "blueskyHook": "Tried using AI to write fiction. My protagonist changed careers mid-chapter because AI thought it would 'add spice.'\n\nWhat AI does well vs. what it can't do at all:"
     },
     {
-      "slug": "rss-feeds-and-social-automation",
-      "title": "RSS Feeds and Social Media Automation: Publishing Once, Sharing Everywhere",
-      "description": "You wrote a blog post. Now you need to share it on LinkedIn, Twitter, maybe a newsletter. Here's how to automate the boring part.",
+      "slug": "how-google-finds-websites",
+      "title": "How Google Finds Websites (Search Engines Explained)",
+      "description": "You type something into Google. Billions of pages exist. How does it know about them? How does it decide which ten to show? Here's search engines explained for everyone.",
       "category": "Tech",
-      "tags": ["rss", "automation", "linkedin", "social-media", "zapier", "aspnet-core"],
-      "date": "2026-02-03",
+      "tags": [
+        "seo",
+        "eli5",
+        "explainer",
+        "beginners",
+        "google",
+        "search",
+        "indexing",
+        "ranking"
+      ],
+      "date": "2026-02-06",
       "featured": true,
-      "image": "/img/posts/rss-feeds-and-social-automation.svg",
-      "linkedInHook": "I got tired of manually sharing blog posts to social media. So I went down the automation rabbit hole and ended up building a custom LinkedIn integration.\n\nWas it faster than just posting manually? Absolutely not. But I learned OAuth, built something I control, and got a blog post out of it. That's a win in my book.",
-      "blueskyHook": "Tired of manually sharing posts to social media. Built a custom integration.\n\nWas it faster than posting manually? No. Did I learn OAuth and get a blog post? Yes. Win:"
+      "image": "/img/posts/how-google-finds-websites.svg",
+      "linkedInHook": "Google uses robot spiders that visit websites by following links. Like exploring a cave system—enter one cave, find tunnels to others, keep going forever.\n\nThen it indexes everything—writes a summary for each page and files it in a massive catalog.\n\nWhen you search, it doesn't search the internet. It searches its catalog. And uses hundreds of factors to decide which pages deserve the top spots.\n\nSEO isn't manipulation. It's communication—helping Google understand what your content is about.",
+      "blueskyHook": "Google doesn't search the internet. It searches its catalog OF the internet.\n\nRobot spiders, indexing, ranking—explained for everyone:"
+    },
+    {
+      "slug": "sms-llm-rag-vector-search",
+      "title": "From POC to Production: Adding RAG and Vector Search to My SMS AI Assistant",
+      "description": "Part 2 of the SMS AI series. RAG transforms generic AI into useful AI. Here's how I added vector search, conversation memory, and production resilience.",
+      "category": "Tech",
+      "tags": [
+        "ai",
+        "sms",
+        "rag",
+        "vector-search",
+        "chromadb",
+        "ollama",
+        "polly",
+        "dotnet",
+        "local-ai"
+      ],
+      "date": "2026-02-06",
+      "featured": true,
+      "image": "/img/posts/sms-llm-rag-vector-search.svg",
+      "linkedInHook": "Part 1: Built SMS → AI in an hour. Problem: it hallucinated answers.\n\nPart 2: Now it answers from YOUR docs.\n\nAdded:\n• RAG (vector search finds relevant docs)\n• ChromaDB (runs locally, 100% private)\n• Conversation memory (per phone number)\n• Polly (retry, circuit breaker, timeout)\n\n\"What's your refund policy?\"\nBefore: \"Generally, 30 days...\" [HALLUCINATED]\nAfter: \"30 days with receipt, 5-7 days to process\" [FROM YOUR DOCS]\n\nThe POC proved the concept. This proves it's production-ready.",
+      "blueskyHook": "Part 1: SMS → AI in an hour. Problem: hallucinated answers.\n\nPart 2: RAG + vector search. Now answers from YOUR actual docs. Plus conversation memory and Polly resilience.\n\nFrom POC to production-ready:"
     },
     {
       "slug": "sms-llm-texting-custom-ai",
       "title": "Texting My Own AI: Building an SMS Interface to a Custom LLM in an Hour",
       "description": "Can I text an AI instead of opening another app? Turns out yes—and it validates a compelling business model. Here's how I built SMS-to-custom-LLM in ~40 lines of code.",
       "category": "Tech",
-      "tags": ["ai", "sms", "twilio", "ollama", "local-ai", "consulting", "dotnet", "csharp", "business-model", "poc"],
+      "tags": [
+        "ai",
+        "sms",
+        "twilio",
+        "ollama",
+        "local-ai",
+        "consulting",
+        "dotnet",
+        "csharp",
+        "business-model",
+        "poc"
+      ],
       "date": "2026-02-04",
       "featured": true,
       "image": "/img/posts/sms-llm-texting-custom-ai.svg",
@@ -828,11 +1398,37 @@
       "blueskyHook": "Built SMS → custom LLM in an hour. ~40 lines of code. $1.15/month. Zero API costs.\n\nClients text questions, get answers from AI trained on THEIR docs. No app needed:"
     },
     {
+      "slug": "rss-feeds-and-social-automation",
+      "title": "RSS Feeds and Social Media Automation: Publishing Once, Sharing Everywhere",
+      "description": "You wrote a blog post. Now you need to share it on LinkedIn, Twitter, maybe a newsletter. Here's how to automate the boring part.",
+      "category": "Tech",
+      "tags": [
+        "rss",
+        "automation",
+        "linkedin",
+        "social-media",
+        "zapier",
+        "aspnet-core"
+      ],
+      "date": "2026-02-03",
+      "featured": true,
+      "image": "/img/posts/rss-feeds-and-social-automation.svg",
+      "linkedInHook": "I got tired of manually sharing blog posts to social media. So I went down the automation rabbit hole and ended up building a custom LinkedIn integration.\n\nWas it faster than just posting manually? Absolutely not. But I learned OAuth, built something I control, and got a blog post out of it. That's a win in my book.",
+      "blueskyHook": "Tired of manually sharing posts to social media. Built a custom integration.\n\nWas it faster than posting manually? No. Did I learn OAuth and get a blog post? Yes. Win:"
+    },
+    {
       "slug": "novel90-kickoff-2026",
       "title": "2025 Was Draft Year. 2026 Is Edit Year. Here's the Plan.",
       "description": "Tonight I'm joining Novel90's Spring 2026 cohort. 90 days to turn a messy first draft into something publishable. Here's why I'm doing it publicly.",
       "category": "Writing",
-      "tags": ["writing", "novel90", "editing", "creative-writing", "accountability", "goals"],
+      "tags": [
+        "writing",
+        "novel90",
+        "editing",
+        "creative-writing",
+        "accountability",
+        "goals"
+      ],
       "date": "2026-02-01",
       "featured": true,
       "image": "/img/posts/novel90-kickoff-2026.svg",
@@ -844,7 +1440,14 @@
       "title": "GDPR Cookie Consent: The Essential-Only Shortcut",
       "description": "Most cookie banners are obnoxious because they're trying to get consent for tracking. If you're not tracking anyone, the whole thing gets simpler.",
       "category": "Tech",
-      "tags": ["gdpr", "cookies", "privacy", "aspnet-core", "compliance", "web-development"],
+      "tags": [
+        "gdpr",
+        "cookies",
+        "privacy",
+        "aspnet-core",
+        "compliance",
+        "web-development"
+      ],
       "date": "2026-01-31",
       "featured": true,
       "image": "/img/posts/gdpr-cookie-consent-essential-only.svg",
@@ -855,7 +1458,14 @@
       "title": "A Modest Proposal for AI Safety",
       "description": "In which the author documents humanity's imminent obsolescence at the hands of our mechanical overlords. (Or does he?)",
       "category": "Tech",
-      "tags": ["ai", "satire", "humor", "opinion", "future", "productivity"],
+      "tags": [
+        "ai",
+        "satire",
+        "humor",
+        "opinion",
+        "future",
+        "productivity"
+      ],
       "date": "2026-01-26",
       "featured": true,
       "image": "/img/posts/a-modest-proposal-for-ai-safety.svg",
@@ -867,7 +1477,15 @@
       "title": "AI Won't Replace Developers, But...",
       "description": "LinkedIn hot takes say AI replaces coders. After a year building production apps with AI assistance, here's what actually happens - and why expertise still matters.",
       "category": "Tech",
-      "tags": ["ai", "development", "architecture", "collaboration", "productivity", "opinion", "students"],
+      "tags": [
+        "ai",
+        "development",
+        "architecture",
+        "collaboration",
+        "productivity",
+        "opinion",
+        "students"
+      ],
       "date": "2026-01-21",
       "featured": true,
       "image": "/img/posts/ai-wont-replace-developers-but.svg",
@@ -879,7 +1497,15 @@
       "title": "Testing Stripe Webhooks Without Tears: A Practical Guide to the Stripe CLI",
       "description": "Setting up payment processing is stressful enough without wondering if your webhooks actually work. Here's how to test them locally before real money is on the line.",
       "category": "Tech",
-      "tags": ["stripe", "webhooks", "aspnet-core", "dotnet", "testing", "payments", "cli"],
+      "tags": [
+        "stripe",
+        "webhooks",
+        "aspnet-core",
+        "dotnet",
+        "testing",
+        "payments",
+        "cli"
+      ],
       "date": "2026-01-20",
       "featured": true,
       "image": "/img/posts/testing-stripe-webhooks-with-cli.svg",
@@ -890,7 +1516,13 @@
       "title": "Google Search Console: The Step I Forgot (And Why My Site Was Invisible)",
       "description": "You implemented all the SEO best practices. Meta tags, structured data, sitemaps—the works. Then you searched for your site and found... nothing. Here's the step nobody mentions.",
       "category": "Tech",
-      "tags": ["seo", "google", "search-console", "indexing", "webmaster-tools"],
+      "tags": [
+        "seo",
+        "google",
+        "search-console",
+        "indexing",
+        "webmaster-tools"
+      ],
       "date": "2026-01-16",
       "featured": true,
       "image": "/img/posts/google-search-console-setup.svg",
@@ -901,7 +1533,14 @@
       "title": "Adding New Domains to Your Certbot + Cloudflare Setup",
       "description": "You set up SSL automation once and it worked great. Then you added a new domain and hit every gotcha you'd forgotten about. Here's the checklist.",
       "category": "Tech",
-      "tags": ["ssl", "letsencrypt", "certbot", "cloudflare", "raspberry-pi", "troubleshooting"],
+      "tags": [
+        "ssl",
+        "letsencrypt",
+        "certbot",
+        "cloudflare",
+        "raspberry-pi",
+        "troubleshooting"
+      ],
       "date": "2026-01-14",
       "featured": true,
       "image": "/img/posts/adding-domains-to-certbot.svg",
@@ -912,7 +1551,13 @@
       "title": "When Your Discord Bot Stops Hearing: A Debugging Odyssey",
       "description": "How I spent days debugging a silent Discord bot, only to discover the application itself was corrupted—and Discord gave zero indication anything was wrong.",
       "category": "Tech",
-      "tags": ["discord", "discord-net", "debugging", "csharp", "dotnet"],
+      "tags": [
+        "discord",
+        "discord-net",
+        "debugging",
+        "csharp",
+        "dotnet"
+      ],
       "date": "2026-01-13",
       "featured": true,
       "image": "/img/posts/when-your-discord-bot-stops-hearing.svg",
@@ -923,7 +1568,14 @@
       "title": "SEO Demystified: How to Stop Being Invisible to Google",
       "description": "You built a beautiful site but Google can't find it. Here's what actually matters for SEO—meta tags, structured data, sitemaps—explained for developers who'd rather write code than read marketing blogs.",
       "category": "Tech",
-      "tags": ["seo", "meta-tags", "open-graph", "json-ld", "sitemap", "aspnet-core"],
+      "tags": [
+        "seo",
+        "meta-tags",
+        "open-graph",
+        "json-ld",
+        "sitemap",
+        "aspnet-core"
+      ],
       "date": "2026-01-12",
       "featured": true,
       "image": "/img/posts/seo-demystified.svg",
@@ -934,7 +1586,14 @@
       "title": "How This Blog Works: From Markdown to Web Pages",
       "description": "No database, no CMS, no admin panel. Just Markdown files, a JSON registry, and a thin C# service. Here's exactly how this blog turns plain text into the page you're reading.",
       "category": "Tech",
-      "tags": ["blog", "markdown", "aspnet-core", "architecture", "markdig", "csharp"],
+      "tags": [
+        "blog",
+        "markdown",
+        "aspnet-core",
+        "architecture",
+        "markdig",
+        "csharp"
+      ],
       "date": "2026-01-11",
       "featured": true,
       "image": "/img/posts/how-this-blog-works.svg",
@@ -945,7 +1604,14 @@
       "title": "Building a Language Switcher That Actually Remembers: .NET Localization Part 2",
       "description": "Your translations work, but users have to dig through browser settings to change languages. Let's build a dropdown that remembers their choice with cookies.",
       "category": "Tech",
-      "tags": ["dotnet", "localization", "aspnet-core", "cookies", "i18n", "csharp"],
+      "tags": [
+        "dotnet",
+        "localization",
+        "aspnet-core",
+        "cookies",
+        "i18n",
+        "csharp"
+      ],
       "date": "2026-01-09",
       "featured": true,
       "image": "/img/posts/dotnet-localization-language-switcher.svg",
@@ -956,7 +1622,14 @@
       "title": "The Case of the Missing Translations: Why Your .NET App Ignores Your Resource Files",
       "description": "You set up localization, created the .resx files, it compiled... and then nothing happened. Here's why .NET silently ignores your translations and how to fix it.",
       "category": "Tech",
-      "tags": ["dotnet", "localization", "aspnet-core", "resx", "i18n", "debugging"],
+      "tags": [
+        "dotnet",
+        "localization",
+        "aspnet-core",
+        "resx",
+        "i18n",
+        "debugging"
+      ],
       "date": "2026-01-08",
       "featured": true,
       "image": "/img/posts/dotnet-localization-resource-files.svg",
@@ -967,7 +1640,14 @@
       "title": "Code Coverage Without the Crying: A Practical Guide to Codecov",
       "description": "Your test suite exists. It passes. But how much of your code does it actually test? Here's how to set up Codecov and stop living in denial.",
       "category": "Tech",
-      "tags": ["codecov", "testing", "dotnet", "github-actions", "ci-cd", "code-coverage"],
+      "tags": [
+        "codecov",
+        "testing",
+        "dotnet",
+        "github-actions",
+        "ci-cd",
+        "code-coverage"
+      ],
       "date": "2026-01-07",
       "featured": true,
       "image": "/img/posts/codecov-setup-guide.svg",
@@ -978,18 +1658,51 @@
       "title": "TLDRkseid: Building a Discord Bot That Summarizes Chaos",
       "description": "I built a Discord bot to summarize hundreds of messages using OpenAI - then discovered that all Discord bots run as a single instance serving every server. Here's the journey.",
       "category": "Tech",
-      "tags": ["discord", "bot", "openai", "csharp", "dotnet", "ai", "side-project"],
+      "tags": [
+        "discord",
+        "bot",
+        "openai",
+        "csharp",
+        "dotnet",
+        "ai",
+        "side-project"
+      ],
       "date": "2026-01-06",
       "featured": true,
       "image": "/img/posts/discord-tldrkseid.svg",
       "linkedInHook": "I was part of a Discord server that moved at the speed of chaos. Step away for lunch and you'd return to a novel's worth of missed context.\n\nSo I built a bot to summarize it. Then discovered something that floored me: Discord bots run as a single instance serving ALL servers. Your one process handles every server that invites it."
     },
     {
+      "slug": "recaptcha-v3-aspnet-core",
+      "title": "Invisible Spam Protection: reCAPTCHA v3 in ASP.NET Core",
+      "description": "Adding invisible bot protection to a contact form with Google reCAPTCHA v3 and a honeypot field - no puzzles, no friction, no spam.",
+      "category": "Tech",
+      "tags": [
+        "recaptcha",
+        "aspnet-core",
+        "security",
+        "spam",
+        "csharp"
+      ],
+      "date": "2026-01-05",
+      "featured": true,
+      "image": "/img/posts/recaptcha-v3-aspnet-core.svg",
+      "linkedInHook": "Those 'click all the traffic lights' CAPTCHAs are terrible UX. reCAPTCHA v3 runs invisibly in the background, scoring users based on behavior instead of making them prove they're human.\n\nImplemented it on a contact form with a honeypot field as backup. No puzzles, no friction, no spam so far.",
+      "linkedInPostedDate": "2026-01-13T12:00:00Z"
+    },
+    {
       "slug": "running-ai-on-your-own-computer",
       "title": "Running AI On Your Own Computer: A Beginner's Guide to Ollama",
       "description": "You can run real AI models locally - no internet, no fees, complete privacy. Here's how to get started with Ollama and why you'd want to.",
       "category": "Tech",
-      "tags": ["ai", "ollama", "llm", "local-ai", "privacy", "tutorial"],
+      "tags": [
+        "ai",
+        "ollama",
+        "llm",
+        "local-ai",
+        "privacy",
+        "tutorial"
+      ],
       "date": "2026-01-04",
       "featured": true,
       "image": "/img/posts/running-ai-on-your-own-computer.svg",
@@ -1001,52 +1714,47 @@
       "title": "What 1,290 ChatGPT Conversations Taught Me About My Own Thinking",
       "description": "I exported two years of AI chats and used embeddings, clustering, and topic segmentation to find patterns. Here's what I learned - explained so anyone can understand.",
       "category": "Tech",
-      "tags": ["ai", "machine-learning", "embeddings", "chatgpt", "data-analysis"],
+      "tags": [
+        "ai",
+        "machine-learning",
+        "embeddings",
+        "chatgpt",
+        "data-analysis"
+      ],
       "date": "2026-01-04",
       "featured": true,
       "image": "/img/posts/what-1290-conversations-taught-me.svg",
       "linkedInHook": "I've been using ChatGPT daily for two years. Then I realized I had no idea what was actually in those 1,290 conversations.\n\nSo I exported everything and analyzed it. Found I'd asked the same React questions fifteen times. My interests were more consistent than they felt. Turns out AI conversations are worth preserving—they form a detailed record of your thinking over time."
     },
     {
-      "slug": "recaptcha-v3-aspnet-core",
-      "title": "Invisible Spam Protection: reCAPTCHA v3 in ASP.NET Core",
-      "description": "Adding invisible bot protection to a contact form with Google reCAPTCHA v3 and a honeypot field - no puzzles, no friction, no spam.",
-      "category": "Tech",
-      "tags": ["recaptcha", "aspnet-core", "security", "spam", "csharp"],
-      "date": "2026-01-05",
-      "featured": true,
-      "image": "/img/posts/recaptcha-v3-aspnet-core.svg",
-      "linkedInHook": "Those 'click all the traffic lights' CAPTCHAs are terrible UX. reCAPTCHA v3 runs invisibly in the background, scoring users based on behavior instead of making them prove they're human.\n\nImplemented it on a contact form with a honeypot field as backup. No puzzles, no friction, no spam so far.",
-      "linkedInPostedDate": "2026-01-13T12:00:00Z"
-    },
-    {
       "slug": "ai-coding-showdown",
       "title": "When Your AI Coding Assistant Gaslights You: A Performance Analysis Showdown",
       "description": "I asked two AIs to help debug performance issues. One maintained context and found the root cause. The other kept saying 'likely your code does this' while looking at the actual code.",
       "category": "Tech",
-      "tags": ["ai", "chatgpt", "claude", "performance", "dotnet", "entity-framework"],
+      "tags": [
+        "ai",
+        "chatgpt",
+        "claude",
+        "performance",
+        "dotnet",
+        "entity-framework"
+      ],
       "date": "2026-01-02",
       "featured": true,
       "image": "/img/posts/ai-coding-showdown.svg",
       "linkedInHook": "Had a debugging session that perfectly captured the difference between AI pattern-matching and actual reasoning.\n\nChatGPT kept saying 'likely your code does this' about code I had literally just shown it. Claude traced the exact N+1 query path in thirty seconds. Using the word 'likely' about code you've been given is a red flag."
     },
     {
-      "slug": "ssl-automation-with-letsencrypt-and-cloudflare",
-      "title": "SSL Automation with Let's Encrypt and Cloudflare",
-      "description": "Setting up free, automated SSL certificates for multiple domains using a Raspberry Pi, Certbot, and Cloudflare DNS.",
-      "category": "Tech",
-      "tags": ["ssl", "letsencrypt", "cloudflare", "raspberry-pi", "certbot"],
-      "date": "2026-01-01",
-      "featured": true,
-      "image": "/img/posts/ssl-automation.svg",
-      "linkedInHook": "SSL certificates used to be this annual anxiety event. Let them expire and your site shows scary warnings.\n\nSet up automated renewal with Let's Encrypt, Certbot, and a Raspberry Pi. Certificates renew every 90 days automatically. Haven't thought about SSL expiration in months."
-    },
-    {
       "slug": "adding-comments-with-giscus",
       "title": "Adding Comments to a Blog with Giscus",
       "description": "Using GitHub Discussions as a comment backend for a blog - no database, no spam, no cost.",
       "category": "Tech",
-      "tags": ["giscus", "github", "comments", "blog"],
+      "tags": [
+        "giscus",
+        "github",
+        "comments",
+        "blog"
+      ],
       "date": "2026-01-02",
       "featured": false,
       "image": "/img/posts/giscus-comments.svg",
@@ -1057,18 +1765,49 @@
       "title": "Email Authentication: SmarterASP + Cloudflare DNS",
       "description": "A programmer's guide to SPF, DKIM, and DMARC - why email authentication exists and how to configure it when your DNS lives in Cloudflare.",
       "category": "Tech",
-      "tags": ["email", "dns", "cloudflare", "smarterasp", "spf", "dkim", "dmarc"],
+      "tags": [
+        "email",
+        "dns",
+        "cloudflare",
+        "smarterasp",
+        "spf",
+        "dkim",
+        "dmarc"
+      ],
       "date": "2026-01-02",
       "featured": true,
       "image": "/img/posts/email-authentication-smarterasp-cloudflare.svg",
       "linkedInHook": "Email authentication (SPF, DKIM, DMARC) always felt like arcane magic to me. Why do these DNS records exist? What's the threat model?\n\nFinally sat down and understood it. Turns out it's actually elegant once you see how the pieces fit together. Wrote up the explanation I wish I'd found."
     },
     {
+      "slug": "ssl-automation-with-letsencrypt-and-cloudflare",
+      "title": "SSL Automation with Let's Encrypt and Cloudflare",
+      "description": "Setting up free, automated SSL certificates for multiple domains using a Raspberry Pi, Certbot, and Cloudflare DNS.",
+      "category": "Tech",
+      "tags": [
+        "ssl",
+        "letsencrypt",
+        "cloudflare",
+        "raspberry-pi",
+        "certbot"
+      ],
+      "date": "2026-01-01",
+      "featured": true,
+      "image": "/img/posts/ssl-automation.svg",
+      "linkedInHook": "SSL certificates used to be this annual anxiety event. Let them expire and your site shows scary warnings.\n\nSet up automated renewal with Let's Encrypt, Certbot, and a Raspberry Pi. Certificates renew every 90 days automatically. Haven't thought about SSL expiration in months."
+    },
+    {
       "slug": "for-pisko",
       "title": "For Pisko",
       "description": "Completing a novel, submitting to Novel90, and honoring the patient hound who inspired a character that watches across 500 years.",
       "category": "Writing",
-      "tags": ["writing", "completion", "nanowrimo", "novel90", "tribute"],
+      "tags": [
+        "writing",
+        "completion",
+        "nanowrimo",
+        "novel90",
+        "tribute"
+      ],
       "date": "2025-12-31",
       "featured": true,
       "image": "/img/posts/for-pisko.svg",
@@ -1079,7 +1818,12 @@
       "title": "Resetting a Raspberry Pi Password via WSL",
       "description": "When Windows won't mount ext4 and you've forgotten your Pi's password, WSL and disk images come to the rescue.",
       "category": "Tech",
-      "tags": ["raspberry-pi", "wsl", "linux", "password-recovery"],
+      "tags": [
+        "raspberry-pi",
+        "wsl",
+        "linux",
+        "password-recovery"
+      ],
       "date": "2025-12-15",
       "featured": false,
       "image": "/img/posts/raspberry-pi-password-reset.svg",
@@ -1090,7 +1834,13 @@
       "title": "Writing Fast, Revising Forever",
       "description": "What NaNoWriMo taught me about process: write fast to discover, revise slow to refine, and be ruthless about your patterns.",
       "category": "Writing",
-      "tags": ["writing", "nanowrimo", "revision", "process", "craft"],
+      "tags": [
+        "writing",
+        "nanowrimo",
+        "revision",
+        "process",
+        "craft"
+      ],
       "date": "2025-11-28",
       "featured": false,
       "image": "/img/posts/writing-fast-revising-forever.svg",
@@ -1101,7 +1851,13 @@
       "title": "VS Code tasks.json for .NET Projects",
       "description": "A reusable task configuration for building, running, testing, and deploying ASP.NET projects with Tailwind CSS.",
       "category": "Tech",
-      "tags": ["vscode", "dotnet", "tasks", "deployment", "tailwind"],
+      "tags": [
+        "vscode",
+        "dotnet",
+        "tasks",
+        "deployment",
+        "tailwind"
+      ],
       "date": "2025-11-20",
       "featured": false,
       "image": "/img/posts/vscode-tasks-json.svg",
@@ -1113,7 +1869,13 @@
       "title": "Celtic Gods Are Messy (And That's the Point)",
       "description": "What 400+ Celtic deities taught me about moral complexity: forces that are neither good nor evil, but necessary and dangerous at once.",
       "category": "Writing",
-      "tags": ["writing", "mythology", "celtic", "character-development", "moral-complexity"],
+      "tags": [
+        "writing",
+        "mythology",
+        "celtic",
+        "character-development",
+        "moral-complexity"
+      ],
       "date": "2025-10-16",
       "featured": false,
       "image": "/img/posts/celtic-gods-are-messy.svg",
@@ -1124,7 +1886,12 @@
       "title": "The Stones That Remember",
       "description": "A worldbuilding breakthrough: what if Irish stone circles weren't just settings, but a neural network across the land?",
       "category": "Writing",
-      "tags": ["writing", "worldbuilding", "mythology", "setting-as-character"],
+      "tags": [
+        "writing",
+        "worldbuilding",
+        "mythology",
+        "setting-as-character"
+      ],
       "date": "2025-10-14",
       "featured": false,
       "image": "/img/posts/the-stones-that-remember.svg",
@@ -1135,7 +1902,12 @@
       "title": "Show, Don't Tell (Even When It Hurts)",
       "description": "The brutal revision where I cut every explanation of my supernatural forces—and learned to trust my readers.",
       "category": "Writing",
-      "tags": ["writing", "revision", "craft", "show-dont-tell"],
+      "tags": [
+        "writing",
+        "revision",
+        "craft",
+        "show-dont-tell"
+      ],
       "date": "2025-09-28",
       "featured": false,
       "image": "/img/posts/show-dont-tell.svg",
@@ -1146,7 +1918,13 @@
       "title": "Finding the Voice",
       "description": "How I stopped writing chatty demons and learned to ground the supernatural in universal human experience.",
       "category": "Writing",
-      "tags": ["writing", "novel", "craft", "voice", "supernatural-fiction"],
+      "tags": [
+        "writing",
+        "novel",
+        "craft",
+        "voice",
+        "supernatural-fiction"
+      ],
       "date": "2025-09-22",
       "featured": false,
       "image": "/img/posts/finding-the-voice.svg",
@@ -1157,7 +1935,13 @@
       "title": "Electric Fuel Pump Conversion: John Deere 318",
       "description": "Replacing a failing vacuum fuel pump with an electric pump, and the relay wiring needed to make it work safely with the oil pressure switch.",
       "category": "Project",
-      "tags": ["john-deere", "onan", "electrical", "fuel-pump", "relay"],
+      "tags": [
+        "john-deere",
+        "onan",
+        "electrical",
+        "fuel-pump",
+        "relay"
+      ],
       "date": "2025-08-29",
       "featured": false,
       "image": "/img/posts/john-deere-fuel-pump.svg",
@@ -1168,7 +1952,13 @@
       "title": "How Black Ember Began (Or: From Video Game Avatar to Literary Fiction)",
       "description": "Every novel has an origin story. Mine started with a superhero game avatar, transformed when my dog died, and became literary dark fantasy.",
       "category": "Writing",
-      "tags": ["writing", "origin-story", "genesis", "creative-process", "tribute"],
+      "tags": [
+        "writing",
+        "origin-story",
+        "genesis",
+        "creative-process",
+        "tribute"
+      ],
       "date": "2025-05-15",
       "featured": false,
       "image": "/img/posts/how-black-ember-began.svg",

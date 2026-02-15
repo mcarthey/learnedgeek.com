@@ -1,0 +1,122 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Notebook paper background -->
+  <rect width="800" height="450" fill="#f9f7f1"/>
+
+  <!-- Notebook lines -->
+  <line x1="0" y1="100" x2="800" y2="100" stroke="#e0ddd5" stroke-width="1"/>
+  <line x1="0" y1="150" x2="800" y2="150" stroke="#e0ddd5" stroke-width="1"/>
+  <line x1="0" y1="200" x2="800" y2="200" stroke="#e0ddd5" stroke-width="1"/>
+  <line x1="0" y1="250" x2="800" y2="250" stroke="#e0ddd5" stroke-width="1"/>
+  <line x1="0" y1="300" x2="800" y2="300" stroke="#e0ddd5" stroke-width="1"/>
+  <line x1="0" y1="350" x2="800" y2="350" stroke="#e0ddd5" stroke-width="1"/>
+
+  <!-- Red margin line -->
+  <line x1="80" y1="0" x2="80" y2="450" stroke="#ff6b6b" stroke-width="2"/>
+
+  <!-- Restaurant dish illustration (left side) -->
+  <g transform="translate(120, 120)">
+    <!-- Dirty dishes piling up -->
+    <!-- Plate 1 -->
+    <ellipse cx="50" cy="80" rx="45" ry="12" fill="#ddd" stroke="#999" stroke-width="2"/>
+    <circle cx="50" cy="80" r="8" fill="#8b4513" opacity="0.6"/>
+    <circle cx="60" cy="82" r="5" fill="#8b4513" opacity="0.6"/>
+
+    <!-- Plate 2 (stacked) -->
+    <ellipse cx="52" cy="68" rx="45" ry="12" fill="#ddd" stroke="#999" stroke-width="2"/>
+    <circle cx="52" cy="68" r="10" fill="#8b4513" opacity="0.6"/>
+
+    <!-- Plate 3 (stacked) -->
+    <ellipse cx="48" cy="56" rx="45" ry="12" fill="#ddd" stroke="#999" stroke-width="2"/>
+    <circle cx="48" cy="56" r="7" fill="#8b4513" opacity="0.6"/>
+
+    <!-- Plate 4 (stacked) -->
+    <ellipse cx="50" cy="44" rx="45" ry="12" fill="#ddd" stroke="#999" stroke-width="2"/>
+
+    <!-- Stack indicator -->
+    <text x="50" y="110" font-family="Comic Sans MS, cursive" font-size="14" fill="#666" text-anchor="middle">Dirty dishes</text>
+    <text x="50" y="125" font-family="Comic Sans MS, cursive" font-size="14" fill="#666" text-anchor="middle">piling up...</text>
+  </g>
+
+  <!-- Arrow -->
+  <g transform="translate(240, 180)">
+    <line x1="0" y1="0" x2="60" y2="0" stroke="#8b5cf6" stroke-width="3" marker-end="url(#arrowPurple)"/>
+    <text x="30" y="-10" font-family="Arial, sans-serif" font-size="12" fill="#8b5cf6" text-anchor="middle" font-weight="bold">GC "Dishwasher"</text>
+  </g>
+
+  <!-- Dishwasher/GC (center) -->
+  <g transform="translate(340, 140)">
+    <rect width="100" height="80" rx="8" fill="#4a4a4a" stroke="#333" stroke-width="2"/>
+    <circle cx="50" cy="40" r="25" fill="#6b6b6b" opacity="0.3"/>
+    <text x="50" y="45" font-family="Arial, sans-serif" font-size="24" fill="#999" text-anchor="middle">⟳</text>
+    <text x="50" y="105" font-family="Comic Sans MS, cursive" font-size="13" fill="#666" text-anchor="middle">Eventually...</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <g transform="translate(460, 180)">
+    <line x1="0" y1="0" x2="60" y2="0" stroke="#ff4444" stroke-width="3" stroke-dasharray="5,5"/>
+    <text x="30" y="25" font-family="Arial, sans-serif" font-size="11" fill="#ff4444" text-anchor="middle" font-weight="bold">Too slow!</text>
+  </g>
+
+  <!-- Problem: Out of dishes (right side) -->
+  <g transform="translate(580, 150)">
+    <circle cx="50" cy="50" r="45" fill="#ff4444" opacity="0.1" stroke="#ff4444" stroke-width="3"/>
+    <text x="50" y="45" font-family="Arial, sans-serif" font-size="36" fill="#ff4444" text-anchor="middle">✗</text>
+    <text x="50" y="80" font-family="Comic Sans MS, cursive" font-size="12" fill="#ff4444" text-anchor="middle" font-weight="bold">Out of</text>
+    <text x="50" y="95" font-family="Comic Sans MS, cursive" font-size="12" fill="#ff4444" text-anchor="middle" font-weight="bold">dishes!</text>
+  </g>
+
+  <!-- The fix: Manual cleanup box -->
+  <g transform="translate(120, 280)">
+    <rect width="560" height="80" rx="8" fill="#e8f5e8" stroke="#4ade80" stroke-width="2"/>
+
+    <text x="20" y="30" font-family="Comic Sans MS, cursive" font-size="16" fill="#2d7a2d" font-weight="bold">The Fix: Wash dishes immediately!</text>
+    <text x="20" y="52" font-family="Courier New, monospace" font-size="13" fill="#555">using (var dish = GetCleanDish()) { ... }</text>
+    <text x="400" y="52" font-family="Arial, sans-serif" font-size="12" fill="#2d7a2d">← "WASH ME NOW"</text>
+  </g>
+
+  <!-- ELI5 badge (lower right) with shadow and crayon texture -->
+  <defs>
+    <filter id="eli5_shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="2" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="eli5_crayon">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+
+  <g transform="translate(700, 380)" filter="url(#eli5_shadow)">
+    <!-- Notebook paper background -->
+    <rect width="80" height="50" fill="#f9f7f1" stroke="#333" stroke-width="1" rx="3"/>
+    <!-- Blue ruled lines -->
+    <line x1="5" y1="15" x2="75" y2="15" stroke="#a8d8ff" stroke-width="0.5"/>
+    <line x1="5" y1="25" x2="75" y2="25" stroke="#a8d8ff" stroke-width="0.5"/>
+    <line x1="5" y1="35" x2="75" y2="35" stroke="#a8d8ff" stroke-width="0.5"/>
+    <!-- Red margin -->
+    <line x1="12" y1="5" x2="12" y2="45" stroke="#ff6b6b" stroke-width="0.8"/>
+    <!-- Brain icon -->
+    <g transform="translate(17, 13)">
+      <circle cx="8" cy="8" r="7" fill="none" stroke="#ff6b6b" stroke-width="1.2" filter="url(#eli5_crayon)"/>
+      <path d="M 5 8 Q 8 5 11 8" fill="none" stroke="#ff6b6b" stroke-width="1"/>
+      <path d="M 6 10 Q 8 12 10 10" fill="none" stroke="#ff6b6b" stroke-width="1"/>
+    </g>
+    <!-- ELI5 text -->
+    <text x="33" y="22" font-family="Comic Sans MS, cursive" font-size="10" fill="#ff6b6b" font-weight="bold" filter="url(#eli5_crayon)">ELI5</text>
+    <text x="33" y="32" font-family="Comic Sans MS, cursive" font-size="7" fill="#666" filter="url(#eli5_crayon)">Series</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="45" font-family="Comic Sans MS, cursive" font-size="32" fill="#2d2d2d" text-anchor="middle" font-weight="bold">Why Programs Forget to Clean Up</text>
+  <text x="400" y="75" font-family="Arial, sans-serif" font-size="14" fill="#8b5cf6" text-anchor="middle">Explained with Restaurants and Dishes</text>
+</svg>
