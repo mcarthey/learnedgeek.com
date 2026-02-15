@@ -949,6 +949,24 @@
       "blueskyHook": "AI assistants don't \"know\" things. They predict what sounds right—like a parrot that's read the entire internet.\n\nUnderstanding this changes how you use them:"
     },
     {
+      "slug": "ai-cadence-and-technical-writing",
+      "title": "The AI Cadence Problem (And Why I'm Okay With It)",
+      "description": "Everyone's hunting for em dashes. Meanwhile, the real tell is the cadence. You'll FEEL it. Here's when I care about AI voice — and when I don't.",
+      "category": "Writing",
+      "tags": [
+        "ai",
+        "writing",
+        "blogging",
+        "voice",
+        "technical-writing",
+        "meta"
+      ],
+      "date": "2026-03-22",
+      "featured": false,
+      "image": "/img/posts/ai-cadence-and-technical-writing.svg",
+      "linkedInHook": "People keep asking if I use AI to write my blog.\n\nThe answer: Yes. Obviously.\n\nBut here's the thing everyone misses: The real tell isn't em dashes or oxford commas. It's cadence.\n\nAI writes in perfect, predictable rhythm. Lands neatly. Wraps up cleanly.\n\nHuman voice has rough edges. Surprise. Rhythm that shifts.\n\nWhen does this matter?\n\n❌ Brand voice. Personal narrative. Storytelling.\n✅ Technical documentation. Step-by-step guides. Process posts.\n\nMy blog is my external brain. I write to document what I learn so I don't forget it later.\n\nFor THAT purpose? AI cadence works.\n\nBut if I were writing thought leadership or building a personal brand? I'd need to break the rhythm. Add friction. Let my actual voice come through.\n\nThe trick isn't hiding AI. It's knowing when perfect cadence helps — and when it kills you.\n\nBlog post: https://learnedgeek.com/Blog/Post/ai-cadence-and-technical-writing\n\n#ai #writing #blogging #voice"
+    },
+    {
       "slug": "blazor-wasm-loading-forever-fix",
       "title": "Blazor WASM Says 'Loading...' Forever: A .NET 10 Debugging Adventure",
       "description": "Your Blazor app loads the HTML, shows the spinner, then... nothing. The console shows errors about '/0'. Here's the one-line fix for the WasmInlineBootConfig bug.",
