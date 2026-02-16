@@ -1,0 +1,109 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background -->
+  <rect width="800" height="450" fill="#1a1a2e"/>
+
+  <!-- Grid pattern background -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a2a3e" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid)" opacity="0.3"/>
+
+  <!-- Classroom/Learning theme -->
+  <g>
+    <!-- Textbook (Traditional learning) -->
+    <rect x="50" y="100" width="140" height="180" fill="#2a2a3e" stroke="#666" stroke-width="2" rx="4"/>
+    <rect x="50" y="100" width="140" height="30" fill="#444" rx="4"/>
+    <text x="120" y="120" font-family="Arial, sans-serif" font-size="14" fill="#999" text-anchor="middle" font-weight="bold">REST APIs</text>
+
+    <!-- Book pages -->
+    <line x1="70" y1="150" x2="170" y2="150" stroke="#666" stroke-width="1"/>
+    <line x1="70" y1="170" x2="170" y2="170" stroke="#666" stroke-width="1"/>
+    <line x1="70" y1="190" x2="160" y2="190" stroke="#666" stroke-width="1"/>
+    <line x1="70" y1="210" x2="170" y2="210" stroke="#666" stroke-width="1"/>
+    <line x1="70" y1="230" x2="150" y2="230" stroke="#666" stroke-width="1"/>
+
+    <!-- Sad face (boring) -->
+    <circle cx="120" cy="330" r="30" fill="none" stroke="#666" stroke-width="2"/>
+    <circle cx="110" cy="320" r="3" fill="#666"/>
+    <circle cx="130" cy="320" r="3" fill="#666"/>
+    <path d="M 105 345 Q 120 335 135 345" stroke="#666" stroke-width="2" fill="none"/>
+    <text x="120" y="385" font-family="Arial, sans-serif" font-size="14" fill="#666" text-anchor="middle">Boring</text>
+  </g>
+
+  <!-- Plus sign -->
+  <g>
+    <circle cx="300" cy="210" r="40" fill="#FF9800" opacity="0.2"/>
+    <line x1="300" y1="185" x2="300" y2="235" stroke="#FF9800" stroke-width="4"/>
+    <line x1="275" y1="210" x2="325" y2="210" stroke="#FF9800" stroke-width="4"/>
+  </g>
+
+  <!-- Game controller + API -->
+  <g>
+    <!-- Game element -->
+    <rect x="420" y="100" width="160" height="180" fill="#16213e" stroke="#4CAF50" stroke-width="3" rx="8"/>
+
+    <!-- Screen with code -->
+    <rect x="435" y="120" width="130" height="100" fill="#0d1117" rx="4"/>
+    <text x="500" y="145" font-family="'Courier New', monospace" font-size="11" fill="#7ee787" text-anchor="middle">POST /battle</text>
+    <text x="500" y="165" font-family="'Courier New', monospace" font-size="11" fill="#58a6ff" text-anchor="middle">GET /roster</text>
+    <text x="500" y="185" font-family="'Courier New', monospace" font-size="11" fill="#FF9800" text-anchor="middle">PUT /strategy</text>
+    <text x="500" y="205" font-family="'Courier New', monospace" font-size="11" fill="#9C27B0" text-anchor="middle">{"win": true}</text>
+
+    <!-- D-pad (left) -->
+    <rect x="445" y="235" width="15" height="35" fill="#4CAF50" rx="2"/>
+    <rect x="435" y="245" width="35" height="15" fill="#4CAF50" rx="2"/>
+
+    <!-- Buttons (right) -->
+    <circle cx="540" cy="245" r="10" fill="#4CAF50"/>
+    <circle cx="560" cy="255" r="10" fill="#4CAF50"/>
+
+    <!-- Happy face (engaging) -->
+    <circle cx="500" cy="330" r="30" fill="none" stroke="#4CAF50" stroke-width="2"/>
+    <circle cx="490" cy="320" r="3" fill="#4CAF50"/>
+    <circle cx="510" cy="320" r="3" fill="#4CAF50"/>
+    <path d="M 485 335 Q 500 345 515 335" stroke="#4CAF50" stroke-width="2" fill="none"/>
+    <text x="500" y="385" font-family="Arial, sans-serif" font-size="14" fill="#4CAF50" text-anchor="middle">Engaging!</text>
+  </g>
+
+  <!-- Equals sign -->
+  <g>
+    <circle cx="660" cy="210" r="40" fill="#00BCD4" opacity="0.2"/>
+    <line x1="635" y1="200" x2="685" y2="200" stroke="#00BCD4" stroke-width="4"/>
+    <line x1="635" y1="220" x2="685" y2="220" stroke="#00BCD4" stroke-width="4"/>
+  </g>
+
+  <!-- Learning outcome -->
+  <g>
+    <!-- Trophy/Achievement -->
+    <path d="M 740 140 L 750 120 L 760 140 Z" fill="#FFD700"/>
+    <rect x="735" y="140" width="30" height="35" fill="#FFD700" rx="4"/>
+    <rect x="740" y="175" width="20" height="15" fill="#FFD700"/>
+    <rect x="730" y="190" width="40" height="8" fill="#FFD700" rx="2"/>
+
+    <!-- Checkmarks -->
+    <g>
+      <path d="M 715 230 L 720 240 L 735 220" stroke="#4CAF50" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <text x="770" y="235" font-family="Arial, sans-serif" font-size="12" fill="#4CAF50">HTTP</text>
+
+      <path d="M 715 255 L 720 265 L 735 245" stroke="#4CAF50" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <text x="770" y="260" font-family="Arial, sans-serif" font-size="12" fill="#4CAF50">JSON</text>
+
+      <path d="M 715 280 L 720 290 L 735 270" stroke="#4CAF50" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <text x="770" y="285" font-family="Arial, sans-serif" font-size="12" fill="#4CAF50">Auth</text>
+
+      <path d="M 715 305 L 720 315 L 735 295" stroke="#4CAF50" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <text x="770" y="310" font-family="Arial, sans-serif" font-size="12" fill="#4CAF50">APIs</text>
+    </g>
+
+    <text x="750" y="350" font-family="Arial, sans-serif" font-size="14" fill="#FFD700" text-anchor="middle" font-weight="bold">Skills</text>
+    <text x="750" y="370" font-family="Arial, sans-serif" font-size="14" fill="#FFD700" text-anchor="middle" font-weight="bold">Learned</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#4CAF50" text-anchor="middle">TEACHING APIs THROUGH GAMING</text>
+
+  <!-- Subtitle -->
+  <text x="400" y="420" font-family="Arial, sans-serif" font-size="16" fill="#00BCD4" text-anchor="middle" opacity="0.8">Traditional Learning + Gamification = Better Outcomes</text>
+</svg>

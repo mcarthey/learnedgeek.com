@@ -1,0 +1,77 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background -->
+  <rect width="800" height="450" fill="#1a1a2e"/>
+
+  <!-- Grid pattern background -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a2a3e" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid)" opacity="0.3"/>
+
+  <!-- Step indicators -->
+  <g>
+    <!-- Step 1 -->
+    <circle cx="100" cy="80" r="30" fill="#4CAF50" opacity="0.3" stroke="#4CAF50" stroke-width="2"/>
+    <text x="100" y="90" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#4CAF50" text-anchor="middle">1</text>
+    <text x="100" y="130" font-family="Arial, sans-serif" font-size="14" fill="#4CAF50" text-anchor="middle">Register</text>
+
+    <!-- Step 2 -->
+    <circle cx="250" cy="80" r="30" fill="#2196F3" opacity="0.3" stroke="#2196F3" stroke-width="2"/>
+    <text x="250" y="90" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2196F3" text-anchor="middle">2</text>
+    <text x="250" y="130" font-family="Arial, sans-serif" font-size="14" fill="#2196F3" text-anchor="middle">Get Roster</text>
+
+    <!-- Step 3 -->
+    <circle cx="400" cy="80" r="30" fill="#FF9800" opacity="0.3" stroke="#FF9800" stroke-width="2"/>
+    <text x="400" y="90" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#FF9800" text-anchor="middle">3</text>
+    <text x="400" y="130" font-family="Arial, sans-serif" font-size="14" fill="#FF9800" text-anchor="middle">Strategy</text>
+
+    <!-- Step 4 -->
+    <circle cx="550" cy="80" r="30" fill="#9C27B0" opacity="0.3" stroke="#9C27B0" stroke-width="2"/>
+    <text x="550" y="90" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#9C27B0" text-anchor="middle">4</text>
+    <text x="550" y="130" font-family="Arial, sans-serif" font-size="14" fill="#9C27B0" text-anchor="middle">Battle</text>
+
+    <!-- Step 5 -->
+    <circle cx="700" cy="80" r="30" fill="#00BCD4" opacity="0.3" stroke="#00BCD4" stroke-width="2"/>
+    <text x="700" y="90" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#00BCD4" text-anchor="middle">5</text>
+    <text x="700" y="130" font-family="Arial, sans-serif" font-size="14" fill="#00BCD4" text-anchor="middle">Results</text>
+
+    <!-- Connecting lines -->
+    <line x1="130" y1="80" x2="220" y2="80" stroke="#555" stroke-width="2" stroke-dasharray="5,5"/>
+    <line x1="280" y1="80" x2="370" y2="80" stroke="#555" stroke-width="2" stroke-dasharray="5,5"/>
+    <line x1="430" y1="80" x2="520" y2="80" stroke="#555" stroke-width="2" stroke-dasharray="5,5"/>
+    <line x1="580" y1="80" x2="670" y2="80" stroke="#555" stroke-width="2" stroke-dasharray="5,5"/>
+  </g>
+
+  <!-- Terminal window -->
+  <g>
+    <rect x="50" y="170" width="700" height="240" fill="#0d1117" stroke="#30363d" stroke-width="2" rx="8"/>
+
+    <!-- Terminal header -->
+    <rect x="50" y="170" width="700" height="30" fill="#161b22" rx="8"/>
+    <circle cx="70" cy="185" r="6" fill="#ff5f56"/>
+    <circle cx="90" cy="185" r="6" fill="#ffbd2e"/>
+    <circle cx="110" cy="185" r="6" fill="#27c93f"/>
+    <text x="130" y="192" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">bash</text>
+
+    <!-- Terminal content (curl commands) -->
+    <text x="70" y="230" font-family="'Courier New', monospace" font-size="13" fill="#58a6ff">$</text>
+    <text x="85" y="230" font-family="'Courier New', monospace" font-size="13" fill="#e6edf3">curl -X POST api.apicombat.com/v1/auth/register</text>
+
+    <text x="70" y="260" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">{"token": "eyJhbGc...</text>
+    <text x="85" y="278" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">"userId": "550e8400-..."}</text>
+
+    <text x="70" y="310" font-family="'Courier New', monospace" font-size="13" fill="#58a6ff">$</text>
+    <text x="85" y="310" font-family="'Courier New', monospace" font-size="13" fill="#e6edf3">curl -X POST api.apicombat.com/v1/battle/queue</text>
+
+    <text x="70" y="340" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">{"battleId": "battle-xyz789",</text>
+    <text x="85" y="358" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">"status": "queued"}</text>
+
+    <text x="70" y="390" font-family="'Courier New', monospace" font-size="13" fill="#58a6ff">$</text>
+    <rect x="85" y="378" width="12" height="18" fill="#58a6ff" opacity="0.5"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#00BCD4" text-anchor="middle">YOUR FIRST BATTLE</text>
+</svg>

@@ -1,0 +1,76 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background -->
+  <rect width="800" height="450" fill="#1a1a2e"/>
+
+  <!-- Grid pattern background -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a2a3e" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid)" opacity="0.3"/>
+
+  <!-- API endpoints visualization (left side) -->
+  <g>
+    <!-- POST /v1/auth/register -->
+    <rect x="40" y="60" width="320" height="50" fill="#2a2a3e" stroke="#4CAF50" stroke-width="2" rx="4"/>
+    <text x="60" y="90" font-family="'Courier New', monospace" font-size="14" fill="#4CAF50" font-weight="bold">POST</text>
+    <text x="120" y="90" font-family="'Courier New', monospace" font-size="14" fill="#fff">/v1/auth/register</text>
+
+    <!-- GET /v1/player/roster -->
+    <rect x="40" y="125" width="320" height="50" fill="#2a2a3e" stroke="#2196F3" stroke-width="2" rx="4"/>
+    <text x="60" y="155" font-family="'Courier New', monospace" font-size="14" fill="#2196F3" font-weight="bold">GET</text>
+    <text x="110" y="155" font-family="'Courier New', monospace" font-size="14" fill="#fff">/v1/player/roster</text>
+
+    <!-- POST /v1/battle/queue -->
+    <rect x="40" y="190" width="320" height="50" fill="#2a2a3e" stroke="#FF9800" stroke-width="2" rx="4"/>
+    <text x="60" y="220" font-family="'Courier New', monospace" font-size="14" fill="#FF9800" font-weight="bold">POST</text>
+    <text x="120" y="220" font-family="'Courier New', monospace" font-size="14" fill="#fff">/v1/battle/queue</text>
+
+    <!-- GET /v1/battle/result -->
+    <rect x="40" y="255" width="320" height="50" fill="#2a2a3e" stroke="#9C27B0" stroke-width="2" rx="4"/>
+    <text x="60" y="285" font-family="'Courier New', monospace" font-size="14" fill="#9C27B0" font-weight="bold">GET</text>
+    <text x="110" y="285" font-family="'Courier New', monospace" font-size="14" fill="#fff">/v1/battle/result</text>
+  </g>
+
+  <!-- Arrow connecting API to Battle -->
+  <path d="M 370 180 L 420 180" stroke="#00BCD4" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#00BCD4"/>
+    </marker>
+  </defs>
+
+  <!-- Battle visualization (right side) -->
+  <g>
+    <!-- Battle arena -->
+    <rect x="440" y="80" width="320" height="240" fill="#16213e" stroke="#00BCD4" stroke-width="2" rx="8"/>
+
+    <!-- Team A (left side) -->
+    <circle cx="500" cy="150" r="20" fill="#4CAF50" opacity="0.8"/>
+    <circle cx="500" cy="200" r="20" fill="#4CAF50" opacity="0.8"/>
+    <circle cx="500" cy="250" r="20" fill="#4CAF50" opacity="0.8"/>
+
+    <!-- Team B (right side) -->
+    <circle cx="700" cy="150" r="20" fill="#f44336" opacity="0.8"/>
+    <circle cx="700" cy="200" r="20" fill="#f44336" opacity="0.8"/>
+    <circle cx="700" cy="250" r="20" fill="#f44336" opacity="0.8"/>
+
+    <!-- Battle effects -->
+    <line x1="520" y1="150" x2="680" y2="150" stroke="#FFD700" stroke-width="3" opacity="0.6"/>
+    <line x1="520" y1="200" x2="680" y2="200" stroke="#FFD700" stroke-width="3" opacity="0.6"/>
+    <line x1="520" y1="250" x2="680" y2="250" stroke="#FFD700" stroke-width="3" opacity="0.6"/>
+
+    <!-- Battle label -->
+    <text x="600" y="110" font-family="'Courier New', monospace" font-size="16" fill="#00BCD4" text-anchor="middle" font-weight="bold">BATTLE</text>
+  </g>
+
+  <!-- JSON response (bottom) -->
+  <rect x="40" y="340" width="720" height="80" fill="#16213e" stroke="#FFD700" stroke-width="2" rx="4"/>
+  <text x="60" y="365" font-family="'Courier New', monospace" font-size="12" fill="#FFD700">{"result": "victory",</text>
+  <text x="60" y="385" font-family="'Courier New', monospace" font-size="12" fill="#FFD700"> "opponent": "Player42",</text>
+  <text x="60" y="405" font-family="'Courier New', monospace" font-size="12" fill="#FFD700"> "rank": "Rubber Duck III"}</text>
+
+  <!-- Title -->
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#00BCD4" text-anchor="middle">API COMBAT</text>
+</svg>
