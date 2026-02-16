@@ -2,6 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using LearnedGeek.Models;
 using Markdig;
+using Microsoft.Extensions.Logging;
 
 namespace LearnedGeek.Services;
 
@@ -11,8 +12,9 @@ public class BlogService : IBlogService
     private readonly MarkdownPipeline _markdownPipeline;
     private List<BlogPost>? _postsCache;
     private readonly JsonSerializerOptions _jsonOptions;
+    private readonly ILogger<BlogService> _logger;
 
-    public BlogService(IWebHostEnvironment env)
+    public BlogService(IWebHostEnvironment env, ILogger<BlogService> logger)
     {
         _contentPath = Path.Combine(env.ContentRootPath, "Content");
         _markdownPipeline = new MarkdownPipelineBuilder()
@@ -23,6 +25,7 @@ public class BlogService : IBlogService
             PropertyNameCaseInsensitive = true,
             Converters = { new JsonStringEnumConverter() }
         };
+        _logger = logger;
     }
 
     private async Task<List<BlogPost>> LoadPostsMetadataAsync()
@@ -33,15 +36,37 @@ public class BlogService : IBlogService
         var postsJsonPath = Path.Combine(_contentPath, "posts.json");
         if (!File.Exists(postsJsonPath))
         {
+            _logger.LogWarning("posts.json not found at {Path}", postsJsonPath);
             _postsCache = [];
             return _postsCache;
         }
 
-        var json = await File.ReadAllTextAsync(postsJsonPath);
-        var postsData = JsonSerializer.Deserialize<PostsContainer>(json, _jsonOptions);
-        _postsCache = postsData?.Posts ?? [];
+        try
+        {
+            var json = await File.ReadAllTextAsync(postsJsonPath);
+            var postsData = JsonSerializer.Deserialize<PostsContainer>(json, _jsonOptions);
+            _postsCache = postsData?.Posts ?? [];
 
-        return _postsCache;
+            _logger.LogInformation("Successfully loaded {Count} blog posts from posts.json", _postsCache.Count);
+            return _postsCache;
+        }
+        catch (JsonException ex)
+        {
+            _logger.LogError(ex,
+                "Failed to deserialize posts.json. This usually means there's an invalid category value or malformed JSON. " +
+                "Error at path: {Path}, Line: {LineNumber}, Position: {BytePosition}",
+                ex.Path, ex.LineNumber, ex.BytePositionInLine);
+
+            // Return empty list so the site doesn't crash - admin can fix the JSON
+            _postsCache = [];
+            return _postsCache;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unexpected error loading posts.json from {Path}", postsJsonPath);
+            _postsCache = [];
+            return _postsCache;
+        }
     }
 
     public async Task<IEnumerable<BlogPost>> GetAllPostsAsync()
