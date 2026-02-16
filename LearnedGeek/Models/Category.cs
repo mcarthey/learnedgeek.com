@@ -6,7 +6,8 @@ public enum Category
     Writing,
     Gaming,
     Project,
-    Personal
+    Personal,
+    Opinion
 }
 
 public static class CategoryExtensions
@@ -18,6 +19,7 @@ public static class CategoryExtensions
         Category.Gaming => "Gaming",
         Category.Project => "Project",
         Category.Personal => "Personal",
+        Category.Opinion => "Opinion",
         _ => category.ToString()
     };
 
@@ -28,6 +30,7 @@ public static class CategoryExtensions
         Category.Gaming => "bg-purple-100 text-purple-800",
         Category.Project => "bg-green-100 text-green-800",
         Category.Personal => "bg-amber-100 text-amber-800",
+        Category.Opinion => "bg-red-100 text-red-800",
         _ => "bg-neutral-100 text-neutral-800"
     };
 
