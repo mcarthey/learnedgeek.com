@@ -40,7 +40,8 @@
                 "-c",
                 "Release",
                 "-p:PublishProfile=SmarterASP",
-                "-p:Password=${input:deployPassword}"
+                "-p:Password=${input:deployPassword}",
+                "-v:d"
             ],
             "dependsOn": ["Build CSS"],
             "problemMatcher": "$msCompile",

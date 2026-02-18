@@ -317,6 +317,27 @@ public class AdminController : Controller
         return Json(new { success = result });
     }
 
+    [HttpGet("download-posts-json")]
+    public async Task<IActionResult> DownloadPostsJson()
+    {
+        if (!IsAuthorized())
+        {
+            return RedirectToAction(nameof(Login));
+        }
+
+        var postsJsonPath = Path.Combine(_webHostEnvironment.ContentRootPath, "Content", "posts.json");
+        if (!System.IO.File.Exists(postsJsonPath))
+        {
+            return NotFound("posts.json not found");
+        }
+
+        var json = await System.IO.File.ReadAllTextAsync(postsJsonPath);
+        var timestamp = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+        var fileName = $"posts-{timestamp}.json";
+
+        return File(System.Text.Encoding.UTF8.GetBytes(json), "application/json", fileName);
+    }
+
     // Instagram Integration
 
     [HttpGet("instagram/connect")]

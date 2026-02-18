@@ -1,0 +1,74 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#1a1a2e"/>
+  <defs>
+    <pattern id="grid14" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a2a3e" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid14)" opacity="0.3"/>
+
+  <!-- Left: Broken email -->
+  <rect x="40" y="35" width="320" height="240" fill="#282a36" rx="8" stroke="#ff5555" stroke-width="1.5"/>
+  <rect x="40" y="35" width="320" height="28" fill="#44475a" rx="8"/>
+  <rect x="40" y="51" width="320" height="12" fill="#44475a"/>
+  <text x="200" y="53" font-family="monospace" font-size="9" fill="#ff5555" text-anchor="middle">Gmail Inbox</text>
+
+  <!-- Email header -->
+  <text x="56" y="82" font-family="monospace" font-size="8" fill="#6272a4">From: noreply@apicombat.com</text>
+  <text x="56" y="96" font-family="monospace" font-size="8" fill="#6272a4">Subject: Battle Results</text>
+  <line x1="56" y1="104" x2="340" y2="104" stroke="#44475a" stroke-width="0.5"/>
+
+  <!-- Broken rendering -->
+  <text x="56" y="122" font-family="monospace" font-size="9" fill="#ff5555">Battle Results</text>
+  <text x="56" y="140" font-family="monospace" font-size="8" fill="#8be9fd" text-decoration="underline">Click here for details</text>
+  <text x="56" y="158" font-family="monospace" font-size="8" fill="#f8f8f2">You won against WizardSlayer42</text>
+  <text x="56" y="176" font-family="monospace" font-size="8" fill="#f8f8f2">Rating: 1247 → 1271</text>
+
+  <!-- Red X marks for broken things -->
+  <text x="56" y="206" font-family="monospace" font-size="8" fill="#ff5555">No branding</text>
+  <text x="56" y="222" font-family="monospace" font-size="8" fill="#ff5555">Default blue links</text>
+  <text x="56" y="238" font-family="monospace" font-size="8" fill="#ff5555">No CTA button</text>
+  <text x="56" y="254" font-family="monospace" font-size="8" fill="#ff5555">Layout collapsed</text>
+  <text x="200" y="268" font-family="monospace" font-size="10" fill="#ff5555" text-anchor="middle">Gmail stripped &lt;style&gt;</text>
+
+  <!-- Arrow -->
+  <text x="390" y="160" font-family="'Segoe UI', sans-serif" font-size="30" fill="#50fa7b" text-anchor="middle">→</text>
+
+  <!-- Right: Branded email -->
+  <rect x="420" y="35" width="340" height="240" fill="#282a36" rx="8" stroke="#50fa7b" stroke-width="1.5"/>
+  <rect x="420" y="35" width="340" height="28" fill="#44475a" rx="8"/>
+  <rect x="420" y="51" width="340" height="12" fill="#44475a"/>
+  <text x="590" y="53" font-family="monospace" font-size="9" fill="#50fa7b" text-anchor="middle">Gmail Inbox</text>
+
+  <!-- Branded header -->
+  <rect x="440" y="72" width="280" height="36" fill="#bd93f9" rx="4" opacity="0.3"/>
+  <text x="580" y="94" font-family="'Segoe UI', sans-serif" font-size="14" fill="#bd93f9" text-anchor="middle" font-weight="bold">API COMBAT</text>
+
+  <!-- Battle result card -->
+  <rect x="440" y="116" width="280" height="70" fill="#2a2a3e" rx="4"/>
+  <text x="580" y="136" font-family="monospace" font-size="11" fill="#50fa7b" text-anchor="middle" font-weight="bold">VICTORY!</text>
+  <text x="580" y="156" font-family="monospace" font-size="9" fill="#f8f8f2" text-anchor="middle">vs WizardSlayer42</text>
+  <text x="580" y="174" font-family="monospace" font-size="9" fill="#f1fa8c" text-anchor="middle">1247 → 1271 (+24)</text>
+
+  <!-- CTA Button -->
+  <rect x="480" y="196" width="200" height="32" fill="#50fa7b" rx="16"/>
+  <text x="580" y="216" font-family="'Segoe UI', sans-serif" font-size="11" fill="#1a1a2e" text-anchor="middle" font-weight="bold">View Battle Replay</text>
+
+  <!-- Branded footer -->
+  <text x="580" y="250" font-family="monospace" font-size="7" fill="#6272a4" text-anchor="middle">apicombat.com | Unsubscribe</text>
+  <text x="580" y="268" font-family="monospace" font-size="9" fill="#50fa7b" text-anchor="middle">Inline styles survive Gmail</text>
+
+  <!-- Code technique -->
+  <rect x="60" y="295" width="680" height="80" fill="#282a36" rx="6"/>
+  <text x="80" y="317" font-family="monospace" font-size="10" fill="#6272a4">// The secret: inline everything</text>
+  <text x="80" y="337" font-family="monospace" font-size="10" fill="#ff79c6">&lt;td</text>
+  <text x="104" y="337" font-family="monospace" font-size="10" fill="#50fa7b"> style=</text>
+  <text x="150" y="337" font-family="monospace" font-size="10" fill="#f1fa8c">"background:#7c3aed; padding:14px 32px;</text>
+  <text x="80" y="357" font-family="monospace" font-size="10" fill="#f1fa8c">    border-radius:8px; font-weight:bold;"</text>
+  <text x="420" y="357" font-family="monospace" font-size="10" fill="#ff79c6">&gt;</text>
+  <text x="80" y="372" font-family="monospace" font-size="9" fill="#6272a4">// C# 11 raw string literals — no template engine needed</text>
+
+  <!-- Title -->
+  <text x="400" y="410" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#f8f8f2" text-anchor="middle" font-weight="bold">Branded HTML Emails</text>
+  <text x="400" y="434" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#6272a4" text-anchor="middle">Making emails look good in Gmail with inline styles</text>
+</svg>

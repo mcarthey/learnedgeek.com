@@ -366,6 +366,80 @@ This is actually one of Tailwind's underappreciated strengths: it turns your des
 
 So the enforcer script the commenter imagined? It's already running. It's called `tailwind.config.js`.
 
+## Update: "But How Many Files Change When You Rebrand?"
+
+Another reader asked a sharp question: if you want to change your primary color from `bg-blue-500` to `bg-purple-800`, how many files do you touch? With Bootstrap, you change `$primary` in one variable file and every `btn-primary` in the app updates. With Tailwind, aren't you doing a find-and-replace across dozens of files?
+
+On the surface, yes. If you scatter raw color utilities like `bg-blue-500` across fifty templates, rebranding means touching fifty files. Bootstrap's semantic class wins that comparison easily.
+
+But real Tailwind projects don't work that way. You solve this the same three ways Bootstrap does — you just opt into the abstraction instead of getting it by default.
+
+**Option 1: Config-level semantics.** Define your brand color in `tailwind.config.js`:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: colors.blue[500],    // Change this one line
+        'primary-hover': colors.blue[600],
+      }
+    }
+  }
+}
+```
+
+Now you use `bg-primary` everywhere. Rebranding is one line in one file. Same as Bootstrap's `$primary` variable.
+
+**Option 2: @apply abstraction.** Define component classes in your CSS:
+
+```css
+.btn-primary {
+  @apply bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg;
+}
+```
+
+One file change. This is literally the same pattern as Bootstrap — and it's what this blog uses.
+
+**Option 3: Component extraction.** In React, Vue, or Blazor, you define the button once and use it everywhere. The color lives in one component file. One change, done.
+
+**So what's actually different?** Bootstrap hands you `btn-primary` on day one. Tailwind expects you to decide *when* something deserves a semantic name. That's more upfront work, but it comes with a benefit Bootstrap doesn't offer: precision.
+
+When you change Bootstrap's `$primary`, it's a sledgehammer. Every `btn-primary`, `bg-primary`, `text-primary`, `border-primary`, and `alert-primary` changes at once. What if your info alerts are also blue but shouldn't rebrand? Now you're writing overrides to undo the override.
+
+With Tailwind, you choose what's semantic (`bg-primary` — changes with the brand) and what's literal (`bg-blue-500` — stays blue because it's *meant* to be blue). The distinction is intentional, not accidental.
+
+One more thing: `bg-purple-850` doesn't exist in Tailwind. The scale goes 50, 100, 200 through 900, 950 — discrete steps from a constrained palette. That's not a limitation. It's a guardrail that keeps your design system coherent, the same way a type system keeps your code coherent.
+
+**TL;DR:** Both frameworks can do "change one place, update everywhere." Bootstrap gives you that by default. Tailwind gives you that *plus* the choice of what should be semantic and what should be literal. The tradeoff is more intentional decisions upfront, but more precise control when things inevitably change.
+
+## Update: "Good Luck When Tailwind Becomes Abandonware"
+
+Another commenter offered this advice: just learn CSS, skip Tailwind entirely, because when Tailwind inevitably dies you'll be stuck — and onboarding new developers is easier when you're writing plain CSS anyway.
+
+Two claims here. Let's take them separately.
+
+**Claim 1: Tailwind will become abandonware.**
+
+Maybe. Every framework eventually gets replaced. jQuery did. Angular 1 did. Bootstrap 3 did. If "it might be abandoned someday" is a disqualifier, you can't adopt anything — including Bootstrap, which has had three major rewrites and breaking version changes.
+
+But here's what matters: **Tailwind's output is CSS.** It's not a runtime. It's not a proprietary format. When you write `bg-blue-500 text-white px-4 py-3 rounded-lg`, Tailwind generates exactly the CSS you'd write by hand: `background-color`, `color`, `padding`, `border-radius`. If Tailwind disappeared tomorrow, your compiled stylesheet still works. You're not locked in — you're locked *onto CSS* with a faster way to write it.
+
+Compare that to frameworks that actually *do* create lock-in: component libraries with custom rendering engines, CSS-in-JS solutions that require a runtime, or templating systems that compile to proprietary formats. Tailwind is a build tool that outputs standard CSS. The "abandonware" risk is a migration inconvenience, not a rewrite.
+
+**Claim 2: Onboarding is easier with plain CSS.**
+
+This one sounds intuitive but doesn't hold up in practice. Ask yourself: onboarding onto *what*?
+
+Plain CSS means every project invents its own conventions. One team uses BEM. Another uses SMACSS. Another has a mix of both plus some utility classes someone added in 2019. A new developer has to reverse-engineer the naming system, understand the specificity hierarchy, figure out which styles override which, and find where a particular element's styles actually live — sometimes across multiple files.
+
+Tailwind has one convention. `mt-4` means `margin-top: 1rem` on this project, and every other Tailwind project, and in the documentation. A new developer who's never seen Tailwind can read a class name and either guess what it does or look it up in seconds. The "learning curve" is memorizing shorthand for CSS properties they already know. That's days, not weeks.
+
+I'm not saying plain CSS is wrong. I'm saying the onboarding argument cuts both ways — and in my experience, "learn our bespoke CSS architecture" takes longer than "learn Tailwind's naming conventions."
+
+**The deeper issue:** This comment pattern — "just learn the real thing" — comes up with every abstraction layer in our industry. ORMs, TypeScript, React, AI tools. I wrote a whole post about it: ["Or You Could Actually Learn CSS"](/Blog/Post/or-you-could-actually-learn). The short version: knowing fundamentals and using modern tools aren't mutually exclusive. They never were. The best developers I know understand CSS deeply *and* use Tailwind to ship faster. One doesn't replace the other.
+
 ---
 
 *This post is part of a series on Tailwind CSS. See also: [Dynamic Classes and @layer Gotchas](/Blog/Post/tailwind-dynamic-classes-layer-gotchas) on handling dynamic class names and cascade layers, and [The v4 @source Directive Gotcha](/Blog/Post/tailwind-v4-source-directive-gotcha) on migrating from v3's content array.*

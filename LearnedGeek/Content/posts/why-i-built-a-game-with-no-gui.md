@@ -271,4 +271,8 @@ The API is live. The game is yours.
 
 ---
 
+*This post is part of a series about building [API Combat](https://apicombat.com). See also: [Building a Turn-Based Battle Engine in 400 Lines of C#](/Blog/Post/battle-engine-400-lines-csharp) for the engine that powers every battle, [Hand-Rolling Rate Limiting by Subscription Tier](/Blog/Post/rate-limiting-by-subscription-tier) for how we handle tier-based API throttling, and [10 Background Jobs on Shared Hosting](/Blog/Post/background-services-shared-hosting) for how we keep everything running behind the scenes.*
+
+---
+
 *Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>*

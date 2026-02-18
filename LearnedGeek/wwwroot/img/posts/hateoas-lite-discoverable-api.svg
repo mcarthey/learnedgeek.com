@@ -1,0 +1,90 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#1a1a2e"/>
+  <defs>
+    <pattern id="grid6" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a2a3e" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid6)" opacity="0.3"/>
+
+  <!-- Chain of API endpoints linked together -->
+  <!-- Node 1: Register -->
+  <rect x="40" y="60" width="160" height="50" fill="#282a36" rx="6" stroke="#50fa7b" stroke-width="2"/>
+  <text x="52" y="80" font-family="monospace" font-size="9" fill="#50fa7b" font-weight="bold">POST</text>
+  <text x="92" y="80" font-family="monospace" font-size="9" fill="#f8f8f2">/auth/register</text>
+  <text x="120" y="98" font-family="monospace" font-size="8" fill="#6272a4" text-anchor="middle">Step 1</text>
+
+  <!-- Arrow -->
+  <line x1="200" y1="85" x2="240" y2="85" stroke="#50fa7b" stroke-width="1.5"/>
+  <polygon points="240,81 248,85 240,89" fill="#50fa7b"/>
+
+  <!-- Node 2: Profile -->
+  <rect x="250" y="60" width="160" height="50" fill="#282a36" rx="6" stroke="#8be9fd" stroke-width="2"/>
+  <text x="262" y="80" font-family="monospace" font-size="9" fill="#8be9fd" font-weight="bold">GET</text>
+  <text x="292" y="80" font-family="monospace" font-size="9" fill="#f8f8f2">/players/me</text>
+  <text x="330" y="98" font-family="monospace" font-size="8" fill="#6272a4" text-anchor="middle">Step 2</text>
+
+  <!-- Arrow -->
+  <line x1="410" y1="85" x2="450" y2="85" stroke="#8be9fd" stroke-width="1.5"/>
+  <polygon points="450,81 458,85 450,89" fill="#8be9fd"/>
+
+  <!-- Node 3: Units -->
+  <rect x="460" y="60" width="160" height="50" fill="#282a36" rx="6" stroke="#f1fa8c" stroke-width="2"/>
+  <text x="472" y="80" font-family="monospace" font-size="9" fill="#f1fa8c" font-weight="bold">GET</text>
+  <text x="502" y="80" font-family="monospace" font-size="9" fill="#f8f8f2">/units</text>
+  <text x="540" y="98" font-family="monospace" font-size="8" fill="#6272a4" text-anchor="middle">Step 3</text>
+
+  <!-- Arrow down -->
+  <line x1="540" y1="110" x2="540" y2="140" stroke="#f1fa8c" stroke-width="1.5"/>
+  <polygon points="536,140 540,148 544,140" fill="#f1fa8c"/>
+
+  <!-- Node 4: Create Team -->
+  <rect x="460" y="150" width="160" height="50" fill="#282a36" rx="6" stroke="#ff79c6" stroke-width="2"/>
+  <text x="472" y="170" font-family="monospace" font-size="9" fill="#ff79c6" font-weight="bold">POST</text>
+  <text x="512" y="170" font-family="monospace" font-size="9" fill="#f8f8f2">/teams</text>
+  <text x="540" y="188" font-family="monospace" font-size="8" fill="#6272a4" text-anchor="middle">Step 4</text>
+
+  <!-- Arrow left -->
+  <line x1="460" y1="175" x2="420" y2="175" stroke="#ff79c6" stroke-width="1.5"/>
+  <polygon points="420,171 412,175 420,179" fill="#ff79c6"/>
+
+  <!-- Node 5: Queue Battle -->
+  <rect x="250" y="150" width="160" height="50" fill="#282a36" rx="6" stroke="#ff6b6b" stroke-width="2"/>
+  <text x="262" y="170" font-family="monospace" font-size="9" fill="#ff6b6b" font-weight="bold">POST</text>
+  <text x="302" y="170" font-family="monospace" font-size="9" fill="#f8f8f2">/battle/queue</text>
+  <text x="330" y="188" font-family="monospace" font-size="8" fill="#6272a4" text-anchor="middle">Step 5</text>
+
+  <!-- Arrow left -->
+  <line x1="250" y1="175" x2="210" y2="175" stroke="#ff6b6b" stroke-width="1.5"/>
+  <polygon points="210,171 202,175 210,179" fill="#ff6b6b"/>
+
+  <!-- Node 6: Result -->
+  <rect x="40" y="150" width="160" height="50" fill="#282a36" rx="6" stroke="#bd93f9" stroke-width="2"/>
+  <text x="52" y="170" font-family="monospace" font-size="9" fill="#bd93f9" font-weight="bold">GET</text>
+  <text x="82" y="170" font-family="monospace" font-size="9" fill="#f8f8f2">/battles/{id}</text>
+  <text x="120" y="188" font-family="monospace" font-size="8" fill="#6272a4" text-anchor="middle">Step 6</text>
+
+  <!-- _links JSON block -->
+  <rect x="60" y="230" width="360" height="120" fill="#282a36" rx="6" stroke="#bd93f9" stroke-width="1"/>
+  <text x="76" y="250" font-family="monospace" font-size="10" fill="#f8f8f2">"_links": {</text>
+  <text x="76" y="268" font-family="monospace" font-size="10" fill="#8be9fd">  "self":</text>
+  <text x="160" y="268" font-family="monospace" font-size="10" fill="#f8f8f2">"/battles/123",</text>
+  <text x="76" y="286" font-family="monospace" font-size="10" fill="#50fa7b">  "replay":</text>
+  <text x="170" y="286" font-family="monospace" font-size="10" fill="#f8f8f2">"/battles/123/replay",</text>
+  <text x="76" y="304" font-family="monospace" font-size="10" fill="#ff6b6b">  "queue_again":</text>
+  <text x="200" y="304" font-family="monospace" font-size="10" fill="#f8f8f2">"/battle/queue",</text>
+  <text x="76" y="322" font-family="monospace" font-size="10" fill="#f1fa8c">  "winner":</text>
+  <text x="168" y="322" font-family="monospace" font-size="10" fill="#f8f8f2">"/players/456"</text>
+  <text x="76" y="340" font-family="monospace" font-size="10" fill="#f8f8f2">}</text>
+
+  <!-- "Follow the links" callout -->
+  <rect x="470" y="240" width="280" height="100" fill="#2a2a3e" rx="8" stroke="#50fa7b" stroke-width="1.5"/>
+  <text x="610" y="265" font-family="'Segoe UI', sans-serif" font-size="14" fill="#50fa7b" text-anchor="middle" font-weight="bold">Follow the Links</text>
+  <text x="610" y="288" font-family="monospace" font-size="10" fill="#f8f8f2" text-anchor="middle">No docs required.</text>
+  <text x="610" y="306" font-family="monospace" font-size="10" fill="#f8f8f2" text-anchor="middle">Every response tells you</text>
+  <text x="610" y="324" font-family="monospace" font-size="10" fill="#f8f8f2" text-anchor="middle">what to do next.</text>
+
+  <!-- Title -->
+  <text x="400" y="400" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#f8f8f2" text-anchor="middle" font-weight="bold">HATEOAS-Lite</text>
+  <text x="400" y="425" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#6272a4" text-anchor="middle">Making a REST API actually discoverable</text>
+</svg>

@@ -1,0 +1,76 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#1a1a2e"/>
+  <defs>
+    <pattern id="grid13" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a2a3e" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid13)" opacity="0.3"/>
+
+  <!-- Deploy pipeline -->
+  <text x="400" y="30" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6272a4" text-anchor="middle">DEPLOYMENT PIPELINE</text>
+
+  <!-- Visual Studio -->
+  <rect x="40" y="45" width="140" height="50" fill="#282a36" rx="6" stroke="#bd93f9" stroke-width="1.5"/>
+  <text x="110" y="68" font-family="monospace" font-size="10" fill="#bd93f9" text-anchor="middle">Visual Studio</text>
+  <text x="110" y="84" font-family="monospace" font-size="8" fill="#6272a4" text-anchor="middle">Right-click Publish</text>
+
+  <text x="195" y="74" font-family="monospace" font-size="16" fill="#50fa7b">→</text>
+
+  <!-- MSDeploy -->
+  <rect x="220" y="45" width="140" height="50" fill="#282a36" rx="6" stroke="#50fa7b" stroke-width="1.5"/>
+  <text x="290" y="68" font-family="monospace" font-size="10" fill="#50fa7b" text-anchor="middle">MSDeploy</text>
+  <text x="290" y="84" font-family="monospace" font-size="8" fill="#6272a4" text-anchor="middle">.pubxml profile</text>
+
+  <text x="375" y="74" font-family="monospace" font-size="16" fill="#50fa7b">→</text>
+
+  <!-- IIS -->
+  <rect x="400" y="45" width="140" height="50" fill="#282a36" rx="6" stroke="#8be9fd" stroke-width="1.5"/>
+  <text x="470" y="68" font-family="monospace" font-size="10" fill="#8be9fd" text-anchor="middle">IIS (reverse proxy)</text>
+  <text x="470" y="84" font-family="monospace" font-size="8" fill="#6272a4" text-anchor="middle">OutOfProcess</text>
+
+  <text x="555" y="74" font-family="monospace" font-size="16" fill="#50fa7b">→</text>
+
+  <!-- Kestrel -->
+  <rect x="580" y="45" width="180" height="50" fill="#282a36" rx="6" stroke="#ff79c6" stroke-width="1.5"/>
+  <text x="670" y="68" font-family="monospace" font-size="10" fill="#ff79c6" text-anchor="middle">Kestrel (your app)</text>
+  <text x="670" y="84" font-family="monospace" font-size="8" fill="#6272a4" text-anchor="middle">10 BackgroundServices</text>
+
+  <!-- Constraints panel -->
+  <rect x="40" y="115" width="340" height="180" fill="#282a36" rx="8" stroke="#ff5555" stroke-width="1"/>
+  <text x="210" y="140" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ff5555" text-anchor="middle" font-weight="bold">SHARED HOSTING CONSTRAINTS</text>
+
+  <text x="60" y="165" font-family="monospace" font-size="9" fill="#ff5555">No SSH / No remote desktop</text>
+  <text x="60" y="183" font-family="monospace" font-size="9" fill="#ff5555">No Docker / No containers</text>
+  <text x="60" y="201" font-family="monospace" font-size="9" fill="#ff5555">App pool recycles randomly</text>
+  <text x="60" y="219" font-family="monospace" font-size="9" fill="#ff5555">Memory limit ~1GB shared</text>
+  <text x="60" y="237" font-family="monospace" font-size="9" fill="#ff5555">No outbound port control</text>
+  <text x="60" y="255" font-family="monospace" font-size="9" fill="#ff5555">IIS modules interfere</text>
+  <text x="60" y="280" font-family="monospace" font-size="10" fill="#f1fa8c">All solvable. Here's how.</text>
+
+  <!-- Solutions panel -->
+  <rect x="420" y="115" width="340" height="180" fill="#282a36" rx="8" stroke="#50fa7b" stroke-width="1"/>
+  <text x="590" y="140" font-family="'Segoe UI', sans-serif" font-size="12" fill="#50fa7b" text-anchor="middle" font-weight="bold">WORKAROUNDS</text>
+
+  <text x="440" y="165" font-family="monospace" font-size="9" fill="#50fa7b">OutOfProcess hosting model</text>
+  <text x="440" y="183" font-family="monospace" font-size="9" fill="#50fa7b">web.config for env variables</text>
+  <text x="440" y="201" font-family="monospace" font-size="9" fill="#50fa7b">Graceful shutdown via tokens</text>
+  <text x="440" y="219" font-family="monospace" font-size="9" fill="#50fa7b">Background jobs self-recover</text>
+  <text x="440" y="237" font-family="monospace" font-size="9" fill="#50fa7b">Content root != wwwroot</text>
+  <text x="440" y="255" font-family="monospace" font-size="9" fill="#50fa7b">MSDeploy retries on lock</text>
+  <text x="440" y="280" font-family="monospace" font-size="10" fill="#f1fa8c">$5/month. Production-ready.</text>
+
+  <!-- .pubxml code snippet -->
+  <rect x="100" y="315" width="600" height="80" fill="#282a36" rx="6"/>
+  <text x="120" y="337" font-family="monospace" font-size="10" fill="#6272a4">&lt;!-- .pubxml --&gt;</text>
+  <text x="120" y="357" font-family="monospace" font-size="10" fill="#ff79c6">&lt;AspNetCoreHostingModel&gt;</text>
+  <text x="338" y="357" font-family="monospace" font-size="10" fill="#f1fa8c">OutOfProcess</text>
+  <text x="432" y="357" font-family="monospace" font-size="10" fill="#ff79c6">&lt;/...&gt;</text>
+  <text x="120" y="377" font-family="monospace" font-size="10" fill="#ff79c6">&lt;EnableMSDeployAppOffline&gt;</text>
+  <text x="366" y="377" font-family="monospace" font-size="10" fill="#f1fa8c">true</text>
+  <text x="396" y="377" font-family="monospace" font-size="10" fill="#ff79c6">&lt;/...&gt;</text>
+
+  <!-- Title -->
+  <text x="400" y="420" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#f8f8f2" text-anchor="middle" font-weight="bold">Deploying to Shared Hosting</text>
+  <text x="400" y="444" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#6272a4" text-anchor="middle">ASP.NET Core on a $5/month plan — every constraint and fix</text>
+</svg>

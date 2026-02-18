@@ -451,4 +451,8 @@ Go queue your next battle: [apicombat.com](https://apicombat.com)
 
 ---
 
+*This post is part of a series about building [API Combat](https://apicombat.com). See also: [Building a Turn-Based Battle Engine in 400 Lines of C#](/Blog/Post/battle-engine-400-lines-csharp) for what happens under the hood when your battle resolves, [One Battle, Ten Service Calls: Fan-Out Without a Message Bus](/Blog/Post/fan-out-without-message-bus) for the post-battle cascade that updates your rank and rewards, and [Environmental Modifiers: Weekly Meta Rotation](/Blog/Post/environmental-modifiers-weekly-rotation) for the weekly rule changes that keep battles fresh.*
+
+---
+
 *Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>*

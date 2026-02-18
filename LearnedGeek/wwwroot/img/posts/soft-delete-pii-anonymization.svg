@@ -1,0 +1,84 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#1a1a2e"/>
+  <defs>
+    <pattern id="grid15" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a2a3e" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid15)" opacity="0.3"/>
+
+  <!-- Before: Active account -->
+  <rect x="40" y="30" width="320" height="180" fill="#282a36" rx="8" stroke="#50fa7b" stroke-width="1"/>
+  <text x="200" y="52" font-family="'Segoe UI', sans-serif" font-size="12" fill="#50fa7b" text-anchor="middle" font-weight="bold">ACTIVE ACCOUNT</text>
+
+  <text x="60" y="76" font-family="monospace" font-size="9" fill="#8be9fd">Username:</text>
+  <text x="142" y="76" font-family="monospace" font-size="9" fill="#f8f8f2"> WizardSlayer42</text>
+  <text x="60" y="96" font-family="monospace" font-size="9" fill="#8be9fd">Email:</text>
+  <text x="110" y="96" font-family="monospace" font-size="9" fill="#f8f8f2"> wizard@example.com</text>
+  <text x="60" y="116" font-family="monospace" font-size="9" fill="#8be9fd">Rating:</text>
+  <text x="118" y="116" font-family="monospace" font-size="9" fill="#f1fa8c"> 1847</text>
+  <text x="60" y="136" font-family="monospace" font-size="9" fill="#8be9fd">Battles:</text>
+  <text x="126" y="136" font-family="monospace" font-size="9" fill="#f8f8f2"> 1,247</text>
+  <text x="60" y="156" font-family="monospace" font-size="9" fill="#8be9fd">IsDeleted:</text>
+  <text x="140" y="156" font-family="monospace" font-size="9" fill="#50fa7b"> false</text>
+  <text x="60" y="176" font-family="monospace" font-size="9" fill="#8be9fd">DeletedAt:</text>
+  <text x="140" y="176" font-family="monospace" font-size="9" fill="#6272a4"> null</text>
+  <text x="60" y="200" font-family="monospace" font-size="8" fill="#6272a4">PII intact • FK references valid</text>
+
+  <!-- Arrow with "Delete Request" -->
+  <text x="400" y="110" font-family="monospace" font-size="20" fill="#ff5555" text-anchor="middle">→</text>
+  <text x="400" y="130" font-family="monospace" font-size="8" fill="#ff5555" text-anchor="middle">GDPR erasure</text>
+  <text x="400" y="142" font-family="monospace" font-size="8" fill="#ff5555" text-anchor="middle">request</text>
+
+  <!-- After: Anonymized account -->
+  <rect x="440" y="30" width="320" height="180" fill="#282a36" rx="8" stroke="#ff5555" stroke-width="1"/>
+  <text x="600" y="52" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ff5555" text-anchor="middle" font-weight="bold">ANONYMIZED ACCOUNT</text>
+
+  <text x="460" y="76" font-family="monospace" font-size="9" fill="#8be9fd">Username:</text>
+  <text x="542" y="76" font-family="monospace" font-size="9" fill="#ff5555"> deleted_a7f3c9</text>
+  <text x="460" y="96" font-family="monospace" font-size="9" fill="#8be9fd">Email:</text>
+  <text x="510" y="96" font-family="monospace" font-size="9" fill="#ff5555"> a7f3c9@deleted.local</text>
+  <text x="460" y="116" font-family="monospace" font-size="9" fill="#8be9fd">Rating:</text>
+  <text x="518" y="116" font-family="monospace" font-size="9" fill="#f1fa8c"> 1847</text>
+  <text x="580" y="116" font-family="monospace" font-size="7" fill="#6272a4">(preserved)</text>
+  <text x="460" y="136" font-family="monospace" font-size="9" fill="#8be9fd">Battles:</text>
+  <text x="526" y="136" font-family="monospace" font-size="9" fill="#f8f8f2"> 1,247</text>
+  <text x="588" y="136" font-family="monospace" font-size="7" fill="#6272a4">(preserved)</text>
+  <text x="460" y="156" font-family="monospace" font-size="9" fill="#8be9fd">IsDeleted:</text>
+  <text x="540" y="156" font-family="monospace" font-size="9" fill="#ff5555"> true</text>
+  <text x="460" y="176" font-family="monospace" font-size="9" fill="#8be9fd">DeletedAt:</text>
+  <text x="540" y="176" font-family="monospace" font-size="9" fill="#ff5555"> 2026-02-17</text>
+  <text x="460" y="200" font-family="monospace" font-size="8" fill="#6272a4">PII scrubbed • FK references intact</text>
+
+  <!-- Code section -->
+  <rect x="60" y="230" width="680" height="110" fill="#282a36" rx="6"/>
+  <text x="80" y="252" font-family="monospace" font-size="10" fill="#ff79c6">public async Task</text>
+  <text x="196" y="252" font-family="monospace" font-size="10" fill="#50fa7b"> AnonymizePlayerAsync</text>
+  <text x="390" y="252" font-family="monospace" font-size="10" fill="#f8f8f2">(Guid playerId)</text>
+  <text x="80" y="272" font-family="monospace" font-size="10" fill="#f8f8f2">{</text>
+  <text x="96" y="290" font-family="monospace" font-size="10" fill="#f8f8f2">player.Username = </text>
+  <text x="254" y="290" font-family="monospace" font-size="10" fill="#f1fa8c">$"deleted_{hash[..6]}"</text>
+  <text x="96" y="308" font-family="monospace" font-size="10" fill="#f8f8f2">player.Email = </text>
+  <text x="228" y="308" font-family="monospace" font-size="10" fill="#f1fa8c">$"{hash[..6]}@deleted.local"</text>
+  <text x="96" y="326" font-family="monospace" font-size="10" fill="#f8f8f2">player.PasswordHash = </text>
+  <text x="282" y="326" font-family="monospace" font-size="10" fill="#f1fa8c">""</text>
+  <text x="296" y="326" font-family="monospace" font-size="10" fill="#f8f8f2">;</text>
+  <text x="80" y="336" font-family="monospace" font-size="10" fill="#f8f8f2">}</text>
+
+  <!-- Key principles -->
+  <rect x="60" y="355" width="210" height="40" fill="#282a36" rx="6" stroke="#50fa7b" stroke-width="1"/>
+  <text x="165" y="372" font-family="monospace" font-size="9" fill="#50fa7b" text-anchor="middle">Game data survives</text>
+  <text x="165" y="388" font-family="monospace" font-size="8" fill="#6272a4" text-anchor="middle">Battles • Rankings • History</text>
+
+  <rect x="295" y="355" width="210" height="40" fill="#282a36" rx="6" stroke="#ff5555" stroke-width="1"/>
+  <text x="400" y="372" font-family="monospace" font-size="9" fill="#ff5555" text-anchor="middle">PII is erased</text>
+  <text x="400" y="388" font-family="monospace" font-size="8" fill="#6272a4" text-anchor="middle">Name • Email • Password</text>
+
+  <rect x="530" y="355" width="210" height="40" fill="#282a36" rx="6" stroke="#bd93f9" stroke-width="1"/>
+  <text x="635" y="372" font-family="monospace" font-size="9" fill="#bd93f9" text-anchor="middle">Global query filter</text>
+  <text x="635" y="388" font-family="monospace" font-size="8" fill="#6272a4" text-anchor="middle">.HasQueryFilter(p => !p.IsDeleted)</text>
+
+  <!-- Title -->
+  <text x="400" y="420" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#f8f8f2" text-anchor="middle" font-weight="bold">Soft Delete + PII Anonymization</text>
+  <text x="400" y="444" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#6272a4" text-anchor="middle">Account deletion that actually deletes the personal data</text>
+</svg>

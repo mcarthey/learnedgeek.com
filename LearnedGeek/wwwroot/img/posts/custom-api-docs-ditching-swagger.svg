@@ -1,0 +1,96 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#1a1a2e"/>
+  <defs>
+    <pattern id="grid7" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a2a3e" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid7)" opacity="0.3"/>
+
+  <!-- Left: Generic Swagger UI -->
+  <rect x="40" y="40" width="340" height="300" fill="#282a36" rx="8" stroke="#6272a4" stroke-width="1"/>
+  <rect x="40" y="40" width="340" height="30" fill="#44475a" rx="8"/>
+  <rect x="40" y="58" width="340" height="12" fill="#44475a"/>
+  <text x="210" y="60" font-family="monospace" font-size="10" fill="#6272a4" text-anchor="middle">Swagger UI</text>
+
+  <!-- Generic swagger endpoints -->
+  <rect x="60" y="85" width="300" height="32" fill="#2a2a3e" rx="4" stroke="#50fa7b" stroke-width="1"/>
+  <text x="74" y="104" font-family="monospace" font-size="9" fill="#50fa7b">POST</text>
+  <text x="110" y="104" font-family="monospace" font-size="9" fill="#f8f8f2">/auth/register</text>
+  <text x="340" y="104" font-family="monospace" font-size="8" fill="#6272a4">v</text>
+
+  <rect x="60" y="125" width="300" height="32" fill="#2a2a3e" rx="4" stroke="#50fa7b" stroke-width="1"/>
+  <text x="74" y="144" font-family="monospace" font-size="9" fill="#50fa7b">POST</text>
+  <text x="110" y="144" font-family="monospace" font-size="9" fill="#f8f8f2">/auth/login</text>
+  <text x="340" y="144" font-family="monospace" font-size="8" fill="#6272a4">v</text>
+
+  <rect x="60" y="165" width="300" height="32" fill="#2a2a3e" rx="4" stroke="#ff6b6b" stroke-width="1"/>
+  <text x="74" y="184" font-family="monospace" font-size="9" fill="#ff6b6b">POST</text>
+  <text x="110" y="184" font-family="monospace" font-size="9" fill="#f8f8f2">/battle/queue</text>
+  <text x="340" y="184" font-family="monospace" font-size="8" fill="#6272a4">v</text>
+
+  <rect x="60" y="205" width="300" height="32" fill="#2a2a3e" rx="4" stroke="#8be9fd" stroke-width="1"/>
+  <text x="74" y="224" font-family="monospace" font-size="9" fill="#8be9fd">GET</text>
+  <text x="104" y="224" font-family="monospace" font-size="9" fill="#f8f8f2">/battles/{id}</text>
+  <text x="340" y="224" font-family="monospace" font-size="8" fill="#6272a4">v</text>
+
+  <text x="210" y="270" font-family="monospace" font-size="10" fill="#6272a4" text-anchor="middle">All endpoints look the same.</text>
+  <text x="210" y="288" font-family="monospace" font-size="10" fill="#6272a4" text-anchor="middle">No difficulty ratings.</text>
+  <text x="210" y="306" font-family="monospace" font-size="10" fill="#6272a4" text-anchor="middle">No game tips.</text>
+  <text x="210" y="324" font-family="monospace" font-size="10" fill="#ff5555" text-anchor="middle">No onboarding flow.</text>
+
+  <!-- Arrow between -->
+  <text x="400" y="200" font-family="'Segoe UI', sans-serif" font-size="30" fill="#6272a4" text-anchor="middle">→</text>
+
+  <!-- Right: Custom API Docs -->
+  <rect x="420" y="40" width="340" height="300" fill="#282a36" rx="8" stroke="#bd93f9" stroke-width="2"/>
+  <rect x="420" y="40" width="340" height="30" fill="#bd93f9" rx="8" opacity="0.3"/>
+  <rect x="420" y="58" width="340" height="12" fill="#bd93f9" opacity="0.2"/>
+  <text x="590" y="60" font-family="monospace" font-size="10" fill="#bd93f9" text-anchor="middle" font-weight="bold">Custom API Docs</text>
+
+  <!-- Quick start cards -->
+  <rect x="435" y="80" width="66" height="44" fill="#2a2a3e" rx="4" stroke="#50fa7b" stroke-width="1"/>
+  <text x="468" y="96" font-family="monospace" font-size="8" fill="#50fa7b" text-anchor="middle">1</text>
+  <text x="468" y="112" font-family="monospace" font-size="7" fill="#f8f8f2" text-anchor="middle">Register</text>
+
+  <rect x="507" y="80" width="66" height="44" fill="#2a2a3e" rx="4" stroke="#8be9fd" stroke-width="1"/>
+  <text x="540" y="96" font-family="monospace" font-size="8" fill="#8be9fd" text-anchor="middle">2</text>
+  <text x="540" y="112" font-family="monospace" font-size="7" fill="#f8f8f2" text-anchor="middle">Login</text>
+
+  <rect x="579" y="80" width="66" height="44" fill="#2a2a3e" rx="4" stroke="#f1fa8c" stroke-width="1"/>
+  <text x="612" y="96" font-family="monospace" font-size="8" fill="#f1fa8c" text-anchor="middle">3</text>
+  <text x="612" y="112" font-family="monospace" font-size="7" fill="#f8f8f2" text-anchor="middle">Build Team</text>
+
+  <rect x="651" y="80" width="66" height="44" fill="#2a2a3e" rx="4" stroke="#ff6b6b" stroke-width="1"/>
+  <text x="684" y="96" font-family="monospace" font-size="8" fill="#ff6b6b" text-anchor="middle">4</text>
+  <text x="684" y="112" font-family="monospace" font-size="7" fill="#f8f8f2" text-anchor="middle">Battle!</text>
+
+  <!-- Custom endpoint with badges -->
+  <rect x="435" y="135" width="310" height="52" fill="#2a2a3e" rx="4" stroke="#ff6b6b" stroke-width="1.5"/>
+  <text x="448" y="152" font-family="monospace" font-size="9" fill="#ff6b6b" font-weight="bold">POST</text>
+  <text x="488" y="152" font-family="monospace" font-size="9" fill="#f8f8f2">/battle/queue</text>
+  <rect x="604" y="142" width="64" height="16" fill="#f1fa8c" rx="8" opacity="0.3"/>
+  <text x="636" y="154" font-family="monospace" font-size="7" fill="#f1fa8c" text-anchor="middle">intermediate</text>
+  <text x="688" y="154" font-family="monospace" font-size="10" fill="#f8f8f2">🔒</text>
+  <text x="448" y="174" font-family="monospace" font-size="8" fill="#f1fa8c">💡 Check modifiers before queuing ranked</text>
+
+  <!-- Game tip endpoint -->
+  <rect x="435" y="195" width="310" height="52" fill="#2a2a3e" rx="4" stroke="#8be9fd" stroke-width="1"/>
+  <text x="448" y="212" font-family="monospace" font-size="9" fill="#8be9fd" font-weight="bold">GET</text>
+  <text x="478" y="212" font-family="monospace" font-size="9" fill="#f8f8f2">/battles/{id}/replay</text>
+  <rect x="636" y="202" width="48" height="16" fill="#50fa7b" rx="8" opacity="0.3"/>
+  <text x="660" y="214" font-family="monospace" font-size="7" fill="#50fa7b" text-anchor="middle">beginner</text>
+  <text x="448" y="236" font-family="monospace" font-size="8" fill="#f1fa8c">💡 Replays are deterministic — same seed, same result</text>
+
+  <!-- Stats bar -->
+  <rect x="435" y="260" width="310" height="24" fill="#bd93f9" rx="4" opacity="0.15"/>
+  <text x="590" y="276" font-family="monospace" font-size="9" fill="#bd93f9" text-anchor="middle">100+ endpoints | 12 categories | 45 schemas</text>
+
+  <!-- Search -->
+  <rect x="435" y="294" width="310" height="28" fill="#2a2a3e" rx="4" stroke="#44475a" stroke-width="1"/>
+  <text x="450" y="312" font-family="monospace" font-size="9" fill="#6272a4">🔍 Search endpoints...</text>
+
+  <!-- Title -->
+  <text x="400" y="386" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#f8f8f2" text-anchor="middle" font-weight="bold">Custom API Docs</text>
+  <text x="400" y="412" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#6272a4" text-anchor="middle">Why we ditched Swagger UI for Razor Pages</text>
+</svg>

@@ -164,3 +164,5 @@ On shared hosting like SmarterASP.NET, it's almost always #1. A new project defa
 ---
 
 *This post exists because I've fixed this exact error at least three times and kept forgetting which files to change and what value to set. Now it's written down. Future me: you're welcome.*
+
+*For the full shared hosting deployment story — MSDeploy profiles, environment variables via web.config, app pool recycle handling, and more — see [Deploying ASP.NET Core to Shared Hosting](/Blog/Post/deploying-aspnet-core-shared-hosting).*

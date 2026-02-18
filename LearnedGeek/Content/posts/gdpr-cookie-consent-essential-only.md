@@ -201,3 +201,5 @@ Stop tracking people, and the compliance problem solves itself.
 ---
 
 *This post was written after implementing cookie consent for Lake Country Spanish. The approach described here is not legal advice—consult with a lawyer if you have specific compliance questions for your jurisdiction.*
+
+*For the other side of GDPR — handling account deletion requests with soft delete and PII anonymization — see [Soft Delete + PII Anonymization](/Blog/Post/soft-delete-pii-anonymization).*

@@ -1,0 +1,70 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#1a1a2e"/>
+  <defs>
+    <pattern id="grid8" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a2a3e" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid8)" opacity="0.3"/>
+
+  <!-- Strategy cards (marketplace listings) -->
+  <rect x="40" y="40" width="220" height="160" fill="#282a36" rx="8" stroke="#50fa7b" stroke-width="1.5"/>
+  <text x="150" y="65" font-family="'Segoe UI', sans-serif" font-size="12" fill="#50fa7b" text-anchor="middle" font-weight="bold">Mage Assassin Rush</text>
+  <text x="150" y="82" font-family="monospace" font-size="9" fill="#6272a4" text-anchor="middle">by WizardSlayer42</text>
+  <rect x="56" y="94" width="80" height="16" fill="#50fa7b" rx="3" opacity="0.2"/>
+  <text x="96" y="106" font-family="monospace" font-size="9" fill="#50fa7b" text-anchor="middle">67% winrate</text>
+  <rect x="144" y="94" width="60" height="16" fill="#f1fa8c" rx="3" opacity="0.2"/>
+  <text x="174" y="106" font-family="monospace" font-size="9" fill="#f1fa8c" text-anchor="middle">234 DLs</text>
+  <text x="150" y="130" font-family="monospace" font-size="16" fill="#f1fa8c" text-anchor="middle" font-weight="bold">350 gold</text>
+  <!-- Decay bar -->
+  <text x="60" y="155" font-family="monospace" font-size="8" fill="#6272a4">Effectiveness:</text>
+  <rect x="148" y="145" width="96" height="10" fill="#44475a" rx="2"/>
+  <rect x="148" y="145" width="82" height="10" fill="#50fa7b" rx="2"/>
+  <text x="200" y="188" font-family="monospace" font-size="9" fill="#50fa7b" text-anchor="middle">85%</text>
+
+  <rect x="290" y="40" width="220" height="160" fill="#282a36" rx="8" stroke="#ff79c6" stroke-width="1.5"/>
+  <text x="400" y="65" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ff79c6" text-anchor="middle" font-weight="bold">Tank Fortress v3</text>
+  <text x="400" y="82" font-family="monospace" font-size="9" fill="#6272a4" text-anchor="middle">by IronWall99</text>
+  <rect x="306" y="94" width="80" height="16" fill="#ff79c6" rx="3" opacity="0.2"/>
+  <text x="346" y="106" font-family="monospace" font-size="9" fill="#ff79c6" text-anchor="middle">54% winrate</text>
+  <rect x="394" y="94" width="60" height="16" fill="#f1fa8c" rx="3" opacity="0.2"/>
+  <text x="424" y="106" font-family="monospace" font-size="9" fill="#f1fa8c" text-anchor="middle">89 DLs</text>
+  <text x="400" y="130" font-family="monospace" font-size="16" fill="#50fa7b" text-anchor="middle" font-weight="bold">FREE</text>
+  <text x="310" y="155" font-family="monospace" font-size="8" fill="#6272a4">Effectiveness:</text>
+  <rect x="398" y="145" width="96" height="10" fill="#44475a" rx="2"/>
+  <rect x="398" y="145" width="50" height="10" fill="#f1fa8c" rx="2"/>
+  <text x="450" y="188" font-family="monospace" font-size="9" fill="#f1fa8c" text-anchor="middle">52%</text>
+
+  <rect x="540" y="40" width="220" height="160" fill="#282a36" rx="8" stroke="#bd93f9" stroke-width="1.5"/>
+  <text x="650" y="65" font-family="'Segoe UI', sans-serif" font-size="12" fill="#bd93f9" text-anchor="middle" font-weight="bold">Healer Meta</text>
+  <text x="650" y="82" font-family="monospace" font-size="9" fill="#6272a4" text-anchor="middle">by CodeMonkey</text>
+  <rect x="556" y="94" width="80" height="16" fill="#bd93f9" rx="3" opacity="0.2"/>
+  <text x="596" y="106" font-family="monospace" font-size="9" fill="#bd93f9" text-anchor="middle">72% winrate</text>
+  <rect x="644" y="94" width="56" height="16" fill="#f1fa8c" rx="3" opacity="0.2"/>
+  <text x="672" y="106" font-family="monospace" font-size="9" fill="#f1fa8c" text-anchor="middle">NEW</text>
+  <text x="650" y="130" font-family="monospace" font-size="16" fill="#f1fa8c" text-anchor="middle" font-weight="bold">500 gold</text>
+  <text x="560" y="155" font-family="monospace" font-size="8" fill="#6272a4">Effectiveness:</text>
+  <rect x="648" y="145" width="96" height="10" fill="#44475a" rx="2"/>
+  <rect x="648" y="145" width="96" height="10" fill="#bd93f9" rx="2"/>
+  <text x="700" y="188" font-family="monospace" font-size="9" fill="#bd93f9" text-anchor="middle">100%</text>
+
+  <!-- Decay formula -->
+  <rect x="140" y="230" width="520" height="50" fill="#282a36" rx="6" stroke="#ff5555" stroke-width="1"/>
+  <text x="400" y="252" font-family="monospace" font-size="11" fill="#ff5555" text-anchor="middle">DECAY FORMULA</text>
+  <text x="400" y="270" font-family="monospace" font-size="10" fill="#f8f8f2" text-anchor="middle">Effectiveness = Max(0.5, 1.0 - (ageInWeeks * 0.05))</text>
+
+  <!-- Flywheel diagram -->
+  <g transform="translate(400, 350)">
+    <text x="-200" y="0" font-family="monospace" font-size="10" fill="#50fa7b">Decay</text>
+    <text x="-200" y="14" font-family="monospace" font-size="8" fill="#6272a4">-5%/week</text>
+    <text x="-90" y="-10" font-family="monospace" font-size="10" fill="#8be9fd">→ Creation</text>
+    <text x="20" y="0" font-family="monospace" font-size="10" fill="#f1fa8c">→ Content</text>
+    <text x="120" y="-10" font-family="monospace" font-size="10" fill="#ff79c6">→ Traffic</text>
+    <text x="210" y="0" font-family="monospace" font-size="10" fill="#bd93f9">→ Purchases</text>
+    <text x="0" y="28" font-family="monospace" font-size="9" fill="#6272a4" text-anchor="middle">The marketplace flywheel</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="406" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#f8f8f2" text-anchor="middle" font-weight="bold">Strategy Marketplace</text>
+  <text x="400" y="430" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#6272a4" text-anchor="middle">Building an economy around player-created JSON</text>
+</svg>

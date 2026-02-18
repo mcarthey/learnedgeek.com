@@ -381,4 +381,8 @@ I'll support you with:
 
 ---
 
+*This post is part of a series about building [API Combat](https://apicombat.com). See also: [HATEOAS-Lite: Making a Discoverable API](/Blog/Post/hateoas-lite-discoverable-api) for how the API teaches itself to players, [Custom API Docs: Ditching Swagger](/Blog/Post/custom-api-docs-ditching-swagger) for why documentation is part of the gameplay, and [Elo Rating + Seasonal Tiers](/Blog/Post/elo-rating-seasonal-tiers) for the competitive ranking system that drives student engagement.*
+
+---
+
 *Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>*

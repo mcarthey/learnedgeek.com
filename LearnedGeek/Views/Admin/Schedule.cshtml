@@ -11,9 +11,15 @@
             <h1 class="text-3xl font-semibold text-neutral-900 dark:text-white">Schedule Manager</h1>
             <p class="text-neutral-500 dark:text-neutral-400 mt-1">Manage scheduled post dates</p>
         </div>
-        <a href="/admin" class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
-            &larr; Back to Dashboard
-        </a>
+        <div class="flex items-center gap-4">
+            <a href="/admin/download-posts-json"
+               class="text-sm bg-neutral-600 dark:bg-neutral-700 text-white px-4 py-2 rounded hover:bg-neutral-700 dark:hover:bg-neutral-600 transition-colors">
+                ↓ Download posts.json
+            </a>
+            <a href="/admin" class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                &larr; Back to Dashboard
+            </a>
+        </div>
     </div>
 
     @if (Model.Count == 0)

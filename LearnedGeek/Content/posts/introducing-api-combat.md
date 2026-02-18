@@ -212,4 +212,8 @@ Let's make API learning fun again.
 
 ---
 
+*This post is part of a series about building [API Combat](https://apicombat.com). See also: [Building a Turn-Based Battle Engine in 400 Lines of C#](/Blog/Post/battle-engine-400-lines-csharp) for a deep dive into the combat system, [HATEOAS-Lite: Making a Discoverable API](/Blog/Post/hateoas-lite-discoverable-api) for how the API guides players through available actions, and [Custom API Docs: Ditching Swagger](/Blog/Post/custom-api-docs-ditching-swagger) for why we built our own documentation instead of using Swagger.*
+
+---
+
 *Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>*

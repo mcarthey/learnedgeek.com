@@ -1,0 +1,59 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#1a1a2e"/>
+  <defs>
+    <pattern id="grid10" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a2a3e" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid10)" opacity="0.3"/>
+
+  <!-- Left: Elo Formula -->
+  <rect x="40" y="40" width="340" height="170" fill="#282a36" rx="8" stroke="#50fa7b" stroke-width="1"/>
+  <text x="210" y="65" font-family="'Segoe UI', sans-serif" font-size="13" fill="#50fa7b" text-anchor="middle" font-weight="bold">GLOBAL ELO RATING</text>
+  <text x="60" y="92" font-family="monospace" font-size="10" fill="#ff79c6">ExpectedScore</text>
+  <text x="165" y="92" font-family="monospace" font-size="10" fill="#f8f8f2"> = 1/(1+10^((Rb-Ra)/400))</text>
+  <text x="60" y="116" font-family="monospace" font-size="10" fill="#8be9fd">K-Factor:</text>
+  <text x="60" y="136" font-family="monospace" font-size="9" fill="#f1fa8c">  &lt;10 games  → K=40</text>
+  <text x="60" y="152" font-family="monospace" font-size="9" fill="#f8f8f2">  10-30 games → K=24</text>
+  <text x="60" y="168" font-family="monospace" font-size="9" fill="#6272a4">  30+ games   → K=16</text>
+  <text x="60" y="195" font-family="monospace" font-size="9" fill="#6272a4">Permanent • Never resets • Floor: 100</text>
+
+  <!-- Right: Seasonal Tiers -->
+  <rect x="420" y="40" width="340" height="170" fill="#282a36" rx="8" stroke="#bd93f9" stroke-width="1"/>
+  <text x="590" y="65" font-family="'Segoe UI', sans-serif" font-size="13" fill="#bd93f9" text-anchor="middle" font-weight="bold">SEASONAL TIERS</text>
+
+  <!-- Tier ladder -->
+  <rect x="440" y="80" width="120" height="22" fill="#ff5555" rx="4" opacity="0.3"/>
+  <text x="500" y="96" font-family="monospace" font-size="10" fill="#ff5555" text-anchor="middle">Grandmaster 2000+</text>
+  <rect x="440" y="106" width="120" height="22" fill="#f1fa8c" rx="4" opacity="0.2"/>
+  <text x="500" y="122" font-family="monospace" font-size="10" fill="#f1fa8c" text-anchor="middle">Diamond 1600+</text>
+  <rect x="440" y="132" width="120" height="22" fill="#bd93f9" rx="4" opacity="0.2"/>
+  <text x="500" y="148" font-family="monospace" font-size="10" fill="#bd93f9" text-anchor="middle">Platinum 1300+</text>
+  <rect x="440" y="158" width="120" height="22" fill="#8be9fd" rx="4" opacity="0.2"/>
+  <text x="500" y="174" font-family="monospace" font-size="10" fill="#8be9fd" text-anchor="middle">Gold 1000+</text>
+
+  <!-- Season info -->
+  <text x="590" y="96" font-family="monospace" font-size="8" fill="#6272a4">8-week seasons</text>
+  <text x="590" y="114" font-family="monospace" font-size="8" fill="#6272a4">Resets to 1000</text>
+  <text x="590" y="132" font-family="monospace" font-size="8" fill="#6272a4">Decay: -25/week</text>
+  <text x="590" y="150" font-family="monospace" font-size="8" fill="#6272a4">after 7d inactive</text>
+  <text x="590" y="174" font-family="monospace" font-size="8" fill="#50fa7b">Placement: 5 games</text>
+
+  <!-- Rating update code -->
+  <rect x="100" y="240" width="600" height="100" fill="#282a36" rx="6"/>
+  <text x="120" y="262" font-family="monospace" font-size="10" fill="#ff79c6">var</text>
+  <text x="144" y="262" font-family="monospace" font-size="10" fill="#f8f8f2"> newRating = oldRating + (</text>
+  <text x="340" y="262" font-family="monospace" font-size="10" fill="#ff79c6">int</text>
+  <text x="362" y="262" font-family="monospace" font-size="10" fill="#f8f8f2">)(K * (actual - expected));</text>
+  <text x="120" y="284" font-family="monospace" font-size="10" fill="#6272a4">// Win vs higher-rated: big gain (+30)</text>
+  <text x="120" y="304" font-family="monospace" font-size="10" fill="#6272a4">// Lose vs lower-rated: big loss (-30)</text>
+  <text x="120" y="324" font-family="monospace" font-size="10" fill="#6272a4">// Win vs lower-rated: small gain (+8)</text>
+
+  <!-- Dual arrows -->
+  <text x="400" y="375" font-family="monospace" font-size="11" fill="#50fa7b" text-anchor="middle">Global Elo ←→ Seasonal Tier</text>
+  <text x="400" y="393" font-family="monospace" font-size="9" fill="#6272a4" text-anchor="middle">Both update on every battle • Different K-factors • Different purposes</text>
+
+  <!-- Title -->
+  <text x="400" y="424" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#f8f8f2" text-anchor="middle" font-weight="bold">Elo Rating + Seasonal Tiers</text>
+  <text x="400" y="445" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#6272a4" text-anchor="middle">Two parallel rating tracks for different competitive needs</text>
+</svg>
