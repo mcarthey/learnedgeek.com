@@ -1,0 +1,219 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="lp_bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
+    </linearGradient>
+    <linearGradient id="lp_clip" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a4e"/>
+      <stop offset="100%" stop-color="#1e1e3a"/>
+    </linearGradient>
+    <linearGradient id="lp_rubric" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="lp_badge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0984e3"/>
+      <stop offset="100%" stop-color="#6c5ce7"/>
+    </linearGradient>
+    <linearGradient id="lp_gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#lp_bg)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.06">
+    <line x1="0" y1="75" x2="800" y2="75" stroke="#94a3b8" stroke-width="0.5"/>
+    <line x1="0" y1="150" x2="800" y2="150" stroke="#94a3b8" stroke-width="0.5"/>
+    <line x1="0" y1="225" x2="800" y2="225" stroke="#94a3b8" stroke-width="0.5"/>
+    <line x1="0" y1="300" x2="800" y2="300" stroke="#94a3b8" stroke-width="0.5"/>
+    <line x1="0" y1="375" x2="800" y2="375" stroke="#94a3b8" stroke-width="0.5"/>
+    <line x1="160" y1="0" x2="160" y2="450" stroke="#94a3b8" stroke-width="0.5"/>
+    <line x1="320" y1="0" x2="320" y2="450" stroke="#94a3b8" stroke-width="0.5"/>
+    <line x1="480" y1="0" x2="480" y2="450" stroke="#94a3b8" stroke-width="0.5"/>
+    <line x1="640" y1="0" x2="640" y2="450" stroke="#94a3b8" stroke-width="0.5"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#e2e8f0">5-Week REST API Curriculum</text>
+  <text x="400" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#94a3b8">Standards-Aligned Lesson Plan &amp; Assessment Rubric</text>
+
+  <!-- LEFT: Clipboard / Lesson Plan -->
+  <g transform="translate(40, 80)">
+    <!-- Clipboard body -->
+    <rect x="0" y="12" width="310" height="310" rx="8" fill="url(#lp_clip)" stroke="#334155" stroke-width="1.5"/>
+    <!-- Clipboard clip -->
+    <rect x="105" y="0" width="100" height="24" rx="4" fill="#475569"/>
+    <circle cx="155" cy="12" r="5" fill="#1a1a2e" stroke="#64748b" stroke-width="1.5"/>
+
+    <!-- Lesson Plan header -->
+    <text x="155" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#fbbf24">LESSON PLAN</text>
+    <line x1="30" y1="62" x2="280" y2="62" stroke="#475569" stroke-width="0.5"/>
+
+    <!-- Week items -->
+    <!-- Week 1 -->
+    <g transform="translate(20, 78)">
+      <rect x="0" y="0" width="18" height="18" rx="3" fill="none" stroke="#4ade80" stroke-width="1.5"/>
+      <path d="M4 9 L8 13 L14 5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="26" y="13" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#e2e8f0">Week 1</text>
+      <text x="82" y="13" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">API Fundamentals</text>
+    </g>
+
+    <!-- Week 2 -->
+    <g transform="translate(20, 108)">
+      <rect x="0" y="0" width="18" height="18" rx="3" fill="none" stroke="#4ade80" stroke-width="1.5"/>
+      <path d="M4 9 L8 13 L14 5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="26" y="13" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#e2e8f0">Week 2</text>
+      <text x="82" y="13" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Build a Bot</text>
+    </g>
+
+    <!-- Week 3 -->
+    <g transform="translate(20, 138)">
+      <rect x="0" y="0" width="18" height="18" rx="3" fill="none" stroke="#4ade80" stroke-width="1.5"/>
+      <path d="M4 9 L8 13 L14 5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="26" y="13" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#e2e8f0">Week 3</text>
+      <text x="82" y="13" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Strategy &amp; Optimization</text>
+    </g>
+
+    <!-- Week 4 -->
+    <g transform="translate(20, 168)">
+      <rect x="0" y="0" width="18" height="18" rx="3" fill="none" stroke="#4ade80" stroke-width="1.5"/>
+      <path d="M4 9 L8 13 L14 5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="26" y="13" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#e2e8f0">Week 4</text>
+      <text x="82" y="13" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Advanced Features &amp; Teams</text>
+    </g>
+
+    <!-- Week 5 -->
+    <g transform="translate(20, 198)">
+      <rect x="0" y="0" width="18" height="18" rx="3" fill="none" stroke="#4ade80" stroke-width="1.5"/>
+      <path d="M4 9 L8 13 L14 5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="26" y="13" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#e2e8f0">Week 5</text>
+      <text x="82" y="13" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Tournament &amp; Presentations</text>
+    </g>
+
+    <line x1="30" y1="228" x2="280" y2="228" stroke="#475569" stroke-width="0.5"/>
+
+    <!-- Standards listing -->
+    <text x="155" y="248" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#7ee787">AP1.a.8.h</text>
+    <text x="75" y="265" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#58a6ff">NI2.b.3.h</text>
+    <text x="155" y="265" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#58a6ff">NI2.d.5.h</text>
+    <text x="235" y="265" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#58a6ff">DA3.a.6.h</text>
+    <text x="75" y="248" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#7ee787">AP2.a.16.h</text>
+    <text x="235" y="248" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#7ee787">AP5.a.6.h</text>
+    <text x="105" y="282" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#c084fc">IC2.c.5.h</text>
+    <text x="205" y="282" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#c084fc">AP6.a.4.h</text>
+
+    <!-- 15 Standards label -->
+    <text x="155" y="306" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#64748b">15 Wisconsin CS Standards Addressed</text>
+  </g>
+
+  <!-- RIGHT: Rubric Grid -->
+  <g transform="translate(410, 80)">
+    <!-- Rubric container -->
+    <rect x="0" y="0" width="350" height="245" rx="8" fill="url(#lp_rubric)" stroke="#334155" stroke-width="1.5"/>
+
+    <!-- Rubric header -->
+    <text x="175" y="26" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#fbbf24">ASSESSMENT RUBRIC</text>
+    <line x1="20" y1="36" x2="330" y2="36" stroke="#475569" stroke-width="0.5"/>
+
+    <!-- Column headers -->
+    <text x="100" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#94a3b8">CRITERIA</text>
+    <text x="195" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#ef4444">1</text>
+    <text x="225" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#f59e0b">2</text>
+    <text x="255" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#22c55e">3</text>
+    <text x="285" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#3b82f6">4</text>
+    <text x="320" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#94a3b8">WT</text>
+
+    <!-- Row 1: API Fundamentals -->
+    <rect x="15" y="62" width="320" height="24" rx="3" fill="#1e293b" opacity="0.6"/>
+    <text x="20" y="78" font-family="Arial, sans-serif" font-size="9" fill="#e2e8f0">API Fundamentals</text>
+    <circle cx="195" cy="74" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <circle cx="225" cy="74" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <circle cx="255" cy="74" r="5" fill="#22c55e" stroke="#22c55e" stroke-width="1"/>
+    <circle cx="285" cy="74" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <text x="320" y="78" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">20%</text>
+
+    <!-- Row 2: Programming -->
+    <rect x="15" y="90" width="320" height="24" rx="3" fill="#0f172a" opacity="0.6"/>
+    <text x="20" y="106" font-family="Arial, sans-serif" font-size="9" fill="#e2e8f0">Programming &amp; Automation</text>
+    <circle cx="195" cy="102" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <circle cx="225" cy="102" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <circle cx="255" cy="102" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <circle cx="285" cy="102" r="5" fill="#3b82f6" stroke="#3b82f6" stroke-width="1"/>
+    <text x="320" y="106" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">25%</text>
+
+    <!-- Row 3: Data Analysis -->
+    <rect x="15" y="118" width="320" height="24" rx="3" fill="#1e293b" opacity="0.6"/>
+    <text x="20" y="134" font-family="Arial, sans-serif" font-size="9" fill="#e2e8f0">Data Analysis</text>
+    <circle cx="195" cy="130" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <circle cx="225" cy="130" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <circle cx="255" cy="130" r="5" fill="#22c55e" stroke="#22c55e" stroke-width="1"/>
+    <circle cx="285" cy="130" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <text x="320" y="134" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">20%</text>
+
+    <!-- Row 4: Collaboration -->
+    <rect x="15" y="146" width="320" height="24" rx="3" fill="#0f172a" opacity="0.6"/>
+    <text x="20" y="162" font-family="Arial, sans-serif" font-size="9" fill="#e2e8f0">Collaboration &amp; VCS</text>
+    <circle cx="195" cy="158" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <circle cx="225" cy="158" r="5" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"/>
+    <circle cx="255" cy="158" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <circle cx="285" cy="158" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <text x="320" y="162" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">15%</text>
+
+    <!-- Row 5: Communication -->
+    <rect x="15" y="174" width="320" height="24" rx="3" fill="#1e293b" opacity="0.6"/>
+    <text x="20" y="190" font-family="Arial, sans-serif" font-size="9" fill="#e2e8f0">Communication</text>
+    <circle cx="195" cy="186" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <circle cx="225" cy="186" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <circle cx="255" cy="186" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <circle cx="285" cy="186" r="5" fill="#3b82f6" stroke="#3b82f6" stroke-width="1"/>
+    <text x="320" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">10%</text>
+
+    <!-- Row 6: Error Handling -->
+    <rect x="15" y="202" width="320" height="24" rx="3" fill="#0f172a" opacity="0.6"/>
+    <text x="20" y="218" font-family="Arial, sans-serif" font-size="9" fill="#e2e8f0">Error Handling &amp; Debugging</text>
+    <circle cx="195" cy="214" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <circle cx="225" cy="214" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <circle cx="255" cy="214" r="5" fill="#22c55e" stroke="#22c55e" stroke-width="1"/>
+    <circle cx="285" cy="214" r="5" fill="none" stroke="#475569" stroke-width="1"/>
+    <text x="320" y="218" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">10%</text>
+
+    <!-- Scale legend -->
+    <text x="175" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#64748b">Beginning  |  Approaching  |  Meets  |  Exceeds</text>
+  </g>
+
+  <!-- Wisconsin Standards Badge -->
+  <g transform="translate(410, 340)">
+    <rect x="0" y="0" width="350" height="55" rx="8" fill="url(#lp_badge)" opacity="0.9"/>
+    <!-- Wisconsin outline (simplified) -->
+    <path d="M28 15 L48 12 L58 14 L65 11 L72 14 L72 28 L68 34 L60 38 L48 42 L38 40 L28 36 L22 30 L22 20 Z" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.9"/>
+    <text x="47" y="31" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#fff" opacity="0.9">WI</text>
+    <text x="210" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#fff">Wisconsin CS Standards Aligned</text>
+    <text x="210" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0" opacity="0.85">Grades 9-12  |  15 Standards  |  5 Content Areas</text>
+  </g>
+
+  <!-- Bottom tagline -->
+  <text x="400" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#64748b">From lesson plan to leaderboard — a curriculum that competes.</text>
+
+  <!-- Connector arrow between clipboard and rubric -->
+  <g transform="translate(360, 195)">
+    <line x1="0" y1="0" x2="35" y2="0" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <polygon points="35,-5 45,0 35,5" fill="#fbbf24"/>
+  </g>
+
+  <!-- Small "API COMBAT" badge bottom-left -->
+  <g transform="translate(40, 398)">
+    <rect x="0" y="0" width="120" height="24" rx="4" fill="url(#lp_gold)" opacity="0.15" stroke="#fbbf24" stroke-width="0.5"/>
+    <text x="60" y="16" text-anchor="middle" font-family="'Courier New', monospace" font-size="10" font-weight="bold" fill="#fbbf24">API COMBAT</text>
+  </g>
+
+  <!-- "Education Mode" badge bottom-left -->
+  <g transform="translate(170, 398)">
+    <rect x="0" y="0" width="140" height="24" rx="4" fill="#22c55e" opacity="0.12" stroke="#22c55e" stroke-width="0.5"/>
+    <text x="70" y="16" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4ade80">Education Mode</text>
+  </g>
+</svg>

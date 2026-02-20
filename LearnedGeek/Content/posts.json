@@ -1404,6 +1404,26 @@
       "blueskyHook": "Tailwind v4: build ran, CSS generated, half my styles missing.\n\nNo errors. No warnings. V4 ignores your content array\u2014needs @source directives now:"
     },
     {
+      "slug": "rest-api-lesson-plan-wisconsin-standards",
+      "title": "5-Week REST API Curriculum: A Standards-Aligned Lesson Plan for Educators",
+      "description": "A complete lesson plan with weekly activities, deliverables, and a weighted assessment rubric\u2014mapped to 15 Wisconsin Computer Science Standards. Ready for your department chair.",
+      "category": "tech",
+      "tags": [
+        "education",
+        "api",
+        "teaching",
+        "rest",
+        "api-combat",
+        "curriculum",
+        "lesson-plan"
+      ],
+      "date": "2026-02-23T00:00:00",
+      "featured": false,
+      "image": "/img/posts/rest-api-lesson-plan-wisconsin-standards.svg",
+      "linkedInHook": "\u0022Show me the lesson plan.\u0022\n\nThat\u0027s what educators kept saying after I wrote about teaching REST APIs through gaming.\n\nEnthusiasm doesn\u0027t satisfy a department chair. Standards alignment does.\n\nSo I built one. A complete 5-week curriculum:\n\n\u2705 Week 1: API Fundamentals \u2014 students register via their first POST request\n\u2705 Week 2: Build a Bot \u2014 automate 10 battles with error handling\n\u2705 Week 3: Strategy \u0026 Optimization \u2014 A/B test formations with real data\n\u2705 Week 4: Team Collaboration \u2014 GitHub repos, guild wars, peer review\n\u2705 Week 5: Class Tournament \u2014 bots compete live on the leaderboard\n\nMapped to 15 Wisconsin CS Standards (grades 9\u201312) across all 5 content areas.\n\n6-criteria weighted assessment rubric included \u2014 API fundamentals, programming, data analysis, collaboration, communication, debugging.\n\nPilot results from 3 bootcamps:\n\u2022 87% completion rate (vs 54% for traditional CRUD projects)\n\u2022 78% implemented error handling unprompted\n\u2022 23 students built features that weren\u0027t even assigned\n\nStudents don\u0027t build todo apps. They build combat bots.\nSame learning outcomes. Different drive.\n\nEducation Mode is free for accredited institutions. K\u201312, universities, bootcamps.\n\nFull lesson plan + rubric: https://learnedgeek.com/Blog/Post/rest-api-lesson-plan-wisconsin-standards\n\nWant a private instance for your class? https://learnedgeek.com/Contact\n\n#education #api #teaching #edtech #curriculum #computerscience",
+      "blueskyHook": "\u0022Show me the lesson plan.\u0022\n\nEducators kept asking after my post on teaching REST APIs through gaming. So I built one:\n\n5-week curriculum. 15 Wisconsin CS Standards. Weighted rubric. Weekly deliverables.\n\nStudents build combat bots, not todo apps. Same concepts. Different motivation.\n\nFree for schools:"
+    },
+    {
       "slug": "teaching-rest-apis-through-gaming",
       "title": "Teaching REST APIs Through Gaming: Why API Combat Works in the Classroom",
       "description": "Students don\u0027t care about todo APIs. But they\u0027ll build combat bots to beat their classmates. Same concepts. Different motivation.",
