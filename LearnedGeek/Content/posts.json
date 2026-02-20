@@ -1424,6 +1424,25 @@
       "blueskyHook": "Tailwind v4: build ran, CSS generated, half my styles missing.\n\nNo errors. No warnings. V4 ignores your content array\u2014needs @source directives now:"
     },
     {
+      "slug": "anatomy-of-a-ci-workflow",
+      "title": "What Your CI Workflow Actually Does: A Line-by-Line Walkthrough",
+      "description": "An AI wrote me a CI workflow. I understood maybe 40% of it. So I went line by line until I understood all of it. Here\u0027s what each piece does and why it\u0027s there.",
+      "category": "tech",
+      "tags": [
+        "github-actions",
+        "ci-cd",
+        "devops",
+        "dotnet",
+        "maui",
+        "tutorial"
+      ],
+      "date": "2026-02-24T00:00:00",
+      "featured": false,
+      "image": "/img/posts/anatomy-of-a-ci-workflow.svg",
+      "linkedInHook": "An AI wrote me a CI workflow.\n\nI looked at the YAML and understood maybe 40% of it.\n\nSo I went line by line until I understood all of it.\n\nHere\u0027s what I learned:\n\n\u2022 \u0060on:\u0060 \u2014 Triggers. Push to main? Run. Open a PR? Run. Push to feature/*? Run.\n\u2022 \u0060concurrency\u0060 \u2014 Push 3 times fast? Only the last one runs. The others cancel.\n\u2022 \u0060runs-on: ubuntu-latest\u0060 \u2014 A fresh VM spun up just for this build. Destroyed after.\n\u2022 \u0060actions/cache\u0060 \u2014 Hashes your .csproj files. Same deps? Skip the download. Saves 60s.\n\u2022 \u0060if: always()\u0060 \u2014 Upload test results even when tests FAIL. Especially when they fail.\n\u2022 \u0060runs-on: macos-15\u0060 \u2014 MAUI needs macOS. macOS runners cost 10x. Gate it.\n\u2022 \u0060needs: build-and-test\u0060 \u2014 Don\u0027t run Job 3 until Job 1\u0027s artifacts exist.\n\u2022 \u0060permissions: pull-requests: write\u0060 \u2014 Least privilege. Only request what you need.\n\nThe whole workflow is 100 lines of YAML running 3 jobs across 2 operating systems.\n\nI could have treated it as a black box. But the moment it breaks, I\u0027d be stuck.\n\nThe YAML is the documentation. Now I can read it.\n\nFull walkthrough: https://learnedgeek.com/Blog/Post/anatomy-of-a-ci-workflow\n\n#githubactions #cicd #devops #dotnet #learning",
+      "blueskyHook": "An AI wrote me a CI workflow. I understood maybe 40% of the YAML.\n\nSo I went line by line: triggers, concurrency, caching, runners, artifacts, job dependencies, permissions.\n\n100 lines, 3 jobs, 2 OS runners. The YAML is the documentation\u2014now I can read it:"
+    },
+    {
       "slug": "rest-api-lesson-plan-wisconsin-standards",
       "title": "5-Week REST API Curriculum: A Standards-Aligned Lesson Plan for Educators",
       "description": "A complete lesson plan with weekly activities, deliverables, and a weighted assessment rubric\u2014mapped to 15 Wisconsin Computer Science Standards. Ready for your department chair.",
