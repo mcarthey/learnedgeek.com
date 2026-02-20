@@ -220,9 +220,11 @@ I thought they did. So did most of the developers I know. It's one of the most c
 
 ---
 
-In **Part 2**, I'll explain the fundamental concept I misunderstood for three decades — and why C# works this way.
+In **[Part 2](/Blog/Post/memory-leak-part-2-idisposable-fundamentals)**, I'll explain the fundamental concept I misunderstood for three decades — and why C# works this way.
 
-In **Part 3**, I'll show the specific Web API pattern that leaked in every single controller we had.
+In **[Part 3](/Blog/Post/memory-leak-part-3-web-api-disposal)**, I'll show the specific Web API pattern that leaked in every single controller we had.
+
+In **[Part 4](/Blog/Post/memory-leak-part-4-entity-framework-factory-disposal)**, I'll find the *second* leak — the one that survived the HTTP fix — hiding in our Entity Framework factory pattern.
 
 ---
 

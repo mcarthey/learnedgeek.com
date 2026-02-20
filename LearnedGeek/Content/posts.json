@@ -267,6 +267,26 @@
       "linkedInHook": "Why do programs leak memory?\n\nImagine running a restaurant kitchen. When customers finish eating, dirty dishes pile up.\n\nOption 1: Stack them and wait for the dishwasher to clean them in bulk\nOption 2: Wash each dish immediately\n\nMost programming languages work like Option 1. They have a \u0022dishwasher\u0022 called the garbage collector (GC).\n\nThat works great... until you get really busy.\n\nCustomers keep coming. Dishes keep piling up. The dishwasher can\u0027t keep up.\n\nEventually, you run out of clean dishes. The kitchen grinds to a halt.\n\nThis is a memory leak.\n\nIn programming, there are two types of trash:\n\n1. Regular trash (memory) - Paper plates. Can wait for the GC.\n2. Special trash (resources) - Dishes with food still on them. Need immediate cleanup.\n\nFile handles, network connections, database connections \u2014 these are \u0022dishes.\u0022 If you don\u0027t clean them immediately, you run out.\n\nThe fix: Explicit cleanup. In C#, that\u0027s \u0060using\u0060 statements.\n\nOur production leak: We forgot to \u0022wash our dishes\u0022 for 2 years. Five \u0060using\u0060 statements fixed it.\n\nThe dishwasher isn\u0027t magic. Sometimes you have to wash your own dishes.\n\n#programming #eli5 #memoryleak #explained"
     },
     {
+      "slug": "memory-leak-part-4-entity-framework-factory-disposal",
+      "title": "The Memory Leak That Survived the Fix: Entity Framework, Factories, and ContinueWith",
+      "description": "I fixed the HTTP disposal leaks. Memory dropped 70%. Then the 499s came back. The culprit: a factory pattern that created DbContexts but never properly disposed them.",
+      "category": "tech",
+      "tags": [
+        "csharp",
+        "dotnet",
+        "entity-framework",
+        "memory-leak",
+        "debugging",
+        "performance",
+        "async-await"
+      ],
+      "date": "2027-01-13T00:00:00",
+      "featured": false,
+      "image": "/img/posts/memory-leak-part-4.svg",
+      "linkedInHook": "I fixed a two-year memory leak. Deployed. Memory dropped 70%.\n\nThen the 499s came back.\n\nTurns out there were TWO leaks hiding in the same codebase. The first was HTTP disposal (missing \u0060using\u0060 statements). That got all the attention.\n\nThe second was quieter. And honestly, more insidious.\n\nEvery DAO method in our codebase followed this pattern:\n\nvar db = _dbContextFactory.Create();\nreturn query.ToListAsync().ContinueWith(t =\u003E {\n    db.Dispose();\n    return t.Result;\n});\n\nLooks safe, right? Factory creates. Continuation disposes. Ship it.\n\nExcept:\n\u2022 The DbContext lives in a closure until GC collects it\n\u2022 At 40 req/sec, contexts pile up by design\n\u2022 Under load: 200+ DbConnectionPool instances in memory\n\u2022 Connection pool exhaustion \u2192 499 timeouts\n\nThe fix:\n\nusing (var db = _dbContextFactory.Create())\n{\n    return await query.ToListAsync();\n}\n\nDisposal goes from \u0022eventually\u0022 to \u002251ms flat.\u0022\n\nThe misconception: \u0022We\u0027re using a factory, so the factory manages the lifecycle.\u0022\n\nNo. The factory\u0027s job ends at .Create(). Disposal is always the caller\u0027s responsibility.\n\nIf it implements IDisposable, wrap it in using. Period.\n\nFull deep dive: https://learnedgeek.com/Blog/Post/memory-leak-part-4-entity-framework-factory-disposal\n\n#dotnet #entityframework #memoryleak #debugging #performance #csharp",
+      "blueskyHook": "Fixed a two-year memory leak. Memory dropped 70%. Then the 499s came back.\n\nSecond leak: DbContext created by factory, \u0022disposed\u0022 via ContinueWith. Contexts piled up in closures. Connection pool exhaustion.\n\nFix: async/await + using. Disposal goes from \u0022eventually\u0022 to 51ms flat:"
+    },
+    {
       "slug": "memory-leak-part-3-web-api-disposal",
       "title": "Web API\u0027s Hidden Disposal Trap: HttpResponseMessage vs IHttpActionResult",
       "description": "Returning Task\u003CHttpResponseMessage\u003E from Web API controllers leaks memory. We had 200\u002B controllers doing it. Here\u0027s the fix.",

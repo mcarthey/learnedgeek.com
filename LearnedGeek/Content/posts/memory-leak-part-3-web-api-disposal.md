@@ -390,6 +390,7 @@ No wonder we got it wrong.
 - **[Part 1](/Blog/Post/memory-leak-part-1-the-investigation)**: The two-year investigation
 - **[Part 2](/Blog/Post/memory-leak-part-2-idisposable-fundamentals)**: IDisposable fundamentals
 - **Part 3**: Web API disposal patterns (you are here)
+- **[Part 4](/Blog/Post/memory-leak-part-4-entity-framework-factory-disposal)**: Entity Framework factory disposal
 - **[ELI5](/Blog/Post/eli5-memory-leaks)**: Why programs forget to clean up
 
 ---

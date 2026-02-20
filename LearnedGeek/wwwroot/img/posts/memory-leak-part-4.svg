@@ -1,0 +1,121 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ml4_danger" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff4444" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#ff4444" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ml4_fix" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ml4_badge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e94560"/>
+      <stop offset="100%" stop-color="#c23152"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="#1a1a2e"/>
+
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#e2e8f0">The Memory Leak That Survived the Fix</text>
+  <text x="400" y="56" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#94a3b8">Entity Framework + Factory Pattern + ContinueWith</text>
+
+  <!-- PART 4 badge -->
+  <rect x="20" y="15" width="75" height="28" rx="4" fill="url(#ml4_badge)"/>
+  <text x="57" y="34" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fff">PART 4</text>
+
+  <!-- Memory graph -->
+  <g transform="translate(60, 80)">
+    <!-- Graph axes -->
+    <line x1="0" y1="260" x2="680" y2="260" stroke="#3a3a4e" stroke-width="1.5"/>
+    <line x1="0" y1="0" x2="0" y2="260" stroke="#3a3a4e" stroke-width="1.5"/>
+
+    <!-- Y-axis labels -->
+    <text x="-10" y="260" text-anchor="end" font-family="Arial, sans-serif" font-size="10" fill="#666">0</text>
+    <text x="-10" y="195" text-anchor="end" font-family="Arial, sans-serif" font-size="10" fill="#666">50</text>
+    <text x="-10" y="130" text-anchor="end" font-family="Arial, sans-serif" font-size="10" fill="#666">100</text>
+    <text x="-10" y="65" text-anchor="end" font-family="Arial, sans-serif" font-size="10" fill="#666">150</text>
+    <text x="-10" y="10" text-anchor="end" font-family="Arial, sans-serif" font-size="10" fill="#666">200+</text>
+    <text x="-50" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666" transform="rotate(-90, -50, 130)">DbContext Instances</text>
+
+    <!-- Grid lines -->
+    <line x1="0" y1="195" x2="680" y2="195" stroke="#2a2a3e" stroke-width="0.5"/>
+    <line x1="0" y1="130" x2="680" y2="130" stroke="#2a2a3e" stroke-width="0.5"/>
+    <line x1="0" y1="65" x2="680" y2="65" stroke="#2a2a3e" stroke-width="0.5"/>
+
+    <!-- Phase dividers -->
+    <line x1="220" y1="0" x2="220" y2="260" stroke="#475569" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="450" y1="0" x2="450" y2="260" stroke="#475569" stroke-width="1" stroke-dasharray="4,4"/>
+
+    <!-- Phase labels -->
+    <text x="110" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Before Any Fixes</text>
+    <text x="335" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">After HTTP Fix (Parts 1-3)</text>
+    <text x="565" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">After DAO Fix (Part 4)</text>
+
+    <!-- Phase 1: Both leaks active — steep climb -->
+    <path d="M 0 250 C 40 245 80 220 120 170 C 160 120 190 60 220 20"
+          fill="none" stroke="#ff4444" stroke-width="3" stroke-linecap="round"/>
+    <!-- Fill under Phase 1 -->
+    <path d="M 0 250 C 40 245 80 220 120 170 C 160 120 190 60 220 20 L 220 260 L 0 260 Z"
+          fill="url(#ml4_danger)" opacity="0.5"/>
+
+    <!-- Phase 2: HTTP fixed, but DAO still leaking — moderate climb -->
+    <path d="M 220 180 C 260 175 300 160 340 145 C 380 125 420 100 450 80"
+          fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+    <!-- Fill under Phase 2 -->
+    <path d="M 220 180 C 260 175 300 160 340 145 C 380 125 420 100 450 80 L 450 260 L 220 260 Z"
+          fill="url(#ml4_fix)" opacity="0.5"/>
+
+    <!-- Drop line at HTTP fix point -->
+    <path d="M 220 20 L 220 180" stroke="#4ade80" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="230" y="100" font-family="Arial, sans-serif" font-size="9" fill="#4ade80">-70%</text>
+
+    <!-- Phase 3: Both fixed — flat line -->
+    <path d="M 450 245 L 680 240"
+          fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Drop line at DAO fix point -->
+    <path d="M 450 80 L 450 245" stroke="#4ade80" stroke-width="2" stroke-dasharray="5,3"/>
+
+    <!-- Annotations -->
+    <!-- Phase 1 annotation -->
+    <rect x="60" y="30" width="110" height="32" rx="4" fill="#1a1a2e" stroke="#ff4444" stroke-width="1" opacity="0.9"/>
+    <text x="115" y="44" text-anchor="middle" font-family="'Courier New', monospace" font-size="8" fill="#ff4444">HTTP + DAO leaks</text>
+    <text x="115" y="56" text-anchor="middle" font-family="'Courier New', monospace" font-size="8" fill="#ff4444">200+ instances</text>
+
+    <!-- Phase 2 annotation -->
+    <rect x="290" y="68" width="110" height="32" rx="4" fill="#1a1a2e" stroke="#f59e0b" stroke-width="1" opacity="0.9"/>
+    <text x="345" y="82" text-anchor="middle" font-family="'Courier New', monospace" font-size="8" fill="#f59e0b">DAO leak remains</text>
+    <text x="345" y="94" text-anchor="middle" font-family="'Courier New', monospace" font-size="8" fill="#f59e0b">Still growing...</text>
+
+    <!-- Phase 3 annotation -->
+    <rect x="510" y="220" width="120" height="32" rx="4" fill="#1a1a2e" stroke="#4ade80" stroke-width="1" opacity="0.9"/>
+    <text x="570" y="234" text-anchor="middle" font-family="'Courier New', monospace" font-size="8" fill="#4ade80">Both fixed</text>
+    <text x="570" y="246" text-anchor="middle" font-family="'Courier New', monospace" font-size="8" fill="#4ade80">&lt;10 instances  </text>
+  </g>
+
+  <!-- Code snippet at bottom -->
+  <g transform="translate(60, 375)">
+    <rect x="0" y="0" width="310" height="52" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="10" y="16" font-family="'Courier New', monospace" font-size="9" fill="#ef4444">// Before: ContinueWith</text>
+    <text x="10" y="30" font-family="'Courier New', monospace" font-size="9" fill="#94a3b8">var db = _factory.Create();</text>
+    <text x="10" y="44" font-family="'Courier New', monospace" font-size="9" fill="#94a3b8">return query.<tspan fill="#f59e0b">ContinueWith</tspan>(t =&gt; ...</text>
+  </g>
+
+  <!-- Arrow -->
+  <g transform="translate(385, 395)">
+    <line x1="0" y1="0" x2="30" y2="0" stroke="#4ade80" stroke-width="2"/>
+    <polygon points="30,-5 40,0 30,5" fill="#4ade80"/>
+  </g>
+
+  <g transform="translate(430, 375)">
+    <rect x="0" y="0" width="310" height="52" rx="4" fill="#0f172a" stroke="#4ade80" stroke-width="1"/>
+    <text x="10" y="16" font-family="'Courier New', monospace" font-size="9" fill="#4ade80">// After: async/await + using</text>
+    <text x="10" y="30" font-family="'Courier New', monospace" font-size="9" fill="#c084fc">using</text>
+    <text x="42" y="30" font-family="'Courier New', monospace" font-size="9" fill="#94a3b8">(var db = _factory.Create())</text>
+    <text x="10" y="44" font-family="'Courier New', monospace" font-size="9" fill="#94a3b8">  return </text>
+    <text x="67" y="44" font-family="'Courier New', monospace" font-size="9" fill="#c084fc">await</text>
+    <text x="104" y="44" font-family="'Courier New', monospace" font-size="9" fill="#94a3b8"> query.ToListAsync();</text>
+  </g>
+</svg>

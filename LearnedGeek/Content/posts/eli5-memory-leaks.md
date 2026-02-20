@@ -163,7 +163,7 @@ Next time an app tells you to "restart for performance," it might be because the
 
 ---
 
-*Want the technical deep dive? Read the full [three-part memory leak debugging series](/Blog/Post/memory-leak-part-1-the-investigation) where I found five missing `using` statements that cost us two years of production pain.*
+*Want the technical deep dive? Read the full [four-part memory leak debugging series](/Blog/Post/memory-leak-part-1-the-investigation) where I found missing `using` statements and factory disposal bugs that cost us two years of production pain.*
 
 *The dishwasher isn't magic. Sometimes you have to wash your own dishes.*
 

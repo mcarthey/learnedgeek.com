@@ -400,7 +400,9 @@ One concept. Massive implications.
 
 ---
 
-In **Part 3**, I'll show the specific Web API disposal pattern that leaked in every controller we had — and the simple fix that changed our return types.
+In **[Part 3](/Blog/Post/memory-leak-part-3-web-api-disposal)**, I'll show the specific Web API disposal pattern that leaked in every controller we had — and the simple fix that changed our return types.
+
+In **[Part 4](/Blog/Post/memory-leak-part-4-entity-framework-factory-disposal)**, I'll find the leak that survived the HTTP fix — Entity Framework `DbContext` objects created by a factory and "disposed" via `ContinueWith`.
 
 ---
 
