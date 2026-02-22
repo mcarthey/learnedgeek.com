@@ -134,9 +134,9 @@ They're written to be handed to any AI assistant on any project. If you've been 
 
 And if you want to see the system they were built to protect — come play.
 
-**Try it:** [apicombat.com](https://apicombat.com)
-**Read the docs:** [apicombat.com/api-docs/v1](https://apicombat.com/api-docs/v1)
-**Source:** [github.com/mcarthey/ApiCombatGame](https://github.com/mcarthey/ApiCombatGame)
+- **Try it:** [apicombat.com](https://apicombat.com)
+- **Read the docs:** [apicombat.com/api-docs/v1](https://apicombat.com/api-docs/v1)
+- **Source:** [github.com/mcarthey/ApiCombatGame](https://github.com/mcarthey/ApiCombatGame)
 
 ---
 
