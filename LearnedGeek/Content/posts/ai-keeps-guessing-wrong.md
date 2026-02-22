@@ -85,9 +85,9 @@ Same AI. Same model. Completely different outcome. The difference is evidence.
 
 ## The Part I Didn't Expect
 
-After documenting all of this into a hardening playbook and testing strategy, I handed them to a *different* Claude instance working on a completely different project — [CrewTrack](https://github.com/mcarthey/CrewTrack), a field crew management app with a Blazor/MAUI stack.
+After documenting all of this into a hardening playbook and testing strategy, I handed them to a *different* Claude instance working on a completely different project — a field crew management app with a Blazor/MAUI stack.
 
-That project had its own testing problems. A previous AI session had implemented shell-based database testing with `sqlcmd` on the CI runner (which only existed inside the Docker container, not on the runner host). When that failed, the AI "fixed" it by calling `Database.Migrate()` directly with the wrong schema. Each fix cascaded into another problem.
+That project had its own testing problems. A previous AI session had implemented shell-based database testing using CLI tools on the CI runner (which only existed inside the Docker container, not on the runner host). When that failed, the AI "fixed" it by calling the database migration directly with the wrong schema. Each fix cascaded into another problem.
 
 Classic confident guess spiral.
 
