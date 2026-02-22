@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "debugging-startup-failure-reusable-workflows",
+      "title": "Debugging GitHub's Most Unhelpful Error: startup_failure in Reusable Workflows",
+      "description": "Two words. Zero context. Three completely different bugs. When GitHub Actions gives you startup_failure and nothing else, bisection is the only reliable technique.",
+      "category": "tech",
+      "tags": ["github-actions", "cicd", "debugging", "reusable-workflows", "dotnet", "maui"],
+      "date": "2027-04-12T00:00:00",
+      "featured": true,
+      "image": "/img/posts/debugging-startup-failure-reusable-workflows.svg",
+      "linkedInHook": "startup_failure.\n\nThat's it. That's all GitHub Actions tells you when a reusable workflow fails to parse. No line number. No context. No hint.\n\nI spent an afternoon and 15 test commits bisecting my way to three distinct bugs:\n\n1. Reusable workflows can't elevate permissions beyond the caller's grant\n2. timeout-minutes rejects input expressions (strings != numbers)\n3. -p:TargetFramework is a global MSBuild property that overrides every transitive project\n\nThree bugs. Two produce the exact same error. None are documented in the obvious places.\n\nWhen error messages give you nothing, bisection is the only reliable technique."
+    },
+    {
       "slug": "ai-keeps-guessing-wrong",
       "title": "Why Your AI Assistant Keeps Guessing Wrong (And How We Fixed It)",
       "description": "Three fixes. Three confident explanations. Zero progress. After a failed client demo and two weeks of pain, I learned that the problem isn't the AI—it's that nobody gave it the evidence it needed.",

@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="callerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <linearGradient id="reusableGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.05" stroke="#8b5cf6" stroke-width="0.5">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="32" font-family="sans-serif" font-size="13" fill="#e2e8f0" text-anchor="middle" font-weight="bold">Three Bugs, One Error Message</text>
+
+  <!-- Caller workflow box -->
+  <g transform="translate(40, 50)">
+    <rect x="0" y="0" width="220" height="130" rx="8" fill="url(#callerGrad)" opacity="0.9"/>
+    <text x="110" y="25" font-family="sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">Caller Workflow</text>
+    <line x1="15" y1="35" x2="205" y2="35" stroke="white" opacity="0.3" stroke-width="1"/>
+    <text x="15" y="55" font-family="monospace" font-size="8" fill="#bfdbfe">uses: ./reusable.yml</text>
+    <text x="15" y="70" font-family="monospace" font-size="8" fill="#bfdbfe">with:</text>
+    <text x="25" y="83" font-family="monospace" font-size="8" fill="#93c5fd">solution-filter: *.slnf</text>
+    <text x="15" y="100" font-family="monospace" font-size="8" fill="#fcd34d">permissions:</text>
+    <text x="25" y="113" font-family="monospace" font-size="8" fill="#fcd34d">pull-requests: write</text>
+    <text x="25" y="125" font-family="monospace" font-size="8" fill="#86efac">^ Bug #1 fix</text>
+  </g>
+
+  <!-- Arrow caller to reusable -->
+  <path d="M265 115 L310 115" stroke="#6b7280" stroke-width="2"/>
+  <polygon points="315,115 308,110 308,120" fill="#6b7280"/>
+
+  <!-- Reusable workflow box -->
+  <g transform="translate(320, 50)">
+    <rect x="0" y="0" width="240" height="130" rx="8" fill="url(#reusableGrad)" opacity="0.9"/>
+    <text x="120" y="25" font-family="sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">Reusable Workflow</text>
+    <line x1="15" y1="35" x2="225" y2="35" stroke="white" opacity="0.3" stroke-width="1"/>
+    <text x="15" y="55" font-family="monospace" font-size="8" fill="#e9d5ff">on: workflow_call</text>
+    <text x="15" y="70" font-family="monospace" font-size="8" fill="#e9d5ff">inputs:</text>
+    <text x="25" y="83" font-family="monospace" font-size="8" fill="#c4b5fd">test-timeout: number</text>
+    <text x="15" y="100" font-family="monospace" font-size="8" fill="#e9d5ff">jobs:</text>
+    <text x="25" y="113" font-family="monospace" font-size="8" fill="#c4b5fd">build-and-test</text>
+    <text x="25" y="125" font-family="monospace" font-size="8" fill="#c4b5fd">build-maui / pr-summary</text>
+  </g>
+
+  <!-- Three bug boxes -->
+  <!-- Bug 1 -->
+  <g transform="translate(40, 210)">
+    <rect x="0" y="0" width="220" height="80" rx="6" fill="#1f2937" stroke="#ef4444" stroke-width="2"/>
+    <rect x="0" y="0" width="220" height="22" rx="6" fill="#ef4444" opacity="0.8"/>
+    <rect x="0" y="12" width="220" height="10" fill="#ef4444" opacity="0.8"/>
+    <text x="110" y="16" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">Bug #1: Permissions</text>
+    <text x="15" y="42" font-family="sans-serif" font-size="8" fill="#fca5a5">Reusable workflow can't</text>
+    <text x="15" y="54" font-family="sans-serif" font-size="8" fill="#fca5a5">elevate beyond caller's grant</text>
+    <text x="15" y="72" font-family="monospace" font-size="8" fill="#ef4444">startup_failure</text>
+  </g>
+
+  <!-- Bug 2 -->
+  <g transform="translate(290, 210)">
+    <rect x="0" y="0" width="220" height="80" rx="6" fill="#1f2937" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="0" y="0" width="220" height="22" rx="6" fill="#f59e0b" opacity="0.8"/>
+    <rect x="0" y="12" width="220" height="10" fill="#f59e0b" opacity="0.8"/>
+    <text x="110" y="16" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">Bug #2: Type Coercion</text>
+    <text x="15" y="42" font-family="sans-serif" font-size="8" fill="#fcd34d">Expressions always return</text>
+    <text x="15" y="54" font-family="sans-serif" font-size="8" fill="#fcd34d">strings; timeout expects number</text>
+    <text x="15" y="72" font-family="monospace" font-size="8" fill="#f59e0b">startup_failure</text>
+  </g>
+
+  <!-- Bug 3 -->
+  <g transform="translate(540, 210)">
+    <rect x="0" y="0" width="220" height="80" rx="6" fill="#1f2937" stroke="#a78bfa" stroke-width="2"/>
+    <rect x="0" y="0" width="220" height="22" rx="6" fill="#a78bfa" opacity="0.8"/>
+    <rect x="0" y="12" width="220" height="10" fill="#a78bfa" opacity="0.8"/>
+    <text x="110" y="16" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">Bug #3: MSBuild Scope</text>
+    <text x="15" y="42" font-family="sans-serif" font-size="8" fill="#c4b5fd">-p:TargetFramework overrides</text>
+    <text x="15" y="54" font-family="sans-serif" font-size="8" fill="#c4b5fd">ALL projects in dependency graph</text>
+    <text x="15" y="72" font-family="monospace" font-size="8" fill="#a78bfa">NETSDK1005</text>
+  </g>
+
+  <!-- Bisection arrow / process -->
+  <g transform="translate(600, 60)">
+    <rect x="0" y="0" width="160" height="110" rx="8" fill="#1f2937" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="80" y="22" font-family="sans-serif" font-size="10" fill="#86efac" text-anchor="middle" font-weight="bold">Bisection Method</text>
+    <line x1="15" y1="30" x2="145" y2="30" stroke="#22c55e" opacity="0.3" stroke-width="1"/>
+    <text x="20" y="48" font-family="sans-serif" font-size="8" fill="#d1d5db">1. Minimal working version</text>
+    <text x="20" y="62" font-family="sans-serif" font-size="8" fill="#d1d5db">2. Add one thing</text>
+    <text x="20" y="76" font-family="sans-serif" font-size="8" fill="#d1d5db">3. Push and check</text>
+    <text x="20" y="90" font-family="sans-serif" font-size="8" fill="#d1d5db">4. Repeat until broken</text>
+    <text x="80" y="106" font-family="monospace" font-size="8" fill="#86efac" text-anchor="middle">15 commits, 3 bugs</text>
+  </g>
+
+  <!-- Bottom connector lines from workflows to bugs -->
+  <path d="M150 185 L150 210" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <path d="M440 185 L400 210" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <path d="M440 185 L650 210" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,2"/>
+
+  <!-- Bottom tagline -->
+  <text x="400" y="325" font-family="monospace" font-size="14" fill="#ef4444" text-anchor="middle" font-weight="bold">startup_failure</text>
+  <text x="400" y="345" font-family="sans-serif" font-size="10" fill="#9ca3af" text-anchor="middle">Two words. Zero context. Three completely different bugs.</text>
+
+  <!-- Fix labels -->
+  <g transform="translate(40, 310)">
+    <rect x="0" y="18" width="220" height="22" rx="4" fill="#16213e" stroke="#22c55e" stroke-width="1"/>
+    <text x="110" y="34" font-family="monospace" font-size="8" fill="#86efac" text-anchor="middle">Fix: permissions in caller</text>
+  </g>
+  <g transform="translate(290, 310)">
+    <rect x="0" y="18" width="220" height="22" rx="4" fill="#16213e" stroke="#22c55e" stroke-width="1"/>
+    <text x="110" y="34" font-family="monospace" font-size="8" fill="#86efac" text-anchor="middle">Fix: fromJSON() wrapper</text>
+  </g>
+  <g transform="translate(540, 310)">
+    <rect x="0" y="18" width="220" height="22" rx="4" fill="#16213e" stroke="#22c55e" stroke-width="1"/>
+    <text x="110" y="34" font-family="monospace" font-size="8" fill="#86efac" text-anchor="middle">Fix: EnableWindowsTargeting</text>
+  </g>
+
+  <text x="400" y="385" font-family="sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">When error messages give you nothing, bisection is the only reliable technique</text>
+</svg>
