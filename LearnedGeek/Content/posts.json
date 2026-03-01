@@ -1,30 +1,79 @@
 {
   "posts": [
     {
+      "slug": "the-architecture-tax-nobody-told-vibe-coders-about",
+      "title": "The Architecture Tax Nobody Told Vibe Coders About",
+      "description": "We had architecture documents, code smell guides, testing strategies, and a global AI instructions file with every lesson learned. We found 34 bugs in one audit. This is what happens after \u0027it works.\u0027",
+      "category": "tech",
+      "tags": [
+        "ai",
+        "architecture",
+        "vibe-coding",
+        "code-quality",
+        "debugging"
+      ],
+      "date": "2026-02-26T00:00:00",
+      "featured": true,
+      "image": "/img/posts/the-architecture-tax-nobody-told-vibe-coders-about.svg",
+      "linkedInHook": "We had architecture documents. Code smell guides. Testing strategies. A global AI instructions file with every lesson learned.\n\nWe found 34 bugs in one audit.\n\nNot cosmetic bugs. An N\u002B1 query that would crater the dashboard with real data. A .Result call that would deadlock the mobile app \u2014 explicitly forbidden in our rules file, written anyway. 16 bare catch blocks swallowing exceptions across the codebase.\n\n\u0022Vibe coding\u0022 \u2014 describing what you want and letting AI write it \u2014 is genuinely powerful. But it has a hidden cost that nobody talks about until it\u0027s too late.\n\nEvery AI session makes structural decisions you don\u0027t see. Each one is locally reasonable. But the aggregate? Inconsistent. And inconsistency is where the silent bugs live.\n\nThe thing that found all 34? Not a rule. Not a framework. Just stopping to read everything at once.\n\nIf your fixes keep creating new bugs, that\u0027s not bad luck. That\u0027s the architecture tax coming due."
+    },
+    {
+      "slug": "when-your-ai-finds-the-bug-you-told-it-to-look-for",
+      "title": "When Your AI Finds the Bug You Told It to Look For",
+      "description": "Two days chasing a sync bug. Every API call returned 200 OK. No errors in the console. The AI iterated confidently on symptoms while the architecture quietly rotted \u2014 until a human said stop.",
+      "category": "tech",
+      "tags": [
+        "ai",
+        "architecture",
+        "debugging",
+        "dotnet",
+        "maui",
+        "serialization"
+      ],
+      "date": "2027-04-05T00:00:00",
+      "featured": true,
+      "image": "/img/posts/when-your-ai-finds-the-bug-you-told-it-to-look-for.svg",
+      "linkedInHook": "Two days chasing a sync bug. Every API call returned 200 OK. No errors anywhere.\n\nMy AI assistant was helpful \u2014 checking endpoints, verifying auth, reviewing retry logic. All reasonable. All wrong layer.\n\nOn day two I hit the brakes: stop fixing, start auditing. The AI traced both codebases in 30 seconds and found it \u2014 the mobile app and API had completely different property names for the same data. System.Text.Json just silently dropped every mismatched field.\n\nThe system looked healthy while being fundamentally broken.\n\nThe AI didn\u0027t catch it sooner because it was answering my questions instead of challenging the premise. That instinct \u2014 knowing when to stop iterating and start questioning the architecture \u2014 is the thing the \u0027you don\u0027t need to learn to code\u0027 crowd doesn\u0027t understand.\n\nAI is the junior developer. Fast, tireless, no ego. But it doesn\u0027t know what it doesn\u0027t know."
+    },
+    {
       "slug": "debugging-startup-failure-reusable-workflows",
-      "title": "Debugging GitHub's Most Unhelpful Error: startup_failure in Reusable Workflows",
+      "title": "Debugging GitHub\u0027s Most Unhelpful Error: startup_failure in Reusable Workflows",
       "description": "Two words. Zero context. Three completely different bugs. When GitHub Actions gives you startup_failure and nothing else, bisection is the only reliable technique.",
       "category": "tech",
-      "tags": ["github-actions", "cicd", "debugging", "reusable-workflows", "dotnet", "maui"],
-      "date": "2027-04-12T00:00:00",
+      "tags": [
+        "github-actions",
+        "cicd",
+        "debugging",
+        "reusable-workflows",
+        "dotnet",
+        "maui"
+      ],
+      "date": "2027-03-31T00:00:00",
       "featured": true,
       "image": "/img/posts/debugging-startup-failure-reusable-workflows.svg",
-      "linkedInHook": "startup_failure.\n\nThat's it. That's all GitHub Actions tells you when a reusable workflow fails to parse. No line number. No context. No hint.\n\nI spent an afternoon and 15 test commits bisecting my way to three distinct bugs:\n\n1. Reusable workflows can't elevate permissions beyond the caller's grant\n2. timeout-minutes rejects input expressions (strings != numbers)\n3. -p:TargetFramework is a global MSBuild property that overrides every transitive project\n\nThree bugs. Two produce the exact same error. None are documented in the obvious places.\n\nWhen error messages give you nothing, bisection is the only reliable technique."
+      "linkedInHook": "startup_failure.\n\nThat\u0027s it. That\u0027s all GitHub Actions tells you when a reusable workflow fails to parse. No line number. No context. No hint.\n\nI spent an afternoon and 15 test commits bisecting my way to three distinct bugs:\n\n1. Reusable workflows can\u0027t elevate permissions beyond the caller\u0027s grant\n2. timeout-minutes rejects input expressions (strings != numbers)\n3. -p:TargetFramework is a global MSBuild property that overrides every transitive project\n\nThree bugs. Two produce the exact same error. None are documented in the obvious places.\n\nWhen error messages give you nothing, bisection is the only reliable technique."
     },
     {
       "slug": "ai-keeps-guessing-wrong",
       "title": "Why Your AI Assistant Keeps Guessing Wrong (And How We Fixed It)",
-      "description": "Three fixes. Three confident explanations. Zero progress. After a failed client demo and two weeks of pain, I learned that the problem isn't the AI—it's that nobody gave it the evidence it needed.",
+      "description": "Three fixes. Three confident explanations. Zero progress. After a failed client demo and two weeks of pain, I learned that the problem isn\u0027t the AI\u2014it\u0027s that nobody gave it the evidence it needed.",
       "category": "tech",
-      "tags": ["ai", "debugging", "claude", "api", "testing", "api-combat"],
-      "date": "2027-04-06T00:00:00",
+      "tags": [
+        "ai",
+        "debugging",
+        "claude",
+        "api",
+        "testing",
+        "api-combat"
+      ],
+      "date": "2027-03-25T00:00:00",
       "featured": true,
       "image": "/img/posts/ai-keeps-guessing-wrong.svg",
-      "linkedInHook": "Three fixes. Three confident explanations. Zero progress. The demo ended awkwardly.\n\nThe AI wasn't wrong. It was pattern-matching without evidence. I call it the \"confident guess spiral\"—each answer sounds reasonable, but without actual status codes, response bodies, and request details, it's just sophisticated coin-flipping.\n\nAfter two weeks and 50+ commits hardening API Combat, I distilled it to three questions that kill the spiral:\n\n1. What's the status code?\n2. What's in the response body?\n3. Does the request match the spec?\n\nSame AI. Same model. Completely different outcome when you give it evidence instead of symptoms."
+      "linkedInHook": "Three fixes. Three confident explanations. Zero progress. The demo ended awkwardly.\n\nThe AI wasn\u0027t wrong. It was pattern-matching without evidence. I call it the \u0022confident guess spiral\u0022\u2014each answer sounds reasonable, but without actual status codes, response bodies, and request details, it\u0027s just sophisticated coin-flipping.\n\nAfter two weeks and 50\u002B commits hardening API Combat, I distilled it to three questions that kill the spiral:\n\n1. What\u0027s the status code?\n2. What\u0027s in the response body?\n3. Does the request match the spec?\n\nSame AI. Same model. Completely different outcome when you give it evidence instead of symptoms."
     },
     {
       "slug": "soft-delete-pii-anonymization",
-      "title": "Soft Delete + PII Anonymization: Account Deletion That Actually Deletes",
+      "title": "Soft Delete \u002B PII Anonymization: Account Deletion That Actually Deletes",
       "description": "GDPR says users can request erasure. Most apps flip IsDeleted. We soft delete for referential integrity, then anonymize every piece of PII. The account is gone. The game history survives.",
       "category": "tech",
       "tags": [
@@ -35,14 +84,14 @@
         "privacy",
         "api-combat"
       ],
-      "date": "2027-03-31T00:00:00",
+      "date": "2027-03-21T00:00:00",
       "featured": false,
       "image": "/img/posts/soft-delete-pii-anonymization.svg"
     },
     {
       "slug": "branded-html-emails-gmail",
       "title": "Branded HTML Emails That Actually Look Good in Gmail",
-      "description": "Gmail strips your style tags and overrides your link colors. Here's how we build branded HTML emails that survive every client using inline styles and C# 11 raw string literals.",
+      "description": "Gmail strips your style tags and overrides your link colors. Here\u0027s how we build branded HTML emails that survive every client using inline styles and C# 11 raw string literals.",
       "category": "tech",
       "tags": [
         "csharp",
@@ -52,7 +101,7 @@
         "gmail",
         "api-combat"
       ],
-      "date": "2027-03-26T00:00:00",
+      "date": "2027-03-14T00:00:00",
       "featured": false,
       "image": "/img/posts/branded-html-emails-gmail.svg"
     },
@@ -69,7 +118,7 @@
         "dotnet",
         "api-combat"
       ],
-      "date": "2027-03-21T00:00:00",
+      "date": "2027-03-10T00:00:00",
       "featured": false,
       "image": "/img/posts/deploying-aspnet-core-shared-hosting.svg"
     },
@@ -85,14 +134,14 @@
         "design-patterns",
         "api-combat"
       ],
-      "date": "2027-03-16T00:00:00",
+      "date": "2027-03-07T00:00:00",
       "featured": false,
       "image": "/img/posts/daily-challenge-generation-procedural.svg"
     },
     {
       "slug": "tier-gating-custom-action-filters",
       "title": "Tier Gating with Custom Action Filters (Not Just [Authorize])",
-      "description": "[Authorize] checks if you're logged in. [RequiresTier(Premium)] checks if you're paying. A single attribute that reads the player's tier and gates premium features.",
+      "description": "[Authorize] checks if you\u0027re logged in. [RequiresTier(Premium)] checks if you\u0027re paying. A single attribute that reads the player\u0027s tier and gates premium features.",
       "category": "tech",
       "tags": [
         "aspnet-core",
@@ -102,13 +151,13 @@
         "authorization",
         "api-combat"
       ],
-      "date": "2027-03-11T00:00:00",
+      "date": "2027-03-01T00:00:00",
       "featured": false,
       "image": "/img/posts/tier-gating-custom-action-filters.svg"
     },
     {
       "slug": "elo-rating-seasonal-tiers",
-      "title": "Elo Rating + Seasonal Tiers: Two Parallel Rating Tracks",
+      "title": "Elo Rating \u002B Seasonal Tiers: Two Parallel Rating Tracks",
       "description": "Your global Elo is forever. Your seasonal rating resets every 8 weeks. Two systems solving different problems \u2014 matchmaking fairness vs. competitive engagement loops.",
       "category": "tech",
       "tags": [
@@ -119,14 +168,14 @@
         "competitive",
         "api-combat"
       ],
-      "date": "2027-03-06T00:00:00",
+      "date": "2027-02-24T00:00:00",
       "featured": false,
       "image": "/img/posts/elo-rating-seasonal-tiers.svg"
     },
     {
       "slug": "environmental-modifiers-weekly-rotation",
       "title": "Environmental Modifiers: Rotating the Meta Weekly Without Patching",
-      "description": "Every Monday at midnight UTC, the game's environmental modifier changes. Arcane Disruption nerfs mages. Heavy Armor buffs tanks. The meta shifts weekly with zero deploys.",
+      "description": "Every Monday at midnight UTC, the game\u0027s environmental modifier changes. Arcane Disruption nerfs mages. Heavy Armor buffs tanks. The meta shifts weekly with zero deploys.",
       "category": "tech",
       "tags": [
         "csharp",
@@ -135,7 +184,7 @@
         "strategy",
         "api-combat"
       ],
-      "date": "2027-03-01T00:00:00",
+      "date": "2027-02-21T00:00:00",
       "featured": false,
       "image": "/img/posts/environmental-modifiers-weekly-rotation.svg"
     },
@@ -151,7 +200,7 @@
         "game-economy",
         "api-combat"
       ],
-      "date": "2027-02-24T00:00:00",
+      "date": "2027-02-17T00:00:00",
       "featured": false,
       "image": "/img/posts/strategy-marketplace-player-economy.svg"
     },
@@ -168,7 +217,7 @@
         "documentation",
         "api-combat"
       ],
-      "date": "2027-02-19T00:00:00",
+      "date": "2027-02-10T00:00:00",
       "featured": false,
       "image": "/img/posts/custom-api-docs-ditching-swagger.svg"
     },
@@ -184,14 +233,14 @@
         "api-design",
         "api-combat"
       ],
-      "date": "2027-02-14T00:00:00",
+      "date": "2027-02-03T00:00:00",
       "featured": false,
       "image": "/img/posts/hateoas-lite-discoverable-api.svg"
     },
     {
       "slug": "rate-limiting-by-subscription-tier",
       "title": "Hand-Rolling Rate Limiting by Subscription Tier",
-      "description": "Free players get 60 requests per minute. Premium gets 120. Premium+ gets 300. Built with ConcurrentDictionary, not the built-in middleware \u2014 because tier-aware limiting needs custom logic.",
+      "description": "Free players get 60 requests per minute. Premium gets 120. Premium\u002B gets 300. Built with ConcurrentDictionary, not the built-in middleware \u2014 because tier-aware limiting needs custom logic.",
       "category": "tech",
       "tags": [
         "aspnet-core",
@@ -201,7 +250,7 @@
         "subscription",
         "api-combat"
       ],
-      "date": "2027-02-09T00:00:00",
+      "date": "2027-01-28T00:00:00",
       "featured": false,
       "image": "/img/posts/rate-limiting-by-subscription-tier.svg"
     },
@@ -218,7 +267,7 @@
         "security",
         "api-combat"
       ],
-      "date": "2027-02-04T00:00:00",
+      "date": "2027-01-22T00:00:00",
       "featured": false,
       "image": "/img/posts/dual-auth-jwt-cookies-aspnet-core.svg"
     },
@@ -234,7 +283,7 @@
         "csharp",
         "api-combat"
       ],
-      "date": "2027-01-30T00:00:00",
+      "date": "2027-01-17T00:00:00",
       "featured": false,
       "image": "/img/posts/background-services-shared-hosting.svg"
     },
@@ -250,14 +299,14 @@
         "fan-out",
         "api-combat"
       ],
-      "date": "2027-01-25T00:00:00",
+      "date": "2027-01-10T00:00:00",
       "featured": false,
       "image": "/img/posts/fan-out-without-message-bus.svg"
     },
     {
       "slug": "battle-engine-400-lines-csharp",
       "title": "The Battle Engine in 400 Lines of C#",
-      "description": "API Combat's entire combat simulation \u2014 initiative, conditions, damage pipeline, formations, healer fallback, and draw resolution \u2014 fits in one file under 400 lines.",
+      "description": "API Combat\u0027s entire combat simulation \u2014 initiative, conditions, damage pipeline, formations, healer fallback, and draw resolution \u2014 fits in one file under 400 lines.",
       "category": "tech",
       "tags": [
         "csharp",
@@ -266,7 +315,7 @@
         "design-patterns",
         "api-combat"
       ],
-      "date": "2027-01-20T00:00:00",
+      "date": "2027-01-06T00:00:00",
       "featured": false,
       "image": "/img/posts/battle-engine-400-lines-csharp.svg"
     },
@@ -283,7 +332,7 @@
         "explainer",
         "beginners"
       ],
-      "date": "2027-01-15T00:00:00",
+      "date": "2027-01-02T00:00:00",
       "featured": false,
       "image": "/img/posts/eli5-memory-leaks.svg",
       "linkedInHook": "Why do programs leak memory?\n\nImagine running a restaurant kitchen. When customers finish eating, dirty dishes pile up.\n\nOption 1: Stack them and wait for the dishwasher to clean them in bulk\nOption 2: Wash each dish immediately\n\nMost programming languages work like Option 1. They have a \u0022dishwasher\u0022 called the garbage collector (GC).\n\nThat works great... until you get really busy.\n\nCustomers keep coming. Dishes keep piling up. The dishwasher can\u0027t keep up.\n\nEventually, you run out of clean dishes. The kitchen grinds to a halt.\n\nThis is a memory leak.\n\nIn programming, there are two types of trash:\n\n1. Regular trash (memory) - Paper plates. Can wait for the GC.\n2. Special trash (resources) - Dishes with food still on them. Need immediate cleanup.\n\nFile handles, network connections, database connections \u2014 these are \u0022dishes.\u0022 If you don\u0027t clean them immediately, you run out.\n\nThe fix: Explicit cleanup. In C#, that\u0027s \u0060using\u0060 statements.\n\nOur production leak: We forgot to \u0022wash our dishes\u0022 for 2 years. Five \u0060using\u0060 statements fixed it.\n\nThe dishwasher isn\u0027t magic. Sometimes you have to wash your own dishes.\n\n#programming #eli5 #memoryleak #explained"
@@ -302,11 +351,11 @@
         "performance",
         "async-await"
       ],
-      "date": "2027-01-13T00:00:00",
+      "date": "2026-12-30T00:00:00",
       "featured": false,
       "image": "/img/posts/memory-leak-part-4.svg",
-      "linkedInHook": "I fixed a two-year memory leak. Deployed. Memory dropped 70%.\n\nThen the 499s came back.\n\nTurns out there were TWO leaks hiding in the same codebase. The first was HTTP disposal (missing \u0060using\u0060 statements). That got all the attention.\n\nThe second was quieter. And honestly, more insidious.\n\nEvery DAO method in our codebase followed this pattern:\n\nvar db = _dbContextFactory.Create();\nreturn query.ToListAsync().ContinueWith(t =\u003E {\n    db.Dispose();\n    return t.Result;\n});\n\nLooks safe, right? Factory creates. Continuation disposes. Ship it.\n\nExcept:\n\u2022 The DbContext lives in a closure until GC collects it\n\u2022 At 40 req/sec, contexts pile up by design\n\u2022 Under load: 200+ DbConnectionPool instances in memory\n\u2022 Connection pool exhaustion \u2192 499 timeouts\n\nThe fix:\n\nusing (var db = _dbContextFactory.Create())\n{\n    return await query.ToListAsync();\n}\n\nDisposal goes from \u0022eventually\u0022 to \u002251ms flat.\u0022\n\nThe misconception: \u0022We\u0027re using a factory, so the factory manages the lifecycle.\u0022\n\nNo. The factory\u0027s job ends at .Create(). Disposal is always the caller\u0027s responsibility.\n\nIf it implements IDisposable, wrap it in using. Period.\n\nFull deep dive: https://learnedgeek.com/Blog/Post/memory-leak-part-4-entity-framework-factory-disposal\n\n#dotnet #entityframework #memoryleak #debugging #performance #csharp",
-      "blueskyHook": "Fixed a two-year memory leak. Memory dropped 70%. Then the 499s came back.\n\nSecond leak: DbContext created by factory, \u0022disposed\u0022 via ContinueWith. Contexts piled up in closures. Connection pool exhaustion.\n\nFix: async/await + using. Disposal goes from \u0022eventually\u0022 to 51ms flat:"
+      "linkedInHook": "I fixed a two-year memory leak. Deployed. Memory dropped 70%.\n\nThen the 499s came back.\n\nTurns out there were TWO leaks hiding in the same codebase. The first was HTTP disposal (missing \u0060using\u0060 statements). That got all the attention.\n\nThe second was quieter. And honestly, more insidious.\n\nEvery DAO method in our codebase followed this pattern:\n\nvar db = _dbContextFactory.Create();\nreturn query.ToListAsync().ContinueWith(t =\u003E {\n    db.Dispose();\n    return t.Result;\n});\n\nLooks safe, right? Factory creates. Continuation disposes. Ship it.\n\nExcept:\n\u2022 The DbContext lives in a closure until GC collects it\n\u2022 At 40 req/sec, contexts pile up by design\n\u2022 Under load: 200\u002B DbConnectionPool instances in memory\n\u2022 Connection pool exhaustion \u2192 499 timeouts\n\nThe fix:\n\nusing (var db = _dbContextFactory.Create())\n{\n    return await query.ToListAsync();\n}\n\nDisposal goes from \u0022eventually\u0022 to \u002251ms flat.\u0022\n\nThe misconception: \u0022We\u0027re using a factory, so the factory manages the lifecycle.\u0022\n\nNo. The factory\u0027s job ends at .Create(). Disposal is always the caller\u0027s responsibility.\n\nIf it implements IDisposable, wrap it in using. Period.\n\nFull deep dive: https://learnedgeek.com/Blog/Post/memory-leak-part-4-entity-framework-factory-disposal\n\n#dotnet #entityframework #memoryleak #debugging #performance #csharp",
+      "blueskyHook": "Fixed a two-year memory leak. Memory dropped 70%. Then the 499s came back.\n\nSecond leak: DbContext created by factory, \u0022disposed\u0022 via ContinueWith. Contexts piled up in closures. Connection pool exhaustion.\n\nFix: async/await \u002B using. Disposal goes from \u0022eventually\u0022 to 51ms flat:"
     },
     {
       "slug": "memory-leak-part-3-web-api-disposal",
@@ -321,7 +370,7 @@
         "best-practices",
         "performance"
       ],
-      "date": "2027-01-10T00:00:00",
+      "date": "2026-12-23T00:00:00",
       "featured": false,
       "image": "/img/posts/memory-leak-part-3.svg",
       "linkedInHook": "Pop quiz: Which Web API controller method leaks memory?\n\nMethod A:\n\u0060\u0060\u0060csharp\npublic async Task\u003CHttpResponseMessage\u003E GetData()\n{\n    var result = await _service.GetData();\n    return Request.CreateResponse(HttpStatusCode.OK, result);\n}\n\u0060\u0060\u0060\n\nMethod B:\n\u0060\u0060\u0060csharp\npublic async Task\u003CIHttpActionResult\u003E GetData()\n{\n    var result = await _service.GetData();\n    return Ok(result);\n}\n\u0060\u0060\u0060\n\nAnswer: Method A leaks. Badly.\n\nWe had 200\u002B controllers following this pattern. Every single one leaked HttpResponseMessage objects.\n\nThe problem: Web API\u0027s disposal contract differs by return type.\n\n\u2022 Return IHttpActionResult \u2192 Web API disposes for you \u2705\n\u2022 Return HttpResponseMessage \u2192 You must dispose manually \u26A0\uFE0F\n\nThis isn\u0027t documented clearly. Microsoft\u0027s own examples show the leaking pattern.\n\nUnder load (100\u002B req/sec):\n\u2022 Before fix: 2,257 HttpResponseMessage instances leaked\n\u2022 After fix: \u003C 100 instances\n\nProduction impact:\n\u2022 12 instances \u2192 6 instances (50% cost reduction)\n\u2022 Zero timeout errors\n\u2022 Stable memory\n\nThe fix: Change return types to IHttpActionResult. Use Ok(), NotFound(), ResponseMessage().\n\nTwo years of pain. One return type change.\n\n#aspnet #webapi #dotnet #performance"
@@ -339,7 +388,7 @@
         "fundamentals",
         "best-practices"
       ],
-      "date": "2027-01-04T00:00:00",
+      "date": "2026-12-19T00:00:00",
       "featured": false,
       "image": "/img/posts/memory-leak-part-2.svg",
       "linkedInHook": "After 30 years of C# development, I just learned that objects don\u0027t dispose themselves when they go out of scope.\n\nI thought they did. So did most developers I know.\n\nQuick quiz: What happens when this method exits?\n\n\u0060\u0060\u0060csharp\nvoid ProcessData()\n{\n    var stream = new FileStream(\u0022data.txt\u0022, FileMode.Open);\n    var reader = new StreamReader(stream);\n    var content = reader.ReadToEnd();\n    // Are stream and reader disposed here?\n}\n\u0060\u0060\u0060\n\nIf you answered \u0022yes,\u0022 you\u0027re wrong. And you\u0027re in good company.\n\nWhat actually happens:\n\u2705 Local variables go out of scope (stack cleanup)\n\u2705 References to objects removed\n\u274C Objects themselves NOT disposed\n\u274C File handles remain open\n\u23F0 Eventually GC collects them\n\uD83D\uDD25 Or you run out of file handles first\n\nC# has three types of cleanup:\n1. Stack cleanup (automatic, immediate)\n2. Heap cleanup (automatic, eventually)\n3. Resource cleanup (manual, explicit)\n\nThe fix: \u0060using\u0060 statements. Always.\n\nOne misconception. Two years of production leaks.\n\n#csharp #dotnet #fundamentals #memoryleak"
@@ -357,7 +406,7 @@
         "performance",
         "production"
       ],
-      "date": "2026-12-29T00:00:00",
+      "date": "2026-12-12T00:00:00",
       "featured": false,
       "image": "/img/posts/memory-leak-part-1.svg",
       "linkedInHook": "Our production API leaked memory for 2 years. External consultants reviewed the code. \u0022Looks fine,\u0022 they said.\n\nWe threw more hardware at it. The problem persisted.\n\nThen one Friday, my boss mentioned he was \u0022super excited\u0022 about diagnostics I\u0027d been running. I hadn\u0027t told him I\u0027d found the solution yet.\n\nThat weekend, I found all five memory leaks. By Monday, the fix was deployed.\n\nThe investigation:\n- Visual Studio profiler showed 194k objects \u2192 5.5M objects in 30 seconds\n- HttpContext: 285,590 instances (should be \u003C 100)\n- HttpRequestMessage: 2,289 instances\n- HttpResponseMessage: 2,257 instances\n\nEvery leak followed the same pattern: IDisposable objects created but never disposed.\n\nTwo years of production pain. Five \u0060using\u0060 statements.\n\n#csharp #dotnet #debugging #performance"
@@ -376,7 +425,7 @@
         "troubleshooting",
         "shared-hosting"
       ],
-      "date": "2026-12-22T00:00:00",
+      "date": "2026-12-06T00:00:00",
       "featured": true,
       "image": "/img/posts/fixing-502-5-ancm-out-of-process-startup-failure.svg",
       "linkedInHook": "Published an ASP.NET Core app to shared hosting. Got 502.5 ANCM Out-Of-Process Startup Failure.\n\nThe error page suggests checking event logs and attaching a debugger. Helpful.\n\nThe actual problem: new .NET projects default to InProcess hosting. But all apps in an IIS application pool must use the same hosting model. If your existing sites run OutOfProcess, the new one needs to match.\n\nThe fix: add AspNetCoreHostingModel=OutOfProcess to your .csproj AND .pubxml. Both files. They must agree.\n\nI\u0027ve fixed this three times and kept forgetting. Now it\u0027s a blog post.",
@@ -396,7 +445,7 @@
         "web-development",
         "markdown"
       ],
-      "date": "2026-12-16T00:00:00",
+      "date": "2026-11-30T00:00:00",
       "featured": true,
       "image": "/img/posts/adding-syntax-highlighting-with-prismjs.svg",
       "linkedInHook": "For months, every code block on my blog was the same flat gray. C#, JavaScript, SQL\u2014all identical monochrome.\n\nThen I added Prism.js. One CSS link. Two script tags. Fifteen minutes.\n\nKeywords are purple. Strings are green. Comments are gray. The autoloader fetches only the grammars you actually use\u2014290\u002B languages on demand.\n\nThe only gotcha: a Tailwind !important rule was overriding Prism\u0027s token colors. Remove that, and it just works.\n\nYour code blocks deserve better than monochrome.",
@@ -415,7 +464,7 @@
         "sonarcloud",
         "education"
       ],
-      "date": "2026-12-10T00:00:00",
+      "date": "2026-11-26T00:00:00",
       "featured": true,
       "image": "/img/posts/grading-dashboard-github-classroom.svg",
       "linkedInHook": "I teach database programming. Every week: 30 student repos to review. Did it compile? Did they finish? Did anyone leave a desperate \u0027// is this right???\u0027 at 2 AM?\n\nMy old workflow: click, check, repeat, forget where I was, start over.\n\nSo I built a dashboard. GitHub Actions scans every 6 hours for build status, TODO counts, student questions in comments, SonarCloud metrics.\n\nNow grading takes 1 hour instead of 4. And I actually catch the students who need help.",
@@ -434,7 +483,7 @@
         "recovery",
         "troubleshooting"
       ],
-      "date": "2026-12-06T00:00:00",
+      "date": "2026-11-21T00:00:00",
       "featured": true,
       "image": "/img/posts/seo-oops-recovery-guide.svg",
       "linkedInHook": "Every developer has that moment of cold sweat when they realize something that shouldn\u0027t be public is now indexed by Google. Or worse, that angry TODO comment in a commit message.\n\nI\u0027ve been there. Here\u0027s the recovery playbook I wish I\u0027d had.",
@@ -453,7 +502,7 @@
         "aes-gcm",
         "patterns"
       ],
-      "date": "2026-12-03T00:00:00",
+      "date": "2026-11-18T00:00:00",
       "featured": true,
       "image": "/img/posts/encrypted-configuration-pattern.svg",
       "linkedInHook": "I once committed an API key to a public GitHub repo. It was 3 AM. The deploy was \u0022almost done.\u0022\n\nThree hours later, my inbox was full of AWS alerts.\n\nThat incident taught me: secrets in source control are a WHEN problem, not an IF problem.\n\nSo I built database-backed configuration with AES-256-GCM encryption. The key file is gitignored. Secrets are encrypted at rest. Your code uses IConfiguration normally\u2014it just works.\n\nPart 2 of the Enterprise Database Patterns series.",
@@ -472,7 +521,7 @@
         "debugging",
         "dotnet"
       ],
-      "date": "2026-11-27T00:00:00",
+      "date": "2026-11-12T00:00:00",
       "featured": true,
       "image": "/img/posts/codecov-error-state-debugging.svg",
       "linkedInHook": "I keep running into this pattern with developer tooling: the \u0027improvements\u0027 that silently break things. This week it was Codecov. I added a config file to make things better, and it silently broke everything. The fix was deleting the config entirely.\n\nIt got me thinking about how often we add complexity thinking we\u0027re being thorough, when the simpler default would have worked fine.",
@@ -491,7 +540,7 @@
         "respawn",
         "integration-testing"
       ],
-      "date": "2026-11-23T00:00:00",
+      "date": "2026-11-07T00:00:00",
       "featured": true,
       "image": "/img/posts/modern-database-testing-with-xunit-fixtures.svg",
       "linkedInHook": "The test passed. Ship it, right?\n\nThen I deployed to staging and watched everything catch fire. The LINQ query that worked against UseInMemoryDatabase() generated SQL that SQL Server refused to execute.\n\nInMemory databases lie to you. They\u0027re fast and convenient, like a friend who tells you that outfit looks great when it definitely does not.\n\nThe fix: real SQL Server \u002B Respawn. ~20ms resets instead of ~1000ms. When tests pass now, I actually believe them.\n\nPart 1 of the Enterprise Database Patterns series.",
@@ -511,7 +560,7 @@
         "debugging",
         "cdn"
       ],
-      "date": "2026-11-17T00:00:00",
+      "date": "2026-11-02T00:00:00",
       "featured": true,
       "image": "/img/posts/blazor-wasm-cloudflare-caching-gotcha.svg",
       "linkedInHook": "Your Blazor WASM app works perfectly. You deploy an update. Now users get 404 errors for .wasm files.\n\nPrivate browsing doesn\u0027t fix it. Different browsers give different results. Chrome works, Opera doesn\u0027t. VPNs change everything.\n\nThe culprit: Cloudflare cached your dotnet.boot.js manifest. You deleted the old .wasm files. The CDN is serving users a shopping list for groceries you threw away.\n\nThe fix: Cache-Control: no-cache for dotnet.boot.js and blazor.webassembly.js.\n\nTwo lines in web.config. Hours of debugging avoided.",
@@ -531,7 +580,7 @@
         "mobile",
         "resilience"
       ],
-      "date": "2026-11-10T00:00:00",
+      "date": "2026-10-26T00:00:00",
       "featured": true,
       "image": "/img/posts/signalr-real-time-location-tracking.svg",
       "linkedInHook": "SignalR\u0027s automatic reconnection tries a few times and gives up. Forever. If you\u0027re lucky, you get a disconnected event.\n\nFor a location tracking app where field workers drive through dead zones, that\u0027s not acceptable.\n\nThe fix: custom retry policy with exponential backoff, HTTP polling fallback when WebSocket dies, and connections that keep trying even while polling.\n\nSignalR is best-effort. Your app handles worst-effort.",
@@ -551,7 +600,7 @@
         "interop",
         "dotnet"
       ],
-      "date": "2026-11-06T00:00:00",
+      "date": "2026-10-23T00:00:00",
       "featured": true,
       "image": "/img/posts/leaflet-blazor-javascript-interop.svg",
       "linkedInHook": "Leaflet.js is the best mapping library on the web. My Blazor app speaks C#. These two languages looked at each other across the runtime divide like strangers at a wedding.\n\nThe pattern that worked: JavaScript owns all the state. C# just sends commands.\n\nNo juggling Leaflet objects across the interop boundary. Just primitives\u2014strings, coordinates\u2014and DotNetObjectReference for callbacks.\n\nJavaScript is the driver. C# is the passenger giving directions.",
@@ -572,7 +621,7 @@
         "maps",
         "technology"
       ],
-      "date": "2026-11-02T00:00:00",
+      "date": "2026-10-19T00:00:00",
       "featured": true,
       "image": "/img/posts/how-real-time-maps-work.svg",
       "linkedInHook": "Regular websites are like calling someone, asking a question, getting an answer, and hanging up. Every time you need something, you call again.\n\nWebSockets are like staying on the line. When either of you has something to say, you just talk.\n\nSignalR is the operator who keeps the connection alive and sends messenger pigeons as backup.\n\nLeaflet is the artist who draws the map.\n\nThat\u0027s how your Uber driver\u0027s little icon moves across your screen in real-time.",
@@ -592,7 +641,7 @@
         "maui",
         "accessibility"
       ],
-      "date": "2026-10-27T00:00:00",
+      "date": "2026-10-16T00:00:00",
       "featured": true,
       "image": "/img/posts/m3e-design-for-field-workers.svg",
       "linkedInHook": "Google\u0027s Material 3 Expressive is based on 46 studies with 18,000\u002B participants.\n\nBut those studies were about messaging apps and social media. What about people wearing work gloves? Squinting in sunlight? Who need to clock in in 3 seconds and get back to work?\n\n64px touch targets. 2-tab bottom nav. Industry-familiar blueprint aesthetics.\n\nM3E gave us the research to justify decisions we might otherwise have defended on instinct. \u0027Users spot key elements 4x faster\u0027 beats \u0027I think bigger buttons look better\u0027 in any stakeholder meeting.",
@@ -612,7 +661,7 @@
         "maui",
         "responsive"
       ],
-      "date": "2026-10-23T00:00:00",
+      "date": "2026-10-11T00:00:00",
       "featured": true,
       "image": "/img/posts/floating-card-pattern-device-agnostic-design.svg",
       "linkedInHook": "Android fragmentation is real. Design a layout on a Pixel, then watch it break on a Samsung with a massive navigation bar.\n\nThe usual solution: safe-area calculations everywhere.\n\nOur solution: stop fighting. Make the system chrome part of the design.\n\n8px insets, rounded corners, brand color behind everything. The same CSS works on every device. No calculations needed.\n\nSometimes the solution to fragmentation isn\u0027t more complexity\u2014it\u0027s embracing the constraints.",
@@ -631,7 +680,7 @@
         "blazor",
         "accessibility"
       ],
-      "date": "2026-10-18T00:00:00",
+      "date": "2026-10-06T00:00:00",
       "featured": true,
       "image": "/img/posts/drawer-vs-bottom-nav-ux-framework.svg",
       "linkedInHook": "We built a hamburger menu. Three months later, we ripped it out.\n\nWatch someone use a drawer: tap hamburger \u2192 wait for animation \u2192 scan options \u2192 tap choice \u2192 wait for close. 7 steps to navigate.\n\nBottom nav: tap destination. 1 step.\n\nThe framework:\n\u2022 2-4 actions? Bottom nav\n\u2022 5\u002B? Drawer (or rethink your IA)\n\u2022 One-handed use? Bottom nav wins\n\u2022 Novice users? Visible navigation always\n\nWe deleted more code removing the drawer than we added for the bottom nav.",
@@ -650,7 +699,7 @@
         "blazor",
         "accessibility"
       ],
-      "date": "2026-10-15T00:00:00",
+      "date": "2026-10-02T00:00:00",
       "featured": true,
       "image": "/img/posts/profile-avatar-navigation-pattern.svg",
       "linkedInHook": "Settings is a secondary action. Don\u0027t waste prime thumb-zone real estate on it.\n\nThe pattern: profile avatar in the header. Visible on every page. Tap \u2192 settings.\n\nWhy it works:\n\u2022 Avatars are universally understood as clickable\n\u2022 \u0027MJ\u0027 is more human than a gear icon\n\u2022 Bottom nav stays focused on primary actions\n\u2022 Users already know this from Gmail, Twitter, etc.\n\nThe best patterns feel obvious in retrospect. \u0027Put a profile avatar in the header\u0027 is so simple it almost doesn\u0027t need a blog post. But it took us three iterations to arrive at it.",
@@ -669,7 +718,7 @@
         "branding",
         "construction"
       ],
-      "date": "2026-10-10T00:00:00",
+      "date": "2026-09-28T00:00:00",
       "featured": true,
       "image": "/img/posts/blueprint-theme-construction-industry-visual-identity.svg",
       "linkedInHook": "Generic business app aesthetics don\u0027t resonate with construction workers.\n\nThey spend their careers turning blueprints into reality. The visual language is familiar: grid patterns, navy tones, technical precision, corner measurement marks.\n\nSo we made our app look like a blueprint.\n\nCSS grid backgrounds. Teal tick marks at corners. Monospace for technical data. Navy gradients that feel like architectural drawings.\n\nWhen a 55-year-old master electrician opens the app and thinks \u0027this was made for people like me\u0027\u2014that\u0027s trust you can\u0027t buy with marketing.",
@@ -688,7 +737,7 @@
         "blazor",
         "pwa"
       ],
-      "date": "2026-10-06T00:00:00",
+      "date": "2026-09-23T00:00:00",
       "featured": true,
       "image": "/img/posts/mobile-css-micro-fixes.svg",
       "linkedInHook": "Mobile web apps have a hundred tiny paper cuts that make them feel \u0027off.\u0027\n\nNone are hard to fix\u2014but you have to know they exist.\n\n\u2022 user-select: none (stop accidental text selection)\n\u2022 -webkit-tap-highlight-color: transparent (kill the blue flash)\n\u2022 overscroll-behavior: none (prevent pull-to-refresh hijacking)\n\u2022 font-size: 16px on inputs (prevent iOS zoom)\n\u2022 env(safe-area-inset-*) (respect notches)\n\nThis is a living document. Copy-paste the starter snippet and forget about these issues forever.",
@@ -707,7 +756,7 @@
         "mobile",
         "troubleshooting"
       ],
-      "date": "2026-09-30T00:00:00",
+      "date": "2026-09-18T00:00:00",
       "featured": true,
       "image": "/img/posts/maui-fast-deployment-wireless-debugging-crash.svg",
       "linkedInHook": "Works via USB. Works in the emulator. Switch to wireless debugging \u2192 immediate crash on launch. No error, no stack trace.\n\nThis cost me an hour.\n\nThe culprit: MAUI\u0027s Fast Deployment. Debug builds don\u0027t embed assemblies in the APK\u2014they stream them over adb. Wireless connections can\u0027t always do that reliably.\n\nThe fix:\n\u003CEmbedAssembliesIntoApk\u003Etrue\u003C/EmbedAssembliesIntoApk\u003E\n\nTwo lines of XML. Slower builds, but the app actually runs. Worth it.",
@@ -725,7 +774,7 @@
         "build",
         "troubleshooting"
       ],
-      "date": "2026-09-26T00:00:00",
+      "date": "2026-09-12T00:00:00",
       "featured": true,
       "image": "/img/posts/vscode-file-watcher-build-locks.svg",
       "linkedInHook": "Sometimes the build works. Sometimes: \u0027The file is locked by Code.exe.\u0027\n\nI blamed antivirus. I blamed my luck. The real culprit: VS Code\u0027s file watcher.\n\nVS Code watches everything in your workspace by default. When MSBuild writes to bin/, VS Code notices and briefly holds a handle. Race condition.\n\nThe fix:\n\u0022files.watcherExclude\u0022: {\n  \u0022**/bin/**\u0022: true,\n  \u0022**/obj/**\u0022: true\n}\n\nTwo lines of JSON. No more mystery build failures. This took me MONTHS to figure out.",
@@ -746,7 +795,7 @@
         "explainer",
         "beginners"
       ],
-      "date": "2026-09-20T00:00:00",
+      "date": "2026-09-08T00:00:00",
       "featured": true,
       "image": "/img/posts/eli5-schema-aware-migrations.svg",
       "linkedInHook": "I wrote a 5-part series on schema-aware EF Core migrations. Custom SQL generators. Cache key factories. Design-time vs runtime mental models.\n\nThen I tried to explain it to a non-developer.\n\nTurns out, the whole thing is just colored folders. Blue for local, green for dev, yellow for staging, red for production. Same building, same rooms, different colors.\n\nThe hard part wasn\u0027t the concept. It was that our tools assumed you\u0027d only ever use one color.",
@@ -766,7 +815,7 @@
         "architecture",
         "mental-model"
       ],
-      "date": "2026-09-16T00:00:00",
+      "date": "2026-09-02T00:00:00",
       "featured": true,
       "image": "/img/posts/schema-aware-ef-core-migrations-part-5.svg",
       "linkedInHook": "After four blog posts debugging EF Core schema issues, I finally understood why it\u0027s so confusing.\n\nEF Core isn\u0027t one system. It\u0027s two.\n\nDesign-time: dotnet ef migrations add. Generates files. Uses IDesignTimeDbContextFactory.\n\nRuntime: Your app starts. Uses Program.cs.\n\nThese are SEPARATE code paths. If they disagree on schema handling, you get mysterious failures.\n\nThe key insight: keep the snapshot schema-less at design-time, apply the real schema at runtime. Two different goals, two different configurations.\n\nPart 5 of the Schema-Aware EF Core Migrations series.",
@@ -785,7 +834,7 @@
         "humor",
         "craft"
       ],
-      "date": "2026-09-10T00:00:00",
+      "date": "2026-08-26T00:00:00",
       "featured": true,
       "image": "/img/posts/writing-technical-content-when-debugging.svg",
       "linkedInHook": "It\u0027s 11:47 PM. The bug is fixed. I have 43 browser tabs open and my coffee went cold two hours ago.\n\nThis is not the time to write something entertaining.\n\nBut it IS the perfect time to write something useful.\n\nMost of my \u0027entertaining\u0027 technical posts started as exhausted notes at unreasonable hours. The wit wasn\u0027t there originally. The analogies came later.\n\nCapture the details while they\u0027re fresh. Add the humor when you can actually be funny.\n\nThe entertaining version is always a second pass.",
@@ -804,7 +853,7 @@
         "caching",
         "multi-tenant"
       ],
-      "date": "2026-09-04T00:00:00",
+      "date": "2026-08-20T00:00:00",
       "featured": true,
       "image": "/img/posts/schema-aware-ef-core-migrations-part-4.svg",
       "linkedInHook": "We had schema-aware EF Core migrations working. SQL generator rewriting operations. History table per schema. Tests passing.\n\nThen on startup: \u0027The model has pending changes.\u0027\n\nBut there WEREN\u0027T any pending changes. The database was correct.\n\nThe problem: EF Core\u0027s default model cache key is just typeof(DbContext). Every schema shares one cached model. When \u0027local\u0027 gets cached first and \u0027stg\u0027 comes along, EF Core sees a mismatch.\n\nThe fix: IModelCacheKeyFactory that includes the schema in the cache key. Each schema gets its own compiled model.\n\nDon\u0027t suppress warnings. Fix the root cause.\n\nPart 4 of the Schema-Aware EF Core Migrations series.",
@@ -825,7 +874,7 @@
         "ci-cd",
         "health-checks"
       ],
-      "date": "2026-08-29T00:00:00",
+      "date": "2026-08-17T00:00:00",
       "featured": true,
       "image": "/img/posts/schema-aware-ef-core-migrations-part-3.svg",
       "linkedInHook": "After days debugging schema-aware EF Core migrations, we realized something uncomfortable: we had no systematic way to verify our schema configuration was correct.\n\nEach fix felt like whack-a-mole. So we built five layers of verification:\n\n1. Unit tests for configuration consistency\n2. Integration tests against actual databases\n3. CI post-migration schema queries\n4. Startup validation (fail fast)\n5. Runtime health checks\n\nThe investment seems excessive until you discover schema bugs through user-reported errors in production.\n\nPart 3 of the Schema-Aware EF Core Migrations series.",
@@ -844,7 +893,7 @@
         "debugging",
         "multi-tenant"
       ],
-      "date": "2026-08-24T00:00:00",
+      "date": "2026-08-14T00:00:00",
       "featured": true,
       "image": "/img/posts/schema-aware-ef-core-migrations-part-2.svg",
       "linkedInHook": "Three months after implementing schema-aware EF Core migrations, staging broke. Migrations ran successfully. CI was green. But the site couldn\u0027t log in.\n\n\u0027Invalid object name stg.AspNetUsers\u0027\n\nThe root cause: HasDefaultSchema() does NOT affect the migrations history table. Our history was in dbo. Every environment checked the same table and saw \u0027already applied.\u0027\n\nThen we fixed that... and hit a SECOND bug. Tables still going to dbo.\n\nTwo days of debugging. Four configuration points that ALL must agree. Miss any one and you get silent failures.\n\nPart 2 of the Schema-Aware EF Core Migrations series.",
@@ -863,7 +912,7 @@
         "multi-tenant",
         "patterns"
       ],
-      "date": "2026-08-20T00:00:00",
+      "date": "2026-08-07T00:00:00",
       "featured": true,
       "image": "/img/posts/schema-aware-ef-core-migrations.svg",
       "linkedInHook": "\u0022Which environment did that migration just run against?\u0022\n\nI stared at Slack with that sinking feeling. EF Core migrations don\u0027t support runtime schema selection\u2014the schema is baked in when you generate the migration.\n\nSo I built a custom SQL generator that intercepts operations mid-flight and injects the correct schema.\n\nNow: same migrations, different schemas. [local], [dev], [stg], [dbo]. No more \u0022wait, which one did I just hit?\u0022 moments.\n\nPart 3 of the Enterprise Database Patterns series.",
@@ -884,7 +933,7 @@
         "backups",
         "encryption"
       ],
-      "date": "2026-08-16T00:00:00",
+      "date": "2026-08-02T00:00:00",
       "featured": true,
       "image": "/img/posts/why-databases-need-all-this-ceremony.svg",
       "linkedInHook": "Code is like a recipe. If it\u0027s wrong, you fix it. No cake was harmed.\n\nData is like the cake itself. Once you\u0027ve baked it wrong, you can\u0027t unbake it. The eggs are already in there.\n\nThis is why developers treat databases like explosives. Migrations. Backups. Testing against real databases. Environment separation.\n\nThe ceremony exists because data changes can\u0027t be easily undone. And data is the actual reason software exists.",
@@ -905,7 +954,7 @@
         "certificates",
         "encryption"
       ],
-      "date": "2026-08-12T00:00:00",
+      "date": "2026-07-26T00:00:00",
       "featured": true,
       "image": "/img/posts/how-https-keeps-you-safe.svg",
       "linkedInHook": "HTTP is a postcard. Anyone who handles it can read it.\n\nHTTPS is a sealed envelope. Only the recipient can open it.\n\nBut there\u0027s more: how do you know you\u0027re actually talking to your bank, not someone pretending?\n\nCertificates. Trusted authorities. The infrastructure of trust that makes online banking possible.\n\nThe padlock means your data is encrypted in transit and the website\u0027s identity was verified. It doesn\u0027t mean the website is trustworthy\u2014just that the envelope is sealed.",
@@ -924,7 +973,7 @@
         "monitoring",
         "dotnet"
       ],
-      "date": "2026-08-06T00:00:00",
+      "date": "2026-07-22T00:00:00",
       "featured": true,
       "image": "/img/posts/cicd-version-verification.svg",
       "linkedInHook": "Your deploy succeeded. But did it *actually* work?\n\nMSDeploy syncs files successfully, but that doesn\u0027t mean your app is healthy. Config might be wrong. Database might not connect. App might crash on startup.\n\nThe fix: version endpoints that return what\u0027s actually running, and a verify job that compares it to what you just deployed.\n\nBonus: include uptime in the response. If it shows 0:00:05 when you expected hours, something restarted unexpectedly.\n\nVersion endpoints are cheap insurance. A few minutes of setup saves hours of \u0027why isn\u0027t my code deployed?\u0027 debugging.",
@@ -943,7 +992,7 @@
         "inotifypropertychanged",
         "mobile"
       ],
-      "date": "2026-07-31T00:00:00",
+      "date": "2026-07-17T00:00:00",
       "featured": true,
       "image": "/img/posts/maui-blazor-pending-count-debugging-marathon.svg",
       "linkedInHook": "Navigate away and back. The pending count is 0.\n\nThe data was still there. The count just wasn\u0027t updating.\n\n7\u002B hours later, I found the root cause: two services were both calling SetPendingCount() with their own count. LoggingService set it to 3, then SyncService immediately overwrote it with 0.\n\nThe fix: separate counts per service, INotifyPropertyChanged for granular updates, and Blazor components that subscribe to changes.\n\nPlus 4 bonus rabbit holes: ObjectDisposedException, Debug APKs that won\u0027t start, MinVer returning 0.0.0, and syncing to the wrong server.\n\nSometimes a \u0027quick test\u0027 is anything but.",
@@ -962,7 +1011,7 @@
         "dotnet",
         "patterns"
       ],
-      "date": "2026-07-25T00:00:00",
+      "date": "2026-07-14T00:00:00",
       "featured": true,
       "image": "/img/posts/breaking-circular-dependencies-with-solid-principles.svg",
       "linkedInHook": "The build failed. Circular dependency detected.\n\nTwo services needed each other. SyncService logs operations. LoggingService syncs logs. Classic tangle.\n\nThe quick fix: IServiceProvider \u002B lazy loading. It compiles. It runs.\n\nThe problem: hidden dependencies, testing nightmares, and the architectural wound stays open.\n\nThe real fix: extract the shared concern. Create ISyncStatusService to own the state both services need. Now they depend on the abstraction, not each other.\n\n30 minutes longer. Pays dividends forever.",
@@ -982,7 +1031,7 @@
         "github-actions",
         "devops"
       ],
-      "date": "2026-07-18T00:00:00",
+      "date": "2026-07-08T00:00:00",
       "featured": true,
       "image": "/img/posts/automatic-semantic-versioning-with-minver.svg",
       "linkedInHook": "I used to dread version bumps. Update three .csproj files, create a git tag, hope I didn\u0027t fat-finger 0.9.1 as 0.91.\n\nThen I discovered MinVer. Now I never manually set a version number.\n\nThe version IS the git tag. MinVer reads your git history and calculates the version at build time. Developers commit code. Release pipelines create tags. The cycle continues automatically.\n\nOne Directory.Build.props file. Zero manual edits. Zero version mismatches.",
@@ -1001,7 +1050,7 @@
         "pragmatic-programmer",
         "patterns"
       ],
-      "date": "2026-07-15T00:00:00",
+      "date": "2026-07-02T00:00:00",
       "featured": true,
       "image": "/img/posts/tracer-bullet-development-prove-your-pipeline.svg",
       "linkedInHook": "How do you know your architecture works before building months of features?\n\nBuild a tracer bullet. One thin, end-to-end implementation that proves the whole pipeline.\n\nI chose error logging. Simple data, no business rules, but it touches every layer: Mobile \u2192 API \u2192 Database \u2192 Web Admin.\n\nIn one day, I validated 11 integration points. And found 4 bugs that would have been painful to debug in complex features.\n\nNow every new feature is \u0027just another endpoint\u0027 instead of \u0027I hope this fits together.\u0027",
@@ -1020,7 +1069,7 @@
         "unit-testing",
         "patterns"
       ],
-      "date": "2026-07-10T00:00:00",
+      "date": "2026-06-26T00:00:00",
       "featured": true,
       "image": "/img/posts/testing-non-virtual-members-without-moq.svg",
       "linkedInHook": "Moq threw NotSupportedException: \u0027Non-overridable members may not be used in setup expressions.\u0027\n\nNavigationManager.Uri isn\u0027t virtual. Microsoft chose safety over testability\u2014you can\u0027t bypass their initialization logic.\n\nThis is SOLID in action. LSP says subclasses should be substitutable. Microsoft said \u0027we don\u0027t trust your substitution here.\u0027\n\nTwo workarounds: inherit and override protected methods, or wrap it in your own interface. Both work. Choose based on what you\u0027re testing.",
@@ -1039,7 +1088,7 @@
         "error-handling",
         "mobile"
       ],
-      "date": "2026-07-04T00:00:00",
+      "date": "2026-06-20T00:00:00",
       "featured": true,
       "image": "/img/posts/maui-blazor-navigationmanager-not-initialized.svg",
       "linkedInHook": "Built an error boundary that worked perfectly in Blazor WASM. Deployed to MAUI Hybrid on Android. Immediate crash:\n\n\u0027WebViewNavigationManager has not been initialized.\u0027\n\nThe issue: in MAUI, NavigationManager wraps a native WebView. During early error handling, the WebView isn\u0027t ready yet. Accessing .Uri throws.\n\nThe fix is embarrassingly simple: wrap it in try-catch. Defensive programming wins again.",
@@ -1057,7 +1106,7 @@
         "errorboundary",
         "user-experience"
       ],
-      "date": "2026-06-27T00:00:00",
+      "date": "2026-06-14T00:00:00",
       "featured": true,
       "image": "/img/posts/error-boundaries-that-dont-trap-users.svg",
       "linkedInHook": "Added an ErrorBoundary to my Blazor app. Caught errors, showed a nice message. Great!\n\nThen a user hit an error and tried to navigate away. Nothing happened. They were trapped.\n\nThe error boundary was a cage, not a safety net.\n\nThe fix: subscribe to NavigationManager.LocationChanged and call Recover() when the user navigates. Now errors don\u0027t break navigation.\n\nRule: errors should never block the user\u0027s escape route.",
@@ -1077,7 +1126,7 @@
         "correlation-id",
         "dotnet"
       ],
-      "date": "2026-06-21T00:00:00",
+      "date": "2026-06-10T00:00:00",
       "featured": true,
       "image": "/img/posts/global-exception-handling-aspnet-core.svg",
       "linkedInHook": "The API threw a NullReferenceException. The client got an HTML error page with a full stack trace.\n\nIn production. With file paths and line numbers. Exactly what you\u0027d want if you were looking for vulnerabilities.\n\nCentralized exception handling middleware:\n\u2022 Consistent JSON responses\n\u2022 Correlation IDs for support\n\u2022 Stack traces in dev only\n\u2022 Exception-to-status-code mapping\n\nOne middleware. No try-catch everywhere. No leaked secrets.",
@@ -1095,7 +1144,7 @@
         "support",
         "human-factors"
       ],
-      "date": "2026-06-18T00:00:00",
+      "date": "2026-06-03T00:00:00",
       "featured": true,
       "image": "/img/posts/crockford-base32-phone-friendly-reference-ids.svg",
       "linkedInHook": "User calls support: \u0027My error code is seven-eff-three-ay-nine-one-bee-zero...\u0027\n\nSupport: \u0027Is that a zero or the letter O?\u0027\n\nUser: \u0027Um...\u0027\n\nThis is why Douglas Crockford designed a Base32 encoding that removes confusing characters. No I, L, O, or U.\n\nNow error codes like ERR-QB20S0VJ are unambiguous. Users can even use NATO phonetic alphabet naturally.\n\nSmall design choice. Big difference in real-world support.",
@@ -1114,7 +1163,7 @@
         "devops",
         "ci-cd"
       ],
-      "date": "2026-06-14T00:00:00",
+      "date": "2026-05-31T00:00:00",
       "featured": true,
       "image": "/img/posts/iis-app-offline-deployment-trick.svg",
       "linkedInHook": "Deploying to IIS and hitting ERROR_FILE_IN_USE is infuriating. The app is running, IIS has file locks, MSDeploy fails. I\u0027d been working around this with retry loops and manual FTP deletions.\n\nTurns out there\u0027s a feature that\u0027s been in IIS all along: app_offline.htm.\n\nDrop that file in your app root and IIS immediately stops the app, releases all locks, and serves a maintenance page. Deploy your files. Delete the file. App restarts.\n\nOne file. No more lock errors.",
@@ -1133,7 +1182,7 @@
         "devops",
         "patterns"
       ],
-      "date": "2026-06-10T00:00:00",
+      "date": "2026-05-24T00:00:00",
       "featured": true,
       "image": "/img/posts/environment-specific-ef-core-migrations.svg",
       "linkedInHook": "EF Core migrations are great for schema changes, but they run the same code everywhere. Real apps need different seed data per environment\u2014demo users in dev, minimal data in staging, nothing in production.\n\nThe typical fix is wrapping everything in if (Environment.IsDevelopment()) checks. That gets ugly fast.\n\nHere\u0027s a cleaner pattern: convention-based SQL scripts that load automatically based on environment. Script.dev.sql for dev, Script.prod.sql for production. The migration code stays simple.",
@@ -1153,7 +1202,7 @@
         "patterns",
         "synchronization"
       ],
-      "date": "2026-06-06T00:00:00",
+      "date": "2026-05-21T00:00:00",
       "featured": true,
       "image": "/img/posts/semaphore-thread-safe-sync.svg",
       "linkedInHook": "I had a sync bug that only happened on Mondays.\n\nApp resume and network recovery both triggered sync within milliseconds. Two syncs ran at once. Data corruption.\n\nThe culprit: a boolean flag that looked safe but had a race condition.\n\nThe fix: SemaphoreSlim(1, 1) with WaitAsync(0). Atomic acquire-or-fail. No race condition possible.\n\nBoolean flags for synchronization are a bug waiting to happen.",
@@ -1172,7 +1221,7 @@
         "wildcard",
         "raspberry-pi"
       ],
-      "date": "2026-05-31T00:00:00",
+      "date": "2026-05-14T00:00:00",
       "featured": true,
       "image": "/img/posts/upgrading-certbot-to-wildcard-certificates.svg",
       "linkedInHook": "My SSL automation was humming along\u2014until I needed subdomains for a multi-tenant SaaS app. Adding each one manually meant regenerating certs every time a client onboarded.\n\nSolution: wildcard certificates. One cert covers *.domain.com.\n\nBut Certbot doesn\u0027t just upgrade in place. It creates a new cert with a -0001 suffix. And the rename command doesn\u0027t exist in older versions. Here\u0027s how to handle it cleanly.",
@@ -1193,7 +1242,7 @@
         "circuit-breaker",
         "dotnet"
       ],
-      "date": "2026-05-28T00:00:00",
+      "date": "2026-05-10T00:00:00",
       "featured": true,
       "image": "/img/posts/polly-http-resilience-patterns.svg",
       "linkedInHook": "The mobile app worked great on WiFi. Then a user drove through a tunnel.\n\nSync button showed \u0027syncing\u0027 for 30 seconds. Error. They tapped again. Another 30 seconds. More errors.\n\nWithout resilience patterns, temporary failures crash the user experience. With them, most failures become invisible retries.\n\nPolly gives you:\n\u2022 Exponential backoff (1s \u2192 2s \u2192 4s)\n\u2022 Circuit breakers (fail fast when server is down)\n\u2022 Jitter (prevent thundering herd)\n\nUsers don\u0027t care why the network failed. They want the app to handle it.",
@@ -1212,7 +1261,7 @@
         "streaming",
         "architecture"
       ],
-      "date": "2026-05-24T00:00:00",
+      "date": "2026-05-04T00:00:00",
       "featured": true,
       "image": "/img/posts/when-ai-gives-you-coaching-not-construction.svg",
       "linkedInHook": "I asked ChatGPT for an algorithm to track customer outage patterns in real-time. Fifteen minutes of \u0027you could consider...\u0027 and \u0027one approach might be...\u0027 later, I still had nothing concrete.\n\nAsked Gemini. Thirty seconds later I had an exponential decay accumulator\u2014the same mathematical structure used in fraud detection and SLO burn-rates.\n\nThen I asked ChatGPT to explain why this keeps happening. Its self-diagnosis was surprisingly honest.",
@@ -1232,7 +1281,7 @@
         "chatgpt",
         "machine-learning"
       ],
-      "date": "2026-05-19T00:00:00",
+      "date": "2026-04-29T00:00:00",
       "featured": true,
       "image": "/img/posts/how-ai-assistants-actually-work.svg",
       "linkedInHook": "Imagine a parrot that has listened to every book, article, and webpage ever written. Trillions of patterns. It doesn\u0027t understand any of it\u2014but it has an incredible ear for how language flows.\n\nThat\u0027s roughly how AI assistants work. They don\u0027t \u0027know\u0027 things. They predict what sounds right.\n\nThis is why they can be confidently wrong. Why they\u0027re great at drafts but need verification. Why expertise matters more, not less.\n\nUnderstanding the mechanism helps you use the tool better.",
@@ -1251,7 +1300,7 @@
         "technical-writing",
         "meta"
       ],
-      "date": "2026-05-16T00:00:00",
+      "date": "2026-04-24T00:00:00",
       "featured": false,
       "image": "/img/posts/ai-cadence-and-technical-writing.svg",
       "linkedInHook": "People keep asking if I use AI to write my blog.\n\nThe answer: Yes. Obviously.\n\nBut here\u0027s the thing everyone misses: The real tell isn\u0027t em dashes or oxford commas. It\u0027s cadence.\n\nAI writes in perfect, predictable rhythm. Lands neatly. Wraps up cleanly.\n\nHuman voice has rough edges. Surprise. Rhythm that shifts.\n\nWhen does this matter?\n\n\u274C Brand voice. Personal narrative. Storytelling.\n\u2705 Technical documentation. Step-by-step guides. Process posts.\n\nMy blog is my external brain. I write to document what I learn so I don\u0027t forget it later.\n\nFor THAT purpose? AI cadence works.\n\nBut if I were writing thought leadership or building a personal brand? I\u0027d need to break the rhythm. Add friction. Let my actual voice come through.\n\nThe trick isn\u0027t hiding AI. It\u0027s knowing when perfect cadence helps \u2014 and when it kills you.\n\nBlog post: https://learnedgeek.com/Blog/Post/ai-cadence-and-technical-writing\n\n#ai #writing #blogging #voice"
@@ -1269,7 +1318,7 @@
         "net10",
         "troubleshooting"
       ],
-      "date": "2026-05-11T00:00:00",
+      "date": "2026-04-19T00:00:00",
       "featured": true,
       "image": "/img/posts/blazor-wasm-loading-forever-fix.svg",
       "linkedInHook": "Spent way too long debugging a Blazor WASM app that just showed \u0027Loading...\u0027 forever. The console errors pointed at \u0027/0\u0027 which made no sense. Turns out there\u0027s a bug in .NET 10 preview where the boot config gets inlined wrong.\n\nOne line in the csproj fixed it. Documenting this so the next person doesn\u0027t lose their afternoon.",
@@ -1287,7 +1336,7 @@
         "svg",
         "branding"
       ],
-      "date": "2026-05-01T00:00:00",
+      "date": "2026-04-09T00:00:00",
       "featured": false,
       "image": "/img/posts/designing-business-cards-with-inkscape.svg",
       "linkedInHook": "I designed my own business cards this weekend using Inkscape \u2014 a free, open-source tool.\n\nI\u0027d been avoiding online template wizards because they never felt right. So I figured, I work with SVGs all the time for my blog... why not just build the cards myself?\n\nTurns out print design is a completely different world from web design. Things I had no clue about going in:\n\n- Bleed margins (your design extends past the cut line in case the trim is slightly off)\n- Safe zones (keep important stuff away from edges)\n- 300 DPI vs 96 DPI (screen resolution looks terrible in print)\n- Spot UV finishing requires a separate mask file \u2014 black where you want gloss, white everywhere else\n\nThe biggest surprise? Inkscape\u0027s XML editor. Being able to directly edit SVG attributes \u2014 opacity, letter-spacing, fills, node ordering \u2014 was faster than navigating menus. Felt like using browser DevTools but for print design.\n\nWould I recommend this approach? Only if you enjoy learning by doing. It took longer than a template wizard, but I understand print design now in a way I wouldn\u0027t have otherwise.\n\n#inkscape #design #printdesign #opensource #learningbydoing"
@@ -1305,7 +1354,7 @@
         "dotnet",
         "devtools"
       ],
-      "date": "2026-05-04T00:00:00",
+      "date": "2026-04-13T00:00:00",
       "featured": true,
       "image": "/img/posts/blazor-wasm-debugging-chrome-devtools.svg",
       "linkedInHook": "Started a new Blazor WASM project and got curious about a mysterious URL in the console: /_framework/debug. Chrome asked for special flags. Then I saw \u0027Inspectable pages\u0027 in a separate window.\n\nDown the rabbit hole I went. Turns out there\u0027s a whole debugging proxy architecture that makes breakpoints work in WebAssembly. Pretty elegant once you understand what\u0027s happening.",
@@ -1323,7 +1372,7 @@
         "mobile",
         "troubleshooting"
       ],
-      "date": "2026-04-27T00:00:00",
+      "date": "2026-04-06T00:00:00",
       "featured": true,
       "image": "/img/posts/recaptcha-v3-mobile-users-scoring.svg",
       "linkedInHook": "My wife tried to use a contact form I built. She was on her phone, on our couch, clearly a real person. reCAPTCHA scored her 0.1\u2014basically flagged as a bot.\n\nTurns out the 0.5 threshold everyone recommends is way too aggressive for mobile users. Google doesn\u0027t exactly advertise this. Wrote up what I learned.",
@@ -1343,7 +1392,7 @@
         "security",
         "mobile"
       ],
-      "date": "2026-04-20T00:00:00",
+      "date": "2026-03-30T00:00:00",
       "featured": true,
       "image": "/img/posts/eli5-reverse-engineering-apps.svg",
       "linkedInHook": "Every app on your phone is a ZIP file in a costume. Every online feature is a conversation you can listen to.\n\nReverse engineering sounds intimidating. But at its core, it\u0027s just opening the pizza box and looking at the recipe.\n\nI wrote a 5-part series on reverse engineering a mobile game. Then I explained the whole thing with pizza boxes and walkie-talkies.\n\nThe tools are free. The skills transfer to real security work. And the pizza box isn\u0027t sealed \u2014 it\u0027s just closed.",
@@ -1362,7 +1411,7 @@
         "tutorial",
         "bot"
       ],
-      "date": "2026-04-15T00:00:00",
+      "date": "2026-03-26T00:00:00",
       "featured": true,
       "image": "/img/posts/reverse-engineering-game-part-5.svg",
       "linkedInHook": "Seven daily tasks. 90 seconds. Zero tapping.\n\nThe daily grind in mobile RPGs is menu navigation \u2014 collect rewards, claim gifts, fight arena battles. None of it is strategic. All of it is required.\n\nSo I built a bot. It probes 1,400 message types to learn response formats, then runs each task in priority order with human-like delays.\n\nBest bug: the arena opponent list included my own character. First automated fight? I fought myself. And won.\n\nPart 5 (finale) of the reverse engineering series.",
@@ -1381,7 +1430,7 @@
         "csharp",
         "user-experience"
       ],
-      "date": "2026-04-09T00:00:00",
+      "date": "2026-03-23T00:00:00",
       "featured": true,
       "image": "/img/posts/custom-error-pages-teaching-moments.svg",
       "linkedInHook": "Error pages are guaranteed traffic. Every site has them. Every visitor eventually sees one. So why do most of them look like the server is personally offended by your existence?\n\nI decided to turn my 404s into tiny teaching moments. Here\u0027s the philosophy and implementation.",
@@ -1401,7 +1450,7 @@
         "tutorial",
         "websocket"
       ],
-      "date": "2026-04-02T00:00:00",
+      "date": "2026-03-20T00:00:00",
       "featured": true,
       "image": "/img/posts/reverse-engineering-game-part-4.svg",
       "linkedInHook": "The game authenticates guest accounts using only a device fingerprint hash. No password. No 2FA. No CAPTCHA.\n\nIt\u0027s like a bank that identifies you by your shoe size.\n\nThe request signing? MD5 with hardcoded keys \u2014 sitting right there in the Lua bytecode anyone can extract from the APK.\n\nHiding your house key under the doormat. The lock works great. The hiding spot... less so.\n\nPart 4 of the reverse engineering series.",
@@ -1420,7 +1469,7 @@
         "tutorial",
         "python"
       ],
-      "date": "2026-03-26T00:00:00",
+      "date": "2026-03-15T00:00:00",
       "featured": true,
       "image": "/img/posts/reverse-engineering-game-part-3.svg",
       "linkedInHook": "Four bytes. That was the difference between \u0027rejected\u0027 and \u0027accepted.\u0027\n\nThe game uses a custom binary protocol. I had the Lua source code for encoding messages, captured binary frames, and debug logs. Just needed to match them up.\n\nMy first guess: 8-byte timestamp. Close enough to look right. Wrong enough to break everything.\n\nSo I built a Lua 5.3 bytecode disassembler. Ten opcodes is all you need to trace function logic.\n\nPart 3 of the reverse engineering series.",
@@ -1439,7 +1488,7 @@
         "troubleshooting",
         "blazor"
       ],
-      "date": "2026-03-23T00:00:00",
+      "date": "2026-03-09T00:00:00",
       "featured": true,
       "image": "/img/posts/tailwind-v4-source-directive-gotcha.svg",
       "linkedInHook": "Upgraded to Tailwind v4. Build ran. CSS generated. Half my styles were missing.\n\nNo errors. No warnings. Just... gone. Turns out v4 ignores your content array in tailwind.config.js. You need @source directives in CSS now. The migration path doesn\u0027t exactly scream this at you.",
@@ -1481,7 +1530,7 @@
       "date": "2026-02-23T00:00:00",
       "featured": false,
       "image": "/img/posts/rest-api-lesson-plan-wisconsin-standards.svg",
-      "linkedInHook": "\u0022Show me the lesson plan.\u0022\n\nThat\u0027s what educators kept saying after I wrote about teaching REST APIs through gaming.\n\nEnthusiasm doesn\u0027t satisfy a department chair. Standards alignment does.\n\nSo I built one. A complete 5-week curriculum:\n\n\u2705 Week 1: API Fundamentals \u2014 students register via their first POST request\n\u2705 Week 2: Build a Bot \u2014 automate 10 battles with error handling\n\u2705 Week 3: Strategy \u0026 Optimization \u2014 A/B test formations with real data\n\u2705 Week 4: Team Collaboration \u2014 GitHub repos, guild wars, peer review\n\u2705 Week 5: Class Tournament \u2014 bots compete live on the leaderboard\n\nMapped to 15 Wisconsin CS Standards (grades 9\u201312) across all 5 content areas.\n\n6-criteria weighted assessment rubric included \u2014 API fundamentals, programming, data analysis, collaboration, communication, debugging.\n\nPilot results from 3 bootcamps:\n\u2022 87% completion rate (vs 54% for traditional CRUD projects)\n\u2022 78% implemented error handling unprompted\n\u2022 23 students built features that weren\u0027t even assigned\n\nStudents don\u0027t build todo apps. They build combat bots.\nSame learning outcomes. Different drive.\n\nEducation Mode is free for accredited institutions. K\u201312, universities, bootcamps.\n\nFull lesson plan + rubric: https://learnedgeek.com/Blog/Post/rest-api-lesson-plan-wisconsin-standards\n\nWant a private instance for your class? https://learnedgeek.com/Contact\n\n#education #api #teaching #edtech #curriculum #computerscience",
+      "linkedInHook": "\u0022Show me the lesson plan.\u0022\n\nThat\u0027s what educators kept saying after I wrote about teaching REST APIs through gaming.\n\nEnthusiasm doesn\u0027t satisfy a department chair. Standards alignment does.\n\nSo I built one. A complete 5-week curriculum:\n\n\u2705 Week 1: API Fundamentals \u2014 students register via their first POST request\n\u2705 Week 2: Build a Bot \u2014 automate 10 battles with error handling\n\u2705 Week 3: Strategy \u0026 Optimization \u2014 A/B test formations with real data\n\u2705 Week 4: Team Collaboration \u2014 GitHub repos, guild wars, peer review\n\u2705 Week 5: Class Tournament \u2014 bots compete live on the leaderboard\n\nMapped to 15 Wisconsin CS Standards (grades 9\u201312) across all 5 content areas.\n\n6-criteria weighted assessment rubric included \u2014 API fundamentals, programming, data analysis, collaboration, communication, debugging.\n\nPilot results from 3 bootcamps:\n\u2022 87% completion rate (vs 54% for traditional CRUD projects)\n\u2022 78% implemented error handling unprompted\n\u2022 23 students built features that weren\u0027t even assigned\n\nStudents don\u0027t build todo apps. They build combat bots.\nSame learning outcomes. Different drive.\n\nEducation Mode is free for accredited institutions. K\u201312, universities, bootcamps.\n\nFull lesson plan \u002B rubric: https://learnedgeek.com/Blog/Post/rest-api-lesson-plan-wisconsin-standards\n\nWant a private instance for your class? https://learnedgeek.com/Contact\n\n#education #api #teaching #edtech #curriculum #computerscience",
       "blueskyHook": "\u0022Show me the lesson plan.\u0022\n\nEducators kept asking after my post on teaching REST APIs through gaming. So I built one:\n\n5-week curriculum. 15 Wisconsin CS Standards. Weighted rubric. Weekly deliverables.\n\nStudents build combat bots, not todo apps. Same concepts. Different motivation.\n\nFree for schools:"
     },
     {
@@ -1516,7 +1565,7 @@
         "tutorial",
         "security"
       ],
-      "date": "2026-03-04T00:00:00",
+      "date": "2026-03-06T00:00:00",
       "featured": true,
       "image": "/img/posts/reverse-engineering-game-part-2.svg",
       "linkedInHook": "The hardest part of intercepting mobile game traffic is usually SSL certificate pinning.\n\nUnless the developers forgot.\n\nNo pinning config. No custom trust manager. No certificate validation at all. The digital equivalent of leaving the Wi-Fi password on a sticky note.\n\nPlus: the game logs everything \u2014 credentials, tokens, message IDs \u2014 to the system console. In plaintext.\n\nPart 2 of the reverse engineering series.",
@@ -1571,7 +1620,7 @@
         "api-combat",
         "walkthrough"
       ],
-      "date": "2026-02-28T00:00:00",
+      "date": "2026-02-27T00:00:00",
       "featured": false,
       "image": "/img/posts/your-first-api-combat-battle.svg",
       "linkedInHook": "\u0022How do you play a game with no UI?\u0022\n\nI get this question a lot about API Combat.\n\nHere\u0027s the complete walkthrough. 5 steps. 5 minutes. Just curl.\n\n1. Register: POST /v1/auth/register\n   \u2192 Get JWT token\n\n2. Check roster: GET /v1/player/roster\n   \u2192 5 starter units (Tank, Warrior, Healer, Support, Mage)\n\n3. Create strategy: POST /v1/strategy/create\n   \u2192 Upload JSON battle tactics\n\n4. Queue battle: POST /v1/battle/queue\n   \u2192 Matchmaking finds opponent\n\n5. Get results: GET /v1/battle/result/{id}\n   \u2192 Turn-by-turn breakdown \u002B rewards\n\nYou just played a game using HTTP requests.\n\nNo graphics. No buttons. Just APIs.\n\nNow imagine building:\n\u2022 Python bot that auto-battles 10x daily\n\u2022 Web dashboard visualizing your stats\n\u2022 Discord bot notifying you of results\n\u2022 CLI tool for team management\n\nThat\u0027s the real game. The API is your playground.\n\nFull tutorial: https://learnedgeek.com/Blog/Post/your-first-api-combat-battle\n\nTry it: https://apicombat.com\n\n#api #tutorial #restapi #developers #curl"
@@ -2267,7 +2316,7 @@
     {
       "slug": "vscode-tasks-json-dotnet",
       "title": "VS Code tasks.json for .NET Projects",
-      "description": "A reusable task configuration for building, running, testing, and deploying ASP.NET projects with Tailwind CSS.",
+      "description": "A reusable task configuration for building, running, testing, and deploying multi-project ASP.NET solutions with Tailwind CSS, compound tasks, and environment-specific deployments.",
       "category": "tech",
       "tags": [
         "vscode",

@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="surfaceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d6a4f"/>
+      <stop offset="100%" style="stop-color:#1b4332"/>
+    </linearGradient>
+    <linearGradient id="debtGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#991b1b"/>
+      <stop offset="100%" style="stop-color:#7f1d1d"/>
+    </linearGradient>
+    <linearGradient id="debtHeaderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e63946;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#c1121f;stop-opacity:0.15"/>
+    </linearGradient>
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e63946"/>
+      <stop offset="100%" style="stop-color:#c1121f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.04">
+    <line x1="0" y1="50" x2="800" y2="50" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="100" x2="800" y2="100" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="150" x2="800" y2="150" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="200" x2="800" y2="200" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="250" x2="800" y2="250" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="300" x2="800" y2="300" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="350" x2="800" y2="350" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="400" x2="800" y2="400" stroke="#fff" stroke-width="1"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="32" font-family="monospace" font-size="16" font-weight="bold" fill="#e2e8f0" text-anchor="middle">THE ARCHITECTURE TAX</text>
+  <text x="400" y="52" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">nobody told vibe coders about</text>
+
+  <!-- THE SURFACE label -->
+  <text x="400" y="80" font-family="monospace" font-size="9" fill="#6ee7b7" text-anchor="middle" letter-spacing="3" opacity="0.7">THE SURFACE</text>
+
+  <!-- Green surface box -->
+  <rect x="80" y="92" width="640" height="65" rx="8" fill="url(#surfaceGrad)" opacity="0.9"/>
+
+  <!-- Vertical dividers inside surface box -->
+  <line x1="240" y1="98" x2="240" y2="151" stroke="#6ee7b7" stroke-width="1" opacity="0.2"/>
+  <line x1="400" y1="98" x2="400" y2="151" stroke="#6ee7b7" stroke-width="1" opacity="0.2"/>
+  <line x1="560" y1="98" x2="560" y2="151" stroke="#6ee7b7" stroke-width="1" opacity="0.2"/>
+
+  <!-- Surface items -->
+  <text x="160" y="119" font-family="monospace" font-size="18" fill="#6ee7b7" text-anchor="middle">&#x2713;</text>
+  <text x="160" y="143" font-family="monospace" font-size="10" fill="#a7f3d0" text-anchor="middle">Compiles</text>
+
+  <text x="320" y="119" font-family="monospace" font-size="18" fill="#6ee7b7" text-anchor="middle">&#x2713;</text>
+  <text x="320" y="143" font-family="monospace" font-size="10" fill="#a7f3d0" text-anchor="middle">Runs</text>
+
+  <text x="480" y="119" font-family="monospace" font-size="18" fill="#6ee7b7" text-anchor="middle">&#x2713;</text>
+  <text x="480" y="143" font-family="monospace" font-size="10" fill="#a7f3d0" text-anchor="middle">Ships</text>
+
+  <text x="640" y="119" font-family="monospace" font-size="18" fill="#6ee7b7" text-anchor="middle">&#x2713;</text>
+  <text x="640" y="143" font-family="monospace" font-size="10" fill="#a7f3d0" text-anchor="middle">Features Work</text>
+
+  <!-- Divider -->
+  <line x1="100" y1="178" x2="700" y2="178" stroke="#94a3b8" stroke-width="1" stroke-dasharray="8,4" opacity="0.3"/>
+  <text x="310" y="194" font-family="monospace" font-size="10" fill="#6ee7b7" text-anchor="end">"it works"</text>
+  <text x="400" y="195" font-family="monospace" font-size="14" fill="#94a3b8" text-anchor="middle">&#x2260;</text>
+  <text x="490" y="194" font-family="monospace" font-size="10" fill="#fca5a5" text-anchor="start">"it's done"</text>
+
+  <!-- UNDERNEATH label -->
+  <text x="400" y="220" font-family="monospace" font-size="9" fill="#fca5a5" text-anchor="middle" letter-spacing="3" opacity="0.7">UNDERNEATH</text>
+
+  <!-- Debt boxes - Row 1 -->
+  <!-- N+1 Queries -->
+  <rect x="80" y="232" width="200" height="58" rx="6" fill="url(#debtGrad)" opacity="0.9"/>
+  <rect x="80" y="232" width="200" height="17" rx="6" fill="url(#debtHeaderGrad)"/>
+  <text x="180" y="244" font-family="monospace" font-size="9" fill="#fca5a5" text-anchor="middle" font-weight="bold">N+1 QUERIES</text>
+  <text x="180" y="264" font-family="monospace" font-size="8" fill="#f87171" text-anchor="middle" opacity="0.8">101 DB calls per report</text>
+  <text x="180" y="278" font-family="monospace" font-size="7" fill="#f87171" text-anchor="middle" opacity="0.6">dashboard unusable at scale</text>
+
+  <!-- Silent catch {} -->
+  <rect x="300" y="232" width="200" height="58" rx="6" fill="url(#debtGrad)" opacity="0.9"/>
+  <rect x="300" y="232" width="200" height="17" rx="6" fill="url(#debtHeaderGrad)"/>
+  <text x="400" y="244" font-family="monospace" font-size="9" fill="#fca5a5" text-anchor="middle" font-weight="bold">SILENT catch { }</text>
+  <text x="400" y="264" font-family="monospace" font-size="8" fill="#f87171" text-anchor="middle" opacity="0.8">16 across codebase</text>
+  <text x="400" y="278" font-family="monospace" font-size="7" fill="#f87171" text-anchor="middle" opacity="0.6">zero diagnostics in the field</text>
+
+  <!-- .Result Deadlock -->
+  <rect x="520" y="232" width="200" height="58" rx="6" fill="url(#debtGrad)" opacity="0.9"/>
+  <rect x="520" y="232" width="200" height="17" rx="6" fill="url(#debtHeaderGrad)"/>
+  <text x="620" y="244" font-family="monospace" font-size="9" fill="#fca5a5" text-anchor="middle" font-weight="bold">.Result DEADLOCK</text>
+  <text x="620" y="264" font-family="monospace" font-size="8" fill="#f87171" text-anchor="middle" opacity="0.8">freezes Android UI thread</text>
+  <text x="620" y="278" font-family="monospace" font-size="7" fill="#f87171" text-anchor="middle" opacity="0.6">rule existed &#x2014; written anyway</text>
+
+  <!-- Debt boxes - Row 2 -->
+  <!-- Duplicate Paths -->
+  <rect x="80" y="304" width="200" height="58" rx="6" fill="url(#debtGrad)" opacity="0.9"/>
+  <rect x="80" y="304" width="200" height="17" rx="6" fill="url(#debtHeaderGrad)"/>
+  <text x="180" y="316" font-family="monospace" font-size="9" fill="#fca5a5" text-anchor="middle" font-weight="bold">DUPLICATE PATHS</text>
+  <text x="180" y="336" font-family="monospace" font-size="8" fill="#f87171" text-anchor="middle" opacity="0.8">GPS history silently lost</text>
+  <text x="180" y="350" font-family="monospace" font-size="7" fill="#f87171" text-anchor="middle" opacity="0.6">all mobile sync affected</text>
+
+  <!-- Missing Tests -->
+  <rect x="300" y="304" width="200" height="58" rx="6" fill="url(#debtGrad)" opacity="0.9"/>
+  <rect x="300" y="304" width="200" height="17" rx="6" fill="url(#debtHeaderGrad)"/>
+  <text x="400" y="316" font-family="monospace" font-size="9" fill="#fca5a5" text-anchor="middle" font-weight="bold">MISSING TESTS</text>
+  <text x="400" y="336" font-family="monospace" font-size="8" fill="#f87171" text-anchor="middle" opacity="0.8">0 for core services</text>
+  <text x="400" y="350" font-family="monospace" font-size="7" fill="#f87171" text-anchor="middle" opacity="0.6">edges tested, center blind</text>
+
+  <!-- Mixed Patterns -->
+  <rect x="520" y="304" width="200" height="58" rx="6" fill="url(#debtGrad)" opacity="0.9"/>
+  <rect x="520" y="304" width="200" height="17" rx="6" fill="url(#debtHeaderGrad)"/>
+  <text x="620" y="316" font-family="monospace" font-size="9" fill="#fca5a5" text-anchor="middle" font-weight="bold">MIXED PATTERNS</text>
+  <text x="620" y="336" font-family="monospace" font-size="8" fill="#f87171" text-anchor="middle" opacity="0.8">4 of 12 entities use repos</text>
+  <text x="620" y="350" font-family="monospace" font-size="7" fill="#f87171" text-anchor="middle" opacity="0.6">worst of both worlds</text>
+
+  <!-- 34 badge -->
+  <circle cx="48" cy="388" r="24" fill="url(#badgeGrad)" opacity="0.9"/>
+  <circle cx="48" cy="388" r="24" fill="none" stroke="#fca5a5" stroke-width="1" opacity="0.3"/>
+  <text x="48" y="393" font-family="monospace" font-size="20" fill="#fff" text-anchor="middle" font-weight="bold">34</text>
+  <text x="88" y="384" font-family="monospace" font-size="9" fill="#fca5a5" opacity="0.8">bugs found</text>
+  <text x="88" y="396" font-family="monospace" font-size="8" fill="#f87171" opacity="0.6">in one audit</text>
+
+  <!-- Footer -->
+  <text x="400" y="432" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle">learnedgeek.com</text>
+</svg>
