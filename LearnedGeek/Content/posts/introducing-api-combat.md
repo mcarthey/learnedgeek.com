@@ -54,7 +54,7 @@ The API is the game. The rest is up to you.
 ### Step 1: Register (via API, obviously)
 
 ```bash
-curl -X POST https://api.apicombat.com/api/v1/auth/register \
+curl -X POST https://apicombat.com/api/v1/auth/register \
   -H "Content-Type: application/json" \
   -d '{
     "username": "YourName",
@@ -104,7 +104,7 @@ Example strategy:
 ### Step 4: Queue a Battle
 
 ```bash
-curl -X POST https://api.apicombat.com/api/v1/battle/queue \
+curl -X POST https://apicombat.com/api/v1/battle/queue \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{

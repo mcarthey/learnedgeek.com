@@ -63,7 +63,7 @@ They're not learning HTTP verbs for a grade. They're using them to **win battles
 Every request requires a JWT token. Students learn:
 - Bearer token headers
 - Token expiration handling
-- Refresh token flows (Premium tier)
+- Refresh token flows
 - API key management (don't commit tokens to GitHub!)
 
 Not because I lectured them. Because their bot **won't work** without proper auth.
@@ -202,10 +202,10 @@ Run tournaments within your class. Class-specific leaderboards keep competition 
 ### 2. Progress Tracking
 
 View every student's:
-- Battles played
-- Strategies created
-- API calls made
-- Win rates
+- Lesson completion progress
+- Per-lesson completion rates
+- Enrollment status
+- Recent activity
 
 ### 3. Instructor-Defined Curriculum Modules
 

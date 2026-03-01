@@ -248,7 +248,7 @@ This curriculum maps directly to the [Wisconsin Standards for Computer Science](
 
 **Provided with Education Mode (Free for Accredited Institutions):**
 - Class-scoped tournaments and leaderboards
-- Student progress tracking dashboard
+- Instructor dashboard with lesson completion rates and student enrollment progress
 - Instructor-defined curriculum modules with endpoint-linked lessons
 - Guild Wars team battle functionality
 
@@ -279,7 +279,7 @@ This curriculum maps directly to the [Wisconsin Standards for Computer Science](
 
 This document gives you everything you need for a compelling five-week unit. But the full Education Mode experience includes tools that a lesson plan can't capture:
 
-- **Progress dashboards** — See every student's API calls, battles played, strategies created, and win rates
+- **Progress dashboards** — Track student lesson completions, enrollment status, and per-lesson completion rates
 - **Tournament infrastructure** — Bracket generation, leaderboards, and match scheduling for class-wide events
 - **Curriculum modules** — Instructor-defined lesson sequences with endpoint-linked verification steps
 - **Guild Wars** — Team-based competitive battles that encourage collaboration and code sharing

@@ -23,7 +23,7 @@ That's it. No SDK. No downloads. Let's go.
 ## Step 1: Register Your Account
 
 ```bash
-curl -X POST https://api.apicombat.com/v1/auth/register \
+curl -X POST https://apicombat.com/api/v1/auth/register \
   -H "Content-Type: application/json" \
   -d '{
     "username": "YourUsername",
@@ -58,7 +58,7 @@ Now you can use `$API_COMBAT_TOKEN` in future commands.
 Every new player gets **5 starter units** automatically:
 
 ```bash
-curl -X GET https://api.apicombat.com/v1/player/roster \
+curl -X GET https://apicombat.com/api/v1/player/roster \
   -H "Authorization: Bearer $API_COMBAT_TOKEN"
 ```
 
@@ -69,14 +69,14 @@ curl -X GET https://api.apicombat.com/v1/player/roster \
   "units": [
     {
       "id": "unit-001",
-      "name": "Rookie Tank",
+      "name": "Shield Bearer",
       "class": "Tank",
       "level": 1,
       "stats": {
-        "health": 120,
-        "attack": 15,
+        "health": 150,
+        "attack": 20,
         "defense": 30,
-        "speed": 10
+        "speed": 8
       },
       "abilities": [
         {
@@ -88,14 +88,14 @@ curl -X GET https://api.apicombat.com/v1/player/roster \
     },
     {
       "id": "unit-002",
-      "name": "Starter Warrior",
-      "class": "DamageDealer",
+      "name": "Bronze Knight",
+      "class": "Warrior",
       "level": 1,
       "stats": {
-        "health": 80,
-        "attack": 40,
-        "defense": 15,
-        "speed": 20
+        "health": 120,
+        "attack": 25,
+        "defense": 20,
+        "speed": 10
       },
       "abilities": [
         {
@@ -107,14 +107,14 @@ curl -X GET https://api.apicombat.com/v1/player/roster \
     },
     {
       "id": "unit-003",
-      "name": "Field Medic",
+      "name": "Novice Cleric",
       "class": "Healer",
       "level": 1,
       "stats": {
-        "health": 70,
-        "attack": 10,
-        "defense": 12,
-        "speed": 15
+        "health": 85,
+        "attack": 15,
+        "defense": 18,
+        "speed": 12
       },
       "abilities": [
         {
@@ -127,13 +127,13 @@ curl -X GET https://api.apicombat.com/v1/player/roster \
     {
       "id": "unit-004",
       "name": "Scout",
-      "class": "Support",
+      "class": "Ranger",
       "level": 1,
       "stats": {
-        "health": 65,
-        "attack": 20,
-        "defense": 10,
-        "speed": 30
+        "health": 90,
+        "attack": 30,
+        "defense": 15,
+        "speed": 20
       },
       "abilities": [
         {
@@ -145,14 +145,14 @@ curl -X GET https://api.apicombat.com/v1/player/roster \
     },
     {
       "id": "unit-005",
-      "name": "Apprentice Mage",
-      "class": "Specialist",
+      "name": "Apprentice Wizard",
+      "class": "Mage",
       "level": 1,
       "stats": {
-        "health": 60,
+        "health": 80,
         "attack": 35,
-        "defense": 8,
-        "speed": 18
+        "defense": 10,
+        "speed": 15
       },
       "abilities": [
         {
@@ -169,11 +169,11 @@ curl -X GET https://api.apicombat.com/v1/player/roster \
 ```
 
 You've got:
-- **1 Tank** (frontline defender)
-- **1 Damage Dealer** (high attack)
-- **1 Healer** (sustain)
-- **1 Support** (buffs/debuffs)
-- **1 Specialist** (AOE damage)
+- **1 Tank** — Shield Bearer (frontline defender)
+- **1 Warrior** — Bronze Knight (high attack)
+- **1 Healer** — Novice Cleric (sustain)
+- **1 Ranger** — Scout (buffs/debuffs)
+- **1 Mage** — Apprentice Wizard (AOE damage)
 
 That's a full team. Let's configure them.
 
@@ -198,8 +198,8 @@ Strategies are JSON configurations. Here's a solid starter build:
 ```
 
 **What this strategy does:**
-- **Front line:** Tank + Warrior absorb damage
-- **Back line:** Healer, Support, Mage stay safe
+- **Front line:** Shield Bearer + Bronze Knight absorb damage
+- **Back line:** Novice Cleric, Scout, Apprentice Wizard stay safe
 - **Target priority:** Attack weakest enemy first (finish kills fast)
 - **Heal threshold:** Use Heal Pulse when ally drops below 40% HP
 - **Focus fire:** All DPS attacks same target
@@ -208,7 +208,7 @@ Strategies are JSON configurations. Here's a solid starter build:
 Save that to `strategy.json`, then upload it:
 
 ```bash
-curl -X POST https://api.apicombat.com/v1/strategy/create \
+curl -X POST https://apicombat.com/api/v1/strategies/upload \
   -H "Authorization: Bearer $API_COMBAT_TOKEN" \
   -H "Content-Type: application/json" \
   -d @strategy.json
@@ -231,7 +231,7 @@ Your strategy is live. Time to fight.
 ## Step 4: Queue a Ranked Battle
 
 ```bash
-curl -X POST https://api.apicombat.com/v1/battle/queue \
+curl -X POST https://apicombat.com/api/v1/battle/queue \
   -H "Authorization: Bearer $API_COMBAT_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -258,7 +258,7 @@ You don't have to watch. Go get coffee. Come back in a minute.
 ## Step 5: Check Battle Results
 
 ```bash
-curl -X GET https://api.apicombat.com/v1/battle/result/battle-xyz789 \
+curl -X GET https://apicombat.com/api/v1/battle/results/battle-xyz789 \
   -H "Authorization: Bearer $API_COMBAT_TOKEN"
 ```
 
@@ -275,14 +275,14 @@ curl -X GET https://api.apicombat.com/v1/battle/result/battle-xyz789 \
       "turn": 1,
       "events": [
         {
-          "actor": "Rookie Tank",
+          "actor": "Shield Bearer",
           "action": "Shield Bash",
           "target": "Enemy Warrior",
           "damage": 22,
           "effect": "Taunted"
         },
         {
-          "actor": "Starter Warrior",
+          "actor": "Bronze Knight",
           "action": "Power Strike",
           "target": "Enemy Mage",
           "damage": 80
@@ -295,14 +295,14 @@ curl -X GET https://api.apicombat.com/v1/battle/result/battle-xyz789 \
         {
           "actor": "Enemy Warrior",
           "action": "Attack",
-          "target": "Rookie Tank",
+          "target": "Shield Bearer",
           "damage": 10,
           "effect": "Blocked by taunt"
         },
         {
-          "actor": "Field Medic",
+          "actor": "Novice Cleric",
           "action": "Heal Pulse",
-          "target": "Rookie Tank",
+          "target": "Shield Bearer",
           "healing": 30
         }
       ]
@@ -334,13 +334,13 @@ You earned:
 
 Look at the turn-by-turn breakdown. What worked?
 
-- **Shield Bash** taunted the enemy warrior → enemy wasted turns attacking your tank
+- **Shield Bash** taunted the enemy warrior → enemy wasted turns attacking your Shield Bearer
 - **Power Strike** one-shot their mage → removed their main threat
-- **Heal Pulse** kept your tank alive → sustained frontline
+- **Heal Pulse** kept your Shield Bearer alive → sustained frontline
 
 What could improve?
 
-- Your support unit didn't use Speed Buff (conditions weren't met)
+- Your Scout didn't use Speed Buff (conditions weren't met)
 - AOE wasn't triggered (only started with 5 enemies, threshold was 3)
 
 Adjust your strategy:
@@ -372,15 +372,15 @@ Upload the new strategy. Queue another battle. Repeat.
 You earned 50 gold. Recruit your 6th unit:
 
 ```bash
-curl -X GET https://api.apicombat.com/v1/shop/units?class=Tank \
+curl -X GET https://apicombat.com/api/v1/player/roster/available \
   -H "Authorization: Bearer $API_COMBAT_TOKEN"
 ```
 
-Browse available units. Spend gold. Diversify your roster.
+Browse available units. Spend gold to recruit. Diversify your roster.
 
 **Build More Strategies**
 
-Free tier allows **3 strategy slots**. Create different builds:
+Free tier allows **3 team slots**. Create different builds:
 - **Aggressive:** All DPS, no healer, rush strategy
 - **Defensive:** Double tank, healer focus, outlast opponent
 - **Hybrid:** Balanced, adapts to any matchup
@@ -388,7 +388,7 @@ Free tier allows **3 strategy slots**. Create different builds:
 **Track Your Rank**
 
 ```bash
-curl -X GET https://api.apicombat.com/v1/leaderboard?limit=10 \
+curl -X GET https://apicombat.com/api/v1/leaderboard?limit=10 \
   -H "Authorization: Bearer $API_COMBAT_TOKEN"
 ```
 
@@ -410,14 +410,14 @@ That's the real game. The API is your playground.
 
 Free tier gives you:
 - **10 battles/day** (plenty for learning)
-- **20 units unlocked** (good variety)
-- **3 strategy slots** (test different builds)
+- **All 25 units** (purchased with in-game gold)
+- **3 team slots** (test different builds)
+- **Batch practice** (up to 200 simulated battles)
 
 Premium ($5/month) unlocks:
 - **Unlimited battles** (iterate faster)
-- **All 50+ units** (meta optimization)
-- **Guild access** (team play)
-- **Simulation endpoint** (test 10K battles instantly without queueing)
+- **Guild creation** (team play)
+- **Player analytics** (track your progress)
 
 Worth it if you're serious. But free tier is genuinely playable.
 
