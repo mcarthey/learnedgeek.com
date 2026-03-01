@@ -73,7 +73,7 @@ This curriculum maps directly to the [Wisconsin Standards for Computer Science](
 |-----|----------|---------|
 | 1–2 | Introduction to HTTP and REST | Instructor-led demo: making API calls with curl. Students register an API Combat account via the API itself — their first POST request. |
 | 3 | JSON Deep-Dive | Students examine API responses. Identify objects, arrays, nested fields. Map JSON structure to real-world concepts (roster = array of unit objects). |
-| 4–5 | First Battle | Students authenticate, retrieve their roster (`GET /v1/player/roster`), and queue their first battle. **Journal entry:** document every request/response pair with annotations. |
+| 4–5 | First Battle | Students authenticate, retrieve their roster (`GET /api/v1/player/roster`), and queue their first battle. **Journal entry:** document every request/response pair with annotations. |
 
 **Deliverable:** Annotated log of a completed battle showing request method, endpoint, headers, payload, and response for each API call made.
 
@@ -115,7 +115,7 @@ This curriculum maps directly to the [Wisconsin Standards for Computer Science](
 
 | Day | Activity | Details |
 |-----|----------|---------|
-| 1–2 | Strategy deep-dive | Students study the strategy JSON schema. Create 3 distinct formations using `POST /v1/strategy/create` and `PUT /v1/strategy/update`. |
+| 1–2 | Strategy deep-dive | Students study the strategy JSON schema. Create and upload 3 distinct formations using `POST /api/v1/strategies/upload`. |
 | 3 | A/B testing workshop | Run each strategy through 20+ battles. Record win rates per strategy. Discuss what constitutes a meaningful sample size. |
 | 4–5 | Data analysis | Calculate win rates, compare formations, identify patterns. **Written analysis:** which strategy performs best and *why*? Support conclusions with data. |
 
@@ -247,10 +247,9 @@ This curriculum maps directly to the [Wisconsin Standards for Computer Science](
 - Python 3.x with `requests` library (or equivalent in student's preferred language)
 
 **Provided with Education Mode (Free for Accredited Institutions):**
-- Private class instance — students battle each other, not the public player base
+- Class-scoped tournaments and leaderboards
 - Student progress tracking dashboard
-- Custom challenge assignments tied to specific endpoints
-- Class-specific leaderboards and tournament infrastructure
+- Instructor-defined curriculum modules with endpoint-linked lessons
 - Guild Wars team battle functionality
 
 **Optional:**
@@ -263,8 +262,8 @@ This curriculum maps directly to the [Wisconsin Standards for Computer Science](
 ## Differentiation
 
 **For advanced students:**
-- Implement webhook notifications for real-time battle results
-- Build a web dashboard that displays live battle updates via WebSockets
+- Implement webhook notifications for battle results
+- Build a web dashboard that displays battle statistics and win-rate trends
 - Analyze opponent strategies and build adaptive counter-strategies
 - Extend the bot with command-line arguments for configurable behavior
 
@@ -280,12 +279,10 @@ This curriculum maps directly to the [Wisconsin Standards for Computer Science](
 
 This document gives you everything you need for a compelling five-week unit. But the full Education Mode experience includes tools that a lesson plan can't capture:
 
-- **Live progress dashboards** — See every student's API calls, battles played, strategies created, and win rates in real time
-- **Custom challenge builder** — Create assignments tied to specific endpoints with automated success criteria
-- **Automated milestone notifications** — Students hit checkpoints, you get notified without checking manually
-- **Tournament infrastructure** — Bracket generation, live projected leaderboards, and match scheduling for class-wide events
-- **Curriculum extensions** — WebSocket modules, OAuth integration labs, advanced rate-limiting exercises, and more
-- **Semester-long pacing guides** — Expand this 5-week unit into a full 15-week course with intermediate and advanced modules
+- **Progress dashboards** — See every student's API calls, battles played, strategies created, and win rates
+- **Tournament infrastructure** — Bracket generation, leaderboards, and match scheduling for class-wide events
+- **Curriculum modules** — Instructor-defined lesson sequences with endpoint-linked verification steps
+- **Guild Wars** — Team-based competitive battles that encourage collaboration and code sharing
 
 These are the tools that turn a good lesson plan into a curriculum ecosystem.
 
@@ -297,7 +294,7 @@ This lesson plan is yours to use — no strings attached. If you want the platfo
 
 1. **Request Education Mode access** at [learnedgeek.com/Contact](https://learnedgeek.com/Contact)
 2. Include your institution name, course title, class size, and semester dates
-3. I'll set up your private instance and walk you through the educator dashboard
+3. I'll get your class set up and walk you through the educator tools
 
 **Education Mode is free for accredited institutions.** K–12, universities, bootcamps — if you're teaching, you're in.
 

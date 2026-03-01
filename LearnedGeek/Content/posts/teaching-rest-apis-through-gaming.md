@@ -51,10 +51,10 @@ When students build API Combat clients, they learn:
 
 ### 1. HTTP Methods (By Necessity)
 
-- **GET** `/v1/player/roster` → "I need to see my units"
-- **POST** `/v1/strategy/create` → "I need to configure my team"
-- **PUT** `/v1/strategy/update` → "I need to change my tactics"
-- **DELETE** `/v1/unit/retire` → "I need to remove weak units"
+- **GET** `/api/v1/player/roster` → "I need to see my units"
+- **POST** `/api/v1/strategies/upload` → "I need to configure my team"
+- **POST** `/api/v1/battle/queue` → "I need to start a fight"
+- **GET** `/api/v1/battle/results/{id}` → "I need to see what happened"
 
 They're not learning HTTP verbs for a grade. They're using them to **win battles**.
 
@@ -103,16 +103,16 @@ Not from slides. From **failing API calls** and debugging them.
 
 Battles aren't instant. Students learn:
 - Async requests (queue battle → poll for results)
-- Webhooks (Premium tier, battle completion notifications)
-- WebSockets (Premium+ tier, real-time updates)
+- Webhooks (battle completion notifications)
+- Polling patterns (check status, handle "not ready yet")
 
 Because they want results **fast**, and the API forces async patterns.
 
 ### 6. Rate Limiting
 
-Free tier: 10 requests/minute.
-Premium: 50 requests/minute.
-Premium+: 250 requests/minute.
+Free tier: 60 requests/minute.
+Premium: 120 requests/minute.
+Premium+: 300 requests/minute.
 
 Students learn:
 - Exponential backoff
@@ -179,23 +179,9 @@ Not from theory. From hitting `429 Too Many Requests` and figuring out why.
 
 ---
 
-### Week 5: Real-Time Updates (WebSockets)
+### Week 5: Tournament & Presentation
 
-**Assignment:** Build a dashboard that shows live battle updates.
-
-**What they learn:**
-- WebSocket connections
-- Event-driven programming
-- Real-time data handling
-- UI updates from API events
-
-**Success metric:** Dashboard shows battle progress in real time.
-
----
-
-### Final Project: Tournament
-
-**Assignment:** Class-wide tournament. Best bot wins.
+**Assignment:** Class-wide tournament. Best bot wins. Present your approach.
 
 **What they learn:**
 - Everything above, applied under pressure
@@ -203,15 +189,15 @@ Not from theory. From hitting `429 Too Many Requests` and figuring out why.
 - Code collaboration (guild features)
 - Presentation skills (explain their approach)
 
-**Success metric:** Fully functional bot that competes autonomously.
+**Success metric:** Fully functional bot that competes autonomously, plus a team presentation explaining architecture decisions and results.
 
 ## Education Mode Features
 
 I built Education Mode specifically for classrooms:
 
-### 1. Private Instances
+### 1. Class-Scoped Tournaments & Leaderboards
 
-Create isolated game environments for your class. Students battle each other, not the public player base.
+Run tournaments within your class. Class-specific leaderboards keep competition focused and meaningful. Top students get bragging rights (and extra credit, your call).
 
 ### 2. Progress Tracking
 
@@ -220,49 +206,17 @@ View every student's:
 - Strategies created
 - API calls made
 - Win rates
-- Code submissions (optional integration)
 
-### 3. Custom Challenges
+### 3. Instructor-Defined Curriculum Modules
 
-Create assignments tied to specific API endpoints:
-- "Use the simulation endpoint 100 times"
-- "Build a strategy with >60% win rate"
-- "Implement webhook notifications"
+Create lesson sequences tied to specific API endpoints with verification steps that confirm students have completed each objective.
 
-### 4. Leaderboards
-
-Class-specific rankings. Top 3 students get:
-- Bragging rights
-- Extra credit (your call)
-- Showcase their bot to the class
-
-### 5. Team Battles (Guild Wars)
+### 4. Team Battles (Guild Wars)
 
 Split class into teams. Collaborative assignments:
 - Share strategies via GitHub
 - Coordinate attacks in guild wars
 - Peer code review
-
-## Real Student Outcomes
-
-I piloted API Combat with 3 bootcamps (60 students total). Results:
-
-**Engagement:**
-- 87% completion rate (vs 54% for traditional API projects)
-- Average 45 API calls per student (vs 12 for CRUD assignments)
-- 23 students built features I didn't assign (they just wanted to win)
-
-**Learning Outcomes:**
-- 92% could explain HTTP methods without notes (vs 67% before)
-- 78% implemented error handling unprompted (vs 31% before)
-- 100% understood JSON structure (vs 89% before)
-
-**Student Feedback:**
-> "I finally get why APIs matter. I wasn't building for a grade. I was building to win."
-
-> "I learned more debugging my bot than I did in 3 weeks of lectures."
-
-> "Can we do this for databases too?"
 
 ## Why This Works
 
@@ -324,11 +278,10 @@ I'd rather have 1000 students learn well than charge schools $500/semester.
 
 | Feature | CRUD Tutorial | API Combat |
 |---------|---------------|------------|
-| Engagement | Low (boring) | High (competitive) |
+| Engagement | Low (repetitive) | High (competitive) |
 | Motivation | Extrinsic (grade) | Intrinsic (winning) |
 | Collaboration | Rare | Built-in (guilds) |
 | Real-world skills | Basic | Advanced (webhooks, async, rate limiting) |
-| Student retention | 54% | 87% |
 
 ### API Combat vs Existing Games
 

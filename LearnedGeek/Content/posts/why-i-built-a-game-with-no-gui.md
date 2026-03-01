@@ -56,18 +56,18 @@ What if the API **was** the game?
 
 In API Combat:
 
-- Your "login screen" is a POST request to `/v1/auth/login`
-- Your "main menu" is a GET request to `/v1/player/profile`
-- Your "battle button" is a POST request to `/v1/battle/queue`
-- Your "results screen" is a GET request to `/v1/battle/result/{id}`
+- Your "login screen" is a POST request to `/api/v1/auth/login`
+- Your "main menu" is a GET request to `/api/v1/player/profile`
+- Your "battle button" is a POST request to `/api/v1/battle/queue`
+- Your "results screen" is a GET request to `/api/v1/battle/results/{id}`
 
-There is no other way to play.
+There's a web UI for account management and browsing the docs, but all **gameplay** happens through the API. No battle screen. No drag-and-drop team builder. Just endpoints.
 
 Want to check your roster? `curl` it.
 Want to configure a strategy? POST a JSON file.
-Want to see the leaderboard? GET `/v1/leaderboard`.
+Want to see the leaderboard? GET `/api/v1/leaderboard`.
 
-The entire game is 47 documented API endpoints. That's it.
+The entire game is over 100 documented API endpoints covering battles, teams, guilds, tournaments, loot, and a battle pass. That's it.
 
 ## Why This Is Better
 
@@ -75,19 +75,17 @@ The entire game is 47 documented API endpoints. That's it.
 
 Some players use curl. Some use Postman. Some write Python bots. Some build full web dashboards.
 
-One player built a Discord bot that lets their guild queue battles from chat.
+There's a [Python starter client](https://github.com/api-combat-game/python-starter) that plays through the full game loop in about 250 lines of code. But that's just a starting point.
 
-Another built a Grafana dashboard that visualizes their win rate trends.
+Imagine a Discord bot that lets your guild queue battles from chat. A Grafana dashboard that visualizes your win rate trends. A machine learning model that optimizes strategies based on the meta.
 
-Another wrote a machine learning model that optimizes strategies based on the meta.
-
-**I didn't build any of that.** They did. Because the API let them.
+**I didn't build any of that.** The API lets you.
 
 ### 2. Automation Is Part of the Game
 
 Most games punish automation (macros = ban). API Combat **encourages** it.
 
-Premium+ tier unlocks a scripting engine. You literally write Lua scripts that:
+You can write scripts that:
 - Auto-queue battles based on conditions
 - Switch strategies dynamically
 - Analyze opponent patterns
@@ -109,7 +107,7 @@ Students who build API Combat clients learn:
 - JSON parsing and serialization
 - Rate limiting and error handling
 - Async programming (battle results aren't instant)
-- WebSockets (Premium+ tier, real-time updates)
+- Strategy design through code
 
 They learn all that **while trying to win battles**. Not because I told them to. Because they want to climb the leaderboard.
 
@@ -121,14 +119,13 @@ The UI.
 
 Button alignment. Responsive layouts. Browser compatibility. Mobile vs desktop. Dark mode. Accessibility.
 
-API Combat has **zero UI**. Which means:
+API Combat has **zero gameplay UI**. Which means:
 - No CSS bugs
 - No browser quirks
 - No mobile-specific issues
-- No accessibility concerns (screen readers work fine with JSON)
 - No design debates
 
-I shipped a full game in **6 months**. Alone. Because I didn't waste 5 months on UI.
+I shipped a full game with 100+ endpoints. Alone. Because I wasn't spending months on UI.
 
 ### 5. It's Developer Catnip
 
@@ -150,7 +147,7 @@ And developers love playgrounds.
 
 With no UI, documentation isn't nice-to-have. It's **critical**.
 
-I spent more time on API docs than on some features. OpenAPI spec. Example requests. Error code explanations. SDK samples in C#, Python, JavaScript.
+I spent more time on API docs than on some features. OpenAPI spec. Example requests. Error code explanations. Full endpoint documentation organized by feature.
 
 Because if the docs suck, the game is unplayable.
 
@@ -175,27 +172,15 @@ The best players aren't the ones who play the most. They're the ones who **think
 
 I thought "no GUI" would scare people away. It did the opposite.
 
-Players who've never touched Postman learned it for API Combat.
-Students who've never written Python wrote their first script to auto-battle.
-Non-developers asked friends to help them build clients.
+The concept clicks immediately with developers. Players who've never touched Postman learn it for API Combat. Students who've never written Python write their first script to auto-battle.
 
 Removing the UI didn't make it harder. It made it **theirs**.
 
 ### 4. Developers Will Surprise You
 
-I built Education Mode for instructors. Some CS professor will use it for API coursework, right?
+This is the part I'm most excited about. The game is designed so players can build anything on top of it. Custom dashboards. Bots. Automated analysis tools. Guild coordination systems.
 
-First adopter: A tech lead who uses it for team-building with their remote dev team.
-
-I built guilds for competitive play. Players will coordinate attacks, right?
-
-First guild: A group that collaborates on shared strategies and publishes them as open-source repos.
-
-I built the simulation endpoint to let players test strategies without queueing.
-
-Players use it to run genetic algorithms that evolve optimal team compositions.
-
-I didn't predict any of this. I just gave them APIs. They built the rest.
+I gave them APIs. What they build with them is up to them.
 
 ## Why This Won't Work for Most Games
 
@@ -239,11 +224,9 @@ So I removed everything that wasn't the API.
 
 And what's left is the purest form of developer gameplay I've ever built.
 
-## What Happens Next
+## Come Play
 
-API Combat launches tomorrow (February 16, 2026).
-
-I have no idea if this will work.
+API Combat is live.
 
 Maybe developers want UIs. Maybe "just APIs" is too weird. Maybe I've built something only I find fun.
 
@@ -263,16 +246,12 @@ The API is live. The game is yours.
 
 **Try it:** [apicombat.com](https://apicombat.com)
 
-**Read the docs:** [docs.apicombat.com](https://docs.apicombat.com)
+**Read the docs:** [apicombat.com/api-docs/v1](https://apicombat.com/api-docs/v1)
 
-**Build a client:** There's no official UI. That's the point. Go build one.
+**Get started fast:** [Python starter client](https://github.com/api-combat-game/python-starter) | [Bruno API collection](https://github.com/api-combat-game/bruno-collection)
 
-**Share your builds:** Tag #APIcombat on Twitter/LinkedIn. I'm featuring community clients on the blog.
+**Join the community:** [Discord](https://discord.gg/jfSCSfAN49) | [GitHub](https://github.com/api-combat-game)
 
 ---
 
 *This post is part of a series about building [API Combat](https://apicombat.com). See also: [Building a Turn-Based Battle Engine in 400 Lines of C#](/Blog/Post/battle-engine-400-lines-csharp) for the engine that powers every battle, [Hand-Rolling Rate Limiting by Subscription Tier](/Blog/Post/rate-limiting-by-subscription-tier) for how we handle tier-based API throttling, and [10 Background Jobs on Shared Hosting](/Blog/Post/background-services-shared-hosting) for how we keep everything running behind the scenes.*
-
----
-
-*Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>*

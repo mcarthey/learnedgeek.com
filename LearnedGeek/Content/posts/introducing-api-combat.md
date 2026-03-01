@@ -54,7 +54,7 @@ The API is the game. The rest is up to you.
 ### Step 1: Register (via API, obviously)
 
 ```bash
-curl -X POST https://api.apicombat.com/v1/auth/register \
+curl -X POST https://api.apicombat.com/api/v1/auth/register \
   -H "Content-Type: application/json" \
   -d '{
     "username": "YourName",
@@ -67,15 +67,14 @@ You get back a JWT token. That's your game account.
 
 ### Step 2: Recruit Your Team
 
-API Combat has 6 unit classes:
-- **Tanks** - High defense, protect your team
-- **Damage Dealers** - High attack, eliminate threats
-- **Healers** - Restore HP, keep team alive
-- **Support** - Buffs, debuffs, control
-- **Specialists** - Unique abilities, situational power
-- **Hybrids** - Jack-of-all-trades flexibility
+API Combat has 5 unit classes:
+- **Warrior** - Melee damage, frontline pressure
+- **Mage** - Ranged magic, area-of-effect abilities
+- **Ranger** - Ranged physical, versatile positioning
+- **Healer** - Restore HP, keep team alive
+- **Tank** - High defense, protect your team
 
-Each class has multiple units with different abilities. Free tier unlocks 20 units. Premium unlocks 50+.
+25 unique units across all 5 classes, each with different abilities and stat distributions. All units are available to every player.
 
 ### Step 3: Configure Strategy
 
@@ -105,7 +104,7 @@ Example strategy:
 ### Step 4: Queue a Battle
 
 ```bash
-curl -X POST https://api.apicombat.com/v1/battle/queue \
+curl -X POST https://api.apicombat.com/api/v1/battle/queue \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -126,14 +125,14 @@ Climb the leaderboard from "Rubber Duck" to "I Use Arch btw" (yes, those are rea
 **Casual Battles**
 Practice new strategies without affecting your rank.
 
-**Guild Wars** (Premium)
-Team up with other developers. Coordinate strategies. Dominate together.
+**Guild Wars**
+Team up with other developers. Coordinate strategies. Dominate together. (Creating a guild requires Premium; joining and participating is free.)
 
 **Tournaments**
 Bracket-style competitions with leaderboards and bragging rights.
 
 **Education Mode**
-Instructors create private instances for classrooms. Track student progress. Assign strategy-building challenges.
+Class-scoped tournaments and leaderboards. Track student progress. Instructor-defined curriculum modules.
 
 ## Monetization: No Pay-to-Win
 
@@ -141,25 +140,21 @@ I hate pay-to-win games. So API Combat isn't one.
 
 **Free Tier** ($0/month)
 - 10 battles per day
-- 20 units unlocked
+- All 25 units available
 - Full API access
-- Solo play
+- Batch practice (up to 200 simulated battles)
+- Discord webhooks
 
 **Premium** ($5/month)
 - Unlimited battles
-- All 50+ units
-- Guild access
-- Simulation endpoint (test strategies 10K times without queueing)
-- Strategy versioning
-- Discord webhooks
+- Guild creation (joining guilds is free for everyone)
+- Player analytics
+- Everything in Free
 
 **Premium+** ($10/month)
 - Everything in Premium
-- Lua scripting engine (write custom battle AI)
-- WebSocket connections (real-time updates)
-- Batch operations (queue 100 battles at once)
-- 5x API rate limits
-- Advanced analytics
+- 5x API rate limits (300/min vs 60/min)
+- Priority matchmaking
 
 Premium features are **tools for optimization**, not power upgrades. Free players can absolutely compete.
 
