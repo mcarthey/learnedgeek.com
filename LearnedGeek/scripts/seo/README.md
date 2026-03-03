@@ -11,7 +11,50 @@ Tools for blog post validation, internal linking analysis, search engine notific
 | `npm run seo:submit` | Notifies Bing/Yandex/Naver of new posts via IndexNow | **Automatic**: CI on push to main (new slugs only) |
 | `npm run seo:links` | Finds internal cross-linking opportunities | **Manual**: run periodically |
 | `npm run seo:headings` | Compares your post headings against competitors | **Manual**: run before writing/updating |
-| `npm run seo:all` | Runs validate + sitemap + links in sequence | **Manual**: full checkup |
+| `npm run seo:suggest-links` | Generates paste-ready markdown link snippets | **Manual**: when adding cross-links |
+| `npm run seo:suggest-tags` | Suggests tags from existing vocabulary | **Auto** via `seo:new`, or manual |
+| `npm run seo:describe` | Flags descriptions outside 50-160 char SEO range | **Auto** via `seo:audit`, or manual |
+| `npm run seo:new` | Scaffolds a new post with auto tag + link suggestions | **Manual**: when starting a new post |
+| `npm run seo:all` | Runs validate + sitemap + links | **Manual**: quick checkup |
+| `npm run seo:audit` | Full audit: validate + sitemap + links + describe + suggest-links | **Manual**: comprehensive SEO review |
+
+## Workflows
+
+### Creating a New Post
+```bash
+npm run seo:new -- --title "My Post Title" --category tech --tags "dotnet,ef-core"
+```
+
+This single command:
+1. Generates a slug from the title
+2. Creates the markdown file (`Content/posts/{slug}.md`)
+3. Adds the entry to posts.json with all required fields
+4. Checks your tags against the existing vocabulary (warns about typos/duplicates)
+5. Outputs paste-ready cross-link suggestions based on tag overlap
+6. Prints a TODO checklist (write content, add description, create SVG)
+
+Options:
+- `--date 2026-04-01` — schedule for a future date (default: today)
+- `--description "..."` — set the SEO description upfront
+- Omit `--tags` to see the most-used tags and pick from them
+
+### Maintaining Existing Posts
+```bash
+npm run seo:audit    # Full checkup: validation, sitemap, links, descriptions, suggestions
+```
+
+This runs everything in sequence and produces a comprehensive report. Use it monthly or after a batch of new posts. It covers:
+- Post validation errors and warnings
+- Sitemap completeness
+- Internal link gaps with stats
+- Descriptions that need trimming (shows the 160-char cutoff)
+- Paste-ready link snippets for top opportunities
+
+### Before Committing
+The pre-commit hook runs `seo:validate --staged-only` automatically. It blocks commits with errors (broken links, missing files) but allows warnings (long descriptions).
+
+### After Pushing to Main
+CI runs validation + sitemap check, then auto-submits new post URLs to IndexNow.
 
 ## Automated (hands-off)
 
@@ -37,6 +80,33 @@ On push to main only:
 **IndexNow key**: stored as `INDEXNOW_KEY` GitHub Actions secret. Key verification file is at `wwwroot/2586b37e-20ec-4e65-9902-3e6320aecbae.txt`.
 
 ## Manual Tools
+
+### Suggest Links (paste-ready snippets)
+```bash
+npm run seo:suggest-links -- --slug my-post   # Suggestions for one post
+npm run seo:suggest-links                      # Top suggestions across all posts
+npm run seo:suggest-links -- --min-tags 3      # Require 3+ shared tags
+```
+
+**When to run**: When writing or updating a post. Outputs ready-to-paste markdown links like `[Post Title](/Blog/Post/slug)` based on tag overlap with existing posts.
+
+### Suggest Tags
+```bash
+npm run seo:suggest-tags -- --slug my-post           # Analyze existing post content for tag suggestions
+npm run seo:suggest-tags -- --title "My Post Title"  # Suggest tags based on title keywords
+npm run seo:suggest-tags -- --list                   # Show all existing tags with usage counts
+```
+
+**When to run**: When choosing tags for a new post (automatically run by `seo:new`). Suggests tags from the existing vocabulary based on content analysis, warns about tags that aren't in use yet, and catches near-duplicates.
+
+### Description Optimizer
+```bash
+npm run seo:describe                      # Show all posts with description issues
+npm run seo:describe -- --slug my-post    # Analyze one post's description
+npm run seo:describe -- --long-only       # Only show descriptions that are too long
+```
+
+**When to run**: Periodically or as part of `seo:audit`. Shows where Google would truncate your descriptions in search results (the `|` marker at 160 chars) and suggests a natural break point.
 
 ### Internal Link Gap Detector
 ```bash
@@ -112,12 +182,16 @@ npm run seo:sitemap -- --live   # Fetch deployed sitemap and compare against pos
 ```
 scripts/seo/
   lib/
-    posts.mjs         # Shared: load posts.json, resolve paths, constants
-    markdown.mjs      # Shared: extract internal links and headings from markdown
-  validate-posts.mjs  # Pre-commit + CI validation
-  validate-sitemap.mjs# Sitemap completeness check
-  internal-links.mjs  # Link gap detector
-  submit-urls.mjs     # IndexNow submission
-  heading-analysis.mjs# Competitive heading comparison
-  .last-submit        # (gitignored) Timestamp of last IndexNow submission
+    posts.mjs          # Shared: load posts.json, resolve paths, constants
+    markdown.mjs       # Shared: extract internal links and headings from markdown
+  validate-posts.mjs   # Pre-commit + CI validation
+  validate-sitemap.mjs # Sitemap completeness check
+  internal-links.mjs   # Link gap detector
+  submit-urls.mjs      # IndexNow submission
+  heading-analysis.mjs # Competitive heading comparison
+  suggest-links.mjs    # Paste-ready link snippet generator
+  suggest-tags.mjs     # Tag vocabulary suggestions
+  describe.mjs         # Description length optimizer
+  new-post.mjs         # New post scaffolding
+  .last-submit         # (gitignored) Timestamp of last IndexNow submission
 ```
