@@ -142,4 +142,4 @@ Your code blocks deserve better than monochrome.
 
 ---
 
-*The code blocks in every post on this blog are now highlighted with Prism.js. Go look at [Schema-Aware EF Core Migrations](/Blog/Post/schema-aware-ef-core-migrations) or [SMS-Powered LLM](/Blog/Post/sms-powered-llm-with-twilio-and-claude) and see the difference.*
+*The code blocks in every post on this blog are now highlighted with Prism.js. Go look at [Schema-Aware EF Core Migrations](/Blog/Post/schema-aware-ef-core-migrations) or [SMS-Powered LLM](/Blog/Post/sms-llm-texting-custom-ai) and see the difference.*
