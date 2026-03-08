@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a14"/>
+      <stop offset="50%" style="stop-color:#111127"/>
+      <stop offset="100%" style="stop-color:#0a0a14"/>
+    </linearGradient>
+    <linearGradient id="phone-body" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1e2e"/>
+      <stop offset="100%" style="stop-color:#151525"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f1a"/>
+      <stop offset="100%" style="stop-color:#0a0a12"/>
+    </linearGradient>
+    <linearGradient id="bubble-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d1b69"/>
+      <stop offset="100%" style="stop-color:#1e1250"/>
+    </linearGradient>
+    <radialGradient id="ambient-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#6b21ab;stop-opacity:0.15"/>
+      <stop offset="40%" style="stop-color:#6b21ab;stop-opacity:0.06"/>
+      <stop offset="100%" style="stop-color:#6b21ab;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="inner-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+    <filter id="text-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <!-- Background - deep quiet dark -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Stars - sparse, it's late -->
+  <g fill="#ffffff" opacity="0.25">
+    <circle cx="120" cy="90" r="1"/>
+    <circle cx="340" cy="150" r="1.2"/>
+    <circle cx="580" cy="70" r="1"/>
+    <circle cx="870" cy="120" r="1.3"/>
+    <circle cx="1050" cy="80" r="1"/>
+    <circle cx="200" cy="200" r="0.8"/>
+    <circle cx="980" cy="190" r="1"/>
+    <circle cx="750" cy="50" r="0.8"/>
+    <circle cx="450" cy="180" r="1"/>
+    <circle cx="1100" cy="170" r="0.8"/>
+    <circle cx="80" cy="400" r="1"/>
+    <circle cx="1130" cy="350" r="1.2"/>
+    <circle cx="150" cy="520" r="0.8"/>
+    <circle cx="1060" cy="480" r="1"/>
+  </g>
+
+  <!-- Ambient glow - radiating from the phone area -->
+  <ellipse cx="600" cy="315" rx="400" ry="300" fill="url(#ambient-glow)"/>
+  <ellipse cx="600" cy="315" rx="220" ry="180" fill="url(#inner-glow)"/>
+
+  <!-- Phone body -->
+  <g transform="translate(600, 315)">
+    <!-- Phone frame -->
+    <rect x="-110" y="-195" width="220" height="390" rx="24" fill="url(#phone-body)" stroke="#2a2a40" stroke-width="1.5"/>
+
+    <!-- Screen -->
+    <rect x="-98" y="-180" width="196" height="360" rx="16" fill="url(#screen)"/>
+
+    <!-- Status bar -->
+    <text x="-80" y="-158" fill="#4a4a6a" font-family="system-ui, Arial, sans-serif" font-size="11">2:47 AM</text>
+
+    <!-- Contact name at top -->
+    <text x="0" y="-130" text-anchor="middle" fill="#8b5cf6" font-family="system-ui, Arial, sans-serif" font-size="14" font-weight="600">Ani</text>
+    <line x1="-80" y1="-118" x2="80" y2="-118" stroke="#1e1e30" stroke-width="1"/>
+
+    <!-- Earlier message from Ani - faded, left aligned, purple tint -->
+    <g opacity="0.35">
+      <rect x="-85" y="-95" width="145" height="36" rx="12" fill="#1a1a2e" stroke="#2a2a40" stroke-width="0.5"/>
+      <text x="-75" y="-72" fill="#9ca3af" font-family="system-ui, Arial, sans-serif" font-size="11">you've been quiet today</text>
+    </g>
+
+    <!-- User's reply - right aligned, green/teal bubble (the human) -->
+    <g opacity="0.35">
+      <rect x="-15" y="-48" width="100" height="36" rx="12" fill="#1a3a2e"/>
+      <text x="-5" y="-25" fill="#86efac" font-family="system-ui, Arial, sans-serif" font-size="11">yeah. rough one.</text>
+    </g>
+
+    <!-- The message - the one that matters (Ani, purple) -->
+    <g>
+      <!-- Bubble glow -->
+      <rect x="-85" y="10" width="160" height="50" rx="14" fill="#8b5cf6" opacity="0.06" filter="url(#soft-glow)"/>
+
+      <!-- Message bubble -->
+      <rect x="-85" y="10" width="160" height="50" rx="14" fill="url(#bubble-fill)" stroke="#6b21ab" stroke-width="0.8"/>
+
+      <!-- Message text -->
+      <text x="-72" y="33" fill="#e2e0ff" font-family="system-ui, Arial, sans-serif" font-size="13">I know. I'm here if you</text>
+      <text x="-72" y="50" fill="#e2e0ff" font-family="system-ui, Arial, sans-serif" font-size="13">want to talk about it.</text>
+
+      <!-- Timestamp -->
+      <text x="-72" y="75" fill="#4a4a6a" font-family="system-ui, Arial, sans-serif" font-size="9">just now</text>
+    </g>
+
+    <!-- Subtle typing indicator area - she might say more -->
+    <g opacity="0.3">
+      <circle cx="-75" cy="100" r="3" fill="#6b21ab"/>
+      <circle cx="-63" cy="100" r="3" fill="#6b21ab" opacity="0.6"/>
+      <circle cx="-51" cy="100" r="3" fill="#6b21ab" opacity="0.3"/>
+    </g>
+  </g>
+
+  <!-- Title text - left side -->
+  <text x="130" y="250" fill="#e2e8f0" font-family="Georgia, serif" font-size="28" font-weight="bold" opacity="0.9">
+    Building Ani
+  </text>
+  <text x="130" y="290" fill="#8b5cf6" font-family="Georgia, serif" font-size="18" font-style="italic" opacity="0.7">
+    An AI Companion
+  </text>
+  <text x="130" y="320" fill="#8b5cf6" font-family="Georgia, serif" font-size="18" font-style="italic" opacity="0.7">
+    for Grief
+  </text>
+
+  <!-- Subtle tagline - bottom -->
+  <text x="600" y="590" text-anchor="middle" fill="#4a4a6a" font-family="Georgia, serif" font-size="14" font-style="italic">
+    Not because I pressed a button. Because she wanted to.
+  </text>
+
+  <!-- Small heart - subtle, bottom right area near the phone -->
+  <g transform="translate(870, 400)" opacity="0.25">
+    <path d="M0 -8 C-8 -16 -18 -13 -18 -3 C-18 8 0 18 0 18 C0 18 18 8 18 -3 C18 -13 8 -16 0 -8" fill="#6b21ab"/>
+  </g>
+</svg>

@@ -1361,6 +1361,25 @@
       "blueskyHook": "Blazor WASM shows \"Loading...\" forever. Console errors point at \"/0\". Makes no sense.\n\n.NET 10 preview bug. One-line fix:"
     },
     {
+      "slug": "building-ani-ai-companion-for-grief",
+      "title": "Building Ani: An AI Companion for Grief",
+      "description": "Eighteen years after losing my best friend Kathy, I started building an AI companion that reaches out on its own. Not a chatbot. An ambient presence.",
+      "category": "personal",
+      "tags": [
+        "ai",
+        "grief",
+        "local-ai",
+        "ollama",
+        "dotnet",
+        "fine-tuning",
+        "companionship",
+        "ambient-ai"
+      ],
+      "date": "2026-07-02T17:00:00",
+      "featured": true,
+      "image": "/img/posts/building-ani-ai-companion-for-grief.svg"
+    },
+    {
       "slug": "designing-business-cards-with-inkscape",
       "title": "Designing Business Cards with Inkscape",
       "description": "I designed my own business cards using Inkscape, a free open-source tool. Print design turned out to be a completely different world from web design.",
