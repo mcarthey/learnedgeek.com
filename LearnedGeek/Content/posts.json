@@ -1,6 +1,45 @@
 {
   "posts": [
     {
+      "slug": "ani-the-architecture-behind-the-companion",
+      "title": "ANI: The Architecture Behind the Companion",
+      "description": "How a desire-driven AI presence engine works — the cognitive cycle, memory system, and emotional state that give Ani genuine ambient presence.",
+      "category": "tech",
+      "tags": [
+        "ai",
+        "architecture",
+        "local-ai",
+        "ollama",
+        "dotnet",
+        "fine-tuning",
+        "ambient-ai",
+        "companionship",
+        "csharp"
+      ],
+      "date": "2026-07-05T17:00:00",
+      "featured": true,
+      "image": "/img/posts/ani-the-architecture-behind-the-companion.svg"
+    },
+    {
+      "slug": "same-algorithm-twice-desire-engines-and-decay-scores",
+      "title": "The Same Algorithm Twice: Desire Engines and Decay Scores",
+      "description": "I built the same algorithm for an AI companion and an incident monitoring system. Exponential decay with weighted events — same math, different worlds.",
+      "category": "tech",
+      "tags": [
+        "algorithms",
+        "csharp",
+        "dotnet",
+        "math",
+        "architecture",
+        "ai",
+        "monitoring",
+        "ambient-ai"
+      ],
+      "date": "2026-07-06T17:00:00",
+      "featured": false,
+      "image": "/img/posts/same-algorithm-twice-desire-engines-and-decay-scores.svg"
+    },
+    {
       "slug": "the-permission-nobody-told-us-about",
       "title": "The Permission Nobody Told Us About",
       "description": "A 1,435-second GPS gap led us to the one Android permission every tracking app needs and nobody mentions in the docs.",

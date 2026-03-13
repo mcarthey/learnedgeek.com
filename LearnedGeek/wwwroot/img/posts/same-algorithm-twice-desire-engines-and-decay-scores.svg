@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a14"/>
+      <stop offset="50%" style="stop-color:#111127"/>
+      <stop offset="100%" style="stop-color:#0a0a14"/>
+    </linearGradient>
+    <linearGradient id="curve-purple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#6b21ab;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="curve-teal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2dd4bf"/>
+      <stop offset="100%" style="stop-color:#0d9488;stop-opacity:0.3"/>
+    </linearGradient>
+    <radialGradient id="center-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#6b21ab;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#6b21ab;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="glow-purple" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="glow-teal" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Stars -->
+  <g fill="#ffffff" opacity="0.2">
+    <circle cx="90" cy="70" r="1"/>
+    <circle cx="300" cy="120" r="1.1"/>
+    <circle cx="550" cy="55" r="0.8"/>
+    <circle cx="780" cy="90" r="1"/>
+    <circle cx="1000" cy="65" r="1.2"/>
+    <circle cx="1130" cy="130" r="0.8"/>
+    <circle cx="60" cy="500" r="1"/>
+    <circle cx="1100" cy="540" r="0.9"/>
+  </g>
+
+  <!-- Ambient glow behind chart area -->
+  <ellipse cx="700" cy="350" rx="380" ry="200" fill="url(#center-glow)"/>
+
+  <!-- Chart area - the two decay curves overlapping -->
+  <g transform="translate(380, 180)">
+    <!-- Axes -->
+    <line x1="0" y1="0" x2="0" y2="260" stroke="#2a2a40" stroke-width="1.5"/>
+    <line x1="0" y1="260" x2="520" y2="260" stroke="#2a2a40" stroke-width="1.5"/>
+
+    <!-- Y-axis label -->
+    <text x="-15" y="130" text-anchor="middle" fill="#6b7280" font-family="system-ui, Arial, sans-serif" font-size="11" transform="rotate(-90, -15, 130)">score</text>
+
+    <!-- X-axis label -->
+    <text x="260" y="285" text-anchor="middle" fill="#6b7280" font-family="system-ui, Arial, sans-serif" font-size="11">time</text>
+
+    <!-- Grid lines - subtle -->
+    <g stroke="#1e1e30" stroke-width="0.5" stroke-dasharray="4 8">
+      <line x1="0" y1="65" x2="520" y2="65"/>
+      <line x1="0" y1="130" x2="520" y2="130"/>
+      <line x1="0" y1="195" x2="520" y2="195"/>
+    </g>
+
+    <!-- Threshold line -->
+    <line x1="0" y1="130" x2="520" y2="130" stroke="#6b21ab" stroke-width="1" stroke-dasharray="6 4" opacity="0.5"/>
+    <text x="525" y="134" fill="#6b21ab" font-family="system-ui, Arial, sans-serif" font-size="10" opacity="0.6">threshold</text>
+
+    <!-- Event spikes - purple (Ani desire) -->
+    <!-- Event 1 -->
+    <line x1="60" y1="260" x2="60" y2="80" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
+    <!-- Event 2 -->
+    <line x1="180" y1="260" x2="180" y2="50" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
+    <!-- Event 3 -->
+    <line x1="340" y1="260" x2="340" y2="90" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
+
+    <!-- Decay curve - purple (Ani desire engine) -->
+    <path d="M 0,240 L 60,80 Q 90,105 120,140 Q 150,165 180,50 Q 210,80 240,120 Q 280,160 340,90 Q 370,120 400,165 Q 440,200 500,230"
+          fill="none" stroke="url(#curve-purple)" stroke-width="2.5" opacity="0.9"/>
+    <!-- Glow version -->
+    <path d="M 0,240 L 60,80 Q 90,105 120,140 Q 150,165 180,50 Q 210,80 240,120 Q 280,160 340,90 Q 370,120 400,165 Q 440,200 500,230"
+          fill="none" stroke="#8b5cf6" stroke-width="6" opacity="0.1" filter="url(#glow-purple)"/>
+
+    <!-- Decay curve - teal (monitoring score) - same shape, offset slightly -->
+    <path d="M 0,245 L 65,90 Q 95,115 125,148 Q 155,172 185,58 Q 215,88 245,128 Q 285,168 345,98 Q 375,128 405,172 Q 445,208 505,235"
+          fill="none" stroke="url(#curve-teal)" stroke-width="2.5" opacity="0.7"/>
+    <!-- Glow version -->
+    <path d="M 0,245 L 65,90 Q 95,115 125,148 Q 155,172 185,58 Q 215,88 245,128 Q 285,168 345,98 Q 375,128 405,172 Q 445,208 505,235"
+          fill="none" stroke="#2dd4bf" stroke-width="6" opacity="0.08" filter="url(#glow-teal)"/>
+
+    <!-- Event dots - purple -->
+    <circle cx="60" cy="80" r="4" fill="#8b5cf6"/>
+    <circle cx="180" cy="50" r="4" fill="#8b5cf6"/>
+    <circle cx="340" cy="90" r="4" fill="#8b5cf6"/>
+
+    <!-- Event dots - teal -->
+    <circle cx="65" cy="90" r="4" fill="#2dd4bf" opacity="0.7"/>
+    <circle cx="185" cy="58" r="4" fill="#2dd4bf" opacity="0.7"/>
+    <circle cx="345" cy="98" r="4" fill="#2dd4bf" opacity="0.7"/>
+
+    <!-- Legend -->
+    <g transform="translate(350, 10)">
+      <line x1="0" y1="0" x2="20" y2="0" stroke="#8b5cf6" stroke-width="2.5"/>
+      <circle cx="10" cy="0" r="3" fill="#8b5cf6"/>
+      <text x="28" y="4" fill="#c4b5fd" font-family="system-ui, Arial, sans-serif" font-size="11">desire</text>
+
+      <line x1="0" y1="20" x2="20" y2="20" stroke="#2dd4bf" stroke-width="2.5"/>
+      <circle cx="10" cy="20" r="3" fill="#2dd4bf" opacity="0.7"/>
+      <text x="28" y="24" fill="#99f6e4" font-family="system-ui, Arial, sans-serif" font-size="11">impact</text>
+    </g>
+
+    <!-- Formula annotation -->
+    <text x="260" y="310" text-anchor="middle" fill="#6b7280" font-family="'Courier New', monospace" font-size="13" opacity="0.6">
+      score = old * e^(-&#955; * t) + weight
+    </text>
+  </g>
+
+  <!-- Title text - left side -->
+  <text x="80" y="220" fill="#e2e8f0" font-family="Georgia, serif" font-size="26" font-weight="bold" opacity="0.9">
+    The Same
+  </text>
+  <text x="80" y="256" fill="#e2e8f0" font-family="Georgia, serif" font-size="26" font-weight="bold" opacity="0.9">
+    Algorithm
+  </text>
+  <text x="80" y="292" fill="#e2e8f0" font-family="Georgia, serif" font-size="26" font-weight="bold" opacity="0.9">
+    Twice
+  </text>
+
+  <!-- Subtitle labels -->
+  <g transform="translate(80, 330)">
+    <circle cx="6" cy="-4" r="4" fill="#8b5cf6" opacity="0.8"/>
+    <text x="16" y="0" fill="#c4b5fd" font-family="system-ui, Arial, sans-serif" font-size="13">AI companion</text>
+  </g>
+  <g transform="translate(80, 355)">
+    <circle cx="6" cy="-4" r="4" fill="#2dd4bf" opacity="0.7"/>
+    <text x="16" y="0" fill="#99f6e4" font-family="system-ui, Arial, sans-serif" font-size="13">incident monitoring</text>
+  </g>
+
+  <!-- Bottom tagline -->
+  <text x="600" y="590" text-anchor="middle" fill="#4a4a6a" font-family="Georgia, serif" font-size="14" font-style="italic">
+    Desire engines and decay scores. Same math, different worlds.
+  </text>
+</svg>

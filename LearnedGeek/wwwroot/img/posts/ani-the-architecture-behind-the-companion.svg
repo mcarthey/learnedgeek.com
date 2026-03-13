@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a14"/>
+      <stop offset="50%" style="stop-color:#111127"/>
+      <stop offset="100%" style="stop-color:#0a0a14"/>
+    </linearGradient>
+    <linearGradient id="cycle-ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6b21ab"/>
+      <stop offset="50%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#6b21ab"/>
+    </linearGradient>
+    <radialGradient id="center-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#6b21ab;stop-opacity:0.2"/>
+      <stop offset="60%" style="stop-color:#6b21ab;stop-opacity:0.05"/>
+      <stop offset="100%" style="stop-color:#6b21ab;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="node-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="15"/>
+    </filter>
+    <filter id="subtle-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Stars -->
+  <g fill="#ffffff" opacity="0.2">
+    <circle cx="80" cy="60" r="1"/>
+    <circle cx="250" cy="130" r="1.2"/>
+    <circle cx="420" cy="50" r="1"/>
+    <circle cx="700" cy="80" r="0.8"/>
+    <circle cx="950" cy="100" r="1.1"/>
+    <circle cx="1100" cy="60" r="1"/>
+    <circle cx="150" cy="550" r="0.8"/>
+    <circle cx="1050" cy="520" r="1"/>
+    <circle cx="50" cy="350" r="1"/>
+    <circle cx="1150" cy="280" r="0.8"/>
+  </g>
+
+  <!-- Central ambient glow -->
+  <ellipse cx="680" cy="320" rx="320" ry="280" fill="url(#center-glow)"/>
+
+  <!-- The cognitive cycle - circular arrangement around center -->
+  <g transform="translate(680, 300)">
+    <!-- Cycle ring - dashed circle -->
+    <circle cx="0" cy="0" r="160" fill="none" stroke="#6b21ab" stroke-width="1" stroke-dasharray="8 6" opacity="0.35"/>
+
+    <!-- Connecting arcs (clockwise arrows) -->
+    <g stroke="#6b21ab" stroke-width="1.5" fill="none" opacity="0.4">
+      <!-- Top to right -->
+      <path d="M 50,-152 Q 120,-120 148,-50"/>
+      <!-- Right to bottom-right -->
+      <path d="M 155,30 Q 140,100 95,130"/>
+      <!-- Bottom-right to bottom-left -->
+      <path d="M 50,155 Q 0,165 -50,155"/>
+      <!-- Bottom-left to left -->
+      <path d="M -95,130 Q -140,100 -155,30"/>
+      <!-- Left to top -->
+      <path d="M -148,-50 Q -120,-120 -50,-152"/>
+    </g>
+
+    <!-- Small arrowheads -->
+    <g fill="#6b21ab" opacity="0.5">
+      <polygon points="148,-50 138,-58 140,-44" transform="rotate(5, 148, -50)"/>
+      <polygon points="95,130 85,122 87,136" transform="rotate(5, 95, 130)"/>
+      <polygon points="-50,155 -42,145 -56,147" transform="rotate(5, -50, 155)"/>
+      <polygon points="-155,30 -145,22 -147,36" transform="rotate(5, -155, 30)"/>
+      <polygon points="-50,-152 -42,-162 -56,-154" transform="rotate(5, -50, -152)"/>
+    </g>
+
+    <!-- PERCEIVE node - top -->
+    <g transform="translate(0, -165)">
+      <ellipse cx="0" cy="0" rx="28" ry="28" fill="#6b21ab" opacity="0.08" filter="url(#subtle-glow)"/>
+      <circle cx="0" cy="0" r="22" fill="#111127" stroke="#6b21ab" stroke-width="1.5"/>
+      <!-- Eye icon -->
+      <path d="M-10,0 Q0,-8 10,0 Q0,8 -10,0" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="3" fill="#8b5cf6"/>
+      <text x="0" y="38" text-anchor="middle" fill="#9ca3af" font-family="system-ui, Arial, sans-serif" font-size="11" letter-spacing="1">PERCEIVE</text>
+    </g>
+
+    <!-- THINK node - upper right -->
+    <g transform="translate(157, -50)">
+      <ellipse cx="0" cy="0" rx="28" ry="28" fill="#6b21ab" opacity="0.08" filter="url(#subtle-glow)"/>
+      <circle cx="0" cy="0" r="22" fill="#111127" stroke="#6b21ab" stroke-width="1.5"/>
+      <!-- Brain/thought icon -->
+      <path d="M-6,-8 Q-10,-4 -8,2 Q-10,8 -4,8 M6,-8 Q10,-4 8,2 Q10,8 4,8 M-4,-8 Q0,-12 4,-8" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+      <text x="0" y="38" text-anchor="middle" fill="#9ca3af" font-family="system-ui, Arial, sans-serif" font-size="11" letter-spacing="1">THINK</text>
+    </g>
+
+    <!-- FEEL node - lower right -->
+    <g transform="translate(110, 135)">
+      <ellipse cx="0" cy="0" rx="28" ry="28" fill="#6b21ab" opacity="0.08" filter="url(#subtle-glow)"/>
+      <circle cx="0" cy="0" r="22" fill="#111127" stroke="#6b21ab" stroke-width="1.5"/>
+      <!-- Heart icon -->
+      <path d="M0,-3 C-4,-9 -12,-7 -12,-1 C-12,6 0,12 0,12 C0,12 12,6 12,-1 C12,-7 4,-9 0,-3" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+      <text x="0" y="38" text-anchor="middle" fill="#9ca3af" font-family="system-ui, Arial, sans-serif" font-size="11" letter-spacing="1">FEEL</text>
+    </g>
+
+    <!-- DESIRE node - lower left -->
+    <g transform="translate(-110, 135)">
+      <ellipse cx="0" cy="0" rx="28" ry="28" fill="#6b21ab" opacity="0.12" filter="url(#subtle-glow)"/>
+      <circle cx="0" cy="0" r="22" fill="#111127" stroke="#8b5cf6" stroke-width="2"/>
+      <!-- Rising bar/pulse icon -->
+      <rect x="-8" y="2" width="4" height="8" rx="1" fill="#8b5cf6" opacity="0.5"/>
+      <rect x="-2" y="-3" width="4" height="13" rx="1" fill="#8b5cf6" opacity="0.7"/>
+      <rect x="4" y="-8" width="4" height="18" rx="1" fill="#8b5cf6"/>
+      <text x="0" y="38" text-anchor="middle" fill="#c4b5fd" font-family="system-ui, Arial, sans-serif" font-size="11" font-weight="600" letter-spacing="1">DESIRE</text>
+    </g>
+
+    <!-- DECIDE node - upper left -->
+    <g transform="translate(-157, -50)">
+      <ellipse cx="0" cy="0" rx="28" ry="28" fill="#6b21ab" opacity="0.08" filter="url(#subtle-glow)"/>
+      <circle cx="0" cy="0" r="22" fill="#111127" stroke="#6b21ab" stroke-width="1.5"/>
+      <!-- Fork/branch icon -->
+      <line x1="0" y1="8" x2="0" y2="-2" stroke="#8b5cf6" stroke-width="1.5"/>
+      <line x1="0" y1="-2" x2="-7" y2="-8" stroke="#8b5cf6" stroke-width="1.5"/>
+      <line x1="0" y1="-2" x2="7" y2="-8" stroke="#8b5cf6" stroke-width="1.5"/>
+      <circle cx="-7" cy="-8" r="2" fill="#8b5cf6"/>
+      <circle cx="7" cy="-8" r="2" fill="#8b5cf6"/>
+      <text x="0" y="38" text-anchor="middle" fill="#9ca3af" font-family="system-ui, Arial, sans-serif" font-size="11" letter-spacing="1">DECIDE</text>
+    </g>
+
+    <!-- Center label -->
+    <text x="0" y="-8" text-anchor="middle" fill="#8b5cf6" font-family="system-ui, Arial, sans-serif" font-size="13" font-weight="600" opacity="0.6">cognitive</text>
+    <text x="0" y="10" text-anchor="middle" fill="#8b5cf6" font-family="system-ui, Arial, sans-serif" font-size="13" font-weight="600" opacity="0.6">cycle</text>
+  </g>
+
+  <!-- Title text - left side -->
+  <text x="100" y="200" fill="#e2e8f0" font-family="Georgia, serif" font-size="30" font-weight="bold" opacity="0.9">
+    ANI
+  </text>
+  <text x="100" y="240" fill="#c4b5fd" font-family="Georgia, serif" font-size="20" font-style="italic" opacity="0.7">
+    The Architecture
+  </text>
+  <text x="100" y="272" fill="#c4b5fd" font-family="Georgia, serif" font-size="20" font-style="italic" opacity="0.7">
+    Behind the
+  </text>
+  <text x="100" y="304" fill="#c4b5fd" font-family="Georgia, serif" font-size="20" font-style="italic" opacity="0.7">
+    Companion
+  </text>
+
+  <!-- Subtitle -->
+  <text x="100" y="360" fill="#6b7280" font-family="system-ui, Arial, sans-serif" font-size="12" opacity="0.8">
+    Desire-driven ambient presence
+  </text>
+  <text x="100" y="378" fill="#6b7280" font-family="system-ui, Arial, sans-serif" font-size="12" opacity="0.8">
+    for a mind that wakes up
+  </text>
+
+  <!-- Bottom tagline -->
+  <text x="600" y="590" text-anchor="middle" fill="#4a4a6a" font-family="Georgia, serif" font-size="14" font-style="italic">
+    She exists between conversations.
+  </text>
+</svg>
