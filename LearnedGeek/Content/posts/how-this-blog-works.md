@@ -164,6 +164,6 @@ Sometimes the simplest solution is the best one. A JSON file for metadata, Markd
 
 Just words in files, becoming pages on the web.
 
-And if you want to see the actual code? It's all on [GitHub](https://github.com/mcarthey/learnedgeek.com). The beauty of open source - you can read exactly how this post became the page you're reading.
+And if you want to see the actual code? It's all on [GitHub](https://github.com/LearnedGeek/learnedgeek.com). The beauty of open source - you can read exactly how this post became the page you're reading.
 
 One thing that improved the reading experience significantly after the core architecture was in place: [Adding Syntax Highlighting to a Blog (The Easy Way)](/Blog/Post/adding-syntax-highlighting-with-prismjs) — three lines of HTML and fifteen minutes, and the code blocks went from monochrome to fully highlighted.
