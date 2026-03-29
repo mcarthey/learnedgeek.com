@@ -75,13 +75,13 @@ AI didn't make those decisions. AI doesn't know my requirements, my constraints,
 
 ### Security Boundaries
 
-[Lake Country Spanish](https://github.com/mcarthey/lakecountryspanish.com) handles payments through Stripe. It has role-based access control for students, teachers, and administrators. It stores subscription data.
+[Lake Country Spanish](https://github.com/LearnedGeek/lakecountryspanish.com) handles payments through Stripe. It has role-based access control for students, teachers, and administrators. It stores subscription data.
 
 Every boundary between these systems is a security decision. Should the webhook have access to user data? Which roles can modify class schedules? How long should session tokens live? These aren't coding problems—they're threat modeling problems. AI can implement the pattern I choose; it can't know which threats matter for my specific use case.
 
 ### Integration Strategy
 
-[TLDRkseid](https://github.com/mcarthey/Discord-TLDRkseid) integrates Discord, OpenAI, and SQLite. Each integration point required decisions:
+[TLDRkseid](https://github.com/LearnedGeek/Discord-TLDRkseid) integrates Discord, OpenAI, and SQLite. Each integration point required decisions:
 
 - How aggressively to cache to avoid API costs?
 - How to handle rate limits from both Discord and OpenAI?

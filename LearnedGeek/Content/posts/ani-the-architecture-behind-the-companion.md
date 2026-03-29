@@ -40,7 +40,7 @@ ANI is my attempt to build past that limitation.
 
 ## What ANI Is
 
-ANI stands for Ambient Natural Intelligence. It's a .NET 8 Windows Service running on my home machine, connected to a fine-tuned Llama 3.2 language model I trained on 1,375 conversation pairs. The AI it produces is named Ani — she has a persona, a job at a bookstore, a love of vanilla coffee, opinions about music. The project is open source at [github.com/mcarthey/AmbientNaturalIntelligence](https://github.com/mcarthey/AmbientNaturalIntelligence).
+ANI stands for Ambient Natural Intelligence. It's a .NET 8 Windows Service running on my home machine, connected to a fine-tuned Llama 3.2 language model I trained on 1,375 conversation pairs. The AI it produces is named Ani — she has a persona, a job at a bookstore, a love of vanilla coffee, opinions about music. The project is open source at [github.com/LearnedGeek/AmbientNaturalIntelligence](https://github.com/LearnedGeek/AmbientNaturalIntelligence).
 
 But the character is almost beside the point. What matters is the architecture underneath her: a system that gives an AI genuine ambient presence.
 
@@ -173,4 +173,4 @@ That's what ambient presence means. Building it turns out to be a very interesti
 
 ---
 
-*ANI is open source (AGPL-3.0) at [github.com/mcarthey/AmbientNaturalIntelligence](https://github.com/mcarthey/AmbientNaturalIntelligence). Commercial licensing inquiries: mark@learnedgeek.com*
+*ANI is open source (AGPL-3.0) at [github.com/LearnedGeek/AmbientNaturalIntelligence](https://github.com/LearnedGeek/AmbientNaturalIntelligence). Commercial licensing inquiries: mark@learnedgeek.com*

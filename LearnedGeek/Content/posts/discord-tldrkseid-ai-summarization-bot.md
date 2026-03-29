@@ -103,7 +103,7 @@ I had to go back and make sure my database queries were properly scoped by guild
 
 I deployed to [Railway](https://railway.app/). It's reasonably priced, handles Docker well, and got me from "working locally" to "working on the internet" without too much hair-pulling.
 
-You can see the deployment link in the [GitHub releases](https://github.com/mcarthey/Discord-TLDRkseid/releases).
+You can see the deployment link in the [GitHub releases](https://github.com/LearnedGeek/Discord-TLDRkseid/releases).
 
 **But I'm genuinely curious**: Is Railway the right choice for this? Are there better options for hosting a Discord bot that needs to:
 - Run 24/7
@@ -123,7 +123,7 @@ But it's not "released" in any meaningful way. I built it for my own server, rea
 - Do I need a privacy policy?
 - Is anyone going to actually use this?
 
-The code is [open source](https://github.com/mcarthey/Discord-TLDRkseid). If you want to run your own instance, you can. If you want to contribute improvements, please do. And if you have advice on taking a side project from "works for me" to "works for everyone," I'm all ears.
+The code is [open source](https://github.com/LearnedGeek/Discord-TLDRkseid). If you want to run your own instance, you can. If you want to contribute improvements, please do. And if you have advice on taking a side project from "works for me" to "works for everyone," I'm all ears.
 
 Sometimes the best projects are the ones you build because a problem annoyed you enough to solve it. TLDRkseid exists because Discord moves too fast and I refuse to miss jokes.
 

@@ -386,7 +386,7 @@ Client data never touches OpenAI, Anthropic, or any cloud AI provider. For regul
 
 ## What's Next
 
-The code is open source: [github.com/mcarthey/SmsAiAssistant](https://github.com/mcarthey/SmsAiAssistant)
+The code is open source: [github.com/LearnedGeek/SmsAiAssistant](https://github.com/LearnedGeek/SmsAiAssistant)
 
 I'm exploring workshop formats where teams can build this hands-on. If that sounds interesting, [reach out](/Home/Contact).
 

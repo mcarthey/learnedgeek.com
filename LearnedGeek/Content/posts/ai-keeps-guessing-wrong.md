@@ -128,7 +128,7 @@ Three questions. Every time. It works.
 
 ## See For Yourself
 
-The full hardening playbook (19 sections, from auth gotchas to emergency triage flowcharts) and the testing strategy document (18 sections, including anti-patterns and a quick reference for AI assistants) are both available in the [API Combat repository](https://github.com/mcarthey/ApiCombatGame).
+The full hardening playbook (19 sections, from auth gotchas to emergency triage flowcharts) and the testing strategy document (18 sections, including anti-patterns and a quick reference for AI assistants) are both available in the [API Combat repository](https://github.com/LearnedGeek/ApiCombatGame).
 
 They're written to be handed to any AI assistant on any project. If you've been burned by the confident guess spiral, they might save you some scars.
 
@@ -136,7 +136,7 @@ And if you want to see the system they were built to protect — come play.
 
 - **Try it:** [apicombat.com](https://apicombat.com)
 - **Read the docs:** [apicombat.com/api-docs/v1](https://apicombat.com/api-docs/v1)
-- **Source:** [github.com/mcarthey/ApiCombatGame](https://github.com/mcarthey/ApiCombatGame)
+- **Source:** [github.com/LearnedGeek/ApiCombatGame](https://github.com/LearnedGeek/ApiCombatGame)
 
 ---
 
