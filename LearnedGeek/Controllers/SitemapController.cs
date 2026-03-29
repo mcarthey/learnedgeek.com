@@ -34,6 +34,7 @@ public class SitemapController : Controller
                 CreateUrlElement(ns, $"{baseUrl}/Home/SmsPrivacy", "monthly", "0.3"),
                 CreateUrlElement(ns, $"{baseUrl}/Home/SmsTerms", "monthly", "0.3"),
                 CreateUrlElement(ns, $"{baseUrl}/Home/SmsAssistant", "monthly", "0.3"),
+                CreateUrlElement(ns, $"{baseUrl}/Home/RemoteWorkPolicy", "monthly", "0.3"),
                 CreateUrlElement(ns, $"{baseUrl}/Blog", "daily", "0.9")
             )
         );

@@ -51,6 +51,7 @@ export const STATIC_SITEMAP_URLS = [
   '/Home/SmsPrivacy',
   '/Home/SmsTerms',
   '/Home/SmsAssistant',
+  '/Home/RemoteWorkPolicy',
   '/Blog'
 ];
 

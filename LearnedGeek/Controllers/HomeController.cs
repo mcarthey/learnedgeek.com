@@ -70,6 +70,11 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult RemoteWorkPolicy()
+    {
+        return View();
+    }
+
     [HttpGet]
     public IActionResult Contact()
     {
