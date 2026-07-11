@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Puente Project Status — Clinica Infanzia</title>
+    <link rel="stylesheet" href="/css/site.css">
+    <style>
+        /* Progress ring styles */
+        .progress-ring-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+        .progress-ring-container.small {
+            width: 80px;
+            height: 80px;
+        }
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+        .progress-ring-bg {
+            fill: none;
+            stroke: #e5e5e5;
+            stroke-width: 8;
+        }
+        .dark .progress-ring-bg {
+            stroke: #404040;
+        }
+        .progress-ring-fill {
+            fill: none;
+            stroke: #171717;
+            stroke-width: 8;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+        .progress-ring-fill.complete {
+            stroke: #22c55e;
+        }
+        .progress-ring-fill.upcoming {
+            stroke: #a3a3a3;
+        }
+        .dark .progress-ring-fill {
+            stroke: #f5f5f5;
+        }
+        .dark .progress-ring-fill.complete {
+            stroke: #22c55e;
+        }
+        .dark .progress-ring-fill.upcoming {
+            stroke: #525252;
+        }
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        /* Phase grid */
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .phase-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background: #fafafa;
+        }
+        .dark .phase-card {
+            background: #262626;
+        }
+        .phase-card.active {
+            background: #f5f5f5;
+            border: 2px solid #171717;
+        }
+        .dark .phase-card.active {
+            background: #303030;
+            border-color: #f5f5f5;
+        }
+        .phase-name {
+            font-weight: 500;
+            margin-top: 0.75rem;
+            font-size: 0.875rem;
+        }
+        .phase-detail {
+            font-size: 0.75rem;
+            color: #737373;
+            margin-top: 0.25rem;
+        }
+        .dark .phase-detail {
+            color: #a3a3a3;
+        }
+
+        /* Timeline styles */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: #e5e5e5;
+        }
+        .dark .timeline::before {
+            background: #404040;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        .timeline-marker {
+            position: absolute;
+            left: -30px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: white;
+        }
+        .timeline-marker.complete {
+            background: #22c55e;
+        }
+        .timeline-marker.in-progress {
+            background: #171717;
+            animation: pulse 2s infinite;
+        }
+        .dark .timeline-marker.in-progress {
+            background: #f5f5f5;
+        }
+        .timeline-marker.upcoming {
+            background: white;
+            border: 2px solid #e5e5e5;
+        }
+        .dark .timeline-marker.upcoming {
+            background: #262626;
+            border-color: #404040;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(23, 23, 23, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(23, 23, 23, 0); }
+        }
+        .dark .timeline-marker.in-progress {
+            animation-name: pulse-dark;
+        }
+        @keyframes pulse-dark {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245, 245, 245, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(245, 245, 245, 0); }
+        }
+
+        /* Activity icon */
+        .activity-icon {
+            width: 36px;
+            height: 36px;
+            background: #f5f5f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+        .dark .activity-icon {
+            background: #404040;
+        }
+
+        /* Status badge */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .status-badge.in-progress {
+            background: #f5f5f5;
+            color: #171717;
+        }
+        .dark .status-badge.in-progress {
+            background: #404040;
+            color: #f5f5f5;
+        }
+
+        /* Loading state */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+        .loading::after {
+            content: '';
+            width: 32px;
+            height: 32px;
+            border: 3px solid #e5e5e5;
+            border-top-color: #171717;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        .dark .loading::after {
+            border-color: #404040;
+            border-top-color: #f5f5f5;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Error state */
+        .error {
+            text-align: center;
+            padding: 2rem;
+            color: #dc2626;
+        }
+        .dark .error {
+            color: #f87171;
+        }
+    </style>
+    <script>
+        // Theme handling - match main site behavior
+        (function() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+</head>
+<body class="min-h-screen bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 transition-colors">
+    <div class="max-w-3xl mx-auto px-4 py-8">
+        <!-- Header -->
+        <header id="header" class="mb-8">
+            <div class="loading">Loading...</div>
+        </header>
+
+        <!-- Phases Section -->
+        <section id="phases" class="mb-8 p-6 border border-neutral-200 dark:border-neutral-700 rounded-lg">
+            <div class="loading"></div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="milestones" class="mb-8 p-6 border border-neutral-200 dark:border-neutral-700 rounded-lg">
+            <div class="loading"></div>
+        </section>
+
+        <!-- Recent Activity Section -->
+        <section id="activities" class="mb-8 p-6 border border-neutral-200 dark:border-neutral-700 rounded-lg">
+            <div class="loading"></div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-6 text-sm text-neutral-500 dark:text-neutral-400">
+            <p>Built by <a href="https://learnedgeek.com" class="underline hover:text-neutral-900 dark:hover:text-white">LearnedGeek</a></p>
+            <p class="mt-1">Questions? Contact Mark at markm@learnedgeek.com</p>
+        </footer>
+    </div>
+
+    <script>
+        const iconMap = {
+            // Default
+            check: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            // Security
+            lock: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke-width="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke-width="2"/></svg>',
+            // Cloud/Deployment
+            cloud: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" stroke-width="2"/></svg>',
+            // Document/Report
+            document: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-width="2"/><polyline points="14,2 14,8 20,8" stroke-width="2"/></svg>',
+            // Code/Programming
+            code: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="16,18 22,12 16,6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8,6 2,12 8,18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            // Bug/Fix
+            bug: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 2l1.88 1.88M14.12 3.88L16 2M9 7.13v-1a3.003 3.003 0 1 1 6 0v1" stroke-width="2"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a6 6 0 0 1 12 0v3c0 3.3-2.7 6-6 6z" stroke-width="2"/><path d="M12 20v-9M6.53 9C4.6 8.8 3 7.1 3 5M6 13H3M6 17l-3 1M17.47 9c1.93-.2 3.53-1.9 3.53-4M18 13h3M18 17l3 1" stroke-width="2" stroke-linecap="round"/></svg>',
+            // Test
+            test: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18" stroke-width="2"/></svg>',
+            // Git/Version control
+            git: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3" stroke-width="2"/><circle cx="6" cy="6" r="3" stroke-width="2"/><path d="M6 21V9a9 9 0 0 0 9 9" stroke-width="2"/></svg>',
+            // Device/Mobile
+            device: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" stroke-width="2"/><line x1="12" y1="18" x2="12" y2="18" stroke-width="3" stroke-linecap="round"/></svg>',
+            // Design
+            design: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path d="M12 2a10 10 0 0 1 0 20" fill="currentColor" opacity="0.3"/></svg>',
+            // Architecture/Grid
+            architecture: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" stroke-width="2"/><rect x="14" y="3" width="7" height="7" stroke-width="2"/><rect x="14" y="14" width="7" height="7" stroke-width="2"/><rect x="3" y="14" width="7" height="7" stroke-width="2"/></svg>',
+            // Database
+            database: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3" stroke-width="2"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" stroke-width="2"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" stroke-width="2"/></svg>',
+            // Settings/Config
+            settings: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" stroke-width="2"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" stroke-width="2"/></svg>',
+            // Folder/Organization
+            folder: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" stroke-width="2"/></svg>',
+            // Sync/Refresh
+            sync: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="23,4 23,10 17,10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="1,20 1,14 7,14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            // Camera/Photo
+            camera: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" stroke-width="2"/><circle cx="12" cy="13" r="4" stroke-width="2"/></svg>',
+            // Meeting/Users
+            meeting: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-width="2"/><circle cx="9" cy="7" r="4" stroke-width="2"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-width="2"/></svg>'
+        };
+
+        async function loadData() {
+            try {
+                const response = await fetch('/puente.json?' + Date.now());
+                if (!response.ok) throw new Error('Failed to load data');
+                const data = await response.json();
+                renderPage(data);
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.querySelectorAll('.loading').forEach(el => {
+                    el.innerHTML = '<div class="error">Failed to load project data. Please refresh the page.</div>';
+                });
+            }
+        }
+
+        function renderPage(data) {
+            renderHeader(data.project);
+            renderPhases(data.phases, data.project);
+            renderMilestones(data.milestones);
+            renderActivities(data.activities);
+        }
+
+        function renderHeader(project) {
+            document.getElementById('header').innerHTML = `
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h1 class="text-3xl font-semibold tracking-tight">${project.name}</h1>
+                        <p class="text-neutral-500 dark:text-neutral-400 mt-1">${project.subtitle}</p>
+                    </div>
+                    <div class="text-sm text-neutral-500 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-800 px-4 py-2 rounded-full">
+                        Updated: ${project.lastUpdated}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPhases(phases, project) {
+            const circumference = 2 * Math.PI * 34; // radius 34 for 80px ring
+
+            const phaseCards = phases.map(phase => {
+                const offset = circumference * (1 - phase.percent / 100);
+                const isActive = phase.status === 'in-progress';
+                const strokeClass = phase.status === 'complete' ? 'complete' : (phase.status === 'upcoming' ? 'upcoming' : '');
+
+                let detail = '';
+                if (phase.week) {
+                    detail = phase.week;
+                } else if (phase.target) {
+                    detail = phase.target;
+                } else if (phase.status === 'complete') {
+                    detail = 'Complete';
+                }
+
+                return `
+                    <div class="phase-card ${isActive ? 'active' : ''}">
+                        <div class="progress-ring-container small">
+                            <svg class="progress-ring" width="80" height="80">
+                                <circle class="progress-ring-bg" cx="40" cy="40" r="34"/>
+                                <circle class="progress-ring-fill ${strokeClass}" cx="40" cy="40" r="34"
+                                        stroke-dasharray="${circumference}"
+                                        stroke-dashoffset="${offset}" />
+                            </svg>
+                            <div class="progress-text">
+                                <div class="text-lg font-semibold">${phase.percent}%</div>
+                            </div>
+                        </div>
+                        <div class="phase-name">${phase.name}</div>
+                        <div class="phase-detail">${detail}</div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('phases').innerHTML = `
+                <h2 class="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-4">Project Progress</h2>
+                <div class="phases-grid">
+                    ${phaseCards}
+                </div>
+                <p class="mt-4 text-sm text-neutral-600 dark:text-neutral-300 text-center">
+                    Target completion: <strong>${project.targetCompletion}</strong>
+                </p>
+            `;
+        }
+
+        function renderMilestones(milestones) {
+            const items = milestones.map(m => {
+                let markerClass = m.status;
+                let markerContent = '';
+                if (m.status === 'complete') {
+                    markerContent = '<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                }
+
+                return `
+                    <div class="timeline-item">
+                        <div class="timeline-marker ${markerClass}">${markerContent}</div>
+                        <div>
+                            <h4 class="font-medium">${m.title}</h4>
+                            <p class="text-sm text-neutral-500 dark:text-neutral-400">${m.description}</p>
+                            <span class="text-xs text-neutral-400 dark:text-neutral-500">${m.date}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('milestones').innerHTML = `
+                <h2 class="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-4">Project Milestones</h2>
+                <div class="timeline">
+                    ${items}
+                </div>
+            `;
+        }
+
+        function renderActivities(activities) {
+            const items = activities.map(a => `
+                <li class="flex gap-3 py-3 border-b border-neutral-100 dark:border-neutral-800 last:border-0">
+                    <div class="activity-icon">
+                        ${iconMap[a.icon] || iconMap.check}
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-medium">${a.title}</p>
+                        <p class="text-sm text-neutral-500 dark:text-neutral-400">${a.description}</p>
+                    </div>
+                    <div class="text-right whitespace-nowrap">
+                        <span class="text-xs text-neutral-400 dark:text-neutral-500">${a.date}</span>
+                        ${a.hours ? `<div class="text-xs font-medium text-neutral-600 dark:text-neutral-300">${a.hours}h</div>` : ''}
+                    </div>
+                </li>
+            `).join('');
+
+            document.getElementById('activities').innerHTML = `
+                <h2 class="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-4">Recent Activity</h2>
+                <p class="text-xs text-neutral-400 dark:text-neutral-500 mb-3 italic">Dates indicate task completion. Hours shown represent total time spent on each task, not hours worked on that specific day.</p>
+                <ul>
+                    ${items}
+                </ul>
+            `;
+        }
+
+        // Load data when page loads
+        loadData();
+    </script>
+</body>
+</html>
